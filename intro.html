@@ -1,0 +1,698 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. Qunat research" href="00QC.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Qunat</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00QC.html">1. Qunat research</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/intro.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-packages">Math packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#haskell">Haskell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more">More</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oop-to-fp">OOP to FP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-cross-citations">Image &amp; Cross-citations</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<p>I’m currently working on <a class="reference internal" href="#../10pe/MCM.ipynb"><span class="xref myst">Methods</span></a>.</p>
+<p>Any questions, please send me email:</p>
+<blockquote>
+<div><p><strong>Project Euler (PE)</strong></p>
+</div></blockquote>
+<p>Jonny workbook started from <a class="reference external" href="https://projecteuler.net/">Project Euler</a>. Jonny loves coding and number theory, especially the PE-style (VS. CS-style) when he was 10YO. Therefore, Tom assisted him with guidance and searching hidden info and knowledge.</p>
+<p>PE problems can be solved using multiple approaches and often involve a combination of techniques.</p>
+<ul class="simple">
+<li><p>Sometimes, I face math problems while coding is easy, e.g. 99-Largest Exponential</p></li>
+<li><p>Sometimes, I face computational (or programming) problems while math is easy, e.g. 187-Semiprimes (very time-consuming)</p></li>
+</ul>
+<p>So, I need two streams of knowledge to solve PE: 1) Math: see <a class="reference internal" href="#../10pe/00intro_math.ipynb#pe-hidden-math"><span class="xref myst">PE-Hidden-Math</span></a> where I present math by PE questions and math-topics; and 2) <a class="reference external" href="https://github.com/leduckhai/Awesome-Competitive-Programming?tab=readme-ov-file">CS or Programming</a></p>
+<blockquote>
+<div><p><strong>Mathematics &amp; FP &amp; Language</strong> (updating)</p>
+</div></blockquote>
+<p>In 2024, Jonny went through 4U math (HSC-NSW) once, Tom chose A-level math for Jonny’s review and progress, with a approach of computational coding for A-level math. In this workbook, Jonny worked on A-level and A-level further which are transitional-math between secondary and tertiary education.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.edx.org/learn/math/imperial-college-london-a-level-mathematics-for-year-12-course-1-algebraic-methods-graphs-and-applied-mathematics-methods">A-level math</a>, including four courses</p></li>
+<li><p><a class="reference external" href="https://www.edx.org/learn/math/imperial-college-london-a-level-further-mathematics-for-year-12-course-2-3-x-3-matrices-mathematical-induction-calculus-methods-and-applications-maclaurin-series-complex-numbers-and-polar-coordinates">A-level further math</a> (updating), including four courses</p></li>
+</ul>
+<p>Go along with A-level math, Tom summarised math, functional programming (<strong>FP</strong>), and linguistics (natural languages). Tom advocates <a class="reference internal" href="#../10pe/00intro_math.ipynb"><span class="xref myst">6. Math-FP-Lang Combo</span></a> in guiding kids learning.</p>
+<blockquote>
+<div><p><strong>CS-Python &amp; Physics</strong> (updating)</p>
+</div></blockquote>
+<p>I already finished these two courses in 2024 as below, and a physics in 2025 (planned). My notes are included in this workbook:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.edx.org/learn/math/georgetown-university-mathematical-and-computational-methods">Mathematical and Computational Methods</a>: learning Physics through Math (updating)</p></li>
+<li><p><a class="reference external" href="https://learning.edx.org/course/course-v1:MITx+6.00.1x+1T2024/home">MITx-6.00.1x-Introduction to Computer Science and Programming Using Python</a></p></li>
+<li><p><a class="reference external" href="https://learning.edx.org/course/course-v1:MITx+6.00.2x+1T2024/home">MITx-6.00.2x-Introduction to Computational Thinking and Data Science</a></p></li>
+</ul>
+<p>For more online courses that I have finished, refer to <a class="reference external" href="https://www.linkedin.com/in/jonny-jingzhe-tang-853a57274/details/certifications/">my LinkedIn certificates</a></p>
+<blockquote>
+<div><p><strong>Others</strong></p>
+</div></blockquote>
+<p>Geography, Maps, Lottery math</p>
+<blockquote>
+<div><p><strong>For help</strong></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>For questions about phys, try <a class="reference external" href="https://physics.stackexchange.com/">Physics Stack Exchange</a>. For research-level questions, <a class="reference external" href="https://physicsoverflow.org/">Physics Overflow.</a></p></li>
+<li><p>For questions about math, try <a class="reference external" href="https://math.stackexchange.com/">Math Stack Exchange</a>. for research-level questions, <a class="reference external" href="https://mathoverflow.net/">Math Overflow.</a></p></li>
+<li><p>For more free-wheeling discussions of math and physics, try <a class="reference external" href="https://www.physicsforums.com/">Physics Forums.</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-sage notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">*</span><span class="n">Convert</span> <span class="n">nb</span> <span class="n">file</span> <span class="n">into</span> <span class="n">vsnb</span> <span class="n">using</span> <span class="n">the</span> <span class="n">wl</span> <span class="n">coding</span><span class="o">*</span><span class="p">)</span>
+<span class="n">Get</span><span class="p">[</span><span class="s2">&quot;Mathematica2VSCode.wl&quot;</span><span class="p">]</span> 
+<span class="n">Needs</span><span class="p">[</span><span class="s2">&quot;Mathematica2VSCode`&quot;</span><span class="p">]</span>
+<span class="n">Mathematica2VSCode</span><span class="p">[</span><span class="s2">&quot;aa.nb&quot;</span><span class="p">]</span>  <span class="p">(</span><span class="o">*</span><span class="n">path</span> <span class="ow">and</span> <span class="n">specific</span> <span class="n">MMA</span> <span class="n">notebook</span><span class="o">*</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="math-packages">
+<h2>Math packages<a class="headerlink" href="#math-packages" title="Link to this heading">#</a></h2>
+<p>Three large-scale mathematical software packages:</p>
+<ol class="arabic simple">
+<li><p>Numerical computing systems: floating point, accurate estimation, numerical analysis. Matlab, Octave</p></li>
+<li><p>Computer algebra system: exact computation, view <span class="math notranslate nohighlight">\(\pi\)</span> as a symbol instead of a decimal number, symbolic computation/computer algebra/computational algebra</p></li>
+<li><p>Statistical packages: SAS, R</p></li>
+</ol>
+</section>
+<section id="haskell">
+<h2>Haskell<a class="headerlink" href="#haskell" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">cabal</span> <span class="pre">init</span> <span class="pre">--interactive</span></code>(Haskell project)</p>
+<blockquote>
+<div><p>IHaskell in Ubuntu</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>A. step-by-step to avoid skipping; B.if using IHaskell packages, the ipynb must locate in IHaskell folder</p>
+<ul class="simple">
+<li><p>sudo apt-get install -y python3-pip git libtinfo-dev libzmq3-dev libcairo2-dev libpango1.0-dev libmagic-dev libblas-dev liblapack-dev</p></li>
+<li><p>curl -sSL <a class="reference external" href="https://get.haskellstack.org/">https://get.haskellstack.org/</a> | sh  # install stack</p></li>
+<li><p>export PATH=”/usr/local/bin:$PATH”</p></li>
+<li><p>export PATH=”/home/tom/.local/bin:$PATH”</p></li>
+<li><p>git clone <a class="github reference external" href="https://github.com/gibiansky/IHaskell">gibiansky/IHaskell</a></p></li>
+<li><p>cd IHaskell</p></li>
+<li><p>pip3 install -r requirements.txt -break-system-packages  # install Python requirements</p></li>
+<li><p>stack install –fast  # install ihaskell</p></li>
+<li><p>ihaskell install –stack   # install the Jupyter kernelspec with ihaskell</p></li>
+<li><p>Restart PC and make sure Jupyter access fully</p>
+<ul>
+<li><p>jupyter notebook –generate-config</p></li>
+<li><p>nano ~/.jupyter/jupyter_notebook_config.py</p></li>
+<li><p>add into:</p></li>
+<li><p>c.NotebookApp.token = ‘’</p></li>
+<li><p>c.NotebookApp.password = ‘’</p></li>
+<li><p>c.NotebookApp.allow_origin = ‘*’</p></li>
+<li><p>c.NotebookApp.allow_root = True</p></li>
+</ul>
+</li>
+<li><p>make sure lts = 22.10 (consist to Github version)</p>
+<ul>
+<li><p>nano /home/tom/.stack/global-project/stack.yaml</p></li>
+</ul>
+</li>
+<li><p>In IHaskell folder, run <code class="docutils literal notranslate"><span class="pre">stack</span> <span class="pre">exec</span> <span class="pre">jupyter</span> <span class="pre">--</span> <span class="pre">notebook</span></code></p>
+<ul>
+<li><p>or Click Jupyter icon at Dash</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<div><p>IHaskell in docker:</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>IHaskell computation = <strong>Docker + Haskell + Jupyter</strong> (Docker building: 1. download <a class="reference external" href="https://github.com/IHaskell/IHaskell">zip</a>, 2. go to Docker terminal, run <code class="docutils literal notranslate"><span class="pre">&quot;docker</span> <span class="pre">build</span> <span class="pre">-t</span> <span class="pre">ihaskell:latest</span> <span class="pre">.&quot;</span></code>)</p>
+<ul class="simple">
+<li><p>Haskell’s interpreter: IHaskell, <a class="reference external" href="https://github.com/HeinrichApfelmus/hyper-haskell">HyperHaskell</a>, ptGHCi</p></li>
+<li><p>I am using <a class="reference external" href="https://github.com/IHaskell/ihaskell-notebook">ihaskell-notebook Docker image</a>: JupyterLab version is low, unable to use AutoCompletion.</p></li>
+<li><p>can also use <a class="reference external" href="https://github.com/IHaskell/IHaskell">IHaskell docker</a> and <a class="reference external" href="https://gist.github.com/brandonchinn178/928d6137bfd17961b9584a8f96c18827">Docker build py</a></p></li>
+<li><p><a class="reference external" href="https://github.com/IHaskell/IHaskell/issues/715">IHaskell disscusion</a> for reference</p></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<div><p>wsl2-Ubuntu-Haskell in windows:</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Microsoft Store -&gt; search ‘Ubuntu’ and install (345 MB)</p></li>
+<li><p>Open Ubuntu in Windows, update by:</p>
+<ul class="simple">
+<li><p>sudo apt update</p></li>
+<li><p>sudo apt install build-essential -y</p></li>
+<li><p>sudo apt install make -y</p></li>
+<li><p>sudo apt install automake -y</p></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<div><p>windows-msys2-Haskell in powershell:</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Two lauch commands:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ghci</span></code> is the interactive environment of the GHC compiler itself</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stack</span> <span class="pre">ghci</span></code> is the interactive environment of the Stack build tool: 1) automatically handles dependency and installation (VS. GHC and Cabal), 2) config to install packages C:\Users\tangc\AppData\Roaming\stack\global-project\stack.yaml</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="more">
+<h2>More<a class="headerlink" href="#more" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Mathematics and Self-Study Roadmaps</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=OmJ-4B-mS-Y">The Map of Mathematics</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=byNaO_zn2fI">How to self study pure math - a step-by-step guide</a></p></li>
+</ul>
+</li>
+<li><p>Python packages</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://diagrams.mingrammer.com/">diagrams</a>: Coding diagrams</p></li>
+<li><p><a class="reference external" href="https://www.manim.community/">manim</a>: Math Animation</p></li>
+<li><p><a class="reference external" href="https://github.com/connorferster/handcalcs">handcalcs</a>: render calculation as if it were written with a pencil: write the symbolic formula, then numeric substitutions, and then show result automatically</p></li>
+</ul>
+</li>
+<li><p>Website Management</p>
+<ul class="simple">
+<li><p>Git and GitHub</p></li>
+</ul>
+</li>
+<li><p>Project Management</p>
+<ul class="simple">
+<li><p>Visual Studio Code</p></li>
+</ul>
+</li>
+<li><p>Citations and Bibliographies</p>
+<ul class="simple">
+<li><p>Zotero: a free, easy-to-use tool to help you collect, organize, cite, and share research. I use Zotero to generate .bib files</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="oop-to-fp">
+<h2>OOP to FP<a class="headerlink" href="#oop-to-fp" title="Link to this heading">#</a></h2>
+<p>We started workbook using Python in OOP (Object-oriented Programming) way, then we move to FP (Functional Programming) way in both MMA and Python.</p>
+<p>Even though both Python and Wolfram are not pure FP, they do help us understand the FP way.</p>
+<ul class="simple">
+<li><p>From my view, OOP coding is more natural language, FP is more math lanuage.</p></li>
+</ul>
+<p>FP</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://old.reddit.com/r/functionalprogramming/wiki/books">FP books</a></p></li>
+<li><p><a class="reference external" href="https://adabeat.com/fp/ease-into-functional-programming/?_gl=1*1r4s1nz*_up*MQ..*_ga*NDgxNzc4NDQ0LjE3MzA4MTAwMTg.*_ga_6RQG15HSGT*MTczMDgxMDAxNy4xLjAuMTczMDgxMDAxNy4wLjAuMA..">Adabeat - Ease into</a></p></li>
+<li><p><a class="reference external" href="https://github.com/nayuki/Project-Euler-solutions">PE solutions in Java, Python, Mathematica, Haskell</a>: Nayuki use OOP in Python and FP in Haskell.</p></li>
+</ol>
+<p>FP - languages</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://expression.readthedocs.io/en/latest/intro.html">FP in Python</a>: a web-notebook for beginner.</p></li>
+<li><p><a class="reference external" href="https://doc.sagemath.org/html/en/thematic_tutorials/functional_programming.html#">SageMath - FP4Mathematicians</a></p></li>
+<li><p><a class="reference external" href="https://reference.wolfram.com/language/guide/FunctionalProgramming.html">FP in Wolfram</a>: official website.</p></li>
+</ol>
+<p>Why no Matlab? To model and simulate dynamic systems</p>
+<ul class="simple">
+<li><p>Simulink(Matlab) uses a signal flow-based or causal approach,</p></li>
+<li><p>while Modelica uses an equation-based or acausal approach. – still OOP vs. FP</p></li>
+</ul>
+</section>
+<section id="image-cross-citations">
+<h2>Image &amp; Cross-citations<a class="headerlink" href="#image-cross-citations" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>Image-Hosting</p>
+</div></blockquote>
+<p>All figures are synchronised in Tom’s GitHub folder <code class="docutils literal notranslate"><span class="pre">./NB_img/</span></code>. Using codes to insert pic:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;img</span> <span class="pre">src=&quot;https://raw.githubusercontent.com/tomctang/NB_img/main/3bias.png&quot;</span> <span class="pre">alt=&quot;Causality-confounder&quot;</span> <span class="pre">width=&quot;500&quot;&gt;</span></code></p>
+<p>Markdown image <strong>center</strong>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">align=center&gt;![Figure.</span> <span class="pre">Various</span> <span class="pre">treatments</span> <span class="pre">choice</span> <span class="pre">for</span> <span class="pre">OA](https://raw.githubusercontent.com/ctang83/NB_img/main/EPS_OAtreat.jpg){width=60%}</span></code></p>
+<blockquote>
+<div><p>Cross-citations</p>
+</div></blockquote>
+<p>Header automatically generate {#mathFP}, so<code class="docutils literal notranslate"><span class="pre">[anytext](#mathFP)</span></code> in citing</p>
+<p>Between pages: <code class="docutils literal notranslate"><span class="pre">[Discrete</span> <span class="pre">&amp;</span> <span class="pre">Continuous](../10pe/02discrete_continuous.ipynb#discrete-continuous)</span></code>(ipynb auto changed to html in website)</p>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "sagemath"
+        },
+        kernelOptions: {
+            name: "sagemath",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'sagemath'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="00QC.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Qunat research</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-packages">Math packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#haskell">Haskell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more">More</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oop-to-fp">OOP to FP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-cross-citations">Image &amp; Cross-citations</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
