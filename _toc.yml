@@ -6,6 +6,7 @@ parts:
 - caption: Notebook
   numbered: true
   chapters:
+  - file: qc
   - file: nb2024
   - file: nb2022
 
