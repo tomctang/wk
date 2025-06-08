@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1. Notebook 2023-25" href="nb2024.html" />
+    <link rel="next" title="1. Qunat research" href="qc.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -179,8 +179,9 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="nb2024.html">1. Notebook 2023-25</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nb2022.html">2. Notebook &lt;=2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qc.html">1. Qunat research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nb2024.html">2. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nb2022.html">3. Notebook &lt;=2022</a></li>
 </ul>
 
     </div>
@@ -344,7 +345,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qunat-research">Qunat research</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-pull">Docker pull</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-cross-citations">Image &amp; Cross-citations</a></li>
 </ul>
             </nav>
@@ -359,26 +360,15 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<p>I’m currently working on <a class="reference internal" href="#../wk/00QC.ipynb"><span class="xref myst">Quantitative Research</span></a>.</p>
-<p><a class="reference external" href="https://ctang.netlify.app/">My Profile</a>, please send me email:</p>
-<section id="qunat-research">
-<h2>Qunat research<a class="headerlink" href="#qunat-research" title="Link to this heading">#</a></h2>
-<p>Terms:</p>
+<p><a class="reference external" href="https://ctang.netlify.app/">My Profile</a>, please send me email. I’m currently working on <a class="reference internal" href="#../wk/00QC.ipynb"><span class="xref myst">Quantitative Research</span></a>.</p>
+<section id="docker-pull">
+<h2>Docker pull<a class="headerlink" href="#docker-pull" title="Link to this heading">#</a></h2>
+<p>My phone internet limitation, so I can’t use usual docker pull. Instead, use <a class="reference external" href="https://github.com/heran226813/docker-drag">docker-drag</a>.
+Open terminal, example:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/QuantConnect">Quantconnect</a>: platform for quant trading</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">quantconnect/lean</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">quantconnect/research</span></code></p></li>
-</ul>
-</li>
-<li><p>Quantconnect lean: Lean is the open-source algorithmic trading engine that powers QuantConnect</p></li>
-<li><p>Lean CLI:</p>
-<ul>
-<li><p>is a command interface for running lean engine, and to allow syncing btw local and remote projects</p></li>
-<li><p>can be installed and updated by running <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">lean</span></code>(Python package)</p></li>
-</ul>
-</li>
-<li></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">docker_pull.py</span> <span class="pre">sagemath</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">load</span> <span class="pre">-i</span> <span class="pre">sagemath.tar</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">sagemath</span></code></p></li>
 </ul>
 </section>
 <section id="image-cross-citations">
@@ -409,16 +399,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "sagemath"
+            mode: "python"
         },
         kernelOptions: {
-            name: "sagemath",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'sagemath'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -431,11 +421,11 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="nb2024.html"
+       href="qc.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Notebook 2023-25</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Qunat research</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -455,7 +445,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qunat-research">Qunat research</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-pull">Docker pull</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-cross-citations">Image &amp; Cross-citations</a></li>
 </ul>
   </nav></div>
