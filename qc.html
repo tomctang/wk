@@ -342,11 +342,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-or-qa">1.1. log or QA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strategy-schemes">1.2. Strategy/Schemes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">1.2.1. 1. 消息面-AI文本分析</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">1.1. Intro</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-flow">1.2. Work flow</a></li>
 </ul>
             </nav>
         </div>
@@ -360,11 +357,42 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="qunat-research">
 <h1><span class="section-number">1. </span>Qunat research<a class="headerlink" href="#qunat-research" title="Link to this heading">#</a></h1>
+<section id="intro">
+<h2><span class="section-number">1.1. </span>Intro<a class="headerlink" href="#intro" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>炒股的三大原理</p>
+<ul class="simple">
+<li><p>人的精力是有限的</p></li>
+<li><p>所有的投资理论都有正确的时候</p></li>
+<li><p>投资标的的走势由市场的几何结构和能量决定: 市场的几何结构包括图形，成交，比价，市场偏好等，是可以观察和量化的，但同样的几何结构却可以有不同的演变，因为市场能量是参与者当下的合力，是不可预测的，但可预期，操作者唯一需要做的就是根据现实去预期和修正。</p></li>
+</ul>
+</li>
+<li><p>怎么识别一本量化交易的书是不是好书。</p>
+<ul class="simple">
+<li><p>看作者, 比如《Systematic Trading》的作者Robert，他是一个退休的对冲基金经理，所以他的书观点更加专业，而且经过实践的检验。</p></li>
+<li><p>《Algorithmic Trading》的作者 Chan，他做过机构投资，但是转为自营，他的书更加偏重个人或者散户投资人，但是相比起来，系统性就会差一些。</p></li>
+<li><p>《Python for Algorithmic Trading》的作者 Yves，他是学院出身，主要工作是研究和写作，他的书籍显然更加适合初学者，而且写的比较具体和细致，适合没基础的人跟着操作，但是从深度和框架角度会较差一些。</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>log or QA</strong></p>
+<ol class="arabic simple">
+<li><p>这几个是高频用的吗？</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/man-group/ArcticDB">ArcticDB: high performance, serverless DataFrame database for Python Data ecosystem</a></p></li>
+<li><p><a class="reference external" href="https://github.com/OpenTSDB/opentsdb">opentsdb: free scalable, distributed Time Series Database</a></p></li>
+<li><p><a class="reference external" href="https://github.com/timescale/timescaledb">timescaledb: time-series database for high-performance real-time analytics packaged as a Postgres extension</a></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="work-flow">
+<h2><span class="section-number">1.2. </span>Work flow<a class="headerlink" href="#work-flow" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://www.composer.trade/">Composer.trade</a>, Alpaca.markets和QuantConnect.com之类的在线交易平台online-trading platform</p>
 <ul class="simple">
 <li><p>Composer has 11000只股票和ETF中选择，为其构建策略, 构建、测试和押注量化交易算法,图形和AI界面(英语输入请求转化为代码)，</p></li>
-<li><p>可以让用户以简单流程图的形式查看和分享他们的策略 e.g. 如果标准普尔500指数最近走高，某种算法会选择持有跟踪纳斯达克100指数的三倍杠杆ETF，反之，则持有美国国债holds a triple-leveraged exchange-traded fund tracking the Nasdaq-100 index if the S&amp;P 500 index has recently trended higher—and Treasury bills otherwise.</p></li>
+<li><p>可以让用户以简单流程图的形式查看和分享他们的策略 e.g. 如果标准普尔500指数S&amp;P 500 index最近走高，某种算法会选择持有跟踪纳斯达克100指数的三倍杠杆ETF - triple-leveraged exchange-traded fund tracking the Nasdaq-100 index，反之，则持有美国国债Treasury bills</p></li>
 <li><p>在Interactive Brokers这类平台上编写交易策略。最近他在Discord上面分享策略后得到了一个想法half-baked idea，用跟踪半导体类股的ETF取代了跟踪纳斯达克100指数的ETF，从而改善了其中一项交易策略的表现</p></li>
 </ul>
 </li>
@@ -380,46 +408,31 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p>炒股的三大原理</p>
+<li><p>A股 online pkg comparison</p>
 <ul class="simple">
-<li><p>人的精力是有限的</p></li>
-<li><p>所有的投资理论都有正确的时候</p></li>
-<li><p>投资标的的走势由市场的几何结构和能量决定: 市场的几何结构包括图形，成交，比价，市场偏好等，是可以观察和量化的，但同样的几何结构却可以有不同的演变，因为市场能量是参与者当下的合力，是不可预测的，但可预期，操作者唯一需要做的就是根据现实去预期和修正。</p></li>
-</ul>
-</li>
-</ol>
-<p>A股 online pkg comparison</p>
-<ol class="arabic simple">
-<li><p>try <a class="reference external" href="https://github.com/sngyai/Sequoia">Sequoia</a>-A股自动选股程序，实现了海龟交易法则、缠中说禅牛市买点，以及其他若干种技术形态</p>
-<ul class="simple">
-<li><p>无法下载 akshare issue?</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://github.com/myhhub/stock?tab=readme-ov-file">mayanghua/instock</a> 获取股票数据,计算股票指标,筹码分布,识别股票形态,综合选股,选股策略,股票验证回测,股票自动交易, docker支持PC及移动设备</p>
-<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/myhhub/stock?tab=readme-ov-file">mayanghua/instock</a> 获取股票数据,计算股票指标,筹码分布,识别股票形态,综合选股,选股策略,股票验证回测,股票自动交易, docker支持PC及移动设备</p></li>
 <li><p>勉强进入 <a class="reference external" href="http://localhost:9988/">http://localhost:9988/</a>, add <code class="docutils literal notranslate"><span class="pre">sudo</span></code> in advance</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/tkfy920/qstock">qstock</a> 部分付费, depends on pyfolio(too old pkg)</p></li>
 </ol>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>project</p></th>
-<th class="head"><p>review</p></th>
+<tr class="row-odd"><th class="head"><p><strong>数据</strong></p></th>
+<th class="head"><p></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>数据</strong></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/akfamily/akshare">AKShare</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/akfamily/akshare">AKShare</a></p></td>
 <td><p>elegant/simple financial data library, built for human beings开源财经数据接口库</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>回测/开发</strong></p></td>
+<tr class="row-odd"><td><p><strong>回测/开发</strong></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/TA-Lib/ta-lib-python">ta-lib</a></p></td>
-<td><p>其他包的底层</p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/wbbhcb/stock_market">stock_market</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/popbo/alphas">alphas</a></p></td>
+<td><p>ipynb, 利用了这个项目<a class="reference external" href="https://github.com/quantopian/alphalens">alphalens</a></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://github.com/nessessary/autoxd">autoxd</a></p></td>
 <td><p>回测框架, 模拟实盘账户交易, 适合编写T+0策略</p></td>
@@ -445,391 +458,74 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/yutiansut/QUANTAXIS">QUANTAXIS</a></p></td>
 <td><p>任务调度/分布式部署, 股票/期货/期权, 数据/回测/模拟/交易/可视化/多账户 纯本地量化]</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/yutiansut/QAStrategy">QAStrategy</a></p></td>
+<td><p>QA-sub1</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/QUANTAXIS/QADemoOLD">QADemoOLD</a></p></td>
+<td><p>QA-sub2</p></td>
+</tr>
 <tr class="row-even"><td><p><strong>策略</strong></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/fmzquant/strategies?tab=readme-ov-file">quant_strategy_list5800</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/123quant/QMT-QuantLimit">打板策略</a></p></td>
+<td><p>项目实现了一种量化打板策略，用于A股股票交易，涨停板制度只存在于A股</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/fmzquant/strategies?tab=readme-ov-file">quant_strategy_list5800</a></p></td>
 <td><p>5800 md files</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>non-A股 or windows-based不用</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>project</p></th>
+<th class="head"><p>自测失败或技术底层comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/sngyai/Sequoia">Sequoia</a></p></td>
+<td><p>好学习样本, A股自动选股实现海龟交易法则、缠中说禅牛市买点技术形态,akshare无法下载</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/TA-Lib/ta-lib-python">ta-lib</a></p></td>
+<td><p>其他包的底层, talib技术指标库</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/tkfy920/qstock">qstock</a></p></td>
+<td><p>付费, depends on pyfolio(too old pkg)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/kevin-meng/financial_stock_knowledge_graph">金融证券知识图谱</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/jm199504/Financial-Knowledge-Graphs">小型金融知识图谱构建流程</a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>project</p></th>
+<th class="head"><p>non-A股 or windows-based不用</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/wkingnet/stock-analysis">stock-analysis</a></p></td>
+<td><p>说明详细值得读，win-based,目前选股条件是阳包阴，而且当天要涨停</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/quantopian/pyfolio">pyfolio</a></p></td>
+<td><p>5 years ago</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/gbeced/basana">Basana</a></p></td>
+<td><p>Python async and event driven framework for algorithmic trading, focus on crypto currencies</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Reference:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/wkingnet/stock-analysis">stock-analysis</a> 说明详细值得读，win-based,目前选股条件是阳包阴，而且当天要涨停</p></li>
-<li><p><a class="reference external" href="https://github.com/quantopian/pyfolio">pyfolio</a>, 5 years ago</p></li>
-<li><p><a class="reference external" href="https://github.com/gbeced/basana">Basana: Python async and event driven framework for algorithmic trading, focus on crypto currencies</a></p></li>
+<li><p><a class="reference external" href="https://github.com/thuquant/awesome-quant">awesome-quant</a>中国的Quant相关资源索引</p></li>
+<li><p><a class="reference external" href="https://github.com/dick318/awesome-stars">awesome-stars</a>按语言分类项目, Github</p></li>
+<li></li>
 </ul>
-<section id="log-or-qa">
-<h2><span class="section-number">1.1. </span>log or QA<a class="headerlink" href="#log-or-qa" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>这几个是高频用的吗？</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/man-group/ArcticDB">ArcticDB: high performance, serverless DataFrame database for Python Data ecosystem</a></p></li>
-<li><p><a class="reference external" href="https://github.com/OpenTSDB/opentsdb">opentsdb: free scalable, distributed Time Series Database</a></p></li>
-<li><p><a class="reference external" href="https://github.com/timescale/timescaledb">timescaledb: time-series database for high-performance real-time analytics packaged as a Postgres extension</a></p></li>
-</ul>
-</li>
-<li><p>aa</p></li>
-</ol>
-</section>
-<section id="strategy-schemes">
-<h2><span class="section-number">1.2. </span>Strategy/Schemes<a class="headerlink" href="#strategy-schemes" title="Link to this heading">#</a></h2>
-<section id="ai">
-<h3><span class="section-number">1.2.1. </span>1. 消息面-AI文本分析<a class="headerlink" href="#ai" title="Link to this heading">#</a></h3>
-<p>Process: 数据获取，数据加工，信息提取，AI提示词工程，DeepSeek-AI量化Agent，AI量化信息提取 <a class="reference external" href="https://blog.csdn.net/weixin_39521144/article/details/145424996">(Source)</a></p>
-<p><img alt="image.png" src="attachment:image.png" /></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入库</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">tushare</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ts</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
-
-<span class="c1"># 参数设置</span>
-<span class="n">date</span> <span class="o">=</span> <span class="s1">&#39;20240101&#39;</span>
-
-<span class="c1"># AI人设提示词工程</span>
-<span class="n">system_prompt</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;角色设定&quot;</span><span class="p">:</span> <span class="s2">&quot;DeepSeek金融文本分析与市场预测引擎（沪深300专用）&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;核心能力&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;金融文本深度语义理解&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;多维度市场环境评估&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;金融工程量化建模&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;风险收益动态预测&quot;</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;输入规范&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;数据类型&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;央行货币政策文本&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;监管政策文本&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;宏观经济新闻&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;市场分析报告&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;A股相关新闻&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;全球市场资讯&quot;</span>
-        <span class="p">],</span>
-        <span class="s2">&quot;时间控制&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;T日锁定&quot;</span><span class="p">:</span> <span class="s2">&quot;自动提取输入文本最大日期作为基准日&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;有效期判定&quot;</span><span class="p">:</span> <span class="s2">&quot;文本信息时效性评估&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;预测周期&quot;</span><span class="p">:</span> <span class="s2">&quot;向前12个月滚动预测&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;数据屏障&quot;</span><span class="p">:</span> <span class="s2">&quot;严格隔离T+1日及之后的信息影响&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;分析框架&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;文本特征提取&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;经济环境评估&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;货币政策环境（宽松/中性/紧缩）&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;财政政策取向（积极/稳健/保守）&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;监管政策导向（放松/维持/收紧）&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;产业政策重点（支持/限制行业）&quot;</span>
-            <span class="p">],</span>
-            <span class="s2">&quot;市场环境分析&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;流动性状况（充裕/适度/紧张）&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;风险偏好（追逐/平衡/规避）&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;市场情绪（乐观/中性/悲观）&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;估值水平（高估/合理/低估）&quot;</span>
-            <span class="p">],</span>
-            <span class="s2">&quot;风险因素识别&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;政策风险（政策转向/监管加强）&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;经济风险（增长放缓/通胀压力）&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;市场风险（估值/杠杆/流动性）&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;外部风险（地缘政治/全球经济）&quot;</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;量化建模层&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;收益率预测模型&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;基础模型&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="s2">&quot;政策敏感度模型（PSM）&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;市场情绪指数（MSI）&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;宏观环境评分（MES）&quot;</span>
-                <span class="p">],</span>
-                <span class="s2">&quot;预期收益计算&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;基准收益&quot;</span><span class="p">:</span> <span class="s2">&quot;无风险利率 + 市场风险溢价&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;政策调整&quot;</span><span class="p">:</span> <span class="s2">&quot;PSM * 政策影响系数&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;情绪调整&quot;</span><span class="p">:</span> <span class="s2">&quot;MSI * 情绪弹性系数&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;环境调整&quot;</span><span class="p">:</span> <span class="s2">&quot;MES * 环境敏感度&quot;</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;收益率区间&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;乐观情景&quot;</span><span class="p">:</span> <span class="s2">&quot;基准 + 上行调整&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;基准情景&quot;</span><span class="p">:</span> <span class="s2">&quot;基准 + 中性调整&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;悲观情景&quot;</span><span class="p">:</span> <span class="s2">&quot;基准 + 下行调整&quot;</span>
-                <span class="p">}</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;波动率建模&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;基础指标&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="s2">&quot;历史波动率基准&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;隐含波动率参考&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;政策不确定性指数&quot;</span>
-                <span class="p">],</span>
-                <span class="s2">&quot;调整因子&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;政策风险&quot;</span><span class="p">:</span> <span class="s2">&quot;政策不确定性指数变化&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;市场情绪&quot;</span><span class="p">:</span> <span class="s2">&quot;情绪波动指数&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;流动性&quot;</span><span class="p">:</span> <span class="s2">&quot;流动性压力指数&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;外部冲击&quot;</span><span class="p">:</span> <span class="s2">&quot;外部风险溢出系数&quot;</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;波动率计算&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;基础波动&quot;</span><span class="p">:</span> <span class="s2">&quot;历史波动率 * (1 + 市场环境调整)&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;政策调整&quot;</span><span class="p">:</span> <span class="s2">&quot;基础波动 * (1 + 政策风险系数)&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;情绪调整&quot;</span><span class="p">:</span> <span class="s2">&quot;政策调整后 * (1 + 情绪波动系数)&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;最终波动&quot;</span><span class="p">:</span> <span class="s2">&quot;情绪调整后 * (1 + 外部风险系数)&quot;</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;预测集成系统&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;收益率预测&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;模型权重&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;政策导向&quot;</span><span class="p">:</span> <span class="s2">&quot;0.4&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;市场环境&quot;</span><span class="p">:</span> <span class="s2">&quot;0.3&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;情绪因子&quot;</span><span class="p">:</span> <span class="s2">&quot;0.3&quot;</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;情景权重&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;乐观情景&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;基准情景&quot;</span><span class="p">:</span> <span class="s2">&quot;0.6&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;悲观情景&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2&quot;</span>
-                <span class="p">}</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;波动率预测&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;因子权重&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;基础波动&quot;</span><span class="p">:</span> <span class="s2">&quot;0.4&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;政策风险&quot;</span><span class="p">:</span> <span class="s2">&quot;0.3&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;市场情绪&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;外部冲击&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1&quot;</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;输出规范&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;强制格式&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;结构定义&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;数据日期&quot;</span><span class="p">:</span> <span class="s2">&quot;string（YYYY-MM-DD）&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;预期收益率&quot;</span><span class="p">:</span> <span class="s2">&quot;float（年化，[-30.0,50.0]）&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;预期波动率&quot;</span><span class="p">:</span> <span class="s2">&quot;float（年化，[15.0,80.0]）&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;环境评分&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;政策环境&quot;</span><span class="p">:</span> <span class="s2">&quot;float（[-1.0,1.0]）&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;市场环境&quot;</span><span class="p">:</span> <span class="s2">&quot;float（[-1.0,1.0]）&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;风险环境&quot;</span><span class="p">:</span> <span class="s2">&quot;float（[-1.0,1.0]）&quot;</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;预测置信度&quot;</span><span class="p">:</span> <span class="s2">&quot;float（[0.0,1.0]）&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;AI分析报告&quot;</span><span class="p">:</span> <span class="s2">&quot;string（Markdown格式）&quot;</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;报告结构&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;必需章节&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;宏观环境综述&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;政策导向分析&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;市场环境评估&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;风险因素分析&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;收益率预测逻辑&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;波动率预测依据&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;重要风险提示&quot;</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;风控体系&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;文本质量控制&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;信息可靠性验证&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;来源可信度评估&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;信息时效性检查&quot;</span>
-        <span class="p">],</span>
-        <span class="s2">&quot;预测可靠性&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;模型置信度评估&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;预测偏差监控&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;异常预警机制&quot;</span>
-        <span class="p">],</span>
-        <span class="s2">&quot;风险提示&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;预测不确定性说明&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;潜在风险因素&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;重要免责声明&quot;</span>
-        <span class="p">]</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">AI_fin_quanter_text</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">system_prompt</span><span class="p">):</span>
-    <span class="c1"># 初始话参数</span>
-    <span class="n">pro</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">pro_api</span><span class="p">(</span><span class="s1">&#39;ts_api&#39;</span><span class="p">)</span>
-    <span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;sk-api&quot;</span>
-
-    <span class="c1"># 计算时间区间</span>
-    <span class="n">date_obj</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">end_date</span> <span class="o">=</span> <span class="n">date_obj</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">)</span>
-    <span class="n">start_date</span> <span class="o">=</span> <span class="p">(</span><span class="n">date_obj</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">)</span>
-
-    <span class="c1"># 获取raw数据</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pro</span><span class="o">.</span><span class="n">news</span><span class="p">(</span><span class="n">start_date</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="n">end_date</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span><span class="s2">&quot;content&quot;</span><span class="p">,</span><span class="s2">&quot;channels&quot;</span><span class="p">])</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;datetime&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-    <span class="c1"># 数据处理</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">json_format</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        将DataFrame转换为JSON字符串，处理空数据情况</span>
-<span class="sd">        </span>
-<span class="sd">        Args:</span>
-<span class="sd">            df: pandas DataFrame对象</span>
-<span class="sd">            </span>
-<span class="sd">        Returns:</span>
-<span class="sd">            str: JSON字符串或&quot;无&quot;（当数据为空时）</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;无&quot;</span>
-            
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">json_str</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span>
-                <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">,</span>          <span class="c1"># 使用records格式，每行数据作为一个对象</span>
-                <span class="n">force_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>         <span class="c1"># 支持非ASCII字符（如中文）</span>
-                <span class="n">date_format</span><span class="o">=</span><span class="s1">&#39;iso&#39;</span><span class="p">,</span>         <span class="c1"># 标准化日期格式</span>
-                <span class="n">double_precision</span><span class="o">=</span><span class="mi">4</span>         <span class="c1"># 控制数字精度，避免过长</span>
-            <span class="p">)</span>
-            <span class="k">return</span> <span class="n">json_str</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;JSON转换错误: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="s2">&quot;无&quot;</span>
-    <span class="c1"># 宏观信息</span>
-    <span class="n">df_macro</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;datetime&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;宏观&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="c1"># 央行信息</span>
-    <span class="n">df_CB</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;datetime&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;央行&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="c1"># 美国焦点信息</span>
-    <span class="n">df_America</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;datetime&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;美国&#39;</span><span class="p">))</span><span class="o">&amp;</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;焦点&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="c1"># 市场信息</span>
-    <span class="n">df_markets</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;datetime&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;市场&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="c1"># A股信息</span>
-    <span class="n">df_Astocks</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;datetime&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;A股&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-    <span class="c1"># json化处理</span>
-    <span class="n">df_macro</span> <span class="o">=</span> <span class="n">json_format</span><span class="p">(</span><span class="n">df_macro</span><span class="p">)</span>
-    <span class="n">df_CB</span> <span class="o">=</span> <span class="n">json_format</span><span class="p">(</span><span class="n">df_CB</span><span class="p">)</span>
-    <span class="n">df_America</span> <span class="o">=</span> <span class="n">json_format</span><span class="p">(</span><span class="n">df_America</span><span class="p">)</span>
-    <span class="n">df_markets</span> <span class="o">=</span> <span class="n">json_format</span><span class="p">(</span><span class="n">df_markets</span><span class="p">)</span>
-    <span class="n">df_Astocks</span> <span class="o">=</span> <span class="n">json_format</span><span class="p">(</span><span class="n">df_Astocks</span><span class="p">)</span>
-
-    <span class="c1"># Messages构建</span>
-    <span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;system&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">system_prompt</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)},</span>
-        <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s2">&quot;宏观信息:&quot;</span><span class="o">+</span><span class="n">df_macro</span><span class="p">},</span>
-        <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s2">&quot;央行信息:&quot;</span><span class="o">+</span><span class="n">df_CB</span><span class="p">},</span>
-        <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s2">&quot;美国焦点信息:&quot;</span><span class="o">+</span><span class="n">df_America</span><span class="p">},</span>
-        <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s2">&quot;市场信息:&quot;</span><span class="o">+</span><span class="n">df_markets</span><span class="p">},</span>
-        <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s2">&quot;A股信息:&quot;</span><span class="o">+</span><span class="n">df_Astocks</span><span class="p">},</span>
-    <span class="p">]</span>
-
-    <span class="c1"># 构建AI Agent</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://api.deepseek.com&quot;</span><span class="p">)</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;deepseek-chat&quot;</span><span class="p">,</span>
-        <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
-        <span class="n">stream</span><span class="o">=</span><span class="kc">False</span>
-    <span class="p">)</span>
-
-    <span class="c1"># response格式处理</span>
-    <span class="c1"># 提取content内容</span>
-    <span class="n">content</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span>
-
-    <span class="c1"># 格式处理</span>
-    <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="p">[</span><span class="n">content</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;{&#39;</span><span class="p">):]</span>
-    <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="p">[:</span><span class="n">content</span><span class="o">.</span><span class="n">rindex</span><span class="p">(</span><span class="s1">&#39;}&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-
-    <span class="n">content_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">content_dict</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># run </span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">content_dict</span> <span class="o">=</span> <span class="n">AI_fin_quanter_text</span><span class="p">(</span><span class="s1">&#39;20230101&#39;</span><span class="p">,</span> <span class="n">system_prompt</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">content_dict</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>输出的content_dict主要包括要素：</p>
-<ol class="arabic simple">
-<li><p>数据日期。是输入数据中的最大日期，也是模型预测认知的约束日期；</p></li>
-<li><p>预期收益率；</p></li>
-<li><p>预期波动率；</p></li>
-<li><p>环境评分；</p></li>
-<li><p>预测置信度；</p></li>
-<li><p>AI量化投研报告。值的格式即为MD格式的投研报告。</p></li>
-</ol>
-<p>“20230101”的运行结果展示：</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;数据日期&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-12-31&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;预期收益率&quot;</span><span class="p">:</span> <span class="mf">12.5</span><span class="p">,</span>
-    <span class="s2">&quot;预期波动率&quot;</span><span class="p">:</span> <span class="mf">22.8</span><span class="p">,</span>
-    <span class="s2">&quot;环境评分&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;政策环境&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
-        <span class="s2">&quot;市场环境&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span>
-        <span class="s2">&quot;风险环境&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.4</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;预测置信度&quot;</span><span class="p">:</span> <span class="mf">0.75</span><span class="p">,</span>
-    <span class="s2">&quot;AI量化投研报告&quot;</span><span class="p">:</span> <span class="s2">&quot;## 1. 宏观环境综述</span>
-
-<span class="c1">### 1.1 经济基本面</span>
-<span class="n">国内经济呈现稳步复苏态势</span><span class="err">，</span><span class="n">基建投资持续发力</span><span class="err">，</span><span class="n">长庆油田年产油气突破6500万吨创历史新高</span><span class="err">，</span><span class="n">社会汽车保有量超3亿辆显示消费潜力</span><span class="err">，</span><span class="n">广东高速公路建设等基建投资持续推进</span><span class="err">，</span><span class="n">显示经济韧性</span><span class="err">。</span>
-
-<span class="c1">### 1.2 外部环境</span>
-<span class="n">美股2022年表现创14年来最差</span><span class="err">，</span><span class="n">但高盛预测美国或将实现软着陆</span><span class="err">。</span><span class="n">中美关系方面存在军事摩擦</span><span class="err">，</span><span class="n">需持续关注地缘政治风险</span><span class="err">。</span>
-
-<span class="c1">## 2. 政策导向分析</span>
-
-<span class="c1">### 2.1 货币政策</span>
-<span class="n">全球货币政策仍处于收紧周期</span><span class="err">，</span><span class="n">欧央行明确表态将继续加息以抑制通胀</span><span class="err">，</span><span class="n">但日本央行考虑调整通胀预期</span><span class="err">，</span><span class="n">可能暗示政策转向</span><span class="err">。</span><span class="n">国内政策预计将保持稳健</span><span class="err">。</span>
-
-<span class="c1">### 2.2 产业政策</span>
-<span class="n">新能源</span><span class="err">、</span><span class="n">科技创新等领域政策支持力度不减</span><span class="err">，</span><span class="n">跨境金融领域监管趋严</span><span class="err">，</span><span class="n">显示政策既重视发展又注重防范风险</span><span class="err">。</span>
-
-<span class="c1">## 3. 市场环境评估</span>
-
-<span class="c1">### 3.1 流动性状况</span>
-<span class="n">年末市场流动性整体平稳</span><span class="err">，</span><span class="n">但需关注美联储持续加息对全球流动性的影响</span><span class="err">。</span>
-
-<span class="c1">### 3.2 市场情绪</span>
-<span class="n">机构投资者普遍对2023年持谨慎乐观态度</span><span class="err">，</span><span class="n">私募基金年末出现反思潮</span><span class="err">，</span><span class="n">市场情绪趋于理性</span><span class="err">。</span>
-
-<span class="c1">## 4. 风险因素分析</span>
-
-<span class="c1">### 4.1 短期风险</span>
-<span class="o">-</span> <span class="n">全球货币政策收紧延续</span>
-<span class="o">-</span> <span class="n">地缘政治冲突不确定性</span>
-<span class="o">-</span> <span class="n">年初解禁压力</span><span class="err">（</span><span class="n">如宁德时代431</span><span class="mf">.8</span><span class="n">亿解禁</span><span class="err">）</span>
-
-<span class="c1">### 4.2 中期风险</span>
-<span class="o">-</span> <span class="n">经济复苏进程的不确定性</span>
-<span class="o">-</span> <span class="n">外部需求走弱影响</span>
-<span class="o">-</span> <span class="n">产业政策调整风险</span>
-
-<span class="c1">## 5. 收益率预测逻辑</span>
-<span class="n">基于当前市场环境</span><span class="err">，</span><span class="n">预计沪深300指数未来12个月收益率为12</span><span class="mf">.5</span><span class="o">%</span><span class="err">，</span><span class="n">主要考虑</span><span class="err">：</span>
-<span class="mf">1.</span> <span class="n">经济基本面企稳回升</span>
-<span class="mf">2.</span> <span class="n">政策环境总体偏暖</span>
-<span class="mf">3.</span> <span class="n">估值处于历史较低水平</span>
-<span class="mf">4.</span> <span class="n">外资配置意愿回升</span>
-
-<span class="c1">## 6. 波动率预测依据</span>
-<span class="n">预期波动率22</span><span class="mf">.8</span><span class="o">%</span><span class="err">，</span><span class="n">高于历史均值</span><span class="err">，</span><span class="n">原因包括</span><span class="err">：</span>
-<span class="mf">1.</span> <span class="n">全球货币政策不确定性</span>
-<span class="mf">2.</span> <span class="n">地缘政治风险持续</span>
-<span class="mf">3.</span> <span class="n">经济复苏过程中的波动</span>
-<span class="mf">4.</span> <span class="n">市场结构性机会与风险并存</span>
-
-<span class="c1">## 7. 重要风险提示</span>
-<span class="mf">1.</span> <span class="n">本预测基于当前可获得信息</span><span class="err">，</span><span class="n">未来事件演变可能导致预测调整</span>
-<span class="mf">2.</span> <span class="n">货币政策转向风险</span>
-<span class="mf">3.</span> <span class="n">地缘政治冲突升级风险</span>
-<span class="mf">4.</span> <span class="n">产业政策调整风险</span>
-<span class="mf">5.</span> <span class="n">市场流动性风险</span><span class="s2">&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 </section>
 
@@ -897,11 +593,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-or-qa">1.1. log or QA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strategy-schemes">1.2. Strategy/Schemes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">1.2.1. 1. 消息面-AI文本分析</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">1.1. Intro</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-flow">1.2. Work flow</a></li>
 </ul>
   </nav></div>
 
