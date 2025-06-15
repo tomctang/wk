@@ -1,0 +1,731 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0掘金+万得+聚宽多因子策略开发框架/DerivativesQuant衍生品定价对冲回测与主观交易工具/QuantLib学习/05Bonds/34Treasury_futures_contracts';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../qc.html">1. Qunat research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2024.html">2. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2022.html">3. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/0掘金+万得+聚宽多因子策略开发框架/DerivativesQuant衍生品定价对冲回测与主观交易工具/QuantLib学习/05Bonds/34Treasury_futures_contracts.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>import QuantLib as ql
+import math
+import pandas as pd
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>calc_date = ql.Date(30, 11, 2015)
+ql.Settings.instance().evaluationDate = calc_date
+day_count = ql.ActualActual()
+calendar = ql.UnitedStates()
+bussiness_convention = ql.Following
+end_of_month = False
+settlement_days = 0
+face_amount = 100
+coupon_frequency = ql.Period(ql.Semiannual)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>prices = [99.9935, 99.9576, 99.8119, 99.5472, 99.8867, 100.0664, 99.8711, 100.0547, 100.3047, 100.2266]
+coupon_rates = [0.0000, 0.0000, 0.0000, 0.0000, 0.00875, 0.0125, 0.01625, 0.02, 0.0225, 0.03]
+maturity_dates = [ql.Date(24, 12, 2015), ql.Date(25, 2, 2016), ql.Date(26, 5, 2016), ql.Date(10, 11, 2016),
+                  ql.Date(30, 11, 2017), ql.Date(15, 11, 2018), ql.Date(30, 11, 2020), ql.Date(30, 11, 2022),
+                  ql.Date(15, 11, 2025), ql.Date(15, 11, 2045)]
+issue_dates = [ql.Date(25, 6, 2015), ql.Date(27, 8, 2015), ql.Date(28, 5, 2015), ql.Date(12, 11, 2015),
+               ql.Date(30, 11, 2015), ql.Date(16, 11, 2015), ql.Date(30, 11, 2015), ql.Date(30, 11, 2015),
+               ql.Date(16, 11, 2015), ql.Date(16, 11, 2015)]
+
+coupon_frequency = ql.Period(6, ql.Months)
+
+bond_helpers = []
+for coupon, issue_date, maturity_date, price in zip(coupon_rates, issue_dates, maturity_dates, prices):
+    schedule = ql.Schedule(calc_date, maturity_date, coupon_frequency, calendar, bussiness_convention, bussiness_convention, ql.DateGeneration.Backward, False)
+    helper = ql.FixedRateBondHelper(ql.QuoteHandle(ql.SimpleQuote(price)), settlement_days, face_amount, schedule, [coupon], day_count, bussiness_convention)
+    bond_helpers.append(helper)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>yield_curve = ql.PiecewiseCubicZero(calc_date, bond_helpers, day_count)
+yield_curve_handle = ql.YieldTermStructureHandle(yield_curve)
+discount_factors = [yield_curve.discount(d) for d in maturity_dates]
+pd.DataFrame(list(zip(maturity_dates, discount_factors)), columns=[&quot;Dates&quot;, &quot;Discount Factors&quot;], index=[&#39;&#39;]*len(maturity_dates))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Dates</th>
+      <th>Discount Factors</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>December 24th, 2015</td>
+      <td>0.999935</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>February 25th, 2016</td>
+      <td>0.999576</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>May 26th, 2016</td>
+      <td>0.998119</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>November 10th, 2016</td>
+      <td>0.995472</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>November 30th, 2017</td>
+      <td>0.981524</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>November 15th, 2018</td>
+      <td>0.964278</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>November 30th, 2020</td>
+      <td>0.920306</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>November 30th, 2022</td>
+      <td>0.868533</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>November 15th, 2025</td>
+      <td>0.799447</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>November 15th, 2045</td>
+      <td>0.384829</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>def create_tsy_security(bond_issue_date, bond_maturity_date, coupon_rate, coupon_frequency=ql.Period(6, ql.Months), day_count=ql.ActualActual(), calendar=ql.UnitedStates()):
+    face_value = 100.
+    settlement_days = 0
+    schedule = ql.Schedule(bond_issue_date, bond_maturity_date, coupon_frequency, calendar, ql.ModifiedFollowing, ql.ModifiedFollowing, ql.DateGeneration.Forward, False)
+    security = ql.FixedRateBond(settlement_days, face_value, schedule, [coupon_rate], day_count)
+    return security
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>bond_issue_date = calc_date
+delivery_date = ql.Date(1, 12, 2015)
+
+bond_maturity_date = bond_issue_date + ql.Period(10, ql.Years)
+day_count = ql.ActualActual()
+coupon_frequency = ql.Period(6, ql.Months)
+coupon_rate = 6/100.
+
+deliverable = create_tsy_security(bond_issue_date, bond_maturity_date, coupon_rate, coupon_frequency, day_count, calendar)
+bond_engine = ql.DiscountingBondEngine(yield_curve_handle)
+deliverable.setPricingEngine(bond_engine)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>futures_price = 127.0625
+clean_price = futures_price*yield_curve.discount(delivery_date)
+
+zspread = ql.BondFunctions.zSpread(deliverable, clean_price, yield_curve, day_count, ql.Compounded, ql.Semiannual, calc_date) * 10000
+print(&quot;Z-Spread =%3.0fpb&quot; % (zspread))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z-Spread = 71pb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>day_count = ql.ActualActual()
+basket = [(1.625, ql.Date(15, 8, 2022), 97.921875),
+          (1.625, ql.Date(15, 11, 2022), 97.671875),
+          (1.75, ql.Date(30, 9, 2022), 98.546875),
+          (1.75, ql.Date(15, 5, 2023), 97.984375),
+          (1.875, ql.Date(31, 8, 2022), 99.375),
+          (1.875, ql.Date(31, 10, 2022), 99.296875),
+          (2.0, ql.Date(31, 7, 2022), 100.265625),
+          (2.0, ql.Date(15, 2, 2023), 100.0625),
+          (2.0, ql.Date(15, 2, 2025), 98.296875),
+          (2.0, ql.Date(15, 8, 2025), 98.09375),
+          (2.125, ql.Date(30, 6, 2022), 101.0625),
+          (2.125, ql.Date(15, 5, 2025), 99.25),
+          (2.25, ql.Date(15, 11, 2024), 100.546875),
+          (2.25, ql.Date(15, 11, 2025), 100.375),
+          (2.375, ql.Date(15, 8, 2024), 101.671875),
+          (2.5, ql.Date(15, 8, 2023), 103.25),
+          (2.5, ql.Date(15, 5, 2024), 102.796875),
+          (2.75, ql.Date(15, 11, 2023), 105.0625),
+          (2.75, ql.Date(15, 2, 2024), 104.875)]
+securities = []
+min_basis = 100
+min_basis_index = -1
+for i, b in enumerate(basket):
+    coupon, maturity, price = b
+    issue = maturity - ql.Period(10, ql.Years)
+    s = create_tsy_security(issue, maturity, coupon/100.)
+    bond_engine = ql.DiscountingBondEngine(yield_curve_handle)
+    s.setPricingEngine(bond_engine)
+    cf = ql.BondFunctions.cleanPrice(s, 0.06, day_count, ql.Compounded, ql.Semiannual, calc_date)/100.0
+    adjusted_futures_price = futures_price * cf
+    basis = price - adjusted_futures_price
+    if basis &lt; min_basis:
+        min_basis = basis
+        min_basis_index = i
+    securities.append((s, cf))
+ctd_info = basket[min_basis_index]
+ctd_bond, ctd_cf = securities[min_basis_index]
+ctd_price = ctd_info[2]
+print(&quot;%-30s = %lf&quot; % (&quot;Minimum Basis&quot;, min_basis))
+print(&quot;%-30s = %lf&quot; % (&quot;Conversion Factor&quot;, ctd_cf))
+print(&quot;%-30s = %lf&quot; % (&quot;Coupon&quot;, ctd_info[0]))
+print(&quot;%-30s = %s&quot; % (&quot;Maturity&quot;, ctd_info[1]))
+print(&quot;%-30s = %lf&quot; % (&quot;Price&quot;, ctd_info[2]))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Minimum Basis                  = 0.450601
+Conversion Factor              = 0.791830
+Coupon                         = 2.125000
+Maturity                       = June 30th, 2022
+Price                          = 101.062500
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>futures_maturity_date = ql.Date(21, 12, 2015)
+futures = ql.FixedRateBondForward(calc_date, futures_maturity_date, 
+                                  ql.Position.Long, 0.0, settlement_days, day_count, calendar, bussiness_convention, ctd_bond, yield_curve_handle, yield_curve_handle)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model_futures_price = futures.cleanForwardPrice()/ctd_cf
+implied_yield = futures.impliedYield(ctd_price/ctd_cf, futures_price, calc_date, ql.Compounded, day_count).rate()
+z_spread = ql.BondFunctions.zSpread(ctd_bond, ctd_price, yield_curve, day_count, ql.Compounded, ql.Semiannual, calc_date)
+ytm = ql.BondFunctions.bondYield(ctd_bond, ctd_price, day_count, ql.Compounded, ql.Semiannual, calc_date)
+print(&quot;%-30s = %lf&quot; % (&quot;Model Futures Price&quot;, model_futures_price))
+print(&quot;%-30s = %lf&quot; % (&quot;Market Futures Price&quot;, futures_price))
+print(&quot;%-30s = %lf&quot; % (&quot;Model Adjustment&quot;, model_futures_price-futures_price))
+print(&quot;%-30s = %2.3f&quot; % (&quot;Implied Yield&quot;, implied_yield*100))
+print(&quot;%-30s = %2.1fbps&quot; % (&quot;Forward Z-Spread&quot;, z_spread*100))
+print(&quot;%-30s = %2.3f%%&quot; % (&quot;Forward YTM&quot;, ytm*100))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Futures Price            = 127.610365
+Market Futures Price           = 127.062500
+Model Adjustment               = 0.547865
+Implied Yield                  = -7.473
+Forward Z-Spread               = 0.0bps
+Forward YTM                    = 1.952%
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python2",
+            path: "./0掘金+万得+聚宽多因子策略开发框架/DerivativesQuant衍生品定价对冲回测与主观交易工具/QuantLib学习/05Bonds"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python2'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

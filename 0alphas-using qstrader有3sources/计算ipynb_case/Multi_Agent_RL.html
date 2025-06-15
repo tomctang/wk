@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Code description: &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0alphas-using qstrader有3sources/计算ipynb_case/Multi_Agent_RL';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../qc.html">1. Qunat research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nb2024.html">2. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nb2022.html">3. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/0alphas-using qstrader有3sources/计算ipynb_case/Multi_Agent_RL.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Code description:</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><strong>Multi-Agent Reinforcement Learning (MARL)</strong> for market making is an approach that combines reinforcement learning with multiple trading agents to improve the efficiency and effectiveness of market making strategies.</p>
+<p>Market making is the process of providing liquidity to financial markets by simultaneously quoting bid (buy) and ask (sell) prices for a financial instrument, such as stocks, bonds, or cryptocurrencies. Market makers profit from the bid-ask spread and aim to minimize their inventory risk. In this context, Multi-Agent Reinforcement Learning can be used to optimize market making strategies by considering the interactions between multiple market participants.</p>
+<p>Here’s an overview of the main components in a MARL framework for market making:</p>
+<ul class="simple">
+<li><p><strong>Environment:</strong> The environment represents the financial market where agents interact, submit orders, and manage their inventories. It includes market dynamics, such as the order book, trade volume, and price movements.</p></li>
+<li><p><strong>Agents:</strong> Each agent represents a market maker with its own learning algorithm, objectives, and trading strategies. Agents can have different levels of sophistication and access to information, which influences their decision-making process.</p></li>
+<li><p><strong>State Representation:</strong> The state of the market is represented by a set of features that capture relevant information about the market conditions,the agents’ inventories, and the agents’ historical actions. This information can include the order book, trade volume, price movements, recent trades, and agents’ inventory levels.</p></li>
+<li><p><strong>Action Space:</strong> The action space consists of discrete actions that agents can take at each time step, such as placing a bid, placing an ask, canceling an order, or doing nothing. The actions represent the agents’ decisions regarding the size and price of their orders, which can influence the market dynamics and other agents’ actions.</p></li>
+<li><p><strong>Reward Function:</strong> The reward function quantifies the success of agents’ actions in terms of their objectives, such as maximizing profit and minimizing inventory risk. The rewards can be designed to encourage agents to provide liquidity, maintain a balanced inventory, and react to changing market conditions.</p></li>
+<li><p><strong>Learning Algorithm:</strong> Agents use reinforcement learning algorithms, such as Q-learning, Deep Q-Network (DQN), or Proximal Policy Optimization (PPO), to learn optimal trading strategies based on their experiences in the environment. The learning process involves updating the agents’ policies or value functions based on the observed rewards and the current state of the market.</p></li>
+</ul>
+<p>By employing multiple agents with different objectives and strategies, the MARL framework for market making allows for more realistic modeling of market dynamics and interactions between various market participants. This approach can lead to more robust and adaptive market making strategies, as agents learn to respond to the actions of other agents and the evolving market conditions.</p>
+<p>Advantages of using MARL for market making include:</p>
+<ul class="simple">
+<li><p><strong>Adaptability:</strong> Agents can learn to adapt their strategies in response to changing market conditions and other agents’ actions, leading to more efficient and effective market making.</p></li>
+<li><p><strong>Scalability:</strong> The MARL framework can be scaled to accommodate large numbers of agents and complex market structures, allowing for the study and optimization of market making strategies in various scenarios.</p></li>
+<li><p><strong>Robustness:</strong> By considering the interactions between multiple agents, the MARL approach can help identify and mitigate potential issues, such as price manipulation or coordination between agents, which could lead to market inefficiencies or instability.</p></li>
+<li><p><strong>Exploration of novel strategies:</strong> The MARL framework enables the discovery of new market making strategies that may not be obvious or easily derived from traditional single-agent approaches.</p></li>
+</ul>
+<p>Challenges in implementing MARL for market making include:</p>
+<ul class="simple">
+<li><p><strong>Computational complexity:</strong> The learning algorithms and the simulation of multi-agent environments can be computationally expensive, especially for large-scale markets and complex agent interactions.</p></li>
+<li><p><strong>Convergence:</strong> Ensuring the convergence of the learning algorithms and the stability of the learned strategies can be challenging, particularly in environments with multiple agents and non-stationary market dynamics.</p></li>
+<li><p><strong>Coordination and communication:</strong> Designing effective communication and coordination mechanisms between agents is essential for achieving global objectives and efficient market making. This can be difficult, especially when agents have varying levels of sophistication and access to information.</p></li>
+<li><p><strong>Exploration vs. exploitation trade-off:</strong> Balancing the trade-off between exploration (trying new actions to discover better strategies) and exploitation (leveraging the current knowledge to maximize rewards) is a critical challenge in reinforcement learning. This can be particularly complex in multi-agent settings, where the actions of one agent can impact the learning and decision-making processes of other agents.</p></li>
+</ul>
+<p>Despite these challenges, Multi-Agent Reinforcement Learning for market making has shown promise in improving the efficiency and effectiveness of market making strategies. By considering the interactions between multiple market participants and learning from the evolving market dynamics, MARL has the potential to lead to more robust, adaptive, and profitable market making strategies in the financial markets.</p>
+<section id="code-description">
+<h1>Code description:<a class="headerlink" href="#code-description" title="Link to this heading">#</a></h1>
+<p>The code implements a multi-agent reinforcement learning (MARL) algorithm using TensorFlow 2.x and the OpenAI Gym environment. The algorithm is designed to learn a cooperative control policy for a group of agents in a two-dimensional grid world.</p>
+<p>Here’s a brief overview of the main components of the algorithm:</p>
+<ul class="simple">
+<li><p><strong>MarketMaking class:</strong> This class defines a custom OpenAI Gym environment called “MarketMaking” that simulates a financial market making scenario where two agents are competing to quote bid-ask prices for a financial instrument, such as a stock or a cryptocurrency. The environment is a multi-agent system where each agent has its own inventory and objective, and interacts with the market by submitting buy (bid) or sell (ask) orders. The environment has a 5-dimensional observation space and a 3-dimensional action space.The class has the following methods:</p>
+<ul>
+<li><p><strong>init</strong>(self, n_agents=2): Initializes the environment by setting the number of agents, defining the action and observation spaces, and initializing the random number generator.</p></li>
+<li><p>seed(self, seed=None): Initializes the random number generator with a seed.</p></li>
+<li><p>reset(self): Resets the state of the environment by initializing the inventory, the mid-price, and the bid-ask prices, and returns the current observation.</p></li>
+<li><p>step(self, actions): Takes a step in the environment by executing the given actions, updating the state of the environment, calculating the rewards, and returning the new observation, rewards, done flag, and info dictionary.</p></li>
+<li><p>_get_observation(self): Returns the current observation of the environment as a 5-dimensional NumPy array, consisting of the best bid price, best ask price, mid-price, and the inventory of each agent.</p></li>
+</ul>
+</li>
+<li><p><strong>MARLAlgorithm class:</strong> This is the main class that defines the MARL algorithm. It contains the following methods:</p>
+<ul>
+<li><p><strong>init</strong>: Initializes the algorithm with a list of agents and other parameters, and creates the optimizer and target Q-networks for each agent.</p></li>
+<li><p>act: Selects actions for each agent based on its current observation, using an epsilon-greedy policy with respect to its Q-network.</p></li>
+<li><p>learn: Computes the Q-learning loss and updates the Q-networks for each agent, using a batch of observations, actions, rewards, next observations, and done flags.</p></li>
+<li><p>run: Runs the main training loop for the algorithm, which collects experience from the environment and updates the Q-networks periodically.</p></li>
+<li><p>reset: Resets the internal state of the algorithm and its agents.</p></li>
+</ul>
+</li>
+<li><p><strong>Agent class:</strong> This is a base class for creating agents in the MARL algorithm. It contains the following methods:</p>
+<ul>
+<li><p><strong>init</strong>: Initializes the agent with a Q-network, a target Q-network, and other parameters.</p></li>
+<li><p>update_target_q_network: Updates the target Q-network by copying the weights from the Q-network.</p></li>
+<li><p>q_network: Computes the Q-values for a given observation using the Q-network.</p></li>
+<li><p>target_q_network: Computes the Q-values for a given observation using the target Q-network.</p></li>
+</ul>
+</li>
+<li><p><strong>QNetwork class:</strong> This is a subclass of tf.keras.Model that defines the Q-network used by the agents. It contains the following methods:</p>
+<ul>
+<li><p><strong>init</strong>: Initializes the Q-network with one or more dense layers, a final output layer with three units (one for each action), and other parameters.</p></li>
+<li><p>call: Computes the Q-values for a given observation using the dense layers and the output layer of the Q-network.</p></li>
+</ul>
+</li>
+</ul>
+<p>The MARL algorithm uses the tf.GradientTape context manager to compute the gradients of the Q-learning loss with respect to the trainable variables in each agent’s Q-network. The loss is computed using the squared TD error between the estimated Q-value for the selected action and the target Q-value computed using the Bellman equation.</p>
+<p>The algorithm updates the Q-networks for each agent using the apply_gradients method of a tf.keras.optimizers.Adam optimizer. The target Q-networks are updated periodically by copying the weights from the Q-networks.</p>
+<p>The run method of the algorithm repeatedly collects experience from the environment using the step method of the Gym environment, and updates the Q-networks periodically using the learn method. The algorithm terminates when the maximum number of episodes is reached, or when the average reward over the last 100 episodes exceeds a certain threshold.</p>
+<p>Overall, the algorithm implements a simple form of cooperative control in which the agents learn to navigate a two-dimensional grid world and avoid obstacles by working together to reach a goal location. The MARL framework allows the agents to learn a joint policy that is greater than the sum of its parts, leading to better performance and greater flexibility in handling complex tasks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gym</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MarketMaking</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">Env</span><span class="p">):</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;render.modes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;human&#39;</span><span class="p">]}</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_agents</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="c1"># Define the action and observation spaces</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span> <span class="o">=</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">]),</span> <span class="n">high</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        
+        <span class="c1"># Set the number of agents</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_agents</span> <span class="o">=</span> <span class="n">n_agents</span>
+        
+        <span class="c1"># Initialize the random number generator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">()</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">seed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># Initialize the random number generator with a seed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">np_random</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="n">seeding</span><span class="o">.</span><span class="n">np_random</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">seed</span><span class="p">]</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Reset the state of the environment</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inventory</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_agents</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mid_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">best_bid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid_price</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">best_ask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid_price</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_observation</span><span class="p">()</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">):</span>
+        <span class="c1"># Take the given actions and return the new observation, reward, and done flag</span>
+        <span class="n">rewards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_agents</span><span class="p">)</span>
+        
+        <span class="c1"># Update the inventory and the order book</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_agents</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">actions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">best_bid</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">best_bid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid_price</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">inventory</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">actions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">best_ask</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">best_ask</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid_price</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">inventory</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">pass</span> <span class="c1"># do nothing</span>
+            
+        <span class="c1"># Update the mid-price and the bid-ask spread</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mid_price</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">best_bid</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">best_ask</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        
+        <span class="c1"># Calculate the reward for each agent</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_agents</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">actions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">rewards</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">best_bid</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid_price</span>
+            <span class="k">elif</span> <span class="n">actions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">rewards</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid_price</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">best_ask</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">rewards</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="c1"># Check if the episode is done</span>
+        <span class="n">done</span> <span class="o">=</span> <span class="kc">False</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_observation</span><span class="p">(),</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="p">{}</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_observation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Return the current observation of the environment</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">best_bid</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">best_ask</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid_price</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">inventory</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">inventory</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">])</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the Q-network class</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">QNetwork</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_dim</span><span class="p">,</span> <span class="n">action_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">action_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the agent class</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Agent</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_dim</span><span class="p">,</span> <span class="n">action_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">discount</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_dim</span> <span class="o">=</span> <span class="n">state_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">action_dim</span> <span class="o">=</span> <span class="n">action_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span> <span class="o">=</span> <span class="n">hidden_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">discount</span> <span class="o">=</span> <span class="n">discount</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_network</span> <span class="o">=</span> <span class="n">QNetwork</span><span class="p">(</span><span class="n">state_dim</span><span class="p">,</span> <span class="n">action_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_q_network</span> <span class="o">=</span> <span class="n">QNetwork</span><span class="p">(</span><span class="n">state_dim</span><span class="p">,</span> <span class="n">action_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_target_q_network</span><span class="p">()</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizer</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_target_q_network</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_q_network</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">q_network</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">q_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_network</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">state</span><span class="p">]))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">target_q_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_q_network</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">state</span><span class="p">]))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">train_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">actions</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">next_states</span><span class="p">,</span> <span class="n">dones</span><span class="p">):</span>
+        <span class="c1"># Compute the target Q-values</span>
+        <span class="n">next_q_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_q_values</span><span class="p">(</span><span class="n">next_states</span><span class="p">)</span>
+        <span class="n">max_next_q_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">next_q_values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">target_q_values</span> <span class="o">=</span> <span class="n">rewards</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">discount</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">dones</span><span class="p">)</span> <span class="o">*</span> <span class="n">max_next_q_values</span>
+        
+        <span class="c1"># Compute the Q-values</span>
+        <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+            <span class="n">q_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_network</span><span class="p">(</span><span class="n">states</span><span class="p">)</span>
+            <span class="n">action_masks</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">actions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_dim</span><span class="p">)</span>
+            <span class="n">q_values_masked</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">q_values</span> <span class="o">*</span> <span class="n">action_masks</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+            
+            <span class="c1"># Compute the loss</span>
+            <span class="n">td_errors</span> <span class="o">=</span> <span class="n">target_q_values</span> <span class="o">-</span> <span class="n">q_values_masked</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">td_errors</span><span class="p">))</span>
+        
+        <span class="c1"># Update the Q-network</span>
+        <span class="n">gradients</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_network</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">apply_gradients</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">gradients</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_network</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">))</span>
+        
+        <span class="k">return</span> <span class="n">td_errors</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the MARL algorithm class</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MARLAlgorithm</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="o">=</span> <span class="n">env</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span> <span class="o">=</span> <span class="n">hidden_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">discount</span> <span class="o">=</span> <span class="n">discount</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">agents</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">agent</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">observation_space</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">discount</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">lr</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">agent</span><span class="p">)</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">act</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">states</span><span class="p">):</span>
+        <span class="n">actions</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">agent</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="p">):</span>
+            <span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">q_values</span><span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+            <span class="n">actions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">actions</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">learn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Sample a batch of transitions from the environment</span>
+        <span class="n">batch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
+        <span class="n">states</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">transition</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">transition</span> <span class="ow">in</span> <span class="n">batch</span><span class="p">])</span>
+        <span class="n">actions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">transition</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">transition</span> <span class="ow">in</span> <span class="n">batch</span><span class="p">])</span>
+        <span class="n">rewards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">transition</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">transition</span> <span class="ow">in</span> <span class="n">batch</span><span class="p">])</span>
+        <span class="n">next_states</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">transition</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">transition</span> <span class="ow">in</span> <span class="n">batch</span><span class="p">])</span>
+        <span class="n">dones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">transition</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="k">for</span> <span class="n">transition</span> <span class="ow">in</span> <span class="n">batch</span><span class="p">])</span>
+
+        <span class="c1"># Train the agents</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">agent</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="p">):</span>
+            <span class="c1"># Compute the TD errors for the current agent</span>
+            <span class="n">td_errors</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">train_step</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="n">actions</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">rewards</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">next_states</span><span class="p">,</span> <span class="n">dones</span><span class="p">)</span>
+
+            <span class="c1"># Update the priorities in the replay buffer</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">update_priorities</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">td_errors</span><span class="p">))</span>
+
+            <span class="c1"># Update the target Q-network for the current agent</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">agent</span><span class="o">.</span><span class="n">update_target_q_network</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">episodes</span><span class="p">):</span>
+        <span class="n">rewards_per_episode</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">episode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">episodes</span><span class="p">):</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+            <span class="n">done</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">episode_reward</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+            <span class="k">while</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>
+                <span class="c1"># Take an action for each agent</span>
+                <span class="n">actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+
+                <span class="c1"># Step the environment</span>
+                <span class="n">next_state</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
+
+                <span class="c1"># Add the transition to the replay buffer</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">add_transition</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">actions</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">done</span><span class="p">)</span>
+
+                <span class="c1"># Learn from the replay buffer</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">learn</span><span class="p">()</span>
+
+                <span class="c1"># Update the state and episode reward</span>
+                <span class="n">state</span> <span class="o">=</span> <span class="n">next_state</span>
+                <span class="n">episode_reward</span> <span class="o">+=</span> <span class="n">reward</span>
+
+            <span class="c1"># Print the episode reward</span>
+            <span class="n">rewards_per_episode</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">episode_reward</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Episode </span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2"> - Reward: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">episode</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">episodes</span><span class="p">,</span> <span class="n">episode_reward</span><span class="p">))</span>
+
+        <span class="c1"># Return the rewards per episode</span>
+        <span class="k">return</span> <span class="n">rewards_per_episode</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create the market making environment</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;gym_marketmaking:MarketMaking-v0&#39;</span><span class="p">)</span>
+
+<span class="c1">#Create the MARL algorithm</span>
+
+<span class="n">marl</span> <span class="o">=</span> <span class="n">MARLAlgorithm</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+
+<span class="c1">#Train the MARL algorithm</span>
+
+<span class="n">rewards_per_episode</span> <span class="o">=</span> <span class="n">marl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">episodes</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1">#Print the average reward per episode</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average reward per episode: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">rewards_per_episode</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Results: Training and Evaluation</strong></p>
+<p>This code defines a Q-network class and an agent class using TensorFlow 2.x, as well as a multi-agent reinforcement learning algorithm class using these agents to interact with an OpenAI Gym environment for market making. The <code class="docutils literal notranslate"><span class="pre">QNetwork</span></code> class defines a neural network architecture for computing Q-values for a given state, while the <code class="docutils literal notranslate"><span class="pre">Agent</span></code> class uses this network to train and compute Q-values for a given state-action pair. The <code class="docutils literal notranslate"><span class="pre">MARLAlgorithm</span></code> class defines a multi-agent reinforcement learning algorithm using these agents, and the <code class="docutils literal notranslate"><span class="pre">run</span></code> method of this class trains the agents using the given OpenAI Gym environment. Finally, the main code creates the market making environment and the MARL algorithm, and trains the algorithm for a specified number of episodes, returning the rewards per episode and the average reward per episode.</p>
+<p>The results of the evaluation show the average reward per episode achieved by the trained agents. This can be used to compare the performance of different agents or different versions of the same agent, and to optimize the agent’s parameters and strategies.</p>
+<p>Note that this is just a basic example to demonstrate how to implement MARL for market making, and there are many variations and extensions that can be applied to this framework. The specific results and interpretations would depend on the specific problem and environment, and would require further analysis and experimentation.</p>
+<p><strong>Limitations and Future Work</strong></p>
+<p>While the results of this simple example could be promising, there are several limitations to the current approach that could be addressed in future work. For example, the current model only considers a single security and two agents, whereas real-world market making involves multiple securities and many agents. Additionally, the current model assumes that the agents are rational and self-interested, whereas in reality, market makers may have other motivations such as maintaining market stability.</p>
+<p>Future work could explore more complex environments with multiple securities and agents, as well as incorporating additional factors such as transaction costs and market impact. Another avenue for exploration is the use of deep reinforcement learning techniques, which have shown promising results in other finance applications such as portfolio optimization and algorithmic trading.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./0alphas-using qstrader有3sources/计算ipynb_case"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

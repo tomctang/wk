@@ -1,0 +1,1103 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0掘金+万得+聚宽多因子策略开发框架/DerivativesQuant衍生品定价对冲回测与主观交易工具/QuantLib学习/04Equity_models/23Heston_model_parameter_calibration_in_QuantLib_Python&Scipy';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../qc.html">1. Qunat research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2024.html">2. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2022.html">3. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/0掘金+万得+聚宽多因子策略开发框架/DerivativesQuant衍生品定价对冲回测与主观交易工具/QuantLib学习/04Equity_models/23Heston_model_parameter_calibration_in_QuantLib_Python&Scipy.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>import QuantLib as ql
+from math import pow, sqrt
+import numpy as np
+from scipy.optimize import root
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>day_count = ql.Actual365Fixed()
+calendar = ql.UnitedStates()
+
+calculation_date = ql.Date(6, 11, 2015)
+
+spot = 659.37
+ql.Settings.instance().evaluationDate = calculation_date
+
+risk_free_rate = 0.01
+dividend_rate = 0.0
+flat_ts = ql.YieldTermStructureHandle(ql.FlatForward(calculation_date, risk_free_rate, day_count))
+dividend_ts = ql.YieldTermStructureHandle(ql.FlatForward(calculation_date, dividend_rate, day_count))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>expiration_dates = [ql.Date(6, 12, 2015), ql.Date(6, 1, 2016), ql.Date(6, 2, 2016),
+                    ql.Date(6, 3, 2016), ql.Date(6, 4, 2016), ql.Date(6, 5, 2016),
+                    ql.Date(6, 6, 2016), ql.Date(6, 7, 2016), ql.Date(6, 8, 2016),
+                    ql.Date(6, 9, 2016), ql.Date(6, 10, 2016), ql.Date(6, 11, 2016),
+                    ql.Date(6, 12, 2016), ql.Date(6, 1, 2017), ql.Date(6, 2, 2017),
+                    ql.Date(6, 3, 2017), ql.Date(6, 4, 2017), ql.Date(6, 5, 2017),
+                    ql.Date(6, 6, 2017), ql.Date(6, 7, 2017), ql.Date(6, 8, 2017),
+                    ql.Date(6, 9, 2017), ql.Date(6, 10, 2017), ql.Date(6, 11, 2017)]
+strikes = [527.50, 560.46, 593.43, 626.40, 659.37, 692.34, 725.31, 758.28]
+data = [[0.37819, 0.34177, 0.30394, 0.27832, 0.26453, 0.25916, 0.25941, 0.26127],
+        [0.3445, 0.31769, 0.2933, 0.27614, 0.26575, 0.25729, 0.25228, 0.25202],
+        [0.37419, 0.35372, 0.33729, 0.32492, 0.31601, 0.30883, 0.30036, 0.29568],
+        [0.37498, 0.35847, 0.34475, 0.33399, 0.32715, 0.31943, 0.31098, 0.30506],
+        [0.35941, 0.34516, 0.33296, 0.32275, 0.31867, 0.30969, 0.30239, 0.29631],
+        [0.35521, 0.34242, 0.33154, 0.3219, 0.31948, 0.31096, 0.30424, 0.2984],
+        [0.35442, 0.34267, 0.33288, 0.32374, 0.32245, 0.31474, 0.30838, 0.30283],
+        [0.35384, 0.34286, 0.33386, 0.32507, 0.3246, 0.31745, 0.31135, 0.306],
+        [0.35338, 0.343, 0.33464, 0.32614, 0.3263, 0.31961, 0.31371, 0.30852],
+        [0.35301, 0.34312, 0.33526, 0.32698, 0.32766, 0.32132, 0.31588, 0.31052],
+        [0.35272, 0.34322, 0.33574, 0.32765, 0.32873, 0.32267, 0.31705, 0.31209],
+        [0.35246, 0.3433, 0.33617, 0.32822, 0.32965, 0.32383, 0.31831, 0.31344],
+        [0.35226, 0.34336, 0.33651, 0.32869, 0.3304, 0.32477, 0.31934, 0.31453],
+        [0.35207, 0.34342, 0.33681, 0.32911, 0.33106, 0.32561, 0.32025, 0.3155],
+        [0.35171, 0.34327, 0.33679, 0.32931, 0.3319, 0.32665, 0.32139, 0.31675],
+        [0.35128, 0.343, 0.33658, 0.32937, 0.33276, 0.32769, 0.32255, 0.31802],
+        [0.35086, 0.34274, 0.33637, 0.32943, 0.3336, 0.32872, 0.32368, 0.31927],
+        [0.35049, 0.34252, 0.33618, 0.32948, 0.33432, 0.32959, 0.32465, 0.32034],
+        [0.35016, 0.34321, 0.33602, 0.32953, 0.33498, 0.3304, 0.32554, 0.32132],
+        [0.34986, 0.34213, 0.33587, 0.32957, 0.33556, 0.3311, 0.32631, 0.32217],
+        [0.34959, 0.34196, 0.33573, 0.32961, 0.3361, 0.33176, 0.32704, 0.32296],
+        [0.34934, 0.34181, 0.33561, 0.32964, 0.33658, 0.33235, 0.32769, 0.32368],
+        [0.34912, 0.34167, 0.3355, 0.32967, 0.33701, 0.33288, 0.32827, 0.32432],
+        [0.34891, 0.34154, 0.33539, 0.3297, 0.33742, 0.33337, 0.32881, 0.32492]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>def setup_helpers(engine, expiration_dates, strikes, data, ref_date, spot, yield_ts, dividend_ts):
+    heston_helpers = []
+    grid_data = []
+    for i, date in enumerate(expiration_dates):
+        for j, s in enumerate(strikes):
+            t = (date - ref_date)
+            p = ql.Period(t, ql.Days)
+            vols = data[i][j]
+            helper = ql.HestonModelHelper(p, calendar, spot, s, ql.QuoteHandle(ql.SimpleQuote(vols)), yield_ts, dividend_ts)
+            helper.setPricingEngine(engine)
+            heston_helpers.append(helper)
+            grid_data.append((date, s))
+    return heston_helpers, grid_data
+
+
+def cost_function_generator(model, helpers, norm=False):
+    def cost_function(params):
+        params_ = ql.Array(list(params))
+        model.setParams(params_)
+        error = [h.calibrationError() for h in helpers]
+        if norm:
+            return np.sqrt(np.sum(np.abs(error)))
+        else:
+            return error
+    return cost_function
+
+
+def calibration_report(helpers, grid_data, detailed=False):
+    avg = 0.0
+    if detailed:
+        print(&quot;%15s %25s %15s %15s %20s&quot; % (&quot;Strikes&quot;, &quot;Expiry&quot;, &quot;Market Value&quot;, &quot;Model Value&quot;, &quot;Relative Error (%)&quot;))
+        print(&quot;=&quot;*100)
+    for i, opt in enumerate(helpers):
+        err = (opt.modelValue() / opt.marketValue() - 1.0)
+        date, strike = grid_data[i]
+        if detailed:
+            print(&quot;%15.2f %25s %14.5% %15.5f %20.7f&quot; % (strike, str(date), opt.marketValue(), opt.modelValue(), 100*(opt.modelValue()/opt.marketValue()-1.0)))
+        avg += abs(err)
+    avg = avg*100.0/len(helpers)
+    if detailed:
+        print(&quot;-&quot;*100)
+    summary = &quot;Average Abs Error (%%) : %5.9f&quot; % (avg)
+    print(summary)
+    return avg
+
+
+def setup_model(_yield_ts, _dividend_ts, _spot, init_condition=(0.02, 0.2, 0.5, 0.1, 0.01)):
+    theta, kappa, sigma, rho, v0 = init_condition
+    process = ql.HestonProcess(_yield_ts, _dividend_ts, ql.QuoteHandle(ql.SimpleQuote(_spot)), v0, kappa, theta, sigma, rho)
+    model = ql.HestonModel(process)
+    engine = ql.AnalyticHestonEngine(model)
+    return model, engine
+
+
+summary = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model1, engine1 = setup_model(flat_ts, dividend_ts, spot, init_condition=(0.02, 0.2, 0.5, 0.1, 0.01))
+heston_helpers1, grid_data1 = setup_helpers(engine1, expiration_dates, strikes, data, calculation_date, spot, flat_ts, dividend_ts)
+initial_condition = list(model1.params())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>%%time
+lm = ql.LevenbergMarquardt(1e-8, 1e-8, 1e-8)
+model1.calibrate(heston_helpers1, lm, ql.EndCriteria(500, 300, 1.0e-8, 1.0e-8, 1.0e-8))
+theta, kappa, sigma, rho, v0 = model1.params()
+print(&quot;theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f&quot; % (theta, kappa, sigma, rho, v0))
+error = calibration_report(heston_helpers1, grid_data1)
+summary.append([&quot;QL LM1&quot;, error] + list(model1.params()))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>theta = 0.125760, kappa = 7.911958, sigma = 1.887628, rho = -0.364933, v0 = 0.055399
+Average Abs Error (%) : 3.013208440
+Wall time: 2.14 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model1, engine1 = setup_model(flat_ts, dividend_ts, spot, init_condition=(0.07, 0.5, 0.1, 0.1, 0.1))
+heston_helpers1, grid_data1 = setup_helpers(engine1, expiration_dates, strikes, data, calculation_date, spot, flat_ts, dividend_ts)
+initial_condition = list(model1.params())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>%%time
+lm = ql.LevenbergMarquardt(1e-8, 1e-8, 1e-8)
+model1.calibrate(heston_helpers1, lm, ql.EndCriteria(500, 300, 1.0e-8, 1.0e-8, 1.0e-8))
+theta, kappa, sigma, rho, v0 = model1.params()
+print(&quot;theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f&quot; % (theta, kappa, sigma, rho, v0))
+error = calibration_report(heston_helpers1, grid_data1)
+summary.append([&quot;QL LM2&quot;, error] + list(model1.params()))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>theta = 0.084523, kappa = 0.000000, sigma = 0.132219, rho = -0.514027, v0 = 0.099928
+Average Abs Error (%) : 11.008826759
+Wall time: 2.25 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model2, engine2 = setup_model(flat_ts, dividend_ts, spot, init_condition=(0.02, 0.2, 0.5, 0.1, 0.01))
+heston_helpers2, grid_data2 = setup_helpers(engine2, expiration_dates, strikes, data, calculation_date, spot, flat_ts, dividend_ts)
+initial_condition = list(model2.params())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>%%time
+cost_function = cost_function_generator(model2, heston_helpers2)
+sol = root(cost_function, initial_condition, method=&#39;lm&#39;)
+theta, kappa, sigma, rho, v0 = model2.params()
+print(&quot;theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f&quot; % (theta, kappa, sigma, rho, v0))
+error = calibration_report(heston_helpers2, grid_data2)
+summary.append([&quot;SciPy LM1&quot;, error] + list(model2.params()))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>theta = 0.125759, kappa = 7.912874, sigma = 1.887747, rho = -0.364933, v0 = 0.055396
+Average Abs Error (%) : 3.013195727
+Wall time: 2.05 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model2, engine2 = setup_model(flat_ts, dividend_ts, spot, init_condition=(0.07, 0.5, 0.1, 0.1, 0.1))
+heston_helpers2, grid_data2 = setup_helpers(engine2, expiration_dates, strikes, data, calculation_date, spot, flat_ts, dividend_ts)
+initial_condition = list(model2.params())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>%%time
+cost_function = cost_function_generator(model2, heston_helpers2)
+sol = root(cost_function, initial_condition, method=&#39;lm&#39;)
+theta, kappa, sigma, rho, v0 = model2.params()
+print(&quot;theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f&quot; % (theta, kappa, sigma, rho, v0))
+error = calibration_report(heston_helpers2, grid_data2)
+summary.append([&quot;SciPy LM2&quot;, error] + list(model2.params()))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>theta = -42.044169, kappa = -0.000907, sigma = 0.252942, rho = -1.001501, v0 = 0.088258
+Average Abs Error (%) : 5.744317043
+Wall time: 22.9 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>from scipy.optimize import least_squares
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model3, engine3 = setup_model(flat_ts, dividend_ts, spot, init_condition=(0.02, 0.2, 0.2, 0.1, 0.01))
+heston_helpers3, grid_data3 = setup_helpers(engine3, expiration_dates, strikes, data, calculation_date, spot, flat_ts, dividend_ts)
+initial_condition = list(model3.params())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>%%time
+cost_function = cost_function_generator(model3, heston_helpers3)
+sol = least_squares(cost_function, initial_condition, method=&#39;lm&#39;)
+theta, kappa, sigma, rho, v0 = model3.params()
+print(&quot;theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f&quot; % (theta, kappa, sigma, rho, v0))
+error = calibration_report(heston_helpers3, grid_data3)
+summary.append([&quot;SciPy LS1&quot;, error] + list(model3.params()))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>theta = 0.125760, kappa = 7.912208, sigma = 1.887663, rho = -0.364932, v0 = 0.055404
+Average Abs Error (%) : 3.013154084
+Wall time: 4.56 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model3, engine3 = setup_model(flat_ts, dividend_ts, spot, init_condition=(0.07, 0.5, 0.1, 0.1, 0.1))
+heston_helpers3, grid_data3 = setup_helpers(engine3, expiration_dates, strikes, data, calculation_date, spot, flat_ts, dividend_ts)
+initial_condition = list(model3.params())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>%%time
+cost_function = cost_function_generator(model3, heston_helpers3)
+sol = least_squares(cost_function, initial_condition, method=&#39;lm&#39;)
+theta, kappa, sigma, rho, v0 = model3.params()
+print(&quot;theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f&quot; % (theta, kappa, sigma, rho, v0))
+error = calibration_report(heston_helpers3, grid_data3)
+summary.append([&quot;SciPy LS2&quot;, error] + list(model3.params()))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>theta = 1.116878, kappa = 0.000042, sigma = -0.000696, rho = -0.000084, v0 = 0.587810
+Average Abs Error (%) : 5.098700384
+Wall time: 9.08 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>from scipy.optimize import differential_evolution
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model4, engine4 = setup_model(flat_ts, dividend_ts, spot, init_condition=(0.02, 0.2, 0.2, 0.1, 0.01))
+heston_helpers4, grid_data4 = setup_helpers(engine4, expiration_dates, strikes, data, calculation_date, spot, flat_ts, dividend_ts)
+initial_condition = list(model4.params())
+bounds = [(0, 1), (0.01, 15), (0.01, 1.0), (-1, 1), (0, 1.0)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>%%time
+cost_function = cost_function_generator(model4, heston_helpers4, norm=True)
+sol = differential_evolution(cost_function, bounds, maxiter=100)
+theta, kappa, sigma, rho, v0 = model4.params()
+print(&quot;theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f&quot; % (theta, kappa, sigma, rho, v0))
+error = calibration_report(heston_helpers4, grid_data4)
+summary.append([&quot;SciPy DE1&quot;, error] + list(model4.params()))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>theta = 0.122870, kappa = 5.109367, sigma = 0.945947, rho = -0.567321, v0 = 0.077834
+Average Abs Error (%) : 2.869746009
+Wall time: 1min 12s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model4, engine4 = setup_model(flat_ts, dividend_ts, spot)
+heston_helpers4, grid_data4 = setup_helpers(engine4, expiration_dates, strikes, data, calculation_date, spot, flat_ts, dividend_ts)
+initial_condition = list(model4.params())
+bounds = [(0, 1), (0.01, 15), (0.01, 1.0), (-1, 1), (0, 1.0)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>%%time
+cost_function = cost_function_generator(model4, heston_helpers4, norm=True)
+sol = differential_evolution(cost_function, bounds, maxiter=100)
+theta, kappa, sigma, rho, v0 = model4.params()
+print(&quot;theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f&quot; % (theta, kappa, sigma, rho, v0))
+error = calibration_report(heston_helpers4, grid_data4)
+summary.append([&quot;SciPy DE2&quot;, error] + list(model4.params()))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>theta = 0.122717, kappa = 4.541489, sigma = 0.747434, rho = -0.675509, v0 = 0.079010
+Average Abs Error (%) : 2.881507738
+Wall time: 1min
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>from scipy.optimize import basinhopping
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>class MyBounds(object):
+    def __init__(self, xmin=[0., 0.01, 0.01, -1, 0], xmax=[1, 15, 1, 1, 1.0]):
+        self.xmax = np.array(xmax)
+        self.xmin = np.array(xmin)
+        
+    def __call__(self, **kwargs):
+        x = kwargs[&quot;x_new&quot;]
+        tmax = bool(np.all(x &lt;= self.xmax))
+        tmin = bool(np.all(x &gt;= self.xmin))
+        return tmax and tmin
+    
+
+bounds = [(0, 1), (0.01, 15), (0.01, 1.0), (-1, 1), (0, 1.0)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model5, engine5 = setup_model(flat_ts, dividend_ts, spot, init_condition=(0.02, 0.2, 0.5, 0.1, 0.01))
+heston_helpers5, grid_data5 = setup_helpers(engine5, expiration_dates, strikes, data, calculation_date, spot, flat_ts, dividend_ts)
+initial_condition = list(model5.params())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>%%time
+mybound = MyBounds()
+minimizer_kwargs = {&quot;method&quot;: &quot;L-BFGS-B&quot;, &quot;bounds&quot;: bounds}
+cost_function = cost_function_generator(model5, heston_helpers4, norm=True)
+sol = basinhopping(cost_function, initial_condition, niter=5, minimizer_kwargs=minimizer_kwargs, stepsize=0.005, accept_test=mybound, interval=10)
+theta, kappa, sigma, rho, v0 = model5.params()
+print(&quot;theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f&quot; % (theta, kappa, sigma, rho, v0))
+error = calibration_report(heston_helpers5, grid_data5)
+summary.append([&quot;SciPy BH1&quot;, error] + list(model5.params()))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>theta = 0.024622, kappa = 0.189668, sigma = 0.501535, rho = 0.093245, v0 = 0.016846
+Average Abs Error (%) : 82.692481038
+Wall time: 807 ms
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model5, engine5 = setup_model(flat_ts, dividend_ts, spot, init_condition=(0.07, 0.5, 0.1, 0.1, 0.1))
+heston_helpers5, grid_data5 = setup_helpers(engine5, expiration_dates, strikes, data, calculation_date, spot, flat_ts, dividend_ts)
+initial_condition = list(model5.params())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>%%time
+mybound = MyBounds()
+minimizer_kwargs = {&quot;method&quot;: &quot;L-BFGS-B&quot;, &quot;bounds&quot;: bounds}
+cost_function = cost_function_generator(model5, heston_helpers4, norm=True)
+sol = basinhopping(cost_function, initial_condition, niter=5, minimizer_kwargs=minimizer_kwargs, stepsize=0.005, accept_test=mybound, interval=10)
+theta, kappa, sigma, rho, v0 = model5.params()
+print(&quot;theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f&quot; % (theta, kappa, sigma, rho, v0))
+error = calibration_report(heston_helpers5, grid_data5)
+summary.append([&quot;SciPy BH2&quot;, error] + list(model5.params()))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>theta = 0.072327, kappa = 0.506534, sigma = 0.095887, rho = 0.090253, v0 = 0.101320
+Average Abs Error (%) : 14.807595395
+Wall time: 763 ms
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+pd.DataFrame(summary, columns=[&quot;Name&quot;, &quot;Avg Abs Error&quot;, &quot;Theta&quot;, &quot;Kappa&quot;, &quot;Sigma&quot;, &quot;Rho&quot;, &quot;V0&quot;], index=[&#39;&#39;]*len(summary))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Avg Abs Error</th>
+      <th>Theta</th>
+      <th>Kappa</th>
+      <th>Sigma</th>
+      <th>Rho</th>
+      <th>V0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>QL LM1</td>
+      <td>3.013208</td>
+      <td>0.125760</td>
+      <td>7.911958e+00</td>
+      <td>1.887628</td>
+      <td>-0.364933</td>
+      <td>0.055399</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>QL LM1</td>
+      <td>11.008827</td>
+      <td>0.084523</td>
+      <td>1.702329e-08</td>
+      <td>0.132219</td>
+      <td>-0.514027</td>
+      <td>0.099928</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SciPy LM1</td>
+      <td>3.013196</td>
+      <td>0.125759</td>
+      <td>7.912874e+00</td>
+      <td>1.887747</td>
+      <td>-0.364933</td>
+      <td>0.055396</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SciPy LM2</td>
+      <td>5.744317</td>
+      <td>-42.044169</td>
+      <td>-9.067011e-04</td>
+      <td>0.252942</td>
+      <td>-1.001501</td>
+      <td>0.088258</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SciPy LS1</td>
+      <td>3.013209</td>
+      <td>0.125760</td>
+      <td>7.912104e+00</td>
+      <td>1.887651</td>
+      <td>-0.364932</td>
+      <td>0.055399</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SciPy LS2</td>
+      <td>5.744317</td>
+      <td>-42.044169</td>
+      <td>-9.067011e-04</td>
+      <td>0.252942</td>
+      <td>-1.001501</td>
+      <td>0.088258</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SciPy LS1</td>
+      <td>3.013154</td>
+      <td>0.125760</td>
+      <td>7.912208e+00</td>
+      <td>1.887663</td>
+      <td>-0.364932</td>
+      <td>0.055404</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SciPy LS2</td>
+      <td>5.098700</td>
+      <td>1.116878</td>
+      <td>4.171596e-05</td>
+      <td>-0.000696</td>
+      <td>-0.000084</td>
+      <td>0.587810</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SciPy DE1</td>
+      <td>2.869746</td>
+      <td>0.122870</td>
+      <td>5.109367e+00</td>
+      <td>0.945947</td>
+      <td>-0.567321</td>
+      <td>0.077834</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SciPy DE2</td>
+      <td>2.881508</td>
+      <td>0.122717</td>
+      <td>4.541489e+00</td>
+      <td>0.747434</td>
+      <td>-0.675509</td>
+      <td>0.079010</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SciPy BH1</td>
+      <td>88.767800</td>
+      <td>0.020000</td>
+      <td>2.000000e-01</td>
+      <td>0.500000</td>
+      <td>0.100000</td>
+      <td>0.010000</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SciPy BH2</td>
+      <td>15.572759</td>
+      <td>0.070000</td>
+      <td>5.000000e-01</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+      <td>0.100000</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SciPy BH1</td>
+      <td>82.692481</td>
+      <td>0.024622</td>
+      <td>1.896678e-01</td>
+      <td>0.501535</td>
+      <td>0.093245</td>
+      <td>0.016846</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SciPy BH2</td>
+      <td>14.807595</td>
+      <td>0.072327</td>
+      <td>5.065344e-01</td>
+      <td>0.095887</td>
+      <td>0.090253</td>
+      <td>0.101320</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python2",
+            path: "./0掘金+万得+聚宽多因子策略开发框架/DerivativesQuant衍生品定价对冲回测与主观交易工具/QuantLib学习/04Equity_models"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python2'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

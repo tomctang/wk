@@ -374,6 +374,11 @@ document.write(`
 <li><p>《Python for Algorithmic Trading》的作者 Yves，他是学院出身，主要工作是研究和写作，他的书籍显然更加适合初学者，而且写的比较具体和细致，适合没基础的人跟着操作，但是从深度和框架角度会较差一些。</p></li>
 </ul>
 </li>
+<li><p>International Quant Championship (IQC) by WorldQuant is one of the largest and most structured quant competitions globally</p>
+<ul class="simple">
+<li><p>For early-career quant, IQC is the most accessible and respected global quant tournament with university rankings. But if you’re looking to build and monetize strategies, QuantConnect and Numerai are where real-world impact starts.</p></li>
+</ul>
+</li>
 </ol>
 <p><strong>log or QA</strong></p>
 <ol class="arabic simple">
@@ -412,6 +417,14 @@ document.write(`
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/myhhub/stock?tab=readme-ov-file">mayanghua/instock</a> 获取股票数据,计算股票指标,筹码分布,识别股票形态,综合选股,选股策略,股票验证回测,股票自动交易, docker支持PC及移动设备</p></li>
 <li><p>勉强进入 <a class="reference external" href="http://localhost:9988/">http://localhost:9988/</a>, add <code class="docutils literal notranslate"><span class="pre">sudo</span></code> in advance</p></li>
+<li><p><a class="reference external" href="https://github.com/shidenggui/easyquant">easyquant</a>A股量化框架，支持行情获取以及交易</p></li>
+<li><p><a class="reference external" href="https://github.com/shidenggui/easyquotation?tab=readme-ov-file">easyquotation</a>|实时获取免费股票行情，支持新浪 / 腾讯(港股) / 集思录|</p></li>
+<li><p><a class="reference external" href="https://github.com/shidenggui/easytrader">easytrader</a>|提供同花顺客户端/miniqmt/雪球的股票量化交易，支持跟踪 joinquant /ricequant 模拟交易 和 实盘雪球组合|</p></li>
+<li><p><a class="reference external" href="https://github.com/ricequant/funcat">Funcat</a> –&gt; <a class="reference external" href="https://github.com/mpquant/MyTT">MyTT</a>|同花顺、通达信、文华财经麦语言等公式的表达十分简洁，适合做技术分析,</p>
+<ul>
+<li><p>MyTT将通达信,同花顺,文华麦语言等指标公式,最简移植到Python中,核心库单个文件，仅百行代码,十几个核心函数，神奇的实现所有常见技术指标算法（不依赖talib库）的纯python实现和转换通达信MACD,RSI,BOLL,ATR,KDJ,CCI,PSY等公式,全部基于pandas函数计算方法封装，简洁且高性能，能非常方便的应用在股票指标公式,股市期货量化框架分析,自动程序化交易,数字货币</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
@@ -428,49 +441,52 @@ document.write(`
 <tr class="row-odd"><td><p><strong>回测/开发</strong></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/wbbhcb/stock_market">stock_market</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/DemonDamon/FinnewsHunter">FinnewsHunter</a></p></td>
+<td><p>从新浪财经、每经网、金融界、中国证券网、证券时报网上，爬取上市公司（个股）的历史新闻文本数据进行文本分析、提取特征集，然后利用SVM、随机森林等分类器进行训练，最后对实施抓取的新闻数据进行分类预测</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/wbbhcb/stock_market">stock_market</a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/popbo/alphas">alphas</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/popbo/alphas">alphas</a></p></td>
 <td><p>ipynb, 利用了这个项目<a class="reference external" href="https://github.com/quantopian/alphalens">alphalens</a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/nessessary/autoxd">autoxd</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/nessessary/autoxd">autoxd</a></p></td>
 <td><p>回测框架, 模拟实盘账户交易, 适合编写T+0策略</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/foolcage/fooltrader">fooltrader</a> -&gt; <a class="reference external" href="https://github.com/zvtvz/zvt">zvt</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/foolcage/fooltrader">fooltrader</a> -&gt; <a class="reference external" href="https://github.com/zvtvz/zvt">zvt</a></p></td>
 <td><p>modular quant framework, 项目升级到zvt, 各有详尽解释</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/vnpy/vnpy">vnpy</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/vnpy/vnpy">vnpy</a></p></td>
 <td><p>基于Python, 开源, 量化交易平台开发框架</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://hikyuu.org/">hikyuu</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://hikyuu.org/">hikyuu</a></p></td>
 <td><p>开源量化交易研究框架，策略分析, 回测</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/albert-feng/blade-fury">blade-fury</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/albert-feng/blade-fury">blade-fury</a></p></td>
 <td><p>采集股票数据，利用统计和计算来选股, 要把项目的路径加入PYTHONPATH才能脚本正常运行</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>模拟/交易</strong></p></td>
+<tr class="row-even"><td><p><strong>模拟/交易</strong></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ricequant/rqalpha">ricequant/RQAlpha</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ricequant/rqalpha">ricequant/RQAlpha</a></p></td>
 <td><p>数据获取、算法交易、回测引擎，实盘模拟，实盘交易到数据分析</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/yutiansut/QUANTAXIS">QUANTAXIS</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/yutiansut/QUANTAXIS">QUANTAXIS</a></p></td>
 <td><p>任务调度/分布式部署, 股票/期货/期权, 数据/回测/模拟/交易/可视化/多账户 纯本地量化]</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/yutiansut/QAStrategy">QAStrategy</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/yutiansut/QAStrategy">QAStrategy</a></p></td>
 <td><p>QA-sub1</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/QUANTAXIS/QADemoOLD">QADemoOLD</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/QUANTAXIS/QADemoOLD">QADemoOLD</a></p></td>
 <td><p>QA-sub2</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>策略</strong></p></td>
+<tr class="row-odd"><td><p><strong>策略</strong></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/123quant/QMT-QuantLimit">打板策略</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/123quant/QMT-QuantLimit">打板策略</a></p></td>
 <td><p>项目实现了一种量化打板策略，用于A股股票交易，涨停板制度只存在于A股</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/fmzquant/strategies?tab=readme-ov-file">quant_strategy_list5800</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/fmzquant/strategies?tab=readme-ov-file">quant_strategy_list5800</a></p></td>
 <td><p>5800 md files</p></td>
 </tr>
 </tbody>
@@ -489,13 +505,19 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/TA-Lib/ta-lib-python">ta-lib</a></p></td>
 <td><p>其他包的底层, talib技术指标库</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/tkfy920/qstock">qstock</a></p></td>
-<td><p>付费, depends on pyfolio(too old pkg)</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/kevin-meng/financial_stock_knowledge_graph">金融证券知识图谱</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/kernc/backtesting.py">backtesting</a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/jm199504/Financial-Knowledge-Graphs">小型金融知识图谱构建流程</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/tkfy920/qstock">qstock</a></p></td>
+<td><p>付费, depends on pyfolio(too old pkg)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/kevin-meng/financial_stock_knowledge_graph">金融证券知识图谱</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/jm199504/Financial-Knowledge-Graphs">小型金融知识图谱构建流程</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/stefan-jansen/machine-learning-for-trading">Code for Machine Learning for Algorithmic Trading, 2ed</a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>

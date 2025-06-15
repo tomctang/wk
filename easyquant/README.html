@@ -1,0 +1,880 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>easyquant &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'easyquant/README';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../qc.html">1. Qunat research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nb2024.html">2. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nb2022.html">3. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/easyquant/README.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>easyquant</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">微信群以及公众号</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#author">Author</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">关于行情</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">关于交易</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">使用</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">准备交易账户</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">快速开始</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">策略编写</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hello-world">Hello World</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">效果</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">稍显复杂的策略示例</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">加载指定策略</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-system">log system</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">存储日志到文件</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-handler">自定义每个策略的 log handler</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">示例: 存储每个策略的日志到不同的文件中</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">自定义行情引擎</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sina">修改默认 sina 行情的推送时间</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lf">示例: 使用 lf 的十档行情</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">使用多个行情来源</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">时间戳单元测试</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="easyquant">
+<h1>easyquant<a class="headerlink" href="#easyquant" title="Link to this heading">#</a></h1>
+<p>基于 <a class="reference external" href="https://github.com/shidenggui/easytrader">easytrader</a> 和 <a class="reference external" href="https://github.com/shidenggui/easyquotation">easyquotation</a> 的量化交易框架</p>
+<p>事件引擎借鉴 <code class="docutils literal notranslate"><span class="pre">vnpy</span></code></p>
+<p>交易:支持华泰、佣金宝、银河以及雪球模拟盘</p>
+<p>行情:支持新浪免费实时行情，集思路分级基金以及 leverfun 的免费十档行情</p>
+<section id="id1">
+<h2>微信群以及公众号<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>欢迎大家扫码关注公众号「食灯鬼」，一起交流。进群可通过菜单加我好友，备注量化。</p>
+<p><img alt="公众号二维码" src="https://gitee.com/shidenggui/assets/raw/master/uPic/mp-qr.png" /></p>
+<p>若二维码因 Github 网络无法打开，请点击<a class="reference external" href="https://gitee.com/shidenggui/assets/raw/master/uPic/mp-qr.png">公众号二维码</a>直接打开图片。</p>
+</section>
+<section id="author">
+<h2>Author<a class="headerlink" href="#author" title="Link to this heading">#</a></h2>
+<p><strong>easyquant</strong> © <a class="reference external" href="https://github.com/shidenggui">shidenggui</a>, Released under the <a class="reference internal" href="#./LICENSE"><span class="xref myst">MIT</span></a> License.<br></p>
+<blockquote>
+<div><p>Blog <a class="reference external" href="https://shidenggui.com">&#64;shidenggui</a> · Weibo <a class="reference external" href="https://www.weibo.com/u/1651274491">&#64;食灯鬼</a> · Twitter <a class="reference external" href="https://twitter.com/shidenggui">&#64;shidenggui</a></p>
+</div></blockquote>
+</section>
+<section id="requirements">
+<h2>requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>python 3.5</p></li>
+<li><p>pip install -r requirements.txt</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>关于行情<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>默认使用的是 sina 的免费全市场行情，1s 推送一次</p>
+<p>可自定义使用的行情来源或者使用 <code class="docutils literal notranslate"><span class="pre">easyquotation</span></code> 的 <code class="docutils literal notranslate"><span class="pre">lf</span></code> 免费十档行情 和 集思路的分级基金行情</p>
+<p>具体可参见 <a class="reference external" href="https://github.com/shidenggui/easyquotation">easyquotation</a></p>
+</section>
+<section id="id3">
+<h2>关于交易<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>具体可参见 <a class="reference external" href="https://github.com/shidenggui/easytrader">easytrader</a></p>
+</section>
+<section id="id4">
+<h2>使用<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h3>准备交易账户<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>在 <code class="docutils literal notranslate"><span class="pre">ht.json</span></code> 或 <code class="docutils literal notranslate"><span class="pre">yjb.json</span></code> 或 <code class="docutils literal notranslate"><span class="pre">yh.json</span></code> 或 <code class="docutils literal notranslate"><span class="pre">xq.json</span></code> 中填入你的账户相关信息</p>
+<p><a class="reference external" href="https://github.com/shidenggui/easytrader">如何填写相关信息</a></p>
+</section>
+<section id="id6">
+<h3>快速开始<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">test</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id7">
+<h2>策略编写<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>策略用 <code class="docutils literal notranslate"><span class="pre">Python</span></code> 编写后置于 <code class="docutils literal notranslate"><span class="pre">strategies</span></code> 文件夹下
+格式可参考其中的 <code class="docutils literal notranslate"><span class="pre">Demo</span></code></p>
+<section id="hello-world">
+<h3>Hello World<a class="headerlink" href="#hello-world" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 引入策略模板</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">easyquant</span><span class="w"> </span><span class="kn">import</span> <span class="n">StrategyTemplate</span>
+
+<span class="c1"># 定义策略类</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Strategy</span><span class="p">(</span><span class="n">StrategyTemplate</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Hello World&#39;</span> <span class="c1"># 定义策略名字</span>
+    
+    <span class="c1"># 策略函数，收到行情推送后会自动调用</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">strategy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;:param event event.data 为所有股票行情的字典，结构如下</span>
+<span class="sd">        {&#39;162411&#39;:</span>
+<span class="sd">        {&#39;ask1&#39;: &#39;0.493&#39;,</span>
+<span class="sd">         &#39;ask1_volume&#39;: &#39;75500&#39;,</span>
+<span class="sd">         &#39;ask2&#39;: &#39;0.494&#39;,</span>
+<span class="sd">         &#39;ask2_volume&#39;: &#39;7699281&#39;,</span>
+<span class="sd">         &#39;ask3&#39;: &#39;0.495&#39;,</span>
+<span class="sd">         &#39;ask3_volume&#39;: &#39;2262666&#39;,</span>
+<span class="sd">         &#39;ask4&#39;: &#39;0.496&#39;,</span>
+<span class="sd">         &#39;ask4_volume&#39;: &#39;1579300&#39;,</span>
+<span class="sd">         &#39;ask5&#39;: &#39;0.497&#39;,</span>
+<span class="sd">         &#39;ask5_volume&#39;: &#39;901600&#39;,</span>
+<span class="sd">         &#39;bid1&#39;: &#39;0.492&#39;,</span>
+<span class="sd">         &#39;bid1_volume&#39;: &#39;10765200&#39;,</span>
+<span class="sd">         &#39;bid2&#39;: &#39;0.491&#39;,</span>
+<span class="sd">         &#39;bid2_volume&#39;: &#39;9031600&#39;,</span>
+<span class="sd">         &#39;bid3&#39;: &#39;0.490&#39;,</span>
+<span class="sd">         &#39;bid3_volume&#39;: &#39;16784100&#39;,</span>
+<span class="sd">         &#39;bid4&#39;: &#39;0.489&#39;,</span>
+<span class="sd">         &#39;bid4_volume&#39;: &#39;10049000&#39;,</span>
+<span class="sd">         &#39;bid5&#39;: &#39;0.488&#39;,</span>
+<span class="sd">         &#39;bid5_volume&#39;: &#39;3572800&#39;,</span>
+<span class="sd">         &#39;buy&#39;: &#39;0.492&#39;,</span>
+<span class="sd">         &#39;close&#39;: &#39;0.499&#39;,</span>
+<span class="sd">         &#39;high&#39;: &#39;0.494&#39;,</span>
+<span class="sd">         &#39;low&#39;: &#39;0.489&#39;,</span>
+<span class="sd">         &#39;name&#39;: &#39;华宝油气&#39;,</span>
+<span class="sd">         &#39;now&#39;: &#39;0.493&#39;,</span>
+<span class="sd">         &#39;open&#39;: &#39;0.490&#39;,</span>
+<span class="sd">         &#39;sell&#39;: &#39;0.493&#39;,</span>
+<span class="sd">         &#39;turnover&#39;: &#39;420004912&#39;,</span>
+<span class="sd">         &#39;volume&#39;: &#39;206390073.351&#39;}}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 使用 self.user 来操作账户，用法见 easytrader 用法</span>
+        <span class="c1"># 使用 self.log.info(&#39;message&#39;) 来打印你所需要的 log</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">策略1触发&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;行情数据: 万科价格: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">event</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;000002&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;检查持仓&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">balance</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="id8">
+<h4>效果<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">启动主引擎</span>
+<span class="p">[</span><span class="mi">2015</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">28</span> <span class="mi">14</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mf">36.649599</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">main_engine</span><span class="o">.</span><span class="n">py</span><span class="p">:</span> <span class="n">加载策略</span><span class="p">:</span> <span class="n">策略1_Demo</span>
+<span class="p">[</span><span class="mi">2015</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">28</span> <span class="mi">14</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mf">36.650250</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">main_engine</span><span class="o">.</span><span class="n">py</span><span class="p">:</span> <span class="n">加载策略</span><span class="p">:</span> <span class="n">策略2_Demo</span>
+<span class="p">[</span><span class="mi">2015</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">28</span> <span class="mi">14</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mf">36.650713</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">main_engine</span><span class="o">.</span><span class="n">py</span><span class="p">:</span> <span class="n">加载策略完毕</span>
+<span class="n">触发每秒定时计时器</span>
+
+
+
+<span class="n">策略1触发</span>
+<span class="n">行情数据</span><span class="p">:</span> <span class="n">万科价格</span><span class="p">:</span>  <span class="p">{</span><span class="s1">&#39;ask4&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;ask1&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;bid2_volume&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;bid3&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;bid5_volume&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;万  科Ａ&#39;</span><span class="p">,</span> <span class="s1">&#39;ask4_volume&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">:</span> <span class="mf">24.43</span><span class="p">,</span> <span class="s1">&#39;volume&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;ask3_volume&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;bid5&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;bid1&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;ask2&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;bid4_volume&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;ask5&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;bid4&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;ask5_volume&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;turnover&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;ask2_volume&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;sell&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;bid3_volume&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;bid2&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;bid1_volume&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;buy&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;ask3&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;now&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;ask1_volume&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">检查持仓</span>
+<span class="p">[{</span><span class="s1">&#39;asset_balance&#39;</span><span class="p">:</span> <span class="mf">2758.98</span><span class="p">,</span> <span class="s1">&#39;market_value&#39;</span><span class="p">:</span> <span class="mf">2740.9</span><span class="p">,</span> <span class="s1">&#39;enable_balance&#39;</span><span class="p">:</span> <span class="mf">18.08</span><span class="p">,</span> <span class="s1">&#39;current_balance&#39;</span><span class="p">:</span> <span class="mf">18.08</span><span class="p">,</span> <span class="s1">&#39;money_name&#39;</span><span class="p">:</span> <span class="s1">&#39;人民币&#39;</span><span class="p">,</span> <span class="s1">&#39;fetch_balance&#39;</span><span class="p">:</span> <span class="mf">18.08</span><span class="p">,</span> <span class="s1">&#39;money_type&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">}]</span>
+
+
+
+
+<span class="n">策略2触发</span>
+<span class="n">行情数据</span><span class="p">:</span> <span class="n">华宝油气</span> <span class="p">{</span><span class="s1">&#39;ask4&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;ask1&#39;</span><span class="p">:</span> <span class="mf">0.497</span><span class="p">,</span> <span class="s1">&#39;bid2_volume&#39;</span><span class="p">:</span> <span class="mi">4594100</span><span class="p">,</span> <span class="s1">&#39;bid3&#39;</span><span class="p">:</span> <span class="mf">0.494</span><span class="p">,</span> <span class="s1">&#39;bid5_volume&#39;</span><span class="p">:</span> <span class="mi">851300</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;华宝油气&#39;</span><span class="p">,</span> <span class="s1">&#39;ask4_volume&#39;</span><span class="p">:</span> <span class="mi">15650706</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;volume&#39;</span><span class="p">:</span> <span class="mf">138149552.799</span><span class="p">,</span> <span class="s1">&#39;ask3_volume&#39;</span><span class="p">:</span> <span class="mi">19611307</span><span class="p">,</span> <span class="s1">&#39;bid5&#39;</span><span class="p">:</span> <span class="mf">0.492</span><span class="p">,</span> <span class="s1">&#39;bid1&#39;</span><span class="p">:</span> <span class="mf">0.496</span><span class="p">,</span> <span class="s1">&#39;ask2&#39;</span><span class="p">:</span> <span class="mf">0.498</span><span class="p">,</span> <span class="s1">&#39;bid4_volume&#39;</span><span class="p">:</span> <span class="mi">313700</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">:</span> <span class="mf">0.501</span><span class="p">,</span> <span class="s1">&#39;ask5&#39;</span><span class="p">:</span> <span class="mf">0.501</span><span class="p">,</span> <span class="s1">&#39;bid4&#39;</span><span class="p">:</span> <span class="mf">0.493</span><span class="p">,</span> <span class="s1">&#39;ask5_volume&#39;</span><span class="p">:</span> <span class="mi">10108300</span><span class="p">,</span> <span class="s1">&#39;turnover&#39;</span><span class="p">:</span> <span class="mi">277462973</span><span class="p">,</span> <span class="s1">&#39;ask2_volume&#39;</span><span class="p">:</span> <span class="mi">10747730</span><span class="p">,</span> <span class="s1">&#39;sell&#39;</span><span class="p">:</span> <span class="mf">0.497</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;bid3_volume&#39;</span><span class="p">:</span> <span class="mi">997500</span><span class="p">,</span> <span class="s1">&#39;bid2&#39;</span><span class="p">:</span> <span class="mf">0.495</span><span class="p">,</span> <span class="s1">&#39;bid1_volume&#39;</span><span class="p">:</span> <span class="mi">5507952</span><span class="p">,</span> <span class="s1">&#39;buy&#39;</span><span class="p">:</span> <span class="mf">0.496</span><span class="p">,</span> <span class="s1">&#39;ask3&#39;</span><span class="p">:</span> <span class="mf">0.499</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">:</span> <span class="mf">0.495</span><span class="p">,</span> <span class="s1">&#39;now&#39;</span><span class="p">:</span> <span class="mf">0.497</span><span class="p">,</span> <span class="s1">&#39;ask1_volume&#39;</span><span class="p">:</span> <span class="mi">14948518</span><span class="p">}</span>
+<span class="n">检查持仓</span>
+<span class="p">[{</span><span class="s1">&#39;asset_balance&#39;</span><span class="p">:</span> <span class="mf">2758.98</span><span class="p">,</span> <span class="s1">&#39;market_value&#39;</span><span class="p">:</span> <span class="mf">2740.9</span><span class="p">,</span> <span class="s1">&#39;enable_balance&#39;</span><span class="p">:</span> <span class="mf">18.08</span><span class="p">,</span> <span class="s1">&#39;current_balance&#39;</span><span class="p">:</span> <span class="mf">18.08</span><span class="p">,</span> <span class="s1">&#39;money_name&#39;</span><span class="p">:</span> <span class="s1">&#39;人民币&#39;</span><span class="p">,</span> <span class="s1">&#39;fetch_balance&#39;</span><span class="p">:</span> <span class="mf">18.08</span><span class="p">,</span> <span class="s1">&#39;money_type&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">}]</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id9">
+<h3>稍显复杂的策略示例<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 引入策略模板</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dateutil</span><span class="w"> </span><span class="kn">import</span> <span class="n">tz</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">easyquant</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultLogHandler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">easyquant</span><span class="w"> </span><span class="kn">import</span> <span class="n">StrategyTemplate</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Strategy</span><span class="p">(</span><span class="n">StrategyTemplate</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;测试策略1&#39;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 通过下面的方式来获取时间戳</span>
+        <span class="n">now_dt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clock_engine</span><span class="o">.</span><span class="n">now_dt</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clock_engine</span><span class="o">.</span><span class="n">now</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="c1"># 注册时钟事件</span>
+        <span class="n">clock_type</span> <span class="o">=</span> <span class="s2">&quot;盘尾&quot;</span>
+        <span class="n">moment</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">tz</span><span class="o">.</span><span class="n">tzlocal</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clock_engine</span><span class="o">.</span><span class="n">register_moment</span><span class="p">(</span><span class="n">clock_type</span><span class="p">,</span> <span class="n">moment</span><span class="p">)</span>
+
+        <span class="c1"># 注册时钟间隔事件, 不在交易阶段也会触发, clock_type == minute_interval</span>
+        <span class="n">minute_interval</span> <span class="o">=</span> <span class="mf">1.5</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clock_engine</span><span class="o">.</span><span class="n">register_interval</span><span class="p">(</span><span class="n">minute_interval</span><span class="p">,</span> <span class="n">trading</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">strategy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;:param event event.data 为所有股票的信息，结构如下</span>
+<span class="sd">        {&#39;162411&#39;:</span>
+<span class="sd">        {&#39;ask1&#39;: &#39;0.493&#39;,</span>
+<span class="sd">         &#39;ask1_volume&#39;: &#39;75500&#39;,</span>
+<span class="sd">         &#39;ask2&#39;: &#39;0.494&#39;,</span>
+<span class="sd">         &#39;ask2_volume&#39;: &#39;7699281&#39;,</span>
+<span class="sd">         &#39;ask3&#39;: &#39;0.495&#39;,</span>
+<span class="sd">         &#39;ask3_volume&#39;: &#39;2262666&#39;,</span>
+<span class="sd">         &#39;ask4&#39;: &#39;0.496&#39;,</span>
+<span class="sd">         &#39;ask4_volume&#39;: &#39;1579300&#39;,</span>
+<span class="sd">         &#39;ask5&#39;: &#39;0.497&#39;,</span>
+<span class="sd">         &#39;ask5_volume&#39;: &#39;901600&#39;,</span>
+<span class="sd">         &#39;bid1&#39;: &#39;0.492&#39;,</span>
+<span class="sd">         &#39;bid1_volume&#39;: &#39;10765200&#39;,</span>
+<span class="sd">         &#39;bid2&#39;: &#39;0.491&#39;,</span>
+<span class="sd">         &#39;bid2_volume&#39;: &#39;9031600&#39;,</span>
+<span class="sd">         &#39;bid3&#39;: &#39;0.490&#39;,</span>
+<span class="sd">         &#39;bid3_volume&#39;: &#39;16784100&#39;,</span>
+<span class="sd">         &#39;bid4&#39;: &#39;0.489&#39;,</span>
+<span class="sd">         &#39;bid4_volume&#39;: &#39;10049000&#39;,</span>
+<span class="sd">         &#39;bid5&#39;: &#39;0.488&#39;,</span>
+<span class="sd">         &#39;bid5_volume&#39;: &#39;3572800&#39;,</span>
+<span class="sd">         &#39;buy&#39;: &#39;0.492&#39;,</span>
+<span class="sd">         &#39;close&#39;: &#39;0.499&#39;,</span>
+<span class="sd">         &#39;high&#39;: &#39;0.494&#39;,</span>
+<span class="sd">         &#39;low&#39;: &#39;0.489&#39;,</span>
+<span class="sd">         &#39;name&#39;: &#39;华宝油气&#39;,</span>
+<span class="sd">         &#39;now&#39;: &#39;0.493&#39;,</span>
+<span class="sd">         &#39;open&#39;: &#39;0.490&#39;,</span>
+<span class="sd">         &#39;sell&#39;: &#39;0.493&#39;,</span>
+<span class="sd">         &#39;turnover&#39;: &#39;420004912&#39;,</span>
+<span class="sd">         &#39;volume&#39;: &#39;206390073.351&#39;}}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 使用 self.user 来操作账户，用法同 easytrader 用法</span>
+        <span class="c1"># 使用 self.log.info(&#39;message&#39;) 来打印你所需要的 log</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;demo1 的 log 使用自定义 log 的方式记录在 demo1.log&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">策略1触发&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;行情数据: 万科价格: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">event</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;000002&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;检查持仓&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">balance</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">clock</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;在交易时间会定时推送 clock 事件</span>
+<span class="sd">        :param event: event.data.clock_event 为 [0.5, 1, 3, 5, 15, 30, 60] 单位为分钟,  [&#39;open&#39;, &#39;close&#39;] 为开市、收市</span>
+<span class="sd">            event.data.trading_state  bool 是否处于交易时间</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">clock_event</span> <span class="o">==</span> <span class="s1">&#39;open&#39;</span><span class="p">:</span>
+            <span class="c1"># 开市了</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;open&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">clock_event</span> <span class="o">==</span> <span class="s1">&#39;close&#39;</span><span class="p">:</span>
+            <span class="c1"># 收市了</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">clock_event</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="c1"># 5 分钟的 clock</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;5分钟&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">log_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;自定义 log 记录方式&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DefaultLogHandler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">log_type</span><span class="o">=</span><span class="s1">&#39;stdout&#39;</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;demo1.log&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        关闭进程前的调用</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;假装在关闭前保存了策略数据&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h3>加载指定策略<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">load_strategy</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;测试策略2&#39;</span><span class="p">])</span> <span class="c1"># 指定 names 参数，类型为列表，内容为策略的 name 属性</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="log-system">
+<h2>log system<a class="headerlink" href="#log-system" title="Link to this heading">#</a></h2>
+<section id="id11">
+<h3>存储日志到文件<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">easyquant</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultLogHandler</span> <span class="c1"># 默认的 log handler,支持输出日志到屏幕和文件,</span>
+
+<span class="c1">#  这里使用自带的 log handler, 也可使用自己编写的其他 log handler</span>
+<span class="n">log_handler</span> <span class="o">=</span> <span class="n">DefaultLogHandler</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;策略日志&#39;</span><span class="p">,</span> <span class="n">log_type</span><span class="o">=</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;日志文件.log&#39;</span><span class="p">)</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">easyquant</span><span class="o">.</span><span class="n">MainEngine</span><span class="p">(</span><span class="n">broker</span><span class="p">,</span> <span class="n">need_data</span><span class="p">,</span> <span class="n">log_handler</span><span class="o">=</span><span class="n">log_handler</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">load_strategy</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="log-handler">
+<h3>自定义每个策略的 log handler<a class="headerlink" href="#log-handler" title="Link to this heading">#</a></h3>
+<p>除了上面使用的全局 log handler 外，还可以为每个策略定义使用的 log handler</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># define your_log_handler</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Strategy</span><span class="p">(</span><span class="n">StrategyTemplate</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">log_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">your_log_handler</span>
+</pre></div>
+</div>
+<section id="id12">
+<h4>示例: 存储每个策略的日志到不同的文件中<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">easyquant</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultLogHandler</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Strategy</span><span class="p">(</span><span class="n">StrategyTemplate</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">log_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">DefaultLogHandler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">log_type</span><span class="o">=</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;策略xx.log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id13">
+<h2>自定义行情引擎<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p>允许使用自定义的其他行情，支持添加多个行情来源</p>
+<section id="sina">
+<h3>修改默认 sina 行情的推送时间<a class="headerlink" href="#sina" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">easyquant</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultQuotationEngine</span>
+
+<span class="n">DefaultQuotationEngine</span><span class="o">.</span><span class="n">PushInterval</span> <span class="o">=</span> <span class="mi">30</span> <span class="c1"># 改为 30s 推送一次</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">easyquant</span><span class="o">.</span><span class="n">MainEngine</span><span class="p">(</span><span class="n">broker</span><span class="p">,</span> <span class="n">need_data</span><span class="p">,</span> <span class="n">quotation_engine</span><span class="o">=</span><span class="p">[</span><span class="n">DefaultQuotationEngine</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="lf">
+<h3>示例: 使用 lf 的十档行情<a class="headerlink" href="#lf" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">easyquotation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">easyquant</span><span class="w"> </span><span class="kn">import</span> <span class="n">PushBaseEngine</span> <span class="c1"># 引入行情引擎的基类</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">LFEngine</span><span class="p">(</span><span class="n">PushBaseEngine</span><span class="p">):</span>
+    <span class="n">EventType</span> <span class="o">=</span> <span class="s1">&#39;lf&#39;</span> <span class="c1"># 指定行情的 EventType</span>
+    <span class="n">PushInterval</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># 指定行情的推送间隔， 默认为 1s</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 进行相关的初始化操作</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">easyquotation</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;lf&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fetch_quotation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 返回行情</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">stocks</span><span class="p">([</span><span class="s1">&#39;162411&#39;</span><span class="p">,</span> <span class="s1">&#39;000002&#39;</span><span class="p">])</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">easyquant</span><span class="o">.</span><span class="n">MainEngine</span><span class="p">(</span><span class="n">broker</span><span class="p">,</span> <span class="n">need_data</span><span class="p">,</span> <span class="n">quotation_engine</span><span class="o">=</span><span class="p">[</span><span class="n">LFEngine</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="id14">
+<h3>使用多个行情来源<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<p>可同时使用多个行情引擎，此时在策略中使用 <code class="docutils literal notranslate"><span class="pre">event.event_type</span></code> 来区分行情来源</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">easyquant</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultQuotationEngine</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">easyquant</span><span class="o">.</span><span class="n">MainEngine</span><span class="p">(</span><span class="n">broker</span><span class="p">,</span> <span class="n">need_data</span><span class="p">,</span> <span class="n">quotation_engine</span><span class="o">=</span><span class="p">[</span><span class="n">DefaultQuotationEngine</span><span class="p">,</span> <span class="n">LFEngine</span><span class="p">,</span> <span class="n">OtherEngine</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="id15">
+<h3>时间戳单元测试<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>请通过 clock_engine 中的 .now 或者 .now_dt 接口,以及 time.time() 接口来获得时间戳.</p></li>
+<li><p>通过上述接口获得时间戳,可以在单元测试中模拟某个时刻或者一段时间,详见单元测试 <a class="reference external" href="https://github.com/shidenggui/easyquant/blob/master/unitest_demo.py">test_set_now</a></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">unittest</span><span class="w"> </span><span class="kn">import</span> <span class="n">mock</span>
+
+<span class="c1"># 使用datetime 类构建时间戳</span>
+<span class="n">tzinfo</span> <span class="o">=</span> <span class="n">tz</span><span class="o">.</span><span class="n">tzlocal</span><span class="p">()</span>       <span class="c1"># 时区</span>
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">tzinfo</span><span class="p">)</span>
+
+<span class="c1"># 通过mock ,将 time.time() 函数的返回值重设为上面的打算模拟的值,注意要转化为浮点数时间戳</span>
+<span class="n">time</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">mock</span><span class="o">.</span><span class="n">Mock</span><span class="p">(</span><span class="n">return_value</span><span class="o">=</span><span class="n">now</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
+
+<span class="c1"># 生成一个时钟引擎</span>
+<span class="n">clock_engien</span> <span class="o">=</span> <span class="n">ClockEngine</span><span class="p">(</span><span class="n">EventEngine</span><span class="p">(),</span> <span class="n">tzinfo</span><span class="p">)</span>
+
+<span class="c1"># 此时通过 time.time 获得的时间戳,都是上面的预设值</span>
+<span class="n">clock_engien</span><span class="o">.</span><span class="n">now</span> <span class="o">==</span> <span class="n">now</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span>         <span class="c1"># time.time 时间戳</span>
+<span class="n">clock_engien</span><span class="o">.</span><span class="n">now_dt</span> <span class="o">==</span> <span class="n">now</span>                  <span class="c1"># datetime 时间戳</span>
+
+<span class="c1"># 据此可以模拟一段时间内各个闹钟事件的触发,比如模拟开市9:00一直到休市15:00</span>
+<span class="n">begin</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">tzinfo</span><span class="p">)</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">00</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">tzinfo</span><span class="p">)</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">pass_seconds</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">begin</span><span class="p">):</span>
+    <span class="c1"># 时间逐秒往前</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">begin</span> <span class="o">+</span> <span class="n">pass_seconds</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">mock</span><span class="o">.</span><span class="n">Mock</span><span class="p">(</span><span class="n">return_value</span><span class="o">=</span><span class="n">now</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
+    <span class="c1"># 每秒触发一次 tick_tock</span>
+    <span class="n">clock_engien</span><span class="o">.</span><span class="n">tock</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./easyquant"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">微信群以及公众号</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#author">Author</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">关于行情</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">关于交易</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">使用</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">准备交易账户</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">快速开始</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">策略编写</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hello-world">Hello World</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">效果</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">稍显复杂的策略示例</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">加载指定策略</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-system">log system</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">存储日志到文件</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-handler">自定义每个策略的 log handler</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">示例: 存储每个策略的日志到不同的文件中</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">自定义行情引擎</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sina">修改默认 sina 行情的推送时间</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lf">示例: 使用 lf 的十档行情</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">使用多个行情来源</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">时间戳单元测试</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

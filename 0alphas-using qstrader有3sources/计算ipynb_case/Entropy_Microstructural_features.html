@@ -1,0 +1,672 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Entropy Features: &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0alphas-using qstrader有3sources/计算ipynb_case/Entropy_Microstructural_features';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../qc.html">1. Qunat research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nb2024.html">2. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nb2022.html">3. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/0alphas-using qstrader有3sources/计算ipynb_case/Entropy_Microstructural_features.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Entropy Features:</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Entropy Features:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shannon-entropy">Shannon entropy</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approximate-entropy">Approximate entropy</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#microstructural-features">Microstructural Features:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#roll-model">Roll Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#corwin-and-schultz">Corwin and Schultz</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hasbroucks-lambda">Hasbrouck’s Lambda</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p>Some examples of how to extract entropy and microstructural features from financial market data:</p>
+<section id="entropy-features">
+<h1>Entropy Features:<a class="headerlink" href="#entropy-features" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Shannon entropy</strong>: This measures the degree of randomness or uncertainty in a probability distribution. In finance, Shannon entropy can be used to measure the uncertainty of price changes, trading volumes, or other market variables. To calculate Shannon entropy, you first need to calculate the probability distribution of the variable of interest. This can be done using techniques such as kernel density estimation or histogramming. Once you have the probability distribution, you can calculate Shannon entropy using the formula: H = - sum(p * log(p)), where p is the probability of each value in the distribution.</p></li>
+<li><p><strong>Approximate entropy</strong>: This is a measure of the complexity of a time series. It can be used to identify patterns or anomalies in financial market data. To calculate approximate entropy, you first need to define a tolerance level and a length of comparison. The tolerance level determines how similar two data points need to be in order to be considered “close”. The length of comparison determines how many data points are compared. Once you have defined these parameters, you can calculate approximate entropy using the formula: ApEn(m, r, N) = (phi(m+1) - phi(m)), where m is the length of comparison, r is the tolerance level, N is the length of the time series, and phi() is a function that calculates the average logarithm of the number of sequences in the time series that are similar to each other.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">entropy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="shannon-entropy">
+<h1>Shannon entropy<a class="headerlink" href="#shannon-entropy" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a random price series</span>
+<span class="n">price_series</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Calculate the probability distribution of price changes</span>
+<span class="n">price_changes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">price_series</span><span class="p">)</span> <span class="o">/</span> <span class="n">price_series</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">p</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">price_changes</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Calculate Shannon entropy</span>
+<span class="n">shannon_entropy</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shannon entropy:&quot;</span><span class="p">,</span> <span class="n">shannon_entropy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shannon entropy: 2.685421325303823
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="approximate-entropy">
+<h1>Approximate entropy<a class="headerlink" href="#approximate-entropy" title="Link to this heading">#</a></h1>
+<p>In this code snippet, the ‘apen’ function is defined manually using NumPy and a for loop. The ‘apen’ function takes three arguments: the financial time series data, the embedding dimension (i.e., the number of data points used to define a state), and the tolerance value (i.e., the maximum distance between two similar states).</p>
+<p>The code then generates a random price series of length 1000 using NumPy’s ‘random.normal’ function. The price series is assumed to have a mean of 100 and a standard deviation of 10.</p>
+<p>Finally, the code calculates the ApEn of the price series using the manually defined ‘apen’ function. The embedding dimension is set to 5, and the tolerance value is set to 0.2. The ApEn value is then printed to the console.</p>
+<p>In this implementation of the ‘apen’ function, the data vectors are reshaped to be 2-dimensional arrays with a single column, and then the distance matrix is calculated using the absolute difference between the data vectors. The ‘np.max’ function is then used to find the maximum distance between each pair of data vectors along the 0th axis (i.e., the rows), and the resulting array is compared to the tolerance value to determine the number of similar patterns</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the ApEn function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">apen</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the Approximate Entropy (ApEn) of a time series.</span>
+<span class="sd">    x: the time series data</span>
+<span class="sd">    m: the embedding dimension</span>
+<span class="sd">    r: the tolerance value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span> <span class="o">-</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># Define the data vectors</span>
+        <span class="n">xmi</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">xmj</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Calculate the distance matrix</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">xmj</span> <span class="o">-</span> <span class="n">xmi</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="c1"># Count the number of similar patterns</span>
+        <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ApEn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ApEn</span>
+
+<span class="c1"># Generate a random price series</span>
+<span class="n">price_series</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Calculate the ApEn of the price series</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">embedding_dimension</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">approx_entropy</span> <span class="o">=</span> <span class="n">apen</span><span class="p">(</span><span class="n">price_series</span><span class="p">,</span> <span class="n">embedding_dimension</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Approximate entropy:&quot;</span><span class="p">,</span> <span class="n">approx_entropy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Approximate entropy: 0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>If the approximate entropy is calculated as 0, it means that the price series is highly predictable or regular. In other words, there is very little randomness or complexity in the data. This can happen if the data is generated by a simple model or if there is a high degree of autocorrelation in the data.</p>
+<p>To confirm this, you can try generating a more complex or unpredictable price series and see if the approximate entropy value changes. You can also try adjusting the tolerance and length_of_comparison parameters to see if that affects the result.</p>
+</section>
+<section id="microstructural-features">
+<h1>Microstructural Features:<a class="headerlink" href="#microstructural-features" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Bid-ask spread</strong>: This is the difference between the highest price a buyer is willing to pay (the bid) and the lowest price a seller is willing to accept (the ask). The bid-ask spread is a measure of market liquidity and can be used to identify trading opportunities. To extract bid-ask spread data, you can use order book data provided by exchanges.</p></li>
+<li><p><strong>Trading volume</strong>: This is the total number of shares or contracts that are traded during a given time period. Trading volume is a measure of market activity and can be used to identify trends or changes in market sentiment. To extract trading volume data, you can use trade data provided by exchanges.</p></li>
+<li><p><strong>Order book depth</strong>: This is the total number of shares or contracts that are available at each price level in the order book. Order book depth is a measure of market depth and can be used to identify levels of support or resistance. To extract order book depth data, you can use order book data provided by exchanges.</p></li>
+</ul>
+<p>The Roll Model and Corwin and Schultz are two well-known models for estimating the bid-ask spread in financial markets.</p>
+<p>The Roll Model, developed by Richard Roll in 1984, is a widely used model for estimating the bid-ask spread in equity markets. The model assumes that the spread is proportional to the volatility of the stock’s price, and inversely proportional to the stock’s trading volume. The formula for the Roll Model is: spread = a + b * volatility + c * volume, where a, b, and c are coefficients that can be estimated using regression analysis. The Roll Model is widely used because it is simple and easy to implement, and it has been shown to provide accurate estimates of the bid-ask spread in many different markets.</p>
+<p>Corwin and Schultz is a more recent model, developed in 2012 by Joel Corwin and Paul Schultz. The Corwin and Schultz model is designed to estimate the bid-ask spread in markets where the bid and ask prices are not observed directly, but can be inferred from trade data. The model assumes that the spread is proportional to the difference between the high and low prices of a stock over a given time period. The formula for the Corwin and Schultz model is: spread = a + b * log(d), where a and b are coefficients that can be estimated using regression analysis, and d is the number of trading days over which the high and low prices are observed. The Corwin and Schultz model has been shown to provide accurate estimates of the bid-ask spread in markets where the bid and ask prices are not directly observable, such as the foreign exchange market.</p>
+</section>
+<section id="roll-model">
+<h1>Roll Model<a class="headerlink" href="#roll-model" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Calculate daily returns and volatility</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;return&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;volatility&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;return&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="c1"># Calculate trading volume</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Estimate coefficients using regression analysis</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;volatility&#39;</span><span class="p">,</span> <span class="s1">&#39;volume&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;bid_ask_spread&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Calculate bid-ask spread using Roll Model</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;spread&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;volatility&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">c</span> <span class="o">*</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bid-ask spread using Roll Model:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;spread&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="corwin-and-schultz">
+<h1>Corwin and Schultz<a class="headerlink" href="#corwin-and-schultz" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+
+<span class="c1"># Load data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Calculate high-low range and trading days</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;range&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">]</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;trading_days&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">days</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Estimate coefficients using regression analysis</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;trading_days&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;range&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Calculate bid-ask spread using Corwin and Schultz</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;spread&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bid-ask spread using Corwin and Schultz:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;spread&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="hasbroucks-lambda">
+<h1>Hasbrouck’s Lambda<a class="headerlink" href="#hasbroucks-lambda" title="Link to this heading">#</a></h1>
+<p>Hasbrouck’s Lambda is a microstructure measure that estimates the price impact of a trade. It is based on the idea that the price change resulting from a trade is a function of the trade size and the level of market liquidity. In essence, it measures the market’s sensitivity to trade size, and it is commonly used in transaction cost analysis.</p>
+<p>The formula for Hasbrouck’s Lambda is as follows:</p>
+<p>lambda = delta_p / delta_q</p>
+<p>Where:</p>
+<ul class="simple">
+<li><p>delta_p: the change in the mid-price of the asset</p></li>
+<li><p>delta_q: the trade size</p></li>
+</ul>
+<p>To implement Hasbrouck’s Lambda in Python, you can use the following example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load trade data</span>
+<span class="n">trades</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;trades.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Calculate mid-price</span>
+<span class="n">trades</span><span class="p">[</span><span class="s1">&#39;mid_price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">trades</span><span class="p">[</span><span class="s1">&#39;bid_price&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">trades</span><span class="p">[</span><span class="s1">&#39;ask_price&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># Calculate price change and trade size</span>
+<span class="n">trades</span><span class="p">[</span><span class="s1">&#39;delta_p&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trades</span><span class="p">[</span><span class="s1">&#39;mid_price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span>
+<span class="n">trades</span><span class="p">[</span><span class="s1">&#39;delta_q&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trades</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span>
+
+<span class="c1"># Calculate Hasbrouck’s Lambda</span>
+<span class="n">trades</span><span class="p">[</span><span class="s1">&#39;lambda&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trades</span><span class="p">[</span><span class="s1">&#39;delta_p&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">trades</span><span class="p">[</span><span class="s1">&#39;delta_q&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasbrouck’s Lambda:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">trades</span><span class="p">[</span><span class="s1">&#39;lambda&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The above examples are simplified and may need to be adapted to the specific data and use case. Additionally, the performance of the models may vary depending on the quality and characteristics of the data.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./0alphas-using qstrader有3sources/计算ipynb_case"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Entropy Features:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shannon-entropy">Shannon entropy</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approximate-entropy">Approximate entropy</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#microstructural-features">Microstructural Features:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#roll-model">Roll Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#corwin-and-schultz">Corwin and Schultz</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hasbroucks-lambda">Hasbrouck’s Lambda</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

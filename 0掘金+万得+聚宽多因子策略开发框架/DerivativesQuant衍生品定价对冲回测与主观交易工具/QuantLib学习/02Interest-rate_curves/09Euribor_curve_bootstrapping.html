@@ -1,0 +1,1217 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0掘金+万得+聚宽多因子策略开发框架/DerivativesQuant衍生品定价对冲回测与主观交易工具/QuantLib学习/02Interest-rate_curves/09Euribor_curve_bootstrapping';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../qc.html">1. Qunat research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2024.html">2. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2022.html">3. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/0掘金+万得+聚宽多因子策略开发框架/DerivativesQuant衍生品定价对冲回测与主观交易工具/QuantLib学习/02Interest-rate_curves/09Euribor_curve_bootstrapping.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
+import math
+import numpy as np
+import matplotlib.pyplot as plt
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>import QuantLib as ql
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>today = ql.Date(11, ql.December, 2012)
+ql.Settings.instance().evaluationDate = today
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>eonia = ql.Eonia()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>helpers = [ql.DepositRateHelper(ql.QuoteHandle(ql.SimpleQuote(rate/100)), ql.Period(1, ql.Days), fixingDays, ql.TARGET(), ql.Following, False, ql.Actual360()) for\
+           rate, fixingDays in [(0.04, 0), (0.04, 1), (0.04, 2)]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>helpers += [ql.OISRateHelper(2, ql.Period(*tenor), ql.QuoteHandle(ql.SimpleQuote(rate/100)), eonia) for\
+            rate, tenor in [(0.070, (1, ql.Weeks)), (0.069, (2, ql.Weeks)), (0.078, (3, ql.Weeks)), (0.074, (1, ql.Months))]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>helpers += [ql.DatedOISRateHelper(start_date, end_date, ql.QuoteHandle(ql.SimpleQuote(rate/100)), eonia) for\
+            rate, start_date, end_date in [(0.046, ql.Date(16, ql.January, 2013), ql.Date(13, ql.February, 2013)),
+                                           (0.016, ql.Date(13, ql.February, 2013), ql.Date(13, ql.March, 2013)),
+                                           (-0.007, ql.Date(13, ql.March, 2013), ql.Date(10, ql.April, 2013)),
+                                           (-0.013, ql.Date(10, ql.April, 2013), ql.Date(8, ql.May, 2013)),
+                                           (-0.014, ql.Date(8, ql.May, 2013), ql.Date(12, ql.June, 2013))]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>helpers += [ql.OISRateHelper(2, ql.Period(*tenor), ql.QuoteHandle(ql.SimpleQuote(rate/100)), eonia) for\
+            rate, tenor in [(0.002, (15, ql.Months)), (0.008, (18, ql.Months)), (0.021, (21, ql.Months)), (0.036, (2, ql.Years)),
+                            (0.0127, (3, ql.Years)), (0.274, (4, ql.Years)), (0.456, (5, ql.Years)), (0.647, (6, ql.Years)),
+                            (0.827, (7, ql.Years)), (0.996, (8, ql.Years)), (1.147, (9, ql.Years)), (1.280, (10, ql.Years)),
+                            (1.404, (11, ql.Years)), (1.516, (12, ql.Years)), (1.764, (15, ql.Years)), (1.939, (20, ql.Years)),
+                            (2.003, (25, ql.Years)), (2.038, (30, ql.Years))]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>jumps = [ql.QuoteHandle(ql.SimpleQuote(math.exp(-J*2.0/360))) for J in [0.00102, 0.00086]]
+jump_dates = [ql.Date(31, ql.December, 2012), ql.Date(31, ql.December, 2013)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>eonia_curve = ql.PiecewiseLogCubicDiscount(2, ql.TARGET(), helpers, ql.Actual365Fixed(), jumps, jump_dates)
+eonia_curve.enableExtrapolation()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>helpers = [ql.DepositRateHelper(ql.QuoteHandle(ql.SimpleQuote(0.312/100)), ql.Period(6, ql.Months), 3, ql.TARGET(), ql.Following, False, ql.Actual360())]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>euribor6m = ql.Euribor6M()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>helpers += [ql.FraRateHelper(ql.QuoteHandle(ql.SimpleQuote(rate/100)), start, euribor6m) for rate, start in\
+            [(0.293, 1), (0.272, 2), (0.260, 3), (0.256, 4), (0.252, 5), (0.248, 6),
+             (0.254, 7), (0.261, 8), (0.267, 9), (0.279, 10), (0.291, 11), (0.303, 12),
+             (0.318, 13), (0.335, 14), (0.352, 15), (0.371, 16), (0.389, 17), (0.409, 18)]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>discount_curve = ql.RelinkableYieldTermStructureHandle()
+discount_curve.linkTo(eonia_curve)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>helpers += [ql.SwapRateHelper(ql.QuoteHandle(ql.SimpleQuote(rate/100)), ql.Period(tenor, ql.Years), ql.TARGET(), ql.Annual, ql.Unadjusted, ql.Thirty360(ql.Thirty360.BondBasis),
+                              euribor6m, ql.QuoteHandle(), ql.Period(0, ql.Days), discount_curve) for rate, tenor in \
+            [(0.424, 3), (0.576, 4), (0.762, 5), (0.954, 6), (1.125, 7), (1.303, 8),
+             (1.452, 9), (1.584, 10), (1.809, 12), (2.037, 15), (2.187, 20), (2.234, 25),
+             (2.256, 30), (2.295, 35), (2.348, 40), (2.421, 50), (2.463, 60)]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>euribor6m_curve = ql.PiecewiseLogCubicDiscount(2, ql.TARGET(), helpers, ql.Actual365Fixed())
+euribor6m_curve.enableExtrapolation()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>spot = euribor6m_curve.referenceDate()
+dates = [spot+ql.Period(i, ql.Months) for i in range(0, 60*12+1)]
+rates = [euribor6m_curve.forwardRate(d, euribor6m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+_, ax = plt.subplots()
+ax.plot(rates)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1afb3876d68&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/b77663c511f0993f9efa54762d7c37f24612b77f07cd55160bd7405e23917dd9.png" src="../../../../_images/b77663c511f0993f9efa54762d7c37f24612b77f07cd55160bd7405e23917dd9.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>dates = [spot+ql.Period(i, ql.Weeks) for i in range(0, 52*4+1)]
+rates = [euribor6m_curve.forwardRate(d, euribor6m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+_, ax = plt.subplots()
+ax.plot(rates)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1afb37f0860&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/3dae35be6362705a78ad8db38d7292082c49696fef91542e140fcae5b8caa0f2.png" src="../../../../_images/3dae35be6362705a78ad8db38d7292082c49696fef91542e140fcae5b8caa0f2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>euribor6m_curve_0 = euribor6m_curve
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>d = ql.TARGET().advance(spot, 1, ql.Days)
+F_x = euribor6m_curve_0.forwardRate(d, ql.TARGET().advance(d, 6, ql.Months), ql.Actual360(), ql.Simple).rate()
+F_on = eonia_curve.forwardRate(d, ql.TARGET().advance(d, 6, ql.Months), ql.Actual360(), ql.Simple).rate()
+day_counter = euribor6m.dayCounter()
+T_x = day_counter.yearFraction(d, ql.TARGET().advance(d, 6, ql.Months))
+alpha = (F_x - F_on)
+print(alpha)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.002949310810251873
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>synth_helpers = []
+for n, units in [(1, ql.Days), (1, ql.Weeks), (2, ql.Weeks), (3, ql.Weeks), (1, ql.Months), (2, ql.Months), (3, ql.Months), (4, ql.Months), (5, ql.Months)]:
+    t = day_counter.yearFraction(spot, ql.TARGET().advance(spot, n, units))
+    F_on = eonia_curve.forwardRate(spot, ql.TARGET().advance(spot, n, units), ql.Actual360(), ql.Simple).rate()
+    F = F_on + alpha
+    print(&quot;{0}: {1}&quot;.format(ql.Period(n, units), F))
+    synth_helpers.append(ql.DepositRateHelper(ql.QuoteHandle(ql.SimpleQuote(F)), ql.Period(n, units), 2, ql.TARGET(), ql.Following, False, ql.Actual360()))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1D: 0.0033493108102544936
+1W: 0.003649310810718946
+2W: 0.0036393108101770285
+3W: 0.0037293108101896085
+1M: 0.0036893108101338193
+2M: 0.0035588914035551457
+3M: 0.0034190271140937226
+4M: 0.0032720330979354915
+5M: 0.003187748269877364
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>euribor6m_curve = ql.PiecewiseLogCubicDiscount(2, ql.TARGET(), helpers+synth_helpers, ql.Actual365Fixed())
+euribor6m_curve.enableExtrapolation()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>dates = [spot+ql.Period(i, ql.Weeks) for i in range(0, 52*4+1)]
+rates_0 = [euribor6m_curve_0.forwardRate(d, euribor6m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+rates = [euribor6m_curve.forwardRate(d, euribor6m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+plt.plot(rates)
+plt.plot(rates_0)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1afb59a89b0&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/19acf404353d838f7d4bd5ae04e7de9f8a98081228a72468da453db03e2704b2.png" src="../../../../_images/19acf404353d838f7d4bd5ae04e7de9f8a98081228a72468da453db03e2704b2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>dates = [spot+ql.Period(i, ql.Weeks) for i in range(65, 130)]
+rates_0 = [euribor6m_curve_0.forwardRate(d, euribor6m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+rates = [euribor6m_curve.forwardRate(d, euribor6m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+plt.plot(rates)
+plt.plot(rates_0)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1afb3578f28&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/dd1dd94d04482f2a231033fd5015202de51f471d00178530cf4da35bbb016e48.png" src="../../../../_images/dd1dd94d04482f2a231033fd5015202de51f471d00178530cf4da35bbb016e48.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>start = ql.TARGET().advance(spot, 1, ql.Days)
+end = ql.TARGET().advance(start, 6, ql.Months)
+F_x = euribor6m_curve_0.forwardRate(start, end, ql.Actual360(), ql.Simple).rate()
+F_on = eonia_curve.forwardRate(start, end, ql.Actual360(), ql.Simple).rate()
+T_x0 = day_counter.yearFraction(start, end)
+Delta0 = F_x - F_on
+
+start = ql.TARGET().advance(spot, 1, ql.Months)
+end = ql.TARGET().advance(start, 6, ql.Months)
+F_x = euribor6m_curve_0.forwardRate(start, end, ql.Actual360(), ql.Simple).rate()
+F_on = eonia_curve.forwardRate(start, end, ql.Actual360(), ql.Simple).rate()
+T_x1 = day_counter.yearFraction(start, end)
+Delta1 = F_x - F_on
+
+t1 = day_counter.yearFraction(spot, start)
+t2 = day_counter.yearFraction(spot, end)
+
+L = np.array([[T_x0, 0.5*T_x0**2], [T_x1, 0.5*(t2**2-t2**1)]])
+b = np.array([Delta0*T_x0, Delta1*T_x1])
+alpga, beta = np.linalg.solve(L, b)
+print(alpha)
+print(beta)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.002949310810251873
+6.779472205633665e-05
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>synth_helpers = []
+for n, units in [(1, ql.Days), (1, ql.Weeks), (2, ql.Weeks), (3, ql.Weeks), (1, ql.Months), (2, ql.Months), (3, ql.Months), (4, ql.Months), (5, ql.Months)]:
+    t = day_counter.yearFraction(spot, ql.TARGET().advance(spot, n, units))
+    F_on = eonia_curve.forwardRate(spot, ql.TARGET().advance(spot, n, units), ql.Actual360(), ql.Simple).rate()
+    F = F_on + alpha + 0.5*beta*t
+    print(&quot;{0}: {1}&quot;.format(ql.Period(n, units), F))
+    synth_helpers.append(ql.DepositRateHelper(ql.QuoteHandle(ql.SimpleQuote(F)), ql.Period(n, units), 2, ql.TARGET(), ql.Following, False, ql.Actual360()))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1D: 0.0033494049695906828
+1W: 0.0036499699260722717
+2W: 0.0036406290408836795
+3W: 0.003731288156249585
+1M: 0.003692323908891879
+2M: 0.003564729282398886
+3M: 0.003427501454350765
+4M: 0.0032836146962867824
+5M: 0.003201966329641957
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>euribor6m_curve = ql.PiecewiseLogCubicDiscount(2, ql.TARGET(), helpers+synth_helpers, ql.Actual365Fixed())
+euribor6m_curve.enableExtrapolation()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>dates = [spot+ql.Period(i, ql.Weeks) for i in range(65, 130)]
+rates_0 = [euribor6m_curve_0.forwardRate(d, euribor6m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+rates = [euribor6m_curve.forwardRate(d, euribor6m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+plt.plot(rates)
+plt.plot(rates_0)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1afb6d29c88&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/a90ef976074ee3573a410a25485650c4e0c7a106958cf957a6969494abf675ad.png" src="../../../../_images/a90ef976074ee3573a410a25485650c4e0c7a106958cf957a6969494abf675ad.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>dates = [spot+ql.Period(i, ql.Weeks) for i in range(0, 52*4+1)]
+rates_0 = [euribor6m_curve_0.forwardRate(d, euribor6m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+rates = [euribor6m_curve.forwardRate(d, euribor6m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+plt.plot(rates)
+plt.plot(rates_0)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1afb6d03240&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/f351127612fb8b91f8828fcd6bcd11ff71b5c830cae1b929b4ef2ca2a0153c60.png" src="../../../../_images/f351127612fb8b91f8828fcd6bcd11ff71b5c830cae1b929b4ef2ca2a0153c60.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>spot = euribor6m_curve.referenceDate()
+dates = [spot+ql.Period(i, ql.Weeks) for i in range(0, 52*2+1)]
+rates = [euribor6m_curve.forwardRate(d, euribor6m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+plt.plot(rates)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1afb6e7f8d0&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/ed412d2758da0f1599a9069100edce7a25263c4516aebcc8ad22394dc86bba2a.png" src="../../../../_images/ed412d2758da0f1599a9069100edce7a25263c4516aebcc8ad22394dc86bba2a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>spot = euribor6m_curve.referenceDate()
+dates = [spot+ql.Period(i, ql.Months) for i in range(0, 60*12+1)]
+rates = [euribor6m_curve.forwardRate(d, euribor6m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+plt.plot(rates)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1afb6f34f98&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/1a89a353dc16f786ecae8b0e68ee2f2d17b0b36491c3b18f73fc9d124288010f.png" src="../../../../_images/1a89a353dc16f786ecae8b0e68ee2f2d17b0b36491c3b18f73fc9d124288010f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>euribor12m = ql.Euribor1Y()
+helpers = [ql.DepositRateHelper(ql.QuoteHandle(ql.SimpleQuote(0.54/100)), ql.Period(12, ql.Months), 2, ql.TARGET(), ql.Following, False, ql.Actual360())]
+helpers += [ ql.FraRateHelper(ql.QuoteHandle(ql.SimpleQuote(0.5070/100)), 12, euribor12m)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>helpers += [ ql.SwapRateHelper(ql.QuoteHandle(ql.SimpleQuote((rate+basis)/100)), ql.Period(tenor, ql.Years), ql.TARGET(), ql.Annual, ql.Unadjusted, ql.Thirty360(ql.Thirty360.BondBasis),\
+                               euribor12m, ql.QuoteHandle(), ql.Period(0, ql.Days), discount_curve) for rate, basis, tenor in 
+             [(0.424, 0.179, 3), (0.576, 0.164, 4), (0.762, 0.151, 5), (0.954, 0.139, 6), (1.135, 0.130, 7), (1.303, 0.123, 8), (1.452, 0.118, 9), (1.584, 0.113, 10),
+              (1.809, 0.106, 12), (2.037, 0.093, 15), (2.187, 0.080, 20), (2.234, 0.072, 25), (2.256, 0.066, 30)]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>synth_helpers = [ql.DepositRateHelper(ql.QuoteHandle(ql.SimpleQuote(rate/100)), ql.Period(*tenor), 2, ql.TARGET(), ql.Following, False, ql.Actual360())\
+                 for rate, tenor in [(0.6537, (1, ql.Months)), (0.6187, (3, ql.Months)), (0.5772, (6, ql.Months)), (0.5563, (9, ql.Months))]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>synth_helpers += [ql.FraRateHelper(ql.QuoteHandle(ql.SimpleQuote(rate/100)), months_to_start, euribor12m) for rate, months_to_start in \
+                  [(0.4974, 3), (0.4783, 6), (0.4822, 9), (0.5481, 15), (0.6025, 18)]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>last_nasis = 0.066
+synth_helpers += [ql.SwapRateHelper(ql.QuoteHandle(ql.SimpleQuote((rate+last_nasis)/100)), ql.Period(tenor, ql.Years), ql.TARGET(), ql.Annual, ql.Unadjusted, \
+                                    ql.Thirty360(ql.Thirty360.BondBasis), euribor12m, ql.QuoteHandle(), ql.Period(0, ql.Days), discount_curve) for rate, tenor in \
+                  [(2.295, 35), (2.348, 40), (2.421, 50), (2.463, 60)]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>euribor12m_curve = ql.PiecewiseLogCubicDiscount(2, ql.TARGET(), helpers+synth_helpers, ql.Actual365Fixed())
+euribor12m_curve.enableExtrapolation()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>euribor12m_curve_0 = ql.PiecewiseLogCubicDiscount(2, ql.TARGET(), helpers, ql.Actual365Fixed())
+euribor12m_curve_0.enableExtrapolation()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>spot = euribor12m_curve.referenceDate()
+dates = [spot+ql.Period(i, ql.Weeks) for i in range(0, 52*2+1)]
+rates_0 = [euribor12m_curve_0.forwardRate(d, euribor12m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+rates = [euribor12m_curve.forwardRate(d, euribor12m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+plt.plot(rates)
+plt.plot(rates_0)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1afb6f66908&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/9c63eaf8ee41846bc2fed5ad92060aa1ee8659b56c42a26ca95ea665bd6efa2e.png" src="../../../../_images/9c63eaf8ee41846bc2fed5ad92060aa1ee8659b56c42a26ca95ea665bd6efa2e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>dates = [spot+ql.Period(i, ql.Months) for i in range(0, 60*12+1)]
+rates_0 = [euribor12m_curve_0.forwardRate(d, euribor12m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+rates = [euribor12m_curve.forwardRate(d, euribor12m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+plt.plot(rates)
+plt.plot(rates_0)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1afb7005cf8&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/3721d1b1d47e3796ac0c20fa3c343d4ddf4ef36afbf9dd5d153a22abcf4cf6c3.png" src="../../../../_images/3721d1b1d47e3796ac0c20fa3c343d4ddf4ef36afbf9dd5d153a22abcf4cf6c3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>euribor3m = ql.Euribor3M()
+helpers = [ql.DepositRateHelper(ql.QuoteHandle(ql.SimpleQuote(0.179/100)), ql.Period(3, ql.Months), 3, ql.TARGET(), ql.Following, False, ql.Actual360())]
+helpers += [ql.FuturesRateHelper(ql.QuoteHandle(ql.SimpleQuote(100-rate)), start_date, euribor3m, ql.QuoteHandle()) for rate, start_date in\
+            [(0.1775, ql.Date(19, ql.December, 2012)), (0.1274, ql.Date(20, ql.March, 2013)), (0.1222, ql.Date(19, ql.June, 2013)), (0.1269, ql.Date(18, ql.September, 2013)),
+             (0.1565, ql.Date(18, ql.December, 2013)), (0.1961, ql.Date(19, ql.March, 2014)), (0.2556, ql.Date(18, ql.June, 2014)), (0.3101, ql.Date(17, ql.September, 2014))]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>helpers += [ ql.SwapRateHelper(ql.QuoteHandle(ql.SimpleQuote((rate-basis)/100)), ql.Period(tenor, ql.Years), ql.TARGET(), ql.Annual, ql.Unadjusted, ql.Thirty360(ql.Thirty360.BondBasis),\
+                               euribor12m, ql.QuoteHandle(), ql.Period(0, ql.Days), discount_curve) for rate, basis, tenor in 
+             [(0.424, 0.179, 3), (0.576, 0.164, 4), (0.762, 0.151, 5), (0.954, 0.139, 6), (1.135, 0.130, 7), (1.303, 0.123, 8), (1.452, 0.118, 9), (1.584, 0.113, 10),
+              (1.809, 0.106, 12), (2.037, 0.093, 15), (2.187, 0.080, 20), (2.234, 0.072, 25), (2.256, 0.066, 30), (2.348, 0.0600, 40), (2.421, 0.0540, 50)]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>synth_helpers = [ql.DepositRateHelper(ql.QuoteHandle(ql.SimpleQuote(rate/100)), ql.Period(*tenor), 2, ql.TARGET(), ql.Following, False, ql.Actual360())\
+                 for rate, tenor in [(0.1865, (2, ql.Weeks)), (0.1969, (3, ql.Weeks)), (0.1951, (1, ql.Months)), (0.1874, (2, ql.Months))]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>synth_helpers += [ql.SwapRateHelper(ql.QuoteHandle(ql.SimpleQuote((rate-basis)/100)), ql.Period(tenor, ql.Years), ql.TARGET(), ql.Annual, ql.Unadjusted,\
+                  ql.Thirty360(ql.Thirty360.BondBasis), euribor3m, ql.QuoteHandle(), ql.Period(0, ql.Days), discount_curve) for rate, basis, tenor in \
+                  [(2.295, 0.0650, 35), (2.463, 0.0540, 60)]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>futures = [(0.1775, ql.Date(19, ql.December, 2012)), (0.1274, ql.Date(20, ql.March, 2013)), (0.1222, ql.Date(19, ql.June, 2013)), (0.1269, ql.Date(18, ql.September, 2013)),
+           (0.1565, ql.Date(18, ql.December, 2013)), (0.1961, ql.Date(19, ql.March, 2014)), (0.2556, ql.Date(18, ql.June, 2014)), (0.3101, ql.Date(17, ql.September, 2014))]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>spot = euribor6m_curve.referenceDate()
+day_counter = euribor3m.dayCounter()
+quotes, times = zip(*[(q, day_counter.yearFraction(spot, d)) for q, d, in futures])
+f = ql.MonotonicCubicNaturalSpline(times[:4]+times[5:], quotes[:4]+quotes[5:])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>ts, fs = zip(*[(t, f(t, True)) for t in np.arange(0.0, 2.0, 0.01)])
+plt.plot(ts, fs)
+plt.plot(quotes, &#39;o&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1afb7116748&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/167d01456ff53633ee1f50b922ece3e48321944b922f6207a027710add56d93e.png" src="../../../../_images/167d01456ff53633ee1f50b922ece3e48321944b922f6207a027710add56d93e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>print(quotes[4])
+print(f(times[4]))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1565
+0.15056967779056388
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>J = (quotes[4] - f(times[4])) / 100
+tau = day_counter.yearFraction(ql.Date(18, ql.December, 2013), ql.Date(18, ql.March, 2014))
+print(J)
+print(tau)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.930322209436123e-05
+0.25
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>jumps = [ql.QuoteHandle(ql.SimpleQuote(math.exp(-J*tau)))]
+jump_dates = [ql.Date(31, ql.December, 2013)]
+euribor3m_curve = ql.PiecewiseLogCubicDiscount(2, ql.TARGET(), helpers+synth_helpers, ql.Actual365Fixed(), jumps, jump_dates)
+euribor6m_curve.enableExtrapolation()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>spot = euribor3m_curve.referenceDate()
+dates = [spot+ql.Period(i, ql.Weeks) for i in range(0, 52*2+1)]
+rates = [euribor3m_curve.forwardRate(d, euribor3m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+plt.plot(rates)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1afb7233ac8&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/d04efd543e2f9f6f380cb5335530cfad580d193e280f47271bad90c6bb0c90bc.png" src="../../../../_images/d04efd543e2f9f6f380cb5335530cfad580d193e280f47271bad90c6bb0c90bc.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>dates = [spot+ql.Period(i, ql.Months) for i in range(0, 30*12+1)]
+rates = [euribor3m_curve.forwardRate(d, euribor3m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+plt.plot(rates)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1afb74ba748&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/1f5f32080b6797a062f4435867b5bf9b9276dd2b37a76d1ab939fbd575178fac.png" src="../../../../_images/1f5f32080b6797a062f4435867b5bf9b9276dd2b37a76d1ab939fbd575178fac.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>euribor1m = ql.Euribor1M()
+helpers = [ql.DepositRateHelper(ql.QuoteHandle(ql.SimpleQuote(0.110/100)), ql.Period(1, ql.Months), 2, ql.TARGET(), ql.Following, False, ql.Actual360())]
+helpers += [ql.SwapRateHelper(ql.QuoteHandle(ql.SimpleQuote(rate/100)), ql.Period(tenor, ql.Months), ql.TARGET(), ql.Monthly, ql.Unadjusted,\
+                              ql.Thirty360(ql.Thirty360.BondBasis), euribor1m, ql.QuoteHandle(), ql.Period(0, ql.Days), discount_curve) for rate, tenor in \
+            [(0.106, 2), (0.096, 3), (0.085, 4), (0.079, 5), (0.075, 6), (0.071, 7), (0.069, 8), (0.066, 9), (0.065, 10), (0.064, 11), (0.063, 12)]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>helpers += [ ql.SwapRateHelper(ql.QuoteHandle(ql.SimpleQuote((rate-basis)/100)), ql.Period(tenor, ql.Years), ql.TARGET(), ql.Annual, ql.Unadjusted, ql.Thirty360(ql.Thirty360.BondBasis),\
+                               euribor12m, ql.QuoteHandle(), ql.Period(0, ql.Days), discount_curve) for rate, basis, tenor in 
+             [(0.324, 0.226, 2), (0.424, 0.238, 3), (0.576, 0.246, 4), (0.762, 0.250, 5), (0.954, 0.250, 6), (1.135, 0.248, 7), (1.303, 0.245, 8), (1.452, 0.241, 9),
+              (1.584, 0.237, 10), (1.703, 0.233, 11), (1.809, 0.228, 12), (2.037, 0.211, 15), (2.187, 0.189, 20), (2.234, 0.175, 25), (2.256, 0.163, 30)]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>synth_helpers = [ql.DepositRateHelper(ql.QuoteHandle(ql.SimpleQuote(rate/100)), ql.Period(*tenor), 2, ql.TARGET(), ql.Following, False, ql.Actual360())\
+                 for rate, tenor in [(0.0661, (1, ql.Days)), (0.098, (1, ql.Weeks)), (0.0993, (2, ql.Weeks)), (0.1105, (3, ql.Weeks))]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>last_basis = 0.163
+synth_helpers += [ql.SwapRateHelper(ql.QuoteHandle(ql.SimpleQuote((rate-last_basis)/100)), ql.Period(tenor, ql.Years), ql.TARGET(), ql.Annual, ql.Unadjusted,\
+                  ql.Thirty360(ql.Thirty360.BondBasis), euribor3m, ql.QuoteHandle(), ql.Period(0, ql.Days), discount_curve) for rate, tenor in \
+                  [(2.295, 35), (2.348, 40), (2.421, 50), (2.463, 60)]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>J = 0.0016
+t_j = euribor1m.dayCounter().yearFraction(ql.Date(31, ql.December, 2012), ql.Date(2, ql.January, 2013))
+B = 1.0/(1.0 + J*t_j)
+jumps = [ql.QuoteHandle(ql.SimpleQuote(B))]
+jump_dates = [ql.Date(31, ql.December, 2013)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>euribor1m_curve = ql.PiecewiseLogCubicDiscount(2, ql.TARGET(), helpers+synth_helpers, ql.Actual365Fixed(), jumps, jump_dates)
+euribor3m_curve.enableExtrapolation()
+euribor1m_curve.enableExtrapolation()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>spot = euribor1m_curve.referenceDate()
+dates = [spot+ql.Period(i, ql.Weeks) for i in range(0, 52*2+1)]
+rates = [euribor1m_curve.forwardRate(d, euribor1m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+plt.plot(rates)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1afb767f390&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/ddb0980cc45935bae32b504bf83e1f76a3c75d21360fa9b02585a4a9ab0488ed.png" src="../../../../_images/ddb0980cc45935bae32b504bf83e1f76a3c75d21360fa9b02585a4a9ab0488ed.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>dates = [spot+ql.Period(i, ql.Months) for i in range(0, 30*12+1)]
+rates = [euribor1m_curve.forwardRate(d, euribor1m.maturityDate(d), ql.Actual360(), ql.Simple).rate() for d in dates]
+plt.plot(rates)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1afb77299e8&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/8d5d785bf725ae4730d145fa6948f4d32bcffefc1837d8554a5729a6212b63ec.png" src="../../../../_images/8d5d785bf725ae4730d145fa6948f4d32bcffefc1837d8554a5729a6212b63ec.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>dates = [spot+ql.Period(i, ql.Months) for i in range(0, 12*30+1)]
+
+def basis(curve, tenor):
+    results = []
+    for d in dates:
+        d2 = ql.TARGET().advance(d, ql.Period(*tenor), ql.ModifiedFollowing)
+        FRA1 = curve.forwardRate(d, d2, ql.Actual360(), ql.Simple).rate()
+        FRA2 = eonia_curve.forwardRate(d, d2, ql.Actual360(), ql.Simple).rate()
+        results.append(FRA1-FRA2)
+    return results
+
+basis_1m = basis(euribor1m_curve, (1, ql.Months))
+basis_3m = basis(euribor3m_curve, (3, ql.Months))
+basis_6m = basis(euribor6m_curve, (6, ql.Months))
+basis_12m = basis(euribor12m_curve, (12, ql.Months))
+plt.plot(basis_1m)
+plt.plot(basis_3m)
+plt.plot(basis_6m)
+plt.plot(basis_12m)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1afb77d0be0&gt;]
+</pre></div>
+</div>
+<img alt="../../../../_images/ee1fe303f94e76f9e8a600252f493390a7401e3519147c81a3d9dcc7fe0a3946.png" src="../../../../_images/ee1fe303f94e76f9e8a600252f493390a7401e3519147c81a3d9dcc7fe0a3946.png" />
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python2",
+            path: "./0掘金+万得+聚宽多因子策略开发框架/DerivativesQuant衍生品定价对冲回测与主观交易工具/QuantLib学习/02Interest-rate_curves"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python2'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

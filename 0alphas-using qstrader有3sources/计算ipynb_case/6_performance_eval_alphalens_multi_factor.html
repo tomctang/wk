@@ -1,0 +1,1106 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Performance Analysis with Alphalens &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0alphas-using qstrader有3sources/计算ipynb_case/6_performance_eval_alphalens_multi_factor';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../qc.html">1. Qunat research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nb2024.html">2. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nb2022.html">3. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/0alphas-using qstrader有3sources/计算ipynb_case/6_performance_eval_alphalens_multi_factor.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Performance Analysis with Alphalens</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-settings">Imports &amp; Settings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alphalens-analysis">Alphalens Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-trade-prices">Get trade prices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-factors">Load factors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-alphalens-input-data">Generate Alphalens input data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-metrics">Compute Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-spread-and-cumulative-returns">Plot spread and cumulative returns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-tearsheet">Create Tearsheet</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="performance-analysis-with-alphalens">
+<h1>Performance Analysis with Alphalens<a class="headerlink" href="#performance-analysis-with-alphalens" title="Link to this heading">#</a></h1>
+<section id="imports-settings">
+<h2>Imports &amp; Settings<a class="headerlink" href="#imports-settings" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">alphalens.tears</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">create_returns_tear_sheet</span><span class="p">,</span>
+                             <span class="n">create_summary_tear_sheet</span><span class="p">,</span>
+                             <span class="n">create_full_tear_sheet</span><span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">alphalens</span><span class="w"> </span><span class="kn">import</span> <span class="n">plotting</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">alphalens</span><span class="w"> </span><span class="kn">import</span> <span class="n">performance</span> <span class="k">as</span> <span class="n">perf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">alphalens</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATA_STORE</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;assets.h5&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="alphalens-analysis">
+<h2>Alphalens Analysis<a class="headerlink" href="#alphalens-analysis" title="Link to this heading">#</a></h2>
+<section id="get-trade-prices">
+<h3>Get trade prices<a class="headerlink" href="#get-trade-prices" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_trade_prices</span><span class="p">(</span><span class="n">tickers</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">DATA_STORE</span><span class="p">,</span> <span class="s1">&#39;quandl/wiki/prices&#39;</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="s1">&#39;2006&#39;</span><span class="p">:</span><span class="s1">&#39;2017&#39;</span><span class="p">,</span> <span class="n">tickers</span><span class="p">],</span> <span class="s1">&#39;adj_open&#39;</span><span class="p">]</span>
+              <span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="s1">&#39;UTC&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trade_prices</span> <span class="o">=</span> <span class="n">get_trade_prices</span><span class="p">(</span><span class="n">tickers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trade_prices</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 3020 entries, 2006-01-03 to 2017-12-29
+Columns: 500 entries, A to ZION
+dtypes: float64(500)
+memory usage: 11.5 MB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-factors">
+<h3>Load factors<a class="headerlink" href="#load-factors" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factors</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;data.h5&#39;</span><span class="p">,</span> <span class="s1">&#39;factors/common&#39;</span><span class="p">),</span>
+                      <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;data.h5&#39;</span><span class="p">,</span> <span class="s1">&#39;factors/formulaic&#39;</span><span class="p">)</span>
+                      <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;alpha_</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">:</span><span class="s1">03</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)],</span>
+                     <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+           <span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+           <span class="o">.</span><span class="n">sort_index</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factors</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+MultiIndex: 1255093 entries, (A, 2007-01-04 00:00:00) to (ZION, 2016-12-29 00:00:00)
+Columns: 135 entries, sector to alpha_101
+dtypes: float64(124), int64(11)
+memory usage: 1.3+ GB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tickers</span> <span class="o">=</span> <span class="n">factors</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="s1">&#39;alpha_054&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factor</span> <span class="o">=</span> <span class="p">(</span><span class="n">factors</span><span class="p">[</span><span class="n">alpha</span><span class="p">]</span>
+          <span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">)</span>
+          <span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+          <span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="s1">&#39;UTC&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
+          <span class="o">.</span><span class="n">sort_index</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="generate-alphalens-input-data">
+<h3>Generate Alphalens input data<a class="headerlink" href="#generate-alphalens-input-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factor_data</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_clean_factor_and_forward_returns</span><span class="p">(</span><span class="n">factor</span><span class="o">=</span><span class="n">factor</span><span class="p">,</span>
+                                                   <span class="n">prices</span><span class="o">=</span><span class="n">trade_prices</span><span class="p">,</span>
+                                                   <span class="n">quantiles</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                                                   <span class="n">max_loss</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span>
+                                                   <span class="n">periods</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">factor_data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dropped 0.5% entries from factor data: 0.0% in forward returns computation and 0.4% in binning phase (set max_loss=0 to see potentially suppressed Exceptions).
+max_loss is 35.0%, not exceeded: OK!
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+MultiIndex: 1249360 entries, (2007-01-04 00:00:00+00:00, A) to (2016-12-29 00:00:00+00:00, ZION)
+Data columns (total 5 columns):
+1D                 1249360 non-null float64
+5D                 1249360 non-null float64
+10D                1249360 non-null float64
+factor             1249360 non-null float64
+factor_quantile    1249360 non-null float64
+dtypes: float64(5)
+memory usage: 52.4+ MB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="compute-metrics">
+<h3>Compute Metrics<a class="headerlink" href="#compute-metrics" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_quant_ret_bydate</span><span class="p">,</span> <span class="n">std_quant_daily</span> <span class="o">=</span> <span class="n">perf</span><span class="o">.</span><span class="n">mean_return_by_quantile</span><span class="p">(</span>
+    <span class="n">factor_data</span><span class="p">,</span>
+    <span class="n">by_date</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">by_group</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">demeaned</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">group_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">mean_quant_rateret_bydate</span> <span class="o">=</span> <span class="n">mean_quant_ret_bydate</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="n">rate_of_return</span><span class="p">,</span>
+    <span class="n">base_period</span><span class="o">=</span><span class="n">mean_quant_ret_bydate</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">compstd_quant_daily</span> <span class="o">=</span> <span class="n">std_quant_daily</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">std_conversion</span><span class="p">,</span>
+                                            <span class="n">base_period</span><span class="o">=</span><span class="n">std_quant_daily</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">alpha_beta</span> <span class="o">=</span> <span class="n">perf</span><span class="o">.</span><span class="n">factor_alpha_beta</span><span class="p">(</span><span class="n">factor_data</span><span class="p">,</span>
+                                    <span class="n">demeaned</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">mean_ret_spread_quant</span><span class="p">,</span> <span class="n">std_spread_quant</span> <span class="o">=</span> <span class="n">perf</span><span class="o">.</span><span class="n">compute_mean_returns_spread</span><span class="p">(</span>
+    <span class="n">mean_quant_rateret_bydate</span><span class="p">,</span>
+    <span class="n">factor_data</span><span class="p">[</span><span class="s2">&quot;factor_quantile&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+    <span class="n">factor_data</span><span class="p">[</span><span class="s2">&quot;factor_quantile&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+    <span class="n">std_err</span><span class="o">=</span><span class="n">compstd_quant_daily</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_ret_spread_quant</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;Mean Period Wise Spread (bps)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">alpha_beta</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1D</th>
+      <th>5D</th>
+      <th>10D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Mean Period Wise Spread (bps)</th>
+      <td>1.616562</td>
+      <td>1.239560</td>
+      <td>0.685174</td>
+    </tr>
+    <tr>
+      <th>Ann. alpha</th>
+      <td>-0.017286</td>
+      <td>0.011855</td>
+      <td>0.012242</td>
+    </tr>
+    <tr>
+      <th>beta</th>
+      <td>0.056012</td>
+      <td>0.053415</td>
+      <td>0.044731</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="plot-spread-and-cumulative-returns">
+<h3>Plot spread and cumulative returns<a class="headerlink" href="#plot-spread-and-cumulative-returns" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">mean_quant_ret</span><span class="p">,</span> <span class="n">std_quantile</span> <span class="o">=</span> <span class="n">mean_return_by_quantile</span><span class="p">(</span><span class="n">factor_data</span><span class="p">,</span>
+                                                       <span class="n">by_group</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                                       <span class="n">demeaned</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">mean_quant_rateret</span> <span class="o">=</span> <span class="n">mean_quant_ret</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">rate_of_return</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                                          <span class="n">base_period</span><span class="o">=</span><span class="n">mean_quant_ret</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">plot_quantile_returns_bar</span><span class="p">(</span><span class="n">mean_quant_rateret</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+
+<span class="n">factor_returns</span> <span class="o">=</span> <span class="n">perf</span><span class="o">.</span><span class="n">factor_returns</span><span class="p">(</span><span class="n">factor_data</span><span class="p">)</span>
+
+<span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Factor Weighted Long/Short Portfolio Cumulative Return (1D Period)&quot;</span>
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_cumulative_returns</span><span class="p">(</span><span class="n">factor_returns</span><span class="p">[</span><span class="s1">&#39;1D&#39;</span><span class="p">],</span>
+                                 <span class="n">period</span><span class="o">=</span><span class="s1">&#39;1D&#39;</span><span class="p">,</span>
+                                 <span class="n">freq</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">tseries</span><span class="o">.</span><span class="n">offsets</span><span class="o">.</span><span class="n">BDay</span><span class="p">(),</span>
+                                 <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+                                 <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_cumulative_returns_by_quantile</span><span class="p">(</span><span class="n">mean_quant_ret_bydate</span><span class="p">[</span><span class="s1">&#39;1D&#39;</span><span class="p">],</span>
+                                             <span class="n">freq</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">tseries</span><span class="o">.</span><span class="n">offsets</span><span class="o">.</span><span class="n">BDay</span><span class="p">(),</span>
+                                             <span class="n">period</span><span class="o">=</span><span class="s1">&#39;1D&#39;</span><span class="p">,</span>
+                                             <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/339aa3211c536eb1d4936076905f1fff1b6e82f0ea56911c8e1605e22d4f03bc.png" src="../../_images/339aa3211c536eb1d4936076905f1fff1b6e82f0ea56911c8e1605e22d4f03bc.png" />
+</div>
+</div>
+</section>
+<section id="create-tearsheet">
+<h3>Create Tearsheet<a class="headerlink" href="#create-tearsheet" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_summary_tear_sheet</span><span class="p">(</span><span class="n">factor_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Quantiles Statistics
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+      <th>count %</th>
+    </tr>
+    <tr>
+      <th>factor_quantile</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1.0</th>
+      <td>-564576.097386</td>
+      <td>-0.053881</td>
+      <td>-1558.250338</td>
+      <td>7272.525816</td>
+      <td>250286</td>
+      <td>20.033137</td>
+    </tr>
+    <tr>
+      <th>2.0</th>
+      <td>-84.567946</td>
+      <td>-0.029206</td>
+      <td>-2.659084</td>
+      <td>2.541298</td>
+      <td>249845</td>
+      <td>19.997839</td>
+    </tr>
+    <tr>
+      <th>3.0</th>
+      <td>-13.157136</td>
+      <td>-0.019221</td>
+      <td>-1.325346</td>
+      <td>1.035789</td>
+      <td>249408</td>
+      <td>19.962861</td>
+    </tr>
+    <tr>
+      <th>4.0</th>
+      <td>-5.569446</td>
+      <td>-0.001684</td>
+      <td>-0.749801</td>
+      <td>0.586770</td>
+      <td>249775</td>
+      <td>19.992236</td>
+    </tr>
+    <tr>
+      <th>5.0</th>
+      <td>-3.371885</td>
+      <td>12.567973</td>
+      <td>-0.323038</td>
+      <td>0.323306</td>
+      <td>250046</td>
+      <td>20.013927</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Returns Analysis
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1D</th>
+      <th>5D</th>
+      <th>10D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Ann. alpha</th>
+      <td>-0.017</td>
+      <td>0.012</td>
+      <td>0.012</td>
+    </tr>
+    <tr>
+      <th>beta</th>
+      <td>0.056</td>
+      <td>0.053</td>
+      <td>0.045</td>
+    </tr>
+    <tr>
+      <th>Mean Period Wise Return Top Quantile (bps)</th>
+      <td>1.187</td>
+      <td>0.651</td>
+      <td>0.224</td>
+    </tr>
+    <tr>
+      <th>Mean Period Wise Return Bottom Quantile (bps)</th>
+      <td>-0.429</td>
+      <td>-0.599</td>
+      <td>-0.465</td>
+    </tr>
+    <tr>
+      <th>Mean Period Wise Spread (bps)</th>
+      <td>1.617</td>
+      <td>1.240</td>
+      <td>0.685</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Information Analysis
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1D</th>
+      <th>5D</th>
+      <th>10D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>IC Mean</th>
+      <td>0.002</td>
+      <td>0.002</td>
+      <td>0.002</td>
+    </tr>
+    <tr>
+      <th>IC Std.</th>
+      <td>0.118</td>
+      <td>0.114</td>
+      <td>0.110</td>
+    </tr>
+    <tr>
+      <th>Risk-Adjusted IC</th>
+      <td>0.018</td>
+      <td>0.018</td>
+      <td>0.018</td>
+    </tr>
+    <tr>
+      <th>t-stat(IC)</th>
+      <td>0.911</td>
+      <td>0.894</td>
+      <td>0.915</td>
+    </tr>
+    <tr>
+      <th>p-value(IC)</th>
+      <td>0.362</td>
+      <td>0.372</td>
+      <td>0.360</td>
+    </tr>
+    <tr>
+      <th>IC Skew</th>
+      <td>0.010</td>
+      <td>0.036</td>
+      <td>0.077</td>
+    </tr>
+    <tr>
+      <th>IC Kurtosis</th>
+      <td>0.446</td>
+      <td>0.559</td>
+      <td>0.684</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Turnover Analysis
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>10D</th>
+      <th>1D</th>
+      <th>5D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Quantile 1 Mean Turnover</th>
+      <td>0.795</td>
+      <td>0.791</td>
+      <td>0.795</td>
+    </tr>
+    <tr>
+      <th>Quantile 2 Mean Turnover</th>
+      <td>0.798</td>
+      <td>0.798</td>
+      <td>0.797</td>
+    </tr>
+    <tr>
+      <th>Quantile 3 Mean Turnover</th>
+      <td>0.797</td>
+      <td>0.795</td>
+      <td>0.797</td>
+    </tr>
+    <tr>
+      <th>Quantile 4 Mean Turnover</th>
+      <td>0.800</td>
+      <td>0.797</td>
+      <td>0.798</td>
+    </tr>
+    <tr>
+      <th>Quantile 5 Mean Turnover</th>
+      <td>0.788</td>
+      <td>0.792</td>
+      <td>0.788</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1D</th>
+      <th>5D</th>
+      <th>10D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Mean Factor Rank Autocorrelation</th>
+      <td>0.006</td>
+      <td>0.01</td>
+      <td>0.01</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../../_images/02408b68861e02d69e324eaf76d8a3ebfdec0fa071c9de85ccf5f40abed342d8.png" src="../../_images/02408b68861e02d69e324eaf76d8a3ebfdec0fa071c9de85ccf5f40abed342d8.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./0alphas-using qstrader有3sources/计算ipynb_case"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-settings">Imports &amp; Settings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alphalens-analysis">Alphalens Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-trade-prices">Get trade prices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-factors">Load factors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-alphalens-input-data">Generate Alphalens input data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-metrics">Compute Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-spread-and-cumulative-returns">Plot spread and cumulative returns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-tearsheet">Create Tearsheet</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,997 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0掘金+万得+聚宽多因子策略开发框架/DerivativesQuant衍生品定价对冲回测与主观交易工具/QuantLib学习/03Interest-rate_models/17Short_interest_rate_model_calibration';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../qc.html">1. Qunat research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2024.html">2. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2022.html">3. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/0掘金+万得+聚宽多因子策略开发框架/DerivativesQuant衍生品定价对冲回测与主观交易工具/QuantLib学习/03Interest-rate_models/17Short_interest_rate_model_calibration.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>import QuantLib as ql
+from collections import namedtuple
+import math
+import pandas as pd
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>today = ql.Date(15, ql.February, 2002)
+settlement = ql.Date(19, ql.February, 2002)
+ql.Settings.instance().evaluationDate = today
+term_structure = ql.YieldTermStructureHandle(ql.FlatForward(settlement, 0.04875825, ql.Actual365Fixed()))
+index = ql.Euribor1Y(term_structure)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>CalibrationData = namedtuple(&quot;CalibrationData&quot;, &quot;start, length, volatility&quot;)
+data = [CalibrationData(1, 5, 0.1148), CalibrationData(2, 4, 0.1108), CalibrationData(3, 3, 0.1070), CalibrationData(4, 2, 0.1021), CalibrationData(5, 1, 0.1000)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>def create_swaption_helpers(data, index, term_structure, engine):
+    swaptions = []
+    fixed_leg_tenor = ql.Period(1, ql.Years)
+    fixed_leg_daycounter = ql.Actual360()
+    floating_leg_daycounter = ql.Actual360()
+    for d in data:
+        vol_handle = ql.QuoteHandle(ql.SimpleQuote(d.volatility))
+        helper = ql.SwaptionHelper(ql.Period(d.start, ql.Years), ql.Period(d.length, ql.Years), vol_handle, index, fixed_leg_tenor, fixed_leg_daycounter, floating_leg_daycounter, term_structure)
+        helper.setPricingEngine(engine)
+        swaptions.append(helper)
+    return swaptions
+
+
+def calibration_report(swaptions, data):
+    columns = [&quot;Model Price&quot;, &quot;Market Price&quot;, &quot;Implied Vol&quot;, &quot;Market Vol&quot;, &quot;Rel Error Price&quot;, &quot;Rel Error Vols&quot;]
+    report_data = []
+    cum_err = 0.0
+    cum_err2 = 0.0
+    for i, s in enumerate(swaptions):
+        model_price = s.modelValue()
+        market_vol = data[i].volatility
+        black_price = s.blackPrice(market_vol)
+        rel_error = model_price / black_price - 1.0
+        implied_vol = s.impliedVolatility(model_price, 1e-5, 50, 0.0, 0.50)
+        rel_error2 = implied_vol / market_vol - 1.0
+        cum_err += rel_error * rel_error
+        cum_err2 += rel_error2 * rel_error2
+        
+        report_data.append((model_price, black_price, implied_vol, market_vol, rel_error, rel_error2))
+    print(&quot;Cumulative Error Price: %7.5f&quot; % math.sqrt(cum_err))
+    print(&quot;Cumulative Error Vols:  %7.5f&quot; % math.sqrt(cum_err2))
+    return pd.DataFrame(report_data, columns=columns, index=[&#39;&#39;]*len(report_data))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model = ql.HullWhite(term_structure)
+engine = ql.JamshidianSwaptionEngine(model)
+swaptions = create_swaption_helpers(data, index, term_structure, engine)
+
+optimization_method = ql.LevenbergMarquardt(1.0e-8, 1.0e-8, 1.0e-8)
+end_criteria = ql.EndCriteria(10000, 100, 1e-6, 1e-8, 1e-8)
+model.calibrate(swaptions, optimization_method, end_criteria)
+
+a, sigma = model.params()
+print(&quot;a = %6.5f, sigma = %6.5f&quot; % (a, sigma))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a = 0.04642, sigma = 0.00580
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>calibration_report(swaptions, data)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cumulative Error Price: 0.11583
+Cumulative Error Vols:  0.11614
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model Price</th>
+      <th>Market Price</th>
+      <th>Implied Vol</th>
+      <th>Market Vol</th>
+      <th>Rel Error Price</th>
+      <th>Rel Error Vols</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>0.008775</td>
+      <td>0.009485</td>
+      <td>0.106198</td>
+      <td>0.1148</td>
+      <td>-0.074854</td>
+      <td>-0.074928</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0.009669</td>
+      <td>0.010078</td>
+      <td>0.106292</td>
+      <td>0.1108</td>
+      <td>-0.040610</td>
+      <td>-0.040688</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0.008663</td>
+      <td>0.008716</td>
+      <td>0.106343</td>
+      <td>0.1070</td>
+      <td>-0.006138</td>
+      <td>-0.006138</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0.006490</td>
+      <td>0.006226</td>
+      <td>0.106442</td>
+      <td>0.1021</td>
+      <td>0.042367</td>
+      <td>0.042525</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0.003542</td>
+      <td>0.003323</td>
+      <td>0.106612</td>
+      <td>0.1000</td>
+      <td>0.065817</td>
+      <td>0.066122</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>constrained_model = ql.HullWhite(term_structure, 0.05, 0.001)
+engine = ql.JamshidianSwaptionEngine(constrained_model)
+swaptions = create_swaption_helpers(data, index, term_structure, engine)
+
+optimization_method = ql.LevenbergMarquardt(1.0e-8, 1.0e-8, 1.0e-8)
+end_criteria = ql.EndCriteria(10000, 100, 1e-6, 1e-8, 1e-8)
+constrained_model.calibrate(swaptions, optimization_method, end_criteria, ql.NoConstraint(), [], [True, False])
+
+a, sigma = constrained_model.params()
+print(&quot;a = %6.5f, sigma = %6.5f&quot; % (a, sigma))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a = 0.05000, sigma = 0.00586
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>calibration_report(swaptions, data)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cumulative Error Price: 0.11584
+Cumulative Error Vols:  0.11615
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model Price</th>
+      <th>Market Price</th>
+      <th>Implied Vol</th>
+      <th>Market Vol</th>
+      <th>Rel Error Price</th>
+      <th>Rel Error Vols</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>0.008776</td>
+      <td>0.009485</td>
+      <td>0.106212</td>
+      <td>0.1148</td>
+      <td>-0.074738</td>
+      <td>-0.074812</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0.009668</td>
+      <td>0.010078</td>
+      <td>0.106284</td>
+      <td>0.1108</td>
+      <td>-0.040682</td>
+      <td>-0.040761</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0.008662</td>
+      <td>0.008716</td>
+      <td>0.106330</td>
+      <td>0.1070</td>
+      <td>-0.006261</td>
+      <td>-0.006261</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0.006490</td>
+      <td>0.006226</td>
+      <td>0.106436</td>
+      <td>0.1021</td>
+      <td>0.042311</td>
+      <td>0.042469</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0.003542</td>
+      <td>0.003323</td>
+      <td>0.106625</td>
+      <td>0.1000</td>
+      <td>0.065946</td>
+      <td>0.066252</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model = ql.BlackKarasinski(term_structure)
+engine = ql.TreeSwaptionEngine(model, 100)
+swaptions = create_swaption_helpers(data, index, term_structure, engine)
+
+optimization_method = ql.LevenbergMarquardt(1.0e-8, 1.0e-8, 1.0e-8)
+end_criteria = ql.EndCriteria(10000, 100, 1e-6, 1e-8, 1e-8)
+model.calibrate(swaptions, optimization_method, end_criteria)
+
+a, sigma = model.params()
+print(&quot;a = %6.5f, sigma = %6.5f&quot; % (a, sigma))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a = 0.03902, sigma = 0.11695
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>calibration_report(swaptions, data)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cumulative Error Price: 0.11583
+Cumulative Error Vols:  0.11614
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model Price</th>
+      <th>Market Price</th>
+      <th>Implied Vol</th>
+      <th>Market Vol</th>
+      <th>Rel Error Price</th>
+      <th>Rel Error Vols</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>0.008775</td>
+      <td>0.009485</td>
+      <td>0.106198</td>
+      <td>0.1148</td>
+      <td>-0.074854</td>
+      <td>-0.074928</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0.009669</td>
+      <td>0.010078</td>
+      <td>0.106292</td>
+      <td>0.1108</td>
+      <td>-0.040610</td>
+      <td>-0.040688</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0.008663</td>
+      <td>0.008716</td>
+      <td>0.106343</td>
+      <td>0.1070</td>
+      <td>-0.006138</td>
+      <td>-0.006138</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0.006490</td>
+      <td>0.006226</td>
+      <td>0.106442</td>
+      <td>0.1021</td>
+      <td>0.042367</td>
+      <td>0.042525</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0.003542</td>
+      <td>0.003323</td>
+      <td>0.106612</td>
+      <td>0.1000</td>
+      <td>0.065817</td>
+      <td>0.066122</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model = ql.G2(term_structure)
+engine = ql.TreeSwaptionEngine(model, 25)
+swaptions = create_swaption_helpers(data, index, term_structure, engine)
+
+optimization_method = ql.LevenbergMarquardt(1.0e-8, 1.0e-8, 1.0e-8)
+end_criteria = ql.EndCriteria(10000, 100, 1e-6, 1e-8, 1e-8)
+model.calibrate(swaptions, optimization_method, end_criteria)
+
+a, sigma, b, eta, rho = model.params()
+print(&quot;a = %6.5f, sigma = %6.5f, b = %6.5f, eta = %6.5f, rho = %6.5f&quot; % (a, sigma, b, eta, rho))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a = 0.03927, sigma = 0.00475, b = 0.04545, eta = 0.00303, rho = 0.02206
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>calibration_report(swaptions, data)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cumulative Error Price: 0.12207
+Cumulative Error Vols:  0.12238
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model Price</th>
+      <th>Market Price</th>
+      <th>Implied Vol</th>
+      <th>Market Vol</th>
+      <th>Rel Error Price</th>
+      <th>Rel Error Vols</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>0.008707</td>
+      <td>0.009485</td>
+      <td>0.105372</td>
+      <td>0.1148</td>
+      <td>-0.082041</td>
+      <td>-0.082122</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0.009672</td>
+      <td>0.010078</td>
+      <td>0.106328</td>
+      <td>0.1108</td>
+      <td>-0.040281</td>
+      <td>-0.040359</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0.008676</td>
+      <td>0.008716</td>
+      <td>0.106508</td>
+      <td>0.1070</td>
+      <td>-0.004602</td>
+      <td>-0.004602</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0.006502</td>
+      <td>0.006226</td>
+      <td>0.106639</td>
+      <td>0.1021</td>
+      <td>0.044291</td>
+      <td>0.044457</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0.003548</td>
+      <td>0.003323</td>
+      <td>0.106788</td>
+      <td>0.1000</td>
+      <td>0.067562</td>
+      <td>0.067877</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>def create_swaption_helpers(data, index, term_structure, engine):
+    swaptions = []
+    fixed_leg_tenor = ql.Period(1, ql.Years)
+    fixed_leg_daycounter = ql.Actual360()
+    floating_leg_daycounter = ql.Actual360()
+    for d in data:
+        vol_handle = ql.QuoteHandle(ql.SimpleQuote(d.volatility))
+        helper = ql.SwaptionHelper(ql.Period(d.start, ql.Years), ql.Period(d.length, ql.Years), vol_handle, index, fixed_leg_tenor, fixed_leg_daycounter, floating_leg_daycounter, 
+                                   term_structure, ql.BlackCalibrationHelper.RelativePriceError, ql.nullDouble(), 1.0, ql.Normal)
+        helper.setPricingEngine(engine)
+        swaptions.append(helper)
+    return swaptions
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model = ql.HullWhite(term_structure)
+engine = ql.JamshidianSwaptionEngine(model)
+swaptions = create_swaption_helpers(data, index, term_structure, engine)
+
+optimization_method = ql.LevenbergMarquardt(1.0e-8, 1.0e-8, 1.0e-8)
+end_criteria = ql.EndCriteria(10000, 100, 1e-6, 1e-8, 1e-8)
+model.calibrate(swaptions, optimization_method, end_criteria)
+
+a, sigma = model.params()
+print(&quot;a = %6.5f, sigma = %6.5f&quot; % (a, sigma))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a = 0.00003, sigma = 0.10459
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python2",
+            path: "./0掘金+万得+聚宽多因子策略开发框架/DerivativesQuant衍生品定价对冲回测与主观交易工具/QuantLib学习/03Interest-rate_models"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python2'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1356 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Separating signal and noiseusing alphalens &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0alphas-using qstrader有3sources/计算ipynb_case/5_performance_eval_alphalens_single_factor';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../qc.html">1. Qunat research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nb2024.html">2. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nb2022.html">3. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/0alphas-using qstrader有3sources/计算ipynb_case/5_performance_eval_alphalens_single_factor.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Separating signal and noiseusing alphalens</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-forward-returns-and-factor-quantiles">Creating forward returns and factor quantiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-tear-sheet">Summary Tear Sheet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictive-performance-by-factor-quantiles-returns-analysis">Predictive performance by factor quantiles -  Returns Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-return-by-holding-period-and-quintile">Mean Return by Holding Period and Quintile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-5d-return">Cumulative 5D Return</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return-distribution-by-holding-period-and-quintile">Return Distribution by Holding Period and Quintile</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-coefficient">Information Coefficient</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-information-coefficient-rolling-average">5D Information Coefficient (Rolling Average)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#information-coefficient-by-holding-period">Information Coefficient by Holding Period</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turnover-tear-sheet">Turnover Tear Sheet</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="separating-signal-and-noiseusing-alphalens">
+<h1>Separating signal and noiseusing alphalens<a class="headerlink" href="#separating-signal-and-noiseusing-alphalens" title="Link to this heading">#</a></h1>
+<p>we are trying to analyse the predictive power of alpha factors concerning the:</p>
+<ul class="simple">
+<li><p>Correlation of the signals with subsequent returns</p></li>
+<li><p>Profitability of an equal or factor-weighted portfolio based on a (subset of) the signals</p></li>
+<li><p>Turnover of factors to indicate the potential trading costs</p></li>
+<li><p>Factor-performance during specific events</p></li>
+<li><p>Breakdowns of the preceding by sector</p></li>
+</ul>
+<p>The analysis can be conducted using tearsheets or individual computations and plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">alphalens.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_clean_factor_and_forward_returns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">alphalens.performance</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">alphalens.plotting</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">alphalens.tears</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="creating-forward-returns-and-factor-quantiles">
+<h2>Creating forward returns and factor quantiles<a class="headerlink" href="#creating-forward-returns-and-factor-quantiles" title="Link to this heading">#</a></h2>
+<p>To utilize <code class="docutils literal notranslate"><span class="pre">alpahalens</span></code>, we need to provide signals for a universe of assets like those returned by the ranks of the MeanReversion factor, and the forward returns earned by investing in an asset for a given holding period. .</p>
+<p>We will recover the prices from the <code class="docutils literal notranslate"><span class="pre">single_factor.pickle</span></code> file as follows (<code class="docutils literal notranslate"><span class="pre">factor_data</span></code> accordingly):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">performance</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;single_factor.pickle&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">performance</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 755 entries, 2015-01-02 21:00:00+00:00 to 2017-12-29 21:00:00+00:00
+Data columns (total 39 columns):
+ #   Column                   Non-Null Count  Dtype              
+---  ------                   --------------  -----              
+ 0   period_open              755 non-null    datetime64[ns, UTC]
+ 1   period_close             755 non-null    datetime64[ns, UTC]
+ 2   shorts_count             755 non-null    int64              
+ 3   long_value               755 non-null    float64            
+ 4   short_value              755 non-null    float64            
+ 5   long_exposure            755 non-null    float64            
+ 6   pnl                      755 non-null    float64            
+ 7   capital_used             755 non-null    float64            
+ 8   short_exposure           755 non-null    float64            
+ 9   orders                   755 non-null    object             
+ 10  transactions             755 non-null    object             
+ 11  positions                755 non-null    object             
+ 12  gross_leverage           755 non-null    float64            
+ 13  starting_exposure        755 non-null    float64            
+ 14  net_leverage             755 non-null    float64            
+ 15  ending_exposure          755 non-null    float64            
+ 16  starting_value           755 non-null    float64            
+ 17  ending_value             755 non-null    float64            
+ 18  starting_cash            755 non-null    float64            
+ 19  ending_cash              755 non-null    float64            
+ 20  portfolio_value          755 non-null    float64            
+ 21  returns                  755 non-null    float64            
+ 22  longs_count              755 non-null    int64              
+ 23  algo_volatility          754 non-null    float64            
+ 24  benchmark_period_return  755 non-null    float64            
+ 25  benchmark_volatility     754 non-null    float64            
+ 26  alpha                    0 non-null      object             
+ 27  beta                     0 non-null      object             
+ 28  sharpe                   753 non-null    float64            
+ 29  sortino                  753 non-null    float64            
+ 30  max_drawdown             755 non-null    float64            
+ 31  max_leverage             755 non-null    float64            
+ 32  excess_return            755 non-null    float64            
+ 33  treasury_period_return   755 non-null    float64            
+ 34  trading_days             755 non-null    int64              
+ 35  period_label             755 non-null    object             
+ 36  algorithm_period_return  755 non-null    float64            
+ 37  factor_data              754 non-null    object             
+ 38  prices                   754 non-null    object             
+dtypes: datetime64[ns, UTC](2), float64(26), int64(3), object(8)
+memory usage: 235.9+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">performance</span><span class="o">.</span><span class="n">prices</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">prices</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\[(.+)\]&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">prices</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<span class="n">prices</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+<span class="n">prices</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 754 entries, 2015-01-05 00:00:00+00:00 to 2017-12-29 00:00:00+00:00
+Columns: 1649 entries, A to NETE
+dtypes: float64(1649)
+memory usage: 9.5 MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factor_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">performance</span><span class="o">.</span><span class="n">factor_data</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">factor_data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\[(.+)\]&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">factor_data</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<span class="n">factor_data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">factor_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+<span class="n">factor_data</span> <span class="o">=</span> <span class="n">factor_data</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+<span class="n">factor_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;asset&#39;</span><span class="p">]</span>
+<span class="n">factor_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>date                       asset
+2015-01-05 00:00:00+00:00  A        2707.0
+                           AAL       870.0
+                           AAP      1253.0
+                           AAPL     2977.0
+                           ABBV     2806.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="s1">&#39;../data/assets.h5&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">store</span><span class="p">:</span>
+    <span class="n">sp500</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="s1">&#39;sp500/fred&#39;</span><span class="p">]</span>
+<span class="n">sp500</span> <span class="o">=</span> <span class="n">sp500</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">ffill</span><span class="p">()</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="s1">&#39;utc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">prices</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">sp500</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Date
+2015-01-05 00:00:00+00:00    2020.58
+2015-01-06 00:00:00+00:00    2002.61
+2015-01-07 00:00:00+00:00    2025.90
+2015-01-08 00:00:00+00:00    2062.14
+2015-01-09 00:00:00+00:00    2044.81
+Name: close, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can create the alphalens input data in the required format using the <code class="docutils literal notranslate"><span class="pre">get_clean_factor_and_forward_returns</span></code> utility function that also returns the signal quartiles and the forward returns for the given holding periods:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">HOLDING_PERIODS</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">QUANTILES</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">alphalens_data</span> <span class="o">=</span> <span class="n">get_clean_factor_and_forward_returns</span><span class="p">(</span><span class="n">factor</span><span class="o">=</span><span class="n">factor_data</span><span class="p">,</span>
+                                                      <span class="n">prices</span><span class="o">=</span><span class="n">prices</span><span class="p">,</span>
+                                                      <span class="n">periods</span><span class="o">=</span><span class="n">HOLDING_PERIODS</span><span class="p">,</span>
+                                                      <span class="n">quantiles</span><span class="o">=</span><span class="n">QUANTILES</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dropped 5.6% entries from factor data: 5.6% in forward returns computation and 0.0% in binning phase (set max_loss=0 to see potentially suppressed Exceptions).
+max_loss is 35.0%, not exceeded: OK!
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">alphalens_data</span></code> <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> contains the returns on an investment in the given asset on a given date for the indicated holding period, as well as the factor value, that is, the asset’s <code class="docutils literal notranslate"><span class="pre">MeanReversion</span></code> ranking on that date, and the corresponding quantile value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alphalens_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>5D</th>
+      <th>10D</th>
+      <th>21D</th>
+      <th>42D</th>
+      <th>factor</th>
+      <th>factor_quantile</th>
+    </tr>
+    <tr>
+      <th>date</th>
+      <th>asset</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">2015-01-05 00:00:00+00:00</th>
+      <th>A</th>
+      <td>0.007789</td>
+      <td>-0.046985</td>
+      <td>-0.027889</td>
+      <td>0.072864</td>
+      <td>2707.0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>AAL</th>
+      <td>-0.079722</td>
+      <td>-0.020882</td>
+      <td>-0.095684</td>
+      <td>-0.103295</td>
+      <td>870.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>AAP</th>
+      <td>0.015722</td>
+      <td>-0.024350</td>
+      <td>-0.003196</td>
+      <td>-0.010865</td>
+      <td>1253.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>AAPL</th>
+      <td>0.028235</td>
+      <td>0.023247</td>
+      <td>0.116518</td>
+      <td>0.214965</td>
+      <td>2977.0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>ABBV</th>
+      <td>0.017169</td>
+      <td>-0.018561</td>
+      <td>-0.061098</td>
+      <td>-0.064811</td>
+      <td>2806.0</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alphalens_data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;factor_data.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The forward returns and the signal quantiles are the basis for evaluating the predictive power of the signal. Typically, a factor should deliver markedly different returns for distinct quantiles, such as negative returns for the bottom quintile of the factor values and positive returns for the top quantile.</p>
+</section>
+<section id="summary-tear-sheet">
+<h2>Summary Tear Sheet<a class="headerlink" href="#summary-tear-sheet" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_summary_tear_sheet</span><span class="p">(</span><span class="n">alphalens_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Quantiles Statistics
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+      <th>count %</th>
+    </tr>
+    <tr>
+      <th>factor_quantile</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1.0</td>
+      <td>1011.0</td>
+      <td>303.057978</td>
+      <td>188.562449</td>
+      <td>142313</td>
+      <td>20.020145</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>352.0</td>
+      <td>1636.0</td>
+      <td>856.678631</td>
+      <td>234.705707</td>
+      <td>142117</td>
+      <td>19.992572</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>794.0</td>
+      <td>2153.0</td>
+      <td>1417.174265</td>
+      <td>259.942787</td>
+      <td>142019</td>
+      <td>19.978786</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1273.0</td>
+      <td>2621.0</td>
+      <td>1979.178578</td>
+      <td>253.504821</td>
+      <td>142117</td>
+      <td>19.992572</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1827.0</td>
+      <td>3050.0</td>
+      <td>2519.578804</td>
+      <td>227.348609</td>
+      <td>142283</td>
+      <td>20.015925</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Returns Analysis
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>5D</th>
+      <th>10D</th>
+      <th>21D</th>
+      <th>42D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Ann. alpha</th>
+      <td>0.046</td>
+      <td>0.036</td>
+      <td>0.009</td>
+      <td>0.001</td>
+    </tr>
+    <tr>
+      <th>beta</th>
+      <td>0.083</td>
+      <td>0.098</td>
+      <td>0.077</td>
+      <td>0.019</td>
+    </tr>
+    <tr>
+      <th>Mean Period Wise Return Top Quantile (bps)</th>
+      <td>11.724</td>
+      <td>9.110</td>
+      <td>3.948</td>
+      <td>-0.376</td>
+    </tr>
+    <tr>
+      <th>Mean Period Wise Return Bottom Quantile (bps)</th>
+      <td>-16.862</td>
+      <td>-13.259</td>
+      <td>-4.742</td>
+      <td>-1.979</td>
+    </tr>
+    <tr>
+      <th>Mean Period Wise Spread (bps)</th>
+      <td>28.587</td>
+      <td>22.343</td>
+      <td>8.711</td>
+      <td>1.582</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Information Analysis
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>5D</th>
+      <th>10D</th>
+      <th>21D</th>
+      <th>42D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>IC Mean</th>
+      <td>0.022</td>
+      <td>0.026</td>
+      <td>0.017</td>
+      <td>0.003</td>
+    </tr>
+    <tr>
+      <th>IC Std.</th>
+      <td>0.140</td>
+      <td>0.127</td>
+      <td>0.116</td>
+      <td>0.115</td>
+    </tr>
+    <tr>
+      <th>Risk-Adjusted IC</th>
+      <td>0.160</td>
+      <td>0.207</td>
+      <td>0.148</td>
+      <td>0.027</td>
+    </tr>
+    <tr>
+      <th>t-stat(IC)</th>
+      <td>4.261</td>
+      <td>5.529</td>
+      <td>3.953</td>
+      <td>0.729</td>
+    </tr>
+    <tr>
+      <th>p-value(IC)</th>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.466</td>
+    </tr>
+    <tr>
+      <th>IC Skew</th>
+      <td>0.372</td>
+      <td>0.266</td>
+      <td>0.115</td>
+      <td>0.113</td>
+    </tr>
+    <tr>
+      <th>IC Kurtosis</th>
+      <td>0.054</td>
+      <td>-0.515</td>
+      <td>-0.333</td>
+      <td>-0.557</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Turnover Analysis
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>5D</th>
+      <th>10D</th>
+      <th>21D</th>
+      <th>42D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Quantile 1 Mean Turnover</th>
+      <td>0.411</td>
+      <td>0.590</td>
+      <td>0.830</td>
+      <td>0.831</td>
+    </tr>
+    <tr>
+      <th>Quantile 2 Mean Turnover</th>
+      <td>0.645</td>
+      <td>0.740</td>
+      <td>0.804</td>
+      <td>0.812</td>
+    </tr>
+    <tr>
+      <th>Quantile 3 Mean Turnover</th>
+      <td>0.679</td>
+      <td>0.765</td>
+      <td>0.808</td>
+      <td>0.812</td>
+    </tr>
+    <tr>
+      <th>Quantile 4 Mean Turnover</th>
+      <td>0.642</td>
+      <td>0.741</td>
+      <td>0.810</td>
+      <td>0.814</td>
+    </tr>
+    <tr>
+      <th>Quantile 5 Mean Turnover</th>
+      <td>0.394</td>
+      <td>0.569</td>
+      <td>0.811</td>
+      <td>0.819</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>5D</th>
+      <th>10D</th>
+      <th>21D</th>
+      <th>42D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Mean Factor Rank Autocorrelation</th>
+      <td>0.713</td>
+      <td>0.454</td>
+      <td>-0.013</td>
+      <td>-0.017</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../../_images/dcc0daf576cd3de0e1da936e1cb9b124c6428aedfdf2b51d9e6f8a96ec5d7544.png" src="../../_images/dcc0daf576cd3de0e1da936e1cb9b124c6428aedfdf2b51d9e6f8a96ec5d7544.png" />
+</div>
+</div>
+</section>
+<section id="predictive-performance-by-factor-quantiles-returns-analysis">
+<h2>Predictive performance by factor quantiles -  Returns Analysis<a class="headerlink" href="#predictive-performance-by-factor-quantiles-returns-analysis" title="Link to this heading">#</a></h2>
+<p>As a first step, we would like to visualize the average period return by factor quantile. We can use the built-in function mean_return_by_quantile from the performance and plot_quantile_returns_bar from the plotting modules</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_return_by_q</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">mean_return_by_quantile</span><span class="p">(</span><span class="n">alphalens_data</span><span class="p">)</span>
+<span class="n">mean_return_by_q_norm</span> <span class="o">=</span> <span class="n">mean_return_by_q</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="mean-return-by-holding-period-and-quintile">
+<h3>Mean Return by Holding Period and Quintile<a class="headerlink" href="#mean-return-by-holding-period-and-quintile" title="Link to this heading">#</a></h3>
+<p>The result is a bar chart that breaks down the mean of the forward returns for the four different holding periods based on the quintile of the factor signal. As you can see, the bottom quintiles yielded markedly more negative results than the top quintiles, except for the longest holding period:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_quantile_returns_bar</span><span class="p">(</span><span class="n">mean_return_by_q</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/92c7aa741b86d2689a89609e8ec97ebd5093e39290144ea72593a01ca16bf630.png" src="../../_images/92c7aa741b86d2689a89609e8ec97ebd5093e39290144ea72593a01ca16bf630.png" />
+</div>
+</div>
+<p>The 10D holding period provides slightly better results for the first and fourth quartiles. We would also like to see the performance over time of investments driven by each of the signal quintiles.</p>
+<p>We will calculate daily, as opposed to average returns for the 5D holding period, and alphalens will adjust the period returns to account for the mismatch between daily signals and a longer holding period (for details, see docs):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_return_by_q_daily</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">mean_return_by_quantile</span><span class="p">(</span><span class="n">alphalens_data</span><span class="p">,</span> <span class="n">by_date</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cumulative-5d-return">
+<h3>Cumulative 5D Return<a class="headerlink" href="#cumulative-5d-return" title="Link to this heading">#</a></h3>
+<p>The resulting line plot shows that, for most of this three-year period, the top two quintiles significantly outperformed the bottom two quintiles. However, as suggested by the previous plot, signals by the fourth quintile produced a better performance than those by the top quintile</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_cumulative_returns_by_quantile</span><span class="p">(</span><span class="n">mean_return_by_q_daily</span><span class="p">[</span><span class="s1">&#39;5D&#39;</span><span class="p">],</span> <span class="n">period</span><span class="o">=</span><span class="s1">&#39;5D&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/abdfa05091e73aa6225e7ba52733cf504547427e7ba8c7987231a98cf264a41c.png" src="../../_images/abdfa05091e73aa6225e7ba52733cf504547427e7ba8c7987231a98cf264a41c.png" />
+</div>
+</div>
+</section>
+<section id="return-distribution-by-holding-period-and-quintile">
+<h3>Return Distribution by Holding Period and Quintile<a class="headerlink" href="#return-distribution-by-holding-period-and-quintile" title="Link to this heading">#</a></h3>
+<p>This distributional plot highlights that the range of daily returns is fairly wide and, despite different means, the separation of the distributions is very limited so that, on any given day, the differences in performance between the different quintiles may be rather limited:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_quantile_returns_violin</span><span class="p">(</span><span class="n">mean_return_by_q_daily</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/08d3994fd144a943ad3e47aa425915d526e32c7ddb77b5faf819fd39037294a2.png" src="../../_images/08d3994fd144a943ad3e47aa425915d526e32c7ddb77b5faf819fd39037294a2.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="information-coefficient">
+<h2>Information Coefficient<a class="headerlink" href="#information-coefficient" title="Link to this heading">#</a></h2>
+<p>Objective is to design alpha factors using ML models. ML is about optimizing some predictive objective, and here we are defining some key metrics used to measure the performance of an alpha factor. Alpha is defined as the average return in excess of a benchmark.
+This leads to the information ratio (IR) that measures the average excess return per unit of risk taken by dividing alpha by the tracking risk. When the benchmark is the risk-free rate, the IR corresponds to the well-known Sharpe ratio, and we will highlight crucial statistical measurement issues that arise in the typical case when returns are not normally distributed. The fundamental law of active management breaks the IR down into a combination of forecasting skill and a strategy’s ability to effectively leverage the forecasting skills.</p>
+<section id="d-information-coefficient-rolling-average">
+<h3>5D Information Coefficient (Rolling Average)<a class="headerlink" href="#d-information-coefficient-rolling-average" title="Link to this heading">#</a></h3>
+<p>The goal of alpha factors is the accurate directional prediction of future returns. Hence, a natural performance measure is the correlation between an alpha factor’s predictions and the forward returns of the target assets.</p>
+<p>It is better to use the non-parametric Spearman rank correlation coefficient that measures how well the relationship between two variables can be described using a monotonic function, as opposed to the Pearson correlation that measures the strength of a linear relationship.</p>
+<p>We can obtain the information coefficient using alphalens, which relies on <code class="docutils literal notranslate"><span class="pre">scipy.stats.spearmanr</span></code> under the hood.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">factor_information_coefficient</span></code> function computes the period-wise correlation and plot_ic_ts creates a time-series plot with one-month moving average</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ic</span> <span class="o">=</span> <span class="n">factor_information_coefficient</span><span class="p">(</span><span class="n">alphalens_data</span><span class="p">)</span>
+<span class="n">plot_ic_ts</span><span class="p">(</span><span class="n">ic</span><span class="p">[[</span><span class="s1">&#39;5D&#39;</span><span class="p">]])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/09baa122daf6f7ec9a1992eb12f05ec4a675bdd9d4e2d1a4cd70465a428735bd.png" src="../../_images/09baa122daf6f7ec9a1992eb12f05ec4a675bdd9d4e2d1a4cd70465a428735bd.png" />
+</div>
+</div>
+</section>
+<section id="information-coefficient-by-holding-period">
+<h3>Information Coefficient by Holding Period<a class="headerlink" href="#information-coefficient-by-holding-period" title="Link to this heading">#</a></h3>
+<p>This time series plot shows extended periods with significantly positive moving-average IC. An IC of 0.05 or even 0.1 allows for significant outperformance if there are sufficient opportunities to apply this forecasting skill, as the fundamental law of active management will illustrate:</p>
+<p>A plot of the annual mean IC highlights how the factor’s performance was historically uneven</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ic</span> <span class="o">=</span> <span class="n">factor_information_coefficient</span><span class="p">(</span><span class="n">alphalens_data</span><span class="p">)</span>
+<span class="n">ic_by_year</span> <span class="o">=</span> <span class="n">ic</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">ic_by_year</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">ic_by_year</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span>
+<span class="n">ic_by_year</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3d95e0f2f496188fae066bbfa69a4786d52b5b53c63bae2f1685f50e0a15dee3.png" src="../../_images/3d95e0f2f496188fae066bbfa69a4786d52b5b53c63bae2f1685f50e0a15dee3.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="turnover-tear-sheet">
+<h2>Turnover Tear Sheet<a class="headerlink" href="#turnover-tear-sheet" title="Link to this heading">#</a></h2>
+<p>Factor turnover measures how frequently the assets associated with a given quantile change, that is, how many trades are required to adjust a portfolio to the sequence of signals. More specifically, it measures the share of assets currently in a factor quantile that was not in that quantile in the last period.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_turnover_tear_sheet</span><span class="p">(</span><span class="n">alphalens_data</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Turnover Analysis
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>5D</th>
+      <th>10D</th>
+      <th>21D</th>
+      <th>42D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Quantile 1 Mean Turnover</th>
+      <td>0.411</td>
+      <td>0.590</td>
+      <td>0.830</td>
+      <td>0.831</td>
+    </tr>
+    <tr>
+      <th>Quantile 2 Mean Turnover</th>
+      <td>0.645</td>
+      <td>0.740</td>
+      <td>0.804</td>
+      <td>0.812</td>
+    </tr>
+    <tr>
+      <th>Quantile 3 Mean Turnover</th>
+      <td>0.679</td>
+      <td>0.765</td>
+      <td>0.808</td>
+      <td>0.812</td>
+    </tr>
+    <tr>
+      <th>Quantile 4 Mean Turnover</th>
+      <td>0.642</td>
+      <td>0.741</td>
+      <td>0.810</td>
+      <td>0.814</td>
+    </tr>
+    <tr>
+      <th>Quantile 5 Mean Turnover</th>
+      <td>0.394</td>
+      <td>0.569</td>
+      <td>0.811</td>
+      <td>0.819</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>5D</th>
+      <th>10D</th>
+      <th>21D</th>
+      <th>42D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Mean Factor Rank Autocorrelation</th>
+      <td>0.713</td>
+      <td>0.454</td>
+      <td>-0.013</td>
+      <td>-0.017</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../../_images/547f67b4f12fc9c660ff07635c70693d1f6ea62224e2e5ce7a887cd45873a976.png" src="../../_images/547f67b4f12fc9c660ff07635c70693d1f6ea62224e2e5ce7a887cd45873a976.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./0alphas-using qstrader有3sources/计算ipynb_case"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-forward-returns-and-factor-quantiles">Creating forward returns and factor quantiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-tear-sheet">Summary Tear Sheet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictive-performance-by-factor-quantiles-returns-analysis">Predictive performance by factor quantiles -  Returns Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-return-by-holding-period-and-quintile">Mean Return by Holding Period and Quintile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-5d-return">Cumulative 5D Return</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return-distribution-by-holding-period-and-quintile">Return Distribution by Holding Period and Quintile</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-coefficient">Information Coefficient</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-information-coefficient-rolling-average">5D Information Coefficient (Rolling Average)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#information-coefficient-by-holding-period">Information Coefficient by Holding Period</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turnover-tear-sheet">Turnover Tear Sheet</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

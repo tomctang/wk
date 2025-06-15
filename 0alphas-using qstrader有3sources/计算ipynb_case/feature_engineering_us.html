@@ -1,0 +1,3315 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Set Data Store path &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0alphas-using qstrader有3sources/计算ipynb_case/feature_engineering_us';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../qc.html">1. Qunat research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nb2024.html">2. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nb2022.html">3. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/0alphas-using qstrader有3sources/计算ipynb_case/feature_engineering_us.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Set Data Store path</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Set Data Store path</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quandl-wiki-prices">Quandl Wiki Prices</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#s-p-500-prices">S&amp;P 500 Prices</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-engineering">Feature Engineering</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data">Load the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-data-with-stock-info">Keep data with stock info</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-monthly-return-series">Create monthly return series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-stocks-with-less-than-10-yrs-of-returns">Drop stocks with less than 10 yrs of returns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rolling-factor-betas">Rolling Factor Betas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impute-mean-for-missing-factor-betas">Impute mean for missing factor betas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#momentum-factors">Momentum factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#date-indicators">Date Indicators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lagged-returns">Lagged returns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#target-holding-period-returns">Target: Holding Period Returns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-age-proxy">Create age proxy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-dynamic-size-proxy">Create dynamic size proxy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-size-indicator-as-deciles-per-period">Create Size indicator as deciles per period</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-data">Combine data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#store-data">Store data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-dummy-variables">Create Dummy variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-technical-alpha-factors">Generate Technical Alpha Factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-bollinger-bands">Compute Bollinger Bands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-relative-strength-index">Compute Relative Strength Index</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-average-convergence-divergence">Moving Average Convergence/Divergence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-result">Plot Result</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#denoising-alpha-factors-with-the-kalman-filter">Denoising alpha factors with the Kalman filter</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kalman-filter">Kalman Filter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-the-hidden-state">Estimate the hidden state</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-with-moving-average">Compare with moving average</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-noisy-signals-using-wavelets">Preprocess noisy signals using wavelets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#available-wavelet-families">Available Wavelet Families</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smoothing-the-s-p-500">Smoothing the S&amp;P 500</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas_datareader.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">web</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_openml</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.regression.rolling</span><span class="w"> </span><span class="kn">import</span> <span class="n">RollingOLS</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">talib</span><span class="w"> </span><span class="kn">import</span> <span class="n">RSI</span><span class="p">,</span> <span class="n">BBANDS</span><span class="p">,</span> <span class="n">MACD</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pykalman</span><span class="w"> </span><span class="kn">import</span> <span class="n">KalmanFilter</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pywt</span>
+
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.expand_frame_repr&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="set-data-store-path">
+<h1>Set Data Store path<a class="headerlink" href="#set-data-store-path" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATA_STORE</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;assets.h5&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="quandl-wiki-prices">
+<h1>Quandl Wiki Prices<a class="headerlink" href="#quandl-wiki-prices" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>Follow the instructions to create a free <a class="reference external" href="https://data.nasdaq.com/sign-up">NASDAQ account</a></p></li>
+<li><p><a class="reference external" href="https://data.nasdaq.com/tables/WIKIP/WIKI-PRICES/export">Download</a> the entire WIKI/PRICES data</p></li>
+<li><p>Extract the .zip file,</p></li>
+<li><p>Move to this directory and rename to wiki_prices.csv</p></li>
+<li><p>Store data in fast HDF format for fast execution</p></li>
+</ol>
+<p>This need to be run just once to store the data in HDF format</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># only run this once to store data in HDF format</span>
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;wiki_prices.csv&#39;</span><span class="p">,</span>
+                 <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span>
+                 <span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;ticker&#39;</span><span class="p">],</span>
+                 <span class="n">infer_datetime_format</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+     <span class="o">.</span><span class="n">sort_index</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>open</th>
+      <th>high</th>
+      <th>low</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>ex-dividend</th>
+      <th>split_ratio</th>
+      <th>adj_open</th>
+      <th>adj_high</th>
+      <th>adj_low</th>
+      <th>adj_close</th>
+      <th>adj_volume</th>
+    </tr>
+    <tr>
+      <th>date</th>
+      <th>ticker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">2018-03-27</th>
+      <th>ZIXI</th>
+      <td>4.43</td>
+      <td>4.45</td>
+      <td>4.35</td>
+      <td>4.39</td>
+      <td>207304.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>4.43</td>
+      <td>4.45</td>
+      <td>4.35</td>
+      <td>4.39</td>
+      <td>207304.0</td>
+    </tr>
+    <tr>
+      <th>ZNGA</th>
+      <td>3.85</td>
+      <td>3.85</td>
+      <td>3.68</td>
+      <td>3.70</td>
+      <td>11026010.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>3.85</td>
+      <td>3.85</td>
+      <td>3.68</td>
+      <td>3.70</td>
+      <td>11026010.0</td>
+    </tr>
+    <tr>
+      <th>ZOES</th>
+      <td>15.13</td>
+      <td>15.24</td>
+      <td>14.75</td>
+      <td>14.88</td>
+      <td>261242.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>15.13</td>
+      <td>15.24</td>
+      <td>14.75</td>
+      <td>14.88</td>
+      <td>261242.0</td>
+    </tr>
+    <tr>
+      <th>ZTS</th>
+      <td>84.08</td>
+      <td>84.45</td>
+      <td>81.21</td>
+      <td>81.86</td>
+      <td>2676191.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>84.08</td>
+      <td>84.45</td>
+      <td>81.21</td>
+      <td>81.86</td>
+      <td>2676191.0</td>
+    </tr>
+    <tr>
+      <th>ZUMZ</th>
+      <td>24.65</td>
+      <td>24.65</td>
+      <td>23.35</td>
+      <td>23.60</td>
+      <td>403884.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>24.65</td>
+      <td>24.65</td>
+      <td>23.35</td>
+      <td>23.60</td>
+      <td>403884.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">null_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">DATA_STORE</span><span class="p">)</span> <span class="k">as</span> <span class="n">store</span><span class="p">:</span>
+    <span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;quandl/wiki/prices&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+MultiIndex: 15389314 entries, (Timestamp(&#39;1962-01-02 00:00:00&#39;), &#39;ARNC&#39;) to (Timestamp(&#39;2018-03-27 00:00:00&#39;), &#39;ZUMZ&#39;)
+Data columns (total 12 columns):
+ #   Column       Non-Null Count     Dtype  
+---  ------       --------------     -----  
+ 0   open         15388776 non-null  float64
+ 1   high         15389259 non-null  float64
+ 2   low          15389259 non-null  float64
+ 3   close        15389313 non-null  float64
+ 4   volume       15389314 non-null  float64
+ 5   ex-dividend  15389314 non-null  float64
+ 6   split_ratio  15389313 non-null  float64
+ 7   adj_open     15388776 non-null  float64
+ 8   adj_high     15389259 non-null  float64
+ 9   adj_low      15389259 non-null  float64
+ 10  adj_close    15389313 non-null  float64
+ 11  adj_volume   15389314 non-null  float64
+dtypes: float64(12)
+memory usage: 1.4+ GB
+None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;wiki_stocks.csv&#39;</span><span class="p">)</span>
+<span class="c1"># no longer needed</span>
+<span class="c1"># df = pd.concat([df.loc[:, &#39;code&#39;].str.strip(),</span>
+<span class="c1">#                 df.loc[:, &#39;name&#39;].str.split(&#39;(&#39;, expand=True)[0].str.strip().to_frame(&#39;name&#39;)], axis=1)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">null_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">DATA_STORE</span><span class="p">)</span> <span class="k">as</span> <span class="n">store</span><span class="p">:</span>
+    <span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;quandl/wiki/stocks&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 3199 entries, 0 to 3198
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype 
+---  ------  --------------  ----- 
+ 0   code    3199 non-null   object
+ 1   name    3199 non-null   object
+dtypes: object(2)
+memory usage: 50.1+ KB
+None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;us_equities_meta_data.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">DATA_STORE</span><span class="p">)</span> <span class="k">as</span> <span class="n">store</span><span class="p">:</span>
+    <span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;us_equities/stocks&#39;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 6834 entries, 0 to 6833
+Data columns (total 7 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   ticker     6834 non-null   object 
+ 1   name       6834 non-null   object 
+ 2   lastsale   6718 non-null   float64
+ 3   marketcap  5766 non-null   float64
+ 4   ipoyear    3038 non-null   float64
+ 5   sector     5288 non-null   object 
+ 6   industry   5288 non-null   object 
+dtypes: float64(3), object(4)
+memory usage: 373.9+ KB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="s-p-500-prices">
+<h1>S&amp;P 500 Prices<a class="headerlink" href="#s-p-500-prices" title="Link to this heading">#</a></h1>
+<p>The following code downloads historical S&amp;P 500 prices from FRED (only last 10 years of daily data is freely available)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;SP500&#39;</span><span class="p">,</span> <span class="n">data_source</span><span class="o">=</span><span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">2009</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">DATA_STORE</span><span class="p">)</span> <span class="k">as</span> <span class="n">store</span><span class="p">:</span>
+    <span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;sp500/fred&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 2608 entries, 2012-11-02 to 2022-11-01
+Data columns (total 1 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   close   2517 non-null   float64
+dtypes: float64(1)
+memory usage: 40.8 KB
+None
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="feature-engineering">
+<h1>Feature Engineering<a class="headerlink" href="#feature-engineering" title="Link to this heading">#</a></h1>
+<section id="load-the-data">
+<h2>Load the data<a class="headerlink" href="#load-the-data" title="Link to this heading">#</a></h2>
+<p>We load the Quandl stock price datasets covering the US equity markets 2000-18 using <code class="docutils literal notranslate"><span class="pre">pd.IndexSlice</span></code> to perform a slice operation on the <code class="docutils literal notranslate"><span class="pre">pd.MultiIndex</span></code>, select the adjusted close price and unpivot the column to convert the DataFrame to wide format with tickers in the columns and timestamps in the rows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">START</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">END</span> <span class="o">=</span> <span class="mi">2018</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">)</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">DATA_STORE</span><span class="p">)</span> <span class="k">as</span> <span class="n">store</span><span class="p">:</span>
+    <span class="n">prices</span> <span class="o">=</span> <span class="p">(</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;quandl/wiki/prices&#39;</span><span class="p">]</span>
+              <span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">START</span><span class="p">):</span><span class="nb">str</span><span class="p">(</span><span class="n">END</span><span class="p">),</span> <span class="p">:],</span> <span class="s1">&#39;adj_close&#39;</span><span class="p">]</span>
+              <span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">))</span>
+    <span class="n">stocks</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="s1">&#39;us_equities/stocks&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;marketcap&#39;</span><span class="p">,</span> <span class="s1">&#39;ipoyear&#39;</span><span class="p">,</span> <span class="s1">&#39;sector&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prices</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>ticker</th>
+      <th>A</th>
+      <th>AA</th>
+      <th>AAL</th>
+      <th>AAMC</th>
+      <th>AAN</th>
+      <th>AAOI</th>
+      <th>AAON</th>
+      <th>AAP</th>
+      <th>AAPL</th>
+      <th>AAT</th>
+      <th>...</th>
+      <th>ZIOP</th>
+      <th>ZIXI</th>
+      <th>ZLC</th>
+      <th>ZLTQ</th>
+      <th>ZMH</th>
+      <th>ZNGA</th>
+      <th>ZOES</th>
+      <th>ZQK</th>
+      <th>ZTS</th>
+      <th>ZUMZ</th>
+    </tr>
+    <tr>
+      <th>date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2000-01-03</th>
+      <td>49.121329</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.975857</td>
+      <td>NaN</td>
+      <td>1.025920</td>
+      <td>NaN</td>
+      <td>3.596463</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>37.06</td>
+      <td>23.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.7025</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2000-01-04</th>
+      <td>45.369006</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.958913</td>
+      <td>NaN</td>
+      <td>1.068476</td>
+      <td>NaN</td>
+      <td>3.293170</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>36.50</td>
+      <td>22.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.5475</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2000-01-05</th>
+      <td>41.998737</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.958913</td>
+      <td>NaN</td>
+      <td>1.073796</td>
+      <td>NaN</td>
+      <td>3.341362</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>37.13</td>
+      <td>23.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.4850</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2000-01-06</th>
+      <td>40.934441</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.958913</td>
+      <td>NaN</td>
+      <td>1.082915</td>
+      <td>NaN</td>
+      <td>3.052206</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>35.25</td>
+      <td>22.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.4850</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2000-01-07</th>
+      <td>44.345645</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.958913</td>
+      <td>NaN</td>
+      <td>1.044918</td>
+      <td>NaN</td>
+      <td>3.196784</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>38.00</td>
+      <td>21.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.4850</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 3199 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stocks</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 6834 entries, PIH to ZYME
+Data columns (total 3 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   marketcap  5766 non-null   float64
+ 1   ipoyear    3038 non-null   float64
+ 2   sector     5288 non-null   object 
+dtypes: float64(2), object(1)
+memory usage: 213.6+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prices</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 4706 entries, 2000-01-03 to 2018-03-27
+Columns: 3199 entries, A to ZUMZ
+dtypes: float64(3199)
+memory usage: 114.9 MB
+</pre></div>
+</div>
+</div>
+</div>
+<section id="keep-data-with-stock-info">
+<h3>Keep data with stock info<a class="headerlink" href="#keep-data-with-stock-info" title="Link to this heading">#</a></h3>
+<p>Remove <code class="docutils literal notranslate"><span class="pre">stocks</span></code> duplicates and align index names for later joining.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stocks</span> <span class="o">=</span> <span class="n">stocks</span><span class="p">[</span><span class="o">~</span><span class="n">stocks</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()]</span>
+<span class="n">stocks</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ticker&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get tickers with both price information and metdata</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shared</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">stocks</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shared</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;A&#39;, &#39;AA&#39;, &#39;AAL&#39;, &#39;AAMC&#39;, &#39;AAN&#39;, &#39;AAOI&#39;, &#39;AAON&#39;, &#39;AAP&#39;, &#39;AAPL&#39;, &#39;AAT&#39;,
+       ...
+       &#39;ZEN&#39;, &#39;ZEUS&#39;, &#39;ZGNX&#39;, &#39;ZION&#39;, &#39;ZIOP&#39;, &#39;ZIXI&#39;, &#39;ZNGA&#39;, &#39;ZOES&#39;, &#39;ZTS&#39;,
+       &#39;ZUMZ&#39;],
+      dtype=&#39;object&#39;, name=&#39;ticker&#39;, length=2412)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stocks</span> <span class="o">=</span> <span class="n">stocks</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">shared</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">stocks</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 2412 entries, A to ZUMZ
+Data columns (total 3 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   marketcap  2407 non-null   float64
+ 1   ipoyear    1065 non-null   float64
+ 2   sector     2372 non-null   object 
+dtypes: float64(2), object(1)
+memory usage: 75.4+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prices</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">shared</span><span class="p">]</span>
+<span class="n">prices</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 4706 entries, 2000-01-03 to 2018-03-27
+Columns: 2412 entries, A to ZUMZ
+dtypes: float64(2412)
+memory usage: 86.6 MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">prices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">stocks</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="create-monthly-return-series">
+<h2>Create monthly return series<a class="headerlink" href="#create-monthly-return-series" title="Link to this heading">#</a></h2>
+<p>To reduce training time and experiment with strategies for longer time horizons, we convert the business-daily data to month-end frequency using the available adjusted close price:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">monthly_prices</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To capture time series dynamics that reflect, for example, momentum patterns, we compute historical returns using the method <code class="docutils literal notranslate"><span class="pre">.pct_change(n_periods)</span></code>, that is, returns over various monthly periods as identified by lags.</p>
+<p>We then convert the wide result back to long format with the <code class="docutils literal notranslate"><span class="pre">.stack()</span></code> method, use <code class="docutils literal notranslate"><span class="pre">.pipe()</span></code> to apply the <code class="docutils literal notranslate"><span class="pre">.clip()</span></code> method to the resulting <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, and winsorize returns at the [1%, 99%] levels; that is, we cap outliers at these percentiles.</p>
+<p>Finally, we normalize returns using the geometric average. After using <code class="docutils literal notranslate"><span class="pre">.swaplevel()</span></code> to change the order of the <code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code> levels, we obtain compounded monthly returns for six periods ranging from 1 to 12 months:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">monthly_prices</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 219 entries, 2000-01-31 to 2018-03-31
+Freq: M
+Columns: 2412 entries, A to ZUMZ
+dtypes: float64(2412)
+memory usage: 4.0 MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outlier_cutoff</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">lags</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">lag</span> <span class="ow">in</span> <span class="n">lags</span><span class="p">:</span>
+    <span class="n">data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;return_</span><span class="si">{</span><span class="n">lag</span><span class="si">}</span><span class="s1">m&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">monthly_prices</span>
+                           <span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">lag</span><span class="p">)</span>
+                           <span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+                           <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">outlier_cutoff</span><span class="p">),</span>
+                                                  <span class="n">upper</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">outlier_cutoff</span><span class="p">)))</span>
+                           <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                           <span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">lag</span><span class="p">)</span>
+                           <span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                           <span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+MultiIndex: 399525 entries, (&#39;A&#39;, Timestamp(&#39;2001-01-31 00:00:00&#39;, freq=&#39;M&#39;)) to (&#39;ZUMZ&#39;, Timestamp(&#39;2018-03-31 00:00:00&#39;, freq=&#39;M&#39;))
+Data columns (total 6 columns):
+ #   Column      Non-Null Count   Dtype  
+---  ------      --------------   -----  
+ 0   return_1m   399525 non-null  float64
+ 1   return_2m   399525 non-null  float64
+ 2   return_3m   399525 non-null  float64
+ 3   return_6m   399525 non-null  float64
+ 4   return_9m   399525 non-null  float64
+ 5   return_12m  399525 non-null  float64
+dtypes: float64(6)
+memory usage: 19.9+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>return_1m</th>
+      <th>return_2m</th>
+      <th>return_3m</th>
+      <th>return_6m</th>
+      <th>return_9m</th>
+      <th>return_12m</th>
+    </tr>
+    <tr>
+      <th>ticker</th>
+      <th>date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <th>2001-01-31</th>
+      <td>-0.003653</td>
+      <td>0.022360</td>
+      <td>0.056104</td>
+      <td>0.049811</td>
+      <td>-0.052500</td>
+      <td>-0.015988</td>
+    </tr>
+    <tr>
+      <th>AAN</th>
+      <th>2001-01-31</th>
+      <td>0.116071</td>
+      <td>0.008439</td>
+      <td>-0.015687</td>
+      <td>-0.009856</td>
+      <td>-0.002912</td>
+      <td>-0.009572</td>
+    </tr>
+    <tr>
+      <th>AAON</th>
+      <th>2001-01-31</th>
+      <td>0.300170</td>
+      <td>0.034296</td>
+      <td>0.028670</td>
+      <td>-0.006238</td>
+      <td>0.010159</td>
+      <td>0.031027</td>
+    </tr>
+    <tr>
+      <th>AAPL</th>
+      <th>2001-01-31</th>
+      <td>0.430943</td>
+      <td>0.144685</td>
+      <td>0.033941</td>
+      <td>-0.132736</td>
+      <td>-0.110514</td>
+      <td>-0.070339</td>
+    </tr>
+    <tr>
+      <th>ABAX</th>
+      <th>2001-01-31</th>
+      <td>-0.073762</td>
+      <td>-0.042573</td>
+      <td>-0.044914</td>
+      <td>-0.003738</td>
+      <td>-0.028353</td>
+      <td>-0.031993</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="drop-stocks-with-less-than-10-yrs-of-returns">
+<h2>Drop stocks with less than 10 yrs of returns<a class="headerlink" href="#drop-stocks-with-less-than-10-yrs-of-returns" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_obs</span> <span class="o">=</span> <span class="mi">120</span>
+<span class="n">nobs</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;ticker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">keep</span> <span class="o">=</span> <span class="n">nobs</span><span class="p">[</span><span class="n">nobs</span><span class="o">&gt;</span><span class="n">min_obs</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="n">keep</span><span class="p">,:],</span> <span class="p">:]</span>
+<span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+MultiIndex: 360752 entries, (&#39;A&#39;, Timestamp(&#39;2001-01-31 00:00:00&#39;, freq=&#39;M&#39;)) to (&#39;ZUMZ&#39;, Timestamp(&#39;2018-03-31 00:00:00&#39;, freq=&#39;M&#39;))
+Data columns (total 6 columns):
+ #   Column      Non-Null Count   Dtype  
+---  ------      --------------   -----  
+ 0   return_1m   360752 non-null  float64
+ 1   return_2m   360752 non-null  float64
+ 2   return_3m   360752 non-null  float64
+ 3   return_6m   360752 non-null  float64
+ 4   return_9m   360752 non-null  float64
+ 5   return_12m  360752 non-null  float64
+dtypes: float64(6)
+memory usage: 18.0+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>return_1m</th>
+      <th>return_2m</th>
+      <th>return_3m</th>
+      <th>return_6m</th>
+      <th>return_9m</th>
+      <th>return_12m</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>360752.000000</td>
+      <td>360752.000000</td>
+      <td>360752.000000</td>
+      <td>360752.000000</td>
+      <td>360752.000000</td>
+      <td>360752.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.012255</td>
+      <td>0.009213</td>
+      <td>0.008181</td>
+      <td>0.007025</td>
+      <td>0.006552</td>
+      <td>0.006296</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.114236</td>
+      <td>0.081170</td>
+      <td>0.066584</td>
+      <td>0.048474</td>
+      <td>0.039897</td>
+      <td>0.034792</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-0.329564</td>
+      <td>-0.255452</td>
+      <td>-0.214783</td>
+      <td>-0.162063</td>
+      <td>-0.131996</td>
+      <td>-0.114283</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>-0.046464</td>
+      <td>-0.030716</td>
+      <td>-0.023961</td>
+      <td>-0.014922</td>
+      <td>-0.011182</td>
+      <td>-0.009064</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.009448</td>
+      <td>0.009748</td>
+      <td>0.009744</td>
+      <td>0.009378</td>
+      <td>0.008982</td>
+      <td>0.008726</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.066000</td>
+      <td>0.049249</td>
+      <td>0.042069</td>
+      <td>0.031971</td>
+      <td>0.027183</td>
+      <td>0.024615</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>0.430943</td>
+      <td>0.281819</td>
+      <td>0.221789</td>
+      <td>0.154555</td>
+      <td>0.124718</td>
+      <td>0.106371</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># cmap = sns.diverging_palette(10, 220, as_cmap=True)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="s1">&#39;spearman&#39;</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.matrix.ClusterGrid at 0x1c31d04ba88&gt;
+</pre></div>
+</div>
+<img alt="../../_images/b626f3ecb8746c86568fd6343c935c9bc74931cf57021648d0668a527a1cab75.png" src="../../_images/b626f3ecb8746c86568fd6343c935c9bc74931cf57021648d0668a527a1cab75.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1838
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="rolling-factor-betas">
+<h2>Rolling Factor Betas<a class="headerlink" href="#rolling-factor-betas" title="Link to this heading">#</a></h2>
+<p>The five Fama—French factors, namely market risk, size, value, operating profitability, and investment have been shown empirically to explain asset returns and are commonly used to assess the risk/return profile of portfolios. Hence, it is natural to include past factor exposures as financial features in models that aim to predict future returns.</p>
+<p>We can access the historical factor returns using the <code class="docutils literal notranslate"><span class="pre">pandas-datareader</span></code> and estimate historical exposures using the <code class="docutils literal notranslate"><span class="pre">RollingOLS</span></code> rolling linear regression functionality in the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> library .</p>
+<p>Use Fama-French research factors to estimate the factor exposures of the stock in the dataset to the 5 factors market risk, size, value, operating profitability and investment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">,</span> <span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">,</span> <span class="s1">&#39;RMW&#39;</span><span class="p">,</span> <span class="s1">&#39;CMA&#39;</span><span class="p">]</span>
+<span class="n">factor_data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;F-F_Research_Data_5_Factors_2x3&#39;</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;2000&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;RF&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">factor_data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">factor_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_timestamp</span><span class="p">()</span>
+<span class="n">factor_data</span> <span class="o">=</span> <span class="n">factor_data</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span><span class="p">()</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">factor_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;date&#39;</span>
+<span class="n">factor_data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 273 entries, 2000-01-31 to 2022-09-30
+Freq: M
+Data columns (total 5 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   Mkt-RF  273 non-null    float64
+ 1   SMB     273 non-null    float64
+ 2   HML     273 non-null    float64
+ 3   RMW     273 non-null    float64
+ 4   CMA     273 non-null    float64
+dtypes: float64(5)
+memory usage: 12.8 KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factor_data</span> <span class="o">=</span> <span class="n">factor_data</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;return_1m&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">factor_data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+MultiIndex: 360752 entries, (&#39;A&#39;, Timestamp(&#39;2001-01-31 00:00:00&#39;, freq=&#39;M&#39;)) to (&#39;ZUMZ&#39;, Timestamp(&#39;2018-03-31 00:00:00&#39;, freq=&#39;M&#39;))
+Data columns (total 6 columns):
+ #   Column     Non-Null Count   Dtype  
+---  ------     --------------   -----  
+ 0   Mkt-RF     360752 non-null  float64
+ 1   SMB        360752 non-null  float64
+ 2   HML        360752 non-null  float64
+ 3   RMW        360752 non-null  float64
+ 4   CMA        360752 non-null  float64
+ 5   return_1m  360752 non-null  float64
+dtypes: float64(6)
+memory usage: 18.0+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factor_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RMW</th>
+      <th>CMA</th>
+      <th>return_1m</th>
+    </tr>
+    <tr>
+      <th>ticker</th>
+      <th>date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">A</th>
+      <th>2001-01-31</th>
+      <td>0.0313</td>
+      <td>0.0550</td>
+      <td>-0.0509</td>
+      <td>-0.0470</td>
+      <td>-0.0500</td>
+      <td>-0.003653</td>
+    </tr>
+    <tr>
+      <th>2001-02-28</th>
+      <td>-0.1005</td>
+      <td>0.0282</td>
+      <td>0.1248</td>
+      <td>0.0911</td>
+      <td>0.0905</td>
+      <td>-0.329564</td>
+    </tr>
+    <tr>
+      <th>2001-03-31</th>
+      <td>-0.0726</td>
+      <td>0.0233</td>
+      <td>0.0642</td>
+      <td>0.0336</td>
+      <td>0.0391</td>
+      <td>-0.146389</td>
+    </tr>
+    <tr>
+      <th>2001-04-30</th>
+      <td>0.0794</td>
+      <td>-0.0086</td>
+      <td>-0.0468</td>
+      <td>-0.0307</td>
+      <td>-0.0319</td>
+      <td>0.269444</td>
+    </tr>
+    <tr>
+      <th>2001-05-31</th>
+      <td>0.0072</td>
+      <td>0.0359</td>
+      <td>0.0338</td>
+      <td>0.0026</td>
+      <td>0.0188</td>
+      <td>-0.140220</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mi">24</span>
+<span class="n">betas</span> <span class="o">=</span> <span class="p">(</span><span class="n">factor_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span>
+                             <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">RollingOLS</span><span class="p">(</span><span class="n">endog</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">return_1m</span><span class="p">,</span>
+                                     <span class="n">exog</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;return_1m&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span>
+                                     <span class="n">window</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+                <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">params_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">params</span>
+                <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;const&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">betas</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RMW</th>
+      <th>CMA</th>
+    </tr>
+    <tr>
+      <th>ticker</th>
+      <th>date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">ZUMZ</th>
+      <th>2017-11-30</th>
+      <td>-0.766557</td>
+      <td>1.325263</td>
+      <td>1.322945</td>
+      <td>3.462953</td>
+      <td>1.026065</td>
+    </tr>
+    <tr>
+      <th>2017-12-31</th>
+      <td>-0.958808</td>
+      <td>1.658193</td>
+      <td>1.523229</td>
+      <td>3.646938</td>
+      <td>0.371988</td>
+    </tr>
+    <tr>
+      <th>2018-01-31</th>
+      <td>0.075697</td>
+      <td>1.161659</td>
+      <td>1.317316</td>
+      <td>2.983589</td>
+      <td>0.661756</td>
+    </tr>
+    <tr>
+      <th>2018-02-28</th>
+      <td>0.330981</td>
+      <td>1.026937</td>
+      <td>1.341743</td>
+      <td>2.721455</td>
+      <td>0.697090</td>
+    </tr>
+    <tr>
+      <th>2018-03-31</th>
+      <td>0.230573</td>
+      <td>1.659271</td>
+      <td>1.157683</td>
+      <td>2.950366</td>
+      <td>0.573229</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">betas</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">betas</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;total&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RMW</th>
+      <th>CMA</th>
+      <th>total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>318478.000000</td>
+      <td>318478.000000</td>
+      <td>318478.000000</td>
+      <td>318478.000000</td>
+      <td>318478.000000</td>
+      <td>360752.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.978889</td>
+      <td>0.626565</td>
+      <td>0.123485</td>
+      <td>-0.062155</td>
+      <td>0.016914</td>
+      <td>1.486397</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.917591</td>
+      <td>1.254674</td>
+      <td>1.602562</td>
+      <td>1.907076</td>
+      <td>2.155889</td>
+      <td>3.305914</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-9.825518</td>
+      <td>-10.420754</td>
+      <td>-15.215922</td>
+      <td>-23.005713</td>
+      <td>-18.423557</td>
+      <td>-33.251810</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.463566</td>
+      <td>-0.119243</td>
+      <td>-0.706422</td>
+      <td>-0.973602</td>
+      <td>-1.071335</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.928593</td>
+      <td>0.541534</td>
+      <td>0.096089</td>
+      <td>0.038055</td>
+      <td>0.040684</td>
+      <td>1.214759</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1.444069</td>
+      <td>1.303951</td>
+      <td>0.947859</td>
+      <td>0.949507</td>
+      <td>1.135144</td>
+      <td>3.146852</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>10.858294</td>
+      <td>10.459489</td>
+      <td>15.094963</td>
+      <td>16.977443</td>
+      <td>16.657684</td>
+      <td>34.097389</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">diverging_palette</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">clustermap</span><span class="p">(</span><span class="n">betas</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/5de4cd3eedcca68d297e6efcd38242432a36f9e0804f95ebad66a71b0fae6fb0.png" src="../../_images/5de4cd3eedcca68d297e6efcd38242432a36f9e0804f95ebad66a71b0fae6fb0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span>
+        <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">betas</span>
+              <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;ticker&#39;</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">shift</span><span class="p">()))</span>
+<span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+MultiIndex: 360752 entries, (&#39;A&#39;, Timestamp(&#39;2001-01-31 00:00:00&#39;, freq=&#39;M&#39;)) to (&#39;ZUMZ&#39;, Timestamp(&#39;2018-03-31 00:00:00&#39;, freq=&#39;M&#39;))
+Data columns (total 11 columns):
+ #   Column      Non-Null Count   Dtype  
+---  ------      --------------   -----  
+ 0   return_1m   360752 non-null  float64
+ 1   return_2m   360752 non-null  float64
+ 2   return_3m   360752 non-null  float64
+ 3   return_6m   360752 non-null  float64
+ 4   return_9m   360752 non-null  float64
+ 5   return_12m  360752 non-null  float64
+ 6   Mkt-RF      316640 non-null  float64
+ 7   SMB         316640 non-null  float64
+ 8   HML         316640 non-null  float64
+ 9   RMW         316640 non-null  float64
+ 10  CMA         316640 non-null  float64
+dtypes: float64(11)
+memory usage: 39.8+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>return_1m</th>
+      <th>return_2m</th>
+      <th>return_3m</th>
+      <th>return_6m</th>
+      <th>return_9m</th>
+      <th>return_12m</th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RMW</th>
+      <th>CMA</th>
+    </tr>
+    <tr>
+      <th>ticker</th>
+      <th>date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">ZUMZ</th>
+      <th>2017-11-30</th>
+      <td>0.235127</td>
+      <td>0.097461</td>
+      <td>0.205302</td>
+      <td>0.073430</td>
+      <td>0.007402</td>
+      <td>-0.010687</td>
+      <td>-0.768395</td>
+      <td>0.998015</td>
+      <td>1.349890</td>
+      <td>2.950637</td>
+      <td>1.315143</td>
+    </tr>
+    <tr>
+      <th>2017-12-31</th>
+      <td>-0.044725</td>
+      <td>0.086226</td>
+      <td>0.047857</td>
+      <td>0.090987</td>
+      <td>0.014465</td>
+      <td>-0.003996</td>
+      <td>-0.766557</td>
+      <td>1.325263</td>
+      <td>1.322945</td>
+      <td>3.462953</td>
+      <td>1.026065</td>
+    </tr>
+    <tr>
+      <th>2018-01-31</th>
+      <td>-0.003601</td>
+      <td>-0.024380</td>
+      <td>0.055418</td>
+      <td>0.085265</td>
+      <td>0.016237</td>
+      <td>0.002864</td>
+      <td>-0.958808</td>
+      <td>1.658193</td>
+      <td>1.523229</td>
+      <td>3.646938</td>
+      <td>0.371988</td>
+    </tr>
+    <tr>
+      <th>2018-02-28</th>
+      <td>-0.050602</td>
+      <td>-0.027386</td>
+      <td>-0.033200</td>
+      <td>0.079484</td>
+      <td>0.036640</td>
+      <td>-0.002905</td>
+      <td>0.075697</td>
+      <td>1.161659</td>
+      <td>1.317316</td>
+      <td>2.983589</td>
+      <td>0.661756</td>
+    </tr>
+    <tr>
+      <th>2018-03-31</th>
+      <td>0.197970</td>
+      <td>0.066466</td>
+      <td>0.042579</td>
+      <td>0.045215</td>
+      <td>0.074606</td>
+      <td>0.021422</td>
+      <td>0.330981</td>
+      <td>1.026937</td>
+      <td>1.341743</td>
+      <td>2.721455</td>
+      <td>0.697090</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="impute-mean-for-missing-factor-betas">
+<h3>Impute mean for missing factor betas<a class="headerlink" href="#impute-mean-for-missing-factor-betas" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">factors</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">)[</span><span class="n">factors</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+<span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+MultiIndex: 360752 entries, (&#39;A&#39;, Timestamp(&#39;2001-01-31 00:00:00&#39;, freq=&#39;M&#39;)) to (&#39;ZUMZ&#39;, Timestamp(&#39;2018-03-31 00:00:00&#39;, freq=&#39;M&#39;))
+Data columns (total 11 columns):
+ #   Column      Non-Null Count   Dtype  
+---  ------      --------------   -----  
+ 0   return_1m   360752 non-null  float64
+ 1   return_2m   360752 non-null  float64
+ 2   return_3m   360752 non-null  float64
+ 3   return_6m   360752 non-null  float64
+ 4   return_9m   360752 non-null  float64
+ 5   return_12m  360752 non-null  float64
+ 6   Mkt-RF      360752 non-null  float64
+ 7   SMB         360752 non-null  float64
+ 8   HML         360752 non-null  float64
+ 9   RMW         360752 non-null  float64
+ 10  CMA         360752 non-null  float64
+dtypes: float64(11)
+memory usage: 39.8+ MB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="momentum-factors">
+<h2>Momentum factors<a class="headerlink" href="#momentum-factors" title="Link to this heading">#</a></h2>
+<p>We can use these results to compute momentum factors based on the difference between returns over longer periods and the most recent monthly return, as well as for the difference between 3 and 12 month returns as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">lag</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">12</span><span class="p">]:</span>
+    <span class="n">data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;momentum_</span><span class="si">{</span><span class="n">lag</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;return_</span><span class="si">{</span><span class="n">lag</span><span class="si">}</span><span class="s1">m&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">return_1m</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;momentum_3_12&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;return_12m&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">return_3m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="date-indicators">
+<h2>Date Indicators<a class="headerlink" href="#date-indicators" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dates</span><span class="o">.</span><span class="n">year</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dates</span><span class="o">.</span><span class="n">month</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="lagged-returns">
+<h2>Lagged returns<a class="headerlink" href="#lagged-returns" title="Link to this heading">#</a></h2>
+<p>To use lagged values as input variables or features associated with the current observations, we use the .shift() method to move historical returns up to the current period:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+    <span class="n">data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;return_1m_t-</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;ticker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">return_1m</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+MultiIndex: 360752 entries, (&#39;A&#39;, Timestamp(&#39;2001-01-31 00:00:00&#39;, freq=&#39;M&#39;)) to (&#39;ZUMZ&#39;, Timestamp(&#39;2018-03-31 00:00:00&#39;, freq=&#39;M&#39;))
+Data columns (total 25 columns):
+ #   Column         Non-Null Count   Dtype  
+---  ------         --------------   -----  
+ 0   return_1m      360752 non-null  float64
+ 1   return_2m      360752 non-null  float64
+ 2   return_3m      360752 non-null  float64
+ 3   return_6m      360752 non-null  float64
+ 4   return_9m      360752 non-null  float64
+ 5   return_12m     360752 non-null  float64
+ 6   Mkt-RF         360752 non-null  float64
+ 7   SMB            360752 non-null  float64
+ 8   HML            360752 non-null  float64
+ 9   RMW            360752 non-null  float64
+ 10  CMA            360752 non-null  float64
+ 11  momentum_2     360752 non-null  float64
+ 12  momentum_3     360752 non-null  float64
+ 13  momentum_6     360752 non-null  float64
+ 14  momentum_9     360752 non-null  float64
+ 15  momentum_12    360752 non-null  float64
+ 16  momentum_3_12  360752 non-null  float64
+ 17  year           360752 non-null  int64  
+ 18  month          360752 non-null  int64  
+ 19  return_1m_t-1  358914 non-null  float64
+ 20  return_1m_t-2  357076 non-null  float64
+ 21  return_1m_t-3  355238 non-null  float64
+ 22  return_1m_t-4  353400 non-null  float64
+ 23  return_1m_t-5  351562 non-null  float64
+ 24  return_1m_t-6  349724 non-null  float64
+dtypes: float64(23), int64(2)
+memory usage: 78.3+ MB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="target-holding-period-returns">
+<h2>Target: Holding Period Returns<a class="headerlink" href="#target-holding-period-returns" title="Link to this heading">#</a></h2>
+<p>Similarly, to compute returns for various holding periods, we use the normalized period returns computed previously and shift them back to align them with the current financial features</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">]:</span>
+    <span class="n">data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;target_</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s1">m&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;ticker&#39;</span><span class="p">)[</span><span class="sa">f</span><span class="s1">&#39;return_</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s1">m&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;target_1m&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;target_2m&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;target_3m&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;return_1m&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;return_2m&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;return_3m&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;return_1m_t-1&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;return_1m_t-2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;return_1m_t-3&#39;</span><span class="p">]</span>
+
+<span class="n">data</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>target_1m</th>
+      <th>target_2m</th>
+      <th>target_3m</th>
+      <th>return_1m</th>
+      <th>return_2m</th>
+      <th>return_3m</th>
+      <th>return_1m_t-1</th>
+      <th>return_1m_t-2</th>
+      <th>return_1m_t-3</th>
+    </tr>
+    <tr>
+      <th>ticker</th>
+      <th>date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="10" valign="top">A</th>
+      <th>2001-04-30</th>
+      <td>-0.140220</td>
+      <td>-0.087246</td>
+      <td>-0.098192</td>
+      <td>0.269444</td>
+      <td>0.040966</td>
+      <td>-0.105747</td>
+      <td>-0.146389</td>
+      <td>-0.329564</td>
+      <td>-0.003653</td>
+    </tr>
+    <tr>
+      <th>2001-05-31</th>
+      <td>-0.031008</td>
+      <td>-0.076414</td>
+      <td>-0.075527</td>
+      <td>-0.140220</td>
+      <td>0.044721</td>
+      <td>-0.023317</td>
+      <td>0.269444</td>
+      <td>-0.146389</td>
+      <td>-0.329564</td>
+    </tr>
+    <tr>
+      <th>2001-06-30</th>
+      <td>-0.119692</td>
+      <td>-0.097014</td>
+      <td>-0.155847</td>
+      <td>-0.031008</td>
+      <td>-0.087246</td>
+      <td>0.018842</td>
+      <td>-0.140220</td>
+      <td>0.269444</td>
+      <td>-0.146389</td>
+    </tr>
+    <tr>
+      <th>2001-07-31</th>
+      <td>-0.073750</td>
+      <td>-0.173364</td>
+      <td>-0.080114</td>
+      <td>-0.119692</td>
+      <td>-0.076414</td>
+      <td>-0.098192</td>
+      <td>-0.031008</td>
+      <td>-0.140220</td>
+      <td>0.269444</td>
+    </tr>
+    <tr>
+      <th>2001-08-31</th>
+      <td>-0.262264</td>
+      <td>-0.083279</td>
+      <td>0.009593</td>
+      <td>-0.073750</td>
+      <td>-0.097014</td>
+      <td>-0.075527</td>
+      <td>-0.119692</td>
+      <td>-0.031008</td>
+      <td>-0.140220</td>
+    </tr>
+    <tr>
+      <th>2001-09-30</th>
+      <td>0.139130</td>
+      <td>0.181052</td>
+      <td>0.134010</td>
+      <td>-0.262264</td>
+      <td>-0.173364</td>
+      <td>-0.155847</td>
+      <td>-0.073750</td>
+      <td>-0.119692</td>
+      <td>-0.031008</td>
+    </tr>
+    <tr>
+      <th>2001-10-31</th>
+      <td>0.224517</td>
+      <td>0.131458</td>
+      <td>0.108697</td>
+      <td>0.139130</td>
+      <td>-0.083279</td>
+      <td>-0.080114</td>
+      <td>-0.262264</td>
+      <td>-0.073750</td>
+      <td>-0.119692</td>
+    </tr>
+    <tr>
+      <th>2001-11-30</th>
+      <td>0.045471</td>
+      <td>0.054962</td>
+      <td>0.045340</td>
+      <td>0.224517</td>
+      <td>0.181052</td>
+      <td>0.009593</td>
+      <td>0.139130</td>
+      <td>-0.262264</td>
+      <td>-0.073750</td>
+    </tr>
+    <tr>
+      <th>2001-12-31</th>
+      <td>0.064539</td>
+      <td>0.045275</td>
+      <td>0.070347</td>
+      <td>0.045471</td>
+      <td>0.131458</td>
+      <td>0.134010</td>
+      <td>0.224517</td>
+      <td>0.139130</td>
+      <td>-0.262264</td>
+    </tr>
+    <tr>
+      <th>2002-01-31</th>
+      <td>0.026359</td>
+      <td>0.073264</td>
+      <td>-0.003306</td>
+      <td>0.064539</td>
+      <td>0.054962</td>
+      <td>0.108697</td>
+      <td>0.045471</td>
+      <td>0.224517</td>
+      <td>0.139130</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+MultiIndex: 360752 entries, (&#39;A&#39;, Timestamp(&#39;2001-01-31 00:00:00&#39;, freq=&#39;M&#39;)) to (&#39;ZUMZ&#39;, Timestamp(&#39;2018-03-31 00:00:00&#39;, freq=&#39;M&#39;))
+Data columns (total 30 columns):
+ #   Column         Non-Null Count   Dtype  
+---  ------         --------------   -----  
+ 0   return_1m      360752 non-null  float64
+ 1   return_2m      360752 non-null  float64
+ 2   return_3m      360752 non-null  float64
+ 3   return_6m      360752 non-null  float64
+ 4   return_9m      360752 non-null  float64
+ 5   return_12m     360752 non-null  float64
+ 6   Mkt-RF         360752 non-null  float64
+ 7   SMB            360752 non-null  float64
+ 8   HML            360752 non-null  float64
+ 9   RMW            360752 non-null  float64
+ 10  CMA            360752 non-null  float64
+ 11  momentum_2     360752 non-null  float64
+ 12  momentum_3     360752 non-null  float64
+ 13  momentum_6     360752 non-null  float64
+ 14  momentum_9     360752 non-null  float64
+ 15  momentum_12    360752 non-null  float64
+ 16  momentum_3_12  360752 non-null  float64
+ 17  year           360752 non-null  int64  
+ 18  month          360752 non-null  int64  
+ 19  return_1m_t-1  358914 non-null  float64
+ 20  return_1m_t-2  357076 non-null  float64
+ 21  return_1m_t-3  355238 non-null  float64
+ 22  return_1m_t-4  353400 non-null  float64
+ 23  return_1m_t-5  351562 non-null  float64
+ 24  return_1m_t-6  349724 non-null  float64
+ 25  target_1m      358914 non-null  float64
+ 26  target_2m      357076 non-null  float64
+ 27  target_3m      355238 non-null  float64
+ 28  target_6m      349724 non-null  float64
+ 29  target_12m     338696 non-null  float64
+dtypes: float64(28), int64(2)
+memory usage: 92.1+ MB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-age-proxy">
+<h2>Create age proxy<a class="headerlink" href="#create-age-proxy" title="Link to this heading">#</a></h2>
+<p>We use quintiles of IPO year as a proxy for company age.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span>
+        <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">stocks</span><span class="o">.</span><span class="n">ipoyear</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)))</span>
+              <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">)))</span>
+<span class="n">data</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">age</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-dynamic-size-proxy">
+<h2>Create dynamic size proxy<a class="headerlink" href="#create-dynamic-size-proxy" title="Link to this heading">#</a></h2>
+<p>We use the marketcap information from the NASDAQ ticker info to create a size proxy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stocks</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 2412 entries, A to ZUMZ
+Data columns (total 3 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   marketcap  2407 non-null   float64
+ 1   ipoyear    1065 non-null   float64
+ 2   sector     2372 non-null   object 
+dtypes: float64(2), object(1)
+memory usage: 139.9+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Market cap information is tied to currrent prices. We create an adjustment factor to have the values reflect lower historical prices for each individual stock:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">size_factor</span> <span class="o">=</span> <span class="p">(</span><span class="n">monthly_prices</span>
+               <span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span>
+                    <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">()]</span>
+               <span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+               <span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+               <span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+               <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+               <span class="o">.</span><span class="n">cumprod</span><span class="p">())</span>
+<span class="n">size_factor</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 207 entries, 2018-03-31 to 2001-01-31
+Columns: 1838 entries, A to ZUMZ
+dtypes: float64(1838)
+memory usage: 2.9 MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msize</span> <span class="o">=</span> <span class="p">(</span><span class="n">size_factor</span>
+         <span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">stocks</span>
+              <span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">size_factor</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="s1">&#39;marketcap&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="create-size-indicator-as-deciles-per-period">
+<h3>Create Size indicator as deciles per period<a class="headerlink" href="#create-size-indicator-as-deciles-per-period" title="Link to this heading">#</a></h3>
+<p>Compute size deciles per month:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;msize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">msize</span>
+                 <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)))</span>
+                        <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                 <span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+                 <span class="o">.</span><span class="n">swaplevel</span><span class="p">())</span>
+<span class="n">data</span><span class="o">.</span><span class="n">msize</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">msize</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="combine-data">
+<h2>Combine data<a class="headerlink" href="#combine-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">stocks</span><span class="p">[[</span><span class="s1">&#39;sector&#39;</span><span class="p">]])</span>
+<span class="n">data</span><span class="o">.</span><span class="n">sector</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sector</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Unknown&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+MultiIndex: 360752 entries, (&#39;A&#39;, Timestamp(&#39;2001-01-31 00:00:00&#39;, freq=&#39;M&#39;)) to (&#39;ZUMZ&#39;, Timestamp(&#39;2018-03-31 00:00:00&#39;, freq=&#39;M&#39;))
+Data columns (total 33 columns):
+ #   Column         Non-Null Count   Dtype  
+---  ------         --------------   -----  
+ 0   return_1m      360752 non-null  float64
+ 1   return_2m      360752 non-null  float64
+ 2   return_3m      360752 non-null  float64
+ 3   return_6m      360752 non-null  float64
+ 4   return_9m      360752 non-null  float64
+ 5   return_12m     360752 non-null  float64
+ 6   Mkt-RF         360752 non-null  float64
+ 7   SMB            360752 non-null  float64
+ 8   HML            360752 non-null  float64
+ 9   RMW            360752 non-null  float64
+ 10  CMA            360752 non-null  float64
+ 11  momentum_2     360752 non-null  float64
+ 12  momentum_3     360752 non-null  float64
+ 13  momentum_6     360752 non-null  float64
+ 14  momentum_9     360752 non-null  float64
+ 15  momentum_12    360752 non-null  float64
+ 16  momentum_3_12  360752 non-null  float64
+ 17  year           360752 non-null  int64  
+ 18  month          360752 non-null  int64  
+ 19  return_1m_t-1  358914 non-null  float64
+ 20  return_1m_t-2  357076 non-null  float64
+ 21  return_1m_t-3  355238 non-null  float64
+ 22  return_1m_t-4  353400 non-null  float64
+ 23  return_1m_t-5  351562 non-null  float64
+ 24  return_1m_t-6  349724 non-null  float64
+ 25  target_1m      358914 non-null  float64
+ 26  target_2m      357076 non-null  float64
+ 27  target_3m      355238 non-null  float64
+ 28  target_6m      349724 non-null  float64
+ 29  target_12m     338696 non-null  float64
+ 30  age            360752 non-null  int32  
+ 31  msize          360752 non-null  float64
+ 32  sector         360752 non-null  object 
+dtypes: float64(29), int32(1), int64(2), object(1)
+memory usage: 99.0+ MB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="store-data">
+<h2>Store data<a class="headerlink" href="#store-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">DATA_STORE</span><span class="p">)</span> <span class="k">as</span> <span class="n">store</span><span class="p">:</span>
+    <span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;engineered_features&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">[:,</span> <span class="p">:</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span> <span class="p">:])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">store</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.io.pytables.HDFStore&#39;&gt;
+File path: assets.h5
+/engineered_features            frame        (shape-&gt;[358914,33])  
+/quandl/wiki/prices             frame        (shape-&gt;[15389314,12])
+/quandl/wiki/stocks             frame        (shape-&gt;[1,2])        
+/us_equities/stocks             frame        (shape-&gt;[6834,6])     
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-dummy-variables">
+<h2>Create Dummy variables<a class="headerlink" href="#create-dummy-variables" title="Link to this heading">#</a></h2>
+<p>For most models, we need to encode categorical variables as ‘dummies’ (one-hot encoding):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dummy_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
+                            <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;msize&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span>  <span class="s1">&#39;sector&#39;</span><span class="p">],</span>
+                            <span class="n">prefix</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;msize&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">],</span>
+                            <span class="n">prefix_sep</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">])</span>
+<span class="n">dummy_data</span> <span class="o">=</span> <span class="n">dummy_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">c</span><span class="p">:</span><span class="n">c</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.0&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">dummy_data</span><span class="o">.</span><span class="n">columns</span><span class="p">})</span>
+<span class="n">dummy_data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+MultiIndex: 360752 entries, (&#39;A&#39;, Timestamp(&#39;2001-01-31 00:00:00&#39;, freq=&#39;M&#39;)) to (&#39;ZUMZ&#39;, Timestamp(&#39;2018-03-31 00:00:00&#39;, freq=&#39;M&#39;))
+Data columns (total 88 columns):
+ #   Column                 Non-Null Count   Dtype  
+---  ------                 --------------   -----  
+ 0   return_1m              360752 non-null  float64
+ 1   return_2m              360752 non-null  float64
+ 2   return_3m              360752 non-null  float64
+ 3   return_6m              360752 non-null  float64
+ 4   return_9m              360752 non-null  float64
+ 5   return_12m             360752 non-null  float64
+ 6   Mkt-RF                 360752 non-null  float64
+ 7   SMB                    360752 non-null  float64
+ 8   HML                    360752 non-null  float64
+ 9   RMW                    360752 non-null  float64
+ 10  CMA                    360752 non-null  float64
+ 11  momentum_2             360752 non-null  float64
+ 12  momentum_3             360752 non-null  float64
+ 13  momentum_6             360752 non-null  float64
+ 14  momentum_9             360752 non-null  float64
+ 15  momentum_12            360752 non-null  float64
+ 16  momentum_3_12          360752 non-null  float64
+ 17  return_1m_t-1          358914 non-null  float64
+ 18  return_1m_t-2          357076 non-null  float64
+ 19  return_1m_t-3          355238 non-null  float64
+ 20  return_1m_t-4          353400 non-null  float64
+ 21  return_1m_t-5          351562 non-null  float64
+ 22  return_1m_t-6          349724 non-null  float64
+ 23  target_1m              358914 non-null  float64
+ 24  target_2m              357076 non-null  float64
+ 25  target_3m              355238 non-null  float64
+ 26  target_6m              349724 non-null  float64
+ 27  target_12m             338696 non-null  float64
+ 28  year_2001              360752 non-null  uint8  
+ 29  year_2002              360752 non-null  uint8  
+ 30  year_2003              360752 non-null  uint8  
+ 31  year_2004              360752 non-null  uint8  
+ 32  year_2005              360752 non-null  uint8  
+ 33  year_2006              360752 non-null  uint8  
+ 34  year_2007              360752 non-null  uint8  
+ 35  year_2008              360752 non-null  uint8  
+ 36  year_2009              360752 non-null  uint8  
+ 37  year_2010              360752 non-null  uint8  
+ 38  year_2011              360752 non-null  uint8  
+ 39  year_2012              360752 non-null  uint8  
+ 40  year_2013              360752 non-null  uint8  
+ 41  year_2014              360752 non-null  uint8  
+ 42  year_2015              360752 non-null  uint8  
+ 43  year_2016              360752 non-null  uint8  
+ 44  year_2017              360752 non-null  uint8  
+ 45  year_2018              360752 non-null  uint8  
+ 46  month_1                360752 non-null  uint8  
+ 47  month_2                360752 non-null  uint8  
+ 48  month_3                360752 non-null  uint8  
+ 49  month_4                360752 non-null  uint8  
+ 50  month_5                360752 non-null  uint8  
+ 51  month_6                360752 non-null  uint8  
+ 52  month_7                360752 non-null  uint8  
+ 53  month_8                360752 non-null  uint8  
+ 54  month_9                360752 non-null  uint8  
+ 55  month_10               360752 non-null  uint8  
+ 56  month_11               360752 non-null  uint8  
+ 57  month_12               360752 non-null  uint8  
+ 58  msize_-1               360752 non-null  uint8  
+ 59  msize_1                360752 non-null  uint8  
+ 60  msize_2                360752 non-null  uint8  
+ 61  msize_3                360752 non-null  uint8  
+ 62  msize_4                360752 non-null  uint8  
+ 63  msize_5                360752 non-null  uint8  
+ 64  msize_6                360752 non-null  uint8  
+ 65  msize_7                360752 non-null  uint8  
+ 66  msize_8                360752 non-null  uint8  
+ 67  msize_9                360752 non-null  uint8  
+ 68  msize_10               360752 non-null  uint8  
+ 69  age_0                  360752 non-null  uint8  
+ 70  age_1                  360752 non-null  uint8  
+ 71  age_2                  360752 non-null  uint8  
+ 72  age_3                  360752 non-null  uint8  
+ 73  age_4                  360752 non-null  uint8  
+ 74  age_5                  360752 non-null  uint8  
+ 75  Basic Industries       360752 non-null  uint8  
+ 76  Capital Goods          360752 non-null  uint8  
+ 77  Consumer Durables      360752 non-null  uint8  
+ 78  Consumer Non-Durables  360752 non-null  uint8  
+ 79  Consumer Services      360752 non-null  uint8  
+ 80  Energy                 360752 non-null  uint8  
+ 81  Finance                360752 non-null  uint8  
+ 82  Health Care            360752 non-null  uint8  
+ 83  Miscellaneous          360752 non-null  uint8  
+ 84  Public Utilities       360752 non-null  uint8  
+ 85  Technology             360752 non-null  uint8  
+ 86  Transportation         360752 non-null  uint8  
+ 87  Unknown                360752 non-null  uint8  
+dtypes: float64(28), uint8(60)
+memory usage: 107.2+ MB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="generate-technical-alpha-factors">
+<h2>Generate Technical Alpha Factors<a class="headerlink" href="#generate-technical-alpha-factors" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## generating for AAPL - need to do for all</span>
+<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">DATA_STORE</span><span class="p">)</span> <span class="k">as</span> <span class="n">store</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;quandl/wiki/prices&#39;</span><span class="p">]</span>
+            <span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="s1">&#39;2007&#39;</span><span class="p">:</span><span class="s1">&#39;2018&#39;</span><span class="p">,</span> <span class="s1">&#39;AAPL&#39;</span><span class="p">],</span>
+                 <span class="p">[</span><span class="s1">&#39;adj_open&#39;</span><span class="p">,</span> <span class="s1">&#39;adj_high&#39;</span><span class="p">,</span> <span class="s1">&#39;adj_low&#39;</span><span class="p">,</span> <span class="s1">&#39;adj_close&#39;</span><span class="p">,</span> <span class="s1">&#39;adj_volume&#39;</span><span class="p">]]</span>
+            <span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">swaplevel</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;AAPL&#39;</span><span class="p">]</span>
+            <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;adj_&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 2826 entries, 2007-01-03 to 2018-03-27
+Data columns (total 5 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   open    2826 non-null   float64
+ 1   high    2826 non-null   float64
+ 2   low     2826 non-null   float64
+ 3   close   2826 non-null   float64
+ 4   volume  2826 non-null   float64
+dtypes: float64(5)
+memory usage: 132.5 KB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="compute-bollinger-bands">
+<h2>Compute Bollinger Bands<a class="headerlink" href="#compute-bollinger-bands" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">up</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">low</span> <span class="o">=</span> <span class="n">BBANDS</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">nbdevup</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nbdevdn</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">matype</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="compute-relative-strength-index">
+<h2>Compute Relative Strength Index<a class="headerlink" href="#compute-relative-strength-index" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rsi</span> <span class="o">=</span> <span class="n">RSI</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">close</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="moving-average-convergence-divergence">
+<h2>Moving Average Convergence/Divergence<a class="headerlink" href="#moving-average-convergence-divergence" title="Link to this heading">#</a></h2>
+<p>The MACD computes the difference between two Exponential Moving Averages (EMA), one longer- and one shorter-term.</p>
+<p>The ta-lib MACD Indicator implementation has four inputs:</p>
+<ul class="simple">
+<li><p>the close price</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fastperiod</span></code>: the short-term EMA period</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slowperiod</span></code>: the long-term EMA period</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">signalperiod</span></code>: the period for the EMA of the MACD itself</p></li>
+</ul>
+<p>It has three outputs:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">macd</span></code> is the difference between the fast EMA and slow EMA.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">macdsignal</span></code> is the EMA of the MACD value with period <code class="docutils literal notranslate"><span class="pre">signalperiod</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">macdhist</span></code> computes the difference between <code class="docutils literal notranslate"><span class="pre">macd</span></code> and <code class="docutils literal notranslate"><span class="pre">macdsignal</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">macd</span><span class="p">,</span> <span class="n">macdsignal</span><span class="p">,</span> <span class="n">macdhist</span> <span class="o">=</span> <span class="n">MACD</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">close</span><span class="p">,</span> <span class="n">fastperiod</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">slowperiod</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="n">signalperiod</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">macd_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;AAPL&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">close</span><span class="p">,</span> <span class="s1">&#39;MACD&#39;</span><span class="p">:</span> <span class="n">macd</span><span class="p">,</span> <span class="s1">&#39;MACD Signal&#39;</span><span class="p">:</span> <span class="n">macdsignal</span><span class="p">,</span> <span class="s1">&#39;MACD History&#39;</span><span class="p">:</span> <span class="n">macdhist</span><span class="p">})</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">macd_data</span><span class="o">.</span><span class="n">AAPL</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">macd_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f8f45ef026510ae95167ad6d17090b45746b026fe07b15d0f7e92327bd7be036.png" src="../../_images/f8f45ef026510ae95167ad6d17090b45746b026fe07b15d0f7e92327bd7be036.png" />
+</div>
+</div>
+</section>
+<section id="plot-result">
+<h2>Plot Result<a class="headerlink" href="#plot-result" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;AAPL&#39;</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">close</span><span class="p">,</span> <span class="s1">&#39;BB Up&#39;</span><span class="p">:</span> <span class="n">up</span><span class="p">,</span> <span class="s1">&#39;BB Mid&#39;</span><span class="p">:</span> <span class="n">mid</span><span class="p">,</span> <span class="s1">&#39;BB down&#39;</span><span class="p">:</span> <span class="n">low</span><span class="p">,</span> <span class="s1">&#39;RSI&#39;</span><span class="p">:</span> <span class="n">rsi</span><span class="p">,</span> <span class="s1">&#39;MACD&#39;</span><span class="p">:</span> <span class="n">macd</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 2826 entries, 2007-01-03 to 2018-03-27
+Data columns (total 6 columns):
+ #   Column   Non-Null Count  Dtype  
+---  ------   --------------  -----  
+ 0   AAPL     2826 non-null   float64
+ 1   BB Up    2806 non-null   float64
+ 2   BB Mid   2806 non-null   float64
+ 3   BB down  2806 non-null   float64
+ 4   RSI      2812 non-null   float64
+ 5   MACD     2793 non-null   float64
+dtypes: float64(6)
+memory usage: 154.5 KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AAPL</th>
+      <th>BB Up</th>
+      <th>BB Mid</th>
+      <th>BB down</th>
+      <th>RSI</th>
+      <th>MACD</th>
+    </tr>
+    <tr>
+      <th>date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018-03-21</th>
+      <td>171.270</td>
+      <td>182.091745</td>
+      <td>176.665000</td>
+      <td>171.238255</td>
+      <td>42.302794</td>
+      <td>1.129731</td>
+    </tr>
+    <tr>
+      <th>2018-03-22</th>
+      <td>168.845</td>
+      <td>182.482734</td>
+      <td>176.559048</td>
+      <td>170.635361</td>
+      <td>38.343555</td>
+      <td>0.467060</td>
+    </tr>
+    <tr>
+      <th>2018-03-23</th>
+      <td>164.940</td>
+      <td>183.763106</td>
+      <td>176.194286</td>
+      <td>168.625465</td>
+      <td>32.989187</td>
+      <td>-0.368959</td>
+    </tr>
+    <tr>
+      <th>2018-03-26</th>
+      <td>172.770</td>
+      <td>183.767010</td>
+      <td>176.061667</td>
+      <td>168.356323</td>
+      <td>48.514111</td>
+      <td>-0.395139</td>
+    </tr>
+    <tr>
+      <th>2018-03-27</th>
+      <td>168.340</td>
+      <td>183.807340</td>
+      <td>175.555476</td>
+      <td>167.303612</td>
+      <td>42.512984</td>
+      <td>-0.764539</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;RSI&#39;</span><span class="p">,</span> <span class="s1">&#39;MACD&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Bollinger Bands&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;RSI&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Relative Strength Index&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">MACD</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Moving Average Convergence/Divergence&#39;</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b38b08db7fdc40694e52dd2eb0fffbb68445635a67390047d3737b06ab5fc72a.png" src="../../_images/b38b08db7fdc40694e52dd2eb0fffbb68445635a67390047d3737b06ab5fc72a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">DATA_STORE</span><span class="p">)</span> <span class="k">as</span> <span class="n">store</span><span class="p">:</span>
+    <span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;technical_engineered_features&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">store</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.io.pytables.HDFStore&#39;&gt;
+File path: assets.h5
+/engineered_features                      frame        (shape-&gt;[358914,33])  
+/quandl/wiki/prices                       frame        (shape-&gt;[15389314,12])
+/quandl/wiki/stocks                       frame        (shape-&gt;[1,2])        
+/sp500/fred                               frame        (shape-&gt;[2608,1])     
+/technical_engineered_features            frame        (shape-&gt;[2826,6])     
+/us_equities/stocks                       frame        (shape-&gt;[6834,6])     
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="denoising-alpha-factors-with-the-kalman-filter">
+<h1>Denoising alpha factors with the Kalman filter<a class="headerlink" href="#denoising-alpha-factors-with-the-kalman-filter" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">DATA_STORE</span><span class="p">)</span> <span class="k">as</span> <span class="n">store</span><span class="p">:</span>
+    <span class="n">sp500</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="s1">&#39;sp500/fred&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp500</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>close</th>
+    </tr>
+    <tr>
+      <th>DATE</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-10-26</th>
+      <td>3830.60</td>
+    </tr>
+    <tr>
+      <th>2022-10-27</th>
+      <td>3807.30</td>
+    </tr>
+    <tr>
+      <th>2022-10-28</th>
+      <td>3901.06</td>
+    </tr>
+    <tr>
+      <th>2022-10-31</th>
+      <td>3871.98</td>
+    </tr>
+    <tr>
+      <th>2022-11-01</th>
+      <td>3856.10</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="kalman-filter">
+<h2>Kalman Filter<a class="headerlink" href="#kalman-filter" title="Link to this heading">#</a></h2>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kf</span> <span class="o">=</span> <span class="n">KalmanFilter</span><span class="p">(</span><span class="n">transition_matrices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                  <span class="n">observation_matrices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                  <span class="n">initial_state_mean</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                  <span class="n">initial_state_covariance</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                  <span class="n">observation_covariance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                  <span class="n">transition_covariance</span><span class="o">=</span><span class="mf">.01</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="estimate-the-hidden-state">
+<h3>Estimate the hidden state<a class="headerlink" href="#estimate-the-hidden-state" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">state_means</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">kf</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">sp500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-with-moving-average">
+<h3>Compare with moving average<a class="headerlink" href="#compare-with-moving-average" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp500_smoothed</span> <span class="o">=</span> <span class="n">sp500</span>
+<span class="n">sp500_smoothed</span><span class="p">[</span><span class="s1">&#39;Kalman Filter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">state_means</span>
+<span class="k">for</span> <span class="n">months</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="n">sp500_smoothed</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;MA (</span><span class="si">{</span><span class="n">months</span><span class="si">}</span><span class="s1">m)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sp500</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">months</span><span class="o">*</span><span class="mi">21</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sp500_smoothed</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Kalman Filter vs Moving Average&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;S&amp;P 500&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/67c1a8a1505a9a8478fca4eced45522ef9465156f283cc4e322b1e754db80756.png" src="../../_images/67c1a8a1505a9a8478fca4eced45522ef9465156f283cc4e322b1e754db80756.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#we may consider  particle filter is an alternative approach that uses sampling-based Monte Carlo</span>
+<span class="c1">#approaches to estimate non-normal distributions.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="preprocess-noisy-signals-using-wavelets">
+<h2>Preprocess noisy signals using wavelets<a class="headerlink" href="#preprocess-noisy-signals-using-wavelets" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">Wavelet</span><span class="p">(</span><span class="s1">&#39;db6&#39;</span><span class="p">)</span>
+<span class="n">phi</span><span class="p">,</span> <span class="n">psi</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">wavelet</span><span class="o">.</span><span class="n">wavefun</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;$\phi$&#39;</span><span class="p">:</span> <span class="n">phi</span><span class="p">,</span> <span class="s1">&#39;$\psi$&#39;</span><span class="p">:</span> <span class="n">psi</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Daubechies&#39;</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/6a2310732420ee3ed6daa11c97106780e49527ca3eaea8646050f8e2f4512432.png" src="../../_images/6a2310732420ee3ed6daa11c97106780e49527ca3eaea8646050f8e2f4512432.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_data</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+             <span class="p">(</span><span class="s1">&#39;sym&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+             <span class="p">(</span><span class="s1">&#39;coif&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))]</span>
+
+
+<span class="k">for</span> <span class="n">family</span><span class="p">,</span> <span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span> <span class="ow">in</span> <span class="n">plot_data</span><span class="p">:</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">.02</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="mf">.06</span><span class="p">,</span>
+                        <span class="n">right</span><span class="o">=</span><span class="mf">.97</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">.94</span><span class="p">)</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">cycle</span><span class="p">(</span><span class="s1">&#39;bgrcmyk&#39;</span><span class="p">)</span>
+
+    <span class="n">wnames</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">wavelist</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">wnames</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cols</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">wavelet</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">Wavelet</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">phi</span><span class="p">,</span> <span class="n">psi</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">wavelet</span><span class="o">.</span><span class="n">wavefun</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+            <span class="n">color</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">cols</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">col</span> <span class="o">+</span> <span class="n">row</span> <span class="o">*</span> <span class="n">cols</span><span class="p">))</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">wavelet</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot; phi&quot;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">cols</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">col</span> <span class="o">+</span> <span class="n">row</span><span class="o">*</span><span class="n">cols</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">wavelet</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot; psi&quot;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">psi</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">family</span><span class="p">,</span> <span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[(</span><span class="s1">&#39;bior&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="p">(</span><span class="s1">&#39;rbio&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))]:</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">.02</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="mf">.06</span><span class="p">,</span>
+                        <span class="n">right</span><span class="o">=</span><span class="mf">.97</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">.94</span><span class="p">)</span>
+
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">cycle</span><span class="p">(</span><span class="s1">&#39;bgrcmyk&#39;</span><span class="p">)</span>
+    <span class="n">wnames</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">wavelist</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">wnames</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cols</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">wavelet</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">Wavelet</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">phi</span><span class="p">,</span> <span class="n">psi</span><span class="p">,</span> <span class="n">phi_r</span><span class="p">,</span> <span class="n">psi_r</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">wavelet</span><span class="o">.</span><span class="n">wavefun</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+            <span class="n">row</span> <span class="o">*=</span> <span class="mi">2</span>
+
+            <span class="n">color</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">rows</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">cols</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">col</span> <span class="o">+</span> <span class="n">row</span><span class="o">*</span><span class="n">cols</span><span class="p">))</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">wavelet</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot; phi&quot;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">rows</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">cols</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">col</span> <span class="o">+</span> <span class="n">row</span><span class="o">*</span><span class="n">cols</span><span class="p">))</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">wavelet</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot; psi&quot;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">psi</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+            <span class="n">row</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">rows</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">cols</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">col</span> <span class="o">+</span> <span class="n">row</span><span class="o">*</span><span class="n">cols</span><span class="p">))</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">wavelet</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot; phi_r&quot;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">phi_r</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">rows</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">cols</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">col</span> <span class="o">+</span> <span class="n">row</span><span class="o">*</span><span class="n">cols</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">wavelet</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot; psi_r&quot;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">psi_r</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d588bf8b0b84c8d6bf0954b997cdf09df4c985d0dd8b2ffd6aabcb26444bcc69.png" src="../../_images/d588bf8b0b84c8d6bf0954b997cdf09df4c985d0dd8b2ffd6aabcb26444bcc69.png" />
+<img alt="../../_images/23f40172a5a89432b937821d9788cb23ec8f82ce363b3507f07a5fc0020ceb4a.png" src="../../_images/23f40172a5a89432b937821d9788cb23ec8f82ce363b3507f07a5fc0020ceb4a.png" />
+<img alt="../../_images/673e011dfab6b1ce3d08aa3565904c795d012498943db78c87ff25ecef6a9a59.png" src="../../_images/673e011dfab6b1ce3d08aa3565904c795d012498943db78c87ff25ecef6a9a59.png" />
+<img alt="../../_images/cf9952be892e8656a99209873375d38fe0c67fe616677722fc0f7a5adac6b518.png" src="../../_images/cf9952be892e8656a99209873375d38fe0c67fe616677722fc0f7a5adac6b518.png" />
+<img alt="../../_images/7c9e6b43acb24ceba09ec91b05ad3a5fa4727f3a3681d6fb571dcb406342ea0c.png" src="../../_images/7c9e6b43acb24ceba09ec91b05ad3a5fa4727f3a3681d6fb571dcb406342ea0c.png" />
+</div>
+</div>
+<section id="available-wavelet-families">
+<h3>Available Wavelet Families<a class="headerlink" href="#available-wavelet-families" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pywt</span><span class="o">.</span><span class="n">families</span><span class="p">(</span><span class="n">short</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Haar&#39;,
+ &#39;Daubechies&#39;,
+ &#39;Symlets&#39;,
+ &#39;Coiflets&#39;,
+ &#39;Biorthogonal&#39;,
+ &#39;Reverse biorthogonal&#39;,
+ &#39;Discrete Meyer (FIR Approximation)&#39;,
+ &#39;Gaussian&#39;,
+ &#39;Mexican hat wavelet&#39;,
+ &#39;Morlet wavelet&#39;,
+ &#39;Complex Gaussian wavelets&#39;,
+ &#39;Shannon wavelets&#39;,
+ &#39;Frequency B-Spline wavelets&#39;,
+ &#39;Complex Morlet wavelets&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="smoothing-the-s-p-500">
+<h3>Smoothing the S&amp;P 500<a class="headerlink" href="#smoothing-the-s-p-500" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signal</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">DATA_STORE</span><span class="p">,</span> <span class="s1">&#39;sp500/fred&#39;</span><span class="p">)</span>
+          <span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2012&#39;</span><span class="p">:</span> <span class="s1">&#39;2013&#39;</span><span class="p">]</span>
+          <span class="o">.</span><span class="n">close</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+          <span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">wavelet</span> <span class="o">=</span> <span class="s2">&quot;db6&quot;</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">scale</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">]):</span>
+    
+    <span class="n">coefficients</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">wavedec</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;per&#39;</span><span class="p">)</span>
+    <span class="n">coefficients</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pywt</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">scale</span><span class="o">*</span><span class="n">signal</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;soft&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">coefficients</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+    <span class="n">reconstructed_signal</span> <span class="o">=</span> <span class="n">pywt</span><span class="o">.</span><span class="n">waverec</span><span class="p">(</span><span class="n">coefficients</span><span class="p">,</span> <span class="n">wavelet</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;per&#39;</span><span class="p">)</span>
+    <span class="n">signal</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;original signal&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+                 <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Threshold Scale: </span><span class="si">{</span><span class="n">scale</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">reconstructed_signal</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">signal</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;DWT smoothing}&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9963d95046284e3c3cf4963ed133530af225ee385778d80104d7a407a90f3a48.png" src="../../_images/9963d95046284e3c3cf4963ed133530af225ee385778d80104d7a407a90f3a48.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># need to analyse more wavelet families</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./0alphas-using qstrader有3sources/计算ipynb_case"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Set Data Store path</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#quandl-wiki-prices">Quandl Wiki Prices</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#s-p-500-prices">S&amp;P 500 Prices</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-engineering">Feature Engineering</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data">Load the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-data-with-stock-info">Keep data with stock info</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-monthly-return-series">Create monthly return series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-stocks-with-less-than-10-yrs-of-returns">Drop stocks with less than 10 yrs of returns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rolling-factor-betas">Rolling Factor Betas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impute-mean-for-missing-factor-betas">Impute mean for missing factor betas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#momentum-factors">Momentum factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#date-indicators">Date Indicators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lagged-returns">Lagged returns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#target-holding-period-returns">Target: Holding Period Returns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-age-proxy">Create age proxy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-dynamic-size-proxy">Create dynamic size proxy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-size-indicator-as-deciles-per-period">Create Size indicator as deciles per period</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-data">Combine data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#store-data">Store data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-dummy-variables">Create Dummy variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-technical-alpha-factors">Generate Technical Alpha Factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-bollinger-bands">Compute Bollinger Bands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-relative-strength-index">Compute Relative Strength Index</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-average-convergence-divergence">Moving Average Convergence/Divergence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-result">Plot Result</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#denoising-alpha-factors-with-the-kalman-filter">Denoising alpha factors with the Kalman filter</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kalman-filter">Kalman Filter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-the-hidden-state">Estimate the hidden state</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-with-moving-average">Compare with moving average</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-noisy-signals-using-wavelets">Preprocess noisy signals using wavelets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#available-wavelet-families">Available Wavelet Families</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smoothing-the-s-p-500">Smoothing the S&amp;P 500</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
