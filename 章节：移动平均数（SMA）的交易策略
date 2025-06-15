@@ -1,0 +1,466 @@
+这章分为以下几个主题：
+1.基于简单移动平均数（SMA）的交易策略
+2.简单移动平均数（SMA）的交易策略设置为自动化执行
+3.向量化事后检验方法通过计算对数收益率和策略收益率
+4.向量化事后检验方法设置为自动化回测系统
+5.暴力搜索法（Brute Force）优化简单移动平均线（SMA）策略的参数（SMA1 和 SMA2）
+
+#####################################################################################################################################################################################
+基于简单移动平均数（SMA）的交易策略
+具体步骤如下：
+
+（1）导入工具
+代码开头导入了几个Python工具包：
+numpy 和 pandas：用来处理数据。
+matplotlib：用来画图。
+datetime：用来处理日期。
+
+（2）读取数据
+代码读取了一个包含股票价格的文件（比如苹果公司的股票数据）。
+数据包括每天的收盘价。
+
+（3）计算SMA
+代码计算了两条SMA线：
+一条是42天的短期SMA。
+一条是252天的长期SMA。
+
+（4）生成交易信号
+代码根据短期SMA和长期SMA的关系，生成交易信号：
+如果短期SMA > 长期SMA，标记为 +1（买入）。
+如果短期SMA < 长期SMA，标记为 -1（卖出）。
+
+（5）画图
+代码画出了苹果公司的股票价格、两条SMA线，以及交易信号（买入或卖出）。
+
+# 1. 导入工具包
+# numpy 和 pandas 用于数据处理，matplotlib 用于画图，datetime 用于处理日期
+import numpy as np
+import pandas as pd
+import datetime as dt
+from pylab import mpl, plt
+
+# 设置画图的样式和字体
+plt.style.use('seaborn')
+mpl.rcParams['font.family'] = 'serif'
+%matplotlib inline  # 在 Jupyter Notebook 中显示图表
+
+# 2. 读取数据
+# 从 CSV 文件中读取股票数据，文件路径为 '../../source/tr_eikon_eod_data.csv'
+# index_col=0 表示用第一列作为索引（日期），parse_dates=True 表示将日期解析为日期格式
+raw = pd.read_csv('../../source/tr_eikon_eod_data.csv', index_col=0, parse_dates=True)
+
+# 3. 查看数据信息
+# 打印数据的摘要信息，包括行数、列数、数据类型等
+raw.info()
+
+# 4. 选择股票
+# 选择苹果公司（AAPL.O）的股票数据
+symbol = 'AAPL.O'
+
+# 5. 创建新的 DataFrame
+# 只保留苹果公司的股票数据，并删除缺失值（NaN）
+data = pd.DataFrame(raw[symbol]).dropna()
+
+# 6. 设置 SMA 的窗口大小
+# 短期 SMA 的窗口大小为 42 天，长期 SMA 的窗口大小为 252 天
+SMA1 = 42  # 短期 SMA
+SMA2 = 252  # 长期 SMA
+
+# 7. 计算 SMA
+# 计算短期 SMA 和长期 SMA，并将结果添加到 DataFrame 中
+data['SMA1'] = data[symbol].rolling(SMA1).mean()  # 计算 42 天的 SMA
+data['SMA2'] = data[symbol].rolling(SMA2).mean()  # 计算 252 天的 SMA
+
+# 8. 画图
+# 画出苹果公司的股票价格、短期 SMA 和长期 SMA
+data.plot(figsize=(10, 6))
+
+# 9. 删除缺失值
+# 删除 SMA 计算过程中产生的缺失值（因为前 252 天没有足够的数据计算长期 SMA）
+data.dropna(inplace=True)
+
+# 10. 生成交易信号
+# 根据短期 SMA 和长期 SMA 的关系生成交易信号：
+# 如果短期 SMA > 长期 SMA，标记为 1（买入）；否则标记为 -1（卖出）
+data['Position'] = np.where(data['SMA1'] > data['SMA2'], 1, -1)
+
+# 11. 查看最后几行数据
+# 打印 DataFrame 的最后几行，检查交易信号是否正确生成
+data.tail()
+
+# 12. 画出最终结果
+# 画出苹果公司的股票价格、两条 SMA 线以及交易信号
+ax = data.plot(secondary_y='Position', figsize=(10, 6))
+ax.get_legend().set_bbox_to_anchor((0.25, 0.85))  # 调整图例的位置
+#####################################################################################################################################################################################
+基于简单移动平均数（SMA）的交易策略设置为自动化执行
+1. 选择交易平台
+Interactive Brokers (IBKR)：支持 Python API，适合专业交易者。
+Alpaca：免费提供 API，适合初学者。
+QuantConnect：基于云的量化交易平台，支持 Python。
+Robinhood（通过第三方库）：适合小额交易。
+
+这里以 Alpaca 为例，因为它对初学者友好且免费
+
+2. 安装必要的 Python 库
+你需要安装以下库：
+alpaca-trade-api：用于与 Alpaca 交易平台交互。
+pandas 和 numpy：用于数据处理。
+schedule 或 time：用于定时执行策略。
+
+pip install alpaca-trade-api pandas numpy schedule
+
+3.编写自动化交易代码
+import alpaca_trade_api as tradeapi
+import pandas as pd
+import numpy as np
+import time
+
+# 1. 设置 Alpaca API 密钥
+api_key = '你的API_KEY'
+api_secret = '你的API_SECRET'
+base_url = 'https://paper-api.alpaca.markets'  # 使用模拟交易环境
+
+# 初始化 Alpaca API
+api = tradeapi.REST(api_key, api_secret, base_url, api_version='v2')
+
+# 2. 定义交易参数
+symbol = 'AAPL'  # 交易标的
+short_window = 42  # 短期 SMA 窗口
+long_window = 252  # 长期 SMA 窗口
+
+# 3. 获取历史数据
+def get_historical_data(symbol, days):
+    # 获取过去 days 天的股票数据
+    barset = api.get_barset(symbol, 'day', limit=days)
+    bars = barset[symbol]
+    data = pd.DataFrame({
+        'close': [bar.c for bar in bars]
+    }, index=[bar.t for bar in bars])
+    return data
+
+# 4. 计算 SMA
+def calculate_sma(data, short_window, long_window):
+    data['SMA1'] = data['close'].rolling(window=short_window).mean()  # 短期 SMA
+    data['SMA2'] = data['close'].rolling(window=long_window).mean()  # 长期 SMA
+    data.dropna(inplace=True)  # 删除缺失值
+    return data
+
+# 5. 生成交易信号
+def generate_signal(data):
+    # 如果短期 SMA > 长期 SMA，买入（1）；否则卖出（-1）
+    data['Position'] = np.where(data['SMA1'] > data['SMA2'], 1, -1)
+    return data['Position'].iloc[-1]  # 返回最新的信号
+
+# 6. 执行交易
+def execute_trade(symbol, signal):
+    # 获取当前持仓
+    position = api.get_position(symbol) if api.get_position(symbol) else None
+    
+    if signal == 1:  # 买入信号
+        if not position or position.side == 'short':  # 如果没有持仓或当前是空头
+            api.submit_order(
+                symbol=symbol,
+                qty=1,  # 买入 1 股
+                side='buy',
+                type='market',
+                time_in_force='gtc'  # 订单一直有效，直到取消
+            )
+            print(f"买入 {symbol}")
+    elif signal == -1:  # 卖出信号
+        if position and position.side == 'long':  # 如果当前是多头
+            api.submit_order(
+                symbol=symbol,
+                qty=1,  # 卖出 1 股
+                side='sell',
+                type='market',
+                time_in_force='gtc'
+            )
+            print(f"卖出 {symbol}")
+
+# 7. 主循环
+def main():
+    while True:
+        # 获取历史数据
+        data = get_historical_data(symbol, long_window + 1)
+        
+        # 计算 SMA 和交易信号
+        data = calculate_sma(data, short_window, long_window)
+        signal = generate_signal(data)
+        
+        # 执行交易
+        execute_trade(symbol, signal)
+        
+        # 每隔 1 小时运行一次
+        time.sleep(3600)
+
+# 运行主程序
+if __name__ == '__main__':
+    main()
+#################################################################################################################################################################################
+
+向量化事后检验方法通过计算对数收益率和策略收益率
+1. 计算对数收益率
+data['Returns'] = np.log(data[symbol] / data[symbol].shift(1))
+
+2. 计算策略收益率
+策略收益率是通过将前一天的持仓头寸（+1 表示多头，-1 表示空头）乘以当天的对数收益率得到的。由于多头头寸赚取正收益，空头头寸赚取负收益，因此这种计算方式是合理的。
+data['Strategy'] = data['Position'].shift(1) * data['Returns']
+
+3. 数据清理
+由于第一天的收益率无法计算（因为没有前一天的收盘价），因此需要删除包含缺失值（NaN）的行。
+data.dropna(inplace=True)
+
+4. 计算累计绩效
+通过对策略收益率和基准收益率进行累加，并应用指数函数，可以得到策略和基准的绝对绩效。
+np.exp(data[['Returns', 'Strategy']].sum())
+
+5. 计算年化波动率
+年化波动率是衡量策略风险的重要指标。通过将日波动率乘以 √252（假设一年有252个交易日），可以得到年化波动率。
+data[['Returns', 'Strategy']].std() * 252 ** 0.5
+
+6. 结果分析
+从计算结果可以看出，基于SMA的算法交易策略在绝对绩效和风险调整后的绩效上都优于被动持有苹果公司股票的基准投资。具体表现为：
+
+绝对绩效：策略的累计收益率高于基准投资。
+年化波动率：策略的年化波动率与基准投资相近，表明策略在风险调整后的基础上仍然优于基准投资。
+
+7. 可视化
+为了更直观地展示策略的表现，可以通过绘制累计收益率曲线和持仓头寸来观察策略的绩效。
+ax = data[['Returns', 'Strategy']].cumsum().apply(np.exp).plot(figsize=(10, 6))
+data['Position'].plot(ax=ax, secondary_y='Position', style='--')
+ax.get_legend().set_bbox_to_anchor((0.25, 0.85))
+
+##########################################################################################################################################################################
+向量化事后检验方法设置为自动化回测系统
+1. 确定回测框架
+自动化回测系统通常包括以下模块：
+
+数据获取模块：获取历史数据（如股票价格、指标等）。
+
+策略模块：定义交易策略（如基于SMA的策略）。
+
+回测引擎：执行策略逻辑，计算持仓、收益率等。
+
+绩效评估模块：计算绩效指标（如累计收益率、年化波动率等）。
+
+可视化模块：绘制绩效曲线、持仓变化等。
+
+2. 数据获取模块
+从外部数据源（如Yahoo Finance、Quandl、本地CSV文件等）获取历史数据。可以使用Python库（如yfinance、pandas-datareader）实现自动化数据获取。
+
+import yfinance as yf
+
+def fetch_data(symbol, start_date, end_date):
+    """
+    获取历史数据
+    :param symbol: 股票代码（如'AAPL'）
+    :param start_date: 开始日期（如'2010-01-01'）
+    :param end_date: 结束日期（如'2020-12-31'）
+    :return: DataFrame
+    """
+    data = yf.download(symbol, start=start_date, end=end_date)
+    return data
+3. 策略模块
+定义交易策略的逻辑。例如，基于简单移动平均线（SMA）的策略：
+
+当短期SMA（如20天）上穿长期SMA（如50天）时，持有多头头寸（+1）。
+
+当短期SMA下穿长期SMA时，持有空头头寸（-1）。
+
+def sma_strategy(data, short_window=20, long_window=50):
+    """
+    基于SMA的策略生成持仓信号
+    :param data: 包含价格数据的DataFrame
+    :param short_window: 短期SMA窗口
+    :param long_window: 长期SMA窗口
+    :return: 添加了SMA和持仓信号的DataFrame
+    """
+    data['SMA_Short'] = data['Close'].rolling(window=short_window).mean()
+    data['SMA_Long'] = data['Close'].rolling(window=long_window).mean()
+    data['Position'] = 0
+    data['Position'][short_window:] = np.where(
+        data['SMA_Short'][short_window:] > data['SMA_Long'][short_window:], 1, -1)
+    return data
+4. 回测引擎
+回测引擎负责执行策略逻辑，计算每日收益率和策略收益率。
+
+def backtest(data):
+    """
+    回测引擎：计算收益率和策略绩效
+    :param data: 包含价格和持仓信号的DataFrame
+    :return: 添加了收益率和策略收益率的DataFrame
+    """
+    data['Returns'] = np.log(data['Close'] / data['Close'].shift(1))
+    data['Strategy'] = data['Position'].shift(1) * data['Returns']
+    data.dropna(inplace=True)
+    return data
+5. 绩效评估模块
+计算策略的累计收益率、年化波动率等绩效指标。
+
+def performance_metrics(data):
+    """
+    计算绩效指标
+    :param data: 包含收益率和策略收益率的DataFrame
+    :return: 绩效指标字典
+    """
+    cumulative_returns = np.exp(data[['Returns', 'Strategy']].sum())
+    annualized_volatility = data[['Returns', 'Strategy']].std() * np.sqrt(252)
+    
+    metrics = {
+        'Cumulative Returns': cumulative_returns,
+        'Annualized Volatility': annualized_volatility
+    }
+    return metrics
+6. 可视化模块
+绘制绩效曲线和持仓变化。
+
+import matplotlib.pyplot as plt
+
+def plot_performance(data):
+    """
+    绘制绩效曲线和持仓变化
+    :param data: 包含收益率和策略收益率的DataFrame
+    """
+    fig, ax = plt.subplots(figsize=(10, 6))
+    data[['Returns', 'Strategy']].cumsum().apply(np.exp).plot(ax=ax)
+    data['Position'].plot(ax=ax, secondary_y='Position', style='--')
+    ax.set_title('Strategy Performance')
+    ax.set_ylabel('Cumulative Returns')
+    ax.legend(loc='upper left')
+    plt.show()
+7. 整合自动化回测系统
+将上述模块整合到一个完整的自动化回测流程中。
+
+def automated_backtest(symbol, start_date, end_date, short_window=20, long_window=50):
+    """
+    自动化回测系统
+    :param symbol: 股票代码
+    :param start_date: 开始日期
+    :param end_date: 结束日期
+    :param short_window: 短期SMA窗口
+    :param long_window: 长期SMA窗口
+    """
+    # 获取数据
+    data = fetch_data(symbol, start_date, end_date)
+    
+    # 生成策略信号
+    data = sma_strategy(data, short_window, long_window)
+    
+    # 回测
+    data = backtest(data)
+    
+    # 计算绩效指标
+    metrics = performance_metrics(data)
+    print("Performance Metrics:")
+    print(metrics)
+    
+    # 可视化
+    plot_performance(data)
+8. 运行自动化回测
+调用automated_backtest函数，传入股票代码、日期范围和策略参数即可运行回测。
+
+if __name__ == "__main__":
+    automated_backtest(symbol='AAPL', start_date='2010-01-01', end_date='2020-12-31')
+9. 扩展功能
+为了更贴近实际交易，可以扩展以下功能：
+
+交易成本：在策略收益率中扣除交易成本（如手续费、滑点等）。
+
+多资产回测：支持多个股票或资产的同时回测。
+
+参数优化：使用网格搜索或优化算法寻找最佳策略参数。
+
+风险管理：添加止损、止盈等风险管理规则。
+
+总结
+通过上述步骤，可以构建一个完整的自动化回测系统。该系统能够从数据获取、策略生成、回测执行到绩效评估和可视化全流程自动化运行，帮助快速验证和优化交易策略。
+
+####################################################################################################################################################################################
+暴力搜索法（Brute Force）优化简单移动平均线（SMA）策略的参数（SMA1 和 SMA2）
+
+暴力搜索法是一种简单直接的优化方法，通过遍历所有可能的参数组合，计算每种组合的绩效，最终选择表现最好的组合。
+
+步骤：
+1.定义参数范围：
+
+SMA1 的范围：20 到 60，步长为 4。
+SMA2 的范围：180 到 280，步长为 10。
+
+2.遍历所有组合：
+
+使用 itertools.product 生成所有可能的 (SMA1, SMA2) 组合。
+
+3.计算每种组合的绩效：
+
+对每种组合，计算策略的累计收益率和基准收益率。
+记录策略相对于基准的超额收益（OUT = STRATEGY - MARKET）。
+
+4.排序结果：
+
+根据超额收益（OUT）对结果进行排序，找到表现最好的参数组合。
+
+代码如下from itertools import product
+import pandas as pd
+import numpy as np
+
+# 定义参数范围
+sma1 = range(20, 61, 4)  # SMA1 参数范围
+sma2 = range(180, 281, 10)  # SMA2 参数范围
+
+# 初始化结果 DataFrame
+results = pd.DataFrame()
+
+# 遍历所有参数组合
+for SMA1, SMA2 in product(sma1, sma2):
+    # 复制原始数据
+    data = pd.DataFrame(raw[symbol])
+    data.dropna(inplace=True)
+    
+    # 计算对数收益率
+    data['Returns'] = np.log(data[symbol] / data[symbol].shift(1))
+    
+    # 计算 SMA1 和 SMA2
+    data['SMA1'] = data[symbol].rolling(SMA1).mean()
+    data['SMA2'] = data[symbol].rolling(SMA2).mean()
+    data.dropna(inplace=True)
+    
+    # 生成交易信号
+    data['Position'] = np.where(data['SMA1'] > data['SMA2'], 1, -1)
+    
+    # 计算策略收益率
+    data['Strategy'] = data['Position'].shift(1) * data['Returns']
+    data.dropna(inplace=True)
+    
+    # 计算累计绩效
+    perf = np.exp(data[['Returns', 'Strategy']].sum())
+    
+    # 记录结果
+    results = results.append(pd.DataFrame(
+        {'SMA1': SMA1, 'SMA2': SMA2,
+         'MARKET': perf['Returns'],
+         'STRATEGY': perf['Strategy'],
+         'OUT': perf['Strategy'] - perf['Returns']},
+        index=[0]), ignore_index=True)
+
+# 显示结果概要
+results.info()
+
+# 按超额收益排序，显示前 7 个最佳组合
+best_results = results.sort_values('OUT', ascending=False).head(7)
+print(best_results)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
