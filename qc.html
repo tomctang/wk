@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Qunat research &#8212; Tom Workbook</title>
+    <title>1. Intro Quant &#8212; Tom Workbook</title>
   
   
   
@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'qc';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. Notebook 2023-25" href="nb2024.html" />
+    <link rel="next" title="2. Strategy/Schemes" href="qc_strategy.html" />
     <link rel="prev" title="Introduction" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -176,11 +176,16 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Quant Research</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Qunat research</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nb2024.html">2. Notebook 2023-25</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nb2022.html">3. Notebook &lt;=2022</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Intro Quant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qc_strategy.html">2. Strategy/Schemes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qc_terms.html">3. Terms</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="nb2024.html">4. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nb2022.html">5. Notebook &lt;=2022</a></li>
 </ul>
 
     </div>
@@ -334,7 +339,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Qunat research</h1>
+    <h1>Intro Quant</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -344,20 +349,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1. 1. 建立系统（自己的）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">1.2. 2. 寻找交易策略Alpha</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.1. 2.1 在投入大量时间回测一个交易策略之前，先用一些简单的方法快速筛选，排除那些明显不可行的策略，以免浪费时间和金钱</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.2. 常见策略</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logs">1.1. logs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2. 1. 建立自己的系统–认知哲学世界观</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">1.3. 2. 寻找交易策略Alpha</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.3.1. 2.1 在投入时间回测策略之前，先用简单方法快速筛选，排除明显不可行的策略，以免浪费时间和金钱</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.3.2. 2.2 常见策略</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">1.3. 3. 回测Backtesting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.4. 4. 自动交易系统</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.4.1. 4.1 资金管理和风险控制</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-trading-system-ats">1.4.2. 4.2 自动交易系统(Automated Trading System, ATS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">1.4. 3. 回测Backtesting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.5. 4. 自动交易系统</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.5.1. 4.1 资金管理和风险控制</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-trading-system-ats">1.5.2. 4.2 自动交易系统(Automated Trading System, ATS)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terms">1.5. Terms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logs-qa">1.6. Logs/QA</a></li>
 </ul>
             </nav>
         </div>
@@ -369,69 +373,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="qunat-research">
-<h1><span class="section-number">1. </span>Qunat research<a class="headerlink" href="#qunat-research" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="intro-quant">
+<h1><span class="section-number">1. </span>Intro Quant<a class="headerlink" href="#intro-quant" title="Link to this heading">#</a></h1>
+<section id="logs">
+<h2><span class="section-number">1.1. </span>logs<a class="headerlink" href="#logs" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>零售账户，比如在 Interactive Brokers 开户。确保券商有API可以自动下单, 先用模拟交易账户（Paper Trading）测试策略，确保稳定后再投入真金白银。</p></li>
-<li><p>交易策略的来源: 虽然学术研究可以提供有价值的策略，但许多学术策略可能过于复杂、已经失效（竞争导致利润减少）或需要昂贵的数据才能回测。因此，交易论坛和博客中更简单的策略可能同样有效. e.g. Wealth-Lab</p></li>
-<li><p>A股 online pkg comparison</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/myhhub/stock?tab=readme-ov-file">mayanghua/instock</a> 获取股票数据,计算股票指标,筹码分布,识别股票形态,综合选股,选股策略,股票验证回测,股票自动交易, docker支持PC及移动设备</p></li>
-<li><p>勉强进入 <a class="reference external" href="http://localhost:9988/">http://localhost:9988/</a>, add <code class="docutils literal notranslate"><span class="pre">sudo</span></code> in advance</p></li>
-<li><p><a class="reference external" href="https://github.com/shidenggui/easyquant">easyquant</a>A股量化框架，支持行情获取以及交易</p></li>
-<li><p><a class="reference external" href="https://github.com/shidenggui/easyquotation?tab=readme-ov-file">easyquotation</a>|实时获取免费股票行情，支持新浪 / 腾讯(港股) / 集思录|</p></li>
-<li><p><a class="reference external" href="https://github.com/shidenggui/easytrader">easytrader</a>|提供同花顺客户端/miniqmt/雪球的股票量化交易，支持跟踪 joinquant /ricequant 模拟交易 和 实盘雪球组合|</p></li>
-<li><p><a class="reference external" href="https://github.com/ricequant/funcat">Funcat</a> –&gt; <a class="reference external" href="https://github.com/mpquant/MyTT">MyTT</a>|同花顺、通达信、文华财经麦语言等公式的表达十分简洁，适合做技术分析,</p>
-<ul>
-<li><p>MyTT将通达信,同花顺,文华麦语言等指标公式,最简移植到Python中,核心库单个文件，仅百行代码,十几个核心函数，神奇的实现所有常见技术指标算法（不依赖talib库）的纯python实现和转换通达信MACD,RSI,BOLL,ATR,KDJ,CCI,PSY等公式,全部基于pandas函数计算方法封装，简洁且高性能，能非常方便的应用在股票指标公式,股市期货量化框架分析,自动程序化交易,数字货币</p></li>
-</ul>
-</li>
-</ul>
-</li>
 </ol>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p><strong>数据</strong></p></th>
-<th class="head"><p></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/akfamily/akshare">AKShare</a></p></td>
-<td><p>elegant/simple financial data library, built for human beings开源财经数据接口库</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>模拟/交易</strong></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ricequant/rqalpha">ricequant/RQAlpha</a></p></td>
-<td><p>数据获取、算法交易、回测引擎，实盘模拟，实盘交易到数据分析</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/yutiansut/QUANTAXIS">QUANTAXIS</a></p></td>
-<td><p>任务调度/分布式部署, 股票/期货/期权, 数据/回测/模拟/交易/可视化/多账户 纯本地量化]</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/yutiansut/QAStrategy">QAStrategy</a></p></td>
-<td><p>QA-sub1</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/QUANTAXIS/QADemoOLD">QADemoOLD</a></p></td>
-<td><p>QA-sub2</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/BigBrotherTrade/trader">trader</a></p></td>
-<td><p>操盘大哥的交易组件</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>策略</strong></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/123quant/QMT-QuantLimit">打板策略</a></p></td>
-<td><p>项目实现了一种量化打板策略，用于A股股票交易，涨停板制度只存在于A股</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/fmzquant/strategies?tab=readme-ov-file">quant_strategy_list5800</a></p></td>
-<td><p>5800 md files</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>project</p></th>
+<tr class="row-odd"><th class="head"><p>Garage</p></th>
 <th class="head"><p>自测失败或技术底层comments</p></th>
 </tr>
 </thead>
@@ -448,25 +399,6 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/tkfy920/qstock">qstock</a></p></td>
 <td><p>付费, depends on pyfolio(too old pkg)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/kevin-meng/financial_stock_knowledge_graph">金融证券知识图谱</a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/jm199504/Financial-Knowledge-Graphs">小型金融知识图谱构建流程</a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/stefan-jansen/machine-learning-for-trading">Code for Machine Learning for Algorithmic Trading, 2ed</a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>project</p></th>
-<th class="head"><p>non-A股 or windows-based不用</p></th>
-</tr>
-</thead>
-<tbody>
 <tr class="row-even"><td><p><a class="reference external" href="https://github.com/wkingnet/stock-analysis">stock-analysis</a></p></td>
 <td><p>说明详细值得读，win-based,目前选股条件是阳包阴，而且当天要涨停</p></td>
 </tr>
@@ -476,26 +408,49 @@ document.write(`
 <tr class="row-even"><td><p><a class="reference external" href="https://github.com/gbeced/basana">Basana</a></p></td>
 <td><p>Python async and event driven framework for algorithmic trading, focus on crypto currencies</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/kevin-meng/financial_stock_knowledge_graph">金融证券知识图谱</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/jm199504/Financial-Knowledge-Graphs">小型金融知识图谱构建流程</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/stefan-jansen/machine-learning-for-trading">Code ML Algorith Trading 2ed</a></p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
 </div>
-<p><strong>Reference:</strong></p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/thuquant/awesome-quant">awesome-quant</a>中国的Quant相关资源索引</p></li>
-<li><p><a class="reference external" href="https://github.com/dick318/awesome-stars">awesome-stars</a>按语言分类项目, Github</p></li>
-<li><p><a class="reference external" href="https://github.com/wangzhe3224/awesome-systematic-trading">awesome-systematic-trading</a>筛选过，有General Alpha</p></li>
-</ul>
+</section>
 <section id="id1">
-<h2><span class="section-number">1.1. </span>1. 建立系统（自己的）<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.2. </span>1. 建立自己的系统–认知哲学世界观<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>技术分析（如价格和趋势信号）; 基本面数据（如公司财务指标）; 新闻信息。</p></li>
-<li><p>统计套利（Statistical Arbitrage）是量化交易的一种主要形式，涉及股票、期货和外汇交易，只需要高中水平的数学、统计学和计算机编程知识即可入门</p></li>
+<li><p>独立交易者能否在市场上长期生存并盈利？ 1)机构体量和反身性; 2)对冲基金之间的策略太相似 – 许多大型量化基金使用类似的交易策略，比如统计套利、市场中性策略等。</p>
+<ul class="simple">
+<li><p>个人交易者如何成长？ 增加交易策略, 不断研究新策略，避免资金增长后策略失效。例如：如果你做日内交易（高频策略），可以尝试长线交易（持仓 1-3 个月）, or进入新的市场，比如期货或加密货币。</p></li>
+<li><p>交易的关键不是找到“完美策略”，而是灵活适应市场变化，持续优化策略！</p></li>
+</ul>
+</li>
+<li><p>炒股的三大原理</p>
+<ol class="arabic simple">
+<li><p>人的精力是有限的;</p></li>
+<li><p>所有的投资理论都有正确的时候;</p></li>
+<li><p>标的走势由市场的几何结构和动量决定: 市场的几何结构包括图形，成交，比价，市场偏好等，是可以观察和量化的，但同样的几何结构却可以有不同的演变，因为市场动量是参与者当下的合力，是不可预测的，但可预期，操作者唯一需要做的就是根据现实去预期和修正。</p></li>
+</ol>
+</li>
+<li><p>怎么识别一本量化交易的书是不是好书。</p>
+<ul class="simple">
+<li><p>看作者, 比如《Systematic Trading》的作者Robert，他是一个退休的对冲基金经理，所以他的书观点更加专业，而且经过实践的检验。</p></li>
+<li><p>《Algorithmic Trading》的作者 Chan，他做过机构投资，但是转为自营，他的书更加偏重个人或者散户投资人，但是相比起来，系统性就会差一些。</p></li>
+<li><p>《Python for Algorithmic Trading》的作者 Yves，他是学院出身，主要工作是研究和写作，他的书籍显然更加适合初学者，而且写的比较具体和细致，适合没基础的人跟着操作，但是从深度和框架角度会较差一些。</p></li>
+</ul>
+</li>
+<li><p>交易策略的来源: 虽然学术研究可以提供有价值的策略，但许多学术策略可能过于复杂、已经失效（竞争导致利润减少）或需要昂贵的数据才能回测。因此，交易论坛和博客中更简单的策略可能同样有效. e.g. Wealth-Lab</p></li>
 </ol>
 </section>
 <section id="alpha">
-<h2><span class="section-number">1.2. </span>2. 寻找交易策略Alpha<a class="headerlink" href="#alpha" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.3. </span>2. 寻找交易策略Alpha<a class="headerlink" href="#alpha" title="Link to this heading">#</a></h2>
 <section id="id2">
-<h3><span class="section-number">1.2.1. </span>2.1 在投入大量时间回测一个交易策略之前，先用一些简单的方法快速筛选，排除那些明显不可行的策略，以免浪费时间和金钱<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.3.1. </span>2.1 在投入时间回测策略之前，先用简单方法快速筛选，排除明显不可行的策略，以免浪费时间和金钱<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>是否比市场整体表现更好？（Benchmark 对比）想象你有 10 万元要投资，你的交易策略到底能不能比最简单的投资方式（比如买入指数基金）表现更好？</p>
 <ul class="simple">
@@ -504,8 +459,8 @@ document.write(`
 </ul>
 </li>
 <li><p>夏普比率（Sharpe Ratio）—— 衡量稳定性, 要看“赚得稳不稳”。</p></li>
-<li><p>策略的最大回撤（Max Drawdown）—— 你能扛得住多大的亏损？你用 10 万块投资，起初赚得很开心，但后来遇到一波大跌，账户从 10 万跌到了 7 万，你会怎么办？</p></li>
-<li><p>交易成本——很多交易策略在纸面上看着很赚钱，但一到实盘就亏损。</p></li>
+<li><p>最大回撤（Max Drawdown）</p></li>
+<li><p>交易成本 —— 很多交易策略在纸面上看着很赚钱，但一到实盘就亏损。</p></li>
 <li><p>幸存者偏差（Survivorship Bias）—— sampling bias. 假设你在研究过去 10 年里涨幅最好的 100 只股票，发现它们的平均年回报率高达 30%，你兴奋地想用这些数据回测自己的策略。但这 100 只股票都是“活下来的赢家”，很多早就倒闭的公司被自动忽略了，不在数据里了。</p>
 <ul class="simple">
 <li><p>结果：你的策略在历史数据里赚钱，但在现实中会亏损。</p></li>
@@ -526,8 +481,17 @@ document.write(`
 </ol>
 </section>
 <section id="id3">
-<h3><span class="section-number">1.2.2. </span>常见策略<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>💡 交易的关键不是找到“完美策略”，而是灵活适应市场变化，持续优化策略！🚀 一些高级量化交易方法，包括：</p>
+<h3><span class="section-number">1.3.2. </span>2.2 常见策略<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>标的走势由市场的几何结构和动量决定</p>
+<ul class="simple">
+<li><p>几何结构 - vector</p>
+<ol class="arabic simple">
+<li><p>技术分析（如价格和趋势信号）: 主要基于图表和技术指标(较主观性), 目标是预测价格走势, 风险是对市场趋势判断的错误, 收益不稳定但可能较高</p></li>
+<li><p>统计套利（Statistical Arbitrage）: 基于数学和统计模型(较客观性), 目标是利用价格偏差, 风险是自流动性和模型失效, 收益相对稳定且低</p></li>
+</ol>
+</li>
+<li><p>动量 - 事件驱动(eg.新闻信息, 基本面如财务指标)</p></li>
+</ul>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>策略</p></th>
@@ -608,28 +572,21 @@ document.write(`
 </table>
 </div>
 <ol class="arabic simple">
-<li><p>均值回归(价格回到均衡水平) vs. 动量交易(跟随趋势)</p>
-<ul class="simple">
-<li><p>交易策略一般分为两大类：</p></li>
-</ul>
-</li>
+<li><p>均值回归(价格回到均衡水平) vs. 动量交易(跟随趋势)</p></li>
 </ol>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>策略</p></th>
-<th class="head"><p>内容</p></th>
+<tr class="row-odd"><th class="head"><p>交易策略一般分为两大类</p></th>
 <th class="head"><p>适合市场</p></th>
 <th class="head"><p>风险</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>均值回归策略</p></td>
-<td><p>价格短期内涨太多了，就会跌回正常值；跌太多了，就会涨回来。eg. 股票的布林带（Bollinger Bands）, 某股票过去 100 天的平均价格是 <span class="math notranslate nohighlight">\(100，但今天跌到了 \)</span>90，你认为它太便宜了，未来可能涨回去，于是买入。当它涨回100以上卖出获利</p></td>
+<tr class="row-even"><td><p>均值回归: 价格短期内涨太多了，就会跌回正常值；跌太多了，就会涨回来。<Br> - eg.股票的布林带（Bollinger Bands）, 某股票过去 100 天的平均价格是 <span class="math notranslate nohighlight">\(100，但今天跌到了 \)</span>90，你认为它太便宜了，未来可能涨回去，于是买入。当它涨回100以上卖出获利</p></td>
 <td><p>- 震荡市（价格在一个区间内上下波动）。 <Br> - 波动性大但长期稳定的市场（比如大盘股，ETF）</p></td>
 <td><p>如果市场趋势发生变化，比如股票的“合理价格”下降了，你可能会误以为它会反弹，结果继续下跌。</p></td>
 </tr>
-<tr class="row-odd"><td><p>动量交易策略</p></td>
-<td><p>价格涨了就继续涨，跌了就继续跌，类似牛市和熊市的走势。eg. 股票突破新高–某股票过去6个月一直涨，你决定买入，因为它可能继续上涨。直到趋势反转（如股价跌破50日均线）卖出</p></td>
+<tr class="row-odd"><td><p>动量交易: 价格涨了就继续涨，跌了就继续跌。<Br> - eg.股票破新高–某股票过去6个月一直涨，你决定买入，因为它可能继续上涨。直到趋势反转（如股价跌破50日均线）卖出</p></td>
 <td><p>- 趋势明显的市场（牛市或熊市）。<Br> - 小盘股、成长股、加密货币（这些资产容易出现大趋势）。</p></td>
 <td><p>- 如果市场趋势突然反转，比如政策变动、财报暴雷，你的交易可能会被“套牢”。<Br> - 竞争者太多，如果市场上很多人都在做动量交易，趋势可能很快结束。</p></td>
 </tr>
@@ -697,37 +654,67 @@ document.write(`
 </section>
 </section>
 <section id="backtesting">
-<h2><span class="section-number">1.3. </span>3. 回测Backtesting<a class="headerlink" href="#backtesting" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.4. </span>3. 回测Backtesting<a class="headerlink" href="#backtesting" title="Link to this heading">#</a></h2>
 <p>Platforms/pkg</p>
+<p><strong>已下载</strong></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://github.com/wbbhcb/stock_market">stock_market</a>, 已下载待测</p></li>
+<li><p><a class="reference external" href="https://github.com/popbo/alphas">alphas</a>, 已下载待测ipynb, 利用了这个项目<a class="reference external" href="https://github.com/quantopian/alphalens">alphalens</a></p></li>
+<li><p><a class="reference external" href="https://github.com/albert-feng/blade-fury">blade-fury</a>| 采集股票数据，利用统计和计算来选股, 要把项目的路径加入PYTHONPATH才能脚本正常运行|</p></li>
+<li><p><a class="reference external" href="https://github.com/shidenggui/easyquant">easyquant</a>A股量化框架，支持行情获取以及交易</p></li>
+</ol>
+<p><strong>数据和策略</strong></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://github.com/akfamily/akshare">AKShare</a> |elegant/simple financial data library, built for human beings开源财经数据接口库 |</p></li>
+<li><p><a class="reference external" href="https://github.com/DemonDamon/FinnewsHunter">FinnewsHunter</a></p>
+<ul class="simple">
+<li><p>从新浪财经、每经网、金融界、中国证券网、证券时报网上，爬取上市公司（个股）的历史新闻文本数据进行文本分析、提取特征集，然后利用SVM、随机森林等分类器进行训练，最后对实施抓取的新闻数据进行分类预测</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/shidenggui/easyquotation?tab=readme-ov-file">easyquotation</a>|实时获取免费股票行情，支持新浪 / 腾讯(港股) / 集思录|</p></li>
+<li><p><a class="reference external" href="https://github.com/123quant/QMT-QuantLimit">打板策略</a>|项目实现了一种量化打板策略，用于A股股票交易，涨停板制度只存在于A股|</p></li>
+<li><p><a class="reference external" href="https://github.com/fmzquant/strategies?tab=readme-ov-file">quant_strategy_list5800</a>|5800 md files|</p></li>
+</ol>
+<p><strong>回测</strong></p>
 <ol class="arabic simple">
 <li><p>Backtrader</p>
 <ul class="simple">
-<li><p>开源免费，适用于个人和小型团队。
-支持多市场（股票、期货、外汇、加密货币）。
-可以直接接入实盘交易（IB、Binance、Alpaca等）。
-内置可视化分析（回测结果、资金曲线、交易信号）。</p></li>
-<li><p>FastQuant–基于 Backtrader，封装简单，适合新手, 只需几行 Python 代码, 适用于股票、外汇等市场，支持多种技术指标（MACD、均线等）。</p></li>
+<li><p>开源免费，适用于个人和小型团队。股票、期货、外汇、加密货币。可以直接接入实盘交易（IB、Binance、Alpaca等）。内置可视化分析（回测结果、资金曲线、交易信号）。</p></li>
+<li><p><a class="reference external" href="https://github.com/enzoampil/fastquant">FastQuant</a>–基于 Backtrader，封装简单，适合新手, 只需几行 Python 代码, 适用于股票、外汇等市场，支持多种技术指标（MACD、均线等）。</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://github.com/stefan-jansen/zipline-reloaded">Zipline</a></p>
 <ul class="simple">
-<li><p>Quantopian 团队开发，曾用于顶级量化竞赛。
-内置数据处理、财报数据整合（Quandl API）。历史模拟与实盘交易集成（Alpaca API）。📌 适合：想研究因子选股、日线级别交易的个人交易者。</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://github.com/DemonDamon/FinnewsHunter">FinnewsHunter</a></p>
-<ul class="simple">
-<li><p>从新浪财经、每经网、金融界、中国证券网、证券时报网上，爬取上市公司（个股）的历史新闻文本数据进行文本分析、提取特征集，然后利用SVM、随机森林等分类器进行训练，最后对实施抓取的新闻数据进行分类预测|</p></li>
+<li><p>Quantopian 团队开发，曾用于顶级量化竞赛。内置数据处理、财报数据整合（Quandl API）。历史模拟与实盘交易集成（Alpaca API）。📌 适合：想研究因子选股、日线级别交易的个人交易者。</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://github.com/nessessary/autoxd">autoxd</a> | 回测框架, 模拟实盘账户交易, 适合编写T+0策略 |</p></li>
 <li><p><a class="reference external" href="https://github.com/foolcage/fooltrader">fooltrader</a> -&gt; <a class="reference external" href="https://github.com/zvtvz/zvt">zvt</a> | modular quant framework, 项目升级到zvt, 各有详尽解释|</p></li>
 <li><p><a class="reference external" href="https://github.com/vnpy/vnpy">vnpy</a> | 基于Python, 开源, 量化交易平台开发框架 |</p></li>
 <li><p><a class="reference external" href="https://hikyuu.org/">hikyuu</a>| 开源量化交易研究框架，策略分析, 回测|</p></li>
-<li><p><a class="reference external" href="https://github.com/albert-feng/blade-fury">blade-fury</a>| 采集股票数据，利用统计和计算来选股, 要把项目的路径加入PYTHONPATH才能脚本正常运行|</p></li>
+<li><p><a class="reference external" href="https://github.com/ricequant/funcat">Funcat</a> –&gt; <a class="reference external" href="https://github.com/mpquant/MyTT">MyTT</a>|同花顺、通达信、文华财经麦语言等公式的表达十分简洁，适合做技术分析,</p>
+<ul class="simple">
+<li><p>MyTT将通达信,同花顺,文华麦语言等指标公式,最简移植到Python中,核心库单个文件，仅百行代码,十几个核心函数，神奇的实现所有常见技术指标算法（不依赖talib库）的纯python实现和转换通达信MACD,RSI,BOLL,ATR,KDJ,CCI,PSY等公式,全部基于pandas函数计算方法封装，简洁且高性能，能非常方便的应用在股票指标公式,股市期货量化框架分析,自动程序化交易,数字货币</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>模拟/交易</strong></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://github.com/shidenggui/easytrader">easytrader</a>|提供同花顺客户端/miniqmt/雪球的股票量化交易，支持跟踪 joinquant /ricequant 模拟交易 和 实盘雪球组合|</p></li>
+<li><p><a class="reference external" href="https://github.com/ricequant/rqalpha">ricequant/RQAlpha</a>| 数据获取、算法交易、回测引擎，实盘模拟，实盘交易到数据分析 |</p></li>
+<li><p><a class="reference external" href="https://github.com/yutiansut/QUANTAXIS">QUANTAXIS</a> | 任务调度/分布式部署, 股票/期货/期权, 数据/回测/模拟/交易/可视化/多账户 纯本地量化]</p></li>
+<li><p><a class="reference external" href="https://github.com/yutiansut/QAStrategy">QAStrategy</a>| QA-sub1|</p></li>
+<li><p><a class="reference external" href="https://github.com/QUANTAXIS/QADemoOLD">QADemoOLD</a>| QA-sub2 |</p></li>
+<li><p><a class="reference external" href="https://github.com/BigBrotherTrade/trader">trader</a>| 操盘大哥的交易组件</p></li>
+</ol>
+<p><strong>效果不佳</strong></p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://github.com/myhhub/stock?tab=readme-ov-file">mayanghua/instock</a> 获取股票数据,计算股票指标,筹码分布,识别股票形态,综合选股,选股策略,股票验证回测,股票自动交易, docker支持PC及移动设备</p>
+<ul class="simple">
+<li><p>勉强进入 <a class="reference external" href="http://localhost:9988/">http://localhost:9988/</a>, add <code class="docutils literal notranslate"><span class="pre">sudo</span></code> in advance</p></li>
+</ul>
+</li>
 <li><p>QuantConnect ❌ 缺点：本地回测体验不佳，主要依赖云端计算。</p></li>
-<li><p><a class="reference external" href="https://github.com/wbbhcb/stock_market">stock_market</a>, 已下载待测</p></li>
-<li><p><a class="reference external" href="https://github.com/popbo/alphas">alphas</a>, 已下载待测ipynb, 利用了这个项目<a class="reference external" href="https://github.com/quantopian/alphalens">alphalens</a></p></li>
 </ol>
 <p>免费数据源– ❌ 缺点：通常数据质量一般，可能有幸存者偏差、数据缺失等问题。</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -817,13 +804,14 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>怎么评估回测结果? - 两个最常用的指标</p>
-<ol class="arabic simple">
-<li><p>夏普比率（Sharpe Ratio）: 衡量赚钱的稳定性，告诉你单位风险能赚多少钱。</p></li>
-<li><p>最大回撤（Maximum Drawdown, MDD）：衡量亏损的最大风险，告诉你历史上最惨的时候亏了多少。</p></li>
-</ol>
 <p><strong>回测中常见的问题</strong></p>
 <ol class="arabic simple">
+<li><p>怎么评估回测结果? - 两个最常用的指标</p>
+<ul class="simple">
+<li><p>夏普比率（Sharpe Ratio）: 衡量赚钱的稳定性，告诉你单位风险能赚多少钱。</p></li>
+<li><p>最大回撤（Maximum Drawdown, MDD）：衡量亏损的最大风险，告诉你历史上最惨的时候亏了多少。</p></li>
+</ul>
+</li>
 <li><p>不同数据源的常见问题</p>
 <ul class="simple">
 <li><p>拆股 &amp; 分红调整 → 否则股价会“假暴跌”。</p></li>
@@ -863,9 +851,9 @@ document.write(`
 </ol>
 </section>
 <section id="id4">
-<h2><span class="section-number">1.4. </span>4. 自动交易系统<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.5. </span>4. 自动交易系统<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <section id="id5">
-<h3><span class="section-number">1.4.1. </span>4.1 资金管理和风险控制<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.5.1. </span>4.1 资金管理和风险控制<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>无法避免亏损（Drawdown），所以资金管理目标关键在于”让账户稳定增长 + 如何控制亏损” = “合理利用杠杆 + 防止爆仓(风险)”</p>
 <ol class="arabic simple">
 <li><p>资金分配策略 - 分散投资</p></li>
@@ -932,7 +920,7 @@ Kelly 计算的杠杆 = 2.528  VS. 实际使用杠杆 = 1.264</p></li>
 <p>正确做法：1) 设定固定止损（比如亏损 5% 就平仓）。2) 设定浮动止盈（根据市场趋势动态调整目标收益）。</p>
 </section>
 <section id="automated-trading-system-ats">
-<h3><span class="section-number">1.4.2. </span>4.2 自动交易系统(Automated Trading System, ATS)<a class="headerlink" href="#automated-trading-system-ats" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.5.2. </span>4.2 自动交易系统(Automated Trading System, ATS)<a class="headerlink" href="#automated-trading-system-ats" title="Link to this heading">#</a></h3>
 <p>一套可以自动执行交易策略的计算机程序</p>
 <ul class="simple">
 <li><p>市场数据模块（Market Data） → 获取行情数据（价格、成交量、订单簿等）</p></li>
@@ -1107,103 +1095,13 @@ Kelly 计算的杠杆 = 2.528  VS. 实际使用杠杆 = 1.264</p></li>
 </div>
 </div>
 </div>
+<p><strong>Reference:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/thuquant/awesome-quant">awesome-quant</a>中国的Quant相关资源索引</p></li>
+<li><p><a class="reference external" href="https://github.com/dick318/awesome-stars">awesome-stars</a>按语言分类项目, Github</p></li>
+<li><p><a class="reference external" href="https://github.com/wangzhe3224/awesome-systematic-trading">awesome-systematic-trading</a>筛选过，有General Alpha</p></li>
+</ul>
 </section>
-</section>
-<section id="terms">
-<h2><span class="section-number">1.5. </span>Terms<a class="headerlink" href="#terms" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>趋势策略（股票突破新高买入）</p></li>
-<li><p>均值回归策略（套利策略）</p></li>
-<li><p>夏普比率 (Sharpe Ratio)</p></li>
-</ol>
-<ul class="simple">
-<li><p>风险的度量——标准差: 在投资中，风险通常用收益率的波动性来表示，波动性越大，风险也就越高。标准差是衡量这种波动性的一种常用统计指标。比如，如果一个投资组合的年化收益率波动为10%，这10%就代表了你在一年内可能遇到的正负波动幅度。</p></li>
-<li><p>超额收益: 指的是投资收益减去无风险收益（比如国债收益率）的部分。它反映了你因承担风险而获得的额外收益。</p></li>
-<li><p>单位风险能赚多少钱: 超额收益/风险（标准差），就得到了每承担一单位风险所获得的超额收益。换句话说，如果一个投资组合的夏普比率为1.5，就意味着每承担1单位的风险（标准差），你可以获得1.5单位的超额收益。这个比例越高，说明在每单位风险上获得的回报越多，投资表现越优秀，赚钱的稳定性也越高。</p></li>
-</ul>
-<p>收益的波动程度（标准差）Sharpe Ratio = 策略的年收益 - 无风险收益</p>
-<p>夏普比率 &lt; 1 ：风险太大，波动太猛，不能单独用。
-夏普比率 &gt; 2 ：策略比较稳健，基本能每个月赚钱。
-夏普比率 &gt; 3 ：策略非常稳定，可能是日内高频交易策略，每天都能赚钱。</p>
-<p>e.g. 组合B的超额收益更高，但它的风险也更大。夏普比率告诉我们组合A每承担1单位风险能赚1.2单位的超额收益，而组合B每承担1单位风险仅赚1.0单位的超额收益。因此，从风险调整后的角度看，组合A的表现更好。</p>
-<ul class="simple">
-<li><p>投资组合A：超额收益为6%，标准差为5%，则夏普比率为 6%/5%=1.2。eg.每个月赚 3%，但每个月都稳定盈利，从不大赚大亏</p></li>
-<li><p>投资组合B：超额收益为8%，标准差为8%，则夏普比率为 8%/8%=1.0。eg.每个月赚 5%，但有时候赚 10%，有时候亏 5%，波动很大</p></li>
-</ul>
-<ol class="arabic simple">
-<li><p>最大回撤（Maximum Drawdown, MDD）可以用最简单的话来理解：它表示在一段时间内，你的投资或账户价值从最高点到最低点的最大下降幅度，也就是“最糟糕情况下损失了多少钱”。</p></li>
-</ol>
-<ul class="simple">
-<li><p>最大亏损幅度：比如你账户从最高点 10 万跌到 7 万，就是 30% 回撤。</p></li>
-<li><p>最长亏损持续时间：比如这次亏损花了 6 个月才恢复，你能熬得住吗？</p></li>
-</ul>
-<ol class="arabic simple" start="2">
-<li><p>Kelly formula - 资金管理数学方法，以获得最大化复利增长。计算: 1) 最优杠杆; 2) 资金分配</p></li>
-</ol>
-<p>如果一个策略的平均收益是 𝑚，标准差是 s，那么最优杠杆 𝑓 = 𝑚/𝑠2</p>
-<p>f：建议投入该策略的资金比例（最优杠杆）。
-m：策略的平均收益率（期望收益）。
-s：策略的标准差（波动性）。</p>
-<p>📌 假设你交易 S&amp;P 500 ETF（SPY）：</p>
-<p>平均年收益：11.23%
-年化波动率（标准差）：16.91%
-风险利率：4%
-Kelly 计算出的最优杠杆：
-𝑓=（11.23%−4%）/16.91*16.91=2.528</p>
-<p>这意味着，你应该用 2.528 倍杠杆来投资 SPY，以获得最大复利增长。</p>
-</section>
-<section id="logs-qa">
-<h2><span class="section-number">1.6. </span>Logs/QA<a class="headerlink" href="#logs-qa" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>独立交易者能否在市场上长期生存并盈利？ 1)机构体量和反身性; 2)对冲基金之间的策略太相似 – 许多大型量化基金使用类似的交易策略，比如统计套利、市场中性策略等。</p>
-<ul class="simple">
-<li><p>个人交易者如何成长？ ✅ 方法 1：增加交易策略, 不断研究新策略，避免资金增长后策略失效。例如：如果你做日内交易（高频策略），可以尝试长线交易（持仓 1-3 个月）。or进入新的市场，比如期货或加密货币。</p></li>
-</ul>
-</li>
-<li><p>炒股的三大原理  1)人的精力是有限的; 2) 所有的投资理论都有正确的时候;</p>
-<ul class="simple">
-<li><p>3 投资标的的走势由市场的几何结构和能量决定: 市场的几何结构包括图形，成交，比价，市场偏好等，是可以观察和量化的，但同样的几何结构却可以有不同的演变，因为市场能量是参与者当下的合力，是不可预测的，但可预期，操作者唯一需要做的就是根据现实去预期和修正。</p></li>
-</ul>
-</li>
-<li><p>怎么识别一本量化交易的书是不是好书。</p>
-<ul class="simple">
-<li><p>看作者, 比如《Systematic Trading》的作者Robert，他是一个退休的对冲基金经理，所以他的书观点更加专业，而且经过实践的检验。</p></li>
-<li><p>《Algorithmic Trading》的作者 Chan，他做过机构投资，但是转为自营，他的书更加偏重个人或者散户投资人，但是相比起来，系统性就会差一些。</p></li>
-<li><p>《Python for Algorithmic Trading》的作者 Yves，他是学院出身，主要工作是研究和写作，他的书籍显然更加适合初学者，而且写的比较具体和细致，适合没基础的人跟着操作，但是从深度和框架角度会较差一些。</p></li>
-</ul>
-</li>
-<li><p>International Quant Championship (IQC) by WorldQuant is one of the largest and most structured quant competitions globally</p>
-<ul class="simple">
-<li><p>For early-career quant, IQC is the most accessible and respected global quant tournament with university rankings. But if you’re looking to build and monetize strategies, QuantConnect and Numerai are where real-world impact starts.</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://www.composer.trade/">Composer.trade</a>, Alpaca.markets和QuantConnect.com之类的在线交易平台online-trading platform</p>
-<ul class="simple">
-<li><p>Composer has 11000只股票和ETF中选择，为其构建策略, 构建、测试和押注量化交易算法,图形和AI界面(英语输入请求转化为代码)，</p></li>
-<li><p>可以让用户以简单流程图的形式查看和分享他们的策略 e.g. 如果标准普尔500指数S&amp;P 500 index最近走高，某种算法会选择持有跟踪纳斯达克100指数的三倍杠杆ETF - triple-leveraged exchange-traded fund tracking the Nasdaq-100 index，反之，则持有美国国债Treasury bills</p></li>
-<li><p>在Interactive Brokers这类平台上编写交易策略。最近他在Discord上面分享策略后得到了一个想法half-baked idea，用跟踪半导体类股的ETF取代了跟踪纳斯达克100指数的ETF，从而改善了其中一项交易策略的表现</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://github.com/QuantConnect">Quantconnect</a>: platform for quant trading</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">quantconnect/lean</span></code> or <code class="docutils literal notranslate"><span class="pre">quantconnect/research</span></code></p></li>
-<li><p>Quantconnect lean: Lean is the open-source algorithmic trading engine that powers QuantConnect</p></li>
-<li><p>Lean CLI:</p>
-<ul>
-<li><p>is a command interface for running lean engine, and to allow syncing btw local and remote projects</p></li>
-<li><p>can be installed and updated by running <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">lean</span></code>(Python package)</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>这几个是高频用的吗？</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/man-group/ArcticDB">ArcticDB: high performance, serverless DataFrame database for Python Data ecosystem</a></p></li>
-<li><p><a class="reference external" href="https://github.com/OpenTSDB/opentsdb">opentsdb: free scalable, distributed Time Series Database</a></p></li>
-<li><p><a class="reference external" href="https://github.com/timescale/timescaledb">timescaledb: time-series database for high-performance real-time analytics packaged as a Postgres extension</a></p></li>
-</ul>
-</li>
-</ol>
 </section>
 </section>
 
@@ -1247,11 +1145,11 @@ Kelly 计算出的最优杠杆：
       </div>
     </a>
     <a class="right-next"
-       href="nb2024.html"
+       href="qc_strategy.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Notebook 2023-25</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Strategy/Schemes</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1271,20 +1169,19 @@ Kelly 计算出的最优杠杆：
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1. 1. 建立系统（自己的）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">1.2. 2. 寻找交易策略Alpha</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.1. 2.1 在投入大量时间回测一个交易策略之前，先用一些简单的方法快速筛选，排除那些明显不可行的策略，以免浪费时间和金钱</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.2. 常见策略</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logs">1.1. logs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2. 1. 建立自己的系统–认知哲学世界观</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">1.3. 2. 寻找交易策略Alpha</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.3.1. 2.1 在投入时间回测策略之前，先用简单方法快速筛选，排除明显不可行的策略，以免浪费时间和金钱</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.3.2. 2.2 常见策略</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">1.3. 3. 回测Backtesting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.4. 4. 自动交易系统</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.4.1. 4.1 资金管理和风险控制</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-trading-system-ats">1.4.2. 4.2 自动交易系统(Automated Trading System, ATS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">1.4. 3. 回测Backtesting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.5. 4. 自动交易系统</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.5.1. 4.1 资金管理和风险控制</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-trading-system-ats">1.5.2. 4.2 自动交易系统(Automated Trading System, ATS)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terms">1.5. Terms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logs-qa">1.6. Logs/QA</a></li>
 </ul>
   </nav></div>
 
