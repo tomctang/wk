@@ -180,12 +180,13 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Intro Quant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qc_strategy.html">2. Strategy/Schemes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qc_terms.html">3. Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qc_platforms.html">3. 回测Platforms/pkg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qc_terms.html">4. Terms</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="nb2024.html">4. Notebook 2023-25</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nb2022.html">5. Notebook &lt;=2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nb2024.html">5. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nb2022.html">6. Notebook &lt;=2022</a></li>
 </ul>
 
     </div>
@@ -356,15 +357,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.3.2. 常见策略</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">1.4. 回测Backtesting</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#platforms-pkg">1.4.1. Platforms/pkg</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.5. 自动交易系统</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.5.1. 资金管理和风险控制</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-trading-system-ats">1.5.2. 自动交易系统(Automated Trading System, ATS)</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.4. 小市值策略</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">1.5. <span class="xref myst">回测Backtesting &amp; 交易</span></a></li>
 </ul>
             </nav>
         </div>
@@ -380,9 +374,12 @@ document.write(`
 <h1><span class="section-number">1. </span>Intro Quant<a class="headerlink" href="#intro-quant" title="Link to this heading">#</a></h1>
 <section id="logs">
 <h2><span class="section-number">1.1. </span>logs<a class="headerlink" href="#logs" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://github.com/kevin-meng/financial_stock_knowledge_graph">金融证券知识图谱</a>| |
-<a class="reference external" href="https://github.com/jm199504/Financial-Knowledge-Graphs">小型金融知识图谱构建流程</a>||
-<a class="reference external" href="https://github.com/stefan-jansen/machine-learning-for-trading">ML Algorith Trading2ed</a>|ipynb repository</p>
+<ul class="simple">
+<li><p>如何交易川普失败的影响？</p></li>
+<li><p><a class="reference external" href="https://github.com/kevin-meng/financial_stock_knowledge_graph">金融证券知识图谱</a>| |</p></li>
+<li><p><a class="reference external" href="https://github.com/jm199504/Financial-Knowledge-Graphs">小型金融知识图谱构建流程</a>||</p></li>
+<li><p><a class="reference external" href="https://github.com/stefan-jansen/machine-learning-for-trading">ML Algorith Trading2ed</a>|ipynb repository</p></li>
+</ul>
 </section>
 <section id="id1">
 <h2><span class="section-number">1.2. </span>建立自己的系统–认知哲学世界观<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
@@ -631,176 +628,7 @@ document.write(`
 </ul>
 </li>
 </ol>
-</section>
-</section>
-<section id="backtesting">
-<h2><span class="section-number">1.4. </span>回测Backtesting<a class="headerlink" href="#backtesting" title="Link to this heading">#</a></h2>
-<section id="platforms-pkg">
-<h3><span class="section-number">1.4.1. </span>Platforms/pkg<a class="headerlink" href="#platforms-pkg" title="Link to this heading">#</a></h3>
-<p><strong>已下载</strong></p>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://github.com/wbbhcb/stock_market">stock_market</a>, 已下载待测</p></li>
-<li><p><a class="reference external" href="https://github.com/popbo/alphas">alphas</a>, 已下载待测ipynb, 利用了这个项目<a class="reference external" href="https://github.com/quantopian/alphalens">alphalens</a></p></li>
-<li><p><a class="reference external" href="https://github.com/albert-feng/blade-fury">blade-fury</a>| 采集股票数据，利用统计和计算来选股, 要把项目的路径加入PYTHONPATH才能脚本正常运行|</p></li>
-<li><p><a class="reference external" href="https://github.com/shidenggui/easyquant">easyquant</a>A股量化框架，支持行情获取以及交易</p></li>
-</ol>
-<p><strong>数据和策略</strong></p>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://github.com/akfamily/akshare">AKShare</a> |elegant/simple financial data library, built for human beings开源财经数据接口库 |</p></li>
-<li><p><a class="reference external" href="https://github.com/DemonDamon/FinnewsHunter">FinnewsHunter</a></p>
-<ul class="simple">
-<li><p>从新浪财经、每经网、金融界、中国证券网、证券时报网上，爬取上市公司（个股）的历史新闻文本数据进行文本分析、提取特征集，然后利用SVM、随机森林等分类器进行训练，最后对实施抓取的新闻数据进行分类预测</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://github.com/shidenggui/easyquotation?tab=readme-ov-file">easyquotation</a>|实时获取免费股票行情，支持新浪 / 腾讯(港股) / 集思录|</p></li>
-<li><p><a class="reference external" href="https://github.com/123quant/QMT-QuantLimit">打板策略</a>|项目实现了一种量化打板策略，用于A股股票交易，涨停板制度只存在于A股|</p></li>
-<li><p><a class="reference external" href="https://github.com/fmzquant/strategies?tab=readme-ov-file">quant_strategy_list5800</a>|5800 md files|</p></li>
-</ol>
-<p>免费数据源– ❌ 缺点：通常数据质量一般，可能有幸存者偏差、数据缺失等问题。</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>数据来源</p></th>
-<th class="head"><p>适用市场</p></th>
-<th class="head"><p>数据类型</p></th>
-<th class="head"><p>优点</p></th>
-<th class="head"><p>缺点</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Yahoo Finance</p></td>
-<td><p>股票、ETF</p></td>
-<td><p>日线数据</p></td>
-<td><p>免费，简单易用</p></td>
-<td><p>不能下载高频数据，可能有幸存者偏差</p></td>
-</tr>
-<tr class="row-odd"><td><p>Alpha Vantage</p></td>
-<td><p>股票、外汇</p></td>
-<td><p>加密	日线、分钟级数据</p></td>
-<td><p>免费 API 提供多种数据</p></td>
-<td><p>免费额度有限，速度较慢</p></td>
-</tr>
-<tr class="row-even"><td><p>Binance API</p></td>
-<td><p>加密货币</p></td>
-<td><p>分钟级数据</p></td>
-<td><p>免费,全市场数据</p></td>
-<td><p>只能用于加密货币交易</p></td>
-</tr>
-<tr class="row-odd"><td><p>Quandl（部分免费）</p></td>
-<td><p>股票、</p></td>
-<td><p>经济数据	日线数据</p></td>
-<td><p>提供部分免费的宏观经济数据</p></td>
-<td><p>高级数据需要付费</p></td>
-</tr>
-<tr class="row-even"><td><p>Oanda</p></td>
-<td><p>外汇</p></td>
-<td><p>分钟级数据</p></td>
-<td><p>免费的外汇数据</p></td>
-<td><p>只能用于外汇市场</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>付费数据源– ✅ 优点：数据完整、质量高、包含详细的市场信息（如订单簿、L2 数据）。</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>数据来源</p></th>
-<th class="head"><p>适用市场</p></th>
-<th class="head"><p>数据类型</p></th>
-<th class="head"><p>优点</p></th>
-<th class="head"><p>缺点</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Bloomberg</p></td>
-<td><p>全市场</p></td>
-<td><p>高频、L2 数据$25,000+/年</p></td>
-<td><p>全市场数据，质量高</p></td>
-<td><p>太贵了，个人投资者用不起</p></td>
-</tr>
-<tr class="row-odd"><td><p>Reuters Eikon</p></td>
-<td><p>股票、期货、外汇</p></td>
-<td><p>高频、新闻数据	$20,000+/年</p></td>
-<td><p>专业机构使用</p></td>
-<td><p>价格昂贵</p></td>
-</tr>
-<tr class="row-even"><td><p>TickData</p></td>
-<td><p>股票、期货</p></td>
-<td><p>Tick 级数据</p></td>
-<td><p>按年收费，$1000+</p></td>
-<td><p>高频数据质量高	价格较贵</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="http://Polygon.io">Polygon.io</a></p></td>
-<td><p>股票、加密、外汇</p></td>
-<td><p>Tick 级</p></td>
-<td><p>月费 $49+	数据完整，支持 L2 订单流</p></td>
-<td><p>需要付费</p></td>
-</tr>
-<tr class="row-even"><td><p>Intrinio</p></td>
-<td><p>股票</p></td>
-<td><p>财报 + 价格数据 订阅制，$99+</p></td>
-<td><p>提供财务因子数据</p></td>
-<td><p>价格偏贵</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>回测</strong></p>
-<ol class="arabic simple">
-<li><p>Backtrader</p>
-<ul class="simple">
-<li><p>开源免费，适用于个人和小型团队。股票、期货、外汇、加密货币。可以直接接入实盘交易（IB、Binance、Alpaca等）。内置可视化分析（回测结果、资金曲线、交易信号）。</p></li>
-<li><p><a class="reference external" href="https://github.com/enzoampil/fastquant">FastQuant</a>–基于 Backtrader，封装简单，适合新手, 只需几行 Python 代码, 适用于股票、外汇等市场，支持多种技术指标（MACD、均线等）。</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://github.com/stefan-jansen/zipline-reloaded">Zipline</a></p>
-<ul class="simple">
-<li><p>Quantopian 团队开发，曾用于顶级量化竞赛。内置数据处理、财报数据整合（Quandl API）。历史模拟与实盘交易集成（Alpaca API）。📌 适合：想研究因子选股、日线级别交易的个人交易者。</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://github.com/nessessary/autoxd">autoxd</a> | 回测框架, 模拟实盘账户交易, 适合编写T+0策略 |</p></li>
-<li><p><a class="reference external" href="https://github.com/foolcage/fooltrader">fooltrader</a> -&gt; <a class="reference external" href="https://github.com/zvtvz/zvt">zvt</a> | modular quant framework, 项目升级到zvt, 各有详尽解释|</p></li>
-<li><p><a class="reference external" href="https://github.com/vnpy/vnpy">vnpy</a> | 基于Python, 开源, 量化交易平台开发框架 |</p></li>
-<li><p><a class="reference external" href="https://hikyuu.org/">hikyuu</a>| 开源量化交易研究框架，策略分析, 回测|</p></li>
-<li><p><a class="reference external" href="https://github.com/ricequant/funcat">Funcat</a> –&gt; <a class="reference external" href="https://github.com/mpquant/MyTT">MyTT</a>|同花顺、通达信、文华财经麦语言等公式的表达十分简洁，适合做技术分析,</p>
-<ul class="simple">
-<li><p>MyTT将通达信,同花顺,文华麦语言等指标公式,最简移植到Python中,核心库单个文件，仅百行代码,十几个核心函数，神奇的实现所有常见技术指标算法（不依赖talib库）的纯python实现和转换通达信MACD,RSI,BOLL,ATR,KDJ,CCI,PSY等公式,全部基于pandas函数计算方法封装，简洁且高性能，能非常方便的应用在股票指标公式,股市期货量化框架分析,自动程序化交易,数字货币</p></li>
-</ul>
-</li>
-</ol>
-<p><strong>模拟/交易</strong></p>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://github.com/shidenggui/easytrader">easytrader</a>|提供同花顺客户端/miniqmt/雪球的股票量化交易，支持跟踪 joinquant /ricequant 模拟交易 和 实盘雪球组合|</p></li>
-<li><p><a class="reference external" href="https://github.com/ricequant/rqalpha">ricequant/RQAlpha</a>| 数据获取、算法交易、回测引擎，实盘模拟，实盘交易到数据分析 |</p></li>
-<li><p><a class="reference external" href="https://github.com/yutiansut/QUANTAXIS">QUANTAXIS</a> | 任务调度/分布式部署, 股票/期货/期权, 数据/回测/模拟/交易/可视化/多账户 纯本地量化]</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/yutiansut/QAStrategy">QAStrategy</a>| QA-sub1</p></li>
-<li><p><a class="reference external" href="https://github.com/QUANTAXIS/QADemoOLD">QADemoOLD</a>| QA-sub2</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://github.com/BigBrotherTrade/trader">trader</a>| 操盘大哥的交易组件</p></li>
-</ol>
-<p><strong>Garage:效果不佳, 自测失败或技术底层comments</strong></p>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://github.com/myhhub/stock?tab=readme-ov-file">mayanghua/instock</a> 获取股票数据,计算股票指标,筹码分布,识别股票形态,综合选股,选股策略,股票验证回测,股票自动交易, docker支持PC及移动设备</p>
-<ul class="simple">
-<li><p>勉强进入 <a class="reference external" href="http://localhost:9988/">http://localhost:9988/</a>, add <code class="docutils literal notranslate"><span class="pre">sudo</span></code> in advance</p></li>
-</ul>
-</li>
-<li><p>QuantConnect ❌ 缺点：本地回测体验不佳，主要依赖云端计算。</p></li>
-<li><p><a class="reference external" href="https://github.com/sngyai/Sequoia">Sequoia</a> |好学习样本, A股自动选股实现海龟交易法则、缠中说禅牛市买点技术形态,akshare无法下载 |</p></li>
-<li><p><a class="reference external" href="https://github.com/TA-Lib/ta-lib-python">ta-lib</a>|其他包的底层, talib技术指标库 |</p></li>
-<li><p><a class="reference external" href="https://github.com/kernc/backtesting.py">backtesting</a>||</p></li>
-<li><p><a class="reference external" href="https://github.com/tkfy920/qstock">qstock</a> |付费, depends on pyfolio(too old pkg)|</p></li>
-<li><p><a class="reference external" href="https://github.com/wkingnet/stock-analysis">stock-analysis</a> |说明详细值得读，win-based,目前选股条件是阳包阴，而且当天要涨停 |</p></li>
-<li><p><a class="reference external" href="https://github.com/quantopian/pyfolio">pyfolio</a>| 5 years ago|</p></li>
-<li><p><a class="reference external" href="https://github.com/gbeced/basana">Basana</a>|Python async and event driven framework for algorithmic trading, focus on crypto currencies|</p></li>
-</ol>
-</section>
-</section>
-<section id="id4">
-<h2><span class="section-number">1.5. </span>自动交易系统<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<section id="id5">
-<h3><span class="section-number">1.5.1. </span>资金管理和风险控制<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p><strong>资金管理和风控策略</strong></p>
 <p>无法避免亏损（Drawdown），所以资金管理目标关键在于”让账户稳定增长 + 如何控制亏损” = “合理利用杠杆 + 防止爆仓(风险)”</p>
 <ol class="arabic simple">
 <li><p>资金分配策略 - 分散投资</p></li>
@@ -866,187 +694,30 @@ Kelly 计算的杠杆 = 2.528  VS. 实际使用杠杆 = 1.264</p></li>
 </ul>
 <p>正确做法：1) 设定固定止损（比如亏损 5% 就平仓）。2) 设定浮动止盈（根据市场趋势动态调整目标收益）。</p>
 </section>
-<section id="automated-trading-system-ats">
-<h3><span class="section-number">1.5.2. </span>自动交易系统(Automated Trading System, ATS)<a class="headerlink" href="#automated-trading-system-ats" title="Link to this heading">#</a></h3>
-<p>一套可以自动执行交易策略的计算机程序</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">1.4. </span>小市值策略<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>市场数据模块（Market Data） → 获取行情数据（价格、成交量、订单簿等）</p></li>
-<li><p>交易策略模块（Trading Algorithm） → 计算买卖信号</p></li>
-<li><p>订单执行模块（Order Execution） → 发送交易订单（下单、撤单、修改订单）</p></li>
-<li><p>风险管理模块（Risk Management） → 控制亏损、监控市场（止损、止盈、仓位管理）</p></li>
-<li><p>日志 &amp; 监控模块（Logging &amp; Monitoring） → 记录交易 &amp; 复盘, 改进策略</p></li>
-</ul>
-<ol class="arabic simple">
-<li><p>选择交易市场 &amp; 券商: 差异在于交易规则、数据获取方式、执行速度等</p></li>
-</ol>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>市场</p></th>
-<th class="head"><p>适用交易</p></th>
-<th class="head"><p>主要特点</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>股票（美股、A股）</p></td>
-<td><p>价差交易、趋势跟踪</p></td>
-<td><p>交易时间固定，波动较大</p></td>
-</tr>
-<tr class="row-odd"><td><p>期货（商品、股指）</p></td>
-<td><p>套利、趋势交易</p></td>
-<td><p>有杠杆，保证金交易</p></td>
-</tr>
-<tr class="row-even"><td><p>外汇（Forex）</p></td>
-<td><p>高频、趋势交易</p></td>
-<td><p>24 小时交易，低成本</p></td>
-</tr>
-<tr class="row-odd"><td><p>加密货币（Crypto）</p></td>
-<td><p>高频、套利</p></td>
-<td><p>24 小时交易，波动大</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>券商: 券商必须提供 API</p>
-<ul class="simple">
-<li><p>美股：Interactive Brokers（IB）、TD Ameritrade, TradeStation</p></li>
-<li><p>期货 &amp; 外汇：Oanda、NinjaTrader、TradeStation</p></li>
-<li><p>加密货币：Binance、FTX、Kraken</p></li>
-</ul>
-<ol class="arabic simple" start="2">
-<li><p>获取市场数据, 分析行情</p></li>
-</ol>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>数据类型</p></th>
-<th class="head"><p>作用</p></th>
-<th class="head"><p>来源/获取方式</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>历史数据</p></td>
-<td><p>回测策略，分析长期趋势</p></td>
-<td><p>Yahoo Finance, Quandl, Binance. 数据库查询（MySQL, PostgreSQL）</p></td>
-</tr>
-<tr class="row-odd"><td><p>实时行情（L1 数据）</p></td>
-<td><p>计算技术指标，生成买卖信号</p></td>
-<td><p>IB API, Binance API</p></td>
-</tr>
-<tr class="row-even"><td><p>订单簿数据（L2 数据）</p></td>
-<td><p>高频交易策略使用</p></td>
-<td><p>深度流动性池（Dark Pool）</p></td>
-</tr>
-<tr class="row-odd"><td><p>财务数据 &amp; 新闻数据</p></td>
-<td><p>基本面选股</p></td>
-<td><p>Quandl, Alpha Vantage. 爬取网页数据（Scrapy, Selenium）</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<ol class="arabic simple" start="3">
-<li><p>运行交易策略, 生成买卖信号, 交易策略的核心组成:</p>
-<ul class="simple">
-<li><p>信号生成（Signal Generation）：例如均线交叉（10 日均线上穿 50 日均线买入）。</p></li>
-<li><p>仓位管理（Position Sizing）：计算买入多少股（如最多 10% 账户资金）。</p></li>
-<li><p>风险控制（Risk Management）：设置止损（-5% 卖出），防止亏损过大。</p></li>
+<li><p>每个月的第一个交易日早上打开电脑，挑选市值最低的10只股票，平均买入，每个月的最后一个交易日再卖出，就这样重复操作。最近5年，收益在年化18%+, 今年到目前为止是33%的盈利</p>
+<ul>
+<li><p>打开选股软件，市值排序，剔除北京，科创，st，保险点在剔除2元以下的, 加入别的参数，甚至要多策略轮动，还要参考财务数据，北上资金等</p></li>
+<li><p>优化，把一八年回撤控制住就成功了, 复杂的模型尤其是用了新闻大数据的，回测时避免不了未来函数，实盘时出现波动自己都没有勇气坚持模型，往往进行人为干预</p></li>
+<li><p>在你的基础上，6月和12月第一个周一开盘到第二个周四收盘买调入上证50的，可以给你额外创造5个点</p></li>
+<li><p>优化一下，把30天买入10支换成x天买入y支，做一个3D统计图看看效果—这个算是轮动策略了，就单一策略来说，我增加了一些别的参数，可以跑到年化76%，但这个依然是个不
+能实盘的策略，因为回撤太高, 现在比较好的轮动策略加入择时可以把回撤控制到20%以下</p></li>
+<li><p>这个目前还有用，但是也有风险的，退市政策，壳资源价值变动等</p></li>
 </ul>
 </li>
-<li><p>订单管理（Order Management）, 当策略决定买卖后，系统需要发送交易订单</p></li>
-</ol>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>订单类型</p></th>
-<th class="head"><p>说明</p></th>
-<th class="head"><p>适用情况</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>市价单（Market Order）</p></td>
-<td><p>立即成交</p></td>
-<td><p>适合高流动性资产</p></td>
-</tr>
-<tr class="row-odd"><td><p>限价单（Limit Order）</p></td>
-<td><p>只在特定价格成交</p></td>
-<td><p>适合低流动性市场</p></td>
-</tr>
-<tr class="row-even"><td><p>止损单（Stop Loss）</p></td>
-<td><p>亏损超过一定数值后自动卖出</p></td>
-<td><p>风险控制</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<ol class="arabic simple" start="5">
-<li><p>实时监控 &amp; 风险管理: 防止异常情况（滑点、订单失败）。监控哪些风险？</p></li>
-</ol>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>监控项</p></th>
-<th class="head"><p>可能风险</p></th>
-<th class="head"><p>解决方案</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>网络问题</p></td>
-<td><p>交易失败</p></td>
-<td><p>备用服务器</p></td>
-</tr>
-<tr class="row-odd"><td><p>极端市场情况</p></td>
-<td><p>突破止损</p></td>
-<td><p>预设“熔断”机制</p></td>
-</tr>
-<tr class="row-even"><td><p>账户资金不足</p></td>
-<td><p>无法下单</p></td>
-<td><p>资金管理系统</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<ol class="arabic simple" start="6">
-<li><p>日志 &amp; 交易记录: 每笔交易必须记录下来，方便复盘和优化策略。</p></li>
-</ol>
-<p>交易日志包括: 1 交易时间; 2 买卖信号; 3 成交价格; 4 盈利 &amp; 亏损</p>
-<p>确保券商有API可以自动下单, 先用模拟交易账户（Paper Trading）测试策略(eg.Interactive Brokers 零售账户)，确保稳定后再投入真金白银。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 示例：用 Python 计算均线交叉信号</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">data</span><span class="p">[</span><span class="s2">&quot;SMA10&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">data</span><span class="p">[</span><span class="s2">&quot;SMA50&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">data</span><span class="p">[</span><span class="s2">&quot;Signal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;SMA10&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;SMA50&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
-
-<span class="c1"># 示例：用 Python 通过 IB API 发送订单</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">ib_insync</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="n">ib</span> <span class="o">=</span> <span class="n">IB</span><span class="p">()</span>
-<span class="n">ib</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">7497</span><span class="p">,</span> <span class="n">clientId</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">contract</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span> <span class="s1">&#39;SMART&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">)</span>
-<span class="n">order</span> <span class="o">=</span> <span class="n">MarketOrder</span><span class="p">(</span><span class="s1">&#39;BUY&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">ib</span><span class="o">.</span><span class="n">placeOrder</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
-
-<span class="c1"># 示例：设置止损</span>
-
-<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Close&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">stop_loss_price</span><span class="p">:</span>
-    <span class="n">order</span> <span class="o">=</span> <span class="n">MarketOrder</span><span class="p">(</span><span class="s1">&#39;SELL&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-    <span class="n">ib</span><span class="o">.</span><span class="n">placeOrder</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
-
-<span class="c1"># 示例：记录交易日志</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;trading_log.txt&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;买入 AAPL，价格：</span><span class="si">{</span><span class="n">buy_price</span><span class="si">}</span><span class="s2">，时间：</span><span class="si">{</span><span class="n">time_now</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+</ul>
+</section>
+<section id="backtesting">
+<h2><span class="section-number">1.5. </span><a class="reference internal" href="qc_platforms.html"><span class="std std-doc">回测Backtesting &amp; 交易</span></a><a class="headerlink" href="#backtesting" title="Link to this heading">#</a></h2>
 <p><strong>Reference:</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/thuquant/awesome-quant">awesome-quant</a>中国的Quant相关资源索引</p></li>
 <li><p><a class="reference external" href="https://github.com/dick318/awesome-stars">awesome-stars</a>按语言分类项目, Github</p></li>
 <li><p><a class="reference external" href="https://github.com/wangzhe3224/awesome-systematic-trading">awesome-systematic-trading</a>筛选过，有General Alpha</p></li>
 </ul>
-</section>
 </section>
 </section>
 
@@ -1121,15 +792,8 @@ Kelly 计算的杠杆 = 2.528  VS. 实际使用杠杆 = 1.264</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.3.2. 常见策略</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">1.4. 回测Backtesting</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#platforms-pkg">1.4.1. Platforms/pkg</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.5. 自动交易系统</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.5.1. 资金管理和风险控制</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-trading-system-ats">1.5.2. 自动交易系统(Automated Trading System, ATS)</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.4. 小市值策略</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">1.5. <span class="xref myst">回测Backtesting &amp; 交易</span></a></li>
 </ul>
   </nav></div>
 
