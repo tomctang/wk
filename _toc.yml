@@ -8,6 +8,7 @@ parts:
   chapters:
   - file: qc
   - file: qc_strategy
+  - file: qc_platforms
   - file: qc_terms
 
 - caption: Notebook
