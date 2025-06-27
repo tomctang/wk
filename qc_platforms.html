@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. 回测Platforms/pkg &#8212; Tom Workbook</title>
+    <title>3. 回测 &amp; 交易 &#8212; Tom Workbook</title>
   
   
   
@@ -178,7 +178,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="qc.html">1. Intro Quant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qc_strategy.html">2. Strategy/Schemes</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. 回测Platforms/pkg</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. 回测 &amp; 交易</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qc_terms.html">4. Terms</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
@@ -338,7 +338,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>回测Platforms/pkg</h1>
+    <h1>回测 & 交易</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -348,9 +348,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1. 数据和策略</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtest">3.2. 回测Backtest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-trading">3.3. 交易live trading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1. 数据和策略源</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtestlive-trading">3.2. 回测Backtest和交易live trading</a></li>
 </ul>
             </nav>
         </div>
@@ -362,8 +361,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="platforms-pkg">
-<h1><span class="section-number">3. </span>回测Platforms/pkg<a class="headerlink" href="#platforms-pkg" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">3. </span>回测 &amp; 交易<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p><strong>已下载</strong></p>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://github.com/wbbhcb/stock_market">stock_market</a>, 已下载待测</p></li>
@@ -371,8 +370,8 @@ document.write(`
 <li><p><a class="reference external" href="https://github.com/albert-feng/blade-fury">blade-fury</a>| 采集股票数据，利用统计和计算来选股, 要把项目的路径加入PYTHONPATH才能脚本正常运行|</p></li>
 <li><p><a class="reference external" href="https://github.com/shidenggui/easyquant">easyquant</a>A股量化框架，支持行情获取以及交易</p></li>
 </ol>
-<section id="id1">
-<h2><span class="section-number">3.1. </span>数据和策略<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="id2">
+<h2><span class="section-number">3.1. </span>数据和策略源<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://github.com/akfamily/akshare">AKShare</a> |elegant/simple financial data library, built for human beings开源财经数据接口库 |</p></li>
 <li><p><a class="reference external" href="https://github.com/DemonDamon/FinnewsHunter">FinnewsHunter</a></p>
@@ -473,8 +472,26 @@ document.write(`
 </table>
 </div>
 </section>
-<section id="backtest">
-<h2><span class="section-number">3.2. </span>回测Backtest<a class="headerlink" href="#backtest" title="Link to this heading">#</a></h2>
+<section id="backtestlive-trading">
+<h2><span class="section-number">3.2. </span>回测Backtest和交易live trading<a class="headerlink" href="#backtestlive-trading" title="Link to this heading">#</a></h2>
+<p>2个系统，各有好处, 由于系统设计的不同，难做到又快又真实</p>
+<ul class="simple">
+<li><p>向量化回测框架1套, 写策略逻辑会有点抽象</p>
+<ul>
+<li><p>使用pandas进行向量化操作, 你的策略就是一个dataframe进行数据处理，写规则。生成position vector以后 你只需要写一个pnl summary的函数，进行绩效统计</p></li>
+<li><p>如果追求快，可以使用向量化来回测。如需要，还可以用CUDF加速</p></li>
+</ul>
+</li>
+<li><p>事件驱动回测/实盘框架1套</p>
+<ul>
+<li><p>数据回放， 更接近真实情况，考虑多个细节，避免未来函数或者偷价。这样系统在跑一个大WHILE循环，不断的在事件QUEUE里面查看不同事件对象的类型</p></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><p>Event Driven Frameworks</p>
+</div></blockquote>
+<p>PS:  live trading marked for at least 1 broker support. Otherwise, backtest function only.</p>
 <ol class="arabic simple">
 <li><p>Backtrader</p>
 <ul class="simple">
@@ -496,20 +513,23 @@ document.write(`
 <li><p>MyTT将通达信,同花顺,文华麦语言等指标公式,最简移植到Python中,核心库单个文件，仅百行代码,十几个核心函数，神奇的实现所有常见技术指标算法（不依赖talib库）的纯python实现和转换通达信MACD,RSI,BOLL,ATR,KDJ,CCI,PSY等公式,全部基于pandas函数计算方法封装，简洁且高性能，能非常方便的应用在股票指标公式,股市期货量化框架分析,自动程序化交易,数字货币</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://github.com/tkfy920/qstock">qstock</a>|live trading|包括数据获取（data）、plot、选股(stock)和量化回测（backtest）四个模块</p></li>
+<li><p><a class="reference external" href="https://github.com/shidenggui/easytrader">easytrader</a>|live trading|提供同花顺客户端/miniqmt/雪球的股票量化交易，支持跟踪 joinquant /ricequant 模拟交易 和 实盘雪球组合|</p></li>
+<li><p><a class="reference external" href="https://github.com/ricequant/rqalpha">ricequant/RQAlpha</a>|live trading| 数据获取、算法交易、回测引擎，实盘模拟，实盘交易到数据分析 |</p></li>
+<li><p><a class="reference external" href="https://github.com/yutiansut/QUANTAXIS">QUANTAXIS</a> |live trading| 任务调度/分布式部署, 股票/期货/期权, 数据/回测/模拟/交易/可视化/多账户 纯本地量化]</p></li>
 </ol>
-</section>
-<section id="live-trading">
-<h2><span class="section-number">3.3. </span>交易live trading<a class="headerlink" href="#live-trading" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://github.com/shidenggui/easytrader">easytrader</a>|提供同花顺客户端/miniqmt/雪球的股票量化交易，支持跟踪 joinquant /ricequant 模拟交易 和 实盘雪球组合|</p></li>
-<li><p><a class="reference external" href="https://github.com/ricequant/rqalpha">ricequant/RQAlpha</a>| 数据获取、算法交易、回测引擎，实盘模拟，实盘交易到数据分析 |</p></li>
-<li><p><a class="reference external" href="https://github.com/yutiansut/QUANTAXIS">QUANTAXIS</a> | 任务调度/分布式部署, 股票/期货/期权, 数据/回测/模拟/交易/可视化/多账户 纯本地量化]</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/yutiansut/QAStrategy">QAStrategy</a>| QA-sub1</p></li>
 <li><p><a class="reference external" href="https://github.com/QUANTAXIS/QADemoOLD">QADemoOLD</a>| QA-sub2</p></li>
 </ul>
-</li>
-<li><p><a class="reference external" href="https://github.com/BigBrotherTrade/trader">trader</a>| 操盘大哥的交易组件</p></li>
+<ol class="arabic simple" start="12">
+<li><p><a class="reference external" href="https://github.com/BigBrotherTrade/trader">trader</a>|live trading| 操盘大哥的交易组件</p></li>
+</ol>
+<blockquote>
+<div><p>Vector Based Frameworks</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>??</p></li>
 </ol>
 <p><strong>自动交易系统(Automated Trading System, ATS)</strong></p>
 <p>一套可以自动执行交易策略的计算机程序</p>
@@ -767,9 +787,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1. 数据和策略</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtest">3.2. 回测Backtest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-trading">3.3. 交易live trading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1. 数据和策略源</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtestlive-trading">3.2. 回测Backtest和交易live trading</a></li>
 </ul>
   </nav></div>
 
