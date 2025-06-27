@@ -350,15 +350,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logs">1.1. logs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2. 建立自己的系统–认知哲学世界观</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">1.3. 寻找交易策略Alpha</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.3.1. 常见问题</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.3.2. 常见策略</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1. 建立自己的系统–认知哲学世界观</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">1.2. 寻找交易策略Alpha</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.1. 常见问题</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.2. 常见策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.2.3. 杠杆和退出策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.2.4. 小市值策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">1.2.5. <span class="xref myst">消息面-AI文本分析</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.4. 小市值策略</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">1.5. <span class="xref myst">回测Backtesting &amp; 交易</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">1.3. <span class="xref myst">回测Backtesting &amp; 交易</span></a></li>
 </ul>
             </nav>
         </div>
@@ -372,17 +373,13 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="intro-quant">
 <h1><span class="section-number">1. </span>Intro Quant<a class="headerlink" href="#intro-quant" title="Link to this heading">#</a></h1>
-<section id="logs">
-<h2><span class="section-number">1.1. </span>logs<a class="headerlink" href="#logs" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>如何交易川普失败的影响？</p></li>
 <li><p><a class="reference external" href="https://github.com/kevin-meng/financial_stock_knowledge_graph">金融证券知识图谱</a>| |</p></li>
 <li><p><a class="reference external" href="https://github.com/jm199504/Financial-Knowledge-Graphs">小型金融知识图谱构建流程</a>||</p></li>
-<li><p><a class="reference external" href="https://github.com/stefan-jansen/machine-learning-for-trading">ML Algorith Trading2ed</a>|ipynb repository</p></li>
 </ul>
-</section>
 <section id="id1">
-<h2><span class="section-number">1.2. </span>建立自己的系统–认知哲学世界观<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.1. </span>建立自己的系统–认知哲学世界观<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>独立交易者能否在市场上长期生存并盈利？ 1)机构体量和反身性; 2)对冲基金之间的策略太相似 – 许多大型量化基金使用类似的交易策略，比如统计套利、市场中性策略等。</p>
 <ul class="simple">
@@ -402,29 +399,44 @@ document.write(`
 <li><p>看作者, 比如《Systematic Trading》的作者Robert，他是一个退休的对冲基金经理，所以他的书观点更加专业，而且经过实践的检验。</p></li>
 <li><p>《Algorithmic Trading》的作者 Chan，他做过机构投资，但是转为自营，他的书更加偏重个人或者散户投资人，但是相比起来，系统性就会差一些。</p></li>
 <li><p>《Python for Algorithmic Trading》的作者 Yves，他是学院出身，主要工作是研究和写作，他的书籍显然更加适合初学者，而且写的比较具体和细致，适合没基础的人跟着操作，但是从深度和框架角度会较差一些。</p></li>
+<li><p><a class="reference external" href="https://github.com/stefan-jansen/machine-learning-for-trading">ML Algorith Trading2ed</a>|ipynb repository. Stefan是实盘操手</p></li>
 </ul>
 </li>
-<li><p>交易策略的来源: 虽然学术研究可以提供有价值的策略，但许多学术策略可能过于复杂、已经失效（竞争导致利润减少）或需要昂贵的数据才能回测。因此，交易论坛和博客中更简单的策略可能同样有效. e.g. Wealth-Lab</p></li>
+<li><p>交易策略的来源:</p>
+<ul class="simple">
+<li><p>虽然学术研究可以提供有价值的策略，但许多学术策略可能过于复杂、已经失效（竞争导致利润减少）或需要昂贵的数据才能回测。因此，交易论坛和博客中更简单的策略可能同样有效. e.g. Wealth-Lab</p></li>
+</ul>
+</li>
+<li><p>风险管理中的心理挑战</p>
+<ul class="simple">
+<li><p>贪婪（Greed）:当交易表现很好时，加大杠杆，希望快速赚更多钱。</p></li>
+<li><p>恐惧（Despair）:当交易出现亏损时，因恐惧而过早退出，或者反向加大赌注，希望翻本。</p></li>
+<li><p>亏损厌恶（Loss Aversion）:过早止盈，却死扛亏损单。</p></li>
+<li><p>正确做法：1) 设定固定止损（比如亏损 5% 就平仓）。2) 设定浮动止盈（根据市场趋势动态调整目标收益）。</p></li>
+</ul>
+</li>
 </ol>
 </section>
 <section id="alpha">
-<h2><span class="section-number">1.3. </span>寻找交易策略Alpha<a class="headerlink" href="#alpha" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.2. </span>寻找交易策略Alpha<a class="headerlink" href="#alpha" title="Link to this heading">#</a></h2>
 <section id="id2">
-<h3><span class="section-number">1.3.1. </span>常见问题<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.2.1. </span>常见问题<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p><strong>回测策略前</strong>(先用简单方法快速筛选，排除明显不可行策略)</p>
 <ol class="arabic simple">
-<li><p>是否比市场整体表现更好？（Benchmark 对比）想象你有 10 万元要投资，你的交易策略到底能不能比最简单的投资方式（比如买入指数基金）表现更好？</p>
+<li><p>是否比市场整体表现更好？</p>
 <ul class="simple">
-<li><p>如果你的策略是多头策略（只做买入），那么它至少要跑赢大盘指数（比如美国的 S&amp;P 500）。如果你的策略长期表现还不如直接买指数基金，那干嘛费劲折腾呢？</p></li>
-<li><p>如果你的策略是市场中性（market-neutral），比如对冲基金喜欢做的那种——买入一些股票，同时卖空另一些股票，那么你至少要比无风险收益高，比如美国国债的利息收益。如果你拿着 10 万块去交易，最后的年收益还不如把钱存银行吃利息，那这策略也没意义。</p></li>
+<li><p>Benchmark对比: 10万元投资，你的交易策略能比最简单的投资方式（比如买入指数基金）表现更好？</p></li>
+<li><p>如果你的策略是多头策略（只做买入），那么它至少要跑赢大盘指数（比如SP500）, 否则不如直接买指数基金</p></li>
+<li><p>如果你的策略是市场中性（market-neutral），比如对冲基金喜欢做的那种——买入一些股票，同时卖空另一些股票，那么你至少要比无风险收益高，比如美国国债的利息收益。</p></li>
 </ul>
 </li>
 <li><p>看两指标: 夏普比率（Sharpe Ratio, SR）, 最大回撤（Max Drawdown, MDD）</p></li>
-<li><p>交易成本 —— 很多交易策略在纸面上看着很赚钱，但一到实盘就亏损。</p></li>
-<li><p>幸存者偏差（Survivorship Bias）—— sampling bias. 假设你在研究过去 10 年里涨幅最好的 100 只股票，发现它们的平均年回报率高达 30%，你兴奋地想用这些数据回测自己的策略。但这 100 只股票都是“活下来的赢家”，很多早就倒闭的公司被自动忽略了，不在数据里了。</p>
+<li><p>幸存者偏差（Survivorship Bias）—— sampling bias</p>
 <ul class="simple">
+<li><p>假设你在研究过去 10 年里涨幅最好的 100 只股票，发现它们的平均年回报率高达 30%，你兴奋地想用这些数据回测自己的策略。但这 100 只股票都是“活下来的赢家”，很多早就倒闭的公司被自动忽略了，不在数据里了。</p></li>
 <li><p>结果：你的策略在历史数据里赚钱，但在现实中会亏损。</p></li>
 <li><p>尤其要小心低估值选股（Value Investing）策略，因为许多“便宜”的股票后来都倒闭了，历史数据不一定可靠。</p></li>
+<li><p>解决方案：选择包含退市公司的数据库，比如 CRSP 或 Bloomberg。 自己每天存数据，记录所有股票，包括后来破产的。</p></li>
 </ul>
 </li>
 <li><p>很多策略在 10 年前很好用，但现在已经过时了，因为：1) 市场竞争加剧，更多人用相同策略，导致利润消失。2) 市场环境变化，例如法规调整、算法交易普及等。</p>
@@ -432,61 +444,61 @@ document.write(`
 <li><p>例子：以前有些策略可以利用卖空限制赚钱，但后来卖空规则放宽，这些策略就失效了。</p></li>
 </ul>
 </li>
-<li><p>数据挖掘偏差（Data-Snooping Bias）—— 太复杂的策略容易骗自己，简单才是王道？e.g. 进场信号有 10 个条件，出场信号有 10 个参数……你在历史数据里不断优化参数，直到回测结果“完美”。</p>
-<ul class="simple">
-<li><p>问题来了：你是不是“过拟合”了过去的数据。未来市场变化，这些优化的参数根本不适用。</p></li>
-<li><p>如何避免？用简单的策略，避免过度优化。e.g. 1) 滚动回测（Moving Window Backtesting），看看策略是否在不同时间段都能稳定盈利。2) 经济逻辑 VS. 数学优化。</p></li>
-</ul>
-</li>
 </ol>
-<p><strong>回测中常见的问题</strong></p>
+<p><strong>回测中常见问题</strong></p>
 <ol class="arabic simple">
-<li><p>怎么评估回测结果? - 两个最常用的指标</p>
+<li><p>怎么评估回测结果? - 两指标</p>
 <ul class="simple">
 <li><p>夏普比率: 衡量赚钱的稳定性，告诉你单位风险能赚多少钱。</p></li>
 <li><p>最大回撤: 衡量亏损的最大风险，告诉你历史上最惨的时候亏了多少。</p></li>
 </ul>
 </li>
-<li><p>不同数据源的常见问题</p>
+<li><p>不同数据源常见问题</p>
 <ul class="simple">
 <li><p>拆股 &amp; 分红调整 → 否则股价会“假暴跌”。</p></li>
 <li><p>幸存者偏差 → 退市的股票可能会影响策略真实表现。</p></li>
 <li><p>高低点是否可靠 → 避免因假突破/假回撤导致错误交易</p></li>
 </ul>
 </li>
-<li><p>前视偏差（Look-Ahead Bias）——“未来数据作弊”, 你的策略用当天最低价来决定买入，但问题是你在当天交易时根本不知道最低价。这相当于用未来数据作弊，让回测收益看起来比实际更好。</p>
+<li><p>前视偏差（Look-Ahead Bias）</p>
 <ul class="simple">
+<li><p>“未来数据作弊”, 你的策略用当天最低价来决定买入，但问题是你在当天交易时根本不知道最低价。这相当于用未来数据作弊，让回测收益看起来比实际更好。</p></li>
 <li><p>解决方案：只使用当时可见的数据，比如前一天的收盘价，而不是当天的最低价。</p></li>
 </ul>
 </li>
-<li><p>幸存者偏差（Survivorship Bias）——“只看赢家，忽略破产公司”, 你在回测 2010-2020 年的股票表现，但只选了2024 年还存在的公司，忽略了已破产或退市的公司。
-这让回测看起来很赚钱，但实际上过去的市场里有很多亏损股被筛掉了。</p>
+<li><p>数据挖掘偏差（Data-Snooping Bias）</p>
 <ul class="simple">
-<li><p>解决方案：选择包含退市公司的数据库，比如 CRSP 或 Bloomberg。 自己每天存数据，记录所有股票，包括后来破产的。</p></li>
+<li><p>太复杂的策略容易骗自己，简单才是王道？e.g. 进场信号有 10 个条件，出场信号有 10 个参数……你测试了1000 种均线组合，最终发现9 日均线 + 30 日均线最赚钱“完美”。</p></li>
+<li><p>问题来了：你是不是“过拟合”了过去的数据。未来市场变化，这些优化的参数根本不适用。</p></li>
+<li><p>解决方案：</p>
+<ul>
+<li><p>用简单策略，避免过度优化。e.g. 1) 滚动回测（Moving Window Backtesting），看看策略是否在不同时间段都能稳定盈利。2) 经济逻辑 VS. 数学优化。</p></li>
+<li><p>分训练集和测试集，先在 2010-2015 年优化参数，再用 2016-2020 年测试，看看是否依然有效。选择有逻辑支持的参数，而不是纯粹靠调参优化。</p></li>
 </ul>
 </li>
-<li><p>数据挖掘偏差（Data-Snooping Bias）——“瞎调参数，优化到历史最优”, 你测试了1000 种均线组合，最终发现9 日均线 + 30 日均线最赚钱。
-但这可能只是历史上的巧合，在未来可能根本没用。</p>
-<ul class="simple">
-<li><p>解决方案：分训练集和测试集，先在 2010-2015 年优化参数，再用 2016-2020 年测试，看看是否依然有效。
-选择有逻辑支持的参数，而不是纯粹靠调参优化。</p></li>
 </ul>
 </li>
-<li><p>忽略交易成本（Trading Costs）——“只看理论收益，不考虑交易成本”, 你的策略每天交易 100 次，回测显示年化收益 500%。
-但你没有考虑交易手续费、滑点和市场冲击，实际执行后，交易成本可能比利润还高。</p>
+<li><p>交易成本（Trading Costs）</p>
 <ul class="simple">
-<li><p>解决方案：在回测中加入真实交易成本, 测试策略是否仍然能盈利</p></li>
+<li><p>很多交易策略在纸面上看着很赚钱，但一到实盘就亏损</p></li>
+<li><p>解决方案：在回测中加入真实交易成本, 测试策略是否仍然能盈利</p>
+<ul>
 <li><p>commission = 0.0005  # 手续费（佣金）：每次买卖都会有固定费用 0.05%</p></li>
 <li><p>slippage = 0.0002  # 滑点 0.02% 市场价格可能和你下单的价格不同，比如你想 100 元买入，但市场波动，实际成交价变成了 100.2 元</p></li>
 <li><p>transaction_cost = commission + slippage</p></li>
-<li><p>市场冲击（market impact）：如果你一次性买入很多，可能把价格推高，导致你买不到便宜价格。</p></li>
-<li><p>举例：一个基于**布林带（Bollinger Bands）**的策略，在理论测试中表现很好，夏普比率高达 3（非常稳健）。但一旦加入交易成本，夏普比率立刻掉到 -3（严重亏损）。</p></li>
+</ul>
+</li>
+<li><p>市场冲击（market impact）：反身性, 如果你一次买入太多, 反而把价格推高</p>
+<ul>
+<li><p>eg.一个基于布林带的策略，在理论测试中表现很好，夏普比率高达 3（非常稳健）。但一旦加入交易成本，夏普比率立刻掉到 -3（严重亏损）。</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
 </section>
 <section id="id3">
-<h3><span class="section-number">1.3.2. </span>常见策略<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.2.2. </span>常见策略<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>策略</p></th>
@@ -541,12 +553,7 @@ document.write(`
 <td><p>日线/小时线</p></td>
 <td><p>波动率放大后进入趋势</p></td>
 </tr>
-<tr class="row-odd"><td><p>交易退出策略</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p>如何止盈止损？何时卖出比何时买入更重要！</p></td>
-</tr>
-<tr class="row-even"><td><p>季节性交易</p></td>
+<tr class="row-odd"><td><p>季节性交易</p></td>
 <td><p>股票、期货</p></td>
 <td><p></p></td>
 <td><p>市场都存在季节性规律, “春节效应”或者“圣诞行情”</p></td>
@@ -628,11 +635,11 @@ document.write(`
 </ul>
 </li>
 </ol>
-<p><strong>资金管理和风控策略</strong></p>
+</section>
+<section id="id4">
+<h3><span class="section-number">1.2.3. </span>杠杆和退出策略<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>无法避免亏损（Drawdown），所以资金管理目标关键在于”让账户稳定增长 + 如何控制亏损” = “合理利用杠杆 + 防止爆仓(风险)”</p>
-<ol class="arabic simple">
-<li><p>资金分配策略 - 分散投资</p></li>
-</ol>
+<p><strong>资金管理</strong></p>
 <p>同时交易3个策略，如何合理分配资金？ Kelly 公式可以帮助你找到最优资金分配方式，确保风险最小，收益最大。</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -663,9 +670,7 @@ document.write(`
 </div>
 <p>Kelly 公式计算出的杠杆：分配较多资金给 策略 A，适当投资 策略 B，并做空策略 C（因为它的收益是负的）。
 这个方法确保你的整体收益率最大化，同时风险可控。</p>
-<ol class="arabic simple" start="2">
-<li><p>风险管理，避免亏损失控</p></li>
-</ol>
+<p><strong>风控策略</strong></p>
 <ul class="simple">
 <li><p>限制最大回撤（Max Drawdown）: 计算历史最大亏损，并设定最大可承受回撤（比如不超过 20%）。
 例如，如果 S&amp;P 500 最大单日跌幅是 20.47%，你就不应该用超过 1 倍杠杆，否则可能承受超出预期的损失。</p></li>
@@ -684,19 +689,9 @@ Kelly 计算的杠杆 = 2.528  VS. 实际使用杠杆 = 1.264</p></li>
 </ul>
 </li>
 </ul>
-<ol class="arabic simple" start="3">
-<li><p>风险管理中的心理挑战 - 克服</p></li>
-</ol>
-<ul class="simple">
-<li><p>贪婪（Greed）:当交易表现很好时，加大杠杆，希望快速赚更多钱。</p></li>
-<li><p>恐惧（Despair）:当交易出现亏损时，因恐惧而过早退出，或者反向加大赌注，希望翻本。</p></li>
-<li><p>亏损厌恶（Loss Aversion）:过早止盈，却死扛亏损单。</p></li>
-</ul>
-<p>正确做法：1) 设定固定止损（比如亏损 5% 就平仓）。2) 设定浮动止盈（根据市场趋势动态调整目标收益）。</p>
 </section>
-</section>
-<section id="id4">
-<h2><span class="section-number">1.4. </span>小市值策略<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h3><span class="section-number">1.2.4. </span>小市值策略<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>每个月的第一个交易日早上打开电脑，挑选市值最低的10只股票，平均买入，每个月的最后一个交易日再卖出，就这样重复操作。最近5年，收益在年化18%+, 今年到目前为止是33%的盈利</p>
 <ul>
@@ -710,8 +705,12 @@ Kelly 计算的杠杆 = 2.528  VS. 实际使用杠杆 = 1.264</p></li>
 </li>
 </ul>
 </section>
+<section id="ai">
+<h3><span class="section-number">1.2.5. </span><a class="reference internal" href="qc_strategy.html#消息面-AI文本分析"><span class="std std-ref">消息面-AI文本分析</span></a><a class="headerlink" href="#ai" title="Link to this heading">#</a></h3>
+</section>
+</section>
 <section id="backtesting">
-<h2><span class="section-number">1.5. </span><a class="reference internal" href="qc_platforms.html"><span class="std std-doc">回测Backtesting &amp; 交易</span></a><a class="headerlink" href="#backtesting" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.3. </span><a class="reference internal" href="qc_platforms.html"><span class="std std-doc">回测Backtesting &amp; 交易</span></a><a class="headerlink" href="#backtesting" title="Link to this heading">#</a></h2>
 <p><strong>Reference:</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/thuquant/awesome-quant">awesome-quant</a>中国的Quant相关资源索引</p></li>
@@ -785,15 +784,16 @@ Kelly 计算的杠杆 = 2.528  VS. 实际使用杠杆 = 1.264</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logs">1.1. logs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2. 建立自己的系统–认知哲学世界观</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">1.3. 寻找交易策略Alpha</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.3.1. 常见问题</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.3.2. 常见策略</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1. 建立自己的系统–认知哲学世界观</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">1.2. 寻找交易策略Alpha</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.1. 常见问题</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.2. 常见策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.2.3. 杠杆和退出策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.2.4. 小市值策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">1.2.5. <span class="xref myst">消息面-AI文本分析</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.4. 小市值策略</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">1.5. <span class="xref myst">回测Backtesting &amp; 交易</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">1.3. <span class="xref myst">回测Backtesting &amp; 交易</span></a></li>
 </ul>
   </nav></div>
 
