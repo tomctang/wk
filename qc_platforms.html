@@ -369,6 +369,7 @@ document.write(`
 <li><p><a class="reference external" href="https://github.com/popbo/alphas">alphas</a>, 已下载待测ipynb, 利用了这个项目<a class="reference external" href="https://github.com/quantopian/alphalens">alphalens</a> -&gt; <a class="reference external" href="https://github.com/stefan-jansen/alphalens-reloaded">alphalens-reloaded</a>, <a class="reference internal" href="#../wk/0alphalens/alphalens_tutorial_on_quantopian.ipynb#"><span class="xref myst">see this ipynb</span></a></p></li>
 <li><p><a class="reference external" href="https://github.com/albert-feng/blade-fury">blade-fury</a>| 采集股票数据，利用统计和计算来选股, 要把项目的路径加入PYTHONPATH才能脚本正常运行|</p></li>
 <li><p><a class="reference external" href="https://github.com/shidenggui/easyquant">easyquant</a>A股量化框架，支持行情获取以及交易</p></li>
+<li><p><a class="reference external" href="https://github.com/szy1900/Event_driven_framework_for_backtesting">beginner_event_backtest</a></p></li>
 </ol>
 <section id="id2">
 <h2><span class="section-number">3.1. </span>数据和策略源<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
@@ -474,19 +475,10 @@ document.write(`
 </section>
 <section id="backtestlive-trading">
 <h2><span class="section-number">3.2. </span>回测Backtest和交易live trading<a class="headerlink" href="#backtestlive-trading" title="Link to this heading">#</a></h2>
-<p>2个系统，各有好处, 由于系统设计的不同，难做到又快又真实</p>
+<p>Vector(speed) .VS. Event(real), 2种回测系统，各有好处, 难做到又快又真实</p>
 <ul class="simple">
-<li><p>向量化回测框架1套, 写策略逻辑会有点抽象</p>
-<ul>
-<li><p>使用pandas进行向量化操作, 你的策略就是一个dataframe进行数据处理，写规则。生成position vector以后 你只需要写一个pnl summary的函数，进行绩效统计</p></li>
-<li><p>如果追求快，可以使用向量化来回测。如需要，还可以用CUDF加速</p></li>
-</ul>
-</li>
-<li><p>事件驱动回测/实盘框架1套</p>
-<ul>
-<li><p>数据回放， 更接近真实情况，考虑多个细节，避免未来函数或者偷价。这样系统在跑一个大WHILE循环，不断的在事件QUEUE里面查看不同事件对象的类型</p></li>
-</ul>
-</li>
+<li><p>快–向量化回测框架1套: 写策略逻辑会有点抽象</p></li>
+<li><p>真实–事件驱动回测/实盘框架1套: 考虑多个细节，避免未来函数或者偷价, 更容易集成到实盘</p></li>
 </ul>
 <blockquote>
 <div><p>Event Driven Frameworks</p>
@@ -496,12 +488,11 @@ document.write(`
 <li><p>Backtrader</p>
 <ul class="simple">
 <li><p>开源免费，适用于个人和小型团队。股票、期货、外汇、加密货币。可以直接接入实盘交易（IB、Binance、Alpaca等）。内置可视化分析（回测结果、资金曲线、交易信号）。</p></li>
-<li><p><a class="reference external" href="https://github.com/enzoampil/fastquant">FastQuant</a>–基于 Backtrader，封装简单，适合新手, 只需几行 Python 代码, 适用于股票、外汇等市场，支持多种技术指标（MACD、均线等）。</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://github.com/stefan-jansen/zipline-reloaded">Zipline</a></p>
 <ul class="simple">
-<li><p>Quantopian 团队开发，曾用于顶级量化竞赛。内置数据处理、财报数据整合（Quandl API）。历史模拟与实盘交易集成（Alpaca API）。📌 适合：想研究因子选股、日线级别交易的个人交易者。</p></li>
+<li><p>Quantopian 团队开发，曾用于顶级量化竞赛。内置数据处理、财报整合Quandl API, 历史模拟与实盘交易集成Alpaca API。适合：研究因子选股、日线级别交易的个人交易者。</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://github.com/nessessary/autoxd">autoxd</a> | 回测框架, 模拟实盘账户交易, 适合编写T+0策略 |</p></li>
@@ -516,20 +507,23 @@ document.write(`
 <li><p><a class="reference external" href="https://github.com/tkfy920/qstock">qstock</a>|live trading|包括数据获取（data）、plot、选股(stock)和量化回测（backtest）四个模块</p></li>
 <li><p><a class="reference external" href="https://github.com/shidenggui/easytrader">easytrader</a>|live trading|提供同花顺客户端/miniqmt/雪球的股票量化交易，支持跟踪 joinquant /ricequant 模拟交易 和 实盘雪球组合|</p></li>
 <li><p><a class="reference external" href="https://github.com/ricequant/rqalpha">ricequant/RQAlpha</a>|live trading| 数据获取、算法交易、回测引擎，实盘模拟，实盘交易到数据分析 |</p></li>
-<li><p><a class="reference external" href="https://github.com/yutiansut/QUANTAXIS">QUANTAXIS</a> |live trading| 任务调度/分布式部署, 股票/期货/期权, 数据/回测/模拟/交易/可视化/多账户 纯本地量化]</p></li>
-</ol>
+<li><p><a class="reference external" href="https://github.com/yutiansut/QUANTAXIS">QUANTAXIS</a> |live trading| 任务调度/分布式部署, 股票/期货/期权, 数据/回测/模拟/交易/可视化/多账户 纯本地量化]</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/yutiansut/QAStrategy">QAStrategy</a>| QA-sub1</p></li>
 <li><p><a class="reference external" href="https://github.com/QUANTAXIS/QADemoOLD">QADemoOLD</a>| QA-sub2</p></li>
 </ul>
-<ol class="arabic simple" start="12">
+</li>
 <li><p><a class="reference external" href="https://github.com/BigBrotherTrade/trader">trader</a>|live trading| 操盘大哥的交易组件</p></li>
 </ol>
 <blockquote>
 <div><p>Vector Based Frameworks</p>
 </div></blockquote>
 <ol class="arabic simple">
-<li><p>??</p></li>
+<li><p>[FinHack] | Python | - 一个易于拓展的量化金融框架，它在当前版本中集成了数据采集、因子计算、因子挖掘、因子分析、机器学习、策略编写、量化回测、实盘接入等全流程的量化投研工作</p></li>
+<li><p>[pysystemtrade] | Python, Live Trading | - Systematic Trading in python from book by Rob Carver</p></li>
+<li><p>[finmarketpy] | Python | - Python library for backtesting trading strategies &amp; analyzing financial markets (formerly pythalesians)</p></li>
+<li><p>[vectorbt] | Python, numba | - vectorbt takes a novel approach to backtesting: it operates entirely on pandas and NumPy objects, and is accelerated by Numba to analyze any data at speed and scale. This allows for testing of many thousands of strategies in seconds.</p></li>
+<li><p><a class="reference external" href="https://github.com/enzoampil/fastquant">FastQuant</a>–基于 Backtrader，封装简单，适合新手, 只需几行 Python 代码, 适用于股票、外汇等市场，支持多种技术指标（MACD、均线等）。</p></li>
 </ol>
 <p><strong>自动交易系统(Automated Trading System, ATS)</strong></p>
 <p>一套可以自动执行交易策略的计算机程序</p>
@@ -672,34 +666,34 @@ document.write(`
 <p>确保券商有API可以自动下单, 先用模拟交易账户（Paper Trading）测试策略(eg.Interactive Brokers 零售账户)，确保稳定后再投入真金白银。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 示例：用 Python 计算均线交叉信号</span>
+<div class="highlight-Wolfram Language notranslate"><div class="highlight"><pre><span></span># 示例：用 Python 计算均线交叉信号
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">data</span><span class="p">[</span><span class="s2">&quot;SMA10&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">data</span><span class="p">[</span><span class="s2">&quot;SMA50&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">data</span><span class="p">[</span><span class="s2">&quot;Signal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;SMA10&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;SMA50&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+import pandas as pd
+data[&quot;SMA10&quot;] = data[&quot;Close&quot;].rolling(window=10).mean()
+data[&quot;SMA50&quot;] = data[&quot;Close&quot;].rolling(window=50).mean()
+data[&quot;Signal&quot;] = (data[&quot;SMA10&quot;] &gt; data[&quot;SMA50&quot;]).astype(int)
+print(data.tail())
 
-<span class="c1"># 示例：用 Python 通过 IB API 发送订单</span>
+# 示例：用 Python 通过 IB API 发送订单
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">ib_insync</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="n">ib</span> <span class="o">=</span> <span class="n">IB</span><span class="p">()</span>
-<span class="n">ib</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">7497</span><span class="p">,</span> <span class="n">clientId</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">contract</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span> <span class="s1">&#39;SMART&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">)</span>
-<span class="n">order</span> <span class="o">=</span> <span class="n">MarketOrder</span><span class="p">(</span><span class="s1">&#39;BUY&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">ib</span><span class="o">.</span><span class="n">placeOrder</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+from ib_insync import *
+ib = IB()
+ib.connect(&#39;127.0.0.1&#39;, 7497, clientId=1)
+contract = Stock(&#39;AAPL&#39;, &#39;SMART&#39;, &#39;USD&#39;)
+order = MarketOrder(&#39;BUY&#39;, 10)
+ib.placeOrder(contract, order)
 
-<span class="c1"># 示例：设置止损</span>
+# 示例：设置止损
 
-<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Close&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">stop_loss_price</span><span class="p">:</span>
-    <span class="n">order</span> <span class="o">=</span> <span class="n">MarketOrder</span><span class="p">(</span><span class="s1">&#39;SELL&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-    <span class="n">ib</span><span class="o">.</span><span class="n">placeOrder</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+if data[&quot;Close&quot;][-1] &lt; stop_loss_price:
+    order = MarketOrder(&#39;SELL&#39;, 10)
+    ib.placeOrder(contract, order)
 
-<span class="c1"># 示例：记录交易日志</span>
+# 示例：记录交易日志
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;trading_log.txt&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;买入 AAPL，价格：</span><span class="si">{</span><span class="n">buy_price</span><span class="si">}</span><span class="s2">，时间：</span><span class="si">{</span><span class="n">time_now</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+import logging
+logging.basicConfig(filename=&#39;trading_log.txt&#39;, level=logging.INFO)
+logging.info(f&quot;买入 AAPL，价格：{buy_price}，时间：{time_now}&quot;)
 </pre></div>
 </div>
 </div>
@@ -732,16 +726,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "wolframlanguage14.2"
         },
         kernelOptions: {
-            name: "python3",
+            name: "wolframlanguage14.2",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'wolframlanguage14.2'</script>
 
                 </article>
               
