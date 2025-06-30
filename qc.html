@@ -180,7 +180,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Intro Quant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qc_strategy.html">2. Strategy/Schemes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qc_platforms.html">3. 回测 &amp; 交易</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qc_platforms.html">3. 回测 模拟 交易</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qc_terms.html">4. Terms</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
@@ -354,8 +354,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">1.2. 寻找交易策略Alpha</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.1. 常见问题</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.2. 常见策略</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.2.3. 小市值策略</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">1.2.4. <span class="xref myst">消息面-AI文本分析</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.2.3. 打板策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.2.4. 小市值策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">1.2.5. <span class="xref myst">消息面-AI文本分析</span></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">1.3. <span class="xref myst">回测Backtesting &amp; 交易</span></a></li>
@@ -376,6 +377,8 @@ document.write(`
 <li><p>如何交易川普失败的影响？</p></li>
 <li><p><a class="reference external" href="https://github.com/kevin-meng/financial_stock_knowledge_graph">金融证券知识图谱</a>| |</p></li>
 <li><p><a class="reference external" href="https://github.com/jm199504/Financial-Knowledge-Graphs">小型金融知识图谱构建流程</a>||</p></li>
+<li><p>模拟交易账户（Paper Trading）测试策略(eg.Interactive Brokers 零售账户)</p></li>
+<li><p><a class="reference external" href="https://github.com/fmzquant/strategies?tab=readme-ov-file">quant_strategy_list5800</a>|5800 md files|</p></li>
 </ul>
 <section id="id1">
 <h2><span class="section-number">1.1. </span>建立自己的系统–认知哲学世界观<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
@@ -403,7 +406,7 @@ document.write(`
 </li>
 <li><p>交易策略的来源:</p>
 <ul class="simple">
-<li><p>虽然学术研究可以提供有价值的策略，但许多学术策略可能过于复杂、已经失效（竞争导致利润减少）或需要昂贵的数据才能回测。因此，交易论坛和博客中更简单的策略可能同样有效. e.g. Wealth-Lab</p></li>
+<li><p>虽然学术研究可以提供有价值的策略，但许多学术策略可能过于复杂、已经失效（竞争导致利润减少）或需要昂贵的数据才能回测。因此，交易论坛和博客中更简单的策略可能同样有效. e.g. <a class="reference external" href="https://www.wealth-lab.com/">Wealth-Lab</a></p></li>
 </ul>
 </li>
 <li><p>风险管理中的心理挑战</p>
@@ -459,13 +462,17 @@ document.write(`
 <li><p>高低点是否可靠 → 避免因假突破/假回撤导致错误交易</p></li>
 </ul>
 </li>
-<li><p>前视偏差（Look-Ahead Bias）</p>
+<li><p>前视偏差Look-Ahead Bias, 表现在两个方面: 未来函数(eg偷价, 复权)，和信号闪烁。都是用未来的价格来决定之前的买卖</p>
 <ul class="simple">
-<li><p>“未来数据作弊”, 你的策略用当天最低价来决定买入，但问题是你在当天交易时根本不知道最低价。这相当于用未来数据作弊，让回测收益看起来比实际更好。</p></li>
+<li><p>“未来数据作弊”, 你的策略用当天最低价来决定买入，但问题是你在当天交易时根本不知道最低价。这相当于用未来数据作弊，让回测收益看起来比实际更好。</p>
+<ul>
+<li><p><a class="reference external" href="https://zhuanlan.zhihu.com/p/489853249">未来函数4个坑</a></p></li>
+</ul>
+</li>
 <li><p>解决方案：只使用当时可见的数据，比如前一天的收盘价，而不是当天的最低价。</p></li>
 </ul>
 </li>
-<li><p>数据挖掘偏差（Data-Snooping Bias）</p>
+<li><p>数据挖掘偏差Data-Snooping Bias or 过度拟合-错误</p>
 <ul class="simple">
 <li><p>太复杂的策略容易骗自己，简单才是王道？e.g. 进场信号有 10 个条件，出场信号有 10 个参数……你测试了1000 种均线组合，最终发现9 日均线 + 30 日均线最赚钱“完美”。</p></li>
 <li><p>问题来了：你是不是“过拟合”了过去的数据。未来市场变化，这些优化的参数根本不适用。</p></li>
@@ -556,6 +563,34 @@ document.write(`
 <td><p>股票、期货</p></td>
 <td><p></p></td>
 <td><p>市场都存在季节性规律, “春节效应”或者“圣诞行情”</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>差异在于交易规则、数据获取方式、执行速度等</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>市场</p></th>
+<th class="head"><p>适用交易</p></th>
+<th class="head"><p>主要特点</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>股票（美股、A股）</p></td>
+<td><p>价差交易、趋势跟踪</p></td>
+<td><p>交易时间固定，波动较大</p></td>
+</tr>
+<tr class="row-odd"><td><p>期货（商品、股指）</p></td>
+<td><p>套利、趋势交易</p></td>
+<td><p>有杠杆，保证金交易</p></td>
+</tr>
+<tr class="row-even"><td><p>外汇（Forex）</p></td>
+<td><p>高频、趋势交易</p></td>
+<td><p>24 小时交易，低成本</p></td>
+</tr>
+<tr class="row-odd"><td><p>加密货币（Crypto）</p></td>
+<td><p>高频、套利</p></td>
+<td><p>24 小时交易，波动大</p></td>
 </tr>
 </tbody>
 </table>
@@ -704,7 +739,11 @@ document.write(`
 </ol>
 </section>
 <section id="id4">
-<h3><span class="section-number">1.2.3. </span>小市值策略<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.2.3. </span>打板策略<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://github.com/123quant/QMT-QuantLimit">打板策略</a>|项目实现了一种量化打板策略，用于A股股票交易，涨停板制度只存在于A股|</p>
+</section>
+<section id="id5">
+<h3><span class="section-number">1.2.4. </span>小市值策略<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>每个月的第一个交易日早上打开电脑，挑选市值最低的10只股票，平均买入，每个月的最后一个交易日再卖出，就这样重复操作。最近5年，收益在年化18%+, 今年到目前为止是33%的盈利</p>
 <ul>
@@ -719,7 +758,7 @@ document.write(`
 </ul>
 </section>
 <section id="ai">
-<h3><span class="section-number">1.2.4. </span><a class="reference internal" href="qc_strategy.html#消息面-AI文本分析"><span class="std std-ref">消息面-AI文本分析</span></a><a class="headerlink" href="#ai" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.2.5. </span><a class="reference internal" href="qc_strategy.html#消息面-AI文本分析"><span class="std std-ref">消息面-AI文本分析</span></a><a class="headerlink" href="#ai" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="backtesting">
@@ -728,7 +767,7 @@ document.write(`
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/thuquant/awesome-quant">awesome-quant</a>中国的Quant相关资源索引</p></li>
 <li><p><a class="reference external" href="https://github.com/dick318/awesome-stars">awesome-stars</a>按语言分类项目, Github</p></li>
-<li><p><a class="reference external" href="https://github.com/wangzhe3224/awesome-systematic-trading">awesome-systematic-trading</a>筛选过，有General Alpha</p></li>
+<li><p><a class="reference external" href="https://github.com/wangzhe3224/awesome-systematic-trading">awesome-systematic-trading</a>筛选过，有General Alpha, 分类特别好</p></li>
 </ul>
 </section>
 </section>
@@ -801,8 +840,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">1.2. 寻找交易策略Alpha</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.1. 常见问题</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.2. 常见策略</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.2.3. 小市值策略</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">1.2.4. <span class="xref myst">消息面-AI文本分析</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.2.3. 打板策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.2.4. 小市值策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">1.2.5. <span class="xref myst">消息面-AI文本分析</span></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">1.3. <span class="xref myst">回测Backtesting &amp; 交易</span></a></li>

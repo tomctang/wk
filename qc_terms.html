@@ -64,7 +64,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="5. Notebook 2023-25" href="nb2024.html" />
-    <link rel="prev" title="3. 回测 &amp; 交易" href="qc_platforms.html" />
+    <link rel="prev" title="3. 回测 模拟 交易" href="qc_platforms.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,7 +180,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="qc.html">1. Intro Quant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qc_strategy.html">2. Strategy/Schemes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qc_platforms.html">3. 回测 &amp; 交易</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qc_platforms.html">3. 回测 模拟 交易</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Terms</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
@@ -387,7 +387,20 @@ document.write(`
 <li><p>风险: 如果市场趋势发生变化，比如股票的“合理价格”下降了，你可能会误以为它会反弹，结果继续下跌</p></li>
 </ul>
 </li>
-<li><p>策略/因子表达式: 即<strong>Alpha</strong></p></li>
+<li><p>策略/因子表达式: 即<strong>Alpha</strong> 不断拷证alpha的稀缺性/背后的逻辑/规模和持久性</p>
+<ul class="simple">
+<li><p>Alpha is usually expressed as a number that refers to a percentage. For example, a mutual fund with an alpha of 2.0 would mean that fund has outperformed the market average by 2%</p></li>
+<li><p>Alpha的典型来源</p>
+<ul>
+<li><p>价格/成交量</p></li>
+<li><p>基本面</p></li>
+<li><p>宏观数据</p></li>
+<li><p>文本：如期刊、新闻、会议记录、社交媒体信息</p></li>
+</ul>
+</li>
+<li><p>每个回报来源都来自一个风险源，因此任何投资组合都可以被看作是风险的组合</p></li>
+</ul>
+</li>
 <li><p>夏普比率 (Sharpe Ratio)</p>
 <ul class="simple">
 <li><p>风险度量: 风险通常用收益率的波动性来表示，波动性越大，风险也就越高。标准差是衡量波动性的一种指标。eg.一个投资组合的年化收益率波动为10%，这10%就代表了你在一年内可能遇到的正负波动幅度。</p></li>
@@ -506,7 +519,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>回测 &amp; 交易</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>回测 模拟 交易</p>
       </div>
     </a>
     <a class="right-next"
