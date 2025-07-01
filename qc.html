@@ -351,15 +351,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1. 建立自己的系统–认知哲学世界观</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">1.2. 寻找交易策略Alpha</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.1. 常见问题</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.2. 常见策略</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.2.3. 打板策略</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.2.4. 小市值策略</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">1.2.5. <span class="xref myst">消息面-AI文本分析</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2. 常见问题</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">1.3. 常见策略Alpha</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.3.1. 打板策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.3.2. 小市值策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">1.3.3. <span class="xref myst">消息面-AI文本分析</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">1.3. <span class="xref myst">回测Backtesting &amp; 交易</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.4. <span class="xref myst">回测 模拟 交易</span></a></li>
 </ul>
             </nav>
         </div>
@@ -419,10 +418,8 @@ document.write(`
 </li>
 </ol>
 </section>
-<section id="alpha">
-<h2><span class="section-number">1.2. </span>寻找交易策略Alpha<a class="headerlink" href="#alpha" title="Link to this heading">#</a></h2>
 <section id="id2">
-<h3><span class="section-number">1.2.1. </span>常见问题<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">1.2. </span>常见问题<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p><strong>回测策略前</strong>(先用简单方法快速筛选，排除明显不可行策略)</p>
 <ol class="arabic simple">
 <li><p>是否比市场整体表现更好？</p>
@@ -503,8 +500,8 @@ document.write(`
 </li>
 </ol>
 </section>
-<section id="id3">
-<h3><span class="section-number">1.2.2. </span>常见策略<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="alpha">
+<h2><span class="section-number">1.3. </span>常见策略Alpha<a class="headerlink" href="#alpha" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>策略</p></th>
@@ -670,11 +667,11 @@ document.write(`
 </li>
 </ol>
 <blockquote>
-<div><p>资金管理 = 杠杆 + 退出策略</p>
+<div><p>资金管理 = 资金分配(杠杆) + 风控(退出)策略</p>
 </div></blockquote>
-<p>无法避免亏损（Drawdown），所以资金管理目标关键在于”让账户稳定增长 + 如何控制亏损” = “合理利用杠杆 + 防止爆仓(风险)”</p>
+<p>无法避免回撤，所以资金管理关键在于”让账户稳定增长 + 如何控制亏损” = “合理利用杠杆 + 防止爆仓(风险)”</p>
 <ol class="arabic simple">
-<li><p>资金分配-杠杆</p>
+<li><p>资金分配</p>
 <ul class="simple">
 <li><p>同时交易3个策略，如何合理分配资金？ Kelly 公式可以帮助你找到最优资金分配方式，确保风险最小，收益最大。</p></li>
 <li><p>Kelly 公式计算出的杠杆：分配较多资金给 策略 A，适当投资 策略 B，并做空策略 C（因为它的收益是负的）。这个方法确保你的整体收益率最大化，同时风险可控。</p></li>
@@ -737,13 +734,12 @@ document.write(`
 </ul>
 </li>
 </ol>
-</section>
-<section id="id4">
-<h3><span class="section-number">1.2.3. </span>打板策略<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id3">
+<h3><span class="section-number">1.3.1. </span>打板策略<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://github.com/123quant/QMT-QuantLimit">打板策略</a>|项目实现了一种量化打板策略，用于A股股票交易，涨停板制度只存在于A股|</p>
 </section>
-<section id="id5">
-<h3><span class="section-number">1.2.4. </span>小市值策略<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<section id="id4">
+<h3><span class="section-number">1.3.2. </span>小市值策略<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>每个月的第一个交易日早上打开电脑，挑选市值最低的10只股票，平均买入，每个月的最后一个交易日再卖出，就这样重复操作。最近5年，收益在年化18%+, 今年到目前为止是33%的盈利</p>
 <ul>
@@ -758,11 +754,11 @@ document.write(`
 </ul>
 </section>
 <section id="ai">
-<h3><span class="section-number">1.2.5. </span><a class="reference internal" href="qc_strategy.html#消息面-AI文本分析"><span class="std std-ref">消息面-AI文本分析</span></a><a class="headerlink" href="#ai" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.3.3. </span><a class="reference internal" href="qc_strategy.html#消息面-AI文本分析"><span class="std std-ref">消息面-AI文本分析</span></a><a class="headerlink" href="#ai" title="Link to this heading">#</a></h3>
 </section>
 </section>
-<section id="backtesting">
-<h2><span class="section-number">1.3. </span><a class="reference internal" href="qc_platforms.html"><span class="std std-doc">回测Backtesting &amp; 交易</span></a><a class="headerlink" href="#backtesting" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h2><span class="section-number">1.4. </span><a class="reference internal" href="qc_platforms.html"><span class="std std-doc">回测 模拟 交易</span></a><a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p><strong>Reference:</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/thuquant/awesome-quant">awesome-quant</a>中国的Quant相关资源索引</p></li>
@@ -837,15 +833,14 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1. 建立自己的系统–认知哲学世界观</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">1.2. 寻找交易策略Alpha</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.1. 常见问题</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.2. 常见策略</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.2.3. 打板策略</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.2.4. 小市值策略</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">1.2.5. <span class="xref myst">消息面-AI文本分析</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2. 常见问题</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">1.3. 常见策略Alpha</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.3.1. 打板策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.3.2. 小市值策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">1.3.3. <span class="xref myst">消息面-AI文本分析</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">1.3. <span class="xref myst">回测Backtesting &amp; 交易</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.4. <span class="xref myst">回测 模拟 交易</span></a></li>
 </ul>
   </nav></div>
 
