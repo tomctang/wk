@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1. Intro Quant" href="qc.html" />
+    <link rel="next" title="1. Notebook 2023-25" href="nb2024.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -177,17 +177,10 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Quant Research</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="qc.html">1. Intro Quant</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qc_strategy.html">2. Strategy/Schemes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qc_platforms.html">3. 回测 模拟 交易</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qc_terms.html">4. Terms</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="nb2024.html">5. Notebook 2023-25</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nb2022.html">6. Notebook &lt;=2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nb2024.html">1. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nb2022.html">2. Notebook &lt;=2022</a></li>
 </ul>
 
     </div>
@@ -351,7 +344,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history-of-physics-after-1900">History of physics after 1900</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-pull">Docker pull</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-cross-citations">Image &amp; Cross-citations</a></li>
 </ul>
@@ -368,62 +360,6 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://ctang.netlify.app/">My Profile</a>, please send me email. I’m currently working on <a class="reference internal" href="#../wk/00QC.ipynb"><span class="xref myst">Quantitative Research</span></a>.</p>
-<section id="history-of-physics-after-1900">
-<h2>History of physics after 1900<a class="headerlink" href="#history-of-physics-after-1900" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>1930s, scientist realised gravity and electromagnetic force couldn’t explain atom nucleus, further there are two new forces: strong force and weak force</p></li>
-<li><ul>
-<li><p>古典场只是一个时空函数，但QFT将它「量化」了：基本粒子只是充满时空之动力场（dynamic field）的激态而已；因此每种基本粒子都有其自己的量子场。这些场的相互作用之「运动方程式」形式则受制于（需符合）「局部规范对称」（local gauge symmetry）群SU(3)×SU(2)×U(1)</p></li>
-</ul>
-</li>
-</ul>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Theories</p></th>
-<th class="head"><p>Experiments</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>1900, Quantum Theory (Planck): Introduced the concept of energy quanta - the foundation of QM.</p></td>
-<td><p>1905, Photoelectric Effect (Einstein): Experiments confirmed light quanta (photons)</p></td>
-</tr>
-<tr class="row-odd"><td><p>1905, Special Relativity (Einstein): Unified space and time, introducing E=mc².</p></td>
-<td><p>1971, Hafele-Keating Experiment: Atomic clocks on airplanes confirmed time dilation predicted by relativity.</p></td>
-</tr>
-<tr class="row-even"><td><p>1915, General Relativity (Einstein): Described gravity as spacetime curvature.</p></td>
-<td><p>1919, Eddington’s Solar Eclipse Observation: Confirmed gravitational lensing, supporting general relativity.</p></td>
-</tr>
-<tr class="row-odd"><td><p>1920s, QM (Heisenberg, Schrödinger, Dirac): Developed wave-particle duality and probabilistic nature of particles.</p></td>
-<td><p>1927, Davisson-Germer Experiment: Demonstrated electron diffraction, confirming wave-like behavior of particles.</p></td>
-</tr>
-<tr class="row-even"><td><p>1930s, Quantum Electrodynamics (QED) (Feynman, Schwinger, Tomonaga): Described electromagnetic interactions via quantum fields.</p></td>
-<td><p>1950s-60s, Lamb Shift and Anomalous Magnetic Moment: Precision measurements of electron properties validated QED predictions.</p></td>
-</tr>
-<tr class="row-odd"><td><p>1960s, 弱力Electroweak Theory (Weinberg, Salam, Glashow): Unified electromagnetic and weak nuclear forces.</p></td>
-<td><p>1983, W and Z Bosons Discovery (CERN): UA1 and UA2 experiments confirmed electroweak theory by detecting these particles.</p></td>
-</tr>
-<tr class="row-even"><td><p>1970s, 强力Quantum Chromodynamics (QCD) (Gross, Politzer, Wilczek): Explained strong nuclear force via quark-gluon interactions.</p></td>
-<td><p>1979, Gluon Discovery (DESY): PETRA collider experiments observed gluon jets</p></td>
-</tr>
-<tr class="row-odd"><td><p>1970s, Standard Model of Particle Physics (QFT-derived): framework for elementary particles and 3 forces (excluding gravity).</p></td>
-<td><p>2012, Higgs Boson Detection (CERN): ATLAS and CMS experiments confirmed the Higgs boson, completing the Standard Model.</p></td>
-</tr>
-<tr class="row-even"><td><p>1980s, String Theory (Green, Schwarz, Witten): Proposed fundamental particles as vibrating strings, aiming to unify QM and gravity.</p></td>
-<td><p>No direct experimental confirmation yet; indirect tests ongoing (e.g., via cosmology or particle accelerators).</p></td>
-</tr>
-<tr class="row-odd"><td><p>1990s, Dark Energy and Accelerating Universe (Perlmutter, Riess, Schmidt): Proposed to explain cosmic acceleration.</p></td>
-<td><p>1998, Supernova Observations: Type Ia supernova data confirmed the universe’s accelerated expansion, supporting dark energy.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Main players:</p>
-<ul class="simple">
-<li><p>Richard Feynman 费曼</p></li>
-<li><p>Edward Witten 威滕</p></li>
-<li><p>Juan Maldacena 马达西纳, AdS/CFT对偶（也叫全息原理）</p></li>
-</ul>
-</section>
 <section id="docker-pull">
 <h2>Docker pull<a class="headerlink" href="#docker-pull" title="Link to this heading">#</a></h2>
 <p>My phone internet limitation, so I can’t use usual docker pull. Instead, use <a class="reference external" href="https://github.com/heran226813/docker-drag">docker-drag</a>.
@@ -486,11 +422,11 @@ Open terminal, example:</p>
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="qc.html"
+       href="nb2024.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Intro Quant</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Notebook 2023-25</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -510,7 +446,6 @@ Open terminal, example:</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history-of-physics-after-1900">History of physics after 1900</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-pull">Docker pull</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-cross-citations">Image &amp; Cross-citations</a></li>
 </ul>
