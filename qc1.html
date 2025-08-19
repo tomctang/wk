@@ -346,9 +346,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">建立自己的系统–认知哲学世界观</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">常见问题</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">常见策略Alpha</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">打板策略</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">小市值策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><span class="xref myst">打板策略</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><span class="xref myst">小市值策略</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai"><span class="xref myst">消息面-AI文本分析</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><span class="xref myst">回测 模拟 交易</span></a></li>
@@ -499,6 +500,17 @@ document.write(`
 </section>
 <section id="alpha">
 <h2>常见策略Alpha<a class="headerlink" href="#alpha" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3><a class="reference internal" href="qc2strategy.html#打板策略"><span class="std std-ref">打板策略</span></a><a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+</section>
+<section id="id4">
+<h3><a class="reference internal" href="qc2strategy.html#小市值策略"><span class="std std-ref">小市值策略</span></a><a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+</section>
+<section id="ai">
+<h3><a class="reference internal" href="qc2strategy.html#消息面-AI文本分析"><span class="std std-ref">消息面-AI文本分析</span></a><a class="headerlink" href="#ai" title="Link to this heading">#</a></h3>
+</section>
+<section id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>策略</p></th>
@@ -732,27 +744,6 @@ document.write(`
 </ul>
 </li>
 </ol>
-<section id="id3">
-<h3>打板策略<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="https://github.com/123quant/QMT-QuantLimit">打板策略</a>|项目实现了一种量化打板策略，用于A股股票交易，涨停板制度只存在于A股|</p>
-</section>
-<section id="id4">
-<h3>小市值策略<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>每个月的第一个交易日早上打开电脑，挑选市值最低的10只股票，平均买入，每个月的最后一个交易日再卖出，就这样重复操作。最近5年，收益在年化18%+, 今年到目前为止是33%的盈利</p>
-<ul>
-<li><p>打开选股软件，市值排序，剔除北京，科创，st，保险点在剔除2元以下的, 加入别的参数，甚至要多策略轮动，还要参考财务数据，北上资金等</p></li>
-<li><p>优化，把一八年回撤控制住就成功了, 复杂的模型尤其是用了新闻大数据的，回测时避免不了未来函数，实盘时出现波动自己都没有勇气坚持模型，往往进行人为干预</p></li>
-<li><p>在你的基础上，6月和12月第一个周一开盘到第二个周四收盘买调入上证50的，可以给你额外创造5个点</p></li>
-<li><p>优化一下，把30天买入10支换成x天买入y支，做一个3D统计图看看效果—这个算是轮动策略了，就单一策略来说，我增加了一些别的参数，可以跑到年化76%，但这个依然是个不
-能实盘的策略，因为回撤太高, 现在比较好的轮动策略加入择时可以把回撤控制到20%以下</p></li>
-<li><p>这个目前还有用，但是也有风险的，退市政策，壳资源价值变动等</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="ai">
-<h3><a class="reference internal" href="qc2strategy.html#消息面-AI文本分析"><span class="std std-ref">消息面-AI文本分析</span></a><a class="headerlink" href="#ai" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="id5">
@@ -934,9 +925,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">建立自己的系统–认知哲学世界观</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">常见问题</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">常见策略Alpha</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">打板策略</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">小市值策略</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><span class="xref myst">打板策略</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><span class="xref myst">小市值策略</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai"><span class="xref myst">消息面-AI文本分析</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><span class="xref myst">回测 模拟 交易</span></a></li>
