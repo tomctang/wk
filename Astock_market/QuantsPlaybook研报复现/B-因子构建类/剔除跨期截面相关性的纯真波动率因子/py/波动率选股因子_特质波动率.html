@@ -1,0 +1,1596 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>前言 &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Astock_market/QuantsPlaybook研报复现/B-因子构建类/剔除跨期截面相关性的纯真波动率因子/py/波动率选股因子_特质波动率';</script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../nb2024.html">1. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../nb2022.html">2. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../../_sources/Astock_market/QuantsPlaybook研报复现/B-因子构建类/剔除跨期截面相关性的纯真波动率因子/py/波动率选股因子_特质波动率.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>前言</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">前言</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">函数准备</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">传统特质波动率因子</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">特质波动率因子的计算与回测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">特质波动率因子与换手率因子的相关性</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">特质波动率因子小结</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">波动聚集：波动率因子的时序和截面相关性</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">剔除跨期截面相关性：纯波动率因子</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">纯真波动率因子的构建与回测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">纯波动率因子与换手率因子的相关性</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ch3">使用CH3计算特质波动率</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>前言<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>Ang et al.2006公开发表论文 The Cross-Section of Volatility and Expected Returns，提出股票的特质波动率与未来收益之间存在显著的负相关性，且该现象不能被 规模、价值、动量和流动性等市场已知因子所解释。这篇论文的实证结果，颠覆了传统
+金融学中“风险越大，收益越高”的经典理论，被称为“低波动率异常现象”。</p>
+<p><em>其实学术界一直区分异象(anomaly)和因子(factor)，但工业界是有超额收益为王没有严格区分</em></p>
+<p><em>Ang A , Hodrick R J , Xing Y , et al. The Cross-Section of Volatility and Expected Returns[J]. 2006, 61(1):259-299</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">alphalens</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">al</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.tsa.stattools</span><span class="w"> </span><span class="kn">import</span> <span class="n">acf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">linear_model</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.parser</span><span class="w"> </span><span class="kn">import</span> <span class="n">parse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm_notebook</span> <span class="c1"># 进度条</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">jqdata</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jqfactor</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">Factor</span><span class="p">,</span><span class="n">calc_factors</span><span class="p">,</span><span class="n">neutralize</span><span class="p">,</span><span class="n">get_factor_values</span><span class="p">)</span>
+
+<span class="c1"># 画图</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SimHei&#39;</span><span class="p">]</span> <span class="c1"># 指定默认字体</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># 解决保存图像是负号&#39;-&#39;显示为方块的问题</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>函数准备<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_stockpool</span><span class="p">(</span><span class="n">watch_date</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;获取股票池&#39;&#39;&#39;</span>
+    
+    <span class="n">stockList</span> <span class="o">=</span> <span class="n">get_index_stocks</span><span class="p">(</span><span class="s1">&#39;000002.XSHG&#39;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="n">watch_date</span><span class="p">)</span> <span class="o">+</span> <span class="n">get_index_stocks</span><span class="p">(</span>
+                <span class="s1">&#39;399107.XSHE&#39;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="n">watch_date</span><span class="p">)</span>
+    
+    <span class="n">stockList</span> <span class="o">=</span> <span class="n">del_st_stock</span><span class="p">(</span><span class="n">stockList</span><span class="p">,</span><span class="n">watch_date</span><span class="p">)</span>
+    <span class="n">stockList</span> <span class="o">=</span> <span class="n">del_iponday</span><span class="p">(</span><span class="n">stockList</span><span class="p">,</span><span class="n">watch_date</span><span class="p">)</span>
+    <span class="n">stockList</span> <span class="o">=</span> <span class="n">del_paused</span><span class="p">(</span><span class="n">stockList</span><span class="p">,</span><span class="n">watch_date</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">stockList</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">del_st_stock</span><span class="p">(</span><span class="n">securities</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">watch_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;过滤ST股票&#39;&#39;&#39;</span>
+
+    <span class="n">info_ser</span> <span class="o">=</span> <span class="n">get_extras</span><span class="p">(</span><span class="s1">&#39;is_st&#39;</span><span class="p">,</span> <span class="n">securities</span><span class="p">,</span>
+                          <span class="n">end_date</span><span class="o">=</span><span class="n">watch_date</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">info_ser</span><span class="p">[</span><span class="n">info_ser</span> <span class="o">==</span> <span class="kc">False</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">del_iponday</span><span class="p">(</span><span class="n">securities</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">watch_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">N</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;返回上市大于N日的股票&#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">parse</span><span class="p">(</span><span class="n">watch_date</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span> <span class="o">-</span> <span class="n">get_security_info</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="n">watch_date</span><span class="p">)</span><span class="o">.</span><span class="n">start_date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">&gt;</span> <span class="n">N</span><span class="p">,</span> <span class="n">securities</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">del_paused</span><span class="p">(</span><span class="n">securities</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">watch_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">N</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;返回N日内未停牌的股票&#39;&#39;&#39;</span>
+    <span class="n">pausd_df</span> <span class="o">=</span> <span class="n">get_price</span><span class="p">(</span><span class="n">securities</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="n">watch_date</span><span class="p">,</span>
+                         <span class="n">count</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;paused&#39;</span><span class="p">,</span> <span class="n">panel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">cond</span> <span class="o">=</span> <span class="n">pausd_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">)[</span><span class="s1">&#39;paused&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">cond</span><span class="p">[</span><span class="n">cond</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_nav</span><span class="p">(</span><span class="n">nav</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;画图&#39;&#39;&#39;</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif&#39;</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="c1"># 设置标题</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="c1"># 1,5组设置不同的颜色和线型方便查看单调性</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nav</span><span class="p">[</span><span class="mf">1.</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;Navy&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nav</span><span class="p">[</span><span class="mf">2.</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;LightGrey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nav</span><span class="p">[</span><span class="mf">3.</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;DimGray&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nav</span><span class="p">[</span><span class="mf">4.</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;DarkKhaki&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nav</span><span class="p">[</span><span class="mf">5.</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;LightSteelBlue&#39;</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="c1"># 多空单独反应</span>
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nav</span><span class="p">[</span><span class="s1">&#39;G1-G5&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="c1"># 图例合并</span>
+    <span class="n">h1</span><span class="p">,</span> <span class="n">l1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+    <span class="n">h2</span><span class="p">,</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+    <span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="n">l2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;(right)&#39;</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">h1</span><span class="o">+</span><span class="n">h2</span><span class="p">,</span> <span class="n">l1</span><span class="o">+</span><span class="n">l2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
+<h1>传统特质波动率因子<a class="headerlink" href="#id3" title="Link to this heading">#</a></h1>
+<section id="id4">
+<h2>特质波动率因子的计算与回测<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>本文选取一种目前广泛使用的构造方法，计算传统的特质波动率因子。具体地，以全体A股为研究样本（剔除其中的ST股、停牌股以及上市不足 60 个交易日的次新股），以 2014/01/01-2020/10/30为回测时间段，实施以下操作:</p>
+<p><strong>第一步</strong>，每月月底，回溯所有股票过去 20 个交易日的数据，每只股票都根据FamaFrench三因子模型(下文简称FF3模型)进行回归，得到每日的特质收益率，即:
+$<span class="math notranslate nohighlight">\(r_{i,t} = \alpha_{i,t}+\beta_{i,t}MKT_t+\eta_{i,t}SMB_t+\lambda_{i,t}HML_t+\epsilon_t\)</span>$</p>
+<blockquote>
+<div><p>其中，𝑡取值为 1,2,3,……,20；<span class="math notranslate nohighlight">\(𝑀𝐾𝑇_𝑡\)</span>为𝑡日全市场收益率；<span class="math notranslate nohighlight">\(𝑆𝑀𝐵_𝑡\)</span>为市值因子， 取𝑡日流通市值最小的1/3部分股票按照流通市值加权构建小市值股票组合，取流通市值 最大的 1/3 部分股票按照流通市值加权构建大市值股票组合，当日小市值组合收益率与 大市值组合收益率之差，即为市值因子；<span class="math notranslate nohighlight">\(𝐻𝑀𝐿_𝑡\)</span>为估值因子，取𝑡日市净率PB 最低的 1/3 部分股票按照流通市值加权构建低估值股票组合，取市净率 PB 最大的 1/3 部分股票按 照流通市值加权构建高估值股票组合，当日低估值组合收益率与高估值组合收益率之差，即为估值因子；上述回归得到的残差𝜀𝑖,𝑡，即为第𝑖个股票𝑡日的特质收益率；</p>
+</div></blockquote>
+<p>上述表达为FF3模型最经典的构造方式(学术界版本)，本文中使用的FF3的构造方式与<a class="reference external" href="https://www.joinquant.com/view/community/detail/46084e11dc11457b9390fac67ae9a173?type=1">【量化课堂】Fama-French三因子火锅</a>相同是FF3的一种极简构造方式：</p>
+<ul class="simple">
+<li><p>a 市值采用最新交易日的总市值，BM为最近报告期净资产除以最新交易日总市值</p></li>
+<li><p>b 按照总市值从小到大将所有股票分为10组，每组股票数量相同且市值加权，做多第1组且做空第10组得到SMB</p></li>
+<li><p>c 按照BM从小到大将所有股票分为 10 组，每组股票数量相同且市值加权，做多第10 组且做空第1组得到 HML</p></li>
+</ul>
+<p><strong>第二步</strong>，计算每只股票20个特质收益率的标准差，即为股票剔除FF3因子后的特质波动率，记为ID_Vol(Idiosyncratic Volatility)。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ID_Vol</span><span class="p">(</span><span class="n">Factor</span><span class="p">):</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ID_Vol&#39;</span>
+    <span class="n">max_window</span> <span class="o">=</span> <span class="mi">21</span>
+    <span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;market_cap&#39;</span><span class="p">,</span> <span class="s1">&#39;pb_ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        
+        <span class="c1"># 获取bm</span>
+        <span class="n">bm_df</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;pb_ratio&#39;</span><span class="p">]</span>
+        <span class="c1"># 收益率</span>
+        <span class="n">returns</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+        <span class="c1"># 分组标记</span>
+        <span class="n">market_cap_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_label</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;market_cap&#39;</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">bm_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_label</span><span class="p">(</span><span class="n">bm_df</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="c1"># 构造因子</span>
+        <span class="n">smb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_longshort</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">market_cap_label</span><span class="p">,</span> <span class="n">returns</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">hml</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_longshort</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bm_label</span><span class="p">,</span> <span class="n">returns</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">mkt</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;market_cap&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;market_cap&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+            <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">returns</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># 添加阶矩项项</span>
+        <span class="n">exog</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">mkt</span><span class="p">,</span> <span class="n">smb</span><span class="p">,</span> <span class="n">hml</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">EXOG_COL</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="s1">&#39;mkt&#39;</span><span class="p">,</span> <span class="s1">&#39;smb&#39;</span><span class="p">,</span> <span class="s1">&#39;hml&#39;</span><span class="p">]</span>
+        <span class="n">exog</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">EXOG_COL</span>
+
+        <span class="n">returns</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]</span>
+        <span class="n">exog</span> <span class="o">=</span> <span class="n">exog</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">returns</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>  <span class="c1"># 日期索引对齐</span>
+        <span class="c1"># OLS回归获取残差</span>
+        <span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">returns</span><span class="p">,</span> <span class="n">exog</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+        <span class="n">resid_df</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">resid</span>
+
+        <span class="k">return</span> <span class="n">resid_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">calc_longshort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">label_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">returns</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">high</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">low</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;计算多空收益 high - low&#39;&#39;&#39;</span>
+
+        <span class="c1"># 计算组合权重</span>
+        <span class="n">l_w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_weight</span><span class="p">(</span><span class="n">label_df</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;market_cap&#39;</span><span class="p">],</span> <span class="n">high</span><span class="p">)</span>
+        <span class="n">s_w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_weight</span><span class="p">(</span><span class="n">label_df</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;market_cap&#39;</span><span class="p">],</span> <span class="n">low</span><span class="p">)</span>
+
+        <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">l_w</span> <span class="o">*</span> <span class="n">returns</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="p">(</span><span class="n">s_w</span> <span class="o">*</span> <span class="n">returns</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">h</span> <span class="o">-</span> <span class="n">l</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_label</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">N</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;获取分组 分位数分组(每组数量相同)&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_weight</span><span class="p">(</span><span class="n">label_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">market_cap</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">N</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;获取目标组的权重&#39;&#39;&#39;</span>
+
+        <span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">label_df</span> <span class="o">==</span> <span class="n">N</span><span class="p">)</span>
+        <span class="n">cap</span> <span class="o">=</span> <span class="n">cond</span> <span class="o">*</span> <span class="n">market_cap</span>  <span class="c1"># 该组市值</span>
+
+        <span class="k">return</span> <span class="n">cap</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">cap</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+<span class="k">def</span><span class="w"> </span><span class="nf">get_factor</span><span class="p">(</span><span class="n">start_date</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">end_date</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">factor</span><span class="p">):</span>
+    
+    <span class="c1"># 屏蔽Factor类提取行情数据的警告</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+        
+    <span class="n">periods</span> <span class="o">=</span> <span class="n">GetTradePeriod</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">)</span>
+    
+    <span class="n">factor_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm_notebook</span><span class="p">(</span><span class="n">periods</span><span class="p">,</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;数据获取中&#39;</span><span class="p">):</span>
+        
+        <span class="n">stocks</span> <span class="o">=</span> <span class="n">get_stockpool</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))</span>
+        
+        <span class="n">factor_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calc_factors</span><span class="p">(</span><span class="n">stocks</span><span class="p">,</span>
+                                    <span class="n">factors</span><span class="o">=</span><span class="p">[</span><span class="n">factor</span><span class="p">],</span>
+                                    <span class="n">start_date</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>
+                                    <span class="n">end_date</span><span class="o">=</span><span class="n">i</span><span class="p">)[</span><span class="n">factor</span><span class="o">.</span><span class="n">name</span><span class="p">])</span>
+        
+    <span class="n">factor_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">factor_list</span><span class="p">,</span><span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">factor_df</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_factor_price</span><span class="p">(</span><span class="n">factor</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">last_date</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    
+    <span class="n">periods</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">factor</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()]</span> <span class="o">+</span> <span class="p">[</span><span class="n">last_date</span><span class="p">]</span>
+    <span class="n">stocks</span> <span class="o">=</span> <span class="n">factor</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">df_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm_notebook</span><span class="p">(</span><span class="n">periods</span><span class="p">,</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;收益率下载中&#39;</span><span class="p">):</span>
+        
+        <span class="n">df_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_price</span><span class="p">(</span><span class="n">stocks</span><span class="p">,</span><span class="n">end_date</span><span class="o">=</span><span class="n">i</span><span class="p">,</span><span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fields</span><span class="o">=</span><span class="s1">&#39;close&#39;</span><span class="p">,</span><span class="n">panel</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+        
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">df_list</span><span class="p">)</span>
+    <span class="n">close</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;code&#39;</span><span class="p">,</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;close&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">close</span>
+
+<span class="c1"># 获取年末季末时点</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">GetTradePeriod</span><span class="p">(</span><span class="n">start_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">freq</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;ME&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    start_date/end_date:str YYYY-MM-DD</span>
+<span class="sd">    freq:M月，Q季,Y年 默认ME E代表期末 S代表期初</span>
+<span class="sd">    ================</span>
+<span class="sd">    return  list[datetime.date]</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">days</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">get_trade_days</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)))</span>
+    <span class="n">idx_df</span> <span class="o">=</span> <span class="n">days</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">freq</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;E&#39;</span><span class="p">:</span>
+        <span class="n">day_range</span> <span class="o">=</span> <span class="n">idx_df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">freq</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">last</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">day_range</span> <span class="o">=</span> <span class="n">idx_df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">freq</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+    <span class="n">day_range</span> <span class="o">=</span> <span class="n">day_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+
+    <span class="k">return</span> <span class="n">day_range</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取特质因子</span>
+<span class="n">id_vol</span> <span class="o">=</span> <span class="n">get_factor</span><span class="p">(</span><span class="s1">&#39;2013-01-01&#39;</span><span class="p">,</span><span class="s1">&#39;2020-09-30&#39;</span><span class="p">,</span><span class="n">ID_Vol</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "8a97417e3b144079bc18e1a192c0b685", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取价格数据</span>
+<span class="n">pricing</span> <span class="o">=</span> <span class="n">get_factor_price</span><span class="p">(</span><span class="n">id_vol</span><span class="p">,</span><span class="s1">&#39;2020-10-31&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2191c0c4531a4fa58f60fe9e919c5eca", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 数据储存</span>
+<span class="n">id_vol</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../Data/id_vol.csv&#39;</span><span class="p">)</span>
+<span class="n">pricing</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../Data/priceing.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 数据读取</span>
+<span class="n">id_vol</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/id_vol.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">pricing</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/priceing.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># 以2014年为起点</span>
+<span class="n">id_vol_1</span> <span class="o">=</span> <span class="n">id_vol</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">:]</span>
+<span class="n">pricing_1</span> <span class="o">=</span> <span class="n">pricing</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 因子分组排序默认未从小到大</span>
+<span class="n">id_vol_factor</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">get_clean_factor_and_forward_returns</span><span class="p">(</span><span class="n">id_vol_1</span><span class="o">.</span><span class="n">stack</span><span class="p">(),</span>
+                                                            <span class="n">pricing_1</span><span class="p">,</span>
+                                                            <span class="n">periods</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span>
+                                                            <span class="n">quantiles</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># 计算分组收益</span>
+<span class="n">rets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">id_vol_factor</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                      <span class="n">index</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;factor_quantile&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">rets</span><span class="p">[</span><span class="s1">&#39;G1-G5&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rets</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">rets</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> 
+<span class="n">nav</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rets</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span> <span class="c1"># 计算净值</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dropped 0.0% entries from factor data (0.0% after in forward returns computation and 0.0% in binning phase). Set max_loss=0 to see potentially suppressed Exceptions.
+</pre></div>
+</div>
+</div>
+</div>
+<p>通过分组净值曲线可以看到分组的单调性很好</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_nav</span><span class="p">(</span><span class="n">nav</span><span class="p">,</span><span class="s1">&#39;传统特质波动率因子ID_Vol的5分组及多空对冲净值走势&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/4a3f5c4aae2352684542c21b3b33c6629fffffa7ca270ed0ae591412fa69ddbc.png" src="../../../../../_images/4a3f5c4aae2352684542c21b3b33c6629fffffa7ca270ed0ae591412fa69ddbc.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">id_vol_ic</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="n">performance</span><span class="o">.</span><span class="n">factor_information_coefficient</span><span class="p">(</span><span class="n">id_vol_factor</span><span class="p">)</span>
+<span class="n">id_vol_ic</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID_Vol&#39;</span><span class="p">]</span>
+<span class="n">al</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot_information_table</span><span class="p">(</span><span class="n">id_vol_ic</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Information Analysis
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID_Vol</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>IC Mean</th>
+      <td>-0.112</td>
+    </tr>
+    <tr>
+      <th>IC Std.</th>
+      <td>0.129</td>
+    </tr>
+    <tr>
+      <th>Risk-Adjusted IC</th>
+      <td>-0.864</td>
+    </tr>
+    <tr>
+      <th>t-stat(IC)</th>
+      <td>-7.775</td>
+    </tr>
+    <tr>
+      <th>p-value(IC)</th>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>IC Skew</th>
+      <td>0.060</td>
+    </tr>
+    <tr>
+      <th>IC Kurtosis</th>
+      <td>1.017</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id5">
+<h2>特质波动率因子与换手率因子的相关性<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>多项实证研究表明，波动率与换手率包含的价量信息重叠度较高，因此两个因子往往高度相关。此处，我们每月月底取每只股票过去20个交易日换手率的平均值，再做<strong>市值中性化</strong>处理，定义为换手率因子Turn20。特质波动率因子ID_Vol与换手率因子Turn20的平均月度相关系数较高。若更进一步，每月月底将特质波动率因子ID_Vol 对换手率因子Turn20 做横截面正交化处理，即：
+$<span class="math notranslate nohighlight">\(ID\_Vol\_i=\alpha+bTrun20_i+\epsilon_i\)</span>$</p>
+<p>将残差视为波动率剔除换手率线性信息之后的选股因子，记为ID_Vol_deTurn20。同样以全体A股为研究样本，以2014/01/01-2020/09/30 为回测时间段，ID_Vol_deTurn20 因子的月度 IC 均值为-0.030，年化 ICIR为-1.05，5 分组多空对冲的年化收益为 6.08%， 信息比率降至 0.61，月度胜率 59.78%，最大回撤 17.70%。下图 2 展示了 ID_Vol_deTurn20 因子 5 分组及多空对冲的净值走势，表 2 则汇总对比了 ID_Vol、Turn20、ID_Vol_deTurn20因子的月度 IC 均值、年化 ICIR及多空对冲的各项绩效指标。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_idvol_deturn20</span><span class="p">(</span><span class="n">factor</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    计算idvol_deturn20因子</span>
+<span class="sd">    -------------</span>
+<span class="sd">        本质是因子与换手率因子正交，如果传入的是ID_Vol因子则生成idvol_deturn20</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">stocks</span> <span class="o">=</span> <span class="n">factor</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">periods</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">factor</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="n">vol_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm_notebook</span><span class="p">(</span><span class="n">periods</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;数据获取中&#39;</span><span class="p">):</span>
+
+        <span class="n">tmp_dic</span> <span class="o">=</span> <span class="n">get_factor_values</span><span class="p">(</span>
+            <span class="n">stocks</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;VOL20&#39;</span><span class="p">],</span> <span class="n">end_date</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">vol_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neutralize</span><span class="p">(</span><span class="n">tmp_dic</span><span class="p">[</span><span class="s1">&#39;VOL20&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;market_cap&#39;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="n">i</span><span class="p">))</span>
+
+    <span class="n">turn20</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">vol_list</span><span class="p">)</span>
+    <span class="n">turn20</span> <span class="o">=</span> <span class="n">turn20</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="c1"># 正交化</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_resid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">factor</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span>
+        <span class="mi">0</span><span class="p">),</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">turn20</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">x</span><span class="p">]))</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">resid</span>
+    
+    <span class="n">idvol_deturn20</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">get_resid</span><span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">stocks</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">idvol_deturn20</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">stocks</span>
+    
+    <span class="k">return</span> <span class="n">idvol_deturn20</span><span class="p">,</span> <span class="n">turn20</span>  <span class="c1"># 返回idvol_deturn20和turn20因子</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取ID_Vol_deTurn20和换手率因子</span>
+<span class="n">idvol_deturn20</span><span class="p">,</span><span class="n">turn20</span> <span class="o">=</span> <span class="n">get_idvol_deturn20</span><span class="p">(</span><span class="n">id_vol_1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "db58ee2d523d4475840b3220b6fc03c9", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 转换格式</span>
+<span class="n">idvol_deturn20_</span> <span class="o">=</span> <span class="n">idvol_deturn20</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">turn20_</span> <span class="o">=</span> <span class="n">turn20</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># 因子分组排序默认未从小到大</span>
+<span class="n">idvol_deturn20_factor</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">get_clean_factor_and_forward_returns</span><span class="p">(</span><span class="n">idvol_deturn20_</span><span class="p">,</span>
+                                                            <span class="n">pricing_1</span><span class="p">,</span>
+                                                            <span class="n">periods</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span>
+                                                            <span class="n">quantiles</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">turn20_factor</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">get_clean_factor_and_forward_returns</span><span class="p">(</span><span class="n">turn20_</span><span class="p">,</span>
+                                                            <span class="n">pricing_1</span><span class="p">,</span>
+                                                            <span class="n">periods</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span>
+                                                            <span class="n">quantiles</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># 计算分组收益</span>
+<span class="n">rets1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">idvol_deturn20_factor</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                      <span class="n">index</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;factor_quantile&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">rets1</span><span class="p">[</span><span class="s1">&#39;G1-G5&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rets1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">rets1</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> 
+<span class="n">nav1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rets1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span> <span class="c1"># 计算净值</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dropped 17.0% entries from factor data (17.0% after in forward returns computation and 0.0% in binning phase). Set max_loss=0 to see potentially suppressed Exceptions.
+Dropped 17.0% entries from factor data (17.0% after in forward returns computation and 0.0% in binning phase). Set max_loss=0 to see potentially suppressed Exceptions.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_nav</span><span class="p">(</span><span class="n">nav1</span><span class="p">,</span><span class="s1">&#39;D_Vol_deTurn20的5分组及多空对冲净值走势&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/46e43abca1ec20647915433d1f43be16b4856d26e56374e9735c086e391ca726.png" src="../../../../../_images/46e43abca1ec20647915433d1f43be16b4856d26e56374e9735c086e391ca726.png" />
+</div>
+</div>
+</section>
+<section id="id6">
+<h2>特质波动率因子小结<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>根据下表，对传统特质波动率因子作如下总结：</p>
+<ol class="arabic simple">
+<li><p>整体来看，传统特质波动率因子ID_Vol具备不错的选股效果；</p></li>
+<li><p>特质波动率因子ID_Vol与换手率因子Turn20的信息重叠度较高，但ID_Vol的选股效果不如Turn20;</p></li>
+<li><p>特质波动率因子正交化换手率因子后，残差 ID_Vol_deTurn20的选股效果大幅下降。</p></li>
+</ol>
+<p>因此，即使传统的特质波动率因子已经具有不错的选股能力，但也仍然存在改进空 间。下文我们将逐步深入探索，寻找改进波动率因子的有效方案。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idvol_deturn20_ic</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="n">performance</span><span class="o">.</span><span class="n">factor_information_coefficient</span><span class="p">(</span><span class="n">idvol_deturn20_factor</span><span class="p">)</span>
+<span class="n">turn_ic</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="n">performance</span><span class="o">.</span><span class="n">factor_information_coefficient</span><span class="p">(</span><span class="n">turn20_factor</span><span class="p">)</span>
+
+<span class="n">id_vol_ic</span><span class="p">[</span><span class="s1">&#39;ID_Vol_deTurn20&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">idvol_deturn20_ic</span>
+<span class="n">id_vol_ic</span><span class="p">[</span><span class="s1">&#39;turn20&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">turn_ic</span>
+<span class="n">al</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot_information_table</span><span class="p">(</span><span class="n">id_vol_ic</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Information Analysis
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID_Vol</th>
+      <th>ID_Vol_deTurn20</th>
+      <th>turn20</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>IC Mean</th>
+      <td>-0.112</td>
+      <td>-0.031</td>
+      <td>-0.079</td>
+    </tr>
+    <tr>
+      <th>IC Std.</th>
+      <td>0.129</td>
+      <td>0.072</td>
+      <td>0.201</td>
+    </tr>
+    <tr>
+      <th>Risk-Adjusted IC</th>
+      <td>-0.864</td>
+      <td>-0.431</td>
+      <td>-0.394</td>
+    </tr>
+    <tr>
+      <th>t-stat(IC)</th>
+      <td>-7.775</td>
+      <td>-3.881</td>
+      <td>-3.549</td>
+    </tr>
+    <tr>
+      <th>p-value(IC)</th>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.001</td>
+    </tr>
+    <tr>
+      <th>IC Skew</th>
+      <td>0.060</td>
+      <td>0.201</td>
+      <td>0.459</td>
+    </tr>
+    <tr>
+      <th>IC Kurtosis</th>
+      <td>1.017</td>
+      <td>0.376</td>
+      <td>-0.127</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id7">
+<h1>波动聚集：波动率因子的时序和截面相关性<a class="headerlink" href="#id7" title="Link to this heading">#</a></h1>
+<p>Cont通过实证研究发现，金融资产收益的时间序列数据，通常表现出波动率聚集 现象（Volatility Clustering），即价格的大幅变化往往倾向于聚集在一起。该现象也明显 存在于A股市场中，如下图展示了上证综指日收益率的变化情况，我们可以发现，指数的大幅波动确实具有聚集性。</p>
+<p><em>Cont:Cont R . Volatility Clustering in Financial Markets: Empirical Facts and Agent-Based Models.[J]. Ssrn Electronic Journal, 2005</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index_price</span> <span class="o">=</span> <span class="n">get_price</span><span class="p">(</span><span class="s1">&#39;000001.XSHG&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;2005-05-01&#39;</span><span class="p">,</span>
+                        <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;2020-09-30&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;close&#39;</span><span class="p">)</span>
+
+<span class="n">index_price</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;指数每日收益率：波动聚集性&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fec1c1ec7f0&gt;
+</pre></div>
+</div>
+<img alt="../../../../../_images/c59bc8c2c13cebcbf809acc042e5145bbab6002e0ac353b51fc5e20c264d598b.png" src="../../../../../_images/c59bc8c2c13cebcbf809acc042e5145bbab6002e0ac353b51fc5e20c264d598b.png" />
+</div>
+</div>
+<p>更进一步，**若波动率聚集现象也存在于个股层面，则会导致个股的波动率因子具有 较强的时序和截面相关性。**我们在全体A股样本内，计算了传统特质波动率因子ID_Vol的平均时序相关系数，在滞后阶数较小时，波动率因子的时序相关系数都较大，如滞后阶数为1时，月频特质波动率因子的平均时序相关系数为0.43，说明个股层面确实存在波动率聚集现象。随着滞后阶数的增加，时序、截面相关系数都逐渐减小，滞后阶数为8时，平均时序相关系数下降至0.065，已小于0.034。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acf_df</span> <span class="o">=</span> <span class="n">id_vol</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">acf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">nlags</span><span class="o">=</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">corr_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">id_vol</span><span class="o">.</span><span class="n">corrwith</span><span class="p">(</span><span class="n">id_vol</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">13</span><span class="p">)),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">corr_df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="n">acf_df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;平均截面相关系数&#39;</span><span class="p">,</span><span class="s1">&#39;平均时序相关系数&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;特质波动率因子 ID_Vol的平均时序相关系数&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fec1ea4f710&gt;
+</pre></div>
+</div>
+<img alt="../../../../../_images/5223efae09c67fde6592af3a22ccac29b7a69972eb8a1135f98dbbaf26a18a37.png" src="../../../../../_images/5223efae09c67fde6592af3a22ccac29b7a69972eb8a1135f98dbbaf26a18a37.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id8">
+<h1>剔除跨期截面相关性：纯波动率因子<a class="headerlink" href="#id8" title="Link to this heading">#</a></h1>
+<section id="id9">
+<h2>纯真波动率因子的构建与回测<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>特质波动率因子具有较强的时序和截面相关性。对于选股模型，若因子具有较强的跨期截面相关性，则会导致我们在t时刻选股时，虽然表面上只参考 了 t-1 时刻的因子值，却不可避免地连带使用了 t-2 时刻、t-3 时刻、甚至 t-4 时刻的因子 信息，而这些早期的因子值，无疑被多次重复使用了。这就意味着我们每一期获得的因子信息，其实都不够纯净。</p>
+<p>基于上述分析，我们提出一种“剔除跨期截面相关性，寻找纯真选股信息”的方案， 具体实施以下操作：</p>
+<p>获取ID_Vol因子后滞后阶数N=6,即每月月底将本月因子值对过去6个月的因子值做多元线性回归，即
+$<span class="math notranslate nohighlight">\(ID\_Vol_{i,t}=\alpha_i+\theta_1ID\_Vol_{i,t-1}+\theta_2ID\_Vol_{i,t-2}+\dots+\theta_6ID\_Vol_{i,t-6}+\mu_{i,t}\)</span><span class="math notranslate nohighlight">\(
+其中i为个股,t为时间,取残差向量\)</span>\mu_{i,t}$，即为该月所有股票剔除截面相关性之后的波动率因子值，记为纯波动率因子<code class="docutils literal notranslate"><span class="pre">ID_Vol_deCorr</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_id_vol_deCorr</span><span class="p">(</span><span class="n">factor</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">N</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;获取id_vol_deCorr因子&#39;&#39;&#39;</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_resid</span><span class="p">(</span><span class="n">factor</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+        
+        <span class="n">x</span> <span class="o">=</span> <span class="n">factor</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">factor</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+        
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+        <span class="c1">#regr = linear_model.Ridge()</span>
+        <span class="c1">#regr.fit(x, y)</span>
+        <span class="c1">#resid = y - regr.predict(x)</span>
+        <span class="n">resid</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">resid</span>
+        <span class="n">resid</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">factor</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        
+        <span class="k">return</span> <span class="n">resid</span>
+    
+    <span class="n">iidx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">factor</span><span class="p">))</span>
+    
+    <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">iidx</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    
+    <span class="n">strides</span> <span class="o">=</span> <span class="p">(</span><span class="n">iidx</span><span class="o">.</span><span class="n">strides</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">iidx</span><span class="o">.</span><span class="n">strides</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    
+    <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">stride_tricks</span><span class="o">.</span><span class="n">as_strided</span><span class="p">(</span>
+        <span class="n">iidx</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="n">strides</span><span class="p">,</span> <span class="n">writeable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">get_resid</span><span class="p">(</span><span class="n">factor</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">res</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 计算因子</span>
+<span class="n">id_vol_deCorr</span> <span class="o">=</span> <span class="n">get_id_vol_deCorr</span><span class="p">(</span><span class="n">id_vol</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 因子分组排序默认未从小到大</span>
+<span class="n">id_vol_deCorr_</span> <span class="o">=</span> <span class="n">id_vol_deCorr</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">id_vol_deCorr_factor</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">get_clean_factor_and_forward_returns</span><span class="p">(</span><span class="n">id_vol_deCorr_</span><span class="p">,</span>
+                                                            <span class="n">pricing_1</span><span class="p">,</span>
+                                                            <span class="n">periods</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span>
+                                                            <span class="n">quantiles</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># 计算分组收益</span>
+<span class="n">rets2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">id_vol_deCorr_factor</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                      <span class="n">index</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;factor_quantile&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">rets2</span><span class="p">[</span><span class="s1">&#39;G1-G5&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rets2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">rets2</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> 
+<span class="n">nav2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rets2</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span> <span class="c1"># 计算净值</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dropped 0.0% entries from factor data (0.0% after in forward returns computation and 0.0% in binning phase). Set max_loss=0 to see potentially suppressed Exceptions.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_nav</span><span class="p">(</span><span class="n">nav2</span><span class="p">,</span><span class="s1">&#39;纯波动率因子的5分组及多空对冲净值走势&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/fa702e45e288b97cc143db6640b0f09c5d7c8d61ddc635d779d2496955cec978.png" src="../../../../../_images/fa702e45e288b97cc143db6640b0f09c5d7c8d61ddc635d779d2496955cec978.png" />
+</div>
+</div>
+<p>可以看到id_vol_deCorr的IC比单独与换手率因子正交要好，但任然弱于原始的ID_Vol因子，可平均时序相关系数、平均截面相关系数均下降很多。所以<strong>在每月选股时，由于跨期截面相关性而被重复利用的过往因子信息，确实带来了干扰，削弱了当期因子的选股效果。</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">id_vol_deCorr_ic</span><span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="n">performance</span><span class="o">.</span><span class="n">factor_information_coefficient</span><span class="p">(</span><span class="n">id_vol_deCorr_factor</span><span class="p">)</span>
+<span class="n">id_vol_ic</span><span class="p">[</span><span class="s1">&#39;id_vol_deCorr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">id_vol_deCorr_ic</span>
+<span class="n">al</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot_information_table</span><span class="p">(</span><span class="n">id_vol_ic</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Information Analysis
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID_Vol</th>
+      <th>ID_Vol_deTurn20</th>
+      <th>turn20</th>
+      <th>id_vol_deCorr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>IC Mean</th>
+      <td>-0.112</td>
+      <td>-0.031</td>
+      <td>-0.079</td>
+      <td>-0.095</td>
+    </tr>
+    <tr>
+      <th>IC Std.</th>
+      <td>0.129</td>
+      <td>0.072</td>
+      <td>0.201</td>
+      <td>0.103</td>
+    </tr>
+    <tr>
+      <th>Risk-Adjusted IC</th>
+      <td>-0.864</td>
+      <td>-0.431</td>
+      <td>-0.394</td>
+      <td>-0.922</td>
+    </tr>
+    <tr>
+      <th>t-stat(IC)</th>
+      <td>-7.775</td>
+      <td>-3.881</td>
+      <td>-3.549</td>
+      <td>-8.296</td>
+    </tr>
+    <tr>
+      <th>p-value(IC)</th>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.001</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>IC Skew</th>
+      <td>0.060</td>
+      <td>0.201</td>
+      <td>0.459</td>
+      <td>-0.137</td>
+    </tr>
+    <tr>
+      <th>IC Kurtosis</th>
+      <td>1.017</td>
+      <td>0.376</td>
+      <td>-0.127</td>
+      <td>1.469</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acf_df</span> <span class="o">=</span> <span class="n">id_vol_deCorr</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">acf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">nlags</span><span class="o">=</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">corr_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">id_vol_deCorr</span><span class="o">.</span><span class="n">corrwith</span><span class="p">(</span><span class="n">id_vol</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">13</span><span class="p">)),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">corr_df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="n">acf_df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;平均截面相关系数&#39;</span><span class="p">,</span><span class="s1">&#39;平均时序相关系数&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;特质波动率因子ID_Vol_DeCorr的平均时序相关系数&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fec0dbc26d8&gt;
+</pre></div>
+</div>
+<img alt="../../../../../_images/ee7ffeeeb414d5fe911ff2b24221ea9f92b22964724f84f8e8e9d0e35ecf9a3d.png" src="../../../../../_images/ee7ffeeeb414d5fe911ff2b24221ea9f92b22964724f84f8e8e9d0e35ecf9a3d.png" />
+</div>
+</div>
+</section>
+<section id="id10">
+<h2>纯波动率因子与换手率因子的相关性<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p>相比于传统特质波动率因子，纯真波动率因子与换手率因子的相关性更低。同样将纯真波动率因子对换手率因子做正交化处理，检验残差的选股能力，并与传统因子进行对比。下图展示了新旧因子分别正交换手后，5分组多空对冲的净值走势，可以发现剔除换手率因子后，新因子的表现也明显优于传统因子。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idvol_deCturn20</span><span class="p">,</span><span class="n">turn20</span> <span class="o">=</span> <span class="n">get_idvol_deturn20</span><span class="p">(</span><span class="n">id_vol_deCorr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2dc0f7ae36694d0088eec8dc3b185cc9", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 转换格式</span>
+<span class="n">idvol_deCturn20_</span> <span class="o">=</span> <span class="n">idvol_deCturn20</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># 因子分组排序默认未从小到大</span>
+<span class="n">idvol_deturn20_factor</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">get_clean_factor_and_forward_returns</span><span class="p">(</span><span class="n">idvol_deCturn20_</span><span class="p">,</span>
+                                                            <span class="n">pricing_1</span><span class="p">,</span>
+                                                            <span class="n">periods</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span>
+                                                            <span class="n">quantiles</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># 计算分组收益</span>
+<span class="n">rets3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">idvol_deturn20_factor</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                      <span class="n">index</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;factor_quantile&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">rets3</span><span class="p">[</span><span class="s1">&#39;G1-G5&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rets3</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">rets3</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> 
+<span class="n">nav3</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rets3</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span> <span class="c1"># 计算净值</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dropped 22.6% entries from factor data (22.6% after in forward returns computation and 0.0% in binning phase). Set max_loss=0 to see potentially suppressed Exceptions.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compare_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">nav3</span><span class="p">[</span><span class="s1">&#39;G1-G5&#39;</span><span class="p">],</span><span class="n">nav1</span><span class="p">[</span><span class="s1">&#39;G1-G5&#39;</span><span class="p">]],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">compare_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;deCorr正交&#39;</span><span class="p">,</span><span class="s1">&#39;deTurn正交&#39;</span><span class="p">]</span>
+
+<span class="n">compare_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;新旧因子正交换手后的多空对冲净值走势&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Crimson&#39;</span><span class="p">,</span><span class="s1">&#39;DarkGray&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fec1c4ab0b8&gt;
+</pre></div>
+</div>
+<img alt="../../../../../_images/65ac5b90aad2d43ec358ccabc6db8a5c5c4ec117af37a3615167101307db80d8.png" src="../../../../../_images/65ac5b90aad2d43ec358ccabc6db8a5c5c4ec117af37a3615167101307db80d8.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ch3">
+<h1>使用CH3计算特质波动率<a class="headerlink" href="#ch3" title="Link to this heading">#</a></h1>
+<p>CH3因子的学术版构造过程见<a class="reference external" href="https://www.joinquant.com/research?target=research&amp;amp;url=/user/37149876885/notebooks/%E5%A4%8D%E7%8E%B0/Size%20and%20value%20in%20China.ipynb">Size and value in China</a>这里我们依旧使用极简版构造，构造过程仿造FF3的极简版。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">CH3_ID_Vol</span><span class="p">(</span><span class="n">Factor</span><span class="p">):</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;CH3_ID_Vol&#39;</span>
+    <span class="n">max_window</span> <span class="o">=</span> <span class="mi">21</span>
+    <span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;market_cap&#39;</span><span class="p">,</span> <span class="s1">&#39;pe_ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        
+        <span class="c1"># 过滤市值底部30%是的股票</span>
+        <span class="n">market_cap</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;market_cap&#39;</span><span class="p">]</span>
+        <span class="n">market_cap_ser</span> <span class="o">=</span> <span class="n">market_cap</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># 30%</span>
+        <span class="n">threshold</span> <span class="o">=</span> <span class="n">market_cap_ser</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+        <span class="n">stocks</span> <span class="o">=</span> <span class="n">market_cap_ser</span><span class="p">[</span><span class="n">market_cap_ser</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        
+        <span class="c1"># 获取符合条件的股票数据</span>
+        <span class="n">pe_df</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;pe_ratio&#39;</span><span class="p">][</span><span class="n">stocks</span><span class="p">]</span>
+        <span class="n">market_cap</span> <span class="o">=</span> <span class="n">market_cap</span><span class="p">[</span><span class="n">stocks</span><span class="p">]</span>
+        <span class="n">close_df</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">][</span><span class="n">stocks</span><span class="p">]</span>
+        
+        <span class="c1"># 获取ep</span>
+        <span class="n">ep_df</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">pe_df</span>
+        <span class="c1"># 收益率</span>
+        <span class="n">returns</span> <span class="o">=</span> <span class="n">close_df</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+
+        <span class="c1"># 分组标记</span>
+        <span class="n">market_cap_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_label</span><span class="p">(</span><span class="n">market_cap</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">ep_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_label</span><span class="p">(</span><span class="n">ep_df</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="c1"># 构造因子</span>
+        <span class="n">smb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_longshort</span><span class="p">(</span><span class="n">market_cap</span><span class="p">,</span> <span class="n">market_cap_label</span><span class="p">,</span> <span class="n">returns</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">vmg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_longshort</span><span class="p">(</span><span class="n">market_cap</span><span class="p">,</span> <span class="n">ep_label</span><span class="p">,</span> <span class="n">returns</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">mkt</span> <span class="o">=</span> <span class="p">(</span><span class="n">market_cap</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">market_cap</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+            <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">returns</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># 添加阶矩项项</span>
+        <span class="n">exog</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">mkt</span><span class="p">,</span> <span class="n">smb</span><span class="p">,</span> <span class="n">vmg</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">EXOG_COL</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="s1">&#39;mkt&#39;</span><span class="p">,</span> <span class="s1">&#39;smb&#39;</span><span class="p">,</span> <span class="s1">&#39;vmg&#39;</span><span class="p">]</span>
+        <span class="n">exog</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">EXOG_COL</span>
+
+        <span class="n">returns</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]</span>
+        <span class="n">exog</span> <span class="o">=</span> <span class="n">exog</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">returns</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>  <span class="c1"># 日期索引对齐</span>
+        <span class="c1"># OLS回归获取残差</span>
+        <span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">returns</span><span class="p">,</span> <span class="n">exog</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+        <span class="n">resid_df</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">resid</span>
+
+        <span class="k">return</span> <span class="n">resid_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">calc_longshort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">market_cap</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">label_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">returns</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">high</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">low</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;计算多空收益 high - low&#39;&#39;&#39;</span>
+
+        <span class="c1"># 计算组合权重</span>
+        <span class="n">l_w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_weight</span><span class="p">(</span><span class="n">label_df</span><span class="p">,</span> <span class="n">market_cap</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+        <span class="n">s_w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_weight</span><span class="p">(</span><span class="n">label_df</span><span class="p">,</span> <span class="n">market_cap</span><span class="p">,</span> <span class="n">low</span><span class="p">)</span>
+
+        <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">l_w</span> <span class="o">*</span> <span class="n">returns</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="p">(</span><span class="n">s_w</span> <span class="o">*</span> <span class="n">returns</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">h</span> <span class="o">-</span> <span class="n">l</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_label</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">N</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;获取分组 分位数分组(每组数量相同)&#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_weight</span><span class="p">(</span><span class="n">label_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">market_cap</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">N</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;获取目标组的权重&#39;&#39;&#39;</span>
+
+        <span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">label_df</span> <span class="o">==</span> <span class="n">N</span><span class="p">)</span>
+        <span class="n">cap</span> <span class="o">=</span> <span class="n">cond</span> <span class="o">*</span> <span class="n">market_cap</span>  <span class="c1"># 该组市值</span>
+
+        <span class="k">return</span> <span class="n">cap</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">cap</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch3_id_vol</span> <span class="o">=</span> <span class="n">get_factor</span><span class="p">(</span><span class="s1">&#39;2013-01-01&#39;</span><span class="p">,</span><span class="s1">&#39;2020-09-30&#39;</span><span class="p">,</span><span class="n">CH3_ID_Vol</span><span class="p">())</span>
+
+<span class="c1"># 获取价格数据</span>
+<span class="n">ch3_pricing</span> <span class="o">=</span> <span class="n">get_factor_price</span><span class="p">(</span><span class="n">ch3_id_vol</span><span class="p">,</span><span class="s1">&#39;2020-10-31&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "528be911d1cf4b36ae2fbf42b0035001", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "7bea3c402dde4b0d9f41ab80c8d90b38", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 数据储存</span>
+<span class="n">ch3_id_vol</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../Data/ch3_id_vol.csv&#39;</span><span class="p">)</span>
+<span class="n">ch3_pricing</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../Data/ch3_pricing.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 数据读取</span>
+<span class="n">ch3_id_vol</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/ch3_id_vol.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ch3_pricing</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/ch3_pricing.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># 以2014年为起点</span>
+<span class="n">ch3_id_vol_1</span> <span class="o">=</span> <span class="n">ch3_id_vol</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">:]</span>
+<span class="n">ch3_pricing_1</span> <span class="o">=</span> <span class="n">ch3_pricing</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch3_id_vol_</span> <span class="o">=</span> <span class="n">ch3_id_vol_1</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="c1"># 因子分组排序默认未从小到大</span>
+<span class="n">ch3_id_vol_factor</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">get_clean_factor_and_forward_returns</span><span class="p">(</span><span class="n">ch3_id_vol_</span><span class="p">,</span>
+                                                            <span class="n">ch3_pricing_1</span><span class="p">,</span>
+                                                            <span class="n">periods</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span>
+                                                            <span class="n">quantiles</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># 计算分组收益</span>
+<span class="n">rets4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">ch3_id_vol_factor</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                      <span class="n">index</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;factor_quantile&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">rets4</span><span class="p">[</span><span class="s1">&#39;G1-G5&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rets4</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">rets4</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> 
+<span class="n">nav4</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rets4</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span> <span class="c1"># 计算净值</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dropped 0.0% entries from factor data (0.0% after in forward returns computation and 0.0% in binning phase). Set max_loss=0 to see potentially suppressed Exceptions.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_nav</span><span class="p">(</span><span class="n">nav4</span><span class="p">,</span><span class="s1">&#39;CH3_ID_Vol&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/ffb5e3cb6125edf46e22d47f6883eb3d38cdc1402f4157e1530c29baaf86e726.png" src="../../../../../_images/ffb5e3cb6125edf46e22d47f6883eb3d38cdc1402f4157e1530c29baaf86e726.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch3_id_vol_ic</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="n">performance</span><span class="o">.</span><span class="n">factor_information_coefficient</span><span class="p">(</span><span class="n">ch3_id_vol_factor</span><span class="p">)</span>
+<span class="n">ch3_id_vol_ic</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CH3_ID_Vol&#39;</span><span class="p">]</span>
+<span class="n">al</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot_information_table</span><span class="p">(</span><span class="n">ch3_id_vol_ic</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Information Analysis
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CH3_ID_Vol</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>IC Mean</th>
+      <td>-0.109</td>
+    </tr>
+    <tr>
+      <th>IC Std.</th>
+      <td>0.141</td>
+    </tr>
+    <tr>
+      <th>Risk-Adjusted IC</th>
+      <td>-0.777</td>
+    </tr>
+    <tr>
+      <th>t-stat(IC)</th>
+      <td>-6.995</td>
+    </tr>
+    <tr>
+      <th>p-value(IC)</th>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>IC Skew</th>
+      <td>0.207</td>
+    </tr>
+    <tr>
+      <th>IC Kurtosis</th>
+      <td>0.545</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Astock_market/QuantsPlaybook研报复现/B-因子构建类/剔除跨期截面相关性的纯真波动率因子/py"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">前言</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">函数准备</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">传统特质波动率因子</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">特质波动率因子的计算与回测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">特质波动率因子与换手率因子的相关性</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">特质波动率因子小结</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">波动聚集：波动率因子的时序和截面相关性</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">剔除跨期截面相关性：纯波动率因子</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">纯真波动率因子的构建与回测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">纯波动率因子与换手率因子的相关性</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ch3">使用CH3计算特质波动率</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

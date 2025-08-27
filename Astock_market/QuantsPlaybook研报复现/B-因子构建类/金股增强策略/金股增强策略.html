@@ -1,0 +1,815 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>数据介绍 &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Astock_market/QuantsPlaybook研报复现/B-因子构建类/金股增强策略/金股增强策略';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2024.html">1. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2022.html">2. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/Astock_market/QuantsPlaybook研报复现/B-因子构建类/金股增强策略/金股增强策略.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>数据介绍</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">数据介绍</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">金股推荐历史量化处理</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">基于推荐成功概率分布构建金股组合</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">empyrical</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jqdata</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">func</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.sans-serif&quot;</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SimHei&quot;</span><span class="p">]</span> <span class="c1">#设置字体</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.unicode_minus&quot;</span><span class="p">]</span><span class="o">=</span><span class="kc">False</span> <span class="c1">#该语句解决图像中的“-”负号的乱码问题</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">scr</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">PrepareData</span><span class="p">,</span>
+    <span class="n">TradeDays</span><span class="p">,</span>
+    <span class="n">get_author_proba</span><span class="p">,</span>
+    <span class="n">get_stock_group_returns</span><span class="p">,</span>
+    <span class="n">load_gold_stock_csv</span><span class="p">,</span>
+    <span class="n">transform2stock_group</span><span class="p">,</span>
+    <span class="n">view_author_stock</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">td</span> <span class="o">=</span> <span class="n">TradeDays</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>数据介绍<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>金股数据说明:end_date为金股的截至日(即券商推荐的金股有效期),write_date为公告日(即对应券商在微信公众号、研报等推送的时间),通过write_date我们可以看到金股组合大多数是在上月低和当月出发布出来。</p>
+<p><strong>\统计分析时next_return使用的是<span class="math notranslate nohighlight">\(\frac{close}{close_{t-1}}-1\)</span>与end_date对齐的方式进行统计分析。</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取金股数据</span>
+<span class="n">gold_stock_frame</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">load_gold_stock_csv</span><span class="p">()</span>
+<span class="c1"># 过滤北交所</span>
+<span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">gold_stock_frame</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;835185.XSHG&quot;</span><span class="p">)</span>
+<span class="n">gold_stock_frame</span> <span class="o">=</span> <span class="n">gold_stock_frame</span><span class="p">[</span><span class="n">cond</span><span class="p">]</span>
+<span class="n">gold_stock_frame</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>author</th>
+      <th>sw_l3</th>
+      <th>org_name</th>
+      <th>code</th>
+      <th>end_date</th>
+      <th>write_date</th>
+      <th>sec_short_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>张云凯</td>
+      <td>住宅开发</td>
+      <td>东北证券</td>
+      <td>000656.XSHE</td>
+      <td>2018-01-31</td>
+      <td>2017-12-28</td>
+      <td>金科股份</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>李俊峰</td>
+      <td>种子</td>
+      <td>东北证券</td>
+      <td>000998.XSHE</td>
+      <td>2018-01-31</td>
+      <td>2017-12-28</td>
+      <td>隆平高科</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>李瑶</td>
+      <td>种子</td>
+      <td>东北证券</td>
+      <td>000998.XSHE</td>
+      <td>2018-01-31</td>
+      <td>2017-12-28</td>
+      <td>隆平高科</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>张云凯</td>
+      <td>商业地产</td>
+      <td>东北证券</td>
+      <td>001979.XSHE</td>
+      <td>2018-01-31</td>
+      <td>2017-12-28</td>
+      <td>招商蛇口</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>李恒光</td>
+      <td>底盘与发动机系统</td>
+      <td>东北证券</td>
+      <td>002126.XSHE</td>
+      <td>2018-01-31</td>
+      <td>2017-12-28</td>
+      <td>银轮股份</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>由下图可知道<strong>平均write_date日在每月的第3-4个交易日即全部发布完毕,所以在回测时在每月的第三个交易日进行调仓轮动。</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats_write_date</span> <span class="o">=</span> <span class="n">gold_stock_frame</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;end_date&#39;</span><span class="p">)[</span><span class="s1">&#39;write_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">stats_write_date</span> <span class="o">=</span> <span class="n">stats_write_date</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">stats_write_date</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;write_date&#39;</span><span class="p">]</span>
+<span class="n">stats_write_date</span><span class="p">[</span><span class="s1">&#39;DayOfMonth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stats_write_date</span><span class="p">[</span><span class="s1">&#39;write_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">td</span><span class="o">.</span><span class="n">tradeday_of_month</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">stats_write_date</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">stats_write_date</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">bar_ax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stats_write_date</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">stats_write_date</span><span class="p">[</span><span class="s1">&#39;DayOfMonth&#39;</span><span class="p">])</span>
+
+<span class="n">max_idx</span> <span class="o">=</span> <span class="n">stats_write_date</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">stats_write_date</span><span class="p">[</span><span class="s1">&#39;DayOfMonth&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">())</span>
+<span class="n">bar_ax</span><span class="p">[</span><span class="n">max_idx</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">avg_num</span><span class="p">:</span><span class="nb">float</span> <span class="o">=</span> <span class="n">stats_write_date</span><span class="p">[</span><span class="s1">&#39;DayOfMonth&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">avg_num</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgray&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">);</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;平均在当月的第</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">avg_num</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">发布&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>平均在当月的第3.53发布
+</pre></div>
+</div>
+<img alt="../../../../_images/5c2b3e5f011af25a70cb1f79f015f8b1ec5aa1f4491d8edf268d5aebed5990ad.png" src="../../../../_images/5c2b3e5f011af25a70cb1f79f015f8b1ec5aa1f4491d8edf268d5aebed5990ad.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>金股推荐历史量化处理<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<p>使用Beta分布定量记录分析师金股推荐历史。假设，对于分析师的真实选股能力，没有先验知识。因此，每个分析师初始的Beta分布中，α = β = 1，此情况下，分析师推荐成功率在[0,1]上均匀分布。当分析师推荐金股成功时，即推荐月份的股票涨幅&gt;0时，参数𝛼更新为𝛼 + 1。反之，当推荐失败时，参数𝛽更新为𝛽 + 1。</p>
+<p>Beta 分布的期望:
+<span class="math notranslate nohighlight">\(\mu=E(x)=\frac{\alpha}{\alpha+\beta}\)</span></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
+<h1>基于推荐成功概率分布构建金股组合<a class="headerlink" href="#id3" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>股票池：当月所有券商推荐的金股，无其它筛选条件。</p></li>
+<li><p>组合构建流程：</p>
+<ul class="simple">
+<li><p>获取当月所有券商推荐的金股及推荐金股的分析师信息；</p></li>
+<li><p>查询金股数据库，获取当月推荐金股的每一位分析师的定量指标；</p></li>
+<li><p>对分析师定量指标进行排序，分为 5 组，并构建相应的 5 个等权金股组合；</p></li>
+<li><p>每月末重复上述操作并调仓；</p></li>
+<li><p>回测时段：2020 年 1 月至 2022 年 8 月</p></li>
+<li><p>调仓周期：月度调仓</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取初始数据</span>
+<span class="n">prepare_data</span> <span class="o">=</span> <span class="n">PrepareData</span><span class="p">(</span><span class="n">gold_stock_frame</span><span class="p">,</span><span class="s1">&#39;2017-12-01&#39;</span><span class="p">,</span><span class="s1">&#39;2022-08-31&#39;</span><span class="p">)</span>
+<span class="n">prepare_data</span><span class="o">.</span><span class="n">init_data</span><span class="p">()</span>
+<span class="n">prepare_data</span><span class="o">.</span><span class="n">get_forward_returns</span><span class="p">()</span>
+<span class="n">all_data</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">prepare_data</span><span class="o">.</span><span class="n">full_data</span><span class="p">()</span>
+
+<span class="c1"># 获取分析师推荐概率</span>
+<span class="n">params</span><span class="p">:</span><span class="n">Dict</span> <span class="o">=</span> <span class="p">{</span>
+              <span class="s1">&#39;returns_name&#39;</span><span class="p">:</span><span class="s1">&#39;industry_excess&#39;</span><span class="p">,</span> <span class="c1"># 使用行业超额计算分析师推荐概率</span>
+              <span class="s1">&#39;window&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span> <span class="c1"># 分析师近window月有推荐股票且推荐次数不少于等于threshold次</span>
+              <span class="s1">&#39;threshold&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> 
+              <span class="s1">&#39;beta_window&#39;</span><span class="p">:</span><span class="mi">12</span> <span class="c1"># beta分布滚动计算期</span>
+              <span class="p">}</span>
+<span class="n">author_proba</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">get_author_proba</span><span class="p">(</span><span class="n">all_data</span><span class="p">,</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="c1"># 获取分析师组合</span>
+<span class="n">author_proflio</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">transform2stock_group</span><span class="p">(</span><span class="n">author_proba</span><span class="p">,</span><span class="n">prepare_data</span><span class="o">.</span><span class="n">gold_stock_frame</span><span class="p">,</span><span class="n">group_num</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># 计算组合月度收益率</span>
+<span class="n">returns</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span><span class="n">get_stock_group_returns</span><span class="p">(</span><span class="n">author_proflio</span><span class="p">,</span><span class="n">prepare_data</span><span class="o">.</span><span class="n">next_returns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>证券代码:000043.XSHE,2022-08-31未查询到sw_l1行业名称
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cum_frame</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">cum_returns</span><span class="p">(</span><span class="n">returns</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2020-01-01&quot;</span><span class="p">:])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">bar_ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">cum_frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">cum_frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">bar_ax</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;各组合月均收益率&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;基于统计期推荐成功率分组测试&#39;</span><span class="p">)</span>
+<span class="n">line_ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">cum_frame</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;OrRd&#39;</span><span class="p">,</span><span class="n">dashes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mjrFormatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{0:.2f}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">line_ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">mjrFormatter</span><span class="p">))</span>
+<span class="n">line_ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;累计收益率(%)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgray&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 1296x360 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../../../../_images/a844b7ac72f28cfe6247390997095312b54ff6c1a2c56385ad1be9e959683f34.png" src="../../../../_images/a844b7ac72f28cfe6247390997095312b54ff6c1a2c56385ad1be9e959683f34.png" />
+</div>
+</div>
+<p>查看近期推荐概率top10的分析师及股票</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_author</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">=</span> <span class="n">author_proba</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2022-08-31&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">top_author</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;2022-08-31&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">top_author</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>monthEnd    author
+2022-08-31  于芳博       0.714286
+            张燕生       0.714286
+            刘贵军       0.675000
+            王楠        0.666667
+            赵国防       0.616667
+            鲍雁辛       0.611111
+            黄涛        0.611111
+            任文坡       0.605556
+            陶贻功       0.604167
+            李晓渊       0.600000
+Name: (2022-08-31, 0), dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">view_author_stock</span><span class="p">(</span><span class="n">top_author</span><span class="p">,</span><span class="n">prepare_data</span><span class="o">.</span><span class="n">gold_stock_frame</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>author</th>
+      <th>sw_l3</th>
+      <th>org_name</th>
+      <th>code</th>
+      <th>end_date</th>
+      <th>write_date</th>
+      <th>sec_short_name</th>
+      <th>monthEnd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>13084</th>
+      <td>陶贻功</td>
+      <td>其他专用设备</td>
+      <td>银河证券</td>
+      <td>002009.XSHE</td>
+      <td>2022-08-31</td>
+      <td>2022-07-28</td>
+      <td>天奇股份</td>
+      <td>2022-08-31</td>
+    </tr>
+    <tr>
+      <th>13087</th>
+      <td>任文坡</td>
+      <td>改性塑料</td>
+      <td>银河证券</td>
+      <td>002768.XSHE</td>
+      <td>2022-08-31</td>
+      <td>2022-07-28</td>
+      <td>国恩股份</td>
+      <td>2022-08-31</td>
+    </tr>
+    <tr>
+      <th>13182</th>
+      <td>王楠</td>
+      <td>通信终端及配件</td>
+      <td>兴业证券</td>
+      <td>003031.XSHE</td>
+      <td>2022-08-31</td>
+      <td>2022-07-30</td>
+      <td>中瓷电子</td>
+      <td>2022-08-31</td>
+    </tr>
+    <tr>
+      <th>13274</th>
+      <td>赵国防</td>
+      <td>啤酒</td>
+      <td>安信证券</td>
+      <td>600600.XSHG</td>
+      <td>2022-08-31</td>
+      <td>2022-08-01</td>
+      <td>青岛啤酒</td>
+      <td>2022-08-31</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Astock_market/QuantsPlaybook研报复现/B-因子构建类/金股增强策略"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">数据介绍</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">金股推荐历史量化处理</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">基于推荐成功概率分布构建金股组合</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

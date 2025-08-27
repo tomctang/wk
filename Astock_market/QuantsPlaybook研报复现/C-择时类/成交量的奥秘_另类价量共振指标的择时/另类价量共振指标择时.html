@@ -1,0 +1,2179 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>价量共振 &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Astock_market/QuantsPlaybook研报复现/C-择时类/成交量的奥秘_另类价量共振指标的择时/另类价量共振指标择时';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2024.html">1. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2022.html">2. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/Astock_market/QuantsPlaybook研报复现/C-择时类/成交量的奥秘_另类价量共振指标的择时/另类价量共振指标择时.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>价量共振</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">价量共振</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">价量共振指标的择时系统构建</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">市场划分条件下的择时系统</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">申万行业</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">申万行业指数择时情况</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">empyrical</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scr.load_excel_data</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">query_data</span><span class="p">,</span>
+    <span class="n">query_sw_classify</span><span class="p">,</span>
+    <span class="n">query_stock_index_classify</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scr.tear</span><span class="w"> </span><span class="kn">import</span> <span class="n">analysis_rets</span><span class="p">,</span><span class="n">analysis_trade</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scr.backtest_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_backtesting</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.sans-serif&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;SimHei&quot;</span><span class="p">]</span>  <span class="c1"># 用来正常显示中文标签</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.unicode_minus&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># 用来正常显示负号</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>价量共振<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>价量共振指标的择时系统构建<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>成交量使用的移动平均线为 AMA，收盘价使用的移动平均线为 BMA(移动平均线长度为L);</p></li>
+<li><p>价能=<span class="math notranslate nohighlight">\(\frac{BMA_{today}}{BMA_{Today-N}}\)</span>，当日的BMA除以前N个交易日的BMA;</p></li>
+<li><p>量能=<span class="math notranslate nohighlight">\(\frac{AMA_{5}}{AMA_{Long}}\)</span>，5 日的AMA除以长期的AMA;</p></li>
+<li><p>价量共振指标=价能×量能，价能乘以量能</p></li>
+<li><p>当价量共振指标大于 Threshold 则做多，否则平仓</p></li>
+</ol>
+</section>
+<section id="id3">
+<h2>市场划分条件下的择时系统<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>当5日均线高于90日均线，市场划分为多头市场；当5日均线小于90日均线，市场划分为空头市场;</p></li>
+<li><p>当前为多头市场下，若价量共振指标大于Threshold1则做多，否则以Threshold1平仓。当前为空头市场下， 若价量共振指标大于Threshold2则做多，否则以Threshold2平仓;</p></li>
+</ol>
+<p><strong>参数</strong></p>
+<p>AMA长期移动平均线长度为 100，BMA移动平均线长度为 50，N=3，Threshold1=1.125，Threshold2=1.275</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index_classify</span><span class="p">:</span><span class="n">Dict</span> <span class="o">=</span> <span class="n">query_stock_index_classify</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;000300.SH&#39;</span>
+<span class="n">hs300</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">query_data</span><span class="p">(</span>
+    <span class="n">code</span><span class="p">,</span> <span class="s2">&quot;2010-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2022-10-11&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;close&quot;</span><span class="p">,</span><span class="s1">&#39;low&#39;</span><span class="p">,</span><span class="s1">&#39;high&#39;</span><span class="p">,</span><span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s2">&quot;volume&quot;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;index&quot;</span>
+<span class="p">)</span>
+<span class="n">hs300</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;trade_date&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 直接使用backtrader框架回测</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">get_backtesting</span><span class="p">(</span><span class="n">hs300</span><span class="p">,</span><span class="n">begin_dt</span><span class="o">=</span><span class="s1">&#39;2010-01-01&#39;</span><span class="p">,</span><span class="n">end_dt</span><span class="o">=</span><span class="s1">&#39;2022-06-14&#39;</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="n">index_classify</span><span class="p">[</span><span class="n">code</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2010-07-09, 收盘价Close, 2647.10
+2010-07-09, 设置买单 BUY CREATE, 2647.10,信号为:1.30,阈值为:1.27
+2010-07-12, 买单执行BUY EXECUTED, 报价：2647.69
+2010-07-14, 收盘价Close, 2653.61
+2010-07-14, 设置卖单SELL CREATE, 2653.61信号为:1.18,阈值为:1.27
+2010-07-15, 卖单执行SELL EXECUTED,报价： 2650.07
+1
+2010-07-20, 收盘价Close, 2741.50
+2010-07-20, 设置买单 BUY CREATE, 2741.50,信号为:1.85,阈值为:1.27
+2010-07-21, 买单执行BUY EXECUTED, 报价：2744.97
+2010-07-27, 收盘价Close, 2795.72
+2010-07-27, 设置卖单SELL CREATE, 2795.72信号为:1.17,阈值为:1.27
+2010-07-28, 卖单执行SELL EXECUTED,报价： 2796.20
+1
+2010-07-28, 收盘价Close, 2863.72
+2010-07-28, 设置买单 BUY CREATE, 2863.72,信号为:1.58,阈值为:1.27
+2010-07-29, 买单执行BUY EXECUTED, 报价：2867.06
+2010-08-11, 收盘价Close, 2850.21
+2010-08-11, 设置卖单SELL CREATE, 2850.21信号为:1.14,阈值为:1.27
+2010-08-12, 卖单执行SELL EXECUTED,报价： 2822.51
+1
+2010-08-17, 收盘价Close, 2942.29
+2010-08-17, 设置买单 BUY CREATE, 2942.29,信号为:1.36,阈值为:1.12
+2010-08-18, 买单执行BUY EXECUTED, 报价：2946.27
+2010-08-23, 收盘价Close, 2896.19
+2010-08-23, 设置卖单SELL CREATE, 2896.19信号为:0.85,阈值为:1.12
+2010-08-24, 卖单执行SELL EXECUTED,报价： 2891.84
+1
+2010-09-01, 收盘价Close, 2884.04
+2010-09-01, 设置买单 BUY CREATE, 2884.04,信号为:1.13,阈值为:1.12
+2010-09-02, 买单执行BUY EXECUTED, 报价：2918.03
+2010-09-02, 收盘价Close, 2921.39
+2010-09-02, 设置卖单SELL CREATE, 2921.39信号为:1.12,阈值为:1.12
+2010-09-03, 卖单执行SELL EXECUTED,报价： 2926.65
+1
+2010-09-06, 收盘价Close, 2975.09
+2010-09-06, 设置买单 BUY CREATE, 2975.09,信号为:1.23,阈值为:1.12
+2010-09-07, 买单执行BUY EXECUTED, 报价：2979.60
+2010-09-08, 收盘价Close, 2980.97
+2010-09-08, 设置卖单SELL CREATE, 2980.97信号为:1.02,阈值为:1.12
+2010-09-09, 卖单执行SELL EXECUTED,报价： 2986.57
+1
+2010-10-08, 收盘价Close, 3044.23
+2010-10-08, 设置买单 BUY CREATE, 3044.23,信号为:1.25,阈值为:1.12
+2010-10-11, 买单执行BUY EXECUTED, 报价：3069.49
+2010-10-22, 收盘价Close, 3378.66
+2010-10-22, 设置卖单SELL CREATE, 3378.66信号为:1.06,阈值为:1.12
+2010-10-25, 卖单执行SELL EXECUTED,报价： 3386.51
+1
+2010-10-25, 收盘价Close, 3481.08
+2010-10-25, 设置买单 BUY CREATE, 3481.08,信号为:1.18,阈值为:1.12
+2010-10-26, 买单执行BUY EXECUTED, 报价：3491.82
+2010-10-28, 收盘价Close, 3397.69
+2010-10-28, 设置卖单SELL CREATE, 3397.69信号为:0.91,阈值为:1.12
+2010-10-29, 卖单执行SELL EXECUTED,报价： 3399.92
+1
+2010-11-02, 收盘价Close, 3463.13
+2010-11-02, 设置买单 BUY CREATE, 3463.13,信号为:1.24,阈值为:1.12
+2010-11-03, 买单执行BUY EXECUTED, 报价：3463.09
+2010-11-04, 收盘价Close, 3480.51
+2010-11-04, 设置卖单SELL CREATE, 3480.51信号为:0.99,阈值为:1.12
+2010-11-05, 卖单执行SELL EXECUTED,报价： 3538.63
+1
+2010-11-12, 收盘价Close, 3291.83
+2010-11-12, 设置买单 BUY CREATE, 3291.83,信号为:1.16,阈值为:1.12
+2010-11-15, 买单执行BUY EXECUTED, 报价：3299.07
+2010-11-15, 收盘价Close, 3314.89
+2010-11-15, 设置卖单SELL CREATE, 3314.89信号为:0.97,阈值为:1.12
+2010-11-16, 卖单执行SELL EXECUTED,报价： 3311.28
+1
+2011-01-05, 收盘价Close, 3175.66
+2011-01-05, 设置买单 BUY CREATE, 3175.66,信号为:1.45,阈值为:1.27
+2011-01-06, 买单执行BUY EXECUTED, 报价：3178.15
+2011-01-06, 收盘价Close, 3159.64
+2011-01-06, 设置卖单SELL CREATE, 3159.64信号为:1.18,阈值为:1.27
+2011-01-07, 卖单执行SELL EXECUTED,报价： 3156.05
+1
+2011-01-07, 收盘价Close, 3166.62
+2011-01-07, 设置买单 BUY CREATE, 3166.62,信号为:1.21,阈值为:1.12
+2011-01-10, 买单执行BUY EXECUTED, 报价：3162.40
+2011-01-11, 收盘价Close, 3124.92
+2011-01-11, 设置卖单SELL CREATE, 3124.92信号为:1.03,阈值为:1.27
+2011-01-12, 卖单执行SELL EXECUTED,报价： 3134.87
+1
+2011-01-21, 收盘价Close, 2983.46
+2011-01-21, 设置买单 BUY CREATE, 2983.46,信号为:1.42,阈值为:1.27
+2011-01-24, 买单执行BUY EXECUTED, 报价：2986.39
+2011-01-25, 收盘价Close, 2938.65
+2011-01-25, 设置卖单SELL CREATE, 2938.65信号为:1.14,阈值为:1.27
+2011-01-26, 卖单执行SELL EXECUTED,报价： 2939.48
+1
+2011-01-27, 收盘价Close, 3026.47
+2011-01-27, 设置买单 BUY CREATE, 3026.47,信号为:1.30,阈值为:1.27
+2011-01-28, 买单执行BUY EXECUTED, 报价：3020.42
+2011-02-01, 收盘价Close, 3077.28
+2011-02-01, 设置卖单SELL CREATE, 3077.28信号为:1.15,阈值为:1.27
+2011-02-09, 卖单执行SELL EXECUTED,报价： 3055.09
+1
+2011-02-10, 收盘价Close, 3104.16
+2011-02-10, 设置买单 BUY CREATE, 3104.16,信号为:1.30,阈值为:1.27
+2011-02-11, 买单执行BUY EXECUTED, 报价：3100.58
+2011-02-24, 收盘价Close, 3190.93
+2011-02-24, 设置卖单SELL CREATE, 3190.93信号为:1.07,阈值为:1.27
+2011-02-25, 卖单执行SELL EXECUTED,报价： 3190.55
+1
+2011-03-01, 收盘价Close, 3254.89
+2011-03-01, 设置买单 BUY CREATE, 3254.89,信号为:1.32,阈值为:1.12
+2011-03-02, 买单执行BUY EXECUTED, 报价：3237.44
+2011-03-09, 收盘价Close, 3338.86
+2011-03-09, 设置卖单SELL CREATE, 3338.86信号为:1.10,阈值为:1.12
+2011-03-10, 卖单执行SELL EXECUTED,报价： 3330.11
+1
+2011-03-16, 收盘价Close, 3248.20
+2011-03-16, 设置买单 BUY CREATE, 3248.20,信号为:1.16,阈值为:1.12
+2011-03-17, 买单执行BUY EXECUTED, 报价：3216.61
+2011-03-17, 收盘价Close, 3197.10
+2011-03-17, 设置卖单SELL CREATE, 3197.10信号为:1.10,阈值为:1.12
+2011-03-18, 卖单执行SELL EXECUTED,报价： 3228.59
+1
+2011-03-28, 收盘价Close, 3290.57
+2011-03-28, 设置买单 BUY CREATE, 3290.57,信号为:1.24,阈值为:1.12
+2011-03-29, 买单执行BUY EXECUTED, 报价：3288.89
+2011-03-31, 收盘价Close, 3223.29
+2011-03-31, 设置卖单SELL CREATE, 3223.29信号为:0.80,阈值为:1.12
+2011-04-01, 卖单执行SELL EXECUTED,报价： 3227.24
+1
+2011-04-07, 收盘价Close, 3324.42
+2011-04-07, 设置买单 BUY CREATE, 3324.42,信号为:1.21,阈值为:1.12
+2011-04-08, 买单执行BUY EXECUTED, 报价：3321.87
+2011-04-08, 收盘价Close, 3353.36
+2011-04-08, 设置卖单SELL CREATE, 3353.36信号为:0.99,阈值为:1.12
+2011-04-11, 卖单执行SELL EXECUTED,报价： 3363.03
+1
+2011-04-12, 收盘价Close, 3326.77
+2011-04-12, 设置买单 BUY CREATE, 3326.77,信号为:1.26,阈值为:1.12
+2011-04-13, 买单执行BUY EXECUTED, 报价：3311.66
+2011-04-14, 收盘价Close, 3353.56
+2011-04-14, 设置卖单SELL CREATE, 3353.56信号为:1.01,阈值为:1.12
+2011-04-15, 卖单执行SELL EXECUTED,报价： 3344.80
+1
+2011-06-15, 收盘价Close, 2963.12
+2011-06-15, 设置买单 BUY CREATE, 2963.12,信号为:1.32,阈值为:1.27
+2011-06-16, 买单执行BUY EXECUTED, 报价：2939.97
+2011-06-16, 收盘价Close, 2917.58
+2011-06-16, 设置卖单SELL CREATE, 2917.58信号为:1.13,阈值为:1.27
+2011-06-17, 卖单执行SELL EXECUTED,报价： 2916.11
+1
+2011-06-24, 收盘价Close, 3027.47
+2011-06-24, 设置买单 BUY CREATE, 3027.47,信号为:2.13,阈值为:1.27
+2011-06-27, 买单执行BUY EXECUTED, 报价：3028.80
+2011-07-11, 收盘价Close, 3113.21
+2011-07-11, 设置卖单SELL CREATE, 3113.21信号为:1.07,阈值为:1.27
+2011-07-12, 卖单执行SELL EXECUTED,报价： 3088.83
+1
+2011-07-14, 收盘价Close, 3115.74
+2011-07-14, 设置买单 BUY CREATE, 3115.74,信号为:1.32,阈值为:1.27
+2011-07-15, 买单执行BUY EXECUTED, 报价：3105.81
+2011-07-19, 收盘价Close, 3095.12
+2011-07-19, 设置卖单SELL CREATE, 3095.12信号为:1.19,阈值为:1.27
+2011-07-20, 卖单执行SELL EXECUTED,报价： 3113.39
+1
+2011-08-08, 收盘价Close, 2793.90
+2011-08-08, 设置买单 BUY CREATE, 2793.90,信号为:1.33,阈值为:1.27
+2011-08-09, 买单执行BUY EXECUTED, 报价：2721.23
+2011-08-11, 收盘价Close, 2866.92
+2011-08-11, 设置卖单SELL CREATE, 2866.92信号为:1.12,阈值为:1.27
+2011-08-12, 卖单执行SELL EXECUTED,报价： 2881.27
+1
+2011-09-22, 收盘价Close, 2685.69
+2011-09-22, 设置买单 BUY CREATE, 2685.69,信号为:1.61,阈值为:1.27
+2011-09-23, 买单执行BUY EXECUTED, 报价：2644.56
+2011-09-26, 收盘价Close, 2610.92
+2011-09-26, 设置卖单SELL CREATE, 2610.92信号为:1.14,阈值为:1.27
+2011-09-27, 卖单执行SELL EXECUTED,报价： 2634.66
+1
+2011-10-12, 收盘价Close, 2644.76
+2011-10-12, 设置买单 BUY CREATE, 2644.76,信号为:1.83,阈值为:1.27
+2011-10-13, 买单执行BUY EXECUTED, 报价：2637.13
+2011-10-17, 收盘价Close, 2666.95
+2011-10-17, 设置卖单SELL CREATE, 2666.95信号为:0.94,阈值为:1.27
+2011-10-18, 卖单执行SELL EXECUTED,报价： 2646.58
+1
+2011-10-25, 收盘价Close, 2625.43
+2011-10-25, 设置买单 BUY CREATE, 2625.43,信号为:1.62,阈值为:1.27
+2011-10-26, 买单执行BUY EXECUTED, 报价：2613.53
+2011-11-07, 收盘价Close, 2736.25
+2011-11-07, 设置卖单SELL CREATE, 2736.25信号为:1.20,阈值为:1.27
+2011-11-08, 卖单执行SELL EXECUTED,报价： 2744.78
+1
+2011-12-01, 收盘价Close, 2583.61
+2011-12-01, 设置买单 BUY CREATE, 2583.61,信号为:1.34,阈值为:1.27
+2011-12-02, 买单执行BUY EXECUTED, 报价：2570.82
+2011-12-02, 收盘价Close, 2557.31
+2011-12-02, 设置卖单SELL CREATE, 2557.31信号为:1.15,阈值为:1.27
+2011-12-05, 卖单执行SELL EXECUTED,报价： 2560.94
+1
+2012-01-09, 收盘价Close, 2368.57
+2012-01-09, 设置买单 BUY CREATE, 2368.57,信号为:1.52,阈值为:1.27
+2012-01-10, 买单执行BUY EXECUTED, 报价：2366.00
+2012-01-13, 收盘价Close, 2394.33
+2012-01-13, 设置卖单SELL CREATE, 2394.33信号为:1.20,阈值为:1.27
+2012-01-16, 卖单执行SELL EXECUTED,报价： 2376.72
+1
+2012-01-17, 收盘价Close, 2460.60
+2012-01-17, 设置买单 BUY CREATE, 2460.60,信号为:1.34,阈值为:1.27
+2012-01-18, 买单执行BUY EXECUTED, 报价：2465.17
+2012-01-30, 收盘价Close, 2460.72
+2012-01-30, 设置卖单SELL CREATE, 2460.72信号为:1.19,阈值为:1.27
+2012-01-31, 卖单执行SELL EXECUTED,报价： 2462.09
+1
+2012-02-09, 收盘价Close, 2529.23
+2012-02-09, 设置买单 BUY CREATE, 2529.23,信号为:1.46,阈值为:1.27
+2012-02-10, 买单执行BUY EXECUTED, 报价：2521.93
+2012-02-14, 收盘价Close, 2522.11
+2012-02-14, 设置卖单SELL CREATE, 2522.11信号为:0.98,阈值为:1.27
+2012-02-15, 卖单执行SELL EXECUTED,报价： 2515.58
+1
+2012-02-16, 收盘价Close, 2536.07
+2012-02-16, 设置买单 BUY CREATE, 2536.07,信号为:1.23,阈值为:1.12
+2012-02-17, 买单执行BUY EXECUTED, 报价：2552.07
+2012-02-17, 收盘价Close, 2537.09
+2012-02-17, 设置卖单SELL CREATE, 2537.09信号为:1.00,阈值为:1.12
+2012-02-20, 卖单执行SELL EXECUTED,报价： 2571.65
+1
+2012-02-22, 收盘价Close, 2597.48
+2012-02-22, 设置买单 BUY CREATE, 2597.48,信号为:1.39,阈值为:1.12
+2012-02-23, 买单执行BUY EXECUTED, 报价：2596.04
+2012-03-01, 收盘价Close, 2633.34
+2012-03-01, 设置卖单SELL CREATE, 2633.34信号为:0.68,阈值为:1.12
+2012-03-02, 卖单执行SELL EXECUTED,报价： 2637.96
+1
+2012-03-05, 收盘价Close, 2662.70
+2012-03-05, 设置买单 BUY CREATE, 2662.70,信号为:1.14,阈值为:1.12
+2012-03-06, 买单执行BUY EXECUTED, 报价：2655.06
+2012-03-07, 收盘价Close, 2603.01
+2012-03-07, 设置卖单SELL CREATE, 2603.01信号为:0.98,阈值为:1.12
+2012-03-08, 卖单执行SELL EXECUTED,报价： 2612.40
+1
+2012-03-14, 收盘价Close, 2605.11
+2012-03-14, 设置买单 BUY CREATE, 2605.11,信号为:1.42,阈值为:1.12
+2012-03-15, 买单执行BUY EXECUTED, 报价：2602.92
+2012-03-16, 收盘价Close, 2623.52
+2012-03-16, 设置卖单SELL CREATE, 2623.52信号为:0.99,阈值为:1.12
+2012-03-19, 卖单执行SELL EXECUTED,报价： 2617.40
+1
+2012-04-23, 收盘价Close, 2606.04
+2012-04-23, 设置买单 BUY CREATE, 2606.04,信号为:1.14,阈值为:1.12
+2012-04-24, 买单执行BUY EXECUTED, 报价：2595.06
+2012-04-26, 收盘价Close, 2631.49
+2012-04-26, 设置卖单SELL CREATE, 2631.49信号为:1.12,阈值为:1.12
+2012-04-27, 卖单执行SELL EXECUTED,报价： 2630.29
+1
+2012-05-02, 收盘价Close, 2683.49
+2012-05-02, 设置买单 BUY CREATE, 2683.49,信号为:1.20,阈值为:1.12
+2012-05-03, 买单执行BUY EXECUTED, 报价：2679.78
+2012-05-09, 收盘价Close, 2657.51
+2012-05-09, 设置卖单SELL CREATE, 2657.51信号为:1.09,阈值为:1.12
+2012-05-10, 卖单执行SELL EXECUTED,报价： 2657.60
+1
+2012-05-29, 收盘价Close, 2650.85
+2012-05-29, 设置买单 BUY CREATE, 2650.85,信号为:1.42,阈值为:1.12
+2012-05-30, 买单执行BUY EXECUTED, 报价：2646.63
+2012-05-31, 收盘价Close, 2632.04
+2012-05-31, 设置卖单SELL CREATE, 2632.04信号为:0.96,阈值为:1.12
+2012-06-01, 卖单执行SELL EXECUTED,报价： 2633.34
+1
+2012-07-09, 收盘价Close, 2416.04
+2012-07-09, 设置买单 BUY CREATE, 2416.04,信号为:1.45,阈值为:1.27
+2012-07-10, 买单执行BUY EXECUTED, 报价：2411.24
+2012-07-10, 收盘价Close, 2406.71
+2012-07-10, 设置卖单SELL CREATE, 2406.71信号为:1.21,阈值为:1.27
+2012-07-11, 卖单执行SELL EXECUTED,报价： 2402.15
+1
+2012-07-12, 收盘价Close, 2449.18
+2012-07-12, 设置买单 BUY CREATE, 2449.18,信号为:1.32,阈值为:1.27
+2012-07-13, 买单执行BUY EXECUTED, 报价：2441.26
+2012-07-16, 收盘价Close, 2399.73
+2012-07-16, 设置卖单SELL CREATE, 2399.73信号为:1.13,阈值为:1.27
+2012-07-17, 卖单执行SELL EXECUTED,报价： 2391.66
+1
+2012-08-07, 收盘价Close, 2388.87
+2012-08-07, 设置买单 BUY CREATE, 2388.87,信号为:1.30,阈值为:1.27
+2012-08-08, 买单执行BUY EXECUTED, 报价：2391.20
+2012-08-08, 收盘价Close, 2389.80
+2012-08-08, 设置卖单SELL CREATE, 2389.80信号为:1.24,阈值为:1.27
+2012-08-09, 卖单执行SELL EXECUTED,报价： 2388.19
+1
+2012-08-14, 收盘价Close, 2357.02
+2012-08-14, 设置买单 BUY CREATE, 2357.02,信号为:1.36,阈值为:1.27
+2012-08-15, 买单执行BUY EXECUTED, 报价：2350.02
+2012-08-15, 收盘价Close, 2331.61
+2012-08-15, 设置卖单SELL CREATE, 2331.61信号为:1.08,阈值为:1.27
+2012-08-16, 卖单执行SELL EXECUTED,报价： 2327.68
+1
+2012-09-07, 收盘价Close, 2317.18
+2012-09-07, 设置买单 BUY CREATE, 2317.18,信号为:2.27,阈值为:1.27
+2012-09-10, 买单执行BUY EXECUTED, 报价：2320.79
+2012-09-12, 收盘价Close, 2320.07
+2012-09-12, 设置卖单SELL CREATE, 2320.07信号为:1.23,阈值为:1.27
+2012-09-13, 卖单执行SELL EXECUTED,报价： 2316.45
+1
+2012-09-14, 收盘价Close, 2315.54
+2012-09-14, 设置买单 BUY CREATE, 2315.54,信号为:1.41,阈值为:1.27
+2012-09-17, 买单执行BUY EXECUTED, 报价：2312.29
+2012-09-18, 收盘价Close, 2235.24
+2012-09-18, 设置卖单SELL CREATE, 2235.24信号为:1.04,阈值为:1.27
+2012-09-19, 卖单执行SELL EXECUTED,报价： 2236.99
+1
+2012-09-28, 收盘价Close, 2293.11
+2012-09-28, 设置买单 BUY CREATE, 2293.11,信号为:1.53,阈值为:1.27
+2012-10-08, 买单执行BUY EXECUTED, 报价：2292.19
+2012-10-08, 收盘价Close, 2270.05
+2012-10-08, 设置卖单SELL CREATE, 2270.05信号为:1.25,阈值为:1.27
+2012-10-09, 卖单执行SELL EXECUTED,报价： 2281.75
+1
+2012-12-05, 收盘价Close, 2207.88
+2012-12-05, 设置买单 BUY CREATE, 2207.88,信号为:2.09,阈值为:1.27
+2012-12-06, 买单执行BUY EXECUTED, 报价：2205.83
+2012-12-12, 收盘价Close, 2267.77
+2012-12-12, 设置卖单SELL CREATE, 2267.77信号为:1.17,阈值为:1.27
+2012-12-13, 卖单执行SELL EXECUTED,报价： 2260.37
+1
+2012-12-14, 收盘价Close, 2355.86
+2012-12-14, 设置买单 BUY CREATE, 2355.86,信号为:2.12,阈值为:1.12
+2012-12-17, 买单执行BUY EXECUTED, 报价：2359.44
+2013-01-09, 收盘价Close, 2526.13
+2013-01-09, 设置卖单SELL CREATE, 2526.13信号为:1.02,阈值为:1.12
+2013-01-10, 卖单执行SELL EXECUTED,报价： 2525.34
+1
+2013-01-14, 收盘价Close, 2577.72
+2013-01-14, 设置买单 BUY CREATE, 2577.72,信号为:1.27,阈值为:1.12
+2013-01-15, 买单执行BUY EXECUTED, 报价：2579.39
+2013-01-17, 收盘价Close, 2552.76
+2013-01-17, 设置卖单SELL CREATE, 2552.76信号为:1.08,阈值为:1.12
+2013-01-18, 卖单执行SELL EXECUTED,报价： 2568.44
+1
+2013-01-22, 收盘价Close, 2596.90
+2013-01-22, 设置买单 BUY CREATE, 2596.90,信号为:1.26,阈值为:1.12
+2013-01-23, 买单执行BUY EXECUTED, 报价：2588.46
+2013-01-25, 收盘价Close, 2571.67
+2013-01-25, 设置卖单SELL CREATE, 2571.67信号为:0.95,阈值为:1.12
+2013-01-28, 卖单执行SELL EXECUTED,报价： 2577.27
+1
+2013-01-30, 收盘价Close, 2688.71
+2013-01-30, 设置买单 BUY CREATE, 2688.71,信号为:1.20,阈值为:1.12
+2013-01-31, 买单执行BUY EXECUTED, 报价：2691.22
+2013-02-01, 收盘价Close, 2743.32
+2013-02-01, 设置卖单SELL CREATE, 2743.32信号为:1.12,阈值为:1.12
+2013-02-04, 卖单执行SELL EXECUTED,报价： 2753.41
+1
+2013-02-04, 收盘价Close, 2748.03
+2013-02-04, 设置买单 BUY CREATE, 2748.03,信号为:1.30,阈值为:1.12
+2013-02-05, 买单执行BUY EXECUTED, 报价：2728.20
+2013-02-06, 收盘价Close, 2775.84
+2013-02-06, 设置卖单SELL CREATE, 2775.84信号为:1.01,阈值为:1.12
+2013-02-07, 卖单执行SELL EXECUTED,报价： 2771.25
+1
+2013-04-22, 收盘价Close, 2530.67
+2013-04-22, 设置买单 BUY CREATE, 2530.67,信号为:1.34,阈值为:1.27
+2013-04-23, 买单执行BUY EXECUTED, 报价：2532.20
+2013-04-23, 收盘价Close, 2449.47
+2013-04-23, 设置卖单SELL CREATE, 2449.47信号为:1.22,阈值为:1.27
+2013-04-24, 卖单执行SELL EXECUTED,报价： 2452.54
+1
+2013-05-17, 收盘价Close, 2592.05
+2013-05-17, 设置买单 BUY CREATE, 2592.05,信号为:1.73,阈值为:1.27
+2013-05-20, 买单执行BUY EXECUTED, 报价：2597.41
+2013-06-03, 收盘价Close, 2602.62
+2013-06-03, 设置卖单SELL CREATE, 2602.62信号为:0.99,阈值为:1.12
+2013-06-04, 卖单执行SELL EXECUTED,报价： 2600.24
+1
+2013-06-24, 收盘价Close, 2171.21
+2013-06-24, 设置买单 BUY CREATE, 2171.21,信号为:1.28,阈值为:1.27
+2013-06-25, 买单执行BUY EXECUTED, 报价：2146.27
+2013-06-27, 收盘价Close, 2160.74
+2013-06-27, 设置卖单SELL CREATE, 2160.74信号为:1.19,阈值为:1.27
+2013-06-28, 卖单执行SELL EXECUTED,报价： 2148.82
+1
+2013-07-11, 收盘价Close, 2326.69
+2013-07-11, 设置买单 BUY CREATE, 2326.69,信号为:1.51,阈值为:1.27
+2013-07-12, 买单执行BUY EXECUTED, 报价：2319.25
+2013-07-16, 收盘价Close, 2317.85
+2013-07-16, 设置卖单SELL CREATE, 2317.85信号为:0.89,阈值为:1.27
+2013-07-17, 卖单执行SELL EXECUTED,报价： 2311.21
+1
+2013-08-12, 收盘价Close, 2352.79
+2013-08-12, 设置买单 BUY CREATE, 2352.79,信号为:1.29,阈值为:1.27
+2013-08-13, 买单执行BUY EXECUTED, 报价：2353.12
+2013-08-14, 收盘价Close, 2349.08
+2013-08-14, 设置卖单SELL CREATE, 2349.08信号为:1.23,阈值为:1.27
+2013-08-15, 卖单执行SELL EXECUTED,报价： 2348.60
+1
+2013-08-16, 收盘价Close, 2304.14
+2013-08-16, 设置买单 BUY CREATE, 2304.14,信号为:1.41,阈值为:1.27
+2013-08-19, 买单执行BUY EXECUTED, 报价：2286.43
+2013-08-20, 收盘价Close, 2312.47
+2013-08-20, 设置卖单SELL CREATE, 2312.47信号为:1.07,阈值为:1.27
+2013-08-21, 卖单执行SELL EXECUTED,报价： 2320.35
+1
+2013-09-09, 收盘价Close, 2440.61
+2013-09-09, 设置买单 BUY CREATE, 2440.61,信号为:1.67,阈值为:1.12
+2013-09-10, 买单执行BUY EXECUTED, 报价：2446.70
+2013-09-16, 收盘价Close, 2478.39
+2013-09-16, 设置卖单SELL CREATE, 2478.39信号为:1.10,阈值为:1.12
+2013-09-17, 卖单执行SELL EXECUTED,报价： 2480.56
+1
+2013-11-18, 收盘价Close, 2428.90
+2013-11-18, 设置买单 BUY CREATE, 2428.90,信号为:1.41,阈值为:1.27
+2013-11-19, 买单执行BUY EXECUTED, 报价：2427.93
+2013-11-20, 收盘价Close, 2424.85
+2013-11-20, 设置卖单SELL CREATE, 2424.85信号为:0.99,阈值为:1.12
+2013-11-21, 卖单执行SELL EXECUTED,报价： 2412.21
+1
+2013-11-28, 收盘价Close, 2439.53
+2013-11-28, 设置买单 BUY CREATE, 2439.53,信号为:1.20,阈值为:1.12
+2013-11-29, 买单执行BUY EXECUTED, 报价：2442.92
+2013-11-29, 收盘价Close, 2438.94
+2013-11-29, 设置卖单SELL CREATE, 2438.94信号为:1.11,阈值为:1.12
+2013-12-02, 卖单执行SELL EXECUTED,报价： 2423.73
+1
+2013-12-02, 收盘价Close, 2418.79
+2013-12-02, 设置买单 BUY CREATE, 2418.79,信号为:1.38,阈值为:1.12
+2013-12-03, 买单执行BUY EXECUTED, 报价：2410.93
+2013-12-06, 收盘价Close, 2452.29
+2013-12-06, 设置卖单SELL CREATE, 2452.29信号为:0.94,阈值为:1.12
+2013-12-09, 卖单执行SELL EXECUTED,报价： 2459.78
+1
+2014-01-23, 收盘价Close, 2231.89
+2014-01-23, 设置买单 BUY CREATE, 2231.89,信号为:1.40,阈值为:1.27
+2014-01-24, 买单执行BUY EXECUTED, 报价：2225.98
+2014-01-29, 收盘价Close, 2227.78
+2014-01-29, 设置卖单SELL CREATE, 2227.78信号为:1.03,阈值为:1.27
+2014-01-30, 卖单执行SELL EXECUTED,报价： 2222.94
+1
+2014-02-10, 收盘价Close, 2267.53
+2014-02-10, 设置买单 BUY CREATE, 2267.53,信号为:1.51,阈值为:1.27
+2014-02-11, 买单执行BUY EXECUTED, 报价：2267.96
+2014-02-27, 收盘价Close, 2154.11
+2014-02-27, 设置卖单SELL CREATE, 2154.11信号为:1.25,阈值为:1.27
+2014-02-28, 卖单执行SELL EXECUTED,报价： 2149.23
+1
+2014-03-24, 收盘价Close, 2176.55
+2014-03-24, 设置买单 BUY CREATE, 2176.55,信号为:1.53,阈值为:1.27
+2014-03-25, 买单执行BUY EXECUTED, 报价：2171.00
+2014-03-26, 收盘价Close, 2171.05
+2014-03-26, 设置卖单SELL CREATE, 2171.05信号为:0.88,阈值为:1.27
+2014-03-27, 卖单执行SELL EXECUTED,报价： 2168.13
+1
+2014-04-10, 收盘价Close, 2273.76
+2014-04-10, 设置买单 BUY CREATE, 2273.76,信号为:1.34,阈值为:1.27
+2014-04-11, 买单执行BUY EXECUTED, 报价：2269.79
+2014-04-14, 收盘价Close, 2268.61
+2014-04-14, 设置卖单SELL CREATE, 2268.61信号为:1.00,阈值为:1.12
+2014-04-15, 卖单执行SELL EXECUTED,报价： 2261.18
+1
+2014-05-13, 收盘价Close, 2174.85
+2014-05-13, 设置买单 BUY CREATE, 2174.85,信号为:1.36,阈值为:1.27
+2014-05-14, 买单执行BUY EXECUTED, 报价：2175.31
+2014-05-14, 收盘价Close, 2172.37
+2014-05-14, 设置卖单SELL CREATE, 2172.37信号为:1.00,阈值为:1.27
+2014-05-15, 卖单执行SELL EXECUTED,报价： 2169.06
+1
+2014-06-13, 收盘价Close, 2176.24
+2014-06-13, 设置买单 BUY CREATE, 2176.24,信号为:1.36,阈值为:1.27
+2014-06-16, 买单执行BUY EXECUTED, 报价：2176.66
+2014-06-18, 收盘价Close, 2160.24
+2014-06-18, 设置卖单SELL CREATE, 2160.24信号为:1.26,阈值为:1.27
+2014-06-19, 卖单执行SELL EXECUTED,报价： 2161.21
+1
+2014-06-27, 收盘价Close, 2150.26
+2014-06-27, 设置买单 BUY CREATE, 2150.26,信号为:1.32,阈值为:1.27
+2014-06-30, 买单执行BUY EXECUTED, 报价：2152.52
+2014-07-21, 收盘价Close, 2166.30
+2014-07-21, 设置卖单SELL CREATE, 2166.30信号为:1.10,阈值为:1.12
+2014-07-22, 卖单执行SELL EXECUTED,报价： 2162.24
+1
+2014-07-22, 收盘价Close, 2192.70
+2014-07-22, 设置买单 BUY CREATE, 2192.70,信号为:1.30,阈值为:1.12
+2014-07-23, 买单执行BUY EXECUTED, 报价：2191.61
+2014-08-08, 收盘价Close, 2331.13
+2014-08-08, 设置卖单SELL CREATE, 2331.13信号为:1.08,阈值为:1.12
+2014-08-11, 卖单执行SELL EXECUTED,报价： 2337.77
+1
+2014-09-03, 收盘价Close, 2408.84
+2014-09-03, 设置买单 BUY CREATE, 2408.84,信号为:1.23,阈值为:1.12
+2014-09-04, 买单执行BUY EXECUTED, 报价：2412.18
+2014-09-09, 收盘价Close, 2445.22
+2014-09-09, 设置卖单SELL CREATE, 2445.22信号为:1.12,阈值为:1.12
+2014-09-10, 卖单执行SELL EXECUTED,报价： 2435.35
+1
+2014-09-16, 收盘价Close, 2388.76
+2014-09-16, 设置买单 BUY CREATE, 2388.76,信号为:1.39,阈值为:1.12
+2014-09-17, 买单执行BUY EXECUTED, 报价：2395.60
+2014-09-18, 收盘价Close, 2408.66
+2014-09-18, 设置卖单SELL CREATE, 2408.66信号为:0.99,阈值为:1.12
+2014-09-19, 卖单执行SELL EXECUTED,报价： 2409.07
+1
+2014-09-25, 收盘价Close, 2436.97
+2014-09-25, 设置买单 BUY CREATE, 2436.97,信号为:1.19,阈值为:1.12
+2014-09-26, 买单执行BUY EXECUTED, 报价：2431.05
+2014-09-26, 收盘价Close, 2437.20
+2014-09-26, 设置卖单SELL CREATE, 2437.20信号为:1.00,阈值为:1.12
+2014-09-29, 卖单执行SELL EXECUTED,报价： 2443.67
+1
+2014-10-10, 收盘价Close, 2466.79
+2014-10-10, 设置买单 BUY CREATE, 2466.79,信号为:1.18,阈值为:1.12
+2014-10-13, 买单执行BUY EXECUTED, 报价：2457.66
+2014-10-14, 收盘价Close, 2446.56
+2014-10-14, 设置卖单SELL CREATE, 2446.56信号为:1.01,阈值为:1.12
+2014-10-15, 卖单执行SELL EXECUTED,报价： 2444.29
+1
+2014-10-16, 收盘价Close, 2444.39
+2014-10-16, 设置买单 BUY CREATE, 2444.39,信号为:1.16,阈值为:1.12
+2014-10-17, 买单执行BUY EXECUTED, 报价：2443.47
+2014-10-20, 收盘价Close, 2454.71
+2014-10-20, 设置卖单SELL CREATE, 2454.71信号为:0.80,阈值为:1.12
+2014-10-21, 卖单执行SELL EXECUTED,报价： 2453.16
+1
+2014-10-29, 收盘价Close, 2451.38
+2014-10-29, 设置买单 BUY CREATE, 2451.38,信号为:1.13,阈值为:1.12
+2014-10-30, 买单执行BUY EXECUTED, 报价：2450.61
+2014-11-14, 收盘价Close, 2581.09
+2014-11-14, 设置卖单SELL CREATE, 2581.09信号为:1.01,阈值为:1.12
+2014-11-17, 卖单执行SELL EXECUTED,报价： 2613.25
+1
+2014-11-24, 收盘价Close, 2649.26
+2014-11-24, 设置买单 BUY CREATE, 2649.26,信号为:1.37,阈值为:1.12
+2014-11-25, 买单执行BUY EXECUTED, 报价：2650.35
+2014-12-12, 收盘价Close, 3193.23
+2014-12-12, 设置卖单SELL CREATE, 3193.23信号为:0.90,阈值为:1.12
+2014-12-15, 卖单执行SELL EXECUTED,报价： 3176.51
+1
+2014-12-17, 收盘价Close, 3360.60
+2014-12-17, 设置买单 BUY CREATE, 3360.60,信号为:1.29,阈值为:1.12
+2014-12-18, 买单执行BUY EXECUTED, 报价：3359.43
+2014-12-24, 收盘价Close, 3230.39
+2014-12-24, 设置卖单SELL CREATE, 3230.39信号为:0.88,阈值为:1.12
+2014-12-25, 卖单执行SELL EXECUTED,报价： 3254.15
+1
+2015-03-02, 收盘价Close, 3601.26
+2015-03-02, 设置买单 BUY CREATE, 3601.26,信号为:1.13,阈值为:1.12
+2015-03-03, 买单执行BUY EXECUTED, 报价：3579.32
+2015-03-04, 收盘价Close, 3530.82
+2015-03-04, 设置卖单SELL CREATE, 3530.82信号为:1.08,阈值为:1.12
+2015-03-05, 卖单执行SELL EXECUTED,报价： 3512.90
+1
+2015-03-12, 收盘价Close, 3592.84
+2015-03-12, 设置买单 BUY CREATE, 3592.84,信号为:1.23,阈值为:1.12
+2015-03-13, 买单执行BUY EXECUTED, 报价：3605.03
+2015-04-30, 收盘价Close, 4749.89
+2015-04-30, 设置卖单SELL CREATE, 4749.89信号为:0.82,阈值为:1.12
+2015-05-04, 卖单执行SELL EXECUTED,报价： 4757.16
+1
+2015-05-26, 收盘价Close, 5198.92
+2015-05-26, 设置买单 BUY CREATE, 5198.92,信号为:1.15,阈值为:1.12
+2015-05-27, 买单执行BUY EXECUTED, 报价：5216.69
+2015-05-27, 收盘价Close, 5181.43
+2015-05-27, 设置卖单SELL CREATE, 5181.43信号为:1.11,阈值为:1.12
+2015-05-28, 卖单执行SELL EXECUTED,报价： 5173.58
+1
+2015-05-28, 收盘价Close, 4834.01
+2015-05-28, 设置买单 BUY CREATE, 4834.01,信号为:1.21,阈值为:1.12
+2015-05-29, 买单执行BUY EXECUTED, 报价：4840.01
+2015-05-29, 收盘价Close, 4840.83
+2015-05-29, 设置卖单SELL CREATE, 4840.83信号为:1.11,阈值为:1.12
+2015-06-01, 卖单执行SELL EXECUTED,报价： 4862.27
+1
+2015-06-05, 收盘价Close, 5230.55
+2015-06-05, 设置买单 BUY CREATE, 5230.55,信号为:1.19,阈值为:1.12
+2015-06-08, 买单执行BUY EXECUTED, 报价：5259.93
+2015-06-10, 收盘价Close, 5309.11
+2015-06-10, 设置卖单SELL CREATE, 5309.11信号为:1.08,阈值为:1.12
+2015-06-11, 卖单执行SELL EXECUTED,报价： 5304.61
+1
+2015-06-30, 收盘价Close, 4473.00
+2015-06-30, 设置买单 BUY CREATE, 4473.00,信号为:1.17,阈值为:1.12
+2015-07-01, 买单执行BUY EXECUTED, 报价：4409.43
+2015-07-01, 收盘价Close, 4253.02
+2015-07-01, 设置卖单SELL CREATE, 4253.02信号为:1.02,阈值为:1.27
+2015-07-02, 卖单执行SELL EXECUTED,报价： 4287.31
+1
+2015-07-07, 收盘价Close, 3928.00
+2015-07-07, 设置买单 BUY CREATE, 3928.00,信号为:1.47,阈值为:1.27
+2015-07-08, 买单执行BUY EXECUTED, 报价：3651.43
+2015-07-09, 收盘价Close, 3897.63
+2015-07-09, 设置卖单SELL CREATE, 3897.63信号为:1.06,阈值为:1.27
+2015-07-10, 卖单执行SELL EXECUTED,报价： 3915.88
+1
+2015-09-02, 收盘价Close, 3365.83
+2015-09-02, 设置买单 BUY CREATE, 3365.83,信号为:1.40,阈值为:1.27
+2015-09-07, 买单执行BUY EXECUTED, 报价：3347.63
+2015-09-07, 收盘价Close, 3250.49
+2015-09-07, 设置卖单SELL CREATE, 3250.49信号为:1.05,阈值为:1.27
+2015-09-08, 卖单执行SELL EXECUTED,报价： 3221.47
+1
+2015-10-12, 收盘价Close, 3447.69
+2015-10-12, 设置买单 BUY CREATE, 3447.69,信号为:1.81,阈值为:1.27
+2015-10-13, 买单执行BUY EXECUTED, 报价：3422.82
+2015-10-29, 收盘价Close, 3533.31
+2015-10-29, 设置卖单SELL CREATE, 3533.31信号为:1.18,阈值为:1.27
+2015-10-30, 卖单执行SELL EXECUTED,报价： 3529.87
+1
+2015-11-04, 收盘价Close, 3628.54
+2015-11-04, 设置买单 BUY CREATE, 3628.54,信号为:1.41,阈值为:1.27
+2015-11-05, 买单执行BUY EXECUTED, 报价：3631.14
+2015-11-16, 收盘价Close, 3764.13
+2015-11-16, 设置卖单SELL CREATE, 3764.13信号为:1.06,阈值为:1.12
+2015-11-17, 卖单执行SELL EXECUTED,报价： 3790.05
+1
+2015-11-17, 收盘价Close, 3758.39
+2015-11-17, 设置买单 BUY CREATE, 3758.39,信号为:1.29,阈值为:1.12
+2015-11-18, 买单执行BUY EXECUTED, 报价：3760.83
+2015-11-19, 收盘价Close, 3774.97
+2015-11-19, 设置卖单SELL CREATE, 3774.97信号为:1.01,阈值为:1.12
+2015-11-20, 卖单执行SELL EXECUTED,报价： 3778.51
+1
+2015-11-27, 收盘价Close, 3556.99
+2015-11-27, 设置买单 BUY CREATE, 3556.99,信号为:1.15,阈值为:1.12
+2015-11-30, 买单执行BUY EXECUTED, 报价：3555.25
+2015-12-01, 收盘价Close, 3591.70
+2015-12-01, 设置卖单SELL CREATE, 3591.70信号为:0.84,阈值为:1.12
+2015-12-02, 卖单执行SELL EXECUTED,报价： 3587.40
+1
+2015-12-03, 收盘价Close, 3749.30
+2015-12-03, 设置买单 BUY CREATE, 3749.30,信号为:1.15,阈值为:1.12
+2015-12-04, 买单执行BUY EXECUTED, 报价：3720.11
+2015-12-04, 收盘价Close, 3677.59
+2015-12-04, 设置卖单SELL CREATE, 3677.59信号为:0.97,阈值为:1.12
+2015-12-07, 卖单执行SELL EXECUTED,报价： 3681.21
+1
+2015-12-21, 收盘价Close, 3865.97
+2015-12-21, 设置买单 BUY CREATE, 3865.97,信号为:1.29,阈值为:1.12
+2015-12-22, 买单执行BUY EXECUTED, 报价：3872.48
+2015-12-24, 收盘价Close, 3829.40
+2015-12-24, 设置卖单SELL CREATE, 3829.40信号为:1.02,阈值为:1.12
+2015-12-25, 卖单执行SELL EXECUTED,报价： 3831.70
+1
+2016-01-11, 收盘价Close, 3192.45
+2016-01-11, 设置买单 BUY CREATE, 3192.45,信号为:1.29,阈值为:1.27
+2016-01-12, 买单执行BUY EXECUTED, 报价：3215.14
+2016-01-12, 收盘价Close, 3215.71
+2016-01-12, 设置卖单SELL CREATE, 3215.71信号为:1.15,阈值为:1.27
+2016-01-13, 卖单执行SELL EXECUTED,报价： 3240.16
+1
+2016-02-17, 收盘价Close, 3063.32
+2016-02-17, 设置买单 BUY CREATE, 3063.32,信号为:1.34,阈值为:1.27
+2016-02-18, 买单执行BUY EXECUTED, 报价：3079.84
+2016-02-19, 收盘价Close, 3051.59
+2016-02-19, 设置卖单SELL CREATE, 3051.59信号为:1.14,阈值为:1.27
+2016-02-22, 卖单执行SELL EXECUTED,报价： 3083.62
+1
+2016-02-23, 收盘价Close, 3089.36
+2016-02-23, 设置买单 BUY CREATE, 3089.36,信号为:1.38,阈值为:1.27
+2016-02-24, 买单执行BUY EXECUTED, 报价：3077.91
+2016-02-24, 收盘价Close, 3109.55
+2016-02-24, 设置卖单SELL CREATE, 3109.55信号为:1.26,阈值为:1.27
+2016-02-25, 卖单执行SELL EXECUTED,报价： 3104.10
+1
+2016-02-25, 收盘价Close, 2918.75
+2016-02-25, 设置买单 BUY CREATE, 2918.75,信号为:1.53,阈值为:1.27
+2016-02-26, 买单执行BUY EXECUTED, 报价：2942.39
+2016-03-01, 收盘价Close, 2930.69
+2016-03-01, 设置卖单SELL CREATE, 2930.69信号为:1.27,阈值为:1.27
+2016-03-02, 卖单执行SELL EXECUTED,报价： 2933.63
+1
+2016-03-02, 收盘价Close, 3051.33
+2016-03-02, 设置买单 BUY CREATE, 3051.33,信号为:1.63,阈值为:1.27
+2016-03-03, 买单执行BUY EXECUTED, 报价：3050.69
+2016-03-08, 收盘价Close, 3107.67
+2016-03-08, 设置卖单SELL CREATE, 3107.67信号为:1.23,阈值为:1.27
+2016-03-09, 卖单执行SELL EXECUTED,报价： 3045.62
+1
+2016-03-18, 收盘价Close, 3171.96
+2016-03-18, 设置买单 BUY CREATE, 3171.96,信号为:1.66,阈值为:1.27
+2016-03-21, 买单执行BUY EXECUTED, 报价：3203.61
+2016-03-23, 收盘价Close, 3236.09
+2016-03-23, 设置卖单SELL CREATE, 3236.09信号为:1.20,阈值为:1.27
+2016-03-24, 卖单执行SELL EXECUTED,报价： 3211.17
+1
+2016-04-14, 收盘价Close, 3275.83
+2016-04-14, 设置买单 BUY CREATE, 3275.83,信号为:1.29,阈值为:1.27
+2016-04-15, 买单执行BUY EXECUTED, 报价：3280.18
+2016-04-15, 收盘价Close, 3272.21
+2016-04-15, 设置卖单SELL CREATE, 3272.21信号为:0.85,阈值为:1.27
+2016-04-18, 卖单执行SELL EXECUTED,报价： 3252.35
+1
+2016-05-31, 收盘价Close, 3169.56
+2016-05-31, 设置买单 BUY CREATE, 3169.56,信号为:1.66,阈值为:1.27
+2016-06-01, 买单执行BUY EXECUTED, 报价：3173.28
+2016-06-07, 收盘价Close, 3177.05
+2016-06-07, 设置卖单SELL CREATE, 3177.05信号为:0.99,阈值为:1.12
+2016-06-08, 卖单执行SELL EXECUTED,报价： 3171.50
+1
+2016-06-13, 收盘价Close, 3066.34
+2016-06-13, 设置买单 BUY CREATE, 3066.34,信号为:1.29,阈值为:1.12
+2016-06-14, 买单执行BUY EXECUTED, 报价：3058.75
+2016-06-20, 收盘价Close, 3112.67
+2016-06-20, 设置卖单SELL CREATE, 3112.67信号为:1.10,阈值为:1.27
+2016-06-21, 卖单执行SELL EXECUTED,报价： 3124.59
+1
+2016-06-24, 收盘价Close, 3077.16
+2016-06-24, 设置买单 BUY CREATE, 3077.16,信号为:1.38,阈值为:1.27
+2016-06-27, 买单执行BUY EXECUTED, 报价：3065.43
+2016-07-01, 收盘价Close, 3154.20
+2016-07-01, 设置卖单SELL CREATE, 3154.20信号为:1.07,阈值为:1.12
+2016-07-04, 卖单执行SELL EXECUTED,报价： 3136.07
+1
+2016-07-04, 收盘价Close, 3204.70
+2016-07-04, 设置买单 BUY CREATE, 3204.70,信号为:1.55,阈值为:1.12
+2016-07-05, 买单执行BUY EXECUTED, 报价：3199.48
+2016-07-15, 收盘价Close, 3276.28
+2016-07-15, 设置卖单SELL CREATE, 3276.28信号为:1.02,阈值为:1.12
+2016-07-18, 卖单执行SELL EXECUTED,报价： 3269.38
+1
+2016-07-27, 收盘价Close, 3218.24
+2016-07-27, 设置买单 BUY CREATE, 3218.24,信号为:1.32,阈值为:1.12
+2016-07-28, 买单执行BUY EXECUTED, 报价：3204.78
+2016-07-29, 收盘价Close, 3203.93
+2016-07-29, 设置卖单SELL CREATE, 3203.93信号为:1.03,阈值为:1.12
+2016-08-01, 卖单执行SELL EXECUTED,报价： 3196.11
+1
+2016-08-12, 收盘价Close, 3294.23
+2016-08-12, 设置买单 BUY CREATE, 3294.23,信号为:1.13,阈值为:1.12
+2016-08-15, 买单执行BUY EXECUTED, 报价：3303.80
+2016-08-19, 收盘价Close, 3365.02
+2016-08-19, 设置卖单SELL CREATE, 3365.02信号为:1.01,阈值为:1.12
+2016-08-22, 卖单执行SELL EXECUTED,报价： 3364.34
+1
+2016-10-11, 收盘价Close, 3306.56
+2016-10-11, 设置买单 BUY CREATE, 3306.56,信号为:1.18,阈值为:1.12
+2016-10-12, 买单执行BUY EXECUTED, 报价：3299.47
+2016-10-12, 收盘价Close, 3300.01
+2016-10-12, 设置卖单SELL CREATE, 3300.01信号为:1.11,阈值为:1.12
+2016-10-13, 卖单执行SELL EXECUTED,报价： 3298.83
+1
+2016-10-17, 收盘价Close, 3277.88
+2016-10-17, 设置买单 BUY CREATE, 3277.88,信号为:1.18,阈值为:1.12
+2016-10-18, 买单执行BUY EXECUTED, 报价：3273.01
+2016-10-27, 收盘价Close, 3345.70
+2016-10-27, 设置卖单SELL CREATE, 3345.70信号为:0.99,阈值为:1.12
+2016-10-28, 卖单执行SELL EXECUTED,报价： 3346.81
+1
+2016-11-03, 收盘价Close, 3365.09
+2016-11-03, 设置买单 BUY CREATE, 3365.09,信号为:1.51,阈值为:1.12
+2016-11-04, 买单执行BUY EXECUTED, 报价：3362.54
+2016-11-17, 收盘价Close, 3436.53
+2016-11-17, 设置卖单SELL CREATE, 3436.53信号为:1.05,阈值为:1.12
+2016-11-18, 卖单执行SELL EXECUTED,报价： 3437.15
+1
+2016-11-21, 收盘价Close, 3441.11
+2016-11-21, 设置买单 BUY CREATE, 3441.11,信号为:1.23,阈值为:1.12
+2016-11-22, 买单执行BUY EXECUTED, 报价：3443.56
+2016-12-06, 收盘价Close, 3459.15
+2016-12-06, 设置卖单SELL CREATE, 3459.15信号为:0.91,阈值为:1.12
+2016-12-07, 卖单执行SELL EXECUTED,报价： 3458.02
+1
+2016-12-12, 收盘价Close, 3409.18
+2016-12-12, 设置买单 BUY CREATE, 3409.18,信号为:1.14,阈值为:1.12
+2016-12-13, 买单执行BUY EXECUTED, 报价：3394.55
+2016-12-13, 收盘价Close, 3405.04
+2016-12-13, 设置卖单SELL CREATE, 3405.04信号为:1.00,阈值为:1.12
+2016-12-14, 卖单执行SELL EXECUTED,报价： 3399.07
+1
+2017-02-09, 收盘价Close, 3396.29
+2017-02-09, 设置买单 BUY CREATE, 3396.29,信号为:1.22,阈值为:1.12
+2017-02-10, 买单执行BUY EXECUTED, 报价：3398.66
+2017-02-28, 收盘价Close, 3452.81
+2017-02-28, 设置卖单SELL CREATE, 3452.81信号为:1.05,阈值为:1.12
+2017-03-01, 卖单执行SELL EXECUTED,报价： 3451.86
+1
+2017-03-02, 收盘价Close, 3435.10
+2017-03-02, 设置买单 BUY CREATE, 3435.10,信号为:1.21,阈值为:1.12
+2017-03-03, 买单执行BUY EXECUTED, 报价：3425.01
+2017-03-03, 收盘价Close, 3427.86
+2017-03-03, 设置卖单SELL CREATE, 3427.86信号为:1.07,阈值为:1.12
+2017-03-06, 卖单执行SELL EXECUTED,报价： 3426.91
+1
+2017-03-16, 收盘价Close, 3481.51
+2017-03-16, 设置买单 BUY CREATE, 3481.51,信号为:1.19,阈值为:1.12
+2017-03-17, 买单执行BUY EXECUTED, 报价：3485.66
+2017-03-21, 收盘价Close, 3466.35
+2017-03-21, 设置卖单SELL CREATE, 3466.35信号为:1.06,阈值为:1.12
+2017-03-22, 卖单执行SELL EXECUTED,报价： 3450.41
+1
+2017-03-22, 收盘价Close, 3450.05
+2017-03-22, 设置买单 BUY CREATE, 3450.05,信号为:1.15,阈值为:1.12
+2017-03-23, 买单执行BUY EXECUTED, 报价：3452.75
+2017-03-28, 收盘价Close, 3469.81
+2017-03-28, 设置卖单SELL CREATE, 3469.81信号为:1.09,阈值为:1.12
+2017-03-29, 卖单执行SELL EXECUTED,报价： 3472.62
+1
+2017-03-30, 收盘价Close, 3436.76
+2017-03-30, 设置买单 BUY CREATE, 3436.76,信号为:1.25,阈值为:1.12
+2017-03-31, 买单执行BUY EXECUTED, 报价：3435.17
+2017-04-17, 收盘价Close, 3479.94
+2017-04-17, 设置卖单SELL CREATE, 3479.94信号为:1.01,阈值为:1.12
+2017-04-18, 卖单执行SELL EXECUTED,报价： 3474.54
+1
+2017-06-22, 收盘价Close, 3590.34
+2017-06-22, 设置买单 BUY CREATE, 3590.34,信号为:1.35,阈值为:1.12
+2017-06-23, 买单执行BUY EXECUTED, 报价：3583.79
+2017-06-28, 收盘价Close, 3646.17
+2017-06-28, 设置卖单SELL CREATE, 3646.17信号为:1.05,阈值为:1.12
+2017-06-29, 卖单执行SELL EXECUTED,报价： 3648.89
+1
+2017-07-07, 收盘价Close, 3655.93
+2017-07-07, 设置买单 BUY CREATE, 3655.93,信号为:1.19,阈值为:1.12
+2017-07-10, 买单执行BUY EXECUTED, 报价：3648.30
+2017-07-24, 收盘价Close, 3743.47
+2017-07-24, 设置卖单SELL CREATE, 3743.47信号为:1.11,阈值为:1.12
+2017-07-25, 卖单执行SELL EXECUTED,报价： 3742.27
+1
+2017-07-26, 收盘价Close, 3705.39
+2017-07-26, 设置买单 BUY CREATE, 3705.39,信号为:1.17,阈值为:1.12
+2017-07-27, 买单执行BUY EXECUTED, 报价：3701.23
+2017-07-28, 收盘价Close, 3721.89
+2017-07-28, 设置卖单SELL CREATE, 3721.89信号为:1.12,阈值为:1.12
+2017-07-31, 卖单执行SELL EXECUTED,报价： 3722.06
+1
+2017-07-31, 收盘价Close, 3737.87
+2017-07-31, 设置买单 BUY CREATE, 3737.87,信号为:1.13,阈值为:1.12
+2017-08-01, 买单执行BUY EXECUTED, 报价：3739.11
+2017-08-07, 收盘价Close, 3726.79
+2017-08-07, 设置卖单SELL CREATE, 3726.79信号为:1.05,阈值为:1.12
+2017-08-08, 卖单执行SELL EXECUTED,报价： 3723.96
+1
+2017-08-28, 收盘价Close, 3842.71
+2017-08-28, 设置买单 BUY CREATE, 3842.71,信号为:1.31,阈值为:1.12
+2017-08-29, 买单执行BUY EXECUTED, 报价：3839.56
+2017-08-30, 收盘价Close, 3834.30
+2017-08-30, 设置卖单SELL CREATE, 3834.30信号为:1.05,阈值为:1.12
+2017-08-31, 卖单执行SELL EXECUTED,报价： 3835.46
+1
+2017-09-04, 收盘价Close, 3845.62
+2017-09-04, 设置买单 BUY CREATE, 3845.62,信号为:1.16,阈值为:1.12
+2017-09-05, 买单执行BUY EXECUTED, 报价：3845.93
+2017-09-05, 收盘价Close, 3857.05
+2017-09-05, 设置卖单SELL CREATE, 3857.05信号为:1.00,阈值为:1.12
+2017-09-06, 卖单执行SELL EXECUTED,报价： 3846.36
+1
+2017-10-26, 收盘价Close, 3993.58
+2017-10-26, 设置买单 BUY CREATE, 3993.58,信号为:1.16,阈值为:1.12
+2017-10-27, 买单执行BUY EXECUTED, 报价：3992.95
+2017-11-16, 收盘价Close, 4105.01
+2017-11-16, 设置卖单SELL CREATE, 4105.01信号为:1.01,阈值为:1.12
+2017-11-17, 卖单执行SELL EXECUTED,报价： 4093.67
+1
+2017-11-17, 收盘价Close, 4120.85
+2017-11-17, 设置买单 BUY CREATE, 4120.85,信号为:1.41,阈值为:1.12
+2017-11-20, 买单执行BUY EXECUTED, 报价：4094.14
+2017-11-27, 收盘价Close, 4049.95
+2017-11-27, 设置卖单SELL CREATE, 4049.95信号为:0.98,阈值为:1.12
+2017-11-28, 卖单执行SELL EXECUTED,报价： 4033.80
+1
+2018-01-02, 收盘价Close, 4087.40
+2018-01-02, 设置买单 BUY CREATE, 4087.40,信号为:1.16,阈值为:1.12
+2018-01-03, 买单执行BUY EXECUTED, 报价：4091.87
+2018-01-12, 收盘价Close, 4225.00
+2018-01-12, 设置卖单SELL CREATE, 4225.00信号为:0.94,阈值为:1.12
+2018-01-15, 卖单执行SELL EXECUTED,报价： 4229.41
+1
+2018-01-15, 收盘价Close, 4225.24
+2018-01-15, 设置买单 BUY CREATE, 4225.24,信号为:1.23,阈值为:1.12
+2018-01-16, 买单执行BUY EXECUTED, 报价：4216.05
+2018-01-30, 收盘价Close, 4256.10
+2018-01-30, 设置卖单SELL CREATE, 4256.10信号为:1.05,阈值为:1.12
+2018-01-31, 卖单执行SELL EXECUTED,报价： 4233.69
+1
+2018-02-06, 收盘价Close, 4148.89
+2018-02-06, 设置买单 BUY CREATE, 4148.89,信号为:1.22,阈值为:1.12
+2018-02-07, 买单执行BUY EXECUTED, 报价：4206.16
+2018-02-08, 收盘价Close, 4012.05
+2018-02-08, 设置卖单SELL CREATE, 4012.05信号为:1.12,阈值为:1.12
+2018-02-09, 卖单执行SELL EXECUTED,报价： 3895.78
+1
+2018-03-26, 收盘价Close, 3879.89
+2018-03-26, 设置买单 BUY CREATE, 3879.89,信号为:1.29,阈值为:1.27
+2018-03-27, 买单执行BUY EXECUTED, 报价：3927.88
+2018-03-27, 收盘价Close, 3913.27
+2018-03-27, 设置卖单SELL CREATE, 3913.27信号为:0.98,阈值为:1.27
+2018-03-28, 卖单执行SELL EXECUTED,报价： 3864.66
+1
+2018-05-30, 收盘价Close, 3723.37
+2018-05-30, 设置买单 BUY CREATE, 3723.37,信号为:1.28,阈值为:1.27
+2018-05-31, 买单执行BUY EXECUTED, 报价：3749.67
+2018-06-01, 收盘价Close, 3770.59
+2018-06-01, 设置卖单SELL CREATE, 3770.59信号为:1.26,阈值为:1.27
+2018-06-04, 卖单执行SELL EXECUTED,报价： 3784.81
+1
+2018-06-19, 收盘价Close, 3621.12
+2018-06-19, 设置买单 BUY CREATE, 3621.12,信号为:2.04,阈值为:1.27
+2018-06-20, 买单执行BUY EXECUTED, 报价：3602.91
+2018-06-22, 收盘价Close, 3608.90
+2018-06-22, 设置卖单SELL CREATE, 3608.90信号为:1.00,阈值为:1.27
+2018-06-25, 卖单执行SELL EXECUTED,报价： 3625.44
+1
+2018-07-23, 收盘价Close, 3525.75
+2018-07-23, 设置买单 BUY CREATE, 3525.75,信号为:1.60,阈值为:1.27
+2018-07-24, 买单执行BUY EXECUTED, 报价：3531.02
+2018-07-26, 收盘价Close, 3536.25
+2018-07-26, 设置卖单SELL CREATE, 3536.25信号为:1.11,阈值为:1.27
+2018-07-27, 卖单执行SELL EXECUTED,报价： 3533.42
+1
+2018-09-21, 收盘价Close, 3410.49
+2018-09-21, 设置买单 BUY CREATE, 3410.49,信号为:1.42,阈值为:1.27
+2018-09-25, 买单执行BUY EXECUTED, 报价：3376.31
+2018-09-26, 收盘价Close, 3417.24
+2018-09-26, 设置卖单SELL CREATE, 3417.24信号为:1.27,阈值为:1.27
+2018-09-27, 卖单执行SELL EXECUTED,报价： 3415.61
+1
+2018-10-08, 收盘价Close, 3290.90
+2018-10-08, 设置买单 BUY CREATE, 3290.90,信号为:1.39,阈值为:1.27
+2018-10-09, 买单执行BUY EXECUTED, 报价：3290.50
+2018-10-09, 收盘价Close, 3288.69
+2018-10-09, 设置卖单SELL CREATE, 3288.69信号为:1.22,阈值为:1.27
+2018-10-10, 卖单执行SELL EXECUTED,报价： 3295.10
+1
+2018-10-11, 收盘价Close, 3124.11
+2018-10-11, 设置买单 BUY CREATE, 3124.11,信号为:1.38,阈值为:1.27
+2018-10-12, 买单执行BUY EXECUTED, 报价：3123.68
+2018-10-15, 收盘价Close, 3126.45
+2018-10-15, 设置卖单SELL CREATE, 3126.45信号为:1.24,阈值为:1.27
+2018-10-16, 卖单执行SELL EXECUTED,报价： 3128.26
+1
+2018-10-22, 收盘价Close, 3270.27
+2018-10-22, 设置买单 BUY CREATE, 3270.27,信号为:1.83,阈值为:1.27
+2018-10-23, 买单执行BUY EXECUTED, 报价：3273.45
+2018-10-26, 收盘价Close, 3173.64
+2018-10-26, 设置卖单SELL CREATE, 3173.64信号为:1.21,阈值为:1.27
+2018-10-29, 卖单执行SELL EXECUTED,报价： 3157.17
+1
+2018-10-31, 收盘价Close, 3153.82
+2018-10-31, 设置买单 BUY CREATE, 3153.82,信号为:1.34,阈值为:1.27
+2018-11-01, 买单执行BUY EXECUTED, 报价：3185.52
+2018-11-06, 收盘价Close, 3243.15
+2018-11-06, 设置卖单SELL CREATE, 3243.15信号为:0.93,阈值为:1.27
+2018-11-07, 卖单执行SELL EXECUTED,报价： 3243.55
+1
+2018-11-14, 收盘价Close, 3204.94
+2018-11-14, 设置买单 BUY CREATE, 3204.94,信号为:1.28,阈值为:1.27
+2018-11-15, 买单执行BUY EXECUTED, 报价：3201.60
+2018-11-15, 收盘价Close, 3242.37
+2018-11-15, 设置卖单SELL CREATE, 3242.37信号为:1.09,阈值为:1.27
+2018-11-16, 卖单执行SELL EXECUTED,报价： 3242.55
+1
+2019-01-07, 收盘价Close, 3054.30
+2019-01-07, 设置买单 BUY CREATE, 3054.30,信号为:1.48,阈值为:1.27
+2019-01-08, 买单执行BUY EXECUTED, 报价：3050.18
+2019-01-11, 收盘价Close, 3094.78
+2019-01-11, 设置卖单SELL CREATE, 3094.78信号为:1.01,阈值为:1.27
+2019-01-14, 卖单执行SELL EXECUTED,报价： 3092.19
+1
+2019-01-18, 收盘价Close, 3168.17
+2019-01-18, 设置买单 BUY CREATE, 3168.17,信号为:1.32,阈值为:1.27
+2019-01-21, 买单执行BUY EXECUTED, 报价：3171.19
+2019-01-22, 收盘价Close, 3143.32
+2019-01-22, 设置卖单SELL CREATE, 3143.32信号为:1.14,阈值为:1.27
+2019-01-23, 卖单执行SELL EXECUTED,报价： 3135.78
+1
+2019-02-01, 收盘价Close, 3247.40
+2019-02-01, 设置买单 BUY CREATE, 3247.40,信号为:1.18,阈值为:1.12
+2019-02-11, 买单执行BUY EXECUTED, 报价：3240.13
+2019-03-13, 收盘价Close, 3724.19
+2019-03-13, 设置卖单SELL CREATE, 3724.19信号为:1.11,阈值为:1.12
+2019-03-14, 卖单执行SELL EXECUTED,报价： 3709.92
+1
+2019-06-11, 收盘价Close, 3719.28
+2019-06-11, 设置买单 BUY CREATE, 3719.28,信号为:1.29,阈值为:1.27
+2019-06-12, 买单执行BUY EXECUTED, 报价：3707.23
+2019-06-13, 收盘价Close, 3685.39
+2019-06-13, 设置卖单SELL CREATE, 3685.39信号为:1.20,阈值为:1.27
+2019-06-14, 卖单执行SELL EXECUTED,报价： 3690.11
+1
+2019-06-20, 收盘价Close, 3828.52
+2019-06-20, 设置买单 BUY CREATE, 3828.52,信号为:2.02,阈值为:1.27
+2019-06-21, 买单执行BUY EXECUTED, 报价：3833.12
+2019-06-26, 收盘价Close, 3794.33
+2019-06-26, 设置卖单SELL CREATE, 3794.33信号为:1.10,阈值为:1.12
+2019-06-27, 卖单执行SELL EXECUTED,报价： 3807.16
+1
+2019-07-01, 收盘价Close, 3935.81
+2019-07-01, 设置买单 BUY CREATE, 3935.81,信号为:1.65,阈值为:1.12
+2019-07-02, 买单执行BUY EXECUTED, 报价：3931.44
+2019-07-05, 收盘价Close, 3893.20
+2019-07-05, 设置卖单SELL CREATE, 3893.20信号为:0.90,阈值为:1.12
+2019-07-08, 卖单执行SELL EXECUTED,报价： 3875.37
+1
+2019-07-16, 收盘价Close, 3806.84
+2019-07-16, 设置买单 BUY CREATE, 3806.84,信号为:1.20,阈值为:1.12
+2019-07-17, 买单执行BUY EXECUTED, 报价：3800.49
+2019-07-19, 收盘价Close, 3807.96
+2019-07-19, 设置卖单SELL CREATE, 3807.96信号为:1.12,阈值为:1.12
+2019-07-22, 卖单执行SELL EXECUTED,报价： 3813.12
+1
+2019-07-25, 收盘价Close, 3851.07
+2019-07-25, 设置买单 BUY CREATE, 3851.07,信号为:1.18,阈值为:1.12
+2019-07-26, 买单执行BUY EXECUTED, 报价：3835.61
+2019-07-29, 收盘价Close, 3854.27
+2019-07-29, 设置卖单SELL CREATE, 3854.27信号为:1.07,阈值为:1.12
+2019-07-30, 卖单执行SELL EXECUTED,报价： 3861.57
+1
+2019-07-30, 收盘价Close, 3870.32
+2019-07-30, 设置买单 BUY CREATE, 3870.32,信号为:1.14,阈值为:1.12
+2019-07-31, 买单执行BUY EXECUTED, 报价：3856.74
+2019-07-31, 收盘价Close, 3835.36
+2019-07-31, 设置卖单SELL CREATE, 3835.36信号为:1.12,阈值为:1.12
+2019-08-01, 卖单执行SELL EXECUTED,报价： 3818.94
+1
+2019-08-02, 收盘价Close, 3747.44
+2019-08-02, 设置买单 BUY CREATE, 3747.44,信号为:1.25,阈值为:1.12
+2019-08-05, 买单执行BUY EXECUTED, 报价：3724.78
+2019-08-08, 收盘价Close, 3669.29
+2019-08-08, 设置卖单SELL CREATE, 3669.29信号为:1.00,阈值为:1.27
+2019-08-09, 卖单执行SELL EXECUTED,报价： 3686.38
+1
+2019-08-19, 收盘价Close, 3791.09
+2019-08-19, 设置买单 BUY CREATE, 3791.09,信号为:1.47,阈值为:1.27
+2019-08-20, 买单执行BUY EXECUTED, 报价：3786.40
+2019-08-21, 收盘价Close, 3781.76
+2019-08-21, 设置卖单SELL CREATE, 3781.76信号为:1.14,阈值为:1.27
+2019-08-22, 卖单执行SELL EXECUTED,报价： 3793.48
+1
+2019-08-27, 收盘价Close, 3816.95
+2019-08-27, 设置买单 BUY CREATE, 3816.95,信号为:1.36,阈值为:1.12
+2019-08-28, 买单执行BUY EXECUTED, 报价：3819.19
+2019-08-29, 收盘价Close, 3790.19
+2019-08-29, 设置卖单SELL CREATE, 3790.19信号为:0.99,阈值为:1.12
+2019-08-30, 卖单执行SELL EXECUTED,报价： 3816.30
+1
+2019-09-02, 收盘价Close, 3848.32
+2019-09-02, 设置买单 BUY CREATE, 3848.32,信号为:1.20,阈值为:1.12
+2019-09-03, 买单执行BUY EXECUTED, 报价：3852.96
+2019-09-16, 收盘价Close, 3957.72
+2019-09-16, 设置卖单SELL CREATE, 3957.72信号为:1.02,阈值为:1.12
+2019-09-17, 卖单执行SELL EXECUTED,报价： 3946.76
+1
+2019-10-14, 收盘价Close, 3953.24
+2019-10-14, 设置买单 BUY CREATE, 3953.24,信号为:1.15,阈值为:1.12
+2019-10-15, 买单执行BUY EXECUTED, 报价：3953.16
+2019-10-15, 收盘价Close, 3936.25
+2019-10-15, 设置卖单SELL CREATE, 3936.25信号为:1.08,阈值为:1.12
+2019-10-16, 卖单执行SELL EXECUTED,报价： 3938.88
+1
+2019-11-04, 收盘价Close, 3978.12
+2019-11-04, 设置买单 BUY CREATE, 3978.12,信号为:1.23,阈值为:1.12
+2019-11-05, 买单执行BUY EXECUTED, 报价：3982.51
+2019-11-07, 收盘价Close, 3991.87
+2019-11-07, 设置卖单SELL CREATE, 3991.87信号为:1.03,阈值为:1.12
+2019-11-08, 卖单执行SELL EXECUTED,报价： 4017.27
+1
+2019-11-25, 收盘价Close, 3878.21
+2019-11-25, 设置买单 BUY CREATE, 3878.21,信号为:1.27,阈值为:1.12
+2019-11-26, 买单执行BUY EXECUTED, 报价：3893.82
+2019-11-28, 收盘价Close, 3862.30
+2019-11-28, 设置卖单SELL CREATE, 3862.30信号为:0.77,阈值为:1.12
+2019-11-29, 卖单执行SELL EXECUTED,报价： 3856.80
+1
+2019-12-09, 收盘价Close, 3895.45
+2019-12-09, 设置买单 BUY CREATE, 3895.45,信号为:1.13,阈值为:1.12
+2019-12-10, 买单执行BUY EXECUTED, 报价：3886.83
+2019-12-20, 收盘价Close, 4017.25
+2019-12-20, 设置卖单SELL CREATE, 4017.25信号为:1.12,阈值为:1.12
+2019-12-23, 卖单执行SELL EXECUTED,报价： 4014.29
+1
+2019-12-23, 收盘价Close, 3967.10
+2019-12-23, 设置买单 BUY CREATE, 3967.10,信号为:1.15,阈值为:1.12
+2019-12-24, 买单执行BUY EXECUTED, 报价：3971.96
+2019-12-24, 收盘价Close, 3992.96
+2019-12-24, 设置卖单SELL CREATE, 3992.96信号为:1.04,阈值为:1.12
+2019-12-25, 卖单执行SELL EXECUTED,报价： 3988.26
+1
+2019-12-27, 收盘价Close, 4022.03
+2019-12-27, 设置买单 BUY CREATE, 4022.03,信号为:1.33,阈值为:1.12
+2019-12-30, 买单执行BUY EXECUTED, 报价：4015.92
+2020-01-10, 收盘价Close, 4163.18
+2020-01-10, 设置卖单SELL CREATE, 4163.18信号为:0.93,阈值为:1.12
+2020-01-13, 卖单执行SELL EXECUTED,报价： 4166.51
+1
+2020-01-23, 收盘价Close, 4003.90
+2020-01-23, 设置买单 BUY CREATE, 4003.90,信号为:1.13,阈值为:1.12
+2020-02-03, 买单执行BUY EXECUTED, 报价：3640.27
+2020-02-06, 收盘价Close, 3899.78
+2020-02-06, 设置卖单SELL CREATE, 3899.78信号为:1.24,阈值为:1.27
+2020-02-07, 卖单执行SELL EXECUTED,报价： 3879.17
+1
+2020-02-18, 收盘价Close, 4057.51
+2020-02-18, 设置买单 BUY CREATE, 4057.51,信号为:1.14,阈值为:1.12
+2020-02-19, 买单执行BUY EXECUTED, 报价：4049.99
+2020-02-19, 收盘价Close, 4051.31
+2020-02-19, 设置卖单SELL CREATE, 4051.31信号为:1.08,阈值为:1.12
+2020-02-20, 卖单执行SELL EXECUTED,报价： 4062.49
+1
+2020-02-20, 收盘价Close, 4144.66
+2020-02-20, 设置买单 BUY CREATE, 4144.66,信号为:1.23,阈值为:1.12
+2020-02-21, 买单执行BUY EXECUTED, 报价：4135.29
+2020-02-28, 收盘价Close, 3940.05
+2020-02-28, 设置卖单SELL CREATE, 3940.05信号为:1.11,阈值为:1.12
+2020-03-02, 卖单执行SELL EXECUTED,报价： 3968.84
+1
+2020-03-02, 收盘价Close, 4069.67
+2020-03-02, 设置买单 BUY CREATE, 4069.67,信号为:1.18,阈值为:1.12
+2020-03-03, 买单执行BUY EXECUTED, 报价：4125.55
+2020-03-04, 收盘价Close, 4115.05
+2020-03-04, 设置卖单SELL CREATE, 4115.05信号为:1.02,阈值为:1.12
+2020-03-05, 卖单执行SELL EXECUTED,报价： 4149.79
+1
+2020-05-06, 收盘价Close, 3936.25
+2020-05-06, 设置买单 BUY CREATE, 3936.25,信号为:1.28,阈值为:1.27
+2020-05-07, 买单执行BUY EXECUTED, 报价：3937.99
+2020-05-07, 收盘价Close, 3924.89
+2020-05-07, 设置卖单SELL CREATE, 3924.89信号为:1.15,阈值为:1.27
+2020-05-08, 卖单执行SELL EXECUTED,报价： 3942.60
+1
+2020-05-19, 收盘价Close, 3956.25
+2020-05-19, 设置买单 BUY CREATE, 3956.25,信号为:1.14,阈值为:1.12
+2020-05-20, 买单执行BUY EXECUTED, 报价：3955.71
+2020-05-20, 收盘价Close, 3935.22
+2020-05-20, 设置卖单SELL CREATE, 3935.22信号为:1.08,阈值为:1.27
+2020-05-21, 卖单执行SELL EXECUTED,报价： 3950.20
+1
+2020-06-01, 收盘价Close, 3971.34
+2020-06-01, 设置买单 BUY CREATE, 3971.34,信号为:1.54,阈值为:1.27
+2020-06-02, 买单执行BUY EXECUTED, 报价：3970.35
+2020-06-17, 收盘价Close, 4017.59
+2020-06-17, 设置卖单SELL CREATE, 4017.59信号为:1.10,阈值为:1.12
+2020-06-18, 卖单执行SELL EXECUTED,报价： 4009.38
+1
+2020-06-18, 收盘价Close, 4044.38
+2020-06-18, 设置买单 BUY CREATE, 4044.38,信号为:1.27,阈值为:1.12
+2020-06-19, 买单执行BUY EXECUTED, 报价：4047.45
+2020-07-17, 收盘价Close, 4544.70
+2020-07-17, 设置卖单SELL CREATE, 4544.70信号为:1.07,阈值为:1.12
+2020-07-20, 卖单执行SELL EXECUTED,报价： 4596.74
+1
+2020-10-12, 收盘价Close, 4823.16
+2020-10-12, 设置买单 BUY CREATE, 4823.16,信号为:1.28,阈值为:1.12
+2020-10-13, 买单执行BUY EXECUTED, 报价：4813.38
+2020-10-14, 收盘价Close, 4807.10
+2020-10-14, 设置卖单SELL CREATE, 4807.10信号为:1.08,阈值为:1.12
+2020-10-15, 卖单执行SELL EXECUTED,报价： 4810.30
+1
+2020-10-19, 收盘价Close, 4755.49
+2020-10-19, 设置买单 BUY CREATE, 4755.49,信号为:1.23,阈值为:1.12
+2020-10-20, 买单执行BUY EXECUTED, 报价：4751.84
+2020-10-21, 收盘价Close, 4792.83
+2020-10-21, 设置卖单SELL CREATE, 4792.83信号为:1.00,阈值为:1.12
+2020-10-22, 卖单执行SELL EXECUTED,报价： 4780.12
+1
+2020-10-26, 收盘价Close, 4691.24
+2020-10-26, 设置买单 BUY CREATE, 4691.24,信号为:1.17,阈值为:1.12
+2020-10-27, 买单执行BUY EXECUTED, 报价：4680.61
+2020-10-27, 收盘价Close, 4699.28
+2020-10-27, 设置卖单SELL CREATE, 4699.28信号为:1.10,阈值为:1.12
+2020-10-28, 卖单执行SELL EXECUTED,报价： 4702.53
+1
+2020-10-29, 收盘价Close, 4772.92
+2020-10-29, 设置买单 BUY CREATE, 4772.92,信号为:1.30,阈值为:1.12
+2020-10-30, 买单执行BUY EXECUTED, 报价：4776.95
+2020-12-04, 收盘价Close, 5065.92
+2020-12-04, 设置卖单SELL CREATE, 5065.92信号为:1.01,阈值为:1.12
+2020-12-07, 卖单执行SELL EXECUTED,报价： 5065.22
+1
+2021-01-04, 收盘价Close, 5267.72
+2021-01-04, 设置买单 BUY CREATE, 5267.72,信号为:1.36,阈值为:1.12
+2021-01-05, 买单执行BUY EXECUTED, 报价：5246.36
+2021-01-19, 收盘价Close, 5437.52
+2021-01-19, 设置卖单SELL CREATE, 5437.52信号为:1.08,阈值为:1.12
+2021-01-20, 卖单执行SELL EXECUTED,报价： 5439.37
+1
+2021-02-19, 收盘价Close, 5778.84
+2021-02-19, 设置买单 BUY CREATE, 5778.84,信号为:1.17,阈值为:1.12
+2021-02-22, 买单执行BUY EXECUTED, 报价：5785.51
+2021-02-25, 收盘价Close, 5469.56
+2021-02-25, 设置卖单SELL CREATE, 5469.56信号为:1.07,阈值为:1.12
+2021-02-26, 卖单执行SELL EXECUTED,报价： 5343.37
+1
+2021-05-06, 收盘价Close, 5061.12
+2021-05-06, 设置买单 BUY CREATE, 5061.12,信号为:1.33,阈值为:1.27
+2021-05-07, 买单执行BUY EXECUTED, 报价：5073.96
+2021-05-12, 收盘价Close, 5044.55
+2021-05-12, 设置卖单SELL CREATE, 5044.55信号为:1.04,阈值为:1.27
+2021-05-13, 卖单执行SELL EXECUTED,报价： 4991.85
+1
+2021-05-17, 收盘价Close, 5184.99
+2021-05-17, 设置买单 BUY CREATE, 5184.99,信号为:1.29,阈值为:1.27
+2021-05-18, 买单执行BUY EXECUTED, 报价：5191.45
+2021-05-18, 收盘价Close, 5187.60
+2021-05-18, 设置卖单SELL CREATE, 5187.60信号为:1.10,阈值为:1.27
+2021-05-19, 卖单执行SELL EXECUTED,报价： 5172.65
+1
+2021-05-25, 收盘价Close, 5318.48
+2021-05-25, 设置买单 BUY CREATE, 5318.48,信号为:1.35,阈值为:1.27
+2021-05-26, 买单执行BUY EXECUTED, 报价：5326.65
+2021-06-02, 收盘价Close, 5289.97
+2021-06-02, 设置卖单SELL CREATE, 5289.97信号为:1.09,阈值为:1.12
+2021-06-03, 卖单执行SELL EXECUTED,报价： 5285.18
+1
+2021-06-04, 收盘价Close, 5282.28
+2021-06-04, 设置买单 BUY CREATE, 5282.28,信号为:1.13,阈值为:1.12
+2021-06-07, 买单执行BUY EXECUTED, 报价：5285.42
+2021-06-07, 收盘价Close, 5277.63
+2021-06-07, 设置卖单SELL CREATE, 5277.63信号为:1.05,阈值为:1.12
+2021-06-08, 卖单执行SELL EXECUTED,报价： 5276.44
+1
+2021-06-11, 收盘价Close, 5224.70
+2021-06-11, 设置买单 BUY CREATE, 5224.70,信号为:1.30,阈值为:1.12
+2021-06-15, 买单执行BUY EXECUTED, 报价：5219.09
+2021-06-16, 收盘价Close, 5080.49
+2021-06-16, 设置卖单SELL CREATE, 5080.49信号为:1.01,阈值为:1.27
+2021-06-17, 卖单执行SELL EXECUTED,报价： 5073.88
+1
+2021-07-09, 收盘价Close, 5069.44
+2021-07-09, 设置买单 BUY CREATE, 5069.44,信号为:1.30,阈值为:1.27
+2021-07-12, 买单执行BUY EXECUTED, 报价：5108.89
+2021-07-16, 收盘价Close, 5094.77
+2021-07-16, 设置卖单SELL CREATE, 5094.77信号为:1.21,阈值为:1.27
+2021-07-19, 卖单执行SELL EXECUTED,报价： 5083.22
+1
+2021-07-23, 收盘价Close, 5089.23
+2021-07-23, 设置买单 BUY CREATE, 5089.23,信号为:1.44,阈值为:1.27
+2021-07-26, 买单执行BUY EXECUTED, 报价：5067.31
+2021-07-29, 收盘价Close, 4850.27
+2021-07-29, 设置卖单SELL CREATE, 4850.27信号为:1.05,阈值为:1.27
+2021-07-30, 卖单执行SELL EXECUTED,报价： 4825.22
+1
+2021-08-03, 收盘价Close, 4934.46
+2021-08-03, 设置买单 BUY CREATE, 4934.46,信号为:1.28,阈值为:1.27
+2021-08-04, 买单执行BUY EXECUTED, 报价：4928.23
+2021-08-04, 收盘价Close, 4978.85
+2021-08-04, 设置卖单SELL CREATE, 4978.85信号为:1.09,阈值为:1.27
+2021-08-05, 卖单执行SELL EXECUTED,报价： 4945.67
+1
+2021-09-01, 收盘价Close, 4869.46
+2021-09-01, 设置买单 BUY CREATE, 4869.46,信号为:1.56,阈值为:1.27
+2021-09-02, 买单执行BUY EXECUTED, 报价：4866.31
+2021-09-06, 收盘价Close, 4933.73
+2021-09-06, 设置卖单SELL CREATE, 4933.73信号为:1.17,阈值为:1.27
+2021-09-07, 卖单执行SELL EXECUTED,报价： 4932.48
+1
+2021-12-03, 收盘价Close, 4901.02
+2021-12-03, 设置买单 BUY CREATE, 4901.02,信号为:1.28,阈值为:1.27
+2021-12-06, 买单执行BUY EXECUTED, 报价：4909.92
+2021-12-16, 收盘价Close, 5034.73
+2021-12-16, 设置卖单SELL CREATE, 5034.73信号为:1.02,阈值为:1.12
+2021-12-17, 卖单执行SELL EXECUTED,报价： 5020.84
+1
+2021-12-20, 收盘价Close, 4880.42
+2021-12-20, 设置买单 BUY CREATE, 4880.42,信号为:1.21,阈值为:1.12
+2021-12-21, 买单执行BUY EXECUTED, 报价：4877.00
+2021-12-22, 收盘价Close, 4914.45
+2021-12-22, 设置卖单SELL CREATE, 4914.45信号为:1.00,阈值为:1.12
+2021-12-23, 卖单执行SELL EXECUTED,报价： 4923.80
+1
+2022-01-05, 收盘价Close, 4868.12
+2022-01-05, 设置买单 BUY CREATE, 4868.12,信号为:1.31,阈值为:1.12
+2022-01-06, 买单执行BUY EXECUTED, 报价：4842.64
+2022-01-10, 收盘价Close, 4844.05
+2022-01-10, 设置卖单SELL CREATE, 4844.05信号为:1.24,阈值为:1.27
+2022-01-11, 卖单执行SELL EXECUTED,报价： 4839.52
+1
+2022-02-25, 收盘价Close, 4573.42
+2022-02-25, 设置买单 BUY CREATE, 4573.42,信号为:1.34,阈值为:1.27
+2022-02-28, 买单执行BUY EXECUTED, 报价：4564.20
+2022-02-28, 收盘价Close, 4581.65
+2022-02-28, 设置卖单SELL CREATE, 4581.65信号为:1.11,阈值为:1.27
+2022-03-01, 卖单执行SELL EXECUTED,报价： 4597.40
+1
+2022-03-08, 收盘价Close, 4265.39
+2022-03-08, 设置买单 BUY CREATE, 4265.39,信号为:1.33,阈值为:1.27
+2022-03-09, 买单执行BUY EXECUTED, 报价：4281.41
+2022-03-11, 收盘价Close, 4306.52
+2022-03-11, 设置卖单SELL CREATE, 4306.52信号为:1.07,阈值为:1.27
+2022-03-14, 卖单执行SELL EXECUTED,报价： 4247.73
+1
+2022-03-16, 收盘价Close, 4156.08
+2022-03-16, 设置买单 BUY CREATE, 4156.08,信号为:1.50,阈值为:1.27
+2022-03-17, 买单执行BUY EXECUTED, 报价：4238.10
+2022-03-18, 收盘价Close, 4265.90
+2022-03-18, 设置卖单SELL CREATE, 4265.90信号为:1.11,阈值为:1.27
+2022-03-21, 卖单执行SELL EXECUTED,报价： 4279.71
+1
+2022-04-27, 收盘价Close, 3895.54
+2022-04-27, 设置买单 BUY CREATE, 3895.54,信号为:1.29,阈值为:1.27
+2022-04-28, 买单执行BUY EXECUTED, 报价：3883.81
+2022-04-28, 收盘价Close, 3921.11
+2022-04-28, 设置卖单SELL CREATE, 3921.11信号为:1.21,阈值为:1.27
+2022-04-29, 卖单执行SELL EXECUTED,报价： 3939.23
+1
+2022-06-07, 收盘价Close, 4179.13
+2022-06-07, 设置买单 BUY CREATE, 4179.13,信号为:1.32,阈值为:1.27
+2022-06-08, 买单执行BUY EXECUTED, 报价：4187.57
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">report2ts</span><span class="p">:</span><span class="n">namedtuple</span> <span class="o">=</span> <span class="n">analysis_rets</span><span class="p">(</span><span class="n">hs300</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">],</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">fig</span> <span class="ow">in</span> <span class="n">report2ts</span><span class="p">:</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">report2trade</span><span class="p">:</span><span class="n">namedtuple</span> <span class="o">=</span> <span class="n">analysis_trade</span><span class="p">(</span><span class="n">hs300</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">],</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">fig</span> <span class="ow">in</span> <span class="n">report2trade</span><span class="p">:</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id4">
+<h1>申万行业<a class="headerlink" href="#id4" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scr.create_signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">bulk_signal</span><span class="p">,</span><span class="n">get_signal_status</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scr.plotly_chart</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridPlotly</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scr.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">BACKTEST_CONFIG</span><span class="p">,</span><span class="n">transform_status_table</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sw_classify</span> <span class="o">=</span> <span class="n">query_sw_classify</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sw_price</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">query_data</span><span class="p">(</span>
+    <span class="nb">list</span><span class="p">(</span><span class="n">sw_classify</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="s2">&quot;2010-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2022-10-11&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;close&quot;</span><span class="p">,</span><span class="s1">&#39;low&#39;</span><span class="p">,</span><span class="s1">&#39;high&#39;</span><span class="p">,</span><span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s2">&quot;volume&quot;</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;sw&quot;</span>
+<span class="p">)</span>
+<span class="n">sw_price</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;trade_date&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flag_ser</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">=</span> <span class="n">bulk_signal</span><span class="p">(</span><span class="n">sw_price</span><span class="p">,</span><span class="o">**</span><span class="n">BACKTEST_CONFIG</span><span class="p">,</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;sw&#39;</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;flag&#39;</span><span class="p">)</span>
+<span class="n">vol_mom</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">=</span> <span class="n">bulk_signal</span><span class="p">(</span><span class="n">sw_price</span><span class="p">,</span><span class="o">**</span><span class="n">BACKTEST_CONFIG</span><span class="p">,</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;sw&#39;</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;vol_mom&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">status</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">=</span> <span class="n">flag_ser</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_signal_status</span><span class="p">)</span>
+<span class="n">transform_status_table</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sec_name</th>
+      <th>Status</th>
+      <th>Flag</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>交通运输(801170.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>传媒(801760.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>公用事业(801160.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>农林牧渔(801010.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>医药生物(801150.SI)</td>
+      <td>2022-10-11 当期有持仓(开仓日:2022-09-28)</td>
+      <td>⭕</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>商贸零售(801200.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>国防军工(801740.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>基础化工(801030.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>家用电器(801110.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>建筑材料(801710.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>建筑装饰(801720.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>房地产(801180.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>有色金属(801050.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>机械设备(801890.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>汽车(801880.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>煤炭(801950.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>环保(801970.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>电力设备(801730.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>电子(801080.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>石油石化(801960.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>社会服务(801210.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>纺织服饰(801130.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>综合(801230.SI)</td>
+      <td>2022-10-11 当期有持仓(开仓日:2022-09-26)</td>
+      <td>⭕</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>美容护理(801980.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>计算机(801750.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>轻工制造(801140.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>通信(801770.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>钢铁(801040.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>银行(801780.SI)</td>
+      <td>2022-10-11 当期有持仓(开仓日:2022-10-10)</td>
+      <td>⭕</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>非银金融(801790.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>食品饮料(801120.SI)</td>
+      <td>2022-10-11 无开仓信号</td>
+      <td>⚪</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="id5">
+<h2>申万行业指数择时情况<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p><strong>使用pandas批量生成信号</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sw_price</span><span class="p">[</span><span class="s1">&#39;sec_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sw_price</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sw_classify</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;(申万)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="n">close_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">sw_price</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                             <span class="n">index</span><span class="o">=</span><span class="s1">&#39;trade_date&#39;</span><span class="p">,</span>
+                             <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;sec_name&#39;</span><span class="p">,</span>
+                             <span class="n">values</span><span class="o">=</span><span class="s1">&#39;close&#39;</span><span class="p">)</span>
+
+<span class="n">benchmark</span> <span class="o">=</span> <span class="n">close_frame</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+<span class="n">returns</span> <span class="o">=</span> <span class="n">flag_ser</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">benchmark</span>
+<span class="n">cum</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">cum_returns</span><span class="p">(</span><span class="n">returns</span><span class="p">)</span>
+<span class="n">benchmark_cum</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">cum_returns</span><span class="p">(</span><span class="n">benchmark</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GridPlotly</span><span class="p">(</span><span class="n">cum</span><span class="p">,</span><span class="n">benchmark_cum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="n">vol_mom</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">([</span><span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">score</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">score</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">marker_color</span><span class="o">=</span><span class="s1">&#39;crimson&#39;</span><span class="p">)])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;量价共振因子&#39;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span><span class="mi">30</span><span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Astock_market/QuantsPlaybook研报复现/C-择时类/成交量的奥秘_另类价量共振指标的择时"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">价量共振</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">价量共振指标的择时系统构建</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">市场划分条件下的择时系统</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">申万行业</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">申万行业指数择时情况</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

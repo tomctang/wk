@@ -1,0 +1,670 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>数据读取 &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Astock_market/QuantsPlaybook研报复现/C-择时类/技术分析算法框架与实战二/识别圆弧底';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2024.html">1. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2022.html">2. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/Astock_market/QuantsPlaybook研报复现/C-择时类/技术分析算法框架与实战二/识别圆弧底.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>数据读取</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">数据读取</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">形态匹配</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">形态定义</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">可视化结果</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span><span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scr.pattern_detect</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_RoundingBottom</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scr.plotting</span><span class="w"> </span><span class="kn">import</span> <span class="n">view_gride_chart</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>数据读取<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>时间范围:2014-01-01至2023-02-07</p></li>
+<li><p>价格数据为后复权数据</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/data.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>形态匹配<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<section id="id3">
+<h2>形态定义<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>取当日向前追溯两年的股价数据进行<strong>核回归</strong>,根据核回归的结果找到所有局部极值点,对于每个极小值点<span class="math notranslate nohighlight">\(𝑃_{𝑙𝑜𝑤}\)</span>,找到其前面一个极大值点;</p></li>
+<li><p>在这个极大值点的邻域中(本文取前后20天范围内)找到股价序列的最大值,作为前一盘整区的高点,记为<span class="math notranslate nohighlight">\(𝑃_{ℎ𝑖𝑔ℎ}\)</span>，定义<span class="math notranslate nohighlight">\(𝑃_{ℎ𝑖𝑔ℎ}\)</span>到<span class="math notranslate nohighlight">\(𝑃_{𝑙𝑜𝑤}\)</span>的水平距离为圆弧的半弦长𝑑(要求𝑑大于10天);</p></li>
+<li><p>定义在<span class="math notranslate nohighlight">\(P_{𝑙𝑜𝑤}\)</span>前后𝑑天范围内的股价序列为s,收益率绝对值序列为r,检验是否满足圆弧底形态的条件:</p>
+<ol class="arabic simple">
+<li><p>s在<span class="math notranslate nohighlight">\(P_{low}\)</span>左(右)侧下跌(上涨)的所占比例大于某一参数(本文取0.4);</p></li>
+<li><p>r的均值小于某一参数(本文取0.03);</p></li>
+<li><p><span class="math notranslate nohighlight">\((P_{ℎ𝑖𝑔ℎ}⁄P_{low} − 1)/𝑑\)</span>、<span class="math notranslate nohighlight">\((P_{𝑏𝑢𝑦}⁄P_{low}− 1)/𝑑\)</span>小于某一参数(本文取0.03);</p></li>
+</ol>
+</li>
+<li><p>若识别为圆弧底形态,则在s的右半部分寻找是否存在大于<span class="math notranslate nohighlight">\(P_{ℎ𝑖𝑔ℎ}\)</span>且已经突破200日均线的点,若存在,则将第一个突破<span class="math notranslate nohighlight">\(P_{ℎ𝑖𝑔ℎ}\)</span>的点作为买入点<span class="math notranslate nohighlight">\(𝑃_{𝑏𝑢𝑦}\)</span>。同时要求<span class="math notranslate nohighlight">\((1 − p) ∗ (P_{ℎ𝑖𝑔ℎ} − 𝑃_{𝑙𝑜𝑤}) &lt; 𝑃_{𝑏𝑢𝑦} − 𝑃_{𝑙𝑜𝑤} &lt; (1 + p) ∗ (P_{ℎ𝑖𝑔ℎ} − 𝑃_{𝑙𝑜𝑤})\)</span>(本文中p取0.3);</p></li>
+</ol>
+<p><strong>下面为出现圆弧底时对应的买入/卖出点</strong></p>
+<ol class="arabic simple" start="5">
+<li><p>若开仓后的某日回归曲线中<span class="math notranslate nohighlight">\(𝑃_{𝑙𝑜𝑤}后面出现一个极大值点,则把当日作为卖出点\)</span>𝑃_{𝑠𝑒𝑙𝑙}$;</p></li>
+<li><p>如果下跌幅度超过10%则触发止损条件,卖出股票;</p></li>
+<li><p>对于其他极小值点-极大值点组合,重复上述过程。</p></li>
+</ol>
+<p>除了找到极值点用到了核回归的结果,其他步骤用的都是实际的价格数据.</p>
+<p><img alt="avatar" src="Astock_market/QuantsPlaybook研报复现/C-择时类/技术分析算法框架与实战二/img/%E7%A4%BA%E4%BE%8B.png" /></p>
+<p><strong>查找2023-02-07日当天符合圆弧底形态的股票</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">code</span><span class="p">:</span> <span class="n">find_RoundingBottom</span><span class="p">(</span>
+        <span class="n">slice_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">code</span><span class="o">=</span><span class="n">code</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">code</span><span class="p">,</span> <span class="n">slice_df</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;code&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-03-01 14:39:48.468 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 000798.SZ=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[True];2.符合在p_high至p_low的30%~130%区间内[False]
+2023-03-01 14:40:33.252 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 002306.SZ=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[True];2.符合在p_high至p_low的30%~130%区间内[True]
+2023-03-01 14:40:33.252 | INFO     | scr.pattern_detect:find_RoundingBottom:286 - 当前时点:2023-02-09 002306.SZ:为圆弧底/V型低且符合买点
+2023-03-01 14:41:01.373 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 002595.SZ=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[True];2.符合在p_high至p_low的30%~130%区间内[True]
+2023-03-01 14:41:01.374 | INFO     | scr.pattern_detect:find_RoundingBottom:286 - 当前时点:2023-02-09 002595.SZ:为圆弧底/V型低且符合买点
+2023-03-01 14:41:02.349 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 002606.SZ=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[True];2.符合在p_high至p_low的30%~130%区间内[True]
+2023-03-01 14:41:02.350 | INFO     | scr.pattern_detect:find_RoundingBottom:286 - 当前时点:2023-02-09 002606.SZ:为圆弧底/V型低且符合买点
+2023-03-01 14:41:03.139 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 002614.SZ=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[True];2.符合在p_high至p_low的30%~130%区间内[False]
+2023-03-01 14:41:11.623 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 002702.SZ=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[True];2.符合在p_high至p_low的30%~130%区间内[False]
+2023-03-01 14:41:48.568 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 300083.SZ=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[False];2.符合在p_high至p_low的30%~130%区间内[False]
+2023-03-01 14:42:03.480 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 300240.SZ=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[False];2.符合在p_high至p_low的30%~130%区间内[False]
+2023-03-01 14:42:42.438 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 300642.SZ=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[True];2.符合在p_high至p_low的30%~130%区间内[True]
+2023-03-01 14:42:42.439 | INFO     | scr.pattern_detect:find_RoundingBottom:286 - 当前时点:2023-02-09 300642.SZ:为圆弧底/V型低且符合买点
+2023-03-01 14:42:52.112 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 300747.SZ=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[False];2.符合在p_high至p_low的30%~130%区间内[True]
+2023-03-01 14:43:10.541 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 301019.SZ=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[False];2.符合在p_high至p_low的30%~130%区间内[True]
+2023-03-01 14:43:13.036 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 301088.SZ=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[False];2.符合在p_high至p_low的30%~130%区间内[True]
+2023-03-01 14:43:13.613 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 301126.SZ=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[False];2.符合在p_high至p_low的30%~130%区间内[False]
+2023-03-01 14:43:52.532 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 600493.SH=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[True];2.符合在p_high至p_low的30%~130%区间内[False]
+2023-03-01 14:44:22.626 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 600844.SH=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[False];2.符合在p_high至p_low的30%~130%区间内[False]
+2023-03-01 14:44:53.733 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 603005.SH=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[False];2.符合在p_high至p_low的30%~130%区间内[True]
+2023-03-01 14:45:00.444 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 603101.SH=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[False];2.符合在p_high至p_low的30%~130%区间内[False]
+2023-03-01 14:45:08.836 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 603278.SH=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[False];2.符合在p_high至p_low的30%~130%区间内[True]
+2023-03-01 14:45:19.303 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 603536.SH=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[False];2.符合在p_high至p_low的30%~130%区间内[False]
+2023-03-01 14:45:21.157 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 603585.SH=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[True];2.符合在p_high至p_low的30%~130%区间内[True]
+2023-03-01 14:45:21.158 | INFO     | scr.pattern_detect:find_RoundingBottom:286 - 当前时点:2023-02-09 603585.SH:为圆弧底/V型低且符合买点
+2023-03-01 14:45:23.053 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 603610.SH=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[False];2.符合在p_high至p_low的30%~130%区间内[False]
+2023-03-01 14:45:24.874 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 603648.SH=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[True];2.符合在p_high至p_low的30%~130%区间内[False]
+2023-03-01 14:45:37.983 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 603890.SH=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[True];2.符合在p_high至p_low的30%~130%区间内[True]
+2023-03-01 14:45:37.984 | INFO     | scr.pattern_detect:find_RoundingBottom:286 - 当前时点:2023-02-09 603890.SH:为圆弧底/V型低且符合买点
+2023-03-01 14:45:44.588 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 605005.SH=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[True];2.符合在p_high至p_low的30%~130%区间内[True]
+2023-03-01 14:45:44.588 | INFO     | scr.pattern_detect:find_RoundingBottom:286 - 当前时点:2023-02-09 605005.SH:为圆弧底/V型低且符合买点
+2023-03-01 14:45:47.632 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 605179.SH=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[True];2.符合在p_high至p_low的30%~130%区间内[False]
+2023-03-01 14:45:50.323 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 605388.SH=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[False];2.符合在p_high至p_low的30%~130%区间内[False]
+2023-03-01 14:46:04.024 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 688285.SH=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[True];2.符合在p_high至p_low的30%~130%区间内[True]
+2023-03-01 14:46:04.024 | INFO     | scr.pattern_detect:find_RoundingBottom:286 - 当前时点:2023-02-09 688285.SH:为圆弧底/V型低且符合买点
+2023-03-01 14:46:06.806 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 688359.SH=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[True];2.符合在p_high至p_low的30%~130%区间内[False]
+2023-03-01 14:46:10.498 | INFO     | scr.pattern_detect:find_RoundingBottom:280 - 当前时点:2023-02-09 688553.SH=&gt;符合圆弧底/v型结构:True,判断是否是买点:1.是否大于200日均线[False];2.符合在p_high至p_low的30%~130%区间内[True]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id4">
+<h1>可视化结果<a class="headerlink" href="#id4" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;是否圆弧底&#39;</span><span class="p">,</span><span class="s1">&#39;是否符合买入点&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>是否圆弧底</th>
+      <th>是否符合买入点</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>000001.SZ</th>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>000002.SZ</th>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>000004.SZ</th>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>000005.SZ</th>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>000006.SZ</th>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取符合形态的股票</span>
+<span class="n">rounding_bottom</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">output_df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;是否圆弧底==True&quot;</span><span class="p">)</span>
+
+<span class="c1"># 符合圆弧底形态的股票代码</span>
+<span class="n">codes</span><span class="p">:</span><span class="n">List</span> <span class="o">=</span> <span class="n">rounding_bottom</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">size</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">codes</span><span class="p">)</span>
+<span class="n">rows</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="n">size</span><span class="o">//</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">size</span><span class="o">%</span><span class="k">2</span> else size/2
+
+<span class="n">view_gride_chart</span><span class="p">(</span><span class="n">codes</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">rows</span><span class="o">=</span><span class="n">rows</span><span class="p">,</span><span class="n">cols</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="n">rows</span><span class="o">*</span><span class="mi">5</span><span class="o">+</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/2f5ccbab82ec80f8d58a38592ba6b3980326caf7e749bec42f69a18e1d5aef44.png" src="../../../../_images/2f5ccbab82ec80f8d58a38592ba6b3980326caf7e749bec42f69a18e1d5aef44.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Astock_market/QuantsPlaybook研报复现/C-择时类/技术分析算法框架与实战二"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">数据读取</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">形态匹配</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">形态定义</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">可视化结果</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

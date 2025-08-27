@@ -1,0 +1,1102 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>波动率与趋势 &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Astock_market/QuantsPlaybook研报复现/C-择时类/基于相对强弱下单向波动差值应用/py/基于相对强弱下单向波动差值应用';</script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../nb2024.html">1. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../nb2022.html">2. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../../_sources/Astock_market/QuantsPlaybook研报复现/C-择时类/基于相对强弱下单向波动差值应用/py/基于相对强弱下单向波动差值应用.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>波动率与趋势</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">波动率与趋势</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#granger">granger因果检验</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">波动率分解：上行波动与下行波动</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">基于单向波动差构建择时策略</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rps">相对强弱 RPS指标</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">相对强弱 RPS下波动率差值策略</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 引入库</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jqdata</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>  <span class="c1"># 迭代器工具</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">prettytable</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+<span class="c1"># granger 因果检验</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.tsa.stattools</span><span class="w"> </span><span class="kn">import</span> <span class="n">grangercausalitytests</span>
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">calendar</span>  <span class="c1"># 日历</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.parser</span><span class="w"> </span><span class="kn">import</span> <span class="n">parse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.relativedelta</span><span class="w"> </span><span class="kn">import</span> <span class="n">relativedelta</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+
+<span class="c1"># 画图</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.gridspec</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mg</span> <span class="c1"># 不规则子图</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.dates</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mdate</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># 设置字体 用来正常显示中文标签</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SimHei&#39;</span><span class="p">]</span>
+<span class="c1">#mpl.rcParams[&#39;font.family&#39;] = &#39;serif&#39;</span>
+<span class="c1"># 用来正常显示负号</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="c1"># 图表主题</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>波动率与趋势<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>波动率是用来反映市场波动幅度的大小，大家通常也用来观察市场情绪或预 测市场趋势。但波动率种类较多。如日收益率的标准差、日内振幅等。再来 测试这些波动率指标与市场趋势的相关性。</p>
+<p>我们先拿沪深300指数数据来测试一下（时间范围：2006年1月至2015年9月）：granger因果检验，从图可以看出如按收益率标准差与日振 幅来计算的波动率<font color=Darkred>(很少有研报会说计算标准差和均值的窗口时间真是蛋疼)</font> ，其稳定性与领先相关性都很不理想。如按此简单方法计 算的波动率是无法对未来收益率做较好的预测。（图例说明：横轴为预测天数，纵轴为相关系数）。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 数据准备</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;2005-01-01&#39;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2017-12-31&#39;</span>
+
+<span class="c1"># 观察期</span>
+<span class="n">begin_date</span> <span class="o">=</span> <span class="s1">&#39;2006-01-01&#39;</span>
+<span class="n">watch_date</span> <span class="o">=</span> <span class="s1">&#39;2016-12-31&#39;</span>
+
+<span class="c1"># 数据获取</span>
+<span class="n">HS300</span> <span class="o">=</span> <span class="n">get_price</span><span class="p">(</span>
+    <span class="s1">&#39;000300.XSHG&#39;</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="p">,</span>
+    <span class="n">end_date</span><span class="p">,</span>
+    <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">,</span><span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="s1">&#39;pre_close&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">],</span>
+    <span class="n">panel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">std_window</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="n">mean_window</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># 计算收益率</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">HS300</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">HS300</span><span class="p">[</span><span class="s1">&#39;pre_close&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="c1"># 收益率标准差</span>
+<span class="n">ret_std</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">std_window</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">ret_mean</span> <span class="o">=</span> <span class="n">ret_std</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">mean_window</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+
+<span class="c1"># 计算振幅</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="p">(</span><span class="n">HS300</span><span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">HS300</span><span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="n">HS300</span><span class="p">[</span><span class="s1">&#39;pre_close&#39;</span><span class="p">]</span>
+
+<span class="c1"># 计算振幅标准差</span>
+<span class="n">amplitude_std</span> <span class="o">=</span> <span class="n">amplitude</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">std_window</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">amplitude_mean</span> <span class="o">=</span> <span class="n">amplitude_std</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">mean_window</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># 统一观察窗口</span>
+<span class="n">amplitude_std</span> <span class="o">=</span> <span class="n">amplitude_mean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">begin_date</span><span class="p">:</span><span class="n">watch_date</span><span class="p">]</span>
+<span class="n">amplitude_mean</span> <span class="o">=</span> <span class="n">amplitude_std</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">begin_date</span><span class="p">:</span><span class="n">watch_date</span><span class="p">]</span>
+<span class="n">ret_std</span> <span class="o">=</span> <span class="n">ret_std</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">begin_date</span><span class="p">:</span><span class="n">watch_date</span><span class="p">]</span>
+<span class="n">ret_mean</span> <span class="o">=</span> <span class="n">ret_mean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">begin_date</span><span class="p">:</span><span class="n">watch_date</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取granger因果检验结果的p值显示</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">grangercausalitytests_pvalue</span><span class="p">(</span><span class="n">ret</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">singal</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">title</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+    
+    <span class="n">result</span> <span class="o">=</span> <span class="n">grangercausalitytests</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">ret</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">singal</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="n">singal</span><span class="p">],</span> <span class="n">maxlag</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">p_value</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">items_value</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+        <span class="n">p_value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">items_value</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;params_ftest&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif&#39;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_value</span><span class="p">)),</span> <span class="n">p_value</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_value</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;p值0.05显著水平&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 检验信号与滞后期收益率的相关系数</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show_corrocef</span><span class="p">(</span><span class="n">close_df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">singal</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">title</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+    
+    <span class="n">period</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 滞后周期间隔</span>
+
+    <span class="n">temp</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 储存数据</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">period</span><span class="p">:</span>
+        
+        <span class="c1"># 收益未来收益与信号的相关系数</span>
+        <span class="n">lag_ret</span> <span class="o">=</span> <span class="n">close_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">lag_ret</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">singal</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="n">singal</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+        
+    <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif&#39;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temp</span><span class="p">)),</span> <span class="n">temp</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temp</span><span class="p">)),</span> <span class="n">period</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>相关系数与研报的图完全不一样…..如果真是这种相关性,研报作者是怎样支撑这向下研究的,如果是我我就放弃了….</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_corrocef</span><span class="p">(</span><span class="n">HS300</span><span class="p">,</span><span class="n">ret_mean</span><span class="p">,</span><span class="s2">&quot;收益率标准差均值与未来收益的关系&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/f1d0dff976184016ee5176cd30cfdf73384d2911dd052d06b79ffd37df4e12b8.png" src="../../../../../_images/f1d0dff976184016ee5176cd30cfdf73384d2911dd052d06b79ffd37df4e12b8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_corrocef</span><span class="p">(</span><span class="n">HS300</span><span class="p">,</span><span class="n">amplitude_std</span><span class="p">,</span><span class="s2">&quot;振幅标准差均值与未来收益的关系&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/7bf3b79e728be451eda9624f3abc900e184d4a59d84f98f3ca8b1deb8f1c08da.png" src="../../../../../_images/7bf3b79e728be451eda9624f3abc900e184d4a59d84f98f3ca8b1deb8f1c08da.png" />
+</div>
+</div>
+<section id="granger">
+<h2>granger因果检验<a class="headerlink" href="#granger" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p><a class="reference external" href="https://zhuanlan.zhihu.com/p/79936875">是前因还是后果?——进行格兰杰因果检验</a></p>
+</div></blockquote>
+<blockquote>
+<div><p><a class="reference external" href="https://www.statsmodels.org/dev/generated/statsmodels.tsa.stattools.grangercausalitytests.html">statsmodels.tsa.stattools.grangercausalitytests</a></p>
+</div></blockquote>
+<p>收益率标准差均值与收益率进行granger因果检验发现p值均大于显著性水平0.05,无法拒绝原假设收益率标准差均值无法对收益率进行较好的预测。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grangercausalitytests_pvalue</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span><span class="n">ret_mean</span><span class="p">,</span><span class="s1">&#39;收益率波动率均值与收益率的granger检验的p值&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/b6365dc3bc5cb1ad37da59f0d4cca67bddce6d9ad15574ba13f7b9ac90daf556.png" src="../../../../../_images/b6365dc3bc5cb1ad37da59f0d4cca67bddce6d9ad15574ba13f7b9ac90daf556.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grangercausalitytests_pvalue</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span><span class="n">amplitude_mean</span><span class="p">,</span><span class="s1">&#39;振幅波动率均值与收益率的granger检验的p值&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/3e051dab62a113c363a049f9630db7d6655d229d4530a944630ac7e2122f3146.png" src="../../../../../_images/3e051dab62a113c363a049f9630db7d6655d229d4530a944630ac7e2122f3146.png" />
+</div>
+</div>
+<p>对于按其振幅来计算波动率是以开盘价为基准，开盘价以 上的波动定义为上行波动率，反之为下行波动率。而以标准计算是上涨日为
+上行波动率，市场下跌时记为上行波动率为零值，下跌时则反之。</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>波动率分解：上行波动与下行波动<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>由于A股市场做空机制相对欠缺，波动率分布并不对称。故有必要加以区分，我们把波动率区分为上行波动率与下行波动率。因此我们对上面的测试数据加以折分。对于按其振幅来计算波动率是以开盘价为基准，开盘价以上的波动定义为上行波动率，反之为下行波动率。而以标准计算是上涨日为上行波动率，市场下跌时记为上行波动率为零值，下跌时则反之。通常情况下市场处于上涨阶段时上行波动率要大于下行波动率，下跌阶段则反之，同时二者的差值我们定义为波动率剪刀差。</p>
+</div></blockquote>
+<p><strong>振幅剪刀差</strong>具体定义为：</p>
+<p>上行波动 = (HIGH - OPEN)/OPEN</p>
+<p>下行波动 = (OPEN - LOW)/OPEN</p>
+<p>剪刀差 = 上行波动 - 下行波动</p>
+<p><strong>收益率剪刀差</strong>具体定义为:</p>
+<p>上行波动率 = np.where(ret &gt; 0 ,std ,0)</p>
+<p>下行波动率 = np.where(ret &lt; 0 ,std ,0)</p>
+<p>剪刀差 = 上行波动 - 下行波动</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 振幅剪刀差</span>
+<span class="n">Upward_volatility</span> <span class="o">=</span> <span class="n">HS300</span><span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">HS300</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">Downside_volatility</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">HS300</span><span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">HS300</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">]</span>
+
+<span class="n">diff_vol</span> <span class="o">=</span> <span class="n">Upward_volatility</span> <span class="o">-</span> <span class="n">Downside_volatility</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>查看数据分布</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">Upward_volatility</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;上行波动率&#39;</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">Downside_volatility</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;下行波动率&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">Upward_volatility</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;上行波动率&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">Downside_volatility</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;下行波动率&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f404694b550&gt;
+</pre></div>
+</div>
+<img alt="../../../../../_images/0abcfbcb99b9c4f40573702bc3b1c1191595a5ed494425b84a48d9f9993b8f1a.png" src="../../../../../_images/0abcfbcb99b9c4f40573702bc3b1c1191595a5ed494425b84a48d9f9993b8f1a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_corrocef</span><span class="p">(</span><span class="n">HS300</span><span class="p">,</span><span class="n">diff_vol</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">begin_date</span><span class="p">:</span><span class="n">watch_date</span><span class="p">],</span><span class="s2">&quot;振幅剪刀差与未来收益的关系&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/406304492dfb1108815cf0af5d4eeac63ff45559da5907074d33c129867b68d5.png" src="../../../../../_images/406304492dfb1108815cf0af5d4eeac63ff45559da5907074d33c129867b68d5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 振幅剪刀差</span>
+<span class="n">Upward_volatility</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">begin_date</span><span class="p">:</span><span class="n">watch_date</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">,</span><span class="n">ret_std</span> <span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Downside_volatility</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">begin_date</span><span class="p">:</span><span class="n">watch_date</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">,</span><span class="n">ret_std</span> <span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">diff_vol</span> <span class="o">=</span> <span class="n">Upward_volatility</span> <span class="o">-</span> <span class="n">Downside_volatility</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">Upward_volatility</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;上行波动率&#39;</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">Downside_volatility</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;下行波动率&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">Upward_volatility</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;上行波动率&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">Downside_volatility</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;下行波动率&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f4046624780&gt;
+</pre></div>
+</div>
+<img alt="../../../../../_images/af8c291c464c72b29f11e385aa82d86499f082464fe60136e68e878fdda782b7.png" src="../../../../../_images/af8c291c464c72b29f11e385aa82d86499f082464fe60136e68e878fdda782b7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_corrocef</span><span class="p">(</span><span class="n">HS300</span><span class="p">,</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">diff_vol</span><span class="p">,</span><span class="n">ret_std</span><span class="o">.</span><span class="n">index</span><span class="p">),</span><span class="s2">&quot;收益率标准差刀差与未来收益的关系&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/fff421bec083382befbb1553e9646c49b52fc80d33190c7ff454e34852d6fcd0.png" src="../../../../../_images/fff421bec083382befbb1553e9646c49b52fc80d33190c7ff454e34852d6fcd0.png" />
+</div>
+</div>
+<p>预测效果显示提升很多，无论是相关性绝对值与预测 N 日的稳定性都有明显的提高。其中按其振幅剪刀差计算波动率效果为最佳。<strong>在下文中所提的波动率均是按其振幅来计算波动率。</strong></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
+<h1>基于单向波动差构建择时策略<a class="headerlink" href="#id3" title="Link to this heading">#</a></h1>
+<p>因此我们可以基于上面这个逻辑构建针对指数的择时策略，当前一天的上行波动率减去下行波动率的差值趋势（为增加稳定性，采用60日移动均值）<strong>为正时就看多，反之则看空</strong>。 回测区间为2006年至2016年看下图净值感觉还不错，中间回撤的幅度也有点大，超额收益也主要是来自 08 年。其它年份获取超额收益较少。(granger检验与研报不同 但简单回测结果确差不多…)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 振幅剪刀差</span>
+<span class="n">Upward_volatility</span> <span class="o">=</span> <span class="n">HS300</span><span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">HS300</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">Downside_volatility</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">HS300</span><span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">HS300</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">]</span>
+
+<span class="n">diff_vol</span> <span class="o">=</span> <span class="n">Upward_volatility</span> <span class="o">-</span> <span class="n">Downside_volatility</span>
+
+<span class="n">diff_ma</span> <span class="o">=</span> <span class="n">diff_vol</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">strategy 1:</span>
+<span class="sd">单向波动差移动平均为正：买入</span>
+<span class="sd">单向波动差移动平均为负：卖出</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">flag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">diff_ma</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">begin_date</span><span class="p">:</span><span class="n">watch_date</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">slice_ser</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">begin_date</span><span class="p">:</span><span class="n">watch_date</span><span class="p">]</span>
+<span class="n">slice_benchmark</span> <span class="o">=</span> <span class="n">HS300</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">begin_date</span><span class="p">:</span><span class="n">watch_date</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">]</span>
+
+<span class="n">strategy_ret</span> <span class="o">=</span> <span class="n">flag</span> <span class="o">*</span> <span class="n">slice_ser</span>
+<span class="n">strategy_cum</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">strategy_ret</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span>
+<span class="n">benchmark</span> <span class="o">=</span> <span class="n">slice_benchmark</span> <span class="o">/</span> <span class="n">slice_benchmark</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;波动剪刀差策略与沪深 300净值&#39;</span><span class="p">)</span>
+<span class="n">strategy_cum</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">benchmark</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">([</span><span class="s1">&#39;strategy1&#39;</span><span class="p">,</span> <span class="s1">&#39;HS300&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0b365cdac8&gt;
+</pre></div>
+</div>
+<img alt="../../../../../_images/754a19a52ff66d8ef7682795a477a2a1fbd82b49a1d888d94811d935752639c6.png" src="../../../../../_images/754a19a52ff66d8ef7682795a477a2a1fbd82b49a1d888d94811d935752639c6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">excess_ret</span> <span class="o">=</span> <span class="n">strategy_ret</span> <span class="o">-</span> <span class="n">ret</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">begin_date</span><span class="p">:</span><span class="n">watch_date</span><span class="p">]</span>
+<span class="n">excess_cum</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">excess_ret</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span>
+
+<span class="n">show_excess</span> <span class="o">=</span> <span class="n">excess_cum</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">pow</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">244</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;相对强弱RPS值与指数历史趋势&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">show_excess</span><span class="p">)),</span><span class="n">show_excess</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">show_excess</span><span class="p">)),[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">年&#39;</span><span class="o">%</span><span class="k">x</span>.strftime(&#39;%Y&#39;) for x in show_excess.index])
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/6965f3218b93e3f5799e69dab4877f39a60e91dbc6d0239f78d6c404fcbb0a8e.png" src="../../../../../_images/6965f3218b93e3f5799e69dab4877f39a60e91dbc6d0239f78d6c404fcbb0a8e.png" />
+</div>
+</div>
+<p>研报认为</p>
+<blockquote>
+<div><p>预测值在强势市场中对当天波动率不是很敏感，在市场调整、震荡区间 中对波动率要相对敏感一些。因此，单向波动差值策略还需要接合市场特征指标加以完善。</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">strategy 1:</span>
+<span class="sd">单向波动差移动平均为正：买入</span>
+<span class="sd">单向波动差移动平均为负：卖出</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">diff_ma10</span> <span class="o">=</span> <span class="n">diff_vol</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">flag_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">diff_ma10</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">begin_date</span><span class="p">:</span><span class="n">watch_date</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">slice_ser</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">begin_date</span><span class="p">:</span><span class="n">watch_date</span><span class="p">]</span>
+
+<span class="n">strategy_ret1</span> <span class="o">=</span> <span class="n">flag_1</span> <span class="o">*</span> <span class="n">slice_ser</span>
+<span class="n">strategy_cum1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">strategy_ret1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;10天与60天移动平均波动差值策略净值对比&#39;</span><span class="p">)</span>
+<span class="n">strategy_cum</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">strategy_cum1</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">benchmark</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">([</span><span class="s1">&#39;strategy_ma60&#39;</span><span class="p">,</span><span class="s1">&#39;strategy_ma10&#39;</span><span class="p">,</span> <span class="s1">&#39;HS300&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0b35de8748&gt;
+</pre></div>
+</div>
+<img alt="../../../../../_images/8101cf6a07f23cc36c71ae8c5faeb8bc7f2eacd82601f893def02beda87130b3.png" src="../../../../../_images/8101cf6a07f23cc36c71ae8c5faeb8bc7f2eacd82601f893def02beda87130b3.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="rps">
+<h1>相对强弱 RPS指标<a class="headerlink" href="#rps" title="Link to this heading">#</a></h1>
+<p>“强者恒强、弱者恒弱”常为市场所证实。个股或市场的强弱表现其本身就 是基本面、资金面、投资者情绪等多种因素的综合作用下的体现。通常市场 强势与否，可以用市场相对强弱 RPS 指标来表示。</p>
+<ol class="arabic simple">
+<li><p>计算 RPS 值 RPS_1=(当前涨跌幅-MIN(250 交易日涨幅))/(MAX(250 交易日涨幅)-MIN(250 交易日涨幅)) （注：其值在 0%到 100%区间内）</p></li>
+<li><p>然后取 10 个交易日移动平均值：RPS=MA(RPS_1)</p></li>
+</ol>
+<p><font color=DarkRed><strong>根据尝试发现RPS的定义应该是</strong>:</font></p>
+<p>RPS_1 = (当前收盘价 - min(过去250日收盘价))/(max(过去250日收盘价）-min(过去250日收盘价))</p>
+<p>RPS = RPS_1的10日移动平均值</p>
+<p>不是用涨跌幅….坑爹啊！</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 计算RPS</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">GetRPS</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">period</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+
+    <span class="n">rps</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="n">min_periods</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="n">min_periods</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="n">min_periods</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">rps</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">period</span><span class="p">,</span><span class="n">min_periods</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">begin_date</span><span class="p">:</span><span class="n">watch_date</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>跟报告对比貌似就是用收盘价</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 计算rps</span>
+<span class="n">rps</span> <span class="o">=</span> <span class="n">GetRPS</span><span class="p">(</span><span class="n">HS300</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;相对强弱RPS值与指数历史趋势&#39;</span><span class="p">)</span>
+<span class="n">slice_benchmark</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;HS300收盘价&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;HS300&#39;</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">rps</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;RPS&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;RPS&#39;</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0b31f0e550&gt;
+</pre></div>
+</div>
+<img alt="../../../../../_images/5fa4f1effa6a7ff03426c63d1fd524d911b602557b4716abc558eaf75e3b406b.png" src="../../../../../_images/5fa4f1effa6a7ff03426c63d1fd524d911b602557b4716abc558eaf75e3b406b.png" />
+</div>
+</div>
+<p>从图也能看出，RPS能很好的刻画出市场的状态，市场强势时，RPS高位，市场震荡时，RPS低位。因此可以用RPS来指导单向波动差的窗宽，RPS高位时，窗宽较大，RPS低位时，窗宽较小。</p>
+<p>择时策略2</p>
+<p>在使用RPS指导单向波动差的窗宽设定之前，报告用RPS做了一个简单回测确保这个逻辑时合理的，如下标记部分。</p>
+<blockquote>
+<div><p>可以看出RPS值能较好的表达市场是否处于强势。基于这个思想，可以在RPS值在高位时计算当天的移动波动率差值就用较长天数的，当 RPS 值在低位时就用相对较短天数的波动率差移动均值。 市场相对强弱 RPS 值较高时保持高仓位才是最好的选择。我们来测试一 下基于这个逻辑的策略是否符合以上所说。 测试方法说明：当 RPS 值在 80%以上时，说明其趋势保持相当好，这方面研究结论很多，例如欧奈尔的CNASLIM策略只选 RPS 值在 80%的上个股。故在 这个区域是相对较为安全的区间。在这区间内持有是最佳选择。（<u><em><strong>当前一个交易日 RPS 值上穿 80%安全边界线时买入，下穿 80%安全边界线卖出</strong></em></u>）</p>
+</div></blockquote>
+<p>结果基本一致…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">strategy 2</span>
+<span class="sd">RPS上穿80%，买入</span>
+<span class="sd">RPS下穿80%，卖出</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">pre_rps</span> <span class="o">=</span> <span class="n">rps</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">flag</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">trade_date</span><span class="p">,</span><span class="n">rps_values</span> <span class="ow">in</span> <span class="n">rps</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    
+    <span class="n">last</span> <span class="o">=</span> <span class="n">rps_values</span>
+    <span class="n">per</span> <span class="o">=</span> <span class="n">pre_rps</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">trade_date</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">last</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">per</span> <span class="o">&lt;</span> <span class="mf">0.8</span><span class="p">):</span>
+        
+        <span class="n">flag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="k">elif</span> <span class="p">(</span><span class="n">last</span> <span class="o">&lt;</span> <span class="mf">0.8</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">per</span> <span class="o">&gt;</span><span class="mf">0.8</span><span class="p">):</span>
+        
+        <span class="n">flag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">last_flag</span> <span class="o">=</span> <span class="n">flag</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="n">last_flag</span> <span class="o">=</span> <span class="mi">0</span>
+            
+        <span class="n">flag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">last_flag</span><span class="p">)</span>
+        
+<span class="n">strategy2_ret</span> <span class="o">=</span> <span class="n">flag</span> <span class="o">*</span> <span class="n">slice_ser</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rps</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">strategy2_cum</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">strategy2_ret</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;相对强弱RPS值择时策略效果&#39;</span><span class="p">)</span>
+<span class="n">strategy2_cum</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">benchmark</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">strategy2_cum</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">([</span><span class="s1">&#39;RPS&#39;</span><span class="p">,</span> <span class="s1">&#39;HS300&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0b31e8c5f8&gt;
+</pre></div>
+</div>
+<img alt="../../../../../_images/ffc413a6d64489892675a133b292492c451f213955f02ed802bf3330e5d68e12.png" src="../../../../../_images/ffc413a6d64489892675a133b292492c451f213955f02ed802bf3330e5d68e12.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id4">
+<h1>相对强弱 RPS下波动率差值策略<a class="headerlink" href="#id4" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>策略步骤简介:</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>计算相应指数相对强弱RPS</p></li>
+<li><p>计算相应指数上行波动率、下行波动率，并计算二者差值</p></li>
+<li><p>计算当天波动率差值的移动均值天数由 RPS 值确定、RPS 值越大相就取的天数越多</p></li>
+<li><p>观察前一天的(波动率差值的移动均值)，如为正就保持持有（或卖入）、否则就保持空仓（或卖出）。</p></li>
+</ol>
+<p>报告中并没有给出具体的RPS值跟移动平均窗宽之间的关系，所以就只能自己尝试了，这里我尝试了一个很简单的逻辑：RPS的值都在0-1之间，设定最大窗宽为60，最小为1，根据RPS对窗宽做一个线性的插值，再取整。最终回测结果如下:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">Sensitivity_analysis</span><span class="p">(</span><span class="n">close_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">period</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+
+    <span class="n">rps</span> <span class="o">=</span> <span class="n">GetRPS</span><span class="p">(</span><span class="n">close_df</span><span class="p">,</span> <span class="n">period</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">close_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">close_df</span><span class="p">[</span><span class="s1">&#39;pre_close&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+    
+    <span class="n">up</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rps</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span><span class="n">rps</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">down</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ret</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rps</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">,</span><span class="n">rps</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="n">diff_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">up</span> <span class="o">-</span> <span class="n">down</span><span class="p">,</span><span class="n">rps</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">diff_</span> <span class="o">=</span> <span class="n">diff_</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">period</span><span class="p">,</span><span class="n">min_periods</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    
+    <span class="n">flag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">diff_</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">strategy_ret</span> <span class="o">=</span> <span class="n">flag</span> <span class="o">*</span> <span class="n">ret</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rps</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">strategy_cum</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">strategy_ret</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span>
+
+    <span class="n">Total_Annualized_Returns</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">strategy_cum</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">strategy_cum</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                   <span class="mi">250</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">strategy_cum</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
+                                   
+    <span class="k">return</span> <span class="n">strategy_cum</span><span class="p">,</span><span class="n">Total_Annualized_Returns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">period</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">period</span><span class="p">,</span><span class="n">desc</span><span class="o">=</span><span class="s1">&#39;寻找参数&#39;</span><span class="p">):</span>
+    <span class="n">_</span><span class="p">,</span><span class="n">Total_Annualized_Returns</span> <span class="o">=</span> <span class="n">Sensitivity_analysis</span><span class="p">(</span><span class="n">HS300</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Total_Annualized_Returns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>寻找参数: 100%|██████████| 60/60 [00:00&lt;00:00, 87.30it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;收益最优的移动平均参数为:</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="k">max</span>(temp,key=temp.get))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>收益最优的移动平均参数为:13
+</pre></div>
+</div>
+</div>
+</div>
+<p>结果相比于之前回撤降低了很多，但远远达不到报告中的逆天效果，而且我这里还是没有考虑交易成本的。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strategy_cum</span><span class="p">,</span><span class="n">Total_Annualized_Returns</span> <span class="o">=</span> <span class="n">Sensitivity_analysis</span><span class="p">(</span><span class="n">HS300</span><span class="p">,</span><span class="mi">13</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;相对强弱 RPS下波动率差值策略与HS300净值&#39;</span><span class="p">)</span>
+<span class="n">strategy_cum</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">benchmark</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">strategy_cum</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">([</span><span class="s1">&#39;RPS&#39;</span><span class="p">,</span> <span class="s1">&#39;HS300&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0b31262160&gt;
+</pre></div>
+</div>
+<img alt="../../../../../_images/9575122af5c6268b9c54620ebeb267cf5d194603ce9d2960a7f93eff92f6910f.png" src="../../../../../_images/9575122af5c6268b9c54620ebeb267cf5d194603ce9d2960a7f93eff92f6910f.png" />
+</div>
+</div>
+<p><strong>RPS分级靠档</strong></p>
+<p>报告后续测试指出，前文给出的通过RPS确定窗宽的方法太灵敏，RPS的微小变动会引起窗宽的迅速调整，因此可以对RPS的值进行分级靠档，以降低交易频率，具体来说:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>RPS</p></th>
+<th class="head"><p>移动天数</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0%到20%</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-odd"><td><p>20%到40%</p></td>
+<td><p>40</p></td>
+</tr>
+<tr class="row-even"><td><p>40%到60%</p></td>
+<td><p>60</p></td>
+</tr>
+<tr class="row-odd"><td><p>60%到80%</p></td>
+<td><p>80</p></td>
+</tr>
+<tr class="row-even"><td><p>80%到100%</p></td>
+<td><p>100</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>可能由于前序没能完美复现 所以后面的效果不太好….</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Astock_market/QuantsPlaybook研报复现/C-择时类/基于相对强弱下单向波动差值应用/py"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">波动率与趋势</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#granger">granger因果检验</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">波动率分解：上行波动与下行波动</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">基于单向波动差构建择时策略</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rps">相对强弱 RPS指标</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">相对强弱 RPS下波动率差值策略</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

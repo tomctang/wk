@@ -1,0 +1,1473 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>数据读取 &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Astock_market/短期选股策略1';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nb2024.html">1. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nb2022.html">2. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Astock_market/短期选股策略1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>数据读取</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">数据读取</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">特征工程</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">标签制作</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">模型训练</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">模型评价</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">回测</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型训练</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tqdm</span>
+
+<span class="n">base_path</span> <span class="o">=</span> <span class="s1">&#39;stock&#39;</span>
+
+<span class="n">market_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;主板&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;中小板&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
+<span class="n">exchange_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;SZSE&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;SSE&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
+<span class="n">is_hs_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;S&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+
+<span class="n">area_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;深圳&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;北京&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;吉林&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;江苏&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;辽宁&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;广东&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;安徽&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;四川&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;浙江&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+            <span class="s1">&#39;湖南&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;河北&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;新疆&#39;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;山东&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;河南&#39;</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="s1">&#39;山西&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="s1">&#39;江西&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;青海&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> 
+            <span class="s1">&#39;湖北&#39;</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span> <span class="s1">&#39;内蒙&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span> <span class="s1">&#39;海南&#39;</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;重庆&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;陕西&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="s1">&#39;福建&#39;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span> <span class="s1">&#39;广西&#39;</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span> <span class="s1">&#39;天津&#39;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span> 
+            <span class="s1">&#39;云南&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;贵州&#39;</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span> <span class="s1">&#39;甘肃&#39;</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span> <span class="s1">&#39;宁夏&#39;</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span> <span class="s1">&#39;黑龙江&#39;</span><span class="p">:</span> <span class="mi">29</span><span class="p">,</span> <span class="s1">&#39;上海&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;西藏&#39;</span><span class="p">:</span> <span class="mi">31</span><span class="p">}</span>
+
+<span class="n">industry_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;银行&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;全国地产&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;生物制药&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;环境保护&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;区域地产&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;酒店餐饮&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;运输设备&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> 
+ <span class="s1">&#39;综合类&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;建筑工程&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;玻璃&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;家用电器&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;文教休闲&#39;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;其他商业&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;元器件&#39;</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> 
+ <span class="s1">&#39;IT设备&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="s1">&#39;其他建材&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;汽车服务&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="s1">&#39;火力发电&#39;</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span> <span class="s1">&#39;医药商业&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span> <span class="s1">&#39;汽车配件&#39;</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;广告包装&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> 
+ <span class="s1">&#39;轻工机械&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="s1">&#39;新型电力&#39;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span> <span class="s1">&#39;饲料&#39;</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span> <span class="s1">&#39;电气设备&#39;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span> <span class="s1">&#39;房产服务&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;石油加工&#39;</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span> <span class="s1">&#39;铅锌&#39;</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span> <span class="s1">&#39;农业综合&#39;</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span>
+ <span class="s1">&#39;批发业&#39;</span><span class="p">:</span> <span class="mi">29</span><span class="p">,</span> <span class="s1">&#39;通信设备&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;旅游景点&#39;</span><span class="p">:</span> <span class="mi">31</span><span class="p">,</span> <span class="s1">&#39;港口&#39;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span> <span class="s1">&#39;机场&#39;</span><span class="p">:</span> <span class="mi">33</span><span class="p">,</span> <span class="s1">&#39;石油贸易&#39;</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span> <span class="s1">&#39;空运&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span> <span class="s1">&#39;医疗保健&#39;</span><span class="p">:</span> <span class="mi">36</span><span class="p">,</span>
+ <span class="s1">&#39;商贸代理&#39;</span><span class="p">:</span> <span class="mi">37</span><span class="p">,</span> <span class="s1">&#39;化学制药&#39;</span><span class="p">:</span> <span class="mi">38</span><span class="p">,</span> <span class="s1">&#39;影视音像&#39;</span><span class="p">:</span> <span class="mi">39</span><span class="p">,</span> <span class="s1">&#39;工程机械&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;软件服务&#39;</span><span class="p">:</span> <span class="mi">41</span><span class="p">,</span> <span class="s1">&#39;证券&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;化纤&#39;</span><span class="p">:</span> <span class="mi">43</span><span class="p">,</span> <span class="s1">&#39;水泥&#39;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> 
+ <span class="s1">&#39;专用机械&#39;</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span> <span class="s1">&#39;供气供热&#39;</span><span class="p">:</span> <span class="mi">46</span><span class="p">,</span> <span class="s1">&#39;农药化肥&#39;</span><span class="p">:</span> <span class="mi">47</span><span class="p">,</span> <span class="s1">&#39;机床制造&#39;</span><span class="p">:</span> <span class="mi">48</span><span class="p">,</span> <span class="s1">&#39;多元金融&#39;</span><span class="p">:</span> <span class="mi">49</span><span class="p">,</span> <span class="s1">&#39;百货&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;中成药&#39;</span><span class="p">:</span> <span class="mi">51</span><span class="p">,</span> <span class="s1">&#39;路桥&#39;</span><span class="p">:</span> <span class="mi">52</span><span class="p">,</span> 
+ <span class="s1">&#39;造纸&#39;</span><span class="p">:</span> <span class="mi">53</span><span class="p">,</span> <span class="s1">&#39;食品&#39;</span><span class="p">:</span> <span class="mi">54</span><span class="p">,</span> <span class="s1">&#39;黄金&#39;</span><span class="p">:</span> <span class="mi">55</span><span class="p">,</span> <span class="s1">&#39;化工原料&#39;</span><span class="p">:</span> <span class="mi">56</span><span class="p">,</span> <span class="s1">&#39;矿物制品&#39;</span><span class="p">:</span> <span class="mi">57</span><span class="p">,</span> <span class="s1">&#39;水运&#39;</span><span class="p">:</span> <span class="mi">58</span><span class="p">,</span> <span class="s1">&#39;日用化工&#39;</span><span class="p">:</span> <span class="mi">59</span><span class="p">,</span> <span class="s1">&#39;机械基件&#39;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> 
+ <span class="s1">&#39;汽车整车&#39;</span><span class="p">:</span> <span class="mi">61</span><span class="p">,</span> <span class="s1">&#39;煤炭开采&#39;</span><span class="p">:</span> <span class="mi">62</span><span class="p">,</span> <span class="s1">&#39;铁路&#39;</span><span class="p">:</span> <span class="mi">63</span><span class="p">,</span> <span class="s1">&#39;染料涂料&#39;</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span> <span class="s1">&#39;白酒&#39;</span><span class="p">:</span> <span class="mi">65</span><span class="p">,</span> <span class="s1">&#39;林业&#39;</span><span class="p">:</span> <span class="mi">66</span><span class="p">,</span> <span class="s1">&#39;水务&#39;</span><span class="p">:</span> <span class="mi">67</span><span class="p">,</span> <span class="s1">&#39;水力发电&#39;</span><span class="p">:</span> <span class="mi">68</span><span class="p">,</span> 
+ <span class="s1">&#39;互联网&#39;</span><span class="p">:</span> <span class="mi">69</span><span class="p">,</span> <span class="s1">&#39;旅游服务&#39;</span><span class="p">:</span> <span class="mi">70</span><span class="p">,</span> <span class="s1">&#39;纺织&#39;</span><span class="p">:</span> <span class="mi">71</span><span class="p">,</span> <span class="s1">&#39;铝&#39;</span><span class="p">:</span> <span class="mi">72</span><span class="p">,</span> <span class="s1">&#39;保险&#39;</span><span class="p">:</span> <span class="mi">73</span><span class="p">,</span> <span class="s1">&#39;园区开发&#39;</span><span class="p">:</span> <span class="mi">74</span><span class="p">,</span> <span class="s1">&#39;小金属&#39;</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span> <span class="s1">&#39;铜&#39;</span><span class="p">:</span> <span class="mi">76</span><span class="p">,</span> <span class="s1">&#39;普钢&#39;</span><span class="p">:</span> <span class="mi">77</span><span class="p">,</span> 
+ <span class="s1">&#39;航空&#39;</span><span class="p">:</span> <span class="mi">78</span><span class="p">,</span> <span class="s1">&#39;特种钢&#39;</span><span class="p">:</span> <span class="mi">79</span><span class="p">,</span> <span class="s1">&#39;种植业&#39;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;出版业&#39;</span><span class="p">:</span> <span class="mi">81</span><span class="p">,</span> <span class="s1">&#39;焦炭加工&#39;</span><span class="p">:</span> <span class="mi">82</span><span class="p">,</span> <span class="s1">&#39;啤酒&#39;</span><span class="p">:</span> <span class="mi">83</span><span class="p">,</span> <span class="s1">&#39;公路&#39;</span><span class="p">:</span> <span class="mi">84</span><span class="p">,</span> <span class="s1">&#39;超市连锁&#39;</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span> 
+ <span class="s1">&#39;钢加工&#39;</span><span class="p">:</span> <span class="mi">86</span><span class="p">,</span> <span class="s1">&#39;渔业&#39;</span><span class="p">:</span> <span class="mi">87</span><span class="p">,</span> <span class="s1">&#39;农用机械&#39;</span><span class="p">:</span> <span class="mi">88</span><span class="p">,</span> <span class="s1">&#39;软饮料&#39;</span><span class="p">:</span> <span class="mi">89</span><span class="p">,</span> <span class="s1">&#39;化工机械&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;塑料&#39;</span><span class="p">:</span> <span class="mi">91</span><span class="p">,</span> <span class="s1">&#39;红黄酒&#39;</span><span class="p">:</span> <span class="mi">92</span><span class="p">,</span> <span class="s1">&#39;橡胶&#39;</span><span class="p">:</span> <span class="mi">93</span><span class="p">,</span> <span class="s1">&#39;家居用品&#39;</span><span class="p">:</span> <span class="mi">94</span><span class="p">,</span>
+ <span class="s1">&#39;摩托车&#39;</span><span class="p">:</span> <span class="mi">95</span><span class="p">,</span> <span class="s1">&#39;电器仪表&#39;</span><span class="p">:</span> <span class="mi">96</span><span class="p">,</span> <span class="s1">&#39;服饰&#39;</span><span class="p">:</span> <span class="mi">97</span><span class="p">,</span> <span class="s1">&#39;仓储物流&#39;</span><span class="p">:</span> <span class="mi">98</span><span class="p">,</span> <span class="s1">&#39;纺织机械&#39;</span><span class="p">:</span> <span class="mi">99</span><span class="p">,</span> <span class="s1">&#39;电器连锁&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;装修装饰&#39;</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span> <span class="s1">&#39;半导体&#39;</span><span class="p">:</span> <span class="mi">102</span><span class="p">,</span> 
+ <span class="s1">&#39;电信运营&#39;</span><span class="p">:</span> <span class="mi">103</span><span class="p">,</span> <span class="s1">&#39;石油开采&#39;</span><span class="p">:</span> <span class="mi">104</span><span class="p">,</span> <span class="s1">&#39;乳制品&#39;</span><span class="p">:</span> <span class="mi">105</span><span class="p">,</span> <span class="s1">&#39;商品城&#39;</span><span class="p">:</span> <span class="mi">106</span><span class="p">,</span> <span class="s1">&#39;公共交通&#39;</span><span class="p">:</span> <span class="mi">107</span><span class="p">,</span> <span class="s1">&#39;船舶&#39;</span><span class="p">:</span> <span class="mi">108</span><span class="p">,</span> <span class="s1">&#39;陶瓷&#39;</span><span class="p">:</span> <span class="mi">109</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>数据读取<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">JudgeST</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;ST&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    
+<span class="n">col</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;pre_close&#39;</span><span class="p">,]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">GetMA</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col_name</span><span class="p">,</span> <span class="n">rolling_day</span><span class="p">):</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">col_name</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">rolling_day</span><span class="p">)]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">rolling_day</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">company_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="s1">&#39;company_info.csv&#39;</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;ANSI&#39;</span><span class="p">)</span>
+<span class="n">company_info</span><span class="p">[</span><span class="s1">&#39;is_ST&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">company_info</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">JudgeST</span><span class="p">)</span>
+<span class="c1"># 丢弃一些多余的信息</span>
+<span class="n">company_info</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="s1">&#39;symbol&#39;</span><span class="p">,</span> <span class="s1">&#39;fullname&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">company_info</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">company_info</span><span class="p">[</span><span class="s1">&#39;market&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">company_info</span><span class="p">[</span><span class="s1">&#39;market&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">market_map</span><span class="p">)</span>
+<span class="n">company_info</span><span class="p">[</span><span class="s1">&#39;exchange&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">company_info</span><span class="p">[</span><span class="s1">&#39;exchange&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">exchange_map</span><span class="p">)</span>
+<span class="n">company_info</span><span class="p">[</span><span class="s1">&#39;is_hs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">company_info</span><span class="p">[</span><span class="s1">&#39;is_hs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">is_hs_map</span><span class="p">)</span>
+
+
+<span class="c1"># 读取指数信息</span>
+<span class="n">stock_index_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;000001.SH&#39;</span><span class="p">,</span> <span class="s1">&#39;000016.SH&#39;</span><span class="p">,</span> <span class="s1">&#39;000002.SH&#39;</span><span class="p">,</span> <span class="s1">&#39;399001.SZ&#39;</span><span class="p">,</span> <span class="s1">&#39;399007.SZ&#39;</span><span class="p">,</span> <span class="s1">&#39;399008.SZ&#39;</span><span class="p">,</span> <span class="s1">&#39;399101.SZ&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;399102.SZ&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">ts_code</span> <span class="ow">in</span> <span class="n">index</span><span class="p">:</span>
+    <span class="n">tmp_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span>  <span class="s1">&#39;OldData&#39;</span><span class="p">,</span> <span class="n">ts_code</span> <span class="o">+</span> <span class="s1">&#39;_NormalData.csv&#39;</span><span class="p">))</span>
+    <span class="c1"># 特征工程</span>
+<span class="c1">#         tmp_df = FeatureEngineering(tmp_df)</span>
+    <span class="n">stock_index_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">stock_index_info</span><span class="p">,</span> <span class="n">tmp_df</span><span class="p">))</span> 
+<span class="c1">#     transaction_day = len(tmp_df) </span>
+<span class="n">tmp_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tmp_df</span><span class="p">[</span><span class="s1">&#39;trade_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">())</span>
+<span class="n">date_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tmp_list</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tmp_list</span><span class="p">))))</span>
+
+<span class="c1"># 读取股票交易信息</span>
+<span class="n">stock_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">remove_stock</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">tmp_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">ts_code</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="n">company_info</span><span class="p">[</span><span class="s1">&#39;ts_code&#39;</span><span class="p">]):</span>
+    <span class="n">tmp_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span>  <span class="s1">&#39;OldData&#39;</span><span class="p">,</span> <span class="n">ts_code</span> <span class="o">+</span> <span class="s1">&#39;_NormalData.csv&#39;</span><span class="p">))</span>
+    
+    <span class="c1"># 还需要去除一些停牌时间很久的企业，后期加</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tmp_df</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>  <span class="c1"># 去除一些上市不久的企业</span>
+        <span class="n">remove_stock</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ts_code</span><span class="p">)</span>
+        <span class="k">continue</span>
+    <span class="n">tmp_df</span> <span class="o">=</span> <span class="n">tmp_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;trade_date&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="c1">#         提取均线信息</span>
+<span class="c1">#     for tmp_col in col:</span>
+<span class="c1">#         for rolling_day in [5, 10, 13, 21, 30]:</span>
+<span class="c1">#             tmp_df = GetMA(tmp_df, tmp_col, rolling_day)</span>
+    <span class="c1"># 特征工程</span>
+<span class="c1">#         tmp_df = FeatureEngineering(tmp_df)</span>
+    <span class="n">tmp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp_df</span><span class="p">)</span>
+<span class="n">stock_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">tmp_list</span><span class="p">)</span>
+<span class="n">ts_code_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;ts_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span> <span class="nb">range</span><span class="p">(</span><span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;ts_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">())))</span>
+<span class="n">stock_info</span> <span class="o">=</span> <span class="n">stock_info</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;ts_code_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;ts_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">ts_code_map</span><span class="p">)</span>
+<span class="n">stock_info</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;trade_date_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;trade_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">date_map</span><span class="p">)</span>
+<span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;ts_date_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10000</span> <span class="o">+</span> <span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;ts_code_id&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">10000</span> <span class="o">+</span> <span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;trade_date_id&#39;</span><span class="p">]</span>
+<span class="n">stock_info</span> <span class="o">=</span> <span class="n">stock_info</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">company_info</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;ts_code&#39;</span><span class="p">)</span>
+<span class="n">stock_info_copy</span> <span class="o">=</span> <span class="n">stock_info</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 2890/2890 [00:25&lt;00:00, 112.01it/s]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>特征工程<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stock_info</span> <span class="o">=</span> <span class="n">stock_info_copy</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">col</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">]</span>
+<span class="n">feature_col</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">tmp_col</span> <span class="ow">in</span> <span class="n">col</span><span class="p">:</span>
+    <span class="n">stock_info</span><span class="p">[</span><span class="n">tmp_col</span><span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="s1">&#39;transform&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">stock_info</span><span class="p">[</span><span class="n">tmp_col</span><span class="p">]</span> <span class="o">-</span> <span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;pre_close&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;pre_close&#39;</span><span class="p">]</span>
+    <span class="n">feature_col</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp_col</span><span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="s1">&#39;transform&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">tmp_df</span> <span class="o">=</span> <span class="n">stock_info</span><span class="p">[[</span><span class="s1">&#39;ts_date_id&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">]]</span>
+    <span class="n">tmp_df</span> <span class="o">=</span> <span class="n">tmp_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;close&#39;</span><span class="p">:</span><span class="s1">&#39;close_shift_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)})</span>
+    <span class="n">feature_col</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;close_shift_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">tmp_df</span><span class="p">[</span><span class="s1">&#39;ts_date_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp_df</span><span class="p">[</span><span class="s1">&#39;ts_date_id&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">stock_info</span> <span class="o">=</span> <span class="n">stock_info</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">tmp_df</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;ts_date_id&#39;</span><span class="p">)</span>
+<span class="n">stock_info</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;level_0&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># stock_info.dropna(inplace=True)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;close_shift_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span><span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;close_shift_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)])</span> <span class="o">/</span> <span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;close_shift_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
+<h1>标签制作<a class="headerlink" href="#id3" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make_label</span>
+<span class="c1"># stock_info = stock_info_copy.copy()</span>
+<span class="n">use_col</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">tmp_df</span> <span class="o">=</span> <span class="n">stock_info</span><span class="p">[[</span><span class="s1">&#39;ts_date_id&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">]]</span>
+    <span class="n">tmp_df</span> <span class="o">=</span> <span class="n">tmp_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;high&#39;</span><span class="p">:</span><span class="s1">&#39;high_shift_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;low&#39;</span><span class="p">:</span><span class="s1">&#39;low_shift_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)})</span>
+    <span class="n">use_col</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;high_shift_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">use_col</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;low_shift_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">tmp_df</span><span class="p">[</span><span class="s1">&#39;ts_date_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp_df</span><span class="p">[</span><span class="s1">&#39;ts_date_id&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">stock_info</span> <span class="o">=</span> <span class="n">stock_info</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">tmp_df</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;ts_date_id&#39;</span><span class="p">)</span>
+
+<span class="n">stock_info</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;high_shift_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span><span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;high_shift_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="o">-</span> <span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span>
+    <span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;low_shift_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span><span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;low_shift_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="o">-</span> <span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span>
+
+<span class="n">tmp_array</span> <span class="o">=</span> <span class="n">stock_info</span><span class="p">[</span><span class="n">use_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">max_increse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">tmp_array</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">min_increse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">tmp_array</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;label_max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_increse</span>
+<span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;label_min&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_increse</span>
+<span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;label_final&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;label_max&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.06</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;label_min&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mf">0.03</span><span class="p">)</span>
+<span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;label_final&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;label_final&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">stock_info</span> <span class="o">=</span> <span class="n">stock_info</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">stock_info</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id4">
+<h1>模型训练<a class="headerlink" href="#id4" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trn_col</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="s1">&#39;pre_close&#39;</span><span class="p">,</span> <span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="s1">&#39;pct_chg&#39;</span><span class="p">,</span> <span class="s1">&#39;vol&#39;</span><span class="p">,</span> <span class="s1">&#39;amount&#39;</span><span class="p">,</span> <span class="s1">&#39;ts_code_id&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">feature_col</span>
+<span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;label_final&#39;</span>
+<span class="n">trn_date_min</span> <span class="o">=</span> <span class="mi">20180101</span>
+<span class="n">trn_date_max</span> <span class="o">=</span> <span class="mi">20190405</span>
+<span class="n">val_date_min</span> <span class="o">=</span> <span class="mi">20190406</span>
+<span class="n">val_date_max</span> <span class="o">=</span> <span class="mi">20190410</span>
+<span class="n">test_date_min</span> <span class="o">=</span> <span class="mi">20190417</span>
+<span class="n">test_date_max</span> <span class="o">=</span> <span class="mi">20191218</span>
+
+<span class="n">trn_data_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;trade_date&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">trn_date_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;trade_date&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">trn_date_max</span><span class="p">)</span>
+<span class="n">val_data_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;trade_date&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">val_date_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;trade_date&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">val_date_max</span><span class="p">)</span>
+<span class="n">test_data_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;trade_date&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">test_date_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">stock_info</span><span class="p">[</span><span class="s1">&#39;trade_date&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">test_date_max</span><span class="p">)</span>
+
+<span class="n">trn</span> <span class="o">=</span> <span class="n">stock_info</span><span class="p">[</span><span class="n">trn_data_idx</span><span class="p">][</span><span class="n">trn_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">trn_label</span> <span class="o">=</span> <span class="n">stock_info</span><span class="p">[</span><span class="n">trn_data_idx</span><span class="p">][</span><span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">val</span> <span class="o">=</span> <span class="n">stock_info</span><span class="p">[</span><span class="n">val_data_idx</span><span class="p">][</span><span class="n">trn_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">val_label</span> <span class="o">=</span> <span class="n">stock_info</span><span class="p">[</span><span class="n">val_data_idx</span><span class="p">][</span><span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> 
+
+<span class="n">test</span> <span class="o">=</span> <span class="n">stock_info</span><span class="p">[</span><span class="n">test_data_idx</span><span class="p">][</span><span class="n">trn_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">test_label</span> <span class="o">=</span> <span class="n">stock_info</span><span class="p">[</span><span class="n">test_data_idx</span><span class="p">][</span><span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;rate of 0: </span><span class="si">%.4f</span><span class="s1">, rate of 1: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">trn_label</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">trn_label</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">trn_label</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">trn_label</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trn data:</span><span class="si">%d</span><span class="s1">, val data:</span><span class="si">%d</span><span class="s1">, test data:</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trn</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of features:</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">trn_col</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rate of 0: 0.7934, rate of 1: 0.2066
+trn data:807864, val data:8329, test data:468603
+number of features:19
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型训练及评价</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">lightgbm</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">lgb</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">metrics</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;num_leaves&#39;</span><span class="p">:</span> <span class="mi">31</span><span class="p">,</span>
+         <span class="c1">#              &#39;n_estimatores&#39;: 3000,</span>
+         <span class="s1">&#39;min_data_in_leaf&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+         <span class="s1">&#39;objective&#39;</span><span class="p">:</span> <span class="s1">&#39;binary&#39;</span><span class="p">,</span>
+<span class="c1">#          &#39;max_depth&#39;: 5,</span>
+         <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>
+         <span class="s2">&quot;min_child_samples&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+         <span class="s2">&quot;boosting&quot;</span><span class="p">:</span> <span class="s2">&quot;gbdt&quot;</span><span class="p">,</span>
+<span class="c1">#          &quot;feature_fraction&quot;: 0.45,</span>
+         <span class="s2">&quot;bagging_freq&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="c1">#          &quot;bagging_fraction&quot;: 0.8,</span>
+         <span class="s2">&quot;bagging_seed&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+         <span class="s2">&quot;verbosity&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">}</span>
+<span class="n">trn_data</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">trn</span><span class="p">,</span> <span class="n">trn_label</span><span class="p">)</span>
+<span class="n">val_data</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">val_label</span><span class="p">)</span>
+<span class="n">num_round</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">trn_data</span><span class="p">,</span> <span class="n">num_round</span><span class="p">,</span> <span class="n">valid_sets</span><span class="o">=</span><span class="p">[</span><span class="n">trn_data</span><span class="p">,</span> <span class="n">val_data</span><span class="p">],</span> <span class="n">verbose_eval</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+                <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">oof_lgb</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">num_iteration</span><span class="o">=</span><span class="n">clf</span><span class="o">.</span><span class="n">best_iteration</span><span class="p">)</span>
+<span class="n">test_lgb</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">num_iteration</span><span class="o">=</span><span class="n">clf</span><span class="o">.</span><span class="n">best_iteration</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training until validation scores don&#39;t improve for 100 rounds.
+[300]	training&#39;s binary_logloss: 0.492673	valid_1&#39;s binary_logloss: 0.400848
+[600]	training&#39;s binary_logloss: 0.488755	valid_1&#39;s binary_logloss: 0.399869
+[900]	training&#39;s binary_logloss: 0.48672	valid_1&#39;s binary_logloss: 0.399479
+[1200]	training&#39;s binary_logloss: 0.48498	valid_1&#39;s binary_logloss: 0.399227
+[1500]	training&#39;s binary_logloss: 0.483507	valid_1&#39;s binary_logloss: 0.39892
+[1800]	training&#39;s binary_logloss: 0.482178	valid_1&#39;s binary_logloss: 0.398745
+Did not meet early stopping. Best iteration is:
+[2000]	training&#39;s binary_logloss: 0.481367	valid_1&#39;s binary_logloss: 0.398642
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id5">
+<h1>模型评价<a class="headerlink" href="#id5" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oof_lgb_final</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">oof_lgb</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">val_label</span><span class="p">,</span> <span class="n">oof_lgb_final</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">val_label</span><span class="p">,</span> <span class="n">oof_lgb_final</span><span class="p">))</span>
+<span class="n">tp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(((</span><span class="n">oof_lgb_final</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">val_label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="n">pp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">oof_lgb_final</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sensitivity:</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="o">%</span> <span class="p">(</span><span class="n">tp</span><span class="o">/</span><span class="p">(</span><span class="n">pp</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.872133509424901
+[[7259    5]
+ [1060    5]]
+sensitivity:0.500
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thresh_hold</span> <span class="o">=</span> <span class="mf">0.6</span>
+<span class="n">oof_test_final</span> <span class="o">=</span> <span class="n">test_lgb</span> <span class="o">&gt;=</span> <span class="n">thresh_hold</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_label</span><span class="p">,</span> <span class="n">oof_test_final</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">test_label</span><span class="p">,</span> <span class="n">oof_test_final</span><span class="p">))</span>
+<span class="n">tp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(((</span><span class="n">oof_test_final</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">test_label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="n">pp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">oof_test_final</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sensitivity:</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="o">%</span> <span class="p">(</span><span class="n">tp</span><span class="o">/</span><span class="p">(</span><span class="n">pp</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8446424798816909
+[[395738     64]
+ [ 72737     64]]
+sensitivity:0.500
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_postive_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">oof_test_final</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">test_all_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">test_data_idx</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 查看选了哪些股票</span>
+<span class="n">tmp_col</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ts_code&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;trade_date&#39;</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="s1">&#39;pre_close&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="s1">&#39;pct_chg&#39;</span><span class="p">,</span> <span class="s1">&#39;amount&#39;</span><span class="p">,</span> <span class="s1">&#39;is_ST&#39;</span><span class="p">,</span> <span class="s1">&#39;label_max&#39;</span><span class="p">,</span> <span class="s1">&#39;label_min&#39;</span><span class="p">,</span> <span class="s1">&#39;label_final&#39;</span><span class="p">]</span>
+<span class="c1"># stock_info.iloc[test_all_idx[test_postive_idx]]</span>
+
+<span class="n">tmp_df</span> <span class="o">=</span> <span class="n">stock_info</span><span class="p">[</span><span class="n">tmp_col</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_all_idx</span><span class="p">[</span><span class="n">test_postive_idx</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="c1"># idx_tmp = tmp_df[&#39;is_ST&#39;] == 0</span>
+<span class="c1"># tmp_df.loc[idx_tmp, &#39;is_limit_up&#39;] = (((tmp_df[&#39;close&#39;][idx_tmp]-tmp_df[&#39;pre_close&#39;][idx_tmp]) / tmp_df[&#39;pre_close&#39;][idx_tmp]) &gt; 0.095)</span>
+<span class="c1"># idx_tmp = tmp_df[&#39;is_ST&#39;] == 1</span>
+<span class="c1"># tmp_df.loc[idx_tmp, &#39;is_limit_up&#39;] = (((tmp_df[&#39;close&#39;][idx_tmp]-tmp_df[&#39;pre_close&#39;][idx_tmp]) / tmp_df[&#39;pre_close&#39;][idx_tmp]) &gt; 0.047)</span>
+
+<span class="n">tmp_df</span><span class="p">[</span><span class="s1">&#39;is_limit_up&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">tmp_df</span><span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">]</span>
+
+<span class="n">buy_df</span> <span class="o">=</span> <span class="n">tmp_df</span><span class="p">[(</span><span class="n">tmp_df</span><span class="p">[</span><span class="s1">&#39;is_limit_up&#39;</span><span class="p">]</span><span class="o">==</span><span class="kc">False</span><span class="p">)]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">buy_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="s1">&#39;level_0&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">buy_df</span><span class="p">),</span> <span class="nb">sum</span><span class="p">(</span><span class="n">buy_df</span><span class="p">[</span><span class="s1">&#39;label_final&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>46 12
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id6">
+<h1>回测<a class="headerlink" href="#id6" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># stock_info.reset_index().head()</span>
+<span class="c1"># 读取指数信息</span>
+<span class="n">index_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span>  <span class="s1">&#39;OldData&#39;</span><span class="p">,</span> <span class="s1">&#39;000001.SH&#39;</span> <span class="o">+</span> <span class="s1">&#39;_NormalData.csv&#39;</span><span class="p">))</span>
+<span class="n">tmp_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;trade_date&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">test_date_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;trade_date&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">test_date_max</span><span class="p">)</span>
+<span class="n">index_df</span> <span class="o">=</span> <span class="n">index_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">tmp_idx</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">index_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmp_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;trade_date&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">test_date_min</span><span class="p">)</span>
+<span class="n">close1</span> <span class="o">=</span> <span class="n">index_df</span><span class="p">[</span><span class="n">tmp_idx</span><span class="p">][</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">tmp_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;trade_date&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">test_date_max</span><span class="p">)</span>
+<span class="n">close2</span> <span class="o">=</span> <span class="n">index_df</span><span class="p">[</span><span class="n">tmp_idx</span><span class="p">][</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">imp</span><span class="w"> </span><span class="kn">import</span> <span class="n">reload</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">Account</span>
+<span class="n">reload</span><span class="p">(</span><span class="n">Account</span><span class="p">)</span>
+<span class="n">money_init</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="n">account</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">Account</span><span class="p">(</span><span class="n">money_init</span><span class="p">)</span>
+<span class="n">account</span><span class="o">.</span><span class="n">BackTest</span><span class="p">(</span><span class="n">buy_df</span><span class="p">,</span> <span class="n">stock_info_copy</span><span class="p">,</span> <span class="n">index_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20190423  买入 三维工程 (002469.SZ) 3900股，股价：5.03,花费：19617.0,手续费：5.89，剩余现金：80377.11
+20190424  买入 华铁应急 (603300.SH) 1900股，股价：10.18,花费：19342.0,手续费：5.8，剩余现金：61029.31
+20190425  买入 贤丰控股 (002141.SZ) 4200股，股价：4.71,花费：19782.0,手续费：5.93，剩余现金：41241.38
+20190425  止损卖出华铁应急 (603300.SH) 1900股，股价：9.7728,收入：18568.32,手续费：24.14，剩余现金：59785.56，最终亏损：-803.62
+20190425  止损卖出三维工程 (002469.SZ) 3900股，股价：4.8288,收入：18832.32,手续费：24.48，剩余现金：78593.4，最终亏损：-815.05
+20190426  止损卖出贤丰控股 (002141.SZ) 4200股，股价：4.521599999999999,收入：18990.72,手续费：24.69，剩余现金：97559.43，最终亏损：-821.9
+20190507  买入 金发拉比 (002762.SZ) 3300股，股价：5.76,花费：19008.0,手续费：5.7，剩余现金：78545.73
+20190507  买入 盘龙药业 (002864.SZ) 600股，股价：28.7,花费：17220.0,手续费：5.17，剩余现金：61320.56
+20190507  买入 蒙娜丽莎 (002918.SZ) 800股，股价：23.03,花费：18424.0,手续费：5.53，剩余现金：42891.03
+20190507  买入 恒铭达 (002947.SZ) 500股，股价：34.48,花费：17240.0,手续费：5.17，剩余现金：25645.86
+20190507  买入 永泰能源 (600157.SH) 10000股，股价：1.95,花费：19500.0,手续费：5.85，剩余现金：6140.01
+20190507  买入 怡球资源 (601388.SH) 3000股，股价：2.02,花费：6060.0,手续费：5，剩余现金：75.01
+20190508  止损卖出怡球资源 (601388.SH) 3000股，股价：1.95,收入：5850.0,手续费：10.85，剩余现金：5914.16，最终亏损：-225.85
+20190508  止损卖出永泰能源 (600157.SH) 10000股，股价：1.8719999999999999,收入：18720.0,手续费：24.34，剩余现金：24609.83，最终亏损：-810.19
+20190508  止盈卖出恒铭达 (002947.SZ) 500股，股价：36.204,收入：18102.0,手续费：23.53，剩余现金：42688.29，最终盈利：833.3
+20190508  止损卖出蒙娜丽莎 (002918.SZ) 800股，股价：22.1088,收入：17687.04,手续费：22.99，剩余现金：60352.34，最终亏损：-765.48
+20190510  止盈卖出金发拉比 (002762.SZ) 3300股，股价：6.22,收入：20526.0,手续费：26.68，剩余现金：80851.66，最终盈利：1485.61
+20190513  到期卖出盘龙药业 (002864.SZ) 600股，股价：29.24,收入：17544.0,手续费：22.81，剩余现金：98372.85，最终盈利：296.03
+20190520  买入 风神股份 (600469.SH) 3200股，股价：6.1,花费：19520.0,手续费：5.86，剩余现金：78846.99
+20190521  买入 *ST富控 (600634.SH) 9300股，股价：2.11,花费：19623.0,手续费：5.89，剩余现金：59218.11
+20190521  止损卖出风神股份 (600469.SH) 3200股，股价：5.9,收入：18880.0,手续费：24.54，剩余现金：78073.56，最终亏损：-670.4
+20190523  买入 国风塑业 (000859.SZ) 3500股，股价：5.45,花费：19075.0,手续费：5.72，剩余现金：58992.84
+20190523  买入 露笑科技 (002617.SZ) 3600股，股价：5.31,花费：19116.0,手续费：5.73，剩余现金：39871.1
+20190523  买入 铜峰电子 (600237.SH) 4800股，股价：4.06,花费：19488.0,手续费：5.85，剩余现金：20377.26
+20190524  买入 仁和药业 (000650.SZ) 2100股，股价：8.97,花费：18837.0,手续费：5.65，剩余现金：1534.61
+20190524  止损卖出铜峰电子 (600237.SH) 4800股，股价：3.8975999999999993,收入：18708.48,手续费：24.32，剩余现金：20218.77，最终亏损：-809.69
+20190524  止损卖出露笑科技 (002617.SZ) 3600股，股价：5.097599999999999,收入：18351.36,手续费：23.86，剩余现金：38546.27，最终亏损：-794.23
+20190524  止损卖出*ST富控 (600634.SH) 9300股，股价：2.0256,收入：18838.08,手续费：24.49，剩余现金：57359.86，最终亏损：-815.3
+20190527  买入 ST中南 (002445.SZ) 10400股，股价：1.82,花费：18928.0,手续费：5.68，剩余现金：38426.18
+20190527  买入 *ST利源 (002501.SZ) 13200股，股价：1.44,花费：19008.0,手续费：5.7，剩余现金：19412.48
+20190527  买入 *ST九有 (600462.SH) 11700股，股价：1.62,花费：18954.0,手续费：5.69，剩余现金：452.79
+20190527  止盈卖出仁和药业 (000650.SZ) 2100股，股价：9.418500000000002,收入：19778.85,手续费：25.71，剩余现金：20205.93，最终盈利：910.49
+20190528  止盈卖出国风塑业 (000859.SZ) 3500股，股价：5.7225,收入：20028.75,手续费：26.04，剩余现金：40208.64，最终盈利：921.99
+20190529  买入 *ST美丽 (000010.SZ) 6300股，股价：3.11,花费：19593.0,手续费：5.88，剩余现金：20609.76
+20190529  买入 ST冠福 (002102.SZ) 7800股，股价：2.52,花费：19656.0,手续费：5.9，剩余现金：947.87
+20190530  止盈卖出*ST美丽 (000010.SZ) 6300股，股价：3.2655,收入：20572.65,手续费：26.74，剩余现金：21493.77，最终盈利：947.03
+20190530  止损卖出*ST九有 (600462.SH) 11700股，股价：1.5552000000000001,收入：18195.84,手续费：23.65，剩余现金：39665.96，最终亏损：-787.5
+20190531  到期卖出*ST利源 (002501.SZ) 13200股，股价：1.46,收入：19272.0,手续费：25.05，剩余现金：58912.91，最终盈利：233.24
+20190531  到期卖出ST中南 (002445.SZ) 10400股，股价：1.83,收入：19032.0,手续费：24.74，剩余现金：77920.16，最终盈利：73.58
+20190603  止损卖出ST冠福 (002102.SZ) 7800股，股价：2.4192,收入：18869.76,手续费：24.53，剩余现金：96765.39，最终亏损：-816.67
+20190610  买入 海王生物 (000078.SZ) 5700股，股价：3.38,花费：19266.0,手续费：5.78，剩余现金：77493.61
+20190611  买入 世纪星源 (000005.SZ) 6700股，股价：2.85,花费：19095.0,手续费：5.73，剩余现金：58392.88
+20190611  买入 *ST秋林 (600891.SH) 12900股，股价：1.49,花费：19221.0,手续费：5.77，剩余现金：39166.12
+20190612  买入 华映科技 (000536.SZ) 7500股，股价：2.59,花费：19425.0,手续费：5.83，剩余现金：19735.29
+20190612  买入 新能泰山 (000720.SZ) 3800股，股价：5.05,花费：19190.0,手续费：5.76，剩余现金：539.53
+20190613  止盈卖出*ST秋林 (600891.SH) 12900股，股价：1.6,收入：20640.0,手续费：26.83，剩余现金：21152.7，最终盈利：1386.4
+20190614  买入 真视通 (002771.SZ) 1700股，股价：11.27,花费：19159.0,手续费：5.75，剩余现金：1987.95
+20190614  止盈卖出新能泰山 (000720.SZ) 3800股，股价：5.3025,收入：20149.5,手续费：26.19，剩余现金：22111.26，最终盈利：927.55
+20190614  止盈卖出华映科技 (000536.SZ) 7500股，股价：2.7195,收入：20396.25,手续费：26.52，剩余现金：42480.99，最终盈利：938.91
+20190614  到期卖出海王生物 (000078.SZ) 5700股，股价：3.36,收入：19152.0,手续费：24.9，剩余现金：61608.1，最终亏损：-144.68
+20190617  买入 恒铭达 (002947.SZ) 500股，股价：38.34,花费：19170.0,手续费：5.75，剩余现金：42432.35
+20190617  止损卖出真视通 (002771.SZ) 1700股，股价：10.819199999999999,收入：18392.64,手续费：23.91，剩余现金：60801.08，最终亏损：-796.02
+20190617  到期卖出世纪星源 (000005.SZ) 6700股，股价：2.8,收入：18760.0,手续费：24.39，剩余现金：79536.69，最终亏损：-365.12
+20190619  止盈卖出恒铭达 (002947.SZ) 500股，股价：40.257000000000005,收入：20128.5,手续费：26.17，剩余现金：99639.02，最终盈利：926.58
+20190621  买入 森马服饰 (002563.SZ) 1800股，股价：10.59,花费：19062.0,手续费：5.72，剩余现金：80571.3
+20190627  止盈卖出森马服饰 (002563.SZ) 1800股，股价：11.1195,收入：20015.1,手续费：26.02，剩余现金：100560.38，最终盈利：921.36
+20190722  买入 正虹科技 (000702.SZ) 3300股，股价：6.04,花费：19932.0,手续费：5.98，剩余现金：80622.4
+20190723  买入 宇环数控 (002903.SZ) 1600股，股价：12.38,花费：19808.0,手续费：5.94，剩余现金：60808.46
+20190725  买入 *ST东南 (002263.SZ) 10000股，股价：2.03,花费：20300.0,手续费：6.09，剩余现金：40502.37
+20190725  止盈卖出宇环数控 (002903.SZ) 1600股，股价：12.999,收入：20798.4,手续费：27.04，剩余现金：61273.73，最终盈利：957.42
+20190726  止盈卖出正虹科技 (000702.SZ) 3300股，股价：6.3420000000000005,收入：20928.6,手续费：27.21，剩余现金：82175.13，最终盈利：963.41
+20190731  到期卖出*ST东南 (002263.SZ) 10000股，股价：2.01,收入：20100.0,手续费：26.13，剩余现金：102249.0，最终亏损：-232.22
+20190806  买入 *ST节能 (000820.SZ) 11600股，股价：1.76,花费：20416.0,手续费：6.12，剩余现金：81826.87
+20190807  止损卖出*ST节能 (000820.SZ) 11600股，股价：1.67,收入：19372.0,手续费：25.18，剩余现金：101173.69，最终亏损：-1075.31
+20190812  买入 安正时尚 (603839.SH) 1800股，股价：11.21,花费：20178.0,手续费：6.05，剩余现金：80989.63
+20190813  止盈卖出安正时尚 (603839.SH) 1800股，股价：11.770500000000002,收入：21186.9,手续费：27.54，剩余现金：102148.99，最终盈利：975.3
+20190830  买入 誉衡药业 (002437.SZ) 5800股，股价：3.47,花费：20126.0,手续费：6.04，剩余现金：82016.95
+20190904  止盈卖出誉衡药业 (002437.SZ) 5800股，股价：3.6435000000000004,收入：21132.3,手续费：27.47，剩余现金：103121.78，最终盈利：972.79
+20191010  买入 长源电力 (000966.SZ) 4100股，股价：5.0,花费：20500.0,手续费：6.15，剩余现金：82615.63
+20191011  止盈卖出长源电力 (000966.SZ) 4100股，股价：5.3,收入：21730.0,手续费：28.25，剩余现金：104317.38，最终盈利：1195.6
+20191025  买入 美盛文化 (002699.SZ) 3000股，股价：6.92,花费：20760.0,手续费：6.23，剩余现金：83551.15
+20191028  止盈卖出美盛文化 (002699.SZ) 3000股，股价：7.6,收入：22800.0,手续费：29.64，剩余现金：106321.51，最终盈利：2004.13
+20191112  买入 贵人鸟 (603555.SH) 6000股，股价：3.52,花费：21120.0,手续费：6.34，剩余现金：85195.18
+20191114  止损卖出贵人鸟 (603555.SH) 6000股，股价：3.3792,收入：20275.2,手续费：26.36，剩余现金：105444.02，最终亏损：-877.49
+20191122  买入 隆鑫通用 (603766.SH) 5900股，股价：3.57,花费：21063.0,手续费：6.32，剩余现金：84374.7
+20191128  到期卖出隆鑫通用 (603766.SH) 5900股，股价：3.58,收入：21122.0,手续费：27.46，剩余现金：105469.24，最终盈利：25.22
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">account</span><span class="o">.</span><span class="n">info</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ts_code</th>
+      <th>name</th>
+      <th>buy_price</th>
+      <th>buy_date</th>
+      <th>buy_num</th>
+      <th>sell_price</th>
+      <th>sell_date</th>
+      <th>profit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>002469.SZ</td>
+      <td>三维工程</td>
+      <td>5.03</td>
+      <td>20190423</td>
+      <td>3900</td>
+      <td>4.8288</td>
+      <td>20190425</td>
+      <td>-815.047</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>603300.SH</td>
+      <td>华铁应急</td>
+      <td>10.18</td>
+      <td>20190424</td>
+      <td>1900</td>
+      <td>9.7728</td>
+      <td>20190425</td>
+      <td>-803.621</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>002141.SZ</td>
+      <td>贤丰控股</td>
+      <td>4.71</td>
+      <td>20190425</td>
+      <td>4200</td>
+      <td>4.5216</td>
+      <td>20190426</td>
+      <td>-821.903</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>002762.SZ</td>
+      <td>金发拉比</td>
+      <td>5.76</td>
+      <td>20190507</td>
+      <td>3300</td>
+      <td>6.22</td>
+      <td>20190510</td>
+      <td>1485.61</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>002864.SZ</td>
+      <td>盘龙药业</td>
+      <td>28.7</td>
+      <td>20190507</td>
+      <td>600</td>
+      <td>29.24</td>
+      <td>20190513</td>
+      <td>296.027</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>002918.SZ</td>
+      <td>蒙娜丽莎</td>
+      <td>23.03</td>
+      <td>20190507</td>
+      <td>800</td>
+      <td>22.1088</td>
+      <td>20190508</td>
+      <td>-765.48</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>002947.SZ</td>
+      <td>恒铭达</td>
+      <td>34.48</td>
+      <td>20190507</td>
+      <td>500</td>
+      <td>36.204</td>
+      <td>20190508</td>
+      <td>833.295</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>600157.SH</td>
+      <td>永泰能源</td>
+      <td>1.95</td>
+      <td>20190507</td>
+      <td>10000</td>
+      <td>1.872</td>
+      <td>20190508</td>
+      <td>-810.186</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>601388.SH</td>
+      <td>怡球资源</td>
+      <td>2.02</td>
+      <td>20190507</td>
+      <td>3000</td>
+      <td>1.95</td>
+      <td>20190508</td>
+      <td>-225.85</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>600469.SH</td>
+      <td>风神股份</td>
+      <td>6.1</td>
+      <td>20190520</td>
+      <td>3200</td>
+      <td>5.9</td>
+      <td>20190521</td>
+      <td>-670.4</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>600634.SH</td>
+      <td>*ST富控</td>
+      <td>2.11</td>
+      <td>20190521</td>
+      <td>9300</td>
+      <td>2.0256</td>
+      <td>20190524</td>
+      <td>-815.296</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>000859.SZ</td>
+      <td>国风塑业</td>
+      <td>5.45</td>
+      <td>20190523</td>
+      <td>3500</td>
+      <td>5.7225</td>
+      <td>20190528</td>
+      <td>921.99</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>002617.SZ</td>
+      <td>露笑科技</td>
+      <td>5.31</td>
+      <td>20190523</td>
+      <td>3600</td>
+      <td>5.0976</td>
+      <td>20190524</td>
+      <td>-794.232</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>600237.SH</td>
+      <td>铜峰电子</td>
+      <td>4.06</td>
+      <td>20190523</td>
+      <td>4800</td>
+      <td>3.8976</td>
+      <td>20190524</td>
+      <td>-809.687</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>000650.SZ</td>
+      <td>仁和药业</td>
+      <td>8.97</td>
+      <td>20190524</td>
+      <td>2100</td>
+      <td>9.4185</td>
+      <td>20190527</td>
+      <td>910.486</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>002445.SZ</td>
+      <td>ST中南</td>
+      <td>1.82</td>
+      <td>20190527</td>
+      <td>10400</td>
+      <td>1.83</td>
+      <td>20190531</td>
+      <td>73.58</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>002501.SZ</td>
+      <td>*ST利源</td>
+      <td>1.44</td>
+      <td>20190527</td>
+      <td>13200</td>
+      <td>1.46</td>
+      <td>20190531</td>
+      <td>233.244</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>600462.SH</td>
+      <td>*ST九有</td>
+      <td>1.62</td>
+      <td>20190527</td>
+      <td>11700</td>
+      <td>1.5552</td>
+      <td>20190530</td>
+      <td>-787.501</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>000010.SZ</td>
+      <td>*ST美丽</td>
+      <td>3.11</td>
+      <td>20190529</td>
+      <td>6300</td>
+      <td>3.2655</td>
+      <td>20190530</td>
+      <td>947.028</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>002102.SZ</td>
+      <td>ST冠福</td>
+      <td>2.52</td>
+      <td>20190529</td>
+      <td>7800</td>
+      <td>2.4192</td>
+      <td>20190603</td>
+      <td>-816.667</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>000078.SZ</td>
+      <td>海王生物</td>
+      <td>3.38</td>
+      <td>20190610</td>
+      <td>5700</td>
+      <td>3.36</td>
+      <td>20190614</td>
+      <td>-144.677</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>000005.SZ</td>
+      <td>世纪星源</td>
+      <td>2.85</td>
+      <td>20190611</td>
+      <td>6700</td>
+      <td>2.8</td>
+      <td>20190617</td>
+      <td>-365.117</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>600891.SH</td>
+      <td>*ST秋林</td>
+      <td>1.49</td>
+      <td>20190611</td>
+      <td>12900</td>
+      <td>1.6</td>
+      <td>20190613</td>
+      <td>1386.4</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>000536.SZ</td>
+      <td>华映科技</td>
+      <td>2.59</td>
+      <td>20190612</td>
+      <td>7500</td>
+      <td>2.7195</td>
+      <td>20190614</td>
+      <td>938.907</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>000720.SZ</td>
+      <td>新能泰山</td>
+      <td>5.05</td>
+      <td>20190612</td>
+      <td>3800</td>
+      <td>5.3025</td>
+      <td>20190614</td>
+      <td>927.549</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>002771.SZ</td>
+      <td>真视通</td>
+      <td>11.27</td>
+      <td>20190614</td>
+      <td>1700</td>
+      <td>10.8192</td>
+      <td>20190617</td>
+      <td>-796.018</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>002947.SZ</td>
+      <td>恒铭达</td>
+      <td>38.34</td>
+      <td>20190617</td>
+      <td>500</td>
+      <td>40.257</td>
+      <td>20190619</td>
+      <td>926.582</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>002563.SZ</td>
+      <td>森马服饰</td>
+      <td>10.59</td>
+      <td>20190621</td>
+      <td>1800</td>
+      <td>11.1195</td>
+      <td>20190627</td>
+      <td>921.362</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>000702.SZ</td>
+      <td>正虹科技</td>
+      <td>6.04</td>
+      <td>20190722</td>
+      <td>3300</td>
+      <td>6.342</td>
+      <td>20190726</td>
+      <td>963.413</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>002903.SZ</td>
+      <td>宇环数控</td>
+      <td>12.38</td>
+      <td>20190723</td>
+      <td>1600</td>
+      <td>12.999</td>
+      <td>20190725</td>
+      <td>957.42</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>002263.SZ</td>
+      <td>*ST东南</td>
+      <td>2.03</td>
+      <td>20190725</td>
+      <td>10000</td>
+      <td>2.01</td>
+      <td>20190731</td>
+      <td>-232.22</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>000820.SZ</td>
+      <td>*ST节能</td>
+      <td>1.76</td>
+      <td>20190806</td>
+      <td>11600</td>
+      <td>1.67</td>
+      <td>20190807</td>
+      <td>-1075.31</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>603839.SH</td>
+      <td>安正时尚</td>
+      <td>11.21</td>
+      <td>20190812</td>
+      <td>1800</td>
+      <td>11.7705</td>
+      <td>20190813</td>
+      <td>975.304</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>002437.SZ</td>
+      <td>誉衡药业</td>
+      <td>3.47</td>
+      <td>20190830</td>
+      <td>5800</td>
+      <td>3.6435</td>
+      <td>20190904</td>
+      <td>972.79</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>000966.SZ</td>
+      <td>长源电力</td>
+      <td>5</td>
+      <td>20191010</td>
+      <td>4100</td>
+      <td>5.3</td>
+      <td>20191011</td>
+      <td>1195.6</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>002699.SZ</td>
+      <td>美盛文化</td>
+      <td>6.92</td>
+      <td>20191025</td>
+      <td>3000</td>
+      <td>7.6</td>
+      <td>20191028</td>
+      <td>2004.13</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>603555.SH</td>
+      <td>贵人鸟</td>
+      <td>3.52</td>
+      <td>20191112</td>
+      <td>6000</td>
+      <td>3.3792</td>
+      <td>20191114</td>
+      <td>-877.494</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>603766.SH</td>
+      <td>隆鑫通用</td>
+      <td>3.57</td>
+      <td>20191122</td>
+      <td>5900</td>
+      <td>3.58</td>
+      <td>20191128</td>
+      <td>25.2225</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">account_profit</span> <span class="o">=</span> <span class="p">(</span><span class="n">account</span><span class="o">.</span><span class="n">market_value</span> <span class="o">-</span> <span class="n">money_init</span><span class="p">)</span> <span class="o">/</span> <span class="n">money_init</span>
+<span class="n">index_profit</span> <span class="o">=</span> <span class="p">(</span><span class="n">close2</span> <span class="o">-</span> <span class="n">close1</span><span class="p">)</span> <span class="o">/</span> <span class="n">close1</span>
+<span class="n">win_rate</span> <span class="o">=</span> <span class="n">account</span><span class="o">.</span><span class="n">victory</span> <span class="o">/</span> <span class="p">(</span><span class="n">account</span><span class="o">.</span><span class="n">victory</span> <span class="o">+</span> <span class="n">account</span><span class="o">.</span><span class="n">defeat</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;账户盈利情况:</span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">account_profit</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;上证指数浮动情况:</span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">index_profit</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;交易胜率:</span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">win_rate</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;最大回撤率:</span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">account</span><span class="o">.</span><span class="n">max_retracement</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>账户盈利情况:0.0547
+上证指数浮动情况:-0.0754
+交易胜率:0.5263
+最大回撤率:0.0545
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">Draw</span>
+<span class="n">reload</span><span class="p">(</span><span class="n">Draw</span><span class="p">)</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">index_value</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">index_df</span><span class="p">[</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;trade_date&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">test_date_min</span><span class="p">][</span><span class="s1">&#39;pre_close&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">index_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;trade_date&#39;</span><span class="p">)[</span><span class="s1">&#39;close&#39;</span><span class="p">])</span>
+<span class="n">Draw</span><span class="o">.</span><span class="n">Draw_Market_Value_Change</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">account</span><span class="o">.</span><span class="n">market_value_all</span><span class="p">,</span> <span class="n">index_value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8f0fb74f435315060b1c2e9badf0d32cc08e47355d95e1106623dee580838396.png" src="../_images/8f0fb74f435315060b1c2e9badf0d32cc08e47355d95e1106623dee580838396.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">ts_code</span><span class="p">,</span> <span class="n">buy_date</span><span class="p">,</span> <span class="n">sell_date</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">account</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;ts_code&#39;</span><span class="p">],</span> <span class="n">account</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;buy_date&#39;</span><span class="p">],</span> <span class="n">account</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;sell_date&#39;</span><span class="p">]):</span>
+    <span class="n">Draw</span><span class="o">.</span><span class="n">Draw_Stock</span><span class="p">(</span><span class="n">ts_code</span><span class="p">,</span> <span class="n">stock_info</span><span class="p">,</span> <span class="n">buy_date</span><span class="p">,</span> <span class="n">sell_date</span><span class="p">,</span> <span class="n">left_offset</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">right_offset</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>E:\code\venv2\lib\site-packages\matplotlib\pyplot.py:514: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  max_open_warning, RuntimeWarning)
+</pre></div>
+</div>
+<img alt="../_images/35e926f86fc4f9a26c8ab05f29e5d1404ba5ce438ea3f4c4ca93ff4a4ca40ce3.png" src="../_images/35e926f86fc4f9a26c8ab05f29e5d1404ba5ce438ea3f4c4ca93ff4a4ca40ce3.png" />
+<img alt="../_images/5b09f3aa06efd492cf83095e0ab8bb59a183d40e515522cf142c4c65b0fa44b3.png" src="../_images/5b09f3aa06efd492cf83095e0ab8bb59a183d40e515522cf142c4c65b0fa44b3.png" />
+<img alt="../_images/6740b3e7b9671ee5f0c8e618cf29591ad437b45662aa834c06e2bd1f72218c00.png" src="../_images/6740b3e7b9671ee5f0c8e618cf29591ad437b45662aa834c06e2bd1f72218c00.png" />
+<img alt="../_images/f526b1adc4c3a253954133962ce28807a76112c9ffa67d84e201650f6761216d.png" src="../_images/f526b1adc4c3a253954133962ce28807a76112c9ffa67d84e201650f6761216d.png" />
+<img alt="../_images/6f597f1cddd9823cc4f65c581599034327c0f48c0505d4b7a7ded1aab8741a9d.png" src="../_images/6f597f1cddd9823cc4f65c581599034327c0f48c0505d4b7a7ded1aab8741a9d.png" />
+<img alt="../_images/34a949549b032fe5acc552cce83bdc02490bda5457e838913ee08d70aa8cc44f.png" src="../_images/34a949549b032fe5acc552cce83bdc02490bda5457e838913ee08d70aa8cc44f.png" />
+<img alt="../_images/221377c55a845a3852b67769b3d3bf2558c331dd360a0d62e1ab3fd0f7f08cd2.png" src="../_images/221377c55a845a3852b67769b3d3bf2558c331dd360a0d62e1ab3fd0f7f08cd2.png" />
+<img alt="../_images/0c83e456f1ee5f57c0f00207c8c92615a7a4e5255603ce78c876b7c0db3c5494.png" src="../_images/0c83e456f1ee5f57c0f00207c8c92615a7a4e5255603ce78c876b7c0db3c5494.png" />
+<img alt="../_images/687bb550ea4155c12b7e055bcc6693d4223af93a49b79c0aa51be632ff5b0ace.png" src="../_images/687bb550ea4155c12b7e055bcc6693d4223af93a49b79c0aa51be632ff5b0ace.png" />
+<img alt="../_images/de586df04a0ca0ab2762943b5608309b0a21686366490cff47484006291a29ae.png" src="../_images/de586df04a0ca0ab2762943b5608309b0a21686366490cff47484006291a29ae.png" />
+<img alt="../_images/5d0e989c3aaa734bfba86c9c1f72e5bd7ee355ce87b95f5a2bfea3aa508bee23.png" src="../_images/5d0e989c3aaa734bfba86c9c1f72e5bd7ee355ce87b95f5a2bfea3aa508bee23.png" />
+<img alt="../_images/18457c8f2ee0a2e9ffb68d985bb7e1d9fff0c684ad24ecacbce28c49efb7101e.png" src="../_images/18457c8f2ee0a2e9ffb68d985bb7e1d9fff0c684ad24ecacbce28c49efb7101e.png" />
+<img alt="../_images/d35333e0abb928b9fd7b69fe0506fffea7feb261e13ce8b79a1bf824f9b9532e.png" src="../_images/d35333e0abb928b9fd7b69fe0506fffea7feb261e13ce8b79a1bf824f9b9532e.png" />
+<img alt="../_images/f593364f9cb4446229b05067948d071a329be12d23c6ed091c9ec123dba29cb8.png" src="../_images/f593364f9cb4446229b05067948d071a329be12d23c6ed091c9ec123dba29cb8.png" />
+<img alt="../_images/e11cf5086a85e8aa8a1744c8e97c2f8b38050662abfbf82f88c9a2e7bd958690.png" src="../_images/e11cf5086a85e8aa8a1744c8e97c2f8b38050662abfbf82f88c9a2e7bd958690.png" />
+<img alt="../_images/7baf28aae8a8a0c702b03e95acb2797b96f7e13e1a9d3c8e6217777ccd2f3a52.png" src="../_images/7baf28aae8a8a0c702b03e95acb2797b96f7e13e1a9d3c8e6217777ccd2f3a52.png" />
+<img alt="../_images/038093d71b9e4cc381631402fec930ed84810748e7f8d6212e859c52b9d562a6.png" src="../_images/038093d71b9e4cc381631402fec930ed84810748e7f8d6212e859c52b9d562a6.png" />
+<img alt="../_images/38f4503be6c33b785c1f9886d60b1c896b2a8842dc9722f97d8017a519aedfcf.png" src="../_images/38f4503be6c33b785c1f9886d60b1c896b2a8842dc9722f97d8017a519aedfcf.png" />
+<img alt="../_images/eb377e9ed25397216b2ced9597665f8ddae4df1ca93eb057c783dcedb316da92.png" src="../_images/eb377e9ed25397216b2ced9597665f8ddae4df1ca93eb057c783dcedb316da92.png" />
+<img alt="../_images/dd263e350ae179950d248182c9f95396d840ad11e16f920b13b8070fa92937aa.png" src="../_images/dd263e350ae179950d248182c9f95396d840ad11e16f920b13b8070fa92937aa.png" />
+<img alt="../_images/5fb0c68456dcb998518e16c1adcb6e730053753ec5e2b7f46e12046cfdf9d8a1.png" src="../_images/5fb0c68456dcb998518e16c1adcb6e730053753ec5e2b7f46e12046cfdf9d8a1.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Astock_market"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">数据读取</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">特征工程</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">标签制作</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">模型训练</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">模型评价</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">回测</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,929 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Astock_market/alphas101-191/1.research';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../nb2024.html">1. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nb2022.html">2. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Astock_market/alphas101-191/1.research.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datas</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">year</span> <span class="o">=</span> <span class="mi">2018</span>
+<span class="n">list_assets</span><span class="p">,</span> <span class="n">df_assets</span> <span class="o">=</span> <span class="n">get_hs300_stocks</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">-01-01&#39;</span><span class="p">)</span>
+<span class="n">dfs</span><span class="o">=</span> <span class="n">get_all_date_data</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">-01-01&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">year</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">-01-01&#39;</span><span class="p">,</span> <span class="n">list_assets</span><span class="p">)</span>
+
+
+<span class="n">df_all</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">[[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;asset&#39;</span><span class="p">,</span> <span class="s2">&quot;close&quot;</span><span class="p">]]</span>
+<span class="n">df_all</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_all</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+<span class="c1"># print(df_all)</span>
+
+<span class="n">close</span> <span class="o">=</span> <span class="n">df_all</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;asset&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;close&#39;</span><span class="p">)</span>
+<span class="c1"># close.index = pd.to_datetime(close.index)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">close</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>login success!
+login respond error_code:0
+login respond  error_msg:success
+query_hs300 error_code:0
+query_hs300  error_msg:success
+logout success!
+300
+asset       000001  000002  000008  000060  000063  000069  000100  000157  \
+date                                                                         
+2018-01-02   13.70   32.56    8.77   11.28   35.73    8.90    3.91    4.55   
+2018-01-03   13.33   32.33    8.75   11.21   36.69    8.95    3.99    4.53   
+2018-01-04   13.25   33.12    8.68   11.35   36.90    9.04    3.96    4.51   
+2018-01-05   13.30   34.76    8.55   11.31   36.04    9.52    3.92    4.57   
+2018-01-08   12.96   35.99    8.47   11.55   35.57    9.49    3.88    4.66   
+...            ...     ...     ...     ...     ...     ...     ...     ...   
+2018-12-24    9.42   23.88    3.96    4.04   20.26    5.94    2.40    3.67   
+2018-12-25    9.34   23.97    3.97    3.97   20.36    5.89    2.41    3.61   
+2018-12-26    9.30   23.80    3.98    3.94   19.86    6.09    2.40    3.58   
+2018-12-27    9.28   23.44    3.89    3.94   19.90    6.16    2.42    3.58   
+2018-12-28    9.38   23.82    3.89    3.96   19.59    6.35    2.45    3.56   
+
+asset       000166  000333  ...  601989  601991  601992  601997  601998  \
+date                        ...                                           
+2018-01-02    5.38   56.38  ...    6.04    4.19    5.59   13.64    6.32   
+2018-01-03    5.37   55.80  ...    6.13    4.26    6.15   13.71    6.37   
+2018-01-04    5.33   57.29  ...    6.09    4.24    6.14   13.95    6.39   
+2018-01-05    5.35   57.96  ...    6.10    4.24    6.18   13.94    6.44   
+2018-01-08    5.40   57.66  ...    6.08    4.29    6.20   14.05    6.54   
+...            ...     ...  ...     ...     ...     ...     ...     ...   
+2018-12-24    4.15   37.74  ...    4.22    3.10    3.59   10.73    5.48   
+2018-12-25    4.07   37.38  ...    4.20    3.08    3.52   10.69    5.39   
+2018-12-26    4.01   37.13  ...    4.18    3.05    3.58   10.66    5.39   
+2018-12-27    3.99   36.80  ...    4.26    3.09    3.53   10.58    5.37   
+2018-12-28    4.07   36.86  ...    4.25    3.15    3.50   10.68    5.45   
+
+asset       603160  603799  603833  603858  603993  
+date                                                
+2018-01-02   98.11   80.97  121.50   51.27    6.94  
+2018-01-03   99.87   87.17  121.53   52.35    7.05  
+2018-01-04  100.03   89.79  124.40   52.03    7.23  
+2018-01-05   97.03   90.95  124.51   52.10    7.16  
+2018-01-08   99.27   94.18  127.03   52.13    7.30  
+...            ...     ...     ...     ...     ...  
+2018-12-24   80.16   32.34   84.00   25.46    3.95  
+2018-12-25   77.62   31.02   82.78   25.42    3.89  
+2018-12-26   77.61   30.37   81.52   25.50    3.84  
+2018-12-27   79.50   29.77   80.80   25.26    3.76  
+2018-12-28   78.70   30.11   79.72   25.28    3.76  
+
+[243 rows x 298 columns]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-17-ac9f773820f6&gt;:10: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_all[&#39;date&#39;] = pd.to_datetime(df_all[&#39;date&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###########################简单现计算的因子#######################################</span>
+<span class="c1"># alpha = dfs[[&#39;date&#39;, &#39;asset&#39;, &quot;pctChg&quot;]]</span>
+<span class="c1"># alpha = alpha.rename(columns={</span>
+<span class="c1">#         &quot;pctChg&quot;: &quot;factor&quot;})</span>
+<span class="c1"># alpha[&#39;date&#39;] = pd.to_datetime(alpha[&#39;date&#39;])</span>
+<span class="c1"># alpha = alpha.set_index([&#39;date&#39;, &#39;asset&#39;], drop=True)</span>
+<span class="c1"># alpha.sort_index(inplace=True)</span>
+<span class="c1"># print(alpha)</span>
+
+<span class="c1">############################已计算好存在文件中的因子######################################</span>
+<span class="n">alpha_num</span> <span class="o">=</span> <span class="mi">83</span>
+<span class="n">alpha_name</span> <span class="o">=</span> <span class="s1">&#39;Alphas101&#39;</span>
+
+<span class="c1"># 读取已经计算好的因子</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;alphas/</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">/alpha</span><span class="si">{:03d}</span><span class="s1">.csv&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alpha_name</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">alpha_num</span><span class="p">))</span>
+
+<span class="c1"># 筛选出今年的数据，需与股票收盘日期区间一致</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">[(</span><span class="n">alpha</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">-01-01&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">alpha</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">year</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">-01-01&#39;</span><span class="p">)]</span>
+
+<span class="c1"># 因子矩阵转换为一维数据(alphalens需要的格式)</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;asset&#39;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;factor&#39;</span> <span class="p">)</span>
+
+<span class="c1"># date列转为日期格式</span>
+<span class="n">alpha</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">alpha</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">[[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;asset&#39;</span><span class="p">,</span> <span class="s1">&#39;factor&#39;</span><span class="p">]]</span>
+
+<span class="c1"># 设置二级索引</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;asset&#39;</span><span class="p">],</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">alpha</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+
+<span class="c1">#############################因子分析#######################################</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">alphalens.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_clean_factor_and_forward_returns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">alphalens.tears</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_full_tear_sheet</span>
+
+<span class="n">ret</span> <span class="o">=</span> <span class="n">get_clean_factor_and_forward_returns</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span><span class="n">quantiles</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">create_full_tear_sheet</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">long_short</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     factor
+date       asset           
+2018-01-02 000001  0.348996
+           000002 -1.138443
+           000008 -0.207436
+           000060 -2.402391
+           000063 -2.683300
+...                     ...
+2018-12-28 603160 -1.934436
+           603799 -0.599580
+           603833  0.064911
+           603858  0.016927
+           603993  0.145945
+
+[72657 rows x 1 columns]
+Dropped 8.3% entries from factor data: 8.3% in forward returns computation and 0.0% in binning phase (set max_loss=0 to see potentially suppressed Exceptions).
+max_loss is 35.0%, not exceeded: OK!
+Quantiles Statistics
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+      <th>count %</th>
+    </tr>
+    <tr>
+      <th>factor_quantile</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>-37.614211</td>
+      <td>0.167625</td>
+      <td>-1.841546</td>
+      <td>2.565128</td>
+      <td>13441</td>
+      <td>20.163819</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-2.473767</td>
+      <td>0.450622</td>
+      <td>-0.257523</td>
+      <td>0.403960</td>
+      <td>13282</td>
+      <td>19.925291</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.861699</td>
+      <td>1.048236</td>
+      <td>0.030461</td>
+      <td>0.273676</td>
+      <td>13293</td>
+      <td>19.941793</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.356785</td>
+      <td>2.626910</td>
+      <td>0.339276</td>
+      <td>0.466419</td>
+      <td>13282</td>
+      <td>19.925291</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-0.114147</td>
+      <td>54.135463</td>
+      <td>1.881461</td>
+      <td>2.531564</td>
+      <td>13361</td>
+      <td>20.043805</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Returns Analysis
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1D</th>
+      <th>5D</th>
+      <th>10D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Ann. alpha</th>
+      <td>0.809</td>
+      <td>0.268</td>
+      <td>0.142</td>
+    </tr>
+    <tr>
+      <th>beta</th>
+      <td>0.048</td>
+      <td>0.067</td>
+      <td>-0.022</td>
+    </tr>
+    <tr>
+      <th>Mean Period Wise Return Top Quantile (bps)</th>
+      <td>5.046</td>
+      <td>-7.895</td>
+      <td>-11.231</td>
+    </tr>
+    <tr>
+      <th>Mean Period Wise Return Bottom Quantile (bps)</th>
+      <td>-32.867</td>
+      <td>-21.182</td>
+      <td>-19.914</td>
+    </tr>
+    <tr>
+      <th>Mean Period Wise Spread (bps)</th>
+      <td>37.913</td>
+      <td>13.183</td>
+      <td>8.626</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../../_images/bc0e288336a50161b0df86522452e68042a1e9b9d721fcf9242937abe3055b12.png" src="../../_images/bc0e288336a50161b0df86522452e68042a1e9b9d721fcf9242937abe3055b12.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Information Analysis
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1D</th>
+      <th>5D</th>
+      <th>10D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>IC Mean</th>
+      <td>0.101</td>
+      <td>0.055</td>
+      <td>0.044</td>
+    </tr>
+    <tr>
+      <th>IC Std.</th>
+      <td>0.166</td>
+      <td>0.157</td>
+      <td>0.128</td>
+    </tr>
+    <tr>
+      <th>Risk-Adjusted IC</th>
+      <td>0.605</td>
+      <td>0.347</td>
+      <td>0.343</td>
+    </tr>
+    <tr>
+      <th>t-stat(IC)</th>
+      <td>9.231</td>
+      <td>5.304</td>
+      <td>5.233</td>
+    </tr>
+    <tr>
+      <th>p-value(IC)</th>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>IC Skew</th>
+      <td>-0.055</td>
+      <td>0.049</td>
+      <td>0.018</td>
+    </tr>
+    <tr>
+      <th>IC Kurtosis</th>
+      <td>0.088</td>
+      <td>0.063</td>
+      <td>0.397</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d:\ProgramData\Anaconda3\lib\site-packages\seaborn\distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+d:\ProgramData\Anaconda3\lib\site-packages\seaborn\distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+d:\ProgramData\Anaconda3\lib\site-packages\seaborn\distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+</pre></div>
+</div>
+<img alt="../../_images/bc4ca36f2ee3e21ba0ed8efc7f51ff5a6fe93a2faed3860b253c9ee11625508c.png" src="../../_images/bc4ca36f2ee3e21ba0ed8efc7f51ff5a6fe93a2faed3860b253c9ee11625508c.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d:\code\StockProject\alphas\alphas\alphalens\utils.py:910: UserWarning: Skipping return periods that aren&#39;t exact multiples of days.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Turnover Analysis
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1D</th>
+      <th>5D</th>
+      <th>10D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Quantile 1 Mean Turnover</th>
+      <td>0.753</td>
+      <td>0.721</td>
+      <td>0.732</td>
+    </tr>
+    <tr>
+      <th>Quantile 2 Mean Turnover</th>
+      <td>0.787</td>
+      <td>0.779</td>
+      <td>0.771</td>
+    </tr>
+    <tr>
+      <th>Quantile 3 Mean Turnover</th>
+      <td>0.735</td>
+      <td>0.736</td>
+      <td>0.735</td>
+    </tr>
+    <tr>
+      <th>Quantile 4 Mean Turnover</th>
+      <td>0.788</td>
+      <td>0.771</td>
+      <td>0.769</td>
+    </tr>
+    <tr>
+      <th>Quantile 5 Mean Turnover</th>
+      <td>0.748</td>
+      <td>0.726</td>
+      <td>0.732</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1D</th>
+      <th>5D</th>
+      <th>10D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Mean Factor Rank Autocorrelation</th>
+      <td>-0.073</td>
+      <td>0.005</td>
+      <td>0.005</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/80b8647c063747e90e2053d60d33ee8cfd3b6684048b2a14065f3866ca5c3018.png" src="../../_images/80b8647c063747e90e2053d60d33ee8cfd3b6684048b2a14065f3866ca5c3018.png" />
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Astock_market/alphas101-191"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

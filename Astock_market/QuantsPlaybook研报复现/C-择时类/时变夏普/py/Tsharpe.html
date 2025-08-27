@@ -1,0 +1,1905 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tsharpe模型演变过程 &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Astock_market/QuantsPlaybook研报复现/C-择时类/时变夏普/py/Tsharpe';</script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../nb2024.html">1. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../nb2022.html">2. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../../_sources/Astock_market/QuantsPlaybook研报复现/C-择时类/时变夏普/py/Tsharpe.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tsharpe模型演变过程</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tsharpe模型演变过程</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">构建数据提取函数</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">直接估计时变夏普</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">滚动回归预测时变夏普比率</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">直接估计夏普的回归模型</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">使用1994年的模型进行估计</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">WaveModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">wave_transform</span> <span class="c1"># 自定义小波分析库</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">talib</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">EDC</span><span class="w"> </span><span class="kn">import</span> <span class="n">QueryMacroIndic</span> <span class="c1"># 宏观数据获取 这里仅引用：社会融资规模同比数据</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jqdata</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.dates</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mdate</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.gridspec</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mg</span> <span class="c1"># 不规则子图</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">register_matplotlib_converters</span><span class="p">()</span>
+
+<span class="c1"># 设置字体 用来正常显示中文标签</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SimHei&#39;</span><span class="p">]</span>
+<span class="c1">#plt.rcParams[&#39;font.family&#39;]=&#39;serif&#39; # pd.plot中文</span>
+<span class="c1"># 用来正常显示负号</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="c1"># 图表主题</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="tsharpe">
+<h1>Tsharpe模型演变过程<a class="headerlink" href="#tsharpe" title="Link to this heading">#</a></h1>
+<p>Robert Whitelaw（1994）中设定模型：</p>
+<blockquote>
+<div><p>four explanatory variables-the Baa-Aaa spread,the commercial paper-Treasury spread,the one-year Treasury yield,and the dividend yield</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[r_{t,t+r}=X_t\beta+u_{r+r}\]</div>
+<div class="math notranslate nohighlight">
+\[\sqrt{\frac{\pi}{2}}|\hat{u}_{t+r}|=X_t\gamma+\epsilon_{t+r}\]</div>
+<p>Robert Whitelaw（1997）中设定模型：</p>
+<blockquote>
+<div><p>The Baa-Aaa spread, the dividend yield, and the one-year yield are used in the mean equation, and the one-year yield and the commercialpaper-Treasury spread are used in the volatility equation.</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[R_{t+1}-R_{ft}=X_1t\beta_1+\epsilon_{1t+1}\]</div>
+<div class="math notranslate nohighlight">
+\[\sqrt{\frac{\pi}{2}}|\epsilon_{1t+1}|=X_2t\beta_2+\epsilon_{2t+1}\]</div>
+<p><em><strong>国信证券对上述解释变量做了更中国化的改变，具体如下：</strong></em></p>
+<p>两个等式分别表达了对收益率和其波动性的回归。其中<span class="math notranslate nohighlight">\(R_{t+1}\)</span>指数收益,<span class="math notranslate nohighlight">\(R_{ft}\)</span>表示无风险利率,<span class="math notranslate nohighlight">\(X_{1t}\)</span>表示t期的[M1同比增长率,指数市盈率]和一年期国债利率组成的向量,而<span class="math notranslate nohighlight">\(X_{2t}\)</span>表示由在t期的一年期国债利率和[国债一年期即期收益率]组成的向量。</p>
+<p>可以看到1994年模型与1997年模型的<strong>不同</strong>是：1994年两步回归时<span class="math notranslate nohighlight">\(X_t\)</span>表示的是同一解释变量；而1997年将解释变量拆成了两组分别为<span class="math notranslate nohighlight">\(X_1y\)</span>,<span class="math notranslate nohighlight">\(X_2t\)</span>;
+**相同点：**都是将第一步回归后的残差带入第二步中作为被解释的变量。</p>
+<p>在执行完两步回归后得到<span class="math notranslate nohighlight">\(\beta_1\)</span>,<span class="math notranslate nohighlight">\(\beta_2\)</span>后通过下述公式获取estimated conditional Sharpe ratio：</p>
+<div class="math notranslate nohighlight">
+\[\hat{S}_t=\frac{X_{1t}\hat{\beta}_1}{X_{2t}\hat{\beta}_2}\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>构建数据提取函数<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###################################### 数据获取及计算 ##############################################</span>
+
+<span class="c1"># 货币(M1)供应量同比增长率</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">GetMacro_M1</span><span class="p">(</span><span class="n">start_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    start_date/end_date:YYYY-MM-dd</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># 获取M1同比</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="n">macro</span><span class="o">.</span><span class="n">MAC_MONEY_SUPPLY_MONTH</span><span class="o">.</span><span class="n">stat_month</span><span class="p">,</span>
+              <span class="n">macro</span><span class="o">.</span><span class="n">MAC_MONEY_SUPPLY_MONTH</span><span class="o">.</span><span class="n">m1_yoy</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+                  <span class="n">macro</span><span class="o">.</span><span class="n">MAC_MONEY_SUPPLY_MONTH</span><span class="o">.</span><span class="n">stat_month</span> <span class="o">&gt;=</span> <span class="n">start_date</span><span class="p">[:</span><span class="mi">7</span><span class="p">],</span>
+                  <span class="n">macro</span><span class="o">.</span><span class="n">MAC_MONEY_SUPPLY_MONTH</span><span class="o">.</span><span class="n">stat_month</span> <span class="o">&lt;=</span> <span class="n">end_date</span><span class="p">[:</span><span class="mi">7</span><span class="p">])</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">macro</span><span class="o">.</span><span class="n">run_query</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;stat_month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">GetTradePeriod</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;stat_month&#39;</span><span class="p">)</span>
+    
+
+<span class="c1"># 获取指数月度收益</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">GetIndexMRet</span><span class="p">(</span><span class="n">symbol</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">start_date</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">end_date</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    return</span>
+<span class="sd">    ----------</span>
+<span class="sd">        指数收盘价 月度收益率 月度波动率</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">GetTradePeriod</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">))</span>
+    
+    <span class="n">index_price</span> <span class="o">=</span> <span class="n">get_price</span><span class="p">(</span>
+        <span class="n">symbol</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">,</span><span class="s1">&#39;pre_close&#39;</span><span class="p">],</span> <span class="n">panel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="n">log_ret</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">index_price</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">index_price</span><span class="p">[</span><span class="s1">&#39;pre_close&#39;</span><span class="p">])</span> <span class="c1"># 对数收益率</span>
+    
+    <span class="n">log_ret_m</span> <span class="o">=</span> <span class="n">log_ret</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">close_m</span> <span class="o">=</span> <span class="n">index_price</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">))[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">last</span><span class="p">()</span>
+    <span class="n">sigma_m</span> <span class="o">=</span> <span class="n">log_ret</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;log_ret&#39;</span><span class="p">:</span><span class="n">log_ret_m</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="s1">&#39;close&#39;</span><span class="p">:</span><span class="n">close_m</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="s1">&#39;sigma&#39;</span><span class="p">:</span><span class="n">sigma_m</span><span class="o">.</span><span class="n">values</span><span class="p">},</span><span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="p">)</span>
+    
+
+
+<span class="c1"># 手动计算指数PE 采用等权方式</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">GetIndexPE</span><span class="p">(</span><span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">start_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+               <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;avg&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;method:avg mktcap 等权|加权&#39;&#39;&#39;</span>
+
+    <span class="n">trade_range</span> <span class="o">=</span> <span class="n">GetTradePeriod</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+
+    <span class="n">pe_dict</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># 数据储存</span>
+
+    <span class="c1"># 等权计算</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_CalAvgPE</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;pe_ratio &gt; 0&#39;</span><span class="p">)[</span><span class="s1">&#39;pe_ratio&#39;</span><span class="p">])</span>
+
+    <span class="c1"># 加权计算</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_CalMktPE</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+
+        <span class="n">x_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;pe_ratio &gt; 0&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;circulating_market_cap&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span>
+            <span class="n">x_df</span><span class="p">[</span><span class="s1">&#39;circulating_market_cap&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">x_df</span><span class="p">[</span><span class="s1">&#39;pe_ratio&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+    <span class="n">cal_fun</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;avg&#39;</span><span class="p">:</span> <span class="n">_CalAvgPE</span><span class="p">,</span> <span class="s1">&#39;mktcap&#39;</span><span class="p">:</span> <span class="n">_CalMktPE</span><span class="p">}[</span><span class="n">method</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">trade_range</span><span class="p">:</span>
+
+        <span class="n">stocks</span> <span class="o">=</span> <span class="n">get_index_stocks</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="n">get_valuation</span><span class="p">(</span>
+            <span class="n">stocks</span><span class="p">,</span>
+            <span class="n">end_date</span><span class="o">=</span><span class="n">d</span><span class="p">,</span>
+            <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;circulating_market_cap&#39;</span><span class="p">,</span> <span class="s1">&#39;pe_ratio&#39;</span><span class="p">],</span>
+            <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">pe_dict</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">cal_fun</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+    <span class="n">pe_ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pe_dict</span><span class="p">)</span>
+    <span class="n">pe_ser</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">pe_ser</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="n">pe_ser</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;PE&#39;</span>
+
+    <span class="k">return</span> <span class="n">pe_ser</span>
+
+
+
+<span class="c1"># 查询指数</span>
+<span class="c1"># 估值衍生 HS300,ZZ500等常规指数可用此函数</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">GetIndexDerivative</span><span class="p">(</span><span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">start_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    返回 pe_ttm及指数股息率</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">symbol</span> <span class="o">=</span> <span class="n">symbol</span><span class="p">[:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span>
+    <span class="c1"># 查询内部编码</span>
+    <span class="n">InnerCode_id</span> <span class="o">=</span> <span class="n">jy</span><span class="o">.</span><span class="n">run_query</span><span class="p">(</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">jy</span><span class="o">.</span><span class="n">LC_IndexRelationship</span><span class="o">.</span><span class="n">InnerCode</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+            <span class="n">jy</span><span class="o">.</span><span class="n">LC_IndexRelationship</span><span class="o">.</span><span class="n">SecuCode</span> <span class="o">==</span> <span class="n">symbol</span><span class="p">))[</span><span class="s1">&#39;InnerCode&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># 查询数据</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="n">jy</span><span class="o">.</span><span class="n">LC_IndexDerivative</span><span class="o">.</span><span class="n">TradingDay</span><span class="p">,</span>
+              <span class="n">jy</span><span class="o">.</span><span class="n">LC_IndexDerivative</span><span class="o">.</span><span class="n">PE_TTM</span><span class="p">,</span><span class="n">jy</span><span class="o">.</span><span class="n">LC_IndexDerivative</span><span class="o">.</span><span class="n">DividendRatio</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+                  <span class="n">jy</span><span class="o">.</span><span class="n">LC_IndexDerivative</span><span class="o">.</span><span class="n">IndexCode</span> <span class="o">==</span> <span class="n">InnerCode_id</span><span class="p">,</span>
+                  <span class="n">jy</span><span class="o">.</span><span class="n">LC_IndexDerivative</span><span class="o">.</span><span class="n">TradingDay</span> <span class="o">&gt;=</span> <span class="n">start_date</span><span class="p">,</span>
+                  <span class="n">jy</span><span class="o">.</span><span class="n">LC_IndexDerivative</span><span class="o">.</span><span class="n">TradingDay</span> <span class="o">&lt;=</span> <span class="n">end_date</span><span class="p">)</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">jy</span><span class="o">.</span><span class="n">run_query</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;TradingDay&#39;</span><span class="p">)</span>
+    <span class="n">dates</span> <span class="o">=</span> <span class="n">GetTradePeriod</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+
+
+<span class="c1"># 即期收益率</span>
+<span class="c1">## 计算银行间市场国债即期收益率 不确定算法是否正确</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">GetInterestRate</span><span class="p">(</span><span class="n">start_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+
+    <span class="n">trade</span> <span class="o">=</span> <span class="n">GetTradePeriod</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+
+    <span class="n">bond_df</span> <span class="o">=</span> <span class="n">QueryBoudData</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+
+    <span class="n">coupon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trade</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trade</span><span class="p">):</span>
+
+        <span class="n">diff_</span> <span class="o">=</span> <span class="p">(</span><span class="n">bond_df</span><span class="p">[</span><span class="s1">&#39;coupon_end_date&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">days</span>
+
+        <span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">diff_</span> <span class="o">&gt;=</span> <span class="mi">200</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">diff_</span> <span class="o">&lt;=</span> <span class="mi">366</span><span class="p">)</span>
+
+        <span class="n">cond</span> <span class="o">=</span> <span class="n">cond</span><span class="p">[</span><span class="n">cond</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span>
+
+        <span class="n">coupon_ser</span> <span class="o">=</span> <span class="n">bond_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">cond</span><span class="p">)[</span><span class="s1">&#39;coupon&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">coupon_ser</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+
+            <span class="n">coupon</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">coupon</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">coupon</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">coupon_ser</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">COUPON</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">coupon</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">trade</span><span class="p">))</span>
+    <span class="n">COUPON</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;COUPON&#39;</span>
+    <span class="k">return</span> <span class="n">COUPON</span>
+
+
+<span class="c1"># 1年期即期收益率 不确定算法是否正确</span>
+<span class="c1">## 银行间 国债 </span>
+<span class="k">def</span><span class="w"> </span><span class="nf">QueryBoudData</span><span class="p">(</span><span class="n">start_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+    <span class="n">bond_basic_info</span> <span class="o">=</span> <span class="n">bond</span><span class="o">.</span><span class="n">run_query</span><span class="p">(</span>
+        <span class="n">query</span><span class="p">(</span><span class="n">bond</span><span class="o">.</span><span class="n">BOND_BASIC_INFO</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="n">bond</span><span class="o">.</span><span class="n">BOND_BASIC_INFO</span><span class="o">.</span><span class="n">short_name</span><span class="p">,</span>
+              <span class="n">bond</span><span class="o">.</span><span class="n">BOND_BASIC_INFO</span><span class="o">.</span><span class="n">interest_begin_date</span><span class="p">,</span>
+              <span class="n">bond</span><span class="o">.</span><span class="n">BOND_BASIC_INFO</span><span class="o">.</span><span class="n">maturity_date</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+                  <span class="n">bond</span><span class="o">.</span><span class="n">BOND_BASIC_INFO</span><span class="o">.</span><span class="n">bond_type</span> <span class="o">==</span> <span class="s2">&quot;国债&quot;</span><span class="p">,</span>
+                  <span class="n">bond</span><span class="o">.</span><span class="n">BOND_BASIC_INFO</span><span class="o">.</span><span class="n">exchange</span> <span class="o">==</span> <span class="s2">&quot;银行间债券市场&quot;</span><span class="p">,</span>
+                  <span class="n">bond</span><span class="o">.</span><span class="n">BOND_BASIC_INFO</span><span class="o">.</span><span class="n">maturity_date</span> <span class="o">&gt;=</span> <span class="n">start_date</span><span class="p">,</span>
+                  <span class="n">bond</span><span class="o">.</span><span class="n">BOND_BASIC_INFO</span><span class="o">.</span><span class="n">maturity_date</span> <span class="o">&lt;=</span> <span class="n">end_date</span><span class="p">))</span>
+
+    <span class="n">bond_basic_info</span> <span class="o">=</span> <span class="n">bond_basic_info</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;interest_begin_date&#39;</span><span class="p">)</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">bond_basic_info</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="n">q_coupon</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="n">bond</span><span class="o">.</span><span class="n">BOND_COUPON</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="n">bond</span><span class="o">.</span><span class="n">BOND_COUPON</span><span class="o">.</span><span class="n">short_name</span><span class="p">,</span>
+                     <span class="n">bond</span><span class="o">.</span><span class="n">BOND_COUPON</span><span class="o">.</span><span class="n">coupon</span><span class="p">,</span>
+                     <span class="n">bond</span><span class="o">.</span><span class="n">BOND_COUPON</span><span class="o">.</span><span class="n">coupon_start_date</span><span class="p">,</span>
+                     <span class="n">bond</span><span class="o">.</span><span class="n">BOND_COUPON</span><span class="o">.</span><span class="n">coupon_end_date</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+                         <span class="n">bond</span><span class="o">.</span><span class="n">BOND_COUPON</span><span class="o">.</span><span class="n">code</span><span class="o">.</span><span class="n">in_</span><span class="p">(</span><span class="n">code</span><span class="p">),</span>
+                         <span class="n">bond</span><span class="o">.</span><span class="n">BOND_COUPON</span><span class="o">.</span><span class="n">coupon_end_date</span> <span class="o">&gt;=</span> <span class="n">start_date</span><span class="p">,</span>
+                         <span class="n">bond</span><span class="o">.</span><span class="n">BOND_COUPON</span><span class="o">.</span><span class="n">coupon_end_date</span> <span class="o">&lt;=</span> <span class="n">end_date</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">bond</span><span class="o">.</span><span class="n">run_query</span><span class="p">(</span><span class="n">q_coupon</span><span class="p">)</span>
+
+<span class="c1"># 获取1年期国债收益率</span>
+<span class="c1">## 数据最早位2006-03-20 获取每月初到期收益</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Get_Bond_yield</span><span class="p">(</span><span class="n">start_date</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">end_date</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">frequency</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">is_end</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    is_end：</span>
+<span class="sd">        True  月末收益率为本月收益率</span>
+<span class="sd">        False 使用月初国债到期收益率为本月的收益率</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">query_bond_yield</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">,</span><span class="n">frequency</span><span class="p">,</span><span class="s1">&#39;hzsylqx&#39;</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;yeild&#39;</span><span class="p">]</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+    
+    <span class="c1"># 获取月初时点</span>
+    <span class="n">dates</span> <span class="o">=</span> <span class="n">GetTradePeriod</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">,{</span><span class="kc">False</span><span class="p">:</span><span class="s1">&#39;MS&#39;</span><span class="p">,</span><span class="kc">True</span><span class="p">:</span><span class="s1">&#39;ME&#39;</span><span class="p">}[</span><span class="n">is_end</span><span class="p">])</span>
+    <span class="n">e_dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">GetTradePeriod</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">,</span><span class="s1">&#39;ME&#39;</span><span class="p">))</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
+    
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">e_dates</span>
+    
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;yeild&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Bond_yield_</span><span class="si">{</span><span class="n">frequency</span><span class="si">}</span><span class="s1">y&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bond_china_yield</span><span class="p">(</span><span class="n">start_date</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">gjqx</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span><span class="n">qxId</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;hzsylqx&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    中国债券信息网-国债及其他债券收益率曲线</span>
+<span class="sd">    https://www.chinabond.com.cn/</span>
+<span class="sd">    http://yield.chinabond.com.cn/cbweb-pbc-web/pbc/historyQuery?startDate=2019-02-07&amp;endDate=2020-02-04&amp;gjqx=0&amp;qxId=ycqx&amp;locale=cn_ZH</span>
+<span class="sd">    注意: end_date - start_date 应该小于一年</span>
+<span class="sd">    :param start_date: 需要查询的日期, 返回在该日期之后一年内的数据</span>
+<span class="sd">        gjqx 为收益率的年限</span>
+<span class="sd">    hzsylqx是中债登国债收益曲线、syyhsylqx是中债登商业银行普通债收益率曲线、zdqpjsylqx是中债登短期票据收</span>
+<span class="sd">    :type start_date: str</span>
+<span class="sd">    :param end_date: 需要查询的日期, 返回在该日期之前一年内的数据</span>
+<span class="sd">    :type end_date: str</span>
+<span class="sd">    :return: 返回在指定日期之间之前一年内的数据</span>
+<span class="sd">    :rtype: pandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://yield.chinabond.com.cn/cbweb-pbc-web/pbc/historyQuery&quot;</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;startDate&quot;</span><span class="p">:</span> <span class="n">start_date</span><span class="p">,</span>
+        <span class="s2">&quot;endDate&quot;</span><span class="p">:</span> <span class="n">end_date</span><span class="p">,</span>
+        <span class="s2">&quot;gjqx&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">gjqx</span><span class="p">),</span>
+        <span class="s2">&quot;qxId&quot;</span><span class="p">:</span> <span class="n">qxId</span><span class="p">,</span>
+        <span class="s2">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;cn_ZH&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span>
+            <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">data_text</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&amp;nbsp&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">data_text</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">data_df</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">query_bond_yield</span><span class="p">(</span><span class="n">start_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span><span class="n">periods</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span><span class="n">bond_type</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    periods:债券期限</span>
+<span class="sd">    bond_type:债券类型</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">dates</span> <span class="o">=</span> <span class="n">get_trade_days</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+    <span class="n">n_days</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
+    <span class="n">limit</span> <span class="o">=</span> <span class="mi">244</span>
+
+    <span class="k">if</span> <span class="n">n_days</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="p">:</span>
+
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n_days</span> <span class="o">//</span> <span class="n">limit</span>
+        <span class="n">df_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">pos1</span><span class="p">,</span> <span class="n">pos2</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">pos2</span> <span class="o">&lt;</span> <span class="n">n_days</span><span class="p">:</span>
+            <span class="c1">#print(pos2)</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">bond_china_yield</span><span class="p">(</span><span class="n">start_date</span><span class="o">=</span><span class="n">dates</span><span class="p">[</span><span class="n">pos1</span><span class="p">],</span> <span class="n">end_date</span><span class="o">=</span><span class="n">dates</span><span class="p">[</span><span class="n">pos2</span><span class="p">],</span><span class="n">gjqx</span><span class="o">=</span><span class="n">periods</span><span class="p">,</span><span class="n">qxId</span><span class="o">=</span><span class="n">bond_type</span><span class="p">)</span>
+            <span class="n">df_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">pos1</span><span class="p">,</span> <span class="n">pos2</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">pos1</span> <span class="o">&lt;</span> <span class="n">n_days</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">bond_china_yield</span><span class="p">(</span><span class="n">start_date</span><span class="o">=</span><span class="n">dates</span><span class="p">[</span><span class="n">pos1</span><span class="p">],</span> <span class="n">end_date</span><span class="o">=</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">gjqx</span><span class="o">=</span><span class="n">periods</span><span class="p">,</span><span class="n">qxId</span><span class="o">=</span><span class="n">bond_type</span><span class="p">)</span>
+            <span class="n">df_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">df_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">bond_china_yield</span><span class="p">(</span><span class="n">start_date</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="n">end_date</span><span class="p">,</span><span class="n">gjqx</span><span class="o">=</span><span class="n">periods</span><span class="p">,</span><span class="n">qxId</span><span class="o">=</span><span class="n">bond_type</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">################################# 工具 #########################################</span>
+
+
+<span class="c1"># 获取年末季末时点</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">GetTradePeriod</span><span class="p">(</span><span class="n">start_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">freq</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;ME&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    start_date/end_date:str YYYY-MM-DD</span>
+<span class="sd">    freq:M月末，Q季末,Y年末 默认ME E代表期末 S代表期初</span>
+<span class="sd">    ================</span>
+<span class="sd">    return  list[datetime.date]</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">days</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">get_trade_days</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)))</span>
+    <span class="n">idx_df</span> <span class="o">=</span> <span class="n">days</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="n">freq</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;E&#39;</span><span class="p">:</span>
+        <span class="n">day_range</span> <span class="o">=</span> <span class="n">idx_df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">freq</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">last</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">day_range</span> <span class="o">=</span> <span class="n">idx_df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">freq</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+    <span class="n">day_range</span> <span class="o">=</span> <span class="n">day_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+
+    <span class="k">return</span> <span class="n">day_range</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+
+<span class="c1"># 显示数据分布</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Plot_SingalForwardReturnsDistribution</span><span class="p">(</span><span class="n">singal_ser</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                                          <span class="n">close_ser</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+
+    <span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">singal_ser</span><span class="p">,</span> <span class="n">close_ser</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="n">test</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;singal&#39;</span><span class="p">,</span> <span class="s1">&#39;next_ret&#39;</span><span class="p">]</span>
+
+    <span class="n">v</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;singal&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">test</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+
+    <span class="n">mean_ret</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;group&#39;</span><span class="p">)[</span><span class="s1">&#39;next_ret&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif&#39;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+    <span class="c1"># 用于设置不规则子图</span>
+    <span class="n">gs</span> <span class="o">=</span> <span class="n">mg</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+    <span class="c1"># 子图-信号分布</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;信号分布&#39;</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">singal_ser</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">singal_ser</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span>
+        <span class="n">singal_ser</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">singal_ser</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span>
+        <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;2std&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span>
+        <span class="n">singal_ser</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">singal_ser</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span>
+        <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;-2std&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+    <span class="c1"># 子图-信号与下期平均收益</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;信号与下期平均收益&#39;</span><span class="p">)</span>
+
+    <span class="c1"># 设置标签</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">mean_ret</span><span class="o">.</span><span class="n">index</span>
+    <span class="c1"># 大于0</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mean_ret</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mean_ret</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># 小于0</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mean_ret</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mean_ret</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)),</span> <span class="n">a</span><span class="p">,</span> <span class="n">tick_label</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)),</span> <span class="n">b</span><span class="p">,</span> <span class="n">tick_label</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+    <span class="c1"># 标签旋转</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>直接估计时变夏普<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<p>上述的这种模型虽然能对经济数据起到较好的预测，可是仍有不足，譬如该模型需要通过两次估算才能得到关于时变夏普率的解释变量的系数，这样相对的误差可能会比较大，于是Whitelaw（1997）直接根据夏普率的定义对其进行计算</p>
+<blockquote>
+<div><p>One feasible alternative is to employ more frequently sampled data (e.g., daily data) to estimate monthly volatility.Specifically, monthly ratios are computed as:
+$<span class="math notranslate nohighlight">\(S_{t+1} = \frac{R_{t+1}-R_{ft}}{\sigma_{t+1}}\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{t+1}=\sqrt{\sum^{N}_{n-1}R^{2}_{T+n}}\]</div>
+<p>where n indexes the daily returns within month t+1</p>
+</div></blockquote>
+<p>得到<span class="math notranslate nohighlight">\(S_{t+1}\)</span>后带入下面的回归方程：
+$<span class="math notranslate nohighlight">\(S_{t+1}=X_t\beta+\epsilon_{t+1}\)</span>$</p>
+<p>在国信研报中前半部分直接使用<span class="math notranslate nohighlight">\(S_{t+1}\)</span>作为信号进行分析,之后才用了回归方程进行测试。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 利用 Robert Whitelaw（1997）给出的直接估算模型计算Tsharpe</span>
+<span class="c1">#  Estimating Sharpe Ratios Directly</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">EstimatingSharpeRatiosDirectly</span><span class="p">(</span><span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">start_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    使用1年期国债到期收益率充当无风险收益率</span>
+<span class="sd">    ------------</span>
+<span class="sd">    return 返回频率为月度的指标值</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">GetTradePeriod</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">))</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">get_price</span><span class="p">(</span>
+        <span class="n">symbol</span><span class="p">,</span>
+        <span class="n">start_date</span><span class="p">,</span>
+        <span class="n">end_date</span><span class="p">,</span>
+        <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="s1">&#39;pre_close&#39;</span><span class="p">],</span>
+        <span class="n">panel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pre_close&#39;</span><span class="p">])</span>
+    
+    <span class="n">m_r</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    
+    <span class="c1"># 无风险收益率设置</span>
+    <span class="n">r_f</span> <span class="o">=</span> <span class="mf">0.03</span>
+    
+    <span class="n">r_e</span> <span class="o">=</span> <span class="n">m_r</span> <span class="o">-</span> <span class="n">r_f</span>
+    
+    <span class="c1"># 计算月度标准差</span>
+    <span class="n">m_std</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="n">x</span><span class="p">))</span>
+    
+    
+    
+    <span class="n">ESRD</span> <span class="o">=</span> <span class="n">r_e</span> <span class="o">/</span> <span class="n">m_std</span>
+    
+    <span class="n">ESRD</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+    <span class="n">ESRD</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;EstimatingSharpeRatiosDirectly&#39;</span>
+
+    <span class="k">return</span> <span class="n">ESRD</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">symbol</span> <span class="o">=</span> <span class="s1">&#39;399311.XSHE&#39;</span>
+
+<span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2006-05-01&#39;</span><span class="p">,</span><span class="s1">&#39;2020-05-31&#39;</span>
+
+
+<span class="c1"># 使用直接估算模型取得share</span>
+<span class="n">ESRD</span> <span class="o">=</span> <span class="n">EstimatingSharpeRatiosDirectly</span><span class="p">(</span><span class="s1">&#39;399311.XSHE&#39;</span><span class="p">,</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">)</span>
+
+<span class="c1"># 获取指数收益率</span>
+<span class="n">price_df</span> <span class="o">=</span> <span class="n">get_price</span><span class="p">(</span><span class="s1">&#39;399311.XSHE&#39;</span><span class="p">,</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">,</span><span class="n">fields</span><span class="o">=</span><span class="s1">&#39;close&#39;</span><span class="p">)</span>
+
+<span class="c1"># 月度收盘价</span>
+<span class="n">M_close</span> <span class="o">=</span> <span class="n">price_df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">ESRD</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>这里可以很清楚的看出，当夏普率在高点的时候，指数基本都会上涨，相反当夏普率在低点的时候，指数也基本会下跌。可以很好的看出时变夏普率对于指 数的判断力，这是由于夏普率的定义，也就是单位风险所产生的超额收益所带来的效果。</p>
+<p><em>指数与直接估计的夏普整体走势情况</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 查看整体走势</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;serif&#39;</span>
+<span class="n">M_close</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;国证1000指数与时变夏普比率&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">ESRD</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f5e6e853ba8&gt;
+</pre></div>
+</div>
+<img alt="../../../../../_images/8e4f8d114ade172c2ee8af75a7e676c015000625da46ef9a3ee7a9225e6c672c.png" src="../../../../../_images/8e4f8d114ade172c2ee8af75a7e676c015000625da46ef9a3ee7a9225e6c672c.png" />
+</div>
+</div>
+<p><em>指数与直接估计的夏普细节部分的走势情况</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 查看走势细节</span>
+<span class="n">slice_close</span> <span class="o">=</span> <span class="n">M_close</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2005</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">31</span><span class="p">):</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">slice_esrd</span> <span class="o">=</span> <span class="n">ESRD</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2005</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">31</span><span class="p">):</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+
+<span class="n">slice_close</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;国证1000指数与时变夏普比率&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">slice_esrd</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f5e6eb34a20&gt;
+</pre></div>
+</div>
+<img alt="../../../../../_images/d166828348493307672141e7fe143c58b18d33e6ebb70cf69c9c23ce73230940.png" src="../../../../../_images/d166828348493307672141e7fe143c58b18d33e6ebb70cf69c9c23ce73230940.png" />
+</div>
+</div>
+<p>当时变夏普率在接近 0的时候，指数是处于一个相对平稳的状态，而时变夏普率的绝对值越大，指数的波动同样也越大。于是设定两个参 数，-0.3与 0.3，其中当时变夏普率小于-0.3的时候，持有现金，大于 0.3时将持有指数，而介于-0.3 与 0.3 之间的，则不进行买卖。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 持仓标记</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Add_Flag</span><span class="p">(</span><span class="n">singal</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">threshold</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    singal:信号值</span>
+<span class="sd">    threshold:(开仓阈值，平仓阈值)</span>
+<span class="sd">    -------------------</span>
+<span class="sd">    return</span>
+<span class="sd">        1持仓0空仓</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">a</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># 开仓阈值</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># 平仓阈值</span>
+
+    <span class="n">flag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">singal</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">singal</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">e</span> <span class="o">&gt;</span> <span class="n">a</span><span class="p">:</span>
+
+            <span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="k">elif</span> <span class="n">b</span> <span class="o">&lt;=</span> <span class="n">e</span> <span class="o">&lt;=</span> <span class="n">a</span> <span class="ow">and</span> <span class="n">flag</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+
+            <span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">singal</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>可以看到通过直接估计的时变夏普，在16年依旧有较大的回撤</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flag</span> <span class="o">=</span> <span class="n">Add_Flag</span><span class="p">(</span><span class="n">ESRD</span><span class="p">,(</span><span class="mf">0.3</span><span class="p">,</span><span class="o">-</span><span class="mf">0.3</span><span class="p">))</span>
+
+<span class="n">next_ret</span> <span class="o">=</span> <span class="n">M_close</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">flag</span> <span class="o">*</span> <span class="n">next_ret</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span>
+                                     <span class="n">title</span><span class="o">=</span><span class="s1">&#39;简单择时策略净值与巨潮 1000指数&#39;</span><span class="p">,</span>
+                                     <span class="n">label</span><span class="o">=</span><span class="s1">&#39;algorithm_nav&#39;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">M_close</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">M_close</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;benchmark&#39;</span><span class="p">,</span>
+                                              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/32abc7a08eecfd7509f5ace00bb5f96aa0db6b119ce0200cd957f16054f88dac.png" src="../../../../../_images/32abc7a08eecfd7509f5ace00bb5f96aa0db6b119ce0200cd957f16054f88dac.png" />
+</div>
+</div>
+<p>对直接估算的时变夏普进行小波处理,信号更具有趋势性</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 对直接时变夏普进行小波处理</span>
+<span class="n">t_esrd</span> <span class="o">=</span> <span class="n">wave_transform</span><span class="p">(</span><span class="n">ESRD</span><span class="p">,</span><span class="s1">&#39;db4&#39;</span><span class="p">,</span><span class="s1">&#39;symmetric&#39;</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="s1">&#39;sqtwolog&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">ESRD</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">t_esrd</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;信号&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;时变夏普&#39;</span><span class="p">,</span><span class="s1">&#39;小波处理后的时变夏普&#39;</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">M_close</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;指数&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;close&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5e6a2eeba8&gt;
+</pre></div>
+</div>
+<img alt="../../../../../_images/eed9a96054335b8197fc5bb71b681e1e3fbcbbe1113463e9afc7f44e366179e2.png" src="../../../../../_images/eed9a96054335b8197fc5bb71b681e1e3fbcbbe1113463e9afc7f44e366179e2.png" />
+</div>
+</div>
+<p>大段时间未开仓，2016年回撤依旧很大</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flag</span> <span class="o">=</span> <span class="n">Add_Flag</span><span class="p">(</span><span class="n">t_esrd</span><span class="p">,(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.3</span><span class="p">))</span>
+
+<span class="n">next_ret</span> <span class="o">=</span> <span class="n">M_close</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">flag</span> <span class="o">*</span> <span class="n">next_ret</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span>
+                                     <span class="n">title</span><span class="o">=</span><span class="s1">&#39;简单择时策略净值与巨潮 1000指数&#39;</span><span class="p">,</span>
+                                     <span class="n">label</span><span class="o">=</span><span class="s1">&#39;algorithm_nav&#39;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">M_close</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">M_close</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;benchmark&#39;</span><span class="p">,</span>
+                                              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/e9bc5136d1ed08c06db558e4d1d755104f25830b2cf6d8a6d8ea78818e6d687e.png" src="../../../../../_images/e9bc5136d1ed08c06db558e4d1d755104f25830b2cf6d8a6d8ea78818e6d687e.png" />
+</div>
+</div>
+<p>直接用时变夏普率作为策略指标就已经可以得到超过指数将近一倍的超额收益， 现在将M1同比增长率，标的指数的市盈率以及一年期的银行间国债即期收益 率作为解释变量，由于这些月度经济数据的获取时间比较靠后，比如当月的 M1 同比增长率中国人民银行官方数据一般要到下月的月中或者月末才会发布，我 们很难在月初获取上月的经济数据，因此无法及时的获得下月的预测时变夏普 率，所以这里我们尝试用上月的经济数据对下月的时变夏普率进行预测，将Whitelaw（1997）所给出的回归方程：</p>
+<div class="math notranslate nohighlight">
+\[S^*_{t+1}=X_t\beta+\epsilon_{t+1}\]</div>
+<p>改进为：</p>
+<div class="math notranslate nohighlight">
+\[S^*_{t+1}=X_{t-1}\beta+\epsilon_{t+1}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 回归所需数据</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">QueryData</span><span class="p">(</span><span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">start_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    return</span>
+<span class="sd">    ----------------------</span>
+<span class="sd">        M1同比增长 </span>
+<span class="sd">        指数PE </span>
+<span class="sd">        指数收益率 </span>
+<span class="sd">        银行间国债即期收益率 </span>
+<span class="sd">        1年期国债到期收益率</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">M1</span> <span class="o">=</span> <span class="n">GetMacro_M1</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
+
+    <span class="n">PE</span> <span class="o">=</span> <span class="n">GetIndexPE</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+    
+    <span class="n">M_RET</span> <span class="o">=</span> <span class="n">GetIndexMRet</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+    
+    <span class="n">Interest_ret</span> <span class="o">=</span> <span class="n">GetInterestRate</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
+    
+    <span class="n">yeild_1Y</span> <span class="o">=</span> <span class="n">Get_Bond_yield</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">,</span><span class="n">is_end</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
+    
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">M1</span><span class="p">,</span> <span class="n">PE</span><span class="p">,</span> <span class="n">M_RET</span><span class="p">,</span> <span class="n">Interest_ret</span><span class="p">,</span> <span class="n">yeild_1Y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取回归所需数据</span>
+<span class="n">x_df</span> <span class="o">=</span> <span class="n">QueryData</span><span class="p">(</span><span class="s1">&#39;399311.XSHE&#39;</span><span class="p">,</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">)</span>
+
+<span class="n">conditioning_variables</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x_df</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">ESRD</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 对齐数据</span>
+
+<span class="n">conditioning_variables</span> <span class="o">=</span> <span class="n">conditioning_variables</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># 最后一行为NA股过滤</span>
+
+<span class="c1"># 数据储存</span>
+<span class="n">conditioning_variables</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../Data/Tshare_conditioning_variables.csv&#39;</span><span class="p">)</span>
+
+<span class="n">conditioning_variables</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m1_yoy</th>
+      <th>PE</th>
+      <th>log_ret</th>
+      <th>close</th>
+      <th>sigma</th>
+      <th>COUPON</th>
+      <th>Bond_yield_1y</th>
+      <th>EstimatingSharpeRatiosDirectly</th>
+    </tr>
+    <tr>
+      <th>stat_month</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2006-05-31</th>
+      <td>0.130</td>
+      <td>34.203235</td>
+      <td>0.044203</td>
+      <td>1194.73</td>
+      <td>0.018602</td>
+      <td>0.026293</td>
+      <td>0.020100</td>
+      <td>1.771089</td>
+    </tr>
+    <tr>
+      <th>2006-06-30</th>
+      <td>0.140</td>
+      <td>31.559782</td>
+      <td>-0.059302</td>
+      <td>1125.94</td>
+      <td>0.019145</td>
+      <td>0.026614</td>
+      <td>0.022300</td>
+      <td>0.515393</td>
+    </tr>
+    <tr>
+      <th>2006-07-31</th>
+      <td>0.140</td>
+      <td>30.882870</td>
+      <td>0.036041</td>
+      <td>1167.26</td>
+      <td>0.013838</td>
+      <td>0.027862</td>
+      <td>0.020310</td>
+      <td>-0.684840</td>
+    </tr>
+    <tr>
+      <th>2006-08-31</th>
+      <td>0.153</td>
+      <td>31.619369</td>
+      <td>0.046877</td>
+      <td>1223.28</td>
+      <td>0.009242</td>
+      <td>0.033744</td>
+      <td>0.020159</td>
+      <td>0.551584</td>
+    </tr>
+    <tr>
+      <th>2006-09-29</th>
+      <td>0.150</td>
+      <td>30.235148</td>
+      <td>0.024970</td>
+      <td>1254.21</td>
+      <td>0.012198</td>
+      <td>0.033759</td>
+      <td>0.020104</td>
+      <td>1.100899</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 读取数据</span>
+<span class="n">conditioning_variables</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/Tshare_conditioning_variables.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">conditioning_variables</span><span class="p">[</span><span class="s1">&#39;m1_yoy,PE,COUPON&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">conditioning_variables</span><span class="p">[</span><span class="s1">&#39;EstimatingSharpeRatiosDirectly&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">X</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                  OLS Regression Results                                  
+==========================================================================================
+Dep. Variable:     EstimatingSharpeRatiosDirectly   R-squared:                   -1695.134
+Model:                                        OLS   Adj. R-squared:              -1726.161
+Method:                             Least Squares   F-statistic:                    -54.63
+Date:                            Tue, 28 Jul 2020   Prob (F-statistic):               1.00
+Time:                                    14:59:19   Log-Likelihood:                -868.02
+No. Observations:                             168   AIC:                             1744.
+Df Residuals:                                 164   BIC:                             1757.
+Df Model:                                       3                                         
+Covariance Type:                        nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          1.6565     40.930      0.040      0.968     -79.161      82.474
+m1_yoy        -6.5562    320.583     -0.020      0.984    -639.559     626.447
+PE            -1.2399     28.847     -0.043      0.966     -58.200      55.720
+COUPON         1.0931    306.392      0.004      0.997    -603.889     606.076
+==============================================================================
+Omnibus:                       24.644   Durbin-Watson:                   0.013
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               30.739
+Skew:                           1.027   Prob(JB):                     2.11e-07
+Kurtosis:                       3.413   Cond. No.                     4.62e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 4.62e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
+<h1>滚动回归预测时变夏普比率<a class="headerlink" href="#id3" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 定义rolling_apply理论上应该比for循环快</span>
+<span class="c1"># pandas.rolling.apply不支持多列</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rolling_apply</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">win_size</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+
+    <span class="n">iidx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+    
+    <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">iidx</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="n">win_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">win_size</span><span class="p">)</span>
+    
+    <span class="n">strides</span> <span class="o">=</span> <span class="p">(</span><span class="n">iidx</span><span class="o">.</span><span class="n">strides</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">iidx</span><span class="o">.</span><span class="n">strides</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    
+    <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">stride_tricks</span><span class="o">.</span><span class="n">as_strided</span><span class="p">(</span>
+        <span class="n">iidx</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="n">strides</span><span class="p">,</span> <span class="n">writeable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># 这里注意func返回的需要为df或者ser</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">func</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">r</span><span class="p">])</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">res</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># concat可能会有点慢</span>
+
+<span class="c1"># 滚动估计</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">iter_rolling_window</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">cal_func</span><span class="p">,</span><span class="n">x_col</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span><span class="n">y_col</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">rolling_apply</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">cal_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x_col</span><span class="p">,</span><span class="n">y_col</span><span class="p">),</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">50</span><span class="p">]],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">50</span><span class="p">]]</span>
+    
+    <span class="k">return</span> <span class="n">df</span> 
+
+<span class="c1">################################################ two-step OLS ###########################################</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Robert Whitelaw 提出的两步回归模型</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="c1"># Robert Whitelaw（1994）模型</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">CalTsharpe_1</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">x_col</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span><span class="n">y_col</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+    
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">y_col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">x_col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+    
+    <span class="n">X</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># step 1:</span>
+    <span class="n">model_a</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="n">BETA</span> <span class="o">=</span> <span class="n">model_a</span><span class="o">.</span><span class="n">params</span>
+    
+    <span class="n">y_resid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">model_a</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
+    
+    <span class="c1"># step 2:</span>
+    <span class="n">model_b</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y_resid</span><span class="p">,</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="n">GAMMA</span> <span class="o">=</span> <span class="n">model_b</span><span class="o">.</span><span class="n">params</span>
+    
+    <span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">@</span> <span class="n">BETA</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">@</span>  <span class="n">GAMMA</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+    
+<span class="c1"># 1997</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">CalTsharpe_2</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">x_col</span><span class="p">:</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span><span class="nb">list</span><span class="p">],</span><span class="n">y_col</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+    
+    <span class="n">x_1</span> <span class="o">=</span> <span class="n">x_col</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">x_2</span> <span class="o">=</span> <span class="n">x_col</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">x1_df</span> <span class="o">=</span>  <span class="n">df</span><span class="p">[</span><span class="n">x_1</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">x2_df</span> <span class="o">=</span>  <span class="n">df</span><span class="p">[</span><span class="n">x_2</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">y_col</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">X1</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x1_df</span><span class="p">)</span>
+    <span class="n">X2</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x2_df</span><span class="p">)</span>
+    <span class="c1"># step 1:</span>
+    <span class="n">model_a</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">X1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="n">BETA</span> <span class="o">=</span> <span class="n">model_a</span><span class="o">.</span><span class="n">params</span>
+    
+    <span class="n">y_resid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">model_a</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
+    
+    <span class="c1"># step 2:</span>
+    <span class="n">model_b</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y_resid</span><span class="p">,</span><span class="n">X2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    
+    <span class="n">GAMMA</span> <span class="o">=</span> <span class="n">model_b</span><span class="o">.</span><span class="n">params</span>
+    
+    <span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">X1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">@</span> <span class="n">BETA</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">X2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">@</span>  <span class="n">GAMMA</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+
+
+<span class="c1">####################################### 直接估计夏普的回归模型 #######################################</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">CalTsharpe_3</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">x_col</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span><span class="n">y_col</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">x_col</span><span class="p">])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">y_col</span><span class="p">]</span>
+    
+    <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    
+    <span class="n">res</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+   
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="p">,</span><span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+    
+    
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id4">
+<h2>直接估计夏普的回归模型<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>在国信证券的研报中所用模型</p>
+<p><strong>参数变量设置</strong></p>
+<p>标的指数:国证1000</p>
+<p>使用Robert Whitelaw（1994）中设定模型解释变量为：</p>
+<ol class="arabic simple">
+<li><p>M1同比增长率;</p></li>
+<li><p>指数PE;</p></li>
+<li><p>一年期国债收益率;</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 读取数据</span>
+<span class="n">conditioning_variables</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/Tshare_conditioning_variables.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 计算指数超额收益</span>
+<span class="n">conditioning_variables</span><span class="p">[</span><span class="s1">&#39;r_f&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">conditioning_variables</span><span class="p">[</span><span class="s1">&#39;log_ret&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.04</span>
+
+<span class="n">conditioning_variables</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m1_yoy</th>
+      <th>PE</th>
+      <th>log_ret</th>
+      <th>close</th>
+      <th>sigma</th>
+      <th>COUPON</th>
+      <th>Bond_yield_1y</th>
+      <th>EstimatingSharpeRatiosDirectly</th>
+      <th>r_f</th>
+    </tr>
+    <tr>
+      <th>stat_month</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2006-05-31</th>
+      <td>0.130</td>
+      <td>34.203235</td>
+      <td>0.044203</td>
+      <td>1194.73</td>
+      <td>0.018602</td>
+      <td>0.026293</td>
+      <td>0.020100</td>
+      <td>1.771089</td>
+      <td>0.004203</td>
+    </tr>
+    <tr>
+      <th>2006-06-30</th>
+      <td>0.140</td>
+      <td>31.559782</td>
+      <td>-0.059302</td>
+      <td>1125.94</td>
+      <td>0.019145</td>
+      <td>0.026614</td>
+      <td>0.022300</td>
+      <td>0.515393</td>
+      <td>-0.099302</td>
+    </tr>
+    <tr>
+      <th>2006-07-31</th>
+      <td>0.140</td>
+      <td>30.882870</td>
+      <td>0.036041</td>
+      <td>1167.26</td>
+      <td>0.013838</td>
+      <td>0.027862</td>
+      <td>0.020310</td>
+      <td>-0.684840</td>
+      <td>-0.003959</td>
+    </tr>
+    <tr>
+      <th>2006-08-31</th>
+      <td>0.153</td>
+      <td>31.619369</td>
+      <td>0.046877</td>
+      <td>1223.28</td>
+      <td>0.009242</td>
+      <td>0.033744</td>
+      <td>0.020159</td>
+      <td>0.551584</td>
+      <td>0.006877</td>
+    </tr>
+    <tr>
+      <th>2006-09-29</th>
+      <td>0.150</td>
+      <td>30.235148</td>
+      <td>0.024970</td>
+      <td>1254.21</td>
+      <td>0.012198</td>
+      <td>0.033759</td>
+      <td>0.020104</td>
+      <td>1.100899</td>
+      <td>-0.015030</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_col</span> <span class="o">=</span> <span class="s1">&#39;m1_yoy,PE,Bond_yield_1y&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="n">y_col</span> <span class="o">=</span> <span class="s1">&#39;EstimatingSharpeRatiosDirectly&#39;</span>
+
+<span class="n">estimated_conditional_sharpe</span> <span class="o">=</span> <span class="n">iter_rolling_window</span><span class="p">(</span>
+    <span class="n">conditioning_variables</span><span class="p">,</span> <span class="n">CalTsharpe_3</span><span class="p">,</span> <span class="n">x_col</span><span class="p">,</span> <span class="n">y_col</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>时变夏普实际值与滚动预测值</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif&#39;</span>
+
+<span class="n">estimated_conditional_sharpe</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;时变夏普实际值与滚动预测值&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;时变夏普&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">滚动期&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">estimated_conditional_sharpe</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span> <span class="o">+</span>
+           <span class="p">[</span><span class="s1">&#39;ESRD&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+
+<span class="c1"># 双y轴</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+
+<span class="n">conditioning_variables</span><span class="p">[</span><span class="s1">&#39;EstimatingSharpeRatiosDirectly&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;指数&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/c4a2810ec011e451b4038d67c5bc2958c9935a901dd07acb42b5ed84a54eca2b.png" src="../../../../../_images/c4a2810ec011e451b4038d67c5bc2958c9935a901dd07acb42b5ed84a54eca2b.png" />
+</div>
+</div>
+<p>滚动预测值与指数情况</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">watch_range</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[</span><span class="s1">&#39;2005-05-01&#39;</span><span class="p">:</span><span class="s1">&#39;2012-05-01&#39;</span><span class="p">]</span>
+
+<span class="n">estimated_conditional_sharpe</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">watch_range</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;滚动预测值与指数情况&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">滚动期&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">estimated_conditional_sharpe</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;ESRD&#39;</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;时变夏普&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">conditioning_variables</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">watch_range</span><span class="p">,</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;close&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;指数&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/0b90f2dbfa254e8315c04180e440f2d76806836391ce0f6b4883d4d4b3deea18.png" src="../../../../../_images/0b90f2dbfa254e8315c04180e440f2d76806836391ce0f6b4883d4d4b3deea18.png" />
+</div>
+</div>
+<p>滚动期为30个月开仓阈值为0.48,平仓阈值为0.24的收益情况如下:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flag</span> <span class="o">=</span> <span class="n">Add_Flag</span><span class="p">(</span><span class="n">estimated_conditional_sharpe</span><span class="p">[</span><span class="s1">&#39;30&#39;</span><span class="p">],(</span><span class="mf">0.48</span><span class="p">,</span> <span class="mf">0.24</span><span class="p">))</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">flag</span><span class="o">.</span><span class="n">index</span>
+<span class="n">slice_df</span> <span class="o">=</span> <span class="n">conditioning_variables</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+<span class="n">next_ret</span> <span class="o">=</span> <span class="n">slice_df</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">flag</span> <span class="o">*</span> <span class="n">next_ret</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span>
+                                     <span class="n">title</span><span class="o">=</span><span class="s1">&#39;简单择时策略净值与巨潮 1000指数&#39;</span><span class="p">,</span>
+                                     <span class="n">label</span><span class="o">=</span><span class="s1">&#39;algorithm_nav&#39;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">slice_df</span> <span class="o">/</span> <span class="n">slice_df</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;benchmark&#39;</span><span class="p">,</span>
+                                              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/c7e40058cfbf57b521fd3e1c823beda1d5e811729ca6e746f7672fc6821ac195.png" src="../../../../../_images/c7e40058cfbf57b521fd3e1c823beda1d5e811729ca6e746f7672fc6821ac195.png" />
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>使用1994年的模型进行估计<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>在《国海证券-新量化择时指标之二 Tsharp》关于Tsharpe的具体处理中使用的是1994年的模型,研报中未说明具体使用的哪些数据作为解释变量，如果只是根据作者的只字片语进行挖掘,还不如直接机器学习,我尝试了下面几个参数作为解释变量,效果很差。</p>
+<p><strong>参数变量设置</strong></p>
+<p>标的指数:000001.XSHG</p>
+<p>使用Robert Whitelaw（1994）中设定模型解释变量为：</p>
+<ol class="arabic simple">
+<li><p>M1同比增长率；</p></li>
+<li><p>Baa-Aaa息差采用<strong>中债企业债(AA)与国债利差</strong>；</p></li>
+<li><p>一年期国债收益率;</p></li>
+<li><p>储蓄(由于研报中未说明具体是什么所以这里使用<strong>国民总储蓄率</strong>)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">QMI</span> <span class="o">=</span> <span class="n">QueryMacroIndic</span><span class="p">()</span> <span class="c1"># 初始化接口</span>
+
+<span class="c1"># 查看接口可查询字段</span>
+<span class="n">QMI</span><span class="o">.</span><span class="n">inidcId_dic</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;1070015614&#39;: &#39;社会融资规模增量:当月同比&#39;,
+ &#39;1070000052&#39;: &#39;社会融资规模增量:当月值&#39;,
+ &#39;1070015603&#39;: &#39;社会融资规模增量:当月值:初值&#39;,
+ &#39;1070000007&#39;: &#39;货币供应量:M1:同比&#39;,
+ &#39;1070000046&#39;: &#39;货币供应量:M2:同比&#39;,
+ &#39;1040000702&#39;: &#39;PPI:当月同比&#39;,
+ &#39;1040000050&#39;: &#39;CPI:当月同比&#39;,
+ &#39;1070014164&#39;: &#39;金融机构:新增人民币存款:非银行业金融机构:当月值&#39;,
+ &#39;1070014167&#39;: &#39;金融机构:新增人民币存款:非银行业金融机构:累计值&#39;,
+ &#39;1070001424&#39;: &#39;金融机构:本外币:股权及其他投资&#39;,
+ &#39;1070001820&#39;: &#39;中资全国性四大银行:人民币:境内存款:个人:储蓄存款&#39;,
+ &#39;1070001771&#39;: &#39;中资全国性大型银行:人民币:境内存款:个人:储蓄存款&#39;,
+ &#39;1030000011&#39;: &#39;制造业PMI&#39;,
+ &#39;C81942&#39;: &#39;存款准备金率:大型金融机构&#39;,
+ &#39;C81944&#39;: &#39;国民总储蓄率&#39;,
+ &#39;1170007465&#39;: &#39;沪深算数平均股息率(d)&#39;,
+ &#39;1170011506&#39;: &#39;上海市场:股息率算术平均指标(d)&#39;,
+ &#39;1090001399&#39;: &#39;十年期国债到期收益率(d)&#39;,
+ &#39;1090001390&#39;: &#39;中债国债到期收益率:1年(d)&#39;,
+ &#39;1090002720&#39;: &#39;中债企业债(AA)与国债利差:1年(d)&#39;,
+ &#39;1090000540&#39;: &#39;SHIBOR:1个月(d)&#39;,
+ &#39;1090001385&#39;: &#39;中债国债到期收益率:1个月&#39;,
+ &#39;1080000566&#39;: &#39;离岸人民币即期汇率(USD/CNH)(d)&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 模型所需数据获取</span>
+<span class="n">symbol</span> <span class="o">=</span> <span class="s1">&#39;000001.XSHG&#39;</span>
+
+<span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2010-01-01&#39;</span><span class="p">,</span><span class="s1">&#39;2020-06-30&#39;</span>
+
+<span class="c1"># 获取 数据</span>
+<span class="n">indic_df</span> <span class="o">=</span> <span class="n">QMI</span><span class="o">.</span><span class="n">GetFields</span><span class="p">([</span><span class="s1">&#39;1070000007&#39;</span><span class="p">,</span><span class="s1">&#39;1090002720&#39;</span><span class="p">,</span><span class="s1">&#39;1090001390&#39;</span><span class="p">,</span><span class="s1">&#39;C81944&#39;</span><span class="p">])</span>
+
+<span class="n">indic_df</span> <span class="o">=</span> <span class="n">indic_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_date</span><span class="p">:</span><span class="n">end_date</span><span class="p">]</span>
+<span class="n">begin</span><span class="p">,</span><span class="n">end</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">indic_df</span><span class="o">.</span><span class="n">index</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">indic_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="n">GetTradePeriod</span><span class="p">(</span><span class="n">begin</span><span class="p">,</span><span class="n">end</span><span class="p">)</span>
+
+<span class="c1"># 获取月末数据</span>
+<span class="n">Mindic_df</span> <span class="o">=</span> <span class="n">indic_df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">Mindic_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+
+<span class="c1"># 获取上证指数月度收益 收盘价 波动率</span>
+<span class="n">index_price</span> <span class="o">=</span> <span class="n">GetIndexMRet</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span><span class="n">begin</span><span class="p">,</span><span class="n">end</span><span class="p">)</span>
+
+<span class="c1"># 计算无风险收益</span>
+<span class="n">index_price</span><span class="p">[</span><span class="s1">&#39;r_f&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">index_price</span><span class="p">[</span><span class="s1">&#39;log_ret&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.04</span>
+
+<span class="c1"># 合并数据</span>
+<span class="n">regress_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">Mindic_df</span><span class="p">,</span><span class="n">index_price</span><span class="p">[[</span><span class="s1">&#39;r_f&#39;</span><span class="p">,</span><span class="s1">&#39;close&#39;</span><span class="p">]]],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 查看数据结构</span>
+<span class="n">regress_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>货币供应量:M1:同比</th>
+      <th>中债企业债(AA)与国债利差:1年(d)</th>
+      <th>中债国债到期收益率:1年(d)</th>
+      <th>国民总储蓄率</th>
+      <th>r_f</th>
+      <th>close</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2010-01-29</th>
+      <td>38.96</td>
+      <td>1.8686</td>
+      <td>1.6529</td>
+      <td>4.264167</td>
+      <td>-0.131935</td>
+      <td>2989.29</td>
+    </tr>
+    <tr>
+      <th>2010-02-26</th>
+      <td>34.99</td>
+      <td>1.8447</td>
+      <td>1.6294</td>
+      <td>4.264167</td>
+      <td>-0.019258</td>
+      <td>3051.94</td>
+    </tr>
+    <tr>
+      <th>2010-03-31</th>
+      <td>29.94</td>
+      <td>1.6851</td>
+      <td>1.5501</td>
+      <td>4.264167</td>
+      <td>-0.021441</td>
+      <td>3109.11</td>
+    </tr>
+    <tr>
+      <th>2010-04-30</th>
+      <td>31.25</td>
+      <td>1.6948</td>
+      <td>1.5892</td>
+      <td>4.264167</td>
+      <td>-0.119812</td>
+      <td>2870.61</td>
+    </tr>
+    <tr>
+      <th>2010-05-31</th>
+      <td>29.90</td>
+      <td>1.3471</td>
+      <td>1.8162</td>
+      <td>4.264167</td>
+      <td>-0.142037</td>
+      <td>2592.15</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_col</span> <span class="o">=</span> <span class="s1">&#39;货币供应量:M1:同比,中债企业债(AA)与国债利差:1年(d),中债国债到期收益率:1年(d),国民总储蓄率&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="n">y_col</span> <span class="o">=</span> <span class="s1">&#39;r_f&#39;</span>
+<span class="n">regress_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">x_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">regress_df</span><span class="p">[</span><span class="n">x_col</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>查看各解释变量与指数的关系</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regress_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">x_col</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;各参数与指数的关系&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">regress_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;close&#39;</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f25719ad668&gt;
+</pre></div>
+</div>
+<img alt="../../../../../_images/bc35587de97dc429cc5d97fd533ab31bed88687078da91ac468bef8976830268.png" src="../../../../../_images/bc35587de97dc429cc5d97fd533ab31bed88687078da91ac468bef8976830268.png" />
+</div>
+</div>
+<p>滚动时变夏普的整体趋势情况</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sharpe_1</span> <span class="o">=</span> <span class="n">iter_rolling_window</span><span class="p">(</span><span class="n">regress_df</span><span class="p">,</span><span class="n">CalTsharpe_1</span><span class="p">,</span><span class="n">x_col</span><span class="p">,</span><span class="n">y_col</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;serif&#39;</span>
+<span class="n">sharpe_1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;滚动时变夏普的整体趋势情况&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">滚动期&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sharpe_1</span><span class="o">.</span><span class="n">columns</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;时变夏普&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">regress_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;close&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;指数&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/442651359b406a4347bbcfba4f4ea15b7eacf212c9d7dd5915fd6b15f4ad08d7.png" src="../../../../../_images/442651359b406a4347bbcfba4f4ea15b7eacf212c9d7dd5915fd6b15f4ad08d7.png" />
+</div>
+</div>
+<p>局部细节情况</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">watch_range</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[</span><span class="s1">&#39;2014-05-01&#39;</span><span class="p">:</span><span class="s1">&#39;2016-05-01&#39;</span><span class="p">]</span>
+
+<span class="n">sharpe_1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">watch_range</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">滚动期&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sharpe_1</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;ESRD&#39;</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;时变夏普&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">regress_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">watch_range</span><span class="p">,</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;close&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;指数&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/fe54c2f36a37e828d7661c380911aebaf7f3533e50a47112bfba7d5f9cd03955.png" src="../../../../../_images/fe54c2f36a37e828d7661c380911aebaf7f3533e50a47112bfba7d5f9cd03955.png" />
+</div>
+</div>
+<p>各滚动周期Tsharp值与上证综指超额收益的相关系数分别为</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_v</span> <span class="o">=</span> <span class="n">sharpe_1</span><span class="o">.</span><span class="n">corrwith</span><span class="p">(</span><span class="n">regress_df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">sharpe_1</span><span class="o">.</span><span class="n">index</span><span class="p">)[</span><span class="s1">&#39;r_f&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">windows</span><span class="p">,</span><span class="n">corr</span> <span class="ow">in</span> <span class="n">corr_v</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;滚动周期为</span><span class="si">%s</span><span class="s1">个月与上证超额收益相关系数为</span><span class="si">%.2f</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">windows</span><span class="p">,</span><span class="n">corr</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>滚动周期为20个月与上证超额收益相关系数为0.04
+滚动周期为30个月与上证超额收益相关系数为-0.25
+滚动周期为40个月与上证超额收益相关系数为-0.06
+滚动周期为50个月与上证超额收益相关系数为-0.01
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flag</span> <span class="o">=</span> <span class="n">Add_Flag</span><span class="p">(</span><span class="n">sharpe_1</span><span class="p">[</span><span class="s1">&#39;40&#39;</span><span class="p">],(</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">))</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">flag</span><span class="o">.</span><span class="n">index</span>
+<span class="n">slice_df</span> <span class="o">=</span> <span class="n">regress_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+<span class="n">next_ret</span> <span class="o">=</span> <span class="n">slice_df</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">flag</span> <span class="o">*</span> <span class="n">next_ret</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span>
+                                     <span class="n">title</span><span class="o">=</span><span class="s1">&#39;简单择时策略净值与巨潮 1000指数&#39;</span><span class="p">,</span>
+                                     <span class="n">label</span><span class="o">=</span><span class="s1">&#39;algorithm_nav&#39;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">slice_df</span> <span class="o">/</span> <span class="n">slice_df</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;benchmark&#39;</span><span class="p">,</span>
+                                              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/67307114a7929ed7d75160978128aae97508000ae5089a960ca380e8265cec0e.png" src="../../../../../_images/67307114a7929ed7d75160978128aae97508000ae5089a960ca380e8265cec0e.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Astock_market/QuantsPlaybook研报复现/C-择时类/时变夏普/py"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tsharpe模型演变过程</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">构建数据提取函数</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">直接估计时变夏普</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">滚动回归预测时变夏普比率</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">直接估计夏普的回归模型</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">使用1994年的模型进行估计</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

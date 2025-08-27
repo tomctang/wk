@@ -1,0 +1,1268 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>论文介绍 &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Astock_market/QuantsPlaybook研报复现/C-择时类/技术分析算法框架与实战/py/技术分析算法框架与实战_20220221';</script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../nb2024.html">1. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../nb2022.html">2. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../../_sources/Astock_market/QuantsPlaybook研报复现/C-择时类/技术分析算法框架与实战/py/技术分析算法框架与实战_20220221.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>论文介绍</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">论文介绍</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">形态识别算法</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">核估计方法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">平滑估计量</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">核回归</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bw">带宽(bw)的选择</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">形态识别算法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">形态识别测试</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">中国宝安</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">江淮汽车</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">沪深300</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">申万一级行业形态识别情况</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">形态识别后前后平均收益情况</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 引入库</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">technical_analysis_patterns</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">rolling_patterns2pool</span><span class="p">,</span><span class="n">plot_patterns_chart</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Union</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.notebook</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">jqdatasdk</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">auth</span><span class="p">,</span><span class="n">get_price</span><span class="p">,</span><span class="n">get_trade_days</span><span class="p">,</span><span class="n">finance</span><span class="p">,</span><span class="n">query</span><span class="p">,</span><span class="n">get_industries</span><span class="p">)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">empyrical</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ep</span>
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">mplfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpf</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SimHei&#39;</span><span class="p">]</span>  <span class="c1">#用来正常显示中文标签</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1">#用来正常显示负号</span>
+
+<span class="n">auth</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D:\anaconda3\lib\site-packages\empyrical\utils.py:32: UserWarning: Unable to import pandas_datareader. Suppressing import error and continuing. All data reading functionality will raise errors; but has been deprecated and will be removed in a later version.
+  warnings.warn(msg)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>auth success 
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>论文介绍<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>《Foundations of Technical Analysis》</p>
+<blockquote>
+<div><p>Andrew W Lo、Harry Mamaysky和王江提出了一种系统化和自动化的方法，使用非参数核回归方法来进行模式识别，并将该方法应用于1962年至 1996 年的美股数据，以评估技术分析的有效性。通过将股票收益的无条件经验分布与条件分布（给定特定的技术指标，例如：头肩底形态、双底形态）作比较，发现在 31 年的样本期 间内，部分技术指标确实提供了有用的信息，具有实用价值。
+与基本面分析不同，技术分析一直以来饱受争议。然而一些学术研究表明，技术分析能从市场价格中提取 有用的信息。例如，Lo and MacKinlay (1988, 1999)证实了每周的美股指数并非随机游走，过去的价格可以在某种 程度上预测未来收益。技术分析和传统金融工程的一个重要区别在于，技术分析主要通过观察图表进行，而量化金融则依赖于相对完善的数值法。因此，技术分析利用几何工具和形态识别，而量化金融运用数学分析和概率统计。随着近年来金融工程、计算机技术和数值算法等领域的突破，金融工程可以逐步取代不那么严谨的技术分析。技术分析虽饱受质疑却仍能占据一席之地，归功于其视觉分析模式更贴近直观认知，而且在过去，要进行技术分析，首先要认识到价格过程是非线性的，且包含一定的规律和模式。为了定量地捕捉这种规 律，我们首先假定价格过程尚未有严格的算法取代传统的技术分析，如今，成熟的统计算法能够取代传统的几何画图，让技术分析继续以 更新、更严谨的方式服务投资者，同时金融工程领域在分析范式上也得到了丰富。</p>
+</div></blockquote>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>形态识别算法<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<section id="id3">
+<h2>核估计方法<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>假定价格过程<span class="math notranslate nohighlight">\({P_t}\)</span>有如下表达形式:</p>
+<div class="math notranslate nohighlight">
+\[P_t=m(X_t)+\epsilon_t,t=1,\dots,T\]</div>
+<p>其中<span class="math notranslate nohighlight">\(X_t\)</span>是状态变量,<span class="math notranslate nohighlight">\(m(X_t)\)</span>是任意固定但位置的非线性函数,<span class="math notranslate nohighlight">\(\epsilon\)</span>为白噪声。</p>
+<p>为了识别模式,我们令状态变量等于时间<span class="math notranslate nohighlight">\(X_{t}=t\)</span>,此时,需要用一个光滑函数<span class="math notranslate nohighlight">\(\hat{m}(.)\)</span>.近似价格过程为了与核回归估计文献中的符号保持一致，我们仍将状态变量记为<span class="math notranslate nohighlight">\(X_{t}\)</span>。</p>
+<p><span class="math notranslate nohighlight">\(\hat{m}(.)\)</span>,还需要一个形态识别的算法,以自动识别指数指标。一旦有了算法,就可以应用于不同时段的资产价格,从而评估不同技术指标的有效性。</p>
+</section>
+<section id="id4">
+<h2>平滑估计量<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p><span class="math notranslate nohighlight">\(\hat{m}=\frac{1}{T}\sum^{T}_{t=1}w_{t}(x)P_{t}\)</span>
+其中离x较近的<span class="math notranslate nohighlight">\(X_t\)</span>对应的<span class="math notranslate nohighlight">\(P_t\)</span>拥有较大的权重<span class="math notranslate nohighlight">\(w_{t}(x)\)</span>。对于距离的选择，太宽会导致估计量过于平滑而无法显示出<span class="math notranslate nohighlight">\(m(⋅)\)</span>真正的特性，太窄又会导致估计量的波动较大，无法排除噪声的影响。因此需要通过选择合适的权重<span class="math notranslate nohighlight">\(w_{t}(x)\)</span>来平衡以上两点。</p>
+</section>
+<section id="id5">
+<h2>核回归<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>对于核回归估计量，权重<span class="math notranslate nohighlight">\(w_{t}(x)\)</span>是通过核密度函数<span class="math notranslate nohighlight">\(K(x)\)</span>构造的:</p>
+<div class="math notranslate nohighlight">
+\[K(x) \ge 0,\int{K(\mu)}du=1\]</div>
+<p>我们可以通过一个参数<span class="math notranslate nohighlight">\(h \gt 0\)</span>来调整核函数的离散程度,令:</p>
+<div class="math notranslate nohighlight">
+\[K_{h}(x)\equiv\frac{1}{h}K(\mu / h),\int{K_{h}(\mu)du}=1\]</div>
+<p>然后定义如下权重系数:</p>
+<div class="math notranslate nohighlight">
+\[w_{t,h}(x) \equiv K_{h}(x-X_{t})/g_{h}(x)\]</div>
+<div class="math notranslate nohighlight">
+\[g_{h}(x) \equiv \frac{1}{T}\sum^{T}_{t=1}K_{h}(x-X_t)\]</div>
+<p>其中,平滑系数h也称为带宽,h越大,用于计算加权均值的样本窗口宽度越大。带宽的选取对于任一局部平均方法都很关键，将在下一小节中进行详细讨论。</p>
+<p>将上式代入,得到<span class="math notranslate nohighlight">\(m(x)\)</span>的估计<span class="math notranslate nohighlight">\(\hat{m}_{h}(x)\)</span>,称为Nadaraya-Waston核估计:</p>
+<div class="math notranslate nohighlight">
+\[\hat{m}_{h}(x)=\frac{1}{T}\sum^{T}_{t=1}w_{t,h}(x)Y_t=\frac{\sum^{T}_{t=1}K_{h}(x-X)Y_t}{\sum^{T}_{t=1}K_{h}(x-X_t)}\]</div>
+<p>在特定条件下可以证明，当样本量增大，<span class="math notranslate nohighlight">\(\hat{m}_{h}(x)\)</span>以多种方式渐进收敛于<span class="math notranslate nohighlight">\(m(x)\)</span>。该收敛性质对许多核函数都成立，本文将使用最常用的高斯核：</p>
+<div class="math notranslate nohighlight">
+\[K_{h}(x)=\frac{1}{h\sqrt{2\pi}}e^{-x^{2}/2h^{2}}\]</div>
+<section id="bw">
+<h3>带宽(bw)的选择<a class="headerlink" href="#bw" title="Link to this heading">#</a></h3>
+<p>通过最小化如下函数来选取合适的h:</p>
+<div class="math notranslate nohighlight">
+\[CV(h)=\frac{1}{T}\sum^{T}_{t=1}(P_t-\hat{m}_{h,t})^2\]</div>
+<p>其中:</p>
+<p><span class="math notranslate nohighlight">\(\hat{m}_{h,t}=\frac{1}{T}\sum^{T}_{t=1}w_{r,h}Y_{r}\)</span></p>
+<p>估计量<span class="math notranslate nohighlight">\(\hat{m}_{h,t}\)</span>是剔除第t个观测得到的估计量，而上式是所有<span class="math notranslate nohighlight">\(\hat{m}_{h,t}\)</span>的均方误差。对给定的带宽h，CV(h)衡量了核回归估计量的拟合能力。通过最小化CV(h),我们得到的估计量具有一些统计上的优良性质，例如最小渐进均方误差。但由此得到的带宽往往偏大，即基于最小化CV(h) 的<span class="math notranslate nohighlight">\(\hat{m}(⋅)\)</span> 给远距离样本过多的权重，导致过渡平滑，丢失了局部信息。经过不断的试验，我们发现最优带宽应取0.3*<span class="math notranslate nohighlight">\(h^{*}\)</span>,其中<span class="math notranslate nohighlight">\(h^{*}=\mathop{argmin}_{h}CV(X)\)</span></p>
+</section>
+<section id="id6">
+<h3>形态识别算法<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>头肩形态（头肩顶和头肩底）</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+HS = 
+    \begin{cases}
+        E_1\ is\ maximum,  \\
+        E_3 &gt; E_1,E_3&gt;E_4, \\ 
+        E_1,E_5 \in{[98.5\%,101.05\%]*\frac{E_1+E_5}{2}},\\
+        E_2,E_4 \in{[98.5\%,101.05\%]*\frac{E_2+E_5}{2}},\\
+    \end{cases}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+IHS = 
+    \begin{cases}
+        E_1\ is\ minimum,  \\
+        E_3 &lt; E_1,E_3&lt;E_4, \\ 
+        E_1,E_5 \in{[98.5\%,101.05\%]*\frac{E_1+E_5}{2}},\\
+        E_2,E_4 \in{[98.5\%,101.05\%]*\frac{E_2+E_5}{2}},\\
+    \end{cases}
+\end{split}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>发散形态（顶部发散和底部发散）
+$<span class="math notranslate nohighlight">\(
+BTOP = 
+ \begin{cases}
+     E_1\ is\ maximum,  \\
+     E_1 &lt; E_3 &lt;E_5, \\ 
+     E_2&gt;E_4,\\
+ \end{cases}
+\)</span>$</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+BBOP = 
+    \begin{cases}
+        E_1\ is\ minimum,  \\
+        E_1 &gt; E_3 &gt; E_5, \\ 
+        E_2&lt;E_4,\\
+    \end{cases}
+\end{split}\]</div>
+<ol class="arabic simple" start="3">
+<li><p>三角形</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+TTOP = 
+    \begin{cases}
+        E_1\ is\ maximum,  \\
+        E_1 &gt; E_3 &gt; E_5, \\ 
+        E_2 &lt;&gt; E_4,\\
+    \end{cases}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+TBOP = 
+    \begin{cases}
+        E_1\ is\ minimum,  \\
+        E_1 &lt;&gt; E_3 &lt; E_5, \\ 
+        E_2 &gt; E_4,\\
+    \end{cases}
+\end{split}\]</div>
+<ol class="arabic simple" start="4">
+<li><p>矩形</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+RTOP = 
+    \begin{cases}
+        E_1\ is\ maximum,  \\
+        |E_i - \frac{E_1 + E_3 + E_4}{3}| &lt; 0.75\% * \frac{E_1+E_2+E_3}{3},i \in {1,3,5} \\
+        |E_i - \frac{E_2 + E_4}{2}| &lt; 0.75\% * \frac{E_2+E_4}{2},i \in {2,4},\\
+        min(E_1,E_3,E_5) &gt; max(E_2,E_4)
+    \end{cases}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+RBOP = 
+    \begin{cases}
+        E_1\ is\ minimum,  \\
+        |E_i - \frac{E_1 + E_3 + E_4}{3}| &lt; 0.75\% * \frac{E_1+E_2+E_3}{3},i \in {1,3,5} \\
+        |E_i - \frac{E_2 + E_4}{2}| &lt; 0.75\% * \frac{E_2+E_4}{2},i \in {2,4},\\
+        min(E_1,E_3,E_5) &lt; max(E_2,E_4)
+    \end{cases}
+\end{split}\]</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id7">
+<h1>形态识别测试<a class="headerlink" href="#id7" title="Link to this heading">#</a></h1>
+<section id="id8">
+<h2>中国宝安<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">get_price</span><span class="p">(</span><span class="s1">&#39;000009.XSHE&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;2021-01-21&#39;</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;2021-12-31&#39;</span><span class="p">,</span>
+                 <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">],</span> <span class="n">panel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">patterns_record1</span> <span class="o">=</span> <span class="n">rolling_patterns2pool</span><span class="p">(</span><span class="n">data1</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">],</span><span class="n">n</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
+
+<span class="n">plot_patterns_chart</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span><span class="n">patterns_record1</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;中国宝安&#39;</span><span class="p">)</span>
+<span class="n">plot_patterns_chart</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span><span class="n">patterns_record1</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/6de22d35f23fdafe3b01dedb66c60a5fe9a950127a7834c94336c8478e21163e.png" src="../../../../../_images/6de22d35f23fdafe3b01dedb66c60a5fe9a950127a7834c94336c8478e21163e.png" />
+<img alt="../../../../../_images/66964b93d63f1e6620069380f8e4a299a67722a5452df7d38633db9d5425419e.png" src="../../../../../_images/66964b93d63f1e6620069380f8e4a299a67722a5452df7d38633db9d5425419e.png" />
+</div>
+</div>
+</section>
+<section id="id9">
+<h2>江淮汽车<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span> <span class="o">=</span> <span class="n">get_price</span><span class="p">(</span><span class="s1">&#39;600418.XSHG&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;2021-01-21&#39;</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;2021-12-31&#39;</span><span class="p">,</span>
+                 <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">],</span> <span class="n">panel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">patterns_record2</span> <span class="o">=</span> <span class="n">rolling_patterns2pool</span><span class="p">(</span><span class="n">data1</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">],</span><span class="n">n</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
+
+<span class="n">plot_patterns_chart</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span><span class="n">patterns_record2</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;江淮汽车&#39;</span><span class="p">)</span>
+<span class="n">plot_patterns_chart</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span><span class="n">patterns_record2</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/71942d48bc0a10b94ecfbd2e6ef5e334c04354523f1d704040b3fee22a18e229.png" src="../../../../../_images/71942d48bc0a10b94ecfbd2e6ef5e334c04354523f1d704040b3fee22a18e229.png" />
+<img alt="../../../../../_images/66964b93d63f1e6620069380f8e4a299a67722a5452df7d38633db9d5425419e.png" src="../../../../../_images/66964b93d63f1e6620069380f8e4a299a67722a5452df7d38633db9d5425419e.png" />
+</div>
+</div>
+</section>
+<section id="id10">
+<h2>沪深300<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hs300</span> <span class="o">=</span> <span class="n">get_price</span><span class="p">(</span><span class="s1">&#39;000300.XSHG&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;2021-12-31&#39;</span><span class="p">,</span>
+                 <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">],</span> <span class="n">panel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># 这里周期周期较长 加入reset_window设置字典更新频率</span>
+<span class="n">patterns_record3</span> <span class="o">=</span> <span class="n">rolling_patterns2pool</span><span class="p">(</span><span class="n">hs300</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">],</span><span class="n">n</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">reset_window</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+
+<span class="n">plot_patterns_chart</span><span class="p">(</span><span class="n">hs300</span><span class="p">,</span><span class="n">patterns_record3</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;沪深300&#39;</span><span class="p">)</span>
+<span class="n">plot_patterns_chart</span><span class="p">(</span><span class="n">hs300</span><span class="p">,</span><span class="n">patterns_record3</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D:\anaconda3\lib\site-packages\mplfinance\_arg_validators.py:35: UserWarning: 
+
+ ================================================================= 
+
+   WARNING: YOU ARE PLOTTING SO MUCH DATA THAT IT MAY NOT BE
+            POSSIBLE TO SEE DETAILS (Candles, Ohlc-Bars, Etc.)
+   For more information see:
+   - https://github.com/matplotlib/mplfinance/wiki/Plotting-Too-Much-Data
+   
+   TO SILENCE THIS WARNING, set `type=&#39;line&#39;` in `mpf.plot()`
+   OR set kwarg `warn_too_much_data=N` where N is an integer 
+   LARGER than the number of data points you want to plot.
+
+ ================================================================ 
+  warnings.warn(&#39;\n\n ================================================================= &#39;+
+</pre></div>
+</div>
+<img alt="../../../../../_images/42c4b5952e05d48fa17f535929576beef29db9a72539017d1660637f3ec37f0c.png" src="../../../../../_images/42c4b5952e05d48fa17f535929576beef29db9a72539017d1660637f3ec37f0c.png" />
+<img alt="../../../../../_images/091863316e454b9da1aedca615963615f741daa2e3bdc971be5b92ebc12bcc7a.png" src="../../../../../_images/091863316e454b9da1aedca615963615f741daa2e3bdc971be5b92ebc12bcc7a.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id11">
+<h1>申万一级行业形态识别情况<a class="headerlink" href="#id11" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">patterns_res2json</span><span class="p">(</span><span class="n">dic</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;将结果转为json</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dic (Dict): 结果字典</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">json_serial</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;JSON serializer for objects not serializable by default json code&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">),</span> <span class="n">obj</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">dic</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">json_serial</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">pretreatment_events</span><span class="p">(</span><span class="n">factor</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">returns</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">before</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">after</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;预处理事件,将其拉到同一时间</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        factor (pd.DataFrame): MuliIndex level0-date level1-asset</span>
+<span class="sd">        returns (pd.DataFrame): index-datetime columns-asset </span>
+<span class="sd">        before (int): 事件前N日</span>
+<span class="sd">        after (int): 事件后N日</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame: [description]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">all_returns</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">factor</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">):</span>
+
+        <span class="n">equities</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;asset&#39;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">day_zero_index</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="n">starting_index</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">day_zero_index</span> <span class="o">-</span> <span class="n">before</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">ending_index</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">day_zero_index</span> <span class="o">+</span> <span class="n">after</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+                           <span class="nb">len</span><span class="p">(</span><span class="n">returns</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+
+        <span class="n">equities_slice</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">equities</span><span class="p">)</span>
+
+        <span class="n">series</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">returns</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">starting_index</span><span class="p">:</span><span class="n">ending_index</span><span class="p">],</span>
+                             <span class="n">equities_slice</span><span class="p">]</span>
+        <span class="n">series</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">starting_index</span> <span class="o">-</span> <span class="n">day_zero_index</span><span class="p">,</span>
+                             <span class="n">ending_index</span> <span class="o">-</span> <span class="n">day_zero_index</span><span class="p">)</span>
+
+        <span class="n">all_returns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">all_returns</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_event_cumreturns</span><span class="p">(</span><span class="n">pretreatment_events</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;以事件当日为基准的累计收益计算</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        pretreatment_events (pd.DataFrame): index-事件前后日 columns-asset</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">pretreatment_events</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                      <span class="n">columns</span><span class="o">=</span><span class="n">pretreatment_events</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">pretreatment_events</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">pretreatment_events</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">pretreatment_events</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:]</span> <span class="o">/</span> <span class="n">pretreatment_events</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_industry_price</span><span class="p">(</span><span class="n">codes</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">],</span> <span class="n">start</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;获取行业指数日度数据. 限制获取条数Limit=4000</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        codes (Union[str,List]): 行业指数代码</span>
+<span class="sd">        start (str): 起始日</span>
+<span class="sd">        end (str): 结束日</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame: 日度数据</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">query_func</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="n">finance</span><span class="o">.</span><span class="n">run_query</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="n">finance</span><span class="o">.</span><span class="n">SW1_DAILY_PRICE</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">finance</span><span class="o">.</span><span class="n">SW1_DAILY_PRICE</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="n">code</span><span class="p">,</span>
+                                                                       <span class="n">finance</span><span class="o">.</span><span class="n">SW1_DAILY_PRICE</span><span class="o">.</span><span class="n">date</span> <span class="o">&gt;=</span> <span class="n">start</span><span class="p">,</span>
+                                                                       <span class="n">finance</span><span class="o">.</span><span class="n">SW1_DAILY_PRICE</span><span class="o">.</span><span class="n">date</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">codes</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">codes</span> <span class="o">=</span> <span class="p">[</span><span class="n">codes</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">query_func</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calc_events_ret</span><span class="p">(</span><span class="n">ser</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">pricing</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">before</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">group</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; 计算形态识别前累计收益率情况</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ser (pd.Series): _description_</span>
+<span class="sd">        pricing (pd.DataFrame): 价格数据 index-date columns-指数</span>
+<span class="sd">        before (int, optional): 识别前N日. Defaults to 3.</span>
+<span class="sd">        end (int, optional): 识别后N日. Defaults to 10.</span>
+<span class="sd">        group (bool, optional): 是否分组. Defaults to True.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Union[pd.Series, pd.DataFrame]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">events</span> <span class="o">=</span> <span class="n">pretreatment_events</span><span class="p">(</span><span class="n">ser</span><span class="p">,</span> <span class="n">pricing</span><span class="p">,</span> <span class="n">before</span><span class="p">,</span>  <span class="n">end</span><span class="p">)</span>
+
+    <span class="n">rets</span> <span class="o">=</span> <span class="n">get_event_cumreturns</span><span class="p">(</span><span class="n">events</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">group</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="n">rets</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">rets</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_win_rate</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;计算胜率</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (pd.DataFrame): index-days columns </span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_pl</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;计算盈亏比</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_events_ret</span><span class="p">(</span><span class="n">ser</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;绘制事件收益率图</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ser (pd.Series): 收益率序列</span>
+<span class="sd">        ax (_type_, optional):Defaults to None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        ax</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="n">line_ax</span> <span class="o">=</span> <span class="n">ser</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+
+    <span class="n">line_ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span>
+        <span class="n">mpl</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%.2f%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)))</span>
+
+    <span class="n">line_ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;天&#39;</span><span class="p">)</span>
+    <span class="n">line_ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;平均收益率&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ax</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取申万一级行业列表</span>
+<span class="n">indstries_frame</span> <span class="o">=</span> <span class="n">get_industries</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;sw_l1&#39;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">industry_price</span> <span class="o">=</span> <span class="n">get_industry_price</span><span class="p">(</span><span class="n">indstries_frame</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">,</span><span class="s1">&#39;2022-02-18&#39;</span><span class="p">)</span>
+
+<span class="c1"># 数据储存</span>
+<span class="n">industry_price</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;sw_lv1.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 读取申万一级行业数据</span>
+<span class="n">industry_price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sw_lv1.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="p">[</span>
+                             <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">)</span>
+
+<span class="n">industry_price</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># time 2:14:46</span>
+<span class="c1">## 形态识别数量受窗口期 及 更新字典的窗口 大小影响</span>
+<span class="n">dic</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># 储存形态识别结果</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">df</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">industry_price</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)):</span>
+  
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">120</span><span class="p">:</span>
+
+        <span class="n">dic</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">rolling_patterns2pool</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">name</span><span class="p">,</span><span class="s1">&#39;close&#39;</span><span class="p">],</span><span class="mi">35</span><span class="p">,</span><span class="n">reset_window</span> <span class="o">=</span> <span class="mi">120</span><span class="p">)</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 将结果储存为json</span>
+<span class="n">res_json</span> <span class="o">=</span><span class="n">patterns_res2json</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span>
+
+<span class="c1"># 数据储存</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;res_json.json&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">res_json</span><span class="p">,</span><span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 读取 形态识别后的文件</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;res_json.json&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+
+    <span class="n">res_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取交易日历</span>
+<span class="n">trade_calendar</span> <span class="o">=</span> <span class="n">get_trade_days</span><span class="p">(</span><span class="s1">&#39;2013-06-01&#39;</span><span class="p">,</span><span class="s1">&#39;2022-02-21&#39;</span><span class="p">)</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">trade_calendar</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row_data</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 获取形态识别时的时点</span>
+
+<span class="n">res_dic</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res_json</span><span class="p">)</span>  <span class="c1"># json转为字典</span>
+
+<span class="k">for</span> <span class="n">code</span><span class="p">,</span><span class="n">res1</span> <span class="ow">in</span> <span class="n">res_dic</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+    <span class="k">for</span> <span class="n">pattern_name</span><span class="p">,</span><span class="n">point_tuple</span> <span class="ow">in</span> <span class="n">res1</span><span class="p">[</span><span class="s1">&#39;patterns&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        
+        <span class="k">for</span> <span class="n">p1</span><span class="p">,</span><span class="n">p2</span> <span class="ow">in</span> <span class="n">point_tuple</span><span class="p">:</span>
+         
+            <span class="n">watch_date</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span> <span class="c1"># 模拟三天后识别形态</span>
+
+            <span class="n">row_data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">code</span><span class="p">,</span><span class="n">pattern_name</span><span class="p">,</span><span class="n">idx</span><span class="p">[</span><span class="n">watch_date</span><span class="p">]])</span>
+
+<span class="c1"># 转为frame格式</span>
+<span class="n">stats_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">row_data</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;指数&#39;</span><span class="p">,</span><span class="s1">&#39;形态&#39;</span><span class="p">,</span><span class="s1">&#39;时间&#39;</span><span class="p">])</span>
+
+<span class="n">stats_df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="n">factor_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">stats_df</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;时间&#39;</span><span class="p">,</span><span class="s1">&#39;指数&#39;</span><span class="p">],</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;形态&#39;</span><span class="p">],</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+<span class="n">factor_df</span> <span class="o">=</span> <span class="n">factor_df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="n">factor_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;asset&#39;</span><span class="p">]</span>
+
+<span class="n">pricing</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">industry_price</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                         <span class="n">index</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;close&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id12">
+<h2>形态识别后前后平均收益情况<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO:收益减去指数自身 评价其超额情况 否则无法真实评价</span>
+<span class="n">group_ret</span> <span class="o">=</span> <span class="n">factor_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">calc_events_ret</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">pricing</span><span class="p">))</span>
+
+<span class="n">size</span> <span class="o">=</span> <span class="n">group_ret</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">size</span><span class="p">))</span>
+
+<span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">ser</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">group_ret</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">plot_events_ret</span><span class="p">(</span><span class="n">ser</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../../_images/099dd857a6894d9f0935eef83f29cb1b08a0935e162e0b7a82b060db377c8f39.png" src="../../../../../_images/099dd857a6894d9f0935eef83f29cb1b08a0935e162e0b7a82b060db377c8f39.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 计算胜率</span>
+<span class="n">evet_ret</span> <span class="o">=</span> <span class="n">factor_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">calc_events_ret</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">pricing</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+
+<span class="n">grouped</span> <span class="o">=</span> <span class="n">evet_ret</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># 计算胜率</span>
+<span class="n">win_ratio</span> <span class="o">=</span> <span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_win_rate</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="c1"># 计算盈亏比</span>
+<span class="n">pl_df</span> <span class="o">=</span> <span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_pl</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="n">win_ratio</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">([(</span><span class="s1">&#39;胜率&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="s1">&#39;胜率&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="s1">&#39;胜率&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">)])</span>
+<span class="n">pl_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">([(</span><span class="s1">&#39;盈亏比&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="s1">&#39;盈亏比&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="s1">&#39;盈亏比&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">)])</span>
+
+<span class="n">pattern_count</span> <span class="o">=</span> <span class="n">factor_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+<span class="n">stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">win_ratio</span><span class="p">,</span><span class="n">pl_df</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stats</span><span class="p">[(</span><span class="s1">&#39;识别次数&#39;</span><span class="p">,</span><span class="s1">&#39;All&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">pattern_count</span>
+
+<span class="n">stats</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="3" halign="left">胜率</th>
+      <th colspan="3" halign="left">盈亏比</th>
+      <th>识别次数</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>3</th>
+      <th>5</th>
+      <th>10</th>
+      <th>3</th>
+      <th>5</th>
+      <th>10</th>
+      <th>All</th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th>形态</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">交通运输</th>
+      <th>头肩底(IHS)</th>
+      <td>0.466667</td>
+      <td>0.733333</td>
+      <td>0.533333</td>
+      <td>-0.674405</td>
+      <td>-1.107140</td>
+      <td>-2.052513</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>头肩顶(HS)</th>
+      <td>0.571429</td>
+      <td>0.714286</td>
+      <td>0.714286</td>
+      <td>-2.367297</td>
+      <td>-1.834801</td>
+      <td>-3.755114</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>底部发散(BBOT)</th>
+      <td>0.666667</td>
+      <td>0.666667</td>
+      <td>0.333333</td>
+      <td>-2.813960</td>
+      <td>-1.454408</td>
+      <td>-1.197536</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>底部收敛三角形(TBOT)</th>
+      <td>0.800000</td>
+      <td>0.800000</td>
+      <td>0.400000</td>
+      <td>-0.554821</td>
+      <td>-0.557955</td>
+      <td>-1.508219</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>底部矩形(RBOT)</th>
+      <td>0.571429</td>
+      <td>0.428571</td>
+      <td>0.571429</td>
+      <td>-1.078427</td>
+      <td>-2.554149</td>
+      <td>-0.972385</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">餐饮旅游</th>
+      <th>底部收敛三角形(TBOT)</th>
+      <td>0.666667</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>-4.359365</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>底部矩形(RBOT)</th>
+      <td>0.500000</td>
+      <td>0.500000</td>
+      <td>0.500000</td>
+      <td>-1.089792</td>
+      <td>-1.087327</td>
+      <td>-1.910532</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>顶部发散(BTOP)</th>
+      <td>0.500000</td>
+      <td>0.500000</td>
+      <td>0.750000</td>
+      <td>-1.290124</td>
+      <td>-1.713131</td>
+      <td>-2.675643</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>顶部收敛三角形(TTOP)</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>顶部矩形(RTOP)</th>
+      <td>0.500000</td>
+      <td>0.500000</td>
+      <td>0.500000</td>
+      <td>-0.401420</td>
+      <td>-0.755532</td>
+      <td>-3.639606</td>
+      <td>4.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>224 rows × 7 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Astock_market/QuantsPlaybook研报复现/C-择时类/技术分析算法框架与实战/py"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">论文介绍</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">形态识别算法</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">核估计方法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">平滑估计量</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">核回归</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bw">带宽(bw)的选择</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">形态识别算法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">形态识别测试</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">中国宝安</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">江淮汽车</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">沪深300</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">申万一级行业形态识别情况</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">形态识别后前后平均收益情况</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

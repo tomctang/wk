@@ -1,0 +1,2847 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>总结 &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Astock_market/QuantsPlaybook研报复现/C-择时类/RSRS择时指标/py/RSRS改进';</script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../nb2024.html">1. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../nb2022.html">2. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../../_sources/Astock_market/QuantsPlaybook研报复现/C-择时类/RSRS择时指标/py/RSRS改进.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>总结</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">总结</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rsrs">RSRS指标新的构建方式</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">沪深300</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">上证综指</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">上证50</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">中证500</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">创业版</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">结合成交额加权回归与钝化方法的 RSRS 择时策略</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">沪深300</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">上证综指</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">上证50</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">中证500</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">创业板</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>总结<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>将RSRS指标构造融入收益率波动的信息，使得指标值能达到在震荡市场上钝化的效果，从而减少策略在震荡期间的误判次数。实证结果表明，钝化RSRS 指标 能提高各宽基指数的择时效果，使得择时策略在全样本与近年均有较好表现。在中证 500 与创业板指上，将样本点加权与钝化操作结合的成交额加权回归钝化RSRS 指标效果更佳。</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="rsrs">
+<h1>RSRS指标新的构建方式<a class="headerlink" href="#rsrs" title="Link to this heading">#</a></h1>
+<p>通过改变指标本身表达形式而非回归方法，以改变RSRS择时指标。</p>
+<p>先看原始RSRS择时指标的表达形式:</p>
+<p><span class="math notranslate nohighlight">\(RSRS=z\_score(\hat{\beta})*R^{2}\)</span></p>
+<p>其中，计算标准分<span class="math notranslate nohighlight">\(z\_score(\hat{\beta})\)</span>所用的周期为M。而这里我们在乘<span class="math notranslate nohighlight">\(R^2\)</span>的原因是当回归结果的<span class="math notranslate nohighlight">\(R^2\)</span>较小时，说明回归模型的解释力度较弱，此时标准分乘以<span class="math notranslate nohighlight">\(R^2\)</span>后数值会被往零点的方向压缩，由于策略仅在指标值绝对值大于一定阈值 后才会发出，因而指标值实际上在此时是被钝化了。</p>
+<p>延续这个思路，既然我们观察到RSRS择时策略最近在震荡市内表现不 够稳定，那么在市场没有明确趋势的时候让指标值钝化能不能减小指标误判 的风险，从而提升指标的择时效果呢？考虑到收益率的波动率往往能够一定程度上体现市场当前的震荡水平，我们对RSRS 择时指标做出如下调整：</p>
+<p><span class="math notranslate nohighlight">\(RSRS=z\_score(\hat{\beta})*R^{4*quantile(std(return),M)}\)</span></p>
+<p>其中，quantile(std(return),M)表示当前市场收益率波动在过去M日的历史动率中所处的分位数大小。由于𝑅大于0小于 1，当分位数越大时，震荡水平越高，此时 RSRS 指标将得到更大的钝化效果。</p>
+<p>为了方便区分新的RSRS指标与原始的RSRS指标，我们将新的指标命名为钝化RSRS指标。</p>
+<p>计算收益率标准差的分位数中需要两个参数，一个是用最近多少天的收 益率数据来计算标准差，一个是用多少个标准差数据来计算分位数。为了尽量与<span class="math notranslate nohighlight">\(z\_score(\hat{\beta})\)</span>在信息来源上保持一致，这两个参数的值即选用与<span class="math notranslate nohighlight">\(z\_score(\hat{\beta})\)</span>时一样的N与M。</p>
+<p>使用下面函数获取quantile(std(return),M)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_cal_ret_quantile</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
+
+        <span class="c1"># 计算收益波动</span>
+        <span class="n">ret_std</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">price_df</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+        <span class="n">ret_quantile</span> <span class="o">=</span> <span class="n">ret_std</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">pct</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">raw</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ret_quantile</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+<p>这里提供了一个RSRS的回测框架</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">hs</span> <span class="o">=</span> <span class="n">rsrs</span><span class="p">()</span>
+<span class="c1"># 加载</span>
+<span class="c1"># 信号名称列表：RSRS, 标准分RSRS, 修正标准分RSRS, 右偏修正标准分RSRS, 钝化RSRS,成交额加权钝化RSRS</span>
+<span class="n">hs</span><span class="o">.</span><span class="n">init_from_config</span><span class="p">(</span><span class="n">指数代码</span><span class="p">,</span><span class="n">回测开始日</span><span class="p">,</span><span class="n">回测结束日</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="p">{</span><span class="n">回测信号名称</span><span class="p">:(</span><span class="n">N</span><span class="p">,</span><span class="n">M</span><span class="p">),</span><span class="o">...</span><span class="p">})</span>
+
+<span class="c1"># 回测</span>
+<span class="n">hs</span><span class="o">.</span><span class="n">backtest</span><span class="p">({</span><span class="n">回测信号名称</span><span class="p">:</span><span class="n">开仓阈值</span><span class="p">})</span>
+
+<span class="c1"># 输出完整报告：净值图+风险指标数据</span>
+<span class="n">hs</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+
+<span class="c1"># 单独查看净值图</span>
+<span class="n">hs</span><span class="o">.</span><span class="n">plot_net_value</span><span class="p">()</span>
+
+<span class="c1"># 单独查看风险指标</span>
+<span class="n">hs</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p><strong>get_RSRS</strong>:计算各种RSRS</p>
+<p>_regression:计算OLS回归及WLS回归所需数据</p>
+<ul class="simple">
+<li><p>_cal_ols:计算ols</p></li>
+<li><p>_cal_wls:计算wls</p>
+<ul>
+<li><p>_cal_vol_weights:计成交量权重</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 引入库</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jqdata</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># 标记交易时点</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span> <span class="c1"># 统计库</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span> <span class="c1"># 线性回归</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span> <span class="c1"># 迭代器工具</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.parser</span><span class="w"> </span><span class="kn">import</span> <span class="n">parse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+
+<span class="c1"># 画图</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.dates</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mdate</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># 设置字体 用来正常显示中文标签</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;serif&#39;</span>
+<span class="c1">#mpl.rcParams[&#39;font.sans-serif&#39;] = [&#39;SimHei&#39;]</span>
+
+<span class="c1"># 用来正常显示负号</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="c1"># 图表主题</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn&#39;</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">属性中的data用于储存原始数据</span>
+<span class="sd">_Cal_RSRS处理data _Cal_RSRS生成信号列表</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RSRS</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">M</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">price_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">singal_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">hold_mark</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buy_mark</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sell_mark</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">strategy_ret</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">strategy_cum</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+    <span class="c1">#==============================================================================</span>
+    <span class="c1">#                       回测</span>
+    <span class="c1">#==============================================================================</span>
+
+    <span class="c1"># 初始加载</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">init_from_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">freq</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">symbol</span> <span class="o">=</span> <span class="n">symbol</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">start_date</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">end_date</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="n">freq</span>
+
+        <span class="c1"># 获取前序时间</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_pretreatment_day</span><span class="p">()</span>
+        <span class="c1"># 检查前序时间是否足够</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_pretreatment_date</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Query data....&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">query_data</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Calculate...&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_singal_table</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Success...&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># 回测</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">backtesting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold_dict</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position_df</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hold_mark</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">buy_mark</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sell_mark</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_trade_info</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_net_value</span><span class="p">()</span>
+
+    <span class="c1"># 数据获取</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">query_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># 获取前序开始日</span>
+        <span class="n">begin</span> <span class="o">=</span> <span class="n">get_trade_days</span><span class="p">(</span>
+            <span class="n">end_date</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># 获取价格数据</span>
+        <span class="n">price_df</span> <span class="o">=</span> <span class="n">get_price</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span>
+            <span class="n">begin</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span><span class="p">,</span>
+            <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="s1">&#39;volume&#39;</span><span class="p">,</span> <span class="s1">&#39;pre_close&#39;</span><span class="p">],</span>
+            <span class="n">panel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># 计算收益率</span>
+        <span class="n">price_df</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">price_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">price_df</span><span class="p">[</span><span class="s1">&#39;pre_close&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">price_df</span> <span class="o">=</span> <span class="n">price_df</span>
+
+    <span class="c1"># 获取freq中各个指标计算的参数最大前序天数</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_pretreatment_day</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        在提取数据时获取最大的N,M作为前序日期</span>
+<span class="sd">        变换freq的k,v变换后k=(N,M),v为需要计算的RSRS名称</span>
+<span class="sd">        相同(N,M)的合并了不用重复提取数据</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">max_day</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># 最大前序期</span>
+        <span class="n">refreq</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># key-(N,M) value-rsrs_name</span>
+
+        <span class="c1"># 判断freq中的k的rsrs名称是否合规</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_threshold_key_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+            <span class="n">max_day</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="c1"># 转化k,v</span>
+            <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">refreq</span><span class="p">:</span>
+                <span class="n">refreq</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">refreq</span><span class="p">[</span><span class="n">v</span><span class="p">]]</span> <span class="o">+</span> <span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">refreq</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span>
+
+        <span class="n">max_day_name</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">max_day</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">max_day</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="p">[</span><span class="n">max_day_name</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">M</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="p">[</span><span class="n">max_day_name</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="n">refreq</span>  <span class="c1"># 重置freq</span>
+
+    <span class="c1">#==============================================================================</span>
+    <span class="c1">#                   核心计算</span>
+    <span class="c1">#==============================================================================</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_singal_table</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="n">rsrs_singal</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">get_RSRS</span><span class="p">(</span><span class="n">RSRS_NAME</span><span class="p">,</span> <span class="n">NM</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">NM</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">NM</span><span class="p">,</span> <span class="n">RSRS_NAME</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">singal_df</span> <span class="o">=</span> <span class="n">rsrs_singal</span>
+    
+    <span class="c1"># 计算rsrs</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_RSRS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rsrs_name</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+
+        <span class="n">price_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">price_df</span>
+
+        <span class="n">BETA</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="n">N</span>  <span class="c1"># 用于储存斜率</span>
+        <span class="n">Rsquared</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="n">N</span>  <span class="c1"># 储存R方</span>
+
+        <span class="n">singal_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">price_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>  <span class="c1"># 信号储存</span>
+
+        <span class="c1"># 计算OLS相关的数据</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_regression</span><span class="p">()</span>
+
+        <span class="c1"># ret_quantile</span>
+        <span class="n">ret_quantile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cal_ret_quantile</span><span class="p">()</span>
+
+        <span class="c1"># 获取RSRS</span>
+        <span class="c1"># 原始RSRS</span>
+        <span class="n">singal_df</span><span class="p">[</span><span class="s1">&#39;RSRS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># 计算标准分</span>
+        <span class="n">singal_df</span><span class="p">[</span><span class="s1">&#39;标准分RSRS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">singal_df</span><span class="p">[</span><span class="s1">&#39;RSRS&#39;</span><span class="p">]</span> <span class="o">-</span>
+                                <span class="n">singal_df</span><span class="p">[</span><span class="s1">&#39;RSRS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+                               <span class="p">)</span> <span class="o">/</span> <span class="n">singal_df</span><span class="p">[</span><span class="s1">&#39;RSRS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+        <span class="c1"># 计算修正标准分</span>
+        <span class="n">singal_df</span><span class="p">[</span><span class="s1">&#39;修正标准分RSRS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">singal_df</span><span class="p">[</span><span class="s1">&#39;标准分RSRS&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># 右偏标准分</span>
+        <span class="n">singal_df</span><span class="p">[</span><span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">singal_df</span><span class="p">[</span><span class="s1">&#39;修正标准分RSRS&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">singal_df</span><span class="p">[</span><span class="s1">&#39;RSRS&#39;</span><span class="p">]</span>
+
+        <span class="c1"># 钝化RSRS</span>
+        <span class="n">singal_df</span><span class="p">[</span><span class="s1">&#39;钝化RSRS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">singal_df</span><span class="p">[</span><span class="s1">&#39;标准分RSRS&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span>
+                                                                 <span class="n">ret_quantile</span><span class="p">)</span>
+
+        <span class="c1"># 成交量加权钝化RSRS</span>
+        <span class="c1">## 构建df</span>
+        <span class="n">passiv_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+            <span class="s1">&#39;beta&#39;</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="s1">&#39;rsquare&#39;</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+        <span class="p">},</span>
+                                 <span class="n">index</span><span class="o">=</span><span class="n">price_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+        <span class="c1">## 计算标准分</span>
+        <span class="n">passiv_z</span> <span class="o">=</span> <span class="p">(</span><span class="n">passiv_df</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">passiv_df</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+                   <span class="p">)</span> <span class="o">/</span> <span class="n">passiv_df</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+        <span class="c1">## 计算成交量加权钝化RSRS</span>
+        <span class="n">singal_df</span><span class="p">[</span><span class="s1">&#39;成交额加权钝化RSRS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">passiv_z</span> <span class="o">*</span> <span class="n">passiv_df</span><span class="p">[</span><span class="s1">&#39;rsquare&#39;</span><span class="p">]</span><span class="o">**</span><span class="p">(</span>
+            <span class="mi">2</span> <span class="o">*</span> <span class="n">ret_quantile</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">singal_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">:,</span> <span class="n">rsrs_name</span><span class="p">]</span>
+
+    <span class="c1"># 回归</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_regression</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        返回BETA_OLS,Rsquare_OLS,BETA_WLS,Rsquare_WLS</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span>
+        <span class="n">price_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">price_df</span>
+
+        <span class="n">BETA_OLS</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="n">N</span>
+        <span class="n">Rsquare_OLS</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="n">N</span>
+
+        <span class="n">BETA_WLS</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="n">N</span>
+        <span class="n">Rsquare_WLS</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="n">N</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">price_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+
+            <span class="n">vol</span> <span class="o">=</span> <span class="n">price_df</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">][</span><span class="n">i</span> <span class="o">-</span> <span class="n">N</span><span class="p">:</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">price_df</span><span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">][</span><span class="n">i</span> <span class="o">-</span> <span class="n">N</span><span class="p">:</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">price_df</span><span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">][</span><span class="n">i</span> <span class="o">-</span> <span class="n">N</span><span class="p">:</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="c1"># 计算ols的所需数据</span>
+            <span class="n">ols_returns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cal_ols</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+            <span class="c1"># 计算加权回归的所需数据</span>
+            <span class="n">wls_returns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cal_wls</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">vol</span><span class="p">)</span>
+
+            <span class="n">BETA_OLS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ols_returns</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">Rsquare_OLS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ols_returns</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+            <span class="n">BETA_WLS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wls_returns</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">Rsquare_WLS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wls_returns</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">BETA_OLS</span><span class="p">,</span> <span class="n">Rsquare_OLS</span><span class="p">,</span> <span class="n">BETA_WLS</span><span class="p">,</span> <span class="n">Rsquare_WLS</span><span class="p">)</span>
+
+    <span class="c1"># 计算ols回归的beta,r-squared</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cal_ols</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+        
+        <span class="c1"># 过滤NAN</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        
+        <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># 计算beta</span>
+        <span class="n">BETA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=-</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># 计算r-squared</span>
+        <span class="n">Rsquared</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">BETA</span><span class="p">,</span> <span class="n">Rsquared</span><span class="p">)</span>
+
+    <span class="c1"># 计算wls回归的beta,r-squared</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cal_wls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+        
+        <span class="c1"># 过滤NAN</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        
+        <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># 计算权重</span>
+        <span class="n">weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_vol_weights</span><span class="p">(</span><span class="n">vol</span><span class="p">)</span>
+        
+        <span class="n">results</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">WLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+        <span class="c1"># 计算beta</span>
+        <span class="n">BETA</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># 计算r-squared</span>
+        <span class="n">Rsquared</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">rsquared</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">BETA</span><span class="p">,</span> <span class="n">Rsquared</span><span class="p">)</span>
+
+    <span class="c1"># 计算ret分位数</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cal_ret_quantile</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
+
+        <span class="c1"># 计算收益波动</span>
+        <span class="n">ret_std</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">price_df</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">,</span><span class="n">min_periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">,</span><span class="n">raw</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">ret_quantile</span> <span class="o">=</span> <span class="n">ret_std</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">pct</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">raw</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ret_quantile</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="c1"># 计算成交量权重</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_vol_weights</span><span class="p">(</span><span class="n">slice_series</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+
+        <span class="n">weights</span> <span class="o">=</span> <span class="n">slice_series</span> <span class="o">/</span> <span class="n">slice_series</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">weights</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="w">    </span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    前序时间检查</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># 检查前序时间是否足够</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_pretreatment_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">traget_date</span> <span class="o">=</span> <span class="n">get_trade_days</span><span class="p">(</span><span class="n">end_date</span><span class="o">=</span><span class="n">parse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">(),</span><span class="n">count</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">M</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">INDEX_START_DATE</span> <span class="o">=</span> <span class="n">get_security_info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">symbol</span><span class="p">)</span><span class="o">.</span><span class="n">start_date</span>
+        
+        <span class="n">all_trade_days</span> <span class="o">=</span> <span class="n">get_all_trade_days</span><span class="p">()</span>
+        <span class="c1"># 数据最早到2005-01-01所以不能超过这个值</span>
+        <span class="n">MAX_TRADE_DATE</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">INDEX_START_DATE</span><span class="p">,</span><span class="n">all_trade_days</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">limit_date</span> <span class="o">=</span> <span class="n">all_trade_days</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">all_trade_days</span><span class="o">==</span><span class="n">MAX_TRADE_DATE</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">)][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+       
+        <span class="k">if</span> <span class="p">(</span><span class="n">traget_date</span> <span class="o">-</span> <span class="n">INDEX_START_DATE</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Warning</span><span class="p">(</span><span class="s1">&#39;指数起始日为</span><span class="si">%s</span><span class="s1">,起始日至少为</span><span class="si">%s</span><span class="s1">,前序日不足,可能导致比较RSRS信号的回测起止日期不同!&#39;</span> <span class="o">%</span>
+                          <span class="p">(</span><span class="n">INDEX_START_DATE</span><span class="p">,</span><span class="n">limit_date</span><span class="p">))</span>
+
+    <span class="c1"># 获取净值</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_net_value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+        <span class="c1"># next_ret</span>
+        <span class="n">pct_chg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">price_df</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">:]</span>
+
+        <span class="c1"># reshape</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">pct_chg</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">position_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+        <span class="n">strategy_ret</span> <span class="o">=</span> <span class="n">ret</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">position_df</span>
+
+        <span class="n">index_name</span> <span class="o">=</span> <span class="n">get_security_info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">symbol</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+
+        <span class="c1"># 基准收益</span>
+        <span class="n">strategy_ret</span><span class="p">[</span><span class="n">index_name</span> <span class="o">+</span> <span class="s1">&#39;净值&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">price_df</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span>
+        <span class="n">strategy_cum</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">strategy_ret</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">strategy_ret</span> <span class="o">=</span> <span class="n">strategy_ret</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">strategy_cum</span> <span class="o">=</span> <span class="n">strategy_cum</span>
+
+    <span class="c1">#==============================================================================</span>
+    <span class="c1">#                   开仓标记</span>
+    <span class="c1">#==============================================================================</span>
+
+    <span class="c1"># 获取持仓标记,持仓时间,交易情况</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_trade_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_threshold_key_name</span><span class="p">(</span><span class="n">threshold_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+        <span class="c1"># 统一threshold</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">threshold_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">threshold_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="o">-</span><span class="n">v</span><span class="p">)</span>
+
+        <span class="n">position_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">singal_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>  <span class="c1"># 储存持仓标记</span>
+        <span class="n">hold_mark</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># 持仓时间标记</span>
+        <span class="n">buy_mark</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># 卖出标记</span>
+        <span class="n">sell_mark</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">singal_name</span><span class="p">,</span> <span class="n">threshold</span> <span class="ow">in</span> <span class="n">threshold_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+            <span class="n">flag</span><span class="p">,</span> <span class="n">hold_flag</span><span class="p">,</span> <span class="n">buy_flag</span><span class="p">,</span> <span class="n">sell_flag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mark_flag</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">singal_df</span><span class="p">,</span> <span class="n">singal_name</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
+            <span class="n">position_df</span><span class="p">[</span><span class="n">singal_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">flag</span>
+            <span class="n">hold_mark</span><span class="p">[</span><span class="n">singal_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">hold_flag</span>
+            <span class="n">buy_mark</span><span class="p">[</span><span class="n">singal_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">buy_flag</span>
+            <span class="n">sell_mark</span><span class="p">[</span><span class="n">singal_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">sell_flag</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">position_df</span><span class="p">,</span> <span class="n">hold_mark</span><span class="p">,</span> <span class="n">buy_mark</span><span class="p">,</span> <span class="n">sell_mark</span><span class="p">)</span>
+
+    <span class="c1"># 标记持仓和平仓</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_mark_flag</span><span class="p">(</span><span class="n">singal_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">singal_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                   <span class="n">threshold</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        singal_df:信号df</span>
+<span class="sd">        singal_name:信号名称</span>
+<span class="sd">        treshold:开平仓阈值</span>
+<span class="sd">        ======================</span>
+<span class="sd">        returns:</span>
+<span class="sd">        (开平仓标记,持仓时间,买入时间,卖出时间)</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">UP</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># 开仓阈值</span>
+        <span class="n">DN</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># 平仓阈值</span>
+        <span class="n">pre_singal</span> <span class="o">=</span> <span class="n">singal_df</span><span class="p">[</span><span class="n">singal_name</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 昨日信号</span>
+
+        
+        <span class="n">hold_flag</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 持仓标记</span>
+        <span class="n">buy_flag</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 买入点</span>
+        <span class="n">sell_flag</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 卖出点</span>
+        <span class="n">flag</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 持仓为1 空仓为0</span>
+
+        <span class="c1"># 信号指标大于UP时开仓，小于DN时平仓</span>
+        <span class="k">for</span> <span class="n">tradeDate</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">singal_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+
+            <span class="c1">#===========================</span>
+            <span class="c1">#         持仓、平仓标记</span>
+            <span class="c1">#===========================</span>
+
+            <span class="c1"># try用于过滤flag中没有元素的情况</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># 标记买入日期</span>
+                <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">singal_name</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">UP</span> <span class="ow">and</span> <span class="n">flag</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+
+                    <span class="n">flag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                    <span class="n">buy_flag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tradeDate</span><span class="p">)</span>
+                    <span class="n">hold_flag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tradeDate</span><span class="p">)</span>
+
+                <span class="k">else</span><span class="p">:</span>
+
+                    <span class="k">if</span> <span class="n">flag</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="n">singal_name</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">DN</span><span class="p">:</span>
+
+                        <span class="n">flag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                        <span class="n">hold_flag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tradeDate</span><span class="p">)</span>
+
+                    <span class="c1"># 标记卖出日期</span>
+                    <span class="k">elif</span> <span class="n">flag</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="n">singal_name</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">DN</span><span class="p">:</span>
+
+                        <span class="n">flag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                        <span class="n">sell_flag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tradeDate</span><span class="p">)</span>
+
+                    <span class="k">else</span><span class="p">:</span>
+
+                        <span class="n">flag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+            <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">singal_name</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.7</span><span class="p">:</span>
+                    <span class="n">flag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">flag</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="n">hold_flag</span><span class="p">,</span> <span class="n">buy_flag</span><span class="p">,</span> <span class="n">sell_flag</span><span class="p">)</span>  <span class="c1"># 返回信号的list</span>
+
+    <span class="c1"># 检查回测用名称</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_threshold_key_name</span><span class="p">(</span><span class="n">threshold_dict_keys</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+
+        <span class="n">singal_name</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;RSRS&#39;</span><span class="p">,</span> <span class="s1">&#39;标准分RSRS&#39;</span><span class="p">,</span> <span class="s1">&#39;修正标准分RSRS&#39;</span><span class="p">,</span> <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">,</span> <span class="s1">&#39;钝化RSRS&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;成交额加权钝化RSRS&#39;</span>
+        <span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">threshold_dict_keys</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">singal_name</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Warning</span><span class="p">(</span><span class="s1">&#39;回测用singal_name必须在</span><span class="si">%s</span><span class="s1">中&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">singal_name</span><span class="p">)))</span>
+
+    <span class="c1">#==============================================================================</span>
+    <span class="c1">#                   风险数据</span>
+    <span class="c1">#==============================================================================</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">plot_net_value</span><span class="p">()</span>
+        
+        <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">()</span><span class="o">.</span><span class="n">to_html</span><span class="p">()))</span>
+
+
+    <span class="c1"># 回测报告</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cal_risk_indicator</span><span class="p">(</span><span class="n">col_name</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">col_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="p">],</span>
+                         <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># 获取风险指标</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cal_risk_indicator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">singal_name</span><span class="p">):</span>
+
+        <span class="n">strategy_cum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">strategy_cum</span><span class="p">[</span><span class="n">singal_name</span><span class="p">]</span>
+        <span class="n">strategy_ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">strategy_ret</span><span class="p">[</span><span class="n">singal_name</span><span class="p">]</span>
+        <span class="n">position_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">position_df</span><span class="p">[</span><span class="n">singal_name</span><span class="p">]</span>
+        <span class="n">hold_mark</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hold_mark</span><span class="p">[</span><span class="n">singal_name</span><span class="p">]</span>
+        <span class="n">buy_mark</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buy_mark</span><span class="p">[</span><span class="n">singal_name</span><span class="p">]</span>
+        <span class="n">sell_mark</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sell_mark</span><span class="p">[</span><span class="n">singal_name</span><span class="p">]</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">format_x</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{:.2%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="n">summary_dic</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="n">index_name</span> <span class="o">=</span> <span class="s1">&#39;年华收益率,累计收益率,夏普比率,最大回撤,持仓总天数,交易次数,平均持仓天数,获利天数, </span><span class="se">\</span>
+<span class="s1">        亏损天数,胜率(按天),平均盈利率(按天),平均亏损率(按天),平均盈亏比(按天),盈利次数,亏损次数, </span><span class="se">\</span>
+<span class="s1">        单次最大盈利,单次最大亏损,胜率(按此),平均盈利率(按次),平均亏损率(按次),平均盈亏比(按次)&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+        <span class="c1"># 计算年华收益率</span>
+        <span class="n">annual_ret</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">strategy_cum</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">strategy_cum</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                         <span class="mi">244</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">strategy_cum</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
+
+        <span class="c1"># 计算累计收益率</span>
+        <span class="n">cum_ret_rate</span> <span class="o">=</span> <span class="n">strategy_cum</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+
+        <span class="c1"># 最大回撤</span>
+        <span class="n">max_nv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">strategy_cum</span><span class="p">))</span>
+        <span class="n">mdd</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">strategy_cum</span> <span class="o">/</span> <span class="n">max_nv</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># 夏普</span>
+        <span class="n">sharpe_ratio</span> <span class="o">=</span> <span class="p">(</span><span class="n">annual_ret</span> <span class="o">-</span> <span class="mf">0.03</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">strategy_cum</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># 交易次数</span>
+        <span class="n">trade_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">buy_mark</span><span class="p">)</span>
+
+        <span class="c1"># 持仓总天数</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">hold_mark</span><span class="p">)</span>
+
+        <span class="c1"># 平均持仓天数</span>
+        <span class="n">mean_hold</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="n">trade_count</span>
+
+        <span class="c1"># 获利天数</span>
+        <span class="n">win</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">strategy_ret</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+        <span class="c1"># 亏损天数</span>
+        <span class="n">lose</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">strategy_ret</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+        <span class="c1"># 胜率</span>
+        <span class="n">win_ratio</span> <span class="o">=</span> <span class="n">win</span> <span class="o">/</span> <span class="n">total</span>
+        <span class="c1"># 平均盈利率（天）</span>
+        <span class="n">mean_win_ratio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">strategy_ret</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">strategy_ret</span><span class="p">,</span>
+                                         <span class="mi">0</span><span class="p">))</span> <span class="o">/</span> <span class="n">win</span>
+        <span class="c1"># 平均亏损率（天）</span>
+        <span class="n">mean_lose_ratio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">strategy_ret</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">strategy_ret</span><span class="p">,</span>
+                                          <span class="mi">0</span><span class="p">))</span> <span class="o">/</span> <span class="n">lose</span>
+        <span class="c1"># 盈亏比(天)</span>
+        <span class="n">win_lose</span> <span class="o">=</span> <span class="n">win</span> <span class="o">/</span> <span class="n">lose</span>
+
+        <span class="c1"># 盈利次数</span>
+        <span class="n">temp_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;RETURNS&#39;</span><span class="p">:</span> <span class="n">strategy_ret</span><span class="p">,</span> <span class="s1">&#39;singal&#39;</span><span class="p">:</span> <span class="n">position_df</span><span class="p">})</span>
+
+        <span class="n">diff</span> <span class="o">=</span> <span class="n">temp_df</span><span class="p">[</span><span class="s1">&#39;singal&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">temp_df</span><span class="p">[</span><span class="s1">&#39;singal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">temp_df</span><span class="p">[</span><span class="s1">&#39;singal_MARK&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">diff</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+
+        <span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">temp_df</span><span class="p">[</span><span class="s1">&#39;singal&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># 每次开仓的收益率情况</span>
+        <span class="n">temp_df</span> <span class="o">=</span> <span class="n">temp_df</span><span class="p">[</span><span class="n">cond</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;singal_MARK&#39;</span><span class="p">)[</span><span class="s1">&#39;RETURNS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+        <span class="c1"># 盈利次数</span>
+        <span class="n">win_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">temp_df</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="c1"># 亏损次数</span>
+        <span class="n">lose_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">temp_df</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="c1"># 单次最大盈利</span>
+        <span class="n">max_win</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">temp_df</span><span class="p">)</span>
+        <span class="c1"># 单次最大亏损</span>
+        <span class="n">max_lose</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">temp_df</span><span class="p">)</span>
+        <span class="c1"># 胜率</span>
+        <span class="n">win_rat</span> <span class="o">=</span> <span class="n">win_count</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">temp_df</span><span class="p">)</span>
+        <span class="c1"># 平均盈利率（次）</span>
+        <span class="n">mean_win</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">temp_df</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">temp_df</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">temp_df</span><span class="p">)</span>
+        <span class="c1"># 平均亏损率（天）</span>
+        <span class="n">mean_lose</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">temp_df</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">temp_df</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">temp_df</span><span class="p">)</span>
+        <span class="c1"># 盈亏比(次)</span>
+        <span class="n">mean_wine_lose</span> <span class="o">=</span> <span class="n">win_count</span> <span class="o">/</span> <span class="n">lose_count</span>
+
+        <span class="n">summary_dic</span><span class="p">[</span><span class="n">singal_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">format_x</span><span class="p">(</span><span class="n">annual_ret</span><span class="p">),</span>
+            <span class="n">format_x</span><span class="p">(</span><span class="n">cum_ret_rate</span><span class="p">),</span> <span class="n">sharpe_ratio</span><span class="p">,</span>
+            <span class="n">format_x</span><span class="p">(</span><span class="n">mdd</span><span class="p">),</span> <span class="n">total</span><span class="p">,</span> <span class="n">trade_count</span><span class="p">,</span> <span class="n">mean_hold</span><span class="p">,</span> <span class="n">win</span><span class="p">,</span> <span class="n">lose</span><span class="p">,</span>
+            <span class="n">format_x</span><span class="p">(</span><span class="n">win_ratio</span><span class="p">),</span>
+            <span class="n">format_x</span><span class="p">(</span><span class="n">mean_win_ratio</span><span class="p">),</span>
+            <span class="n">format_x</span><span class="p">(</span><span class="n">mean_lose_ratio</span><span class="p">),</span> <span class="n">win_lose</span><span class="p">,</span> <span class="n">win_count</span><span class="p">,</span> <span class="n">lose_count</span><span class="p">,</span>
+            <span class="n">format_x</span><span class="p">(</span><span class="n">max_win</span><span class="p">),</span>
+            <span class="n">format_x</span><span class="p">(</span><span class="n">max_lose</span><span class="p">),</span>
+            <span class="n">format_x</span><span class="p">(</span><span class="n">win_rat</span><span class="p">),</span>
+            <span class="n">format_x</span><span class="p">(</span><span class="n">mean_win</span><span class="p">),</span>
+            <span class="n">format_x</span><span class="p">(</span><span class="n">mean_lose</span><span class="p">),</span> <span class="n">mean_wine_lose</span>
+        <span class="p">]</span>
+
+        <span class="n">summary_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">summary_dic</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index_name</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">summary_df</span>
+
+    <span class="c1"># 画图</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_net_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif&#39;</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">get_security_info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">symbol</span><span class="p">)</span><span class="o">.</span><span class="n">display_name</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">name</span><span class="o">+</span><span class="s1">&#39;净值表现&#39;</span><span class="p">)</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">strategy_cum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>我们在各指数上测试钝化 RSRS 指标的择时效果，在交易波动更易变化的中证500与创业板指上择时效果显著提升，而在大盘股指上的择时效果提升幅度较为有限。</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>指数名称</p></th>
+<th class="head"><p>钝化RSRS择时</p></th>
+<th class="head"><p>原始RSRS择时</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>沪深300</p></td>
+<td><p>18,700,0.7</p></td>
+<td><p>18,600,0.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>上证综指</p></td>
+<td><p>19,800,0.7</p></td>
+<td><p>19,800,0.8</p></td>
+</tr>
+<tr class="row-even"><td><p>上证50</p></td>
+<td><p>16,700,0.3</p></td>
+<td><p>18,500,0.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>中证500</p></td>
+<td><p>18,800,1</p></td>
+<td><p>19,600,0.8</p></td>
+</tr>
+<tr class="row-even"><td><p>创业板</p></td>
+<td><p>18,500,0.4</p></td>
+<td><p>18,600,0.5</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="id2">
+<h2>沪深300<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载</span>
+<span class="n">hs300</span> <span class="o">=</span> <span class="n">RSRS</span><span class="p">()</span>
+
+<span class="c1"># 载入数据</span>
+<span class="n">hs300</span><span class="o">.</span><span class="n">init_from_config</span><span class="p">(</span>
+    <span class="s1">&#39;000300.XSHG&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2008-03-25&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2019-12-31&#39;</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">700</span><span class="p">),</span>
+        <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+    <span class="p">})</span>
+
+<span class="c1"># 回测</span>
+<span class="n">hs300</span><span class="o">.</span><span class="n">backtesting</span><span class="p">({</span><span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">})</span>
+<span class="c1"># 报告输出</span>
+<span class="n">hs300</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Query data....
+Calculate...
+Success...
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>钝化RSRS</th>
+      <th>右偏修正标准分RSRS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>年华收益率</th>
+      <td>10.26%</td>
+      <td>11.83%</td>
+    </tr>
+    <tr>
+      <th>累计收益率</th>
+      <td>214.95%</td>
+      <td>271.87%</td>
+    </tr>
+    <tr>
+      <th>夏普比率</th>
+      <td>0.0944526</td>
+      <td>0.0929158</td>
+    </tr>
+    <tr>
+      <th>最大回撤</th>
+      <td>42.97%</td>
+      <td>42.97%</td>
+    </tr>
+    <tr>
+      <th>持仓总天数</th>
+      <td>1425</td>
+      <td>1601</td>
+    </tr>
+    <tr>
+      <th>交易次数</th>
+      <td>44</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>平均持仓天数</th>
+      <td>32.3864</td>
+      <td>44.4722</td>
+    </tr>
+    <tr>
+      <th>获利天数</th>
+      <td>754</td>
+      <td>850</td>
+    </tr>
+    <tr>
+      <th>亏损天数</th>
+      <td>670</td>
+      <td>750</td>
+    </tr>
+    <tr>
+      <th>胜率(按天)</th>
+      <td>52.91%</td>
+      <td>53.09%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按天)</th>
+      <td>1.14%</td>
+      <td>1.12%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按天)</th>
+      <td>-1.08%</td>
+      <td>-1.06%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按天)</th>
+      <td>1.12537</td>
+      <td>1.13333</td>
+    </tr>
+    <tr>
+      <th>盈利次数</th>
+      <td>26</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>亏损次数</th>
+      <td>18</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>单次最大盈利</th>
+      <td>36.66%</td>
+      <td>36.66%</td>
+    </tr>
+    <tr>
+      <th>单次最大亏损</th>
+      <td>-22.29%</td>
+      <td>-21.89%</td>
+    </tr>
+    <tr>
+      <th>胜率(按此)</th>
+      <td>59.09%</td>
+      <td>72.22%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按次)</th>
+      <td>4.21%</td>
+      <td>5.51%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按次)</th>
+      <td>-1.18%</td>
+      <td>-1.30%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按次)</th>
+      <td>1.44444</td>
+      <td>2.6</td>
+    </tr>
+  </tbody>
+</table></div><img alt="../../../../../_images/95c0416abe5b9644c348801ad34868d711372c86f5a84d76fed43fc79c99fc37.png" src="../../../../../_images/95c0416abe5b9644c348801ad34868d711372c86f5a84d76fed43fc79c99fc37.png" />
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>上证综指<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载</span>
+<span class="n">S_A</span> <span class="o">=</span> <span class="n">RSRS</span><span class="p">()</span>
+<span class="c1"># 载入数据</span>
+<span class="n">S_A</span><span class="o">.</span><span class="n">init_from_config</span><span class="p">(</span>
+    <span class="s1">&#39;000001.XSHG&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2008-03-25&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2019-12-31&#39;</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span>
+        <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
+    <span class="p">})</span>
+
+<span class="c1"># 回测</span>
+<span class="n">S_A</span><span class="o">.</span><span class="n">backtesting</span><span class="p">({</span><span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">})</span>
+<span class="c1"># 报告输出</span>
+<span class="n">S_A</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Query data....
+Calculate...
+Success...
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>钝化RSRS</th>
+      <th>右偏修正标准分RSRS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>年华收益率</th>
+      <td>12.04%</td>
+      <td>14.25%</td>
+    </tr>
+    <tr>
+      <th>累计收益率</th>
+      <td>280.46%</td>
+      <td>378.67%</td>
+    </tr>
+    <tr>
+      <th>夏普比率</th>
+      <td>0.0758018</td>
+      <td>0.0696126</td>
+    </tr>
+    <tr>
+      <th>最大回撤</th>
+      <td>25.71%</td>
+      <td>31.48%</td>
+    </tr>
+    <tr>
+      <th>持仓总天数</th>
+      <td>1293</td>
+      <td>1701</td>
+    </tr>
+    <tr>
+      <th>交易次数</th>
+      <td>46</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>平均持仓天数</th>
+      <td>28.1087</td>
+      <td>56.7</td>
+    </tr>
+    <tr>
+      <th>获利天数</th>
+      <td>699</td>
+      <td>922</td>
+    </tr>
+    <tr>
+      <th>亏损天数</th>
+      <td>593</td>
+      <td>778</td>
+    </tr>
+    <tr>
+      <th>胜率(按天)</th>
+      <td>54.06%</td>
+      <td>54.20%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按天)</th>
+      <td>1.05%</td>
+      <td>0.99%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按天)</th>
+      <td>-0.99%</td>
+      <td>-0.95%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按天)</th>
+      <td>1.17875</td>
+      <td>1.18509</td>
+    </tr>
+    <tr>
+      <th>盈利次数</th>
+      <td>31</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>亏损次数</th>
+      <td>15</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>单次最大盈利</th>
+      <td>44.70%</td>
+      <td>40.27%</td>
+    </tr>
+    <tr>
+      <th>单次最大亏损</th>
+      <td>-7.57%</td>
+      <td>-20.75%</td>
+    </tr>
+    <tr>
+      <th>胜率(按此)</th>
+      <td>67.39%</td>
+      <td>76.67%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按次)</th>
+      <td>4.11%</td>
+      <td>6.90%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按次)</th>
+      <td>-0.88%</td>
+      <td>-1.11%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按次)</th>
+      <td>2.06667</td>
+      <td>3.28571</td>
+    </tr>
+  </tbody>
+</table></div><img alt="../../../../../_images/720c301005a9cad41a11edf1586da5547556e1c46b005274027573b445757689.png" src="../../../../../_images/720c301005a9cad41a11edf1586da5547556e1c46b005274027573b445757689.png" />
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>上证50<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载</span>
+<span class="n">sh50</span> <span class="o">=</span> <span class="n">RSRS</span><span class="p">()</span>
+<span class="c1"># 载入数据</span>
+<span class="n">sh50</span><span class="o">.</span><span class="n">init_from_config</span><span class="p">(</span>
+    <span class="s1">&#39;000016.XSHG&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2008-03-25&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2019-12-31&#39;</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">700</span><span class="p">),</span>
+        <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="c1"># 回测</span>
+<span class="n">sh50</span><span class="o">.</span><span class="n">backtesting</span><span class="p">({</span><span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">})</span>
+<span class="c1"># 报告输出</span>
+<span class="n">sh50</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Query data....
+Calculate...
+Success...
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>钝化RSRS</th>
+      <th>右偏修正标准分RSRS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>年华收益率</th>
+      <td>6.32%</td>
+      <td>10.75%</td>
+    </tr>
+    <tr>
+      <th>累计收益率</th>
+      <td>105.39%</td>
+      <td>231.77%</td>
+    </tr>
+    <tr>
+      <th>夏普比率</th>
+      <td>0.0906661</td>
+      <td>0.0954478</td>
+    </tr>
+    <tr>
+      <th>最大回撤</th>
+      <td>36.24%</td>
+      <td>42.28%</td>
+    </tr>
+    <tr>
+      <th>持仓总天数</th>
+      <td>1500</td>
+      <td>1724</td>
+    </tr>
+    <tr>
+      <th>交易次数</th>
+      <td>83</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>平均持仓天数</th>
+      <td>18.0723</td>
+      <td>49.2571</td>
+    </tr>
+    <tr>
+      <th>获利天数</th>
+      <td>779</td>
+      <td>889</td>
+    </tr>
+    <tr>
+      <th>亏损天数</th>
+      <td>720</td>
+      <td>834</td>
+    </tr>
+    <tr>
+      <th>胜率(按天)</th>
+      <td>51.93%</td>
+      <td>51.57%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按天)</th>
+      <td>1.13%</td>
+      <td>1.13%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按天)</th>
+      <td>-1.09%</td>
+      <td>-1.04%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按天)</th>
+      <td>1.08194</td>
+      <td>1.06595</td>
+    </tr>
+    <tr>
+      <th>盈利次数</th>
+      <td>40</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>亏损次数</th>
+      <td>43</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>单次最大盈利</th>
+      <td>41.44%</td>
+      <td>46.51%</td>
+    </tr>
+    <tr>
+      <th>单次最大亏损</th>
+      <td>-23.50%</td>
+      <td>-21.95%</td>
+    </tr>
+    <tr>
+      <th>胜率(按此)</th>
+      <td>48.19%</td>
+      <td>62.86%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按次)</th>
+      <td>3.01%</td>
+      <td>6.24%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按次)</th>
+      <td>-1.90%</td>
+      <td>-2.16%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按次)</th>
+      <td>0.930233</td>
+      <td>1.69231</td>
+    </tr>
+  </tbody>
+</table></div><img alt="../../../../../_images/8bb0cb500b19ba0d996b60242d7cca311ffc3c8288aba33f5eb7a6136a2ec0df.png" src="../../../../../_images/8bb0cb500b19ba0d996b60242d7cca311ffc3c8288aba33f5eb7a6136a2ec0df.png" />
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>中证500<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载</span>
+<span class="n">zz500</span> <span class="o">=</span> <span class="n">RSRS</span><span class="p">()</span>
+<span class="c1"># 载入数据</span>
+<span class="n">zz500</span><span class="o">.</span><span class="n">init_from_config</span><span class="p">(</span>
+    <span class="s1">&#39;000905.XSHG&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2010-05-24&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2019-12-31&#39;</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span>
+        <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="c1"># 回测</span>
+<span class="n">zz500</span><span class="o">.</span><span class="n">backtesting</span><span class="p">({</span><span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">})</span>
+<span class="c1"># 输出报告</span>
+<span class="n">zz500</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Query data....
+Calculate...
+Success...
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>钝化RSRS</th>
+      <th>右偏修正标准分RSRS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>年华收益率</th>
+      <td>11.32%</td>
+      <td>5.06%</td>
+    </tr>
+    <tr>
+      <th>累计收益率</th>
+      <td>177.32%</td>
+      <td>59.33%</td>
+    </tr>
+    <tr>
+      <th>夏普比率</th>
+      <td>0.106912</td>
+      <td>0.0428371</td>
+    </tr>
+    <tr>
+      <th>最大回撤</th>
+      <td>35.46%</td>
+      <td>46.25%</td>
+    </tr>
+    <tr>
+      <th>持仓总天数</th>
+      <td>1067</td>
+      <td>1523</td>
+    </tr>
+    <tr>
+      <th>交易次数</th>
+      <td>21</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>平均持仓天数</th>
+      <td>50.8095</td>
+      <td>66.2174</td>
+    </tr>
+    <tr>
+      <th>获利天数</th>
+      <td>597</td>
+      <td>820</td>
+    </tr>
+    <tr>
+      <th>亏损天数</th>
+      <td>470</td>
+      <td>703</td>
+    </tr>
+    <tr>
+      <th>胜率(按天)</th>
+      <td>55.95%</td>
+      <td>53.84%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按天)</th>
+      <td>1.29%</td>
+      <td>1.21%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按天)</th>
+      <td>-1.38%</td>
+      <td>-1.31%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按天)</th>
+      <td>1.27021</td>
+      <td>1.16643</td>
+    </tr>
+    <tr>
+      <th>盈利次数</th>
+      <td>13</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>亏损次数</th>
+      <td>9</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>单次最大盈利</th>
+      <td>50.12%</td>
+      <td>50.10%</td>
+    </tr>
+    <tr>
+      <th>单次最大亏损</th>
+      <td>-9.45%</td>
+      <td>-27.69%</td>
+    </tr>
+    <tr>
+      <th>胜率(按此)</th>
+      <td>59.09%</td>
+      <td>50.00%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按次)</th>
+      <td>6.67%</td>
+      <td>6.00%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按次)</th>
+      <td>-1.20%</td>
+      <td>-3.09%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按次)</th>
+      <td>1.44444</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table></div><img alt="../../../../../_images/48d11a1a02a3eca95a7db4ca2a7c546d7bc5d5a78fd0750fc6a5f91233c5f485.png" src="../../../../../_images/48d11a1a02a3eca95a7db4ca2a7c546d7bc5d5a78fd0750fc6a5f91233c5f485.png" />
+</div>
+</div>
+</section>
+<section id="id6">
+<h2>创业版<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载</span>
+<span class="n">cyb</span> <span class="o">=</span> <span class="n">RSRS</span><span class="p">()</span>
+<span class="c1"># 载入数据</span>
+<span class="n">cyb</span><span class="o">.</span><span class="n">init_from_config</span><span class="p">(</span>
+    <span class="s1">&#39;399006.XSHE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2012-12-14&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2019-12-31&#39;</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span>
+        <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="c1"># 回测</span>
+<span class="n">cyb</span><span class="o">.</span><span class="n">backtesting</span><span class="p">({</span><span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span> <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">})</span>
+<span class="c1"># 输出报告</span>
+<span class="n">cyb</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Query data....
+Calculate...
+Success...
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>钝化RSRS</th>
+      <th>右偏修正标准分RSRS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>年华收益率</th>
+      <td>30.94%</td>
+      <td>25.71%</td>
+    </tr>
+    <tr>
+      <th>累计收益率</th>
+      <td>564.38%</td>
+      <td>399.05%</td>
+    </tr>
+    <tr>
+      <th>夏普比率</th>
+      <td>0.15137</td>
+      <td>0.162791</td>
+    </tr>
+    <tr>
+      <th>最大回撤</th>
+      <td>26.98%</td>
+      <td>23.11%</td>
+    </tr>
+    <tr>
+      <th>持仓总天数</th>
+      <td>950</td>
+      <td>945</td>
+    </tr>
+    <tr>
+      <th>交易次数</th>
+      <td>38</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>平均持仓天数</th>
+      <td>25</td>
+      <td>31.5</td>
+    </tr>
+    <tr>
+      <th>获利天数</th>
+      <td>513</td>
+      <td>503</td>
+    </tr>
+    <tr>
+      <th>亏损天数</th>
+      <td>436</td>
+      <td>441</td>
+    </tr>
+    <tr>
+      <th>胜率(按天)</th>
+      <td>54.00%</td>
+      <td>53.23%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按天)</th>
+      <td>1.55%</td>
+      <td>1.55%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按天)</th>
+      <td>-1.35%</td>
+      <td>-1.37%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按天)</th>
+      <td>1.17661</td>
+      <td>1.14059</td>
+    </tr>
+    <tr>
+      <th>盈利次数</th>
+      <td>28</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>亏损次数</th>
+      <td>10</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>单次最大盈利</th>
+      <td>59.28%</td>
+      <td>59.28%</td>
+    </tr>
+    <tr>
+      <th>单次最大亏损</th>
+      <td>-15.13%</td>
+      <td>-13.63%</td>
+    </tr>
+    <tr>
+      <th>胜率(按此)</th>
+      <td>73.68%</td>
+      <td>66.67%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按次)</th>
+      <td>6.42%</td>
+      <td>7.29%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按次)</th>
+      <td>-0.96%</td>
+      <td>-1.32%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按次)</th>
+      <td>2.8</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table></div><img alt="../../../../../_images/9833cc305d12c0451669ed8c32aa3567d375b79457d9efae368b9df6c98cf0e5.png" src="../../../../../_images/9833cc305d12c0451669ed8c32aa3567d375b79457d9efae368b9df6c98cf0e5.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id7">
+<h1>结合成交额加权回归与钝化方法的 RSRS 择时策略<a class="headerlink" href="#id7" title="Link to this heading">#</a></h1>
+<p>在原始RSRS计算中，回归操作是采用简单线性回归的方式，意味着我们假设对于每一天的数据样本应当同等重视。但在真实市场上，每一日的价格信息对于当前市场情绪的影响可能并不相同，在这一部分，我们希望能够通过加权线性回归的方式改进RSRS择时模型，使得那些更能表达前市场情绪的价格信息样本点在回归中更受重视。</p>
+<p>相较于简单线性回归的目标函数：</p>
+<p><span class="math notranslate nohighlight">\(\min\limits_{\beta}\sum^{N}_{i=1}(Y_i-\beta^{T}X_i)^2\)</span></p>
+<p>加权线性回归通过在每一个样本点加入权重<span class="math notranslate nohighlight">\(W_𝑖\)</span>的方式来重新构建目标函数：</p>
+<p><span class="math notranslate nohighlight">\(\min\limits_{\beta}\sum^{N}_{i=1}w_{i}(Y_i-\beta^{T}X_i)^2\)</span></p>
+<p>我们考虑采用每日成交额来给交易日赋予不同的权重，其逻辑在 于参与的交易越多，当天的价格数据融入的信息交换就越充分，其最低价最 高价对于市场对阻力跟支撑的表征能力就越强。在回归中其具体权重设置为
+令每个数据点的权重等于当日成交额除以回归样本内𝑁日的总成交额。</p>
+<p>其代码实现:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 计算wls回归的beta,r-squared</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cal_wls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+        
+        <span class="c1"># 过滤NAN</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        
+        <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># 计算权重</span>
+        <span class="n">weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_vol_weights</span><span class="p">(</span><span class="n">vol</span><span class="p">)</span>
+        
+        <span class="n">results</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">WLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+        <span class="c1"># 计算beta</span>
+        <span class="n">BETA</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># 计算r-squared</span>
+        <span class="n">Rsquared</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">rsquared</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">BETA</span><span class="p">,</span> <span class="n">Rsquared</span><span class="p">)</span>
+        
+   <span class="c1"># 计算成交量权重</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_vol_weights</span><span class="p">(</span><span class="n">slice_series</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+
+        <span class="n">weights</span> <span class="o">=</span> <span class="n">slice_series</span> <span class="o">/</span> <span class="n">slice_series</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">weights</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>指数名称</p></th>
+<th class="head"><p>钝化RSRS择时</p></th>
+<th class="head"><p>原始RSRS择时</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>沪深300</p></td>
+<td><p>19,500,0.8</p></td>
+<td><p>18,600,0.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>上证综指</p></td>
+<td><p>15,800,0.5</p></td>
+<td><p>19,800,0.8</p></td>
+</tr>
+<tr class="row-even"><td><p>上证50</p></td>
+<td><p>15,700,0.8</p></td>
+<td><p>18,500,0.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>中证500</p></td>
+<td><p>15,700,0.6</p></td>
+<td><p>19,600,0.8</p></td>
+</tr>
+<tr class="row-even"><td><p>创业板</p></td>
+<td><p>20,400,0.3</p></td>
+<td><p>18,600,0.5</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="id8">
+<h2>沪深300<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载</span>
+<span class="n">hs300</span> <span class="o">=</span> <span class="n">RSRS</span><span class="p">()</span>
+
+<span class="c1"># 载入数据</span>
+<span class="n">hs300</span><span class="o">.</span><span class="n">init_from_config</span><span class="p">(</span>
+    <span class="s1">&#39;000300.XSHG&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2008-03-25&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2019-12-31&#39;</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">700</span><span class="p">),</span>
+        <span class="s1">&#39;成交额加权钝化RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span>
+        <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+    <span class="p">})</span>
+
+<span class="c1"># 回测</span>
+<span class="n">hs300</span><span class="o">.</span><span class="n">backtesting</span><span class="p">({</span><span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> 
+                   <span class="s1">&#39;成交额加权钝化RSRS&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> 
+                   <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">})</span>
+<span class="c1"># 报告输出</span>
+<span class="n">hs300</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Query data....
+Calculate...
+Success...
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>钝化RSRS</th>
+      <th>成交额加权钝化RSRS</th>
+      <th>右偏修正标准分RSRS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>年华收益率</th>
+      <td>10.26%</td>
+      <td>11.69%</td>
+      <td>11.83%</td>
+    </tr>
+    <tr>
+      <th>累计收益率</th>
+      <td>214.95%</td>
+      <td>266.64%</td>
+      <td>271.87%</td>
+    </tr>
+    <tr>
+      <th>夏普比率</th>
+      <td>0.0944526</td>
+      <td>0.0866042</td>
+      <td>0.0929158</td>
+    </tr>
+    <tr>
+      <th>最大回撤</th>
+      <td>42.97%</td>
+      <td>42.97%</td>
+      <td>42.97%</td>
+    </tr>
+    <tr>
+      <th>持仓总天数</th>
+      <td>1425</td>
+      <td>1541</td>
+      <td>1601</td>
+    </tr>
+    <tr>
+      <th>交易次数</th>
+      <td>44</td>
+      <td>40</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>平均持仓天数</th>
+      <td>32.3864</td>
+      <td>38.525</td>
+      <td>44.4722</td>
+    </tr>
+    <tr>
+      <th>获利天数</th>
+      <td>754</td>
+      <td>816</td>
+      <td>850</td>
+    </tr>
+    <tr>
+      <th>亏损天数</th>
+      <td>670</td>
+      <td>724</td>
+      <td>750</td>
+    </tr>
+    <tr>
+      <th>胜率(按天)</th>
+      <td>52.91%</td>
+      <td>52.95%</td>
+      <td>53.09%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按天)</th>
+      <td>1.14%</td>
+      <td>1.14%</td>
+      <td>1.12%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按天)</th>
+      <td>-1.08%</td>
+      <td>-1.08%</td>
+      <td>-1.06%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按天)</th>
+      <td>1.12537</td>
+      <td>1.12707</td>
+      <td>1.13333</td>
+    </tr>
+    <tr>
+      <th>盈利次数</th>
+      <td>26</td>
+      <td>25</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>亏损次数</th>
+      <td>18</td>
+      <td>15</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>单次最大盈利</th>
+      <td>36.66%</td>
+      <td>38.86%</td>
+      <td>36.66%</td>
+    </tr>
+    <tr>
+      <th>单次最大亏损</th>
+      <td>-22.29%</td>
+      <td>-22.29%</td>
+      <td>-21.89%</td>
+    </tr>
+    <tr>
+      <th>胜率(按此)</th>
+      <td>59.09%</td>
+      <td>62.50%</td>
+      <td>72.22%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按次)</th>
+      <td>4.21%</td>
+      <td>5.27%</td>
+      <td>5.51%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按次)</th>
+      <td>-1.18%</td>
+      <td>-1.51%</td>
+      <td>-1.30%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按次)</th>
+      <td>1.44444</td>
+      <td>1.66667</td>
+      <td>2.6</td>
+    </tr>
+  </tbody>
+</table></div><img alt="../../../../../_images/2b6745a566a846430f61d89f196ee14549bfa763b51d8bf4b7bec7636e4f5325.png" src="../../../../../_images/2b6745a566a846430f61d89f196ee14549bfa763b51d8bf4b7bec7636e4f5325.png" />
+</div>
+</div>
+</section>
+<section id="id9">
+<h2>上证综指<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载</span>
+<span class="n">S_A</span> <span class="o">=</span> <span class="n">RSRS</span><span class="p">()</span>
+
+<span class="c1"># 载入数据</span>
+<span class="n">S_A</span><span class="o">.</span><span class="n">init_from_config</span><span class="p">(</span>
+    <span class="s1">&#39;000001.XSHG&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2008-03-25&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2019-12-31&#39;</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span>
+        <span class="s1">&#39;成交额加权钝化RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span>
+        <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
+    <span class="p">})</span>
+
+<span class="c1"># 回测</span>
+<span class="n">S_A</span><span class="o">.</span><span class="n">backtesting</span><span class="p">({</span><span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+                 <span class="s1">&#39;成交额加权钝化RSRS&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                 <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">})</span>
+<span class="c1"># 报告输出</span>
+<span class="n">S_A</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Query data....
+Calculate...
+Success...
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>钝化RSRS</th>
+      <th>成交额加权钝化RSRS</th>
+      <th>右偏修正标准分RSRS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>年华收益率</th>
+      <td>12.04%</td>
+      <td>8.79%</td>
+      <td>14.25%</td>
+    </tr>
+    <tr>
+      <th>累计收益率</th>
+      <td>280.46%</td>
+      <td>169.15%</td>
+      <td>378.67%</td>
+    </tr>
+    <tr>
+      <th>夏普比率</th>
+      <td>0.0758018</td>
+      <td>0.0703068</td>
+      <td>0.0696126</td>
+    </tr>
+    <tr>
+      <th>最大回撤</th>
+      <td>25.71%</td>
+      <td>39.80%</td>
+      <td>31.48%</td>
+    </tr>
+    <tr>
+      <th>持仓总天数</th>
+      <td>1293</td>
+      <td>1380</td>
+      <td>1701</td>
+    </tr>
+    <tr>
+      <th>交易次数</th>
+      <td>46</td>
+      <td>61</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>平均持仓天数</th>
+      <td>28.1087</td>
+      <td>22.623</td>
+      <td>56.7</td>
+    </tr>
+    <tr>
+      <th>获利天数</th>
+      <td>699</td>
+      <td>734</td>
+      <td>922</td>
+    </tr>
+    <tr>
+      <th>亏损天数</th>
+      <td>593</td>
+      <td>645</td>
+      <td>778</td>
+    </tr>
+    <tr>
+      <th>胜率(按天)</th>
+      <td>54.06%</td>
+      <td>53.19%</td>
+      <td>54.20%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按天)</th>
+      <td>1.05%</td>
+      <td>1.04%</td>
+      <td>0.99%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按天)</th>
+      <td>-0.99%</td>
+      <td>-1.00%</td>
+      <td>-0.95%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按天)</th>
+      <td>1.17875</td>
+      <td>1.13798</td>
+      <td>1.18509</td>
+    </tr>
+    <tr>
+      <th>盈利次数</th>
+      <td>31</td>
+      <td>32</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>亏损次数</th>
+      <td>15</td>
+      <td>29</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>单次最大盈利</th>
+      <td>44.70%</td>
+      <td>36.22%</td>
+      <td>40.27%</td>
+    </tr>
+    <tr>
+      <th>单次最大亏损</th>
+      <td>-7.57%</td>
+      <td>-21.01%</td>
+      <td>-20.75%</td>
+    </tr>
+    <tr>
+      <th>胜率(按此)</th>
+      <td>67.39%</td>
+      <td>52.46%</td>
+      <td>76.67%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按次)</th>
+      <td>4.11%</td>
+      <td>3.42%</td>
+      <td>6.90%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按次)</th>
+      <td>-0.88%</td>
+      <td>-1.54%</td>
+      <td>-1.11%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按次)</th>
+      <td>2.06667</td>
+      <td>1.10345</td>
+      <td>3.28571</td>
+    </tr>
+  </tbody>
+</table></div><img alt="../../../../../_images/a1b25d250bd3bcd4ef591e9cf84c026a9385736daf33bb6f7af766aa51dd5640.png" src="../../../../../_images/a1b25d250bd3bcd4ef591e9cf84c026a9385736daf33bb6f7af766aa51dd5640.png" />
+</div>
+</div>
+</section>
+<section id="id10">
+<h2>上证50<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载</span>
+<span class="n">sh50</span> <span class="o">=</span> <span class="n">RSRS</span><span class="p">()</span>
+
+<span class="c1"># 载入数据</span>
+<span class="n">sh50</span><span class="o">.</span><span class="n">init_from_config</span><span class="p">(</span>
+    <span class="s1">&#39;000016.XSHG&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2008-03-25&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2019-12-31&#39;</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">700</span><span class="p">),</span>
+        <span class="s1">&#39;成交额加权钝化RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span>
+        <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="p">})</span>
+
+<span class="c1"># 回测</span>
+<span class="n">sh50</span><span class="o">.</span><span class="n">backtesting</span><span class="p">({</span><span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+                  <span class="s1">&#39;成交额加权钝化RSRS&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span>
+                  <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">})</span>
+<span class="c1"># 报告输出</span>
+<span class="n">sh50</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Query data....
+Calculate...
+Success...
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>钝化RSRS</th>
+      <th>成交额加权钝化RSRS</th>
+      <th>右偏修正标准分RSRS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>年华收益率</th>
+      <td>6.32%</td>
+      <td>9.02%</td>
+      <td>10.75%</td>
+    </tr>
+    <tr>
+      <th>累计收益率</th>
+      <td>105.39%</td>
+      <td>175.85%</td>
+      <td>231.77%</td>
+    </tr>
+    <tr>
+      <th>夏普比率</th>
+      <td>0.0906661</td>
+      <td>0.115567</td>
+      <td>0.0954478</td>
+    </tr>
+    <tr>
+      <th>最大回撤</th>
+      <td>36.24%</td>
+      <td>28.18%</td>
+      <td>42.28%</td>
+    </tr>
+    <tr>
+      <th>持仓总天数</th>
+      <td>1500</td>
+      <td>1637</td>
+      <td>1724</td>
+    </tr>
+    <tr>
+      <th>交易次数</th>
+      <td>83</td>
+      <td>37</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>平均持仓天数</th>
+      <td>18.0723</td>
+      <td>44.2432</td>
+      <td>49.2571</td>
+    </tr>
+    <tr>
+      <th>获利天数</th>
+      <td>779</td>
+      <td>851</td>
+      <td>889</td>
+    </tr>
+    <tr>
+      <th>亏损天数</th>
+      <td>720</td>
+      <td>785</td>
+      <td>834</td>
+    </tr>
+    <tr>
+      <th>胜率(按天)</th>
+      <td>51.93%</td>
+      <td>51.99%</td>
+      <td>51.57%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按天)</th>
+      <td>1.13%</td>
+      <td>1.14%</td>
+      <td>1.13%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按天)</th>
+      <td>-1.09%</td>
+      <td>-1.08%</td>
+      <td>-1.04%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按天)</th>
+      <td>1.08194</td>
+      <td>1.08408</td>
+      <td>1.06595</td>
+    </tr>
+    <tr>
+      <th>盈利次数</th>
+      <td>40</td>
+      <td>23</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>亏损次数</th>
+      <td>43</td>
+      <td>14</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>单次最大盈利</th>
+      <td>41.44%</td>
+      <td>39.82%</td>
+      <td>46.51%</td>
+    </tr>
+    <tr>
+      <th>单次最大亏损</th>
+      <td>-23.50%</td>
+      <td>-9.10%</td>
+      <td>-21.95%</td>
+    </tr>
+    <tr>
+      <th>胜率(按此)</th>
+      <td>48.19%</td>
+      <td>62.16%</td>
+      <td>62.86%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按次)</th>
+      <td>3.01%</td>
+      <td>4.88%</td>
+      <td>6.24%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按次)</th>
+      <td>-1.90%</td>
+      <td>-1.54%</td>
+      <td>-2.16%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按次)</th>
+      <td>0.930233</td>
+      <td>1.64286</td>
+      <td>1.69231</td>
+    </tr>
+  </tbody>
+</table></div><img alt="../../../../../_images/7403fa13e80ba92d1882aed4a473382991a6d2ffe609b044b899817400bc8808.png" src="../../../../../_images/7403fa13e80ba92d1882aed4a473382991a6d2ffe609b044b899817400bc8808.png" />
+</div>
+</div>
+</section>
+<section id="id11">
+<h2>中证500<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载</span>
+<span class="n">zz500</span> <span class="o">=</span> <span class="n">RSRS</span><span class="p">()</span>
+
+<span class="c1"># 载入数据</span>
+<span class="n">zz500</span><span class="o">.</span><span class="n">init_from_config</span><span class="p">(</span>
+    <span class="s1">&#39;000905.XSHG&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2010-05-24&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2019-12-31&#39;</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">800</span><span class="p">),</span>
+        <span class="s1">&#39;成交额加权钝化RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">700</span><span class="p">),</span>
+        <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+    <span class="p">})</span>
+
+<span class="c1"># 回测</span>
+<span class="n">zz500</span><span class="o">.</span><span class="n">backtesting</span><span class="p">({</span><span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                   <span class="s1">&#39;成交额加权钝化RSRS&#39;</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">,</span>
+                   <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">})</span>
+<span class="c1"># 报告输出</span>
+<span class="n">zz500</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Query data....
+Calculate...
+Success...
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>钝化RSRS</th>
+      <th>成交额加权钝化RSRS</th>
+      <th>右偏修正标准分RSRS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>年华收益率</th>
+      <td>11.32%</td>
+      <td>12.28%</td>
+      <td>5.06%</td>
+    </tr>
+    <tr>
+      <th>累计收益率</th>
+      <td>177.32%</td>
+      <td>201.16%</td>
+      <td>59.33%</td>
+    </tr>
+    <tr>
+      <th>夏普比率</th>
+      <td>0.106912</td>
+      <td>0.0916573</td>
+      <td>0.0428371</td>
+    </tr>
+    <tr>
+      <th>最大回撤</th>
+      <td>35.46%</td>
+      <td>29.88%</td>
+      <td>46.25%</td>
+    </tr>
+    <tr>
+      <th>持仓总天数</th>
+      <td>1067</td>
+      <td>1104</td>
+      <td>1523</td>
+    </tr>
+    <tr>
+      <th>交易次数</th>
+      <td>21</td>
+      <td>38</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>平均持仓天数</th>
+      <td>50.8095</td>
+      <td>29.0526</td>
+      <td>66.2174</td>
+    </tr>
+    <tr>
+      <th>获利天数</th>
+      <td>597</td>
+      <td>606</td>
+      <td>820</td>
+    </tr>
+    <tr>
+      <th>亏损天数</th>
+      <td>470</td>
+      <td>498</td>
+      <td>703</td>
+    </tr>
+    <tr>
+      <th>胜率(按天)</th>
+      <td>55.95%</td>
+      <td>54.89%</td>
+      <td>53.84%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按天)</th>
+      <td>1.29%</td>
+      <td>1.25%</td>
+      <td>1.21%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按天)</th>
+      <td>-1.38%</td>
+      <td>-1.27%</td>
+      <td>-1.31%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按天)</th>
+      <td>1.27021</td>
+      <td>1.21687</td>
+      <td>1.16643</td>
+    </tr>
+    <tr>
+      <th>盈利次数</th>
+      <td>13</td>
+      <td>28</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>亏损次数</th>
+      <td>9</td>
+      <td>11</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>单次最大盈利</th>
+      <td>50.12%</td>
+      <td>51.01%</td>
+      <td>50.10%</td>
+    </tr>
+    <tr>
+      <th>单次最大亏损</th>
+      <td>-9.45%</td>
+      <td>-16.87%</td>
+      <td>-27.69%</td>
+    </tr>
+    <tr>
+      <th>胜率(按此)</th>
+      <td>59.09%</td>
+      <td>71.79%</td>
+      <td>50.00%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按次)</th>
+      <td>6.67%</td>
+      <td>5.19%</td>
+      <td>6.00%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按次)</th>
+      <td>-1.20%</td>
+      <td>-1.94%</td>
+      <td>-3.09%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按次)</th>
+      <td>1.44444</td>
+      <td>2.54545</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table></div><img alt="../../../../../_images/f5f8e19040e7f1df9944386fa23fac4a5a39b709d34a39b363ab06798ae20fe4.png" src="../../../../../_images/f5f8e19040e7f1df9944386fa23fac4a5a39b709d34a39b363ab06798ae20fe4.png" />
+</div>
+</div>
+</section>
+<section id="id12">
+<h2>创业板<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 加载</span>
+<span class="n">cyb</span> <span class="o">=</span> <span class="n">RSRS</span><span class="p">()</span>
+
+<span class="c1"># 载入数据</span>
+<span class="n">cyb</span><span class="o">.</span><span class="n">init_from_config</span><span class="p">(</span>
+    <span class="s1">&#39;000905.XSHG&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2009-07-28&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;2019-12-31&#39;</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">500</span><span class="p">),</span>
+        <span class="s1">&#39;成交额加权钝化RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+        <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+    <span class="p">})</span>
+
+<span class="c1"># 回测</span>
+<span class="n">cyb</span><span class="o">.</span><span class="n">backtesting</span><span class="p">({</span><span class="s1">&#39;钝化RSRS&#39;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span><span class="s1">&#39;成交额加权钝化RSRS&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s1">&#39;右偏修正标准分RSRS&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">})</span>
+<span class="c1"># 报告输出</span>
+<span class="n">cyb</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Query data....
+Calculate...
+Success...
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>钝化RSRS</th>
+      <th>成交额加权钝化RSRS</th>
+      <th>右偏修正标准分RSRS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>年华收益率</th>
+      <td>16.44%</td>
+      <td>12.63%</td>
+      <td>12.91%</td>
+    </tr>
+    <tr>
+      <th>累计收益率</th>
+      <td>355.90%</td>
+      <td>222.38%</td>
+      <td>230.86%</td>
+    </tr>
+    <tr>
+      <th>夏普比率</th>
+      <td>0.108478</td>
+      <td>0.114567</td>
+      <td>0.0991544</td>
+    </tr>
+    <tr>
+      <th>最大回撤</th>
+      <td>30.27%</td>
+      <td>33.17%</td>
+      <td>32.60%</td>
+    </tr>
+    <tr>
+      <th>持仓总天数</th>
+      <td>1274</td>
+      <td>1348</td>
+      <td>1303</td>
+    </tr>
+    <tr>
+      <th>交易次数</th>
+      <td>54</td>
+      <td>64</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>平均持仓天数</th>
+      <td>23.5926</td>
+      <td>21.0625</td>
+      <td>28.3261</td>
+    </tr>
+    <tr>
+      <th>获利天数</th>
+      <td>715</td>
+      <td>748</td>
+      <td>722</td>
+    </tr>
+    <tr>
+      <th>亏损天数</th>
+      <td>559</td>
+      <td>600</td>
+      <td>581</td>
+    </tr>
+    <tr>
+      <th>胜率(按天)</th>
+      <td>56.12%</td>
+      <td>55.49%</td>
+      <td>55.41%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按天)</th>
+      <td>1.25%</td>
+      <td>1.23%</td>
+      <td>1.25%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按天)</th>
+      <td>-1.30%</td>
+      <td>-1.30%</td>
+      <td>-1.31%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按天)</th>
+      <td>1.27907</td>
+      <td>1.24667</td>
+      <td>1.24269</td>
+    </tr>
+    <tr>
+      <th>盈利次数</th>
+      <td>38</td>
+      <td>37</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>亏损次数</th>
+      <td>17</td>
+      <td>28</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>单次最大盈利</th>
+      <td>33.41%</td>
+      <td>33.41%</td>
+      <td>51.01%</td>
+    </tr>
+    <tr>
+      <th>单次最大亏损</th>
+      <td>-15.61%</td>
+      <td>-18.06%</td>
+      <td>-18.77%</td>
+    </tr>
+    <tr>
+      <th>胜率(按此)</th>
+      <td>69.09%</td>
+      <td>56.92%</td>
+      <td>57.45%</td>
+    </tr>
+    <tr>
+      <th>平均盈利率(按次)</th>
+      <td>4.81%</td>
+      <td>4.00%</td>
+      <td>5.09%</td>
+    </tr>
+    <tr>
+      <th>平均亏损率(按次)</th>
+      <td>-1.70%</td>
+      <td>-1.89%</td>
+      <td>-2.12%</td>
+    </tr>
+    <tr>
+      <th>平均盈亏比(按次)</th>
+      <td>2.23529</td>
+      <td>1.32143</td>
+      <td>1.35</td>
+    </tr>
+  </tbody>
+</table></div><img alt="../../../../../_images/8e46a4d187537fb9b0ed0a1dce479f54dd93e76df69d02cb9e02c7b31f06a7ea.png" src="../../../../../_images/8e46a4d187537fb9b0ed0a1dce479f54dd93e76df69d02cb9e02c7b31f06a7ea.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Astock_market/QuantsPlaybook研报复现/C-择时类/RSRS择时指标/py"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">总结</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rsrs">RSRS指标新的构建方式</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">沪深300</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">上证综指</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">上证50</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">中证500</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">创业版</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">结合成交额加权回归与钝化方法的 RSRS 择时策略</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">沪深300</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">上证综指</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">上证50</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">中证500</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">创业板</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

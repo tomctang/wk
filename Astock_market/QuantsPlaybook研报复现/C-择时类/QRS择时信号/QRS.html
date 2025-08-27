@@ -1,0 +1,1582 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>信号构建 &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Astock_market/QuantsPlaybook研报复现/C-择时类/QRS择时信号/QRS';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2024.html">1. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2022.html">2. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/Astock_market/QuantsPlaybook研报复现/C-择时类/QRS择时信号/QRS.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>信号构建</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">信号构建</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">对惩罚项进行改造</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">对信号项进行改造</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">动态上下边界</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">empyrical</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">SignalMaker.qrs</span><span class="w"> </span><span class="kn">import</span> <span class="n">QRSCreator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">calc_signal_bins_corr</span><span class="p">,</span> <span class="n">concat_ohlc_vs_signal</span><span class="p">,</span>
+                 <span class="n">concat_signal_vs_forward_returns</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.plotting</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">displot_signal</span><span class="p">,</span> <span class="n">displot_signal_vs_forward_returns</span><span class="p">,</span>
+                          <span class="n">plot_cumulative_return</span><span class="p">)</span>
+
+<span class="c1"># 中文显示</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SimHei&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d:\anaconda3\envs\qlib_env\lib\site-packages\pyfolio\pos.py:26: UserWarning: Module &quot;zipline.assets&quot; not found; mutltipliers will not be applied to position notionals.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>信号构建<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>信号并非用支撑位与阻力位作突破或反转交易的阈值，而是更关注市场参与者们对于阻力位与支撑位的定位一致性。因此一个简单想法是利用类似<span class="math notranslate nohighlight">\(\frac{\delta(high)}{\delta(low)}\)</span>的值来描述支撑位与阻力位的相对强度，即最低价每变动 1 的时候，最高价变动的幅度。实际上， <span class="math notranslate nohighlight">\(\frac{\delta(high)}{\delta(low)}\)</span>是连接高低价格平面上的两点 (low[0], high[0]) 与 (low[1], high[1]) 的斜率。由于市场量价本身噪音的存在，仅计算两点得到的斜率数据包含了太多的噪音。我们考虑通过最近 N 个 (low, high) 的数据点来得到信噪相对较高的最高最低价相对变化程度。
+使用线性回归，建立如下般最高价与最低价之间的线性模型：
+$<span class="math notranslate nohighlight">\(hight_{t}=\alpha+\beta*low_{t}+\epsilon\)</span>$</p>
+<p>式中拟合出的<span class="math notranslate nohighlight">\(\beta\)</span>值即是用以刻画支撑与阻力强度对比的代理指标，表明最近一段时期， 最低价每波动 1 个点位，最高价相应会波动<span class="math notranslate nohighlight">\(\beta\)</span>个点位。因此，<span class="math notranslate nohighlight">\(\beta\)</span>越大，表明支撑强度相 比阻力强度越显著，市场越容易上行，牛市中大概率对应后市加速上涨的走势，熊市中 则对应后市止跌企稳的走势；同理，<span class="math notranslate nohighlight">\(\beta\)</span>越小，表明阻力相对支撑的强度更甚，在牛市中 可能预示着即将见顶，在熊市中则对应后市大概率加速深跌。</p>
+<p>QRS指标的构建中信号项(signal)部分：<span class="math notranslate nohighlight">\(zscore(\beta)\)</span>，惩罚项(Regulation)部分<span class="math notranslate nohighlight">\(R^{2}\)</span> 。实际上在普通线性回归里，<span class="math notranslate nohighlight">\(\beta\)</span>有简单的解析解：<span class="math notranslate nohighlight">\(\beta = \frac{std(y)}{std(x)} ∗ 𝑐𝑜𝑟𝑟(y, x)\)</span>；而 <span class="math notranslate nohighlight">\(R^{2}\)</span>则 为：<span class="math notranslate nohighlight">\(R^{2} = corr(y, x)^{2}\)</span> 。由此我们可以发现，整个指标实际上可以仅由三个简单数据决定： 最高价序列的波动率、最低价序列的波动率、最高级与最低价的相关系数。而原始指标 值可以转写为：</p>
+<div class="math notranslate nohighlight">
+\[zscore(\frac{std(y)}{std(x)}*corr(y,x))*corr(y,x)^{2}\]</div>
+<p>其中 y 是最高价序列，x 是最低价序列。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 读取数据</span>
+<span class="n">daily</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;data/daily.parquet&quot;</span><span class="p">)</span>
+
+<span class="n">pivot_table</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">daily</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;trade_date&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;high&quot;</span><span class="p">,</span> <span class="s2">&quot;low&quot;</span><span class="p">,</span><span class="s2">&quot;open&quot;</span><span class="p">,</span><span class="s2">&quot;close&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">high_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">pivot_table</span><span class="p">[</span><span class="s2">&quot;high&quot;</span><span class="p">]</span>
+<span class="n">low_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">pivot_table</span><span class="p">[</span><span class="s2">&quot;low&quot;</span><span class="p">]</span>
+<span class="n">close_df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">pivot_table</span><span class="p">[</span><span class="s2">&quot;close&quot;</span><span class="p">]</span>
+
+<span class="c1"># t日信号,t+1日买入,则t日收益为(t+2/t+1)-1,所有shift=-8</span>
+<span class="n">forward_returns</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">close_df</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 数据中的标的</span>
+<span class="n">daily</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;000016.SH&#39;, &#39;000852.SH&#39;, &#39;000905.SH&#39;, &#39;000001.SH&#39;, &#39;000300.SH&#39;, &#39;000985.CSI&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>检查历史上不同β值下指数后续的预期收益率。以N=18计算的β为例，我们以 0.01 为 间隔将历史β值划分成不同子样本，计算每个子样本内β值对应的沪深300、中证500等指数10日后收益率的均值，作为该β取值范围对应的未来指数预期收益率。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qrs</span><span class="p">:</span><span class="n">QRSCreator</span> <span class="o">=</span> <span class="n">QRSCreator</span><span class="p">(</span><span class="n">low_df</span><span class="p">,</span> <span class="n">high_df</span><span class="p">)</span>
+<span class="n">signal_df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">qrs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">displot_signal</span><span class="p">(</span><span class="n">qrs</span><span class="o">.</span><span class="n">beta</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/fbcea4767c72b86127dd46ef788ed4bdd76d5e69b0562d7d7d270f097ea1febf.png" src="../../../../_images/fbcea4767c72b86127dd46ef788ed4bdd76d5e69b0562d7d7d270f097ea1febf.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signal_and_forward_return</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">concat_signal_vs_forward_returns</span><span class="p">(</span>
+    <span class="n">qrs</span><span class="o">.</span><span class="n">beta</span><span class="p">,</span> <span class="n">forward_returns</span>
+<span class="p">)</span>
+<span class="c1"># 只统计区间样本数量大于5个的区间</span>
+<span class="n">displot_signal_vs_forward_returns</span><span class="p">(</span><span class="n">signal_and_forward_return</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">5</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/851c1aebbe8644ff761bd1fe4dc7222036926e79a0f61f812aaaf82db365b54d.png" src="../../../../_images/851c1aebbe8644ff761bd1fe4dc7222036926e79a0f61f812aaaf82db365b54d.png" />
+</div>
+</div>
+<p>β取值与沪深 300 指数 10 天后预期收益率的相关系数为0.56(研报中为0.25)。如果考虑到有些β的取值区间内样本数太少，我们可以只统计样本数量至少为5个的取值区间。在限定了样本数量后，β取值与沪深 300 指数 10 天后预期收益率的相关系数为0.57(研报中为0.63)。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 各个指数与未来10日收益的相关系数</span>
+<span class="n">calc_signal_bins_corr</span><span class="p">(</span><span class="n">signal_and_forward_return</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>code
+000001.SH     0.633761
+000016.SH     0.611353
+000300.SH     0.701592
+000852.SH     0.853993
+000905.SH     0.871730
+000985.CSI    0.660092
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 各个指数与未来10日收益的相关系数(排除区间样本低于5的)</span>
+<span class="n">calc_signal_bins_corr</span><span class="p">(</span><span class="n">signal_and_forward_return</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>code
+000001.SH     0.563629
+000016.SH     0.358544
+000300.SH     0.489586
+000852.SH     0.807594
+000905.SH     0.700619
+000985.CSI    0.663143
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>在确认了构建的技术指标有一定预测涨跌的能力之后，为了能利用它来构建量化择时策略，我们接下来还需要明确定义，指标值多大才算大，多小才算小。因此，需要对指标 值进行标准化处理。标准化处理的方式一般有两种，正态标准化或分位数。从效果上来说，这两种方式都能达到标准化目的，效果大同小异。</p>
+<p>本例中将采取正态标准化计算β的 z_score 值，标准化后能得到更加直观的指标值大小。 同时需要意识到，在用线性回归模型计算β时，无论最高价与最低价序列是否有较好的 线性关系，都能得到一个β值。但当最高价与最低价并无明显线性关系的时候，线性回 归模型的有效性假设得不到满足，此时计算出的<span class="math notranslate nohighlight">\(\beta\)</span>值实际上是一个并无法有效表征择时 逻辑的噪音值，如果这样的噪音被当作择时信号，那么技术指标的有效性就会大打折扣。 因此我们希望在指标中加入一个惩罚机制，使得大部分的噪音指标能被过滤掉。在本次 个例中，β值的有效性与线性回归拟合效果有明显正相关，因此可以用回归模型的决定系数<span class="math notranslate nohighlight">\(R^{2}\)</span>刻画技术指标的有效性。</p>
+<p><strong>利用 QRS 指标构建择时策略，测试其择时能力。择时模型策略为</strong></p>
+<ol class="arabic simple">
+<li><p>计算 QRS 指标值；</p></li>
+<li><p>若指标值向上穿过开仓阈值 S，则买入持有；</p></li>
+<li><p>若指标值向下穿过平仓阈值-S，则卖出平仓；</p></li>
+<li><p>其余时候维持仓位不变。</p></li>
+<li></li>
+</ol>
+<p>我们选取（N=18, M=600, S=0.7）作为模型参数</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">backtrader_utils.bt_template</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_template_strategy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">strategy.rsrs_strategy</span><span class="w"> </span><span class="kn">import</span> <span class="n">RSRSStrategy</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.performance</span><span class="w"> </span><span class="kn">import</span> <span class="n">multi_asset_show_perf_stats</span><span class="p">,</span><span class="n">multi_strategy_show_trade_stats</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ohlc_and_signal</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">concat_ohlc_vs_signal</span><span class="p">(</span><span class="n">daily</span><span class="p">,</span><span class="n">signal_df</span><span class="p">)</span>
+<span class="n">ohlc_and_signal</span><span class="p">[</span><span class="s1">&#39;upperbound&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">ohlc_and_signal</span><span class="p">[</span><span class="s1">&#39;lowerbound&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.7</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multi_asset_dict</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">code</span><span class="p">:</span> <span class="n">run_template_strategy</span><span class="p">(</span>
+        <span class="n">ohlc_and_signal</span><span class="p">,</span>
+        <span class="n">code</span><span class="p">,</span>
+        <span class="n">RSRSStrategy</span><span class="p">,</span>
+        <span class="n">strategy_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;hold_num&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">ohlc_and_signal</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:03.474 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ff7a5b2fbd1b4c4a8848b82d99e83da1", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:03.483 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+2024-10-29 16:42:03.900 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "8a3f23eb2ac64a97960b2d2acad2f489", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:03.908 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+2024-10-29 16:42:04.394 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "681767e8b85d4c898ffe4fd55ab399f7", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:04.402 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+2024-10-29 16:42:04.816 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b3805d49711a49448f89d9cebea69a44", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:04.826 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+2024-10-29 16:42:05.245 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2843d43e3d7f4377ab34f80a59bbbac7", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:05.253 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+2024-10-29 16:42:05.666 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "02276b5c8ed44929801039399bc0ea17", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:05.674 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">code</span><span class="p">,</span> <span class="n">strat</span> <span class="ow">in</span> <span class="n">multi_asset_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">plot_cumulative_return</span><span class="p">(</span>
+        <span class="n">strat</span><span class="p">,</span>
+        <span class="n">ohlc_and_signal</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;code==@code&quot;</span><span class="p">)[</span><span class="s2">&quot;close&quot;</span><span class="p">],</span>
+        <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s2"> RSRSStrategy&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/11fad700ee7fc666d1d7920f9c1dfd8fe78df1d3ba27a9ab0593d41f3b7d2012.png" src="../../../../_images/11fad700ee7fc666d1d7920f9c1dfd8fe78df1d3ba27a9ab0593d41f3b7d2012.png" />
+<img alt="../../../../_images/8ade243177ad193a63dd8820a1f8c9620458bc8b6f5070ce4ae9da6661e8b4cd.png" src="../../../../_images/8ade243177ad193a63dd8820a1f8c9620458bc8b6f5070ce4ae9da6661e8b4cd.png" />
+<img alt="../../../../_images/a030313c55bd1ef0b2c169754ced19f56bb6fa95037e58abc4122e5bb24df177.png" src="../../../../_images/a030313c55bd1ef0b2c169754ced19f56bb6fa95037e58abc4122e5bb24df177.png" />
+<img alt="../../../../_images/0d0c5d0271907f9bdba4e5f37d0c070e3b589036146d71b724375f2ac69eb1f2.png" src="../../../../_images/0d0c5d0271907f9bdba4e5f37d0c070e3b589036146d71b724375f2ac69eb1f2.png" />
+<img alt="../../../../_images/06976b51e1ee6f10d8e7668bbd3027a371bbb1f4223dcc7d5222056b99116c18.png" src="../../../../_images/06976b51e1ee6f10d8e7668bbd3027a371bbb1f4223dcc7d5222056b99116c18.png" />
+<img alt="../../../../_images/b5114843e581464d89414864ac80fd08f42c74d3e4fa287bf44fc8217c318729.png" src="../../../../_images/b5114843e581464d89414864ac80fd08f42c74d3e4fa287bf44fc8217c318729.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multi_asset_show_perf_stats</span><span class="p">(</span><span class="n">multi_asset_dict</span><span class="p">,</span><span class="n">ohlc_and_signal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d:\anaconda3\envs\qlib_env\lib\site-packages\pyfolio\timeseries.py:724: FutureWarning: The default dtype for empty Series will be &#39;object&#39; instead of &#39;float64&#39; in a future version. Specify a dtype explicitly to silence this warning.
+  stats = pd.Series()
+d:\anaconda3\envs\qlib_env\lib\site-packages\pyfolio\plotting.py:648: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
+  for stat, value in perf_stats[column].iteritems():
+d:\anaconda3\envs\qlib_env\lib\site-packages\pyfolio\timeseries.py:724: FutureWarning: The default dtype for empty Series will be &#39;object&#39; instead of &#39;float64&#39; in a future version. Specify a dtype explicitly to silence this warning.
+  stats = pd.Series()
+d:\anaconda3\envs\qlib_env\lib\site-packages\pyfolio\plotting.py:648: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
+  for stat, value in perf_stats[column].iteritems():
+d:\anaconda3\envs\qlib_env\lib\site-packages\pyfolio\timeseries.py:724: FutureWarning: The default dtype for empty Series will be &#39;object&#39; instead of &#39;float64&#39; in a future version. Specify a dtype explicitly to silence this warning.
+  stats = pd.Series()
+d:\anaconda3\envs\qlib_env\lib\site-packages\pyfolio\plotting.py:648: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
+  for stat, value in perf_stats[column].iteritems():
+d:\anaconda3\envs\qlib_env\lib\site-packages\pyfolio\timeseries.py:724: FutureWarning: The default dtype for empty Series will be &#39;object&#39; instead of &#39;float64&#39; in a future version. Specify a dtype explicitly to silence this warning.
+  stats = pd.Series()
+d:\anaconda3\envs\qlib_env\lib\site-packages\pyfolio\plotting.py:648: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
+  for stat, value in perf_stats[column].iteritems():
+d:\anaconda3\envs\qlib_env\lib\site-packages\pyfolio\timeseries.py:724: FutureWarning: The default dtype for empty Series will be &#39;object&#39; instead of &#39;float64&#39; in a future version. Specify a dtype explicitly to silence this warning.
+  stats = pd.Series()
+d:\anaconda3\envs\qlib_env\lib\site-packages\pyfolio\plotting.py:648: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
+  for stat, value in perf_stats[column].iteritems():
+d:\anaconda3\envs\qlib_env\lib\site-packages\pyfolio\timeseries.py:724: FutureWarning: The default dtype for empty Series will be &#39;object&#39; instead of &#39;float64&#39; in a future version. Specify a dtype explicitly to silence this warning.
+  stats = pd.Series()
+d:\anaconda3\envs\qlib_env\lib\site-packages\pyfolio\plotting.py:648: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
+  for stat, value in perf_stats[column].iteritems():
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>000001.SH</th>
+      <th>000016.SH</th>
+      <th>000300.SH</th>
+      <th>000852.SH</th>
+      <th>000905.SH</th>
+      <th>000985.CSI</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Backtest</th>
+      <th>Backtest</th>
+      <th>Backtest</th>
+      <th>Backtest</th>
+      <th>Backtest</th>
+      <th>Backtest</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Annual return</th>
+      <td>9.3%</td>
+      <td>5.5%</td>
+      <td>9.2%</td>
+      <td>13.6%</td>
+      <td>10.1%</td>
+      <td>8.6%</td>
+    </tr>
+    <tr>
+      <th>Cumulative returns</th>
+      <td>312.9%</td>
+      <td>133.7%</td>
+      <td>301.8%</td>
+      <td>655.9%</td>
+      <td>359.1%</td>
+      <td>272.1%</td>
+    </tr>
+    <tr>
+      <th>Annual volatility</th>
+      <td>15.0%</td>
+      <td>17.2%</td>
+      <td>16.4%</td>
+      <td>21.1%</td>
+      <td>19.7%</td>
+      <td>17.3%</td>
+    </tr>
+    <tr>
+      <th>Sharpe ratio</th>
+      <td>0.672028</td>
+      <td>0.396981</td>
+      <td>0.616707</td>
+      <td>0.709758</td>
+      <td>0.58667</td>
+      <td>0.565063</td>
+    </tr>
+    <tr>
+      <th>Calmar ratio</th>
+      <td>0.278231</td>
+      <td>0.128166</td>
+      <td>0.188604</td>
+      <td>0.311494</td>
+      <td>0.24318</td>
+      <td>0.171835</td>
+    </tr>
+    <tr>
+      <th>Stability</th>
+      <td>0.809051</td>
+      <td>0.757938</td>
+      <td>0.894658</td>
+      <td>0.86628</td>
+      <td>0.750806</td>
+      <td>0.829811</td>
+    </tr>
+    <tr>
+      <th>Max drawdown</th>
+      <td>-33.6%</td>
+      <td>-42.9%</td>
+      <td>-48.6%</td>
+      <td>-43.6%</td>
+      <td>-41.4%</td>
+      <td>-50.2%</td>
+    </tr>
+    <tr>
+      <th>Omega ratio</th>
+      <td>1.199244</td>
+      <td>1.112519</td>
+      <td>1.175445</td>
+      <td>1.197276</td>
+      <td>1.16147</td>
+      <td>1.162538</td>
+    </tr>
+    <tr>
+      <th>Sortino ratio</th>
+      <td>1.000513</td>
+      <td>0.58719</td>
+      <td>0.916014</td>
+      <td>0.984851</td>
+      <td>0.814014</td>
+      <td>0.802119</td>
+    </tr>
+    <tr>
+      <th>Skew</th>
+      <td>0.243427</td>
+      <td>0.228812</td>
+      <td>0.132177</td>
+      <td>-0.6741</td>
+      <td>-0.620572</td>
+      <td>-0.383366</td>
+    </tr>
+    <tr>
+      <th>Kurtosis</th>
+      <td>13.398826</td>
+      <td>12.192272</td>
+      <td>11.660064</td>
+      <td>8.524086</td>
+      <td>9.377443</td>
+      <td>11.378998</td>
+    </tr>
+    <tr>
+      <th>Tail ratio</th>
+      <td>1.270681</td>
+      <td>1.086246</td>
+      <td>1.200286</td>
+      <td>1.116266</td>
+      <td>1.08664</td>
+      <td>1.216996</td>
+    </tr>
+    <tr>
+      <th>Daily value at risk</th>
+      <td>-1.8%</td>
+      <td>-2.1%</td>
+      <td>-2.0%</td>
+      <td>-2.6%</td>
+      <td>-2.4%</td>
+      <td>-2.1%</td>
+    </tr>
+    <tr>
+      <th>Alpha</th>
+      <td>0.102993</td>
+      <td>0.064385</td>
+      <td>0.096846</td>
+      <td>0.116988</td>
+      <td>0.090215</td>
+      <td>0.082954</td>
+    </tr>
+    <tr>
+      <th>Beta</th>
+      <td>0.408013</td>
+      <td>0.446094</td>
+      <td>0.417411</td>
+      <td>0.503417</td>
+      <td>0.47737</td>
+      <td>0.449341</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>对惩罚项进行改造<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<p>首先，从结构简单的惩罚项这个角度，剖析构造的改进可能性。</p>
+<p>惩罚力度如何控制比较好呢？<strong>虽然理论上一个相关系数的取值是可正可负的，但在现实 中当 𝑐𝑜𝑟𝑟(ℎ𝑖𝑔ℎ, 𝑙𝑜𝑤) 的计算窗口在 10 天以上时，几乎不会出现负值</strong>，那么我们在以 𝑐𝑜𝑟𝑟(ℎ𝑖𝑔ℎ, 𝑙𝑜𝑤) 为基础构建惩罚项时，一定要取 2 次方么，如果 1 次方会如何，3 次方 会如何，甚至 0 次方会是什么结果？我们分别测试以 𝑐𝑜𝑟𝑟(ℎ𝑖𝑔ℎ, 𝑙𝑜𝑤) 为基但幂数不同 的构造下，指标择时的效果。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_code</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;000300.SH&quot;</span>
+<span class="n">fields</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">,</span><span class="s2">&quot;open&quot;</span><span class="p">,</span> <span class="s2">&quot;high&quot;</span><span class="p">,</span> <span class="s2">&quot;low&quot;</span><span class="p">,</span> <span class="s2">&quot;close&quot;</span><span class="p">,</span> <span class="s2">&quot;volume&quot;</span><span class="p">]</span>
+<span class="n">hs300_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">daily</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;code==@target_code&quot;</span><span class="p">)[</span><span class="n">fields</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">qrs</span><span class="p">:</span> <span class="n">QRSCreator</span> <span class="o">=</span> <span class="n">QRSCreator</span><span class="p">(</span><span class="n">low_df</span><span class="p">[</span><span class="n">target_code</span><span class="p">],</span> <span class="n">high_df</span><span class="p">[</span><span class="n">target_code</span><span class="p">])</span>
+<span class="n">single_qrs</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">qrs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 单一计算与矩阵计算有差异</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">signal_df</span><span class="p">[</span><span class="n">target_code</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">single_qrs</span><span class="p">[</span><span class="s2">&quot;Signal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 两者的差异很小</span>
+<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span>
+    <span class="n">signal_df</span><span class="p">[</span><span class="n">target_code</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">single_qrs</span><span class="p">[</span><span class="s2">&quot;Signal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-10</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hs300_df</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">single_qrs</span><span class="p">[</span><span class="s1">&#39;Signal&#39;</span><span class="p">]</span>
+<span class="n">hs300_df</span><span class="p">[</span><span class="s1">&#39;upperbound&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">hs300_df</span><span class="p">[</span><span class="s1">&#39;lowerbound&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.7</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multi_regulation_dict</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">lag</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+    <span class="n">single_qrs</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">qrs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">lag</span><span class="p">)</span>
+    <span class="n">hs300_df</span><span class="p">[</span><span class="s2">&quot;signal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">single_qrs</span><span class="p">[</span><span class="s2">&quot;Signal&quot;</span><span class="p">]</span>
+    <span class="n">hs300_df</span><span class="p">[</span><span class="s2">&quot;upperbound&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.7</span>
+    <span class="n">hs300_df</span><span class="p">[</span><span class="s2">&quot;lowerbound&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.7</span>
+
+    <span class="n">multi_regulation_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;R</span><span class="si">{</span><span class="n">lag</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">run_template_strategy</span><span class="p">(</span>
+        <span class="n">hs300_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span>
+        <span class="n">target_code</span><span class="p">,</span>
+        <span class="n">RSRSStrategy</span><span class="p">,</span>
+        <span class="n">strategy_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;hold_num&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:08.494 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "4aebe4fcc4524cc2a9f2cc6fc287b932", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:08.504 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+2024-10-29 16:42:09.411 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e73990bfe83d40639a88a6246de7b2e6", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:09.420 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+2024-10-29 16:42:10.305 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f4f53a8414cd4a80a36bd496b70090a7", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:10.314 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+2024-10-29 16:42:11.203 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a259447027e04a079e95dad54e35a5ee", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:11.212 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+</pre></div>
+</div>
+</div>
+</div>
+<p>从结果可以看出当 QRS 指标构造中的惩罚项为 R0 次方或 R1 次方时，模型年化收益为 18%， 交易笔数在 60 次以上，胜率在 53%-56%左右；而当惩罚项力度放大，为 R2 次方或 R3 次方时，模型年化收益为 16%，交易笔数少于 60 次，胜率则在 54%-58%左右。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multi_strategy_show_trade_stats</span><span class="p">(</span><span class="n">multi_regulation_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>R0</th>
+      <th>R1</th>
+      <th>R2</th>
+      <th>R3</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Trade Stats</th>
+      <th>Trade Stats</th>
+      <th>Trade Stats</th>
+      <th>Trade Stats</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Annual return</th>
+      <td>10.72%</td>
+      <td>10.71%</td>
+      <td>9.16%</td>
+      <td>9.64%</td>
+    </tr>
+    <tr>
+      <th>Sharpe ratio</th>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.62</td>
+      <td>0.64</td>
+    </tr>
+    <tr>
+      <th>Max drawdown</th>
+      <td>47.87%</td>
+      <td>47.87%</td>
+      <td>48.55%</td>
+      <td>47.67%</td>
+    </tr>
+    <tr>
+      <th>Trade Num</th>
+      <td>68</td>
+      <td>62</td>
+      <td>56</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>Win Rate</th>
+      <td>55.88%</td>
+      <td>53.23%</td>
+      <td>53.57%</td>
+      <td>58.00%</td>
+    </tr>
+    <tr>
+      <th>Win Loss Ratio</th>
+      <td>1.73</td>
+      <td>1.85</td>
+      <td>1.78</td>
+      <td>1.66</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>这里与逻辑相违背的一点是，为什么指标在没有惩罚项（R0 次方）的时候，择时结果比 有惩罚项时还要好？我们发现造成这一现象的原因很可能源于我们没有对惩罚项的量级 进行调整。<strong>由于𝑐𝑜𝑟𝑟(ℎ𝑖𝑔ℎ, 𝑙𝑜𝑤) 本身是一个小于 1 的数字，因此幂数越大，最终的惩罚 项的量级就越小，在维持开平仓阈值不变的情况下，量级变小的惩罚项实际上除了更大 地过滤噪音，实际上也过度过滤了有效信息</strong>。</p>
+<p>交易笔数统计数据也验证了这一点，随着 𝑐𝑜𝑟𝑟(ℎ𝑖𝑔ℎ, 𝑙𝑜𝑤)的次方数不断上升，全样本内的交易笔数从68大幅减少至50次。因此 如果希望能有效对比不同幂数下惩罚项对指标择时能力的影响，对惩罚项进行量级归一 是很有必要的。我们对指标构建的方式作如下改变：</p>
+<div class="math notranslate nohighlight">
+\[指标值 = 信号项 *（惩罚项 / 惩罚项滚动时序样本内均值）\]</div>
+<p>在调整了指标构建结构后，可以看出不同惩罚力度下指标取值量级基本保持一致。此时重新测试比较不同惩罚项下的指标择时净值，结果也与逻辑较为相符。净值年化收益基 本都在 18%左右，开仓胜率在维持在55%附近，交易次数均不低于60次。整体上惩罚力 度从 R0 次方逐步到 R2 次方的过程中，择时模型效果随惩罚力度增大而增强，之后继续 加大惩罚力度模型效果反而有所削弱。因此我们维持 R2 次方的惩罚力度，同时也看出在 对惩罚项进行量级归一调整后，模型择时能力整体有进一步提升。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qrs_frame</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;qrs&quot;</span><span class="p">,</span> <span class="s2">&quot;adj_qrs&quot;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">lag</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+    <span class="n">single_qrs</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">qrs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">lag</span><span class="p">)</span>
+    <span class="n">single_adj_qrs</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">qrs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">lag</span><span class="p">,</span> <span class="n">adjust_regulation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">qrs_frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;R</span><span class="si">{</span><span class="n">lag</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;qrs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">single_qrs</span><span class="p">[</span><span class="s2">&quot;Signal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">qrs_frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;R</span><span class="si">{</span><span class="n">lag</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;adj_qrs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">single_adj_qrs</span><span class="p">[</span><span class="s2">&quot;Signal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="c1"># 绘制条形图</span>
+<span class="n">bars_charts</span> <span class="o">=</span> <span class="n">qrs_frame</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;#640000&quot;</span><span class="p">,</span><span class="s2">&quot;#c8c8c8&quot;</span><span class="p">])</span>
+
+<span class="c1"># 添加 bar labels</span>
+<span class="k">for</span> <span class="n">container</span> <span class="ow">in</span> <span class="n">bars_charts</span><span class="o">.</span><span class="n">containers</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 设置图表标题和标签</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;QRS vs Adjusted QRS&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Index&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Values&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Values&#39;)
+</pre></div>
+</div>
+<img alt="../../../../_images/34d9ea3a269865d4432d1a9234260a7534aaa9d3865f2897b5beaf9a2d0afa1e.png" src="../../../../_images/34d9ea3a269865d4432d1a9234260a7534aaa9d3865f2897b5beaf9a2d0afa1e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multi_adj_regulation_dict</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">lag</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+    <span class="n">single_qrs</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">qrs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">lag</span><span class="p">,</span> <span class="n">adjust_regulation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">hs300_df</span><span class="p">[</span><span class="s2">&quot;signal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">single_qrs</span><span class="p">[</span><span class="s2">&quot;Signal&quot;</span><span class="p">]</span>
+    <span class="n">hs300_df</span><span class="p">[</span><span class="s2">&quot;upperbound&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.7</span>
+    <span class="n">hs300_df</span><span class="p">[</span><span class="s2">&quot;lowerbound&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.7</span>
+
+    <span class="n">multi_adj_regulation_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;R</span><span class="si">{</span><span class="n">lag</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">run_template_strategy</span><span class="p">(</span>
+        <span class="n">hs300_df</span><span class="p">,</span>
+        <span class="n">target_code</span><span class="p">,</span>
+        <span class="n">RSRSStrategy</span><span class="p">,</span>
+        <span class="n">strategy_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;hold_num&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="p">)</span>
+
+<span class="n">multi_strategy_show_trade_stats</span><span class="p">(</span><span class="n">multi_adj_regulation_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:16.090 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6e77ba71a82b4686bb31da287dfcb230", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:16.099 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+2024-10-29 16:42:17.042 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6e0a947944584ff695f097b7ebf351c6", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:17.052 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+2024-10-29 16:42:18.097 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2ea2203677fa4e86b65722cecb8630ce", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:18.107 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+2024-10-29 16:42:19.050 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "de39b34305744c598e43a1051de96ab6", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:19.060 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>R0</th>
+      <th>R1</th>
+      <th>R2</th>
+      <th>R3</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Trade Stats</th>
+      <th>Trade Stats</th>
+      <th>Trade Stats</th>
+      <th>Trade Stats</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Annual return</th>
+      <td>18.15%</td>
+      <td>18.36%</td>
+      <td>17.02%</td>
+      <td>16.27%</td>
+    </tr>
+    <tr>
+      <th>Sharpe ratio</th>
+      <td>1.01</td>
+      <td>1.02</td>
+      <td>0.95</td>
+      <td>0.91</td>
+    </tr>
+    <tr>
+      <th>Max drawdown</th>
+      <td>47.89%</td>
+      <td>47.89%</td>
+      <td>50.24%</td>
+      <td>51.14%</td>
+    </tr>
+    <tr>
+      <th>Trade Num</th>
+      <td>68</td>
+      <td>69</td>
+      <td>65</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <th>Win Rate</th>
+      <td>55.88%</td>
+      <td>59.42%</td>
+      <td>52.31%</td>
+      <td>55.22%</td>
+    </tr>
+    <tr>
+      <th>Win Loss Ratio</th>
+      <td>1.91</td>
+      <td>1.70</td>
+      <td>2.12</td>
+      <td>1.91</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id3">
+<h1>对信号项进行改造<a class="headerlink" href="#id3" title="Link to this heading">#</a></h1>
+<p>在信号项中 𝑠𝑡𝑑(ℎ𝑖𝑔ℎ) 与 𝑠𝑡𝑑(𝑙𝑜𝑤) 明显是符合择时逻辑的关键部分，𝑠𝑡𝑑(ℎ𝑖𝑔ℎ) 可以 理解为阻力变量的波动，波动越大，说明投资者对阻力的分歧越大，阻力的强度越低； 同理 𝑠𝑡𝑑(𝑙𝑜𝑤) 则是支撑变量的波动，波动越大，说明支撑的强度越低。那么，在惩罚项起关键作用的 𝑐𝑜𝑟𝑟(ℎ𝑖𝑔ℎ, 𝑙𝑜𝑤) 在信息项中是否在信息项中也是必要成分？还是说可 以将其删去以精简指标公式？我们不妨测试下把其删去对择时能力带来的影响。</p>
+<p>在全样本净值测试中，精简指标择时模型整体的净值走势与原始模型有些相似，也有较 显著的择时能力。在下表统计数据中，可以看出虽然在开仓胜率及最大回撤上稍有些改 善，但整体择时效果相比原始指标择时策略还是有明显下滑。年化收益从原始指标的 10.72% 降到 8.92%；夏普比率从 0.78 降至 0.6；平均盈亏比从 1.73 降至 1.29。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.plotting_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_strategy_cumulative_return</span><span class="p">,</span><span class="n">get_strategy_return</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_code</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;000300.SH&quot;</span>
+<span class="n">fields</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">,</span><span class="s2">&quot;open&quot;</span><span class="p">,</span> <span class="s2">&quot;high&quot;</span><span class="p">,</span> <span class="s2">&quot;low&quot;</span><span class="p">,</span> <span class="s2">&quot;close&quot;</span><span class="p">,</span> <span class="s2">&quot;volume&quot;</span><span class="p">]</span>
+<span class="n">hs300_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">daily</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;code==@target_code&quot;</span><span class="p">)[</span><span class="n">fields</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">hs300_df</span><span class="p">[</span><span class="s2">&quot;upperbound&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">hs300_df</span><span class="p">[</span><span class="s2">&quot;lowerbound&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.7</span>
+<span class="n">qrs</span><span class="p">:</span> <span class="n">QRSCreator</span> <span class="o">=</span> <span class="n">QRSCreator</span><span class="p">(</span><span class="n">low_df</span><span class="p">[</span><span class="n">target_code</span><span class="p">],</span> <span class="n">high_df</span><span class="p">[</span><span class="n">target_code</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;simple_signal&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;qrs&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">multi_strategy_dict</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">signal_df</span> <span class="o">=</span> <span class="n">qrs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">adjust_regulation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">use_simple_beta</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;simple&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">hs300_df</span><span class="p">[</span><span class="s2">&quot;signal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">qrs</span><span class="o">.</span><span class="n">zscore_simple_beta</span><span class="p">[</span><span class="s2">&quot;Signal&quot;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">hs300_df</span><span class="p">[</span><span class="s2">&quot;signal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">qrs</span><span class="o">.</span><span class="n">zscore_beta</span><span class="p">[</span><span class="s2">&quot;Signal&quot;</span><span class="p">]</span>
+
+    <span class="n">multi_strategy_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">run_template_strategy</span><span class="p">(</span>
+        <span class="n">hs300_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signal&quot;</span><span class="p">]),</span>
+        <span class="n">target_code</span><span class="p">,</span>
+        <span class="n">RSRSStrategy</span><span class="p">,</span>
+        <span class="n">strategy_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;hold_num&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:20.053 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "9b1a635b840648249f32f8b751d6d0d3", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:20.061 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+2024-10-29 16:42:20.937 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2dcacec233714fc9835c3c74d2c5863d", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:20.945 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cum_returns</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="n">name</span><span class="p">:</span> <span class="n">get_strategy_cumulative_return</span><span class="p">(</span><span class="n">strat</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">strat</span> <span class="ow">in</span> <span class="n">multi_strategy_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">first_date</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span> <span class="o">=</span> <span class="n">hs300_df</span><span class="p">[</span><span class="s2">&quot;signal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">()</span>
+<span class="n">cum_returns</span><span class="p">[</span><span class="s2">&quot;benchmark&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">hs300_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">first_date</span><span class="p">:,</span> <span class="s2">&quot;close&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">hs300_df</span><span class="p">[</span><span class="s2">&quot;close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">first_date</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cum_returns</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;IndianRed&quot;</span><span class="p">,</span> <span class="s2">&quot;Crimson&quot;</span><span class="p">,</span> <span class="s2">&quot;darkgray&quot;</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span>
+    <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x29c0f941f10&gt;
+</pre></div>
+</div>
+<img alt="../../../../_images/6ef762a152b2e78834141c135471d5e098cebde248ebb97c555f4bd3c1e1eb67.png" src="../../../../_images/6ef762a152b2e78834141c135471d5e098cebde248ebb97c555f4bd3c1e1eb67.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multi_strategy_show_trade_stats</span><span class="p">(</span><span class="n">multi_strategy_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>simple_signal</th>
+      <th>qrs</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Trade Stats</th>
+      <th>Trade Stats</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Annual return</th>
+      <td>8.92%</td>
+      <td>10.72%</td>
+    </tr>
+    <tr>
+      <th>Sharpe ratio</th>
+      <td>0.60</td>
+      <td>0.70</td>
+    </tr>
+    <tr>
+      <th>Max drawdown</th>
+      <td>42.35%</td>
+      <td>47.87%</td>
+    </tr>
+    <tr>
+      <th>Trade Num</th>
+      <td>68</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>Win Rate</th>
+      <td>60.29%</td>
+      <td>55.88%</td>
+    </tr>
+    <tr>
+      <th>Win Loss Ratio</th>
+      <td>1.29</td>
+      <td>1.73</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id4">
+<h1>动态上下边界<a class="headerlink" href="#id4" title="Link to this heading">#</a></h1>
+<p>研报中的开仓阈值设置S为0.7,大致是信号<span class="math notranslate nohighlight">\(\pm 1\)</span>标准差左右,如果边界设置为过去1年的标准差效果会怎样呢？如下可知，动态阈值年化为8.48%比固定阈值年化低1%左右,但回撤从固定阈值的50.21%降低到了动态阈值的39.30%左右。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_code</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;000300.SH&quot;</span>
+
+<span class="n">qrs</span><span class="p">:</span> <span class="n">QRSCreator</span> <span class="o">=</span> <span class="n">QRSCreator</span><span class="p">(</span><span class="n">low_df</span><span class="p">,</span> <span class="n">high_df</span><span class="p">)</span>
+<span class="n">signal_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">qrs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="n">adjust_regulation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ohlc_and_signal</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">concat_ohlc_vs_signal</span><span class="p">(</span><span class="n">daily</span><span class="p">,</span> <span class="n">signal_df</span><span class="p">)</span>
+
+<span class="n">dynamic_ul_dict</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_dynamic_bound_result</span><span class="p">(</span>
+    <span class="n">target_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ohlc_and_signal</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">window</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    根据给定的目标代码和OHLC数据，计算动态上下界并运行策略。</span>
+
+<span class="sd">    :param target_code: 目标股票代码</span>
+<span class="sd">    :type target_code: str</span>
+<span class="sd">    :param ohlc_and_signal: 包含OHLC数据和信号的DataFrame</span>
+<span class="sd">    :type ohlc_and_signal: pd.DataFrame</span>
+<span class="sd">    :param window: 滚动窗口大小</span>
+<span class="sd">    :type window: int</span>
+<span class="sd">    :return: 策略运行结果</span>
+<span class="sd">    :rtype: StrategyResult</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">ohlc_and_signal</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;code==@target_code&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">rolling_avg</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;signal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">rolling_std</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;signal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;upperbound&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rolling_avg</span> <span class="o">+</span> <span class="n">rolling_std</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;lowerbound&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rolling_avg</span> <span class="o">-</span> <span class="n">rolling_std</span>
+
+    <span class="n">strat</span> <span class="o">=</span> <span class="n">run_template_strategy</span><span class="p">(</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">window</span><span class="o">-</span><span class="mi">1</span><span class="p">:],</span> <span class="n">target_code</span><span class="p">,</span> <span class="n">RSRSStrategy</span><span class="p">,</span> <span class="n">strategy_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;hold_num&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">strat</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_fixed_bound_result</span><span class="p">(</span><span class="n">target_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ohlc_and_signal</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    获取固定边界结果</span>
+
+<span class="sd">    参数:</span>
+<span class="sd">    target_code (str): 目标代码。</span>
+<span class="sd">    ohlc_and_signal (pd.DataFrame): 包含OHLC数据和信号的DataFrame。</span>
+
+<span class="sd">    返回:</span>
+<span class="sd">    pd.DataFrame: 策略运行结果。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">ohlc_and_signal</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;code==@target_code&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;upperbound&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.7</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;lowerbound&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.7</span>
+
+    <span class="n">strat</span> <span class="o">=</span> <span class="n">run_template_strategy</span><span class="p">(</span>
+        <span class="n">df</span><span class="p">,</span> <span class="n">target_code</span><span class="p">,</span> <span class="n">RSRSStrategy</span><span class="p">,</span> <span class="n">strategy_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;hold_num&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">strat</span>
+
+
+<span class="n">dynamic_ul_dict</span><span class="p">[</span><span class="s2">&quot;fixed_bound&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_fixed_bound_result</span><span class="p">(</span><span class="n">target_code</span><span class="p">,</span> <span class="n">ohlc_and_signal</span><span class="p">)</span>
+<span class="n">dynamic_ul_dict</span><span class="p">[</span><span class="s2">&quot;dynamic_bound&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_dynamic_bound_result</span><span class="p">(</span>
+    <span class="n">target_code</span><span class="p">,</span> <span class="n">ohlc_and_signal</span><span class="p">,</span> <span class="mi">252</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:22.451 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "be2d36d81c4d49228b9900161523708a", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:22.460 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+2024-10-29 16:42:22.878 | INFO     | backtrader_utils.engine:load_data:119 - 开始加载数据...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "952496687d2d44f3880937c3de1a1053", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-29 16:42:22.888 | SUCCESS  | backtrader_utils.engine:load_data:134 - 数据加载完毕！
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+    <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">get_strategy_return</span><span class="p">(</span><span class="n">start</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">start</span> <span class="ow">in</span> <span class="n">dynamic_ul_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">returns</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">returns</span><span class="p">[</span><span class="s2">&quot;dynamic_bound&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">first_valid_index</span><span class="p">()</span> <span class="p">:]</span>
+
+<span class="n">ep</span><span class="o">.</span><span class="n">cum_returns</span><span class="p">(</span><span class="n">returns</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;IndianRed&quot;</span><span class="p">,</span> <span class="s2">&quot;Crimson&quot;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;动态上下界与固定上下界&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x29c0f34c8e0&gt;
+</pre></div>
+</div>
+<img alt="../../../../_images/b6c36603bcfc6ff5a181fbd1450032b71c730696f55488093da1e3ded6eb93a5.png" src="../../../../_images/b6c36603bcfc6ff5a181fbd1450032b71c730696f55488093da1e3ded6eb93a5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multi_strategy_show_trade_stats</span><span class="p">(</span><span class="n">dynamic_ul_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>fixed_bound</th>
+      <th>dynamic_bound</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Trade Stats</th>
+      <th>Trade Stats</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Annual return</th>
+      <td>9.49%</td>
+      <td>8.48%</td>
+    </tr>
+    <tr>
+      <th>Sharpe ratio</th>
+      <td>0.63</td>
+      <td>0.59</td>
+    </tr>
+    <tr>
+      <th>Max drawdown</th>
+      <td>50.21%</td>
+      <td>39.30%</td>
+    </tr>
+    <tr>
+      <th>Trade Num</th>
+      <td>65</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>Win Rate</th>
+      <td>52.31%</td>
+      <td>46.81%</td>
+    </tr>
+    <tr>
+      <th>Win Loss Ratio</th>
+      <td>1.89</td>
+      <td>3.16</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Astock_market/QuantsPlaybook研报复现/C-择时类/QRS择时信号"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">信号构建</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">对惩罚项进行改造</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">对信号项进行改造</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">动态上下边界</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

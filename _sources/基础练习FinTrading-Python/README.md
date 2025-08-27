@@ -1,2 +1,0 @@
-# Financial-Trading-in-Python
- 

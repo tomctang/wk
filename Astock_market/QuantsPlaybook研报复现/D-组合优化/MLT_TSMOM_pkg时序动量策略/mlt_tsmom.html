@@ -1,0 +1,837 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>传统动量策略 &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Astock_market/QuantsPlaybook研报复现/D-组合优化/MLT_TSMOM_pkg时序动量策略/mlt_tsmom';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2024.html">1. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2022.html">2. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/Astock_market/QuantsPlaybook研报复现/D-组合优化/MLT_TSMOM_pkg时序动量策略/mlt_tsmom.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>传统动量策略</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">传统动量策略</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">模型架构</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">时序动量组合</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">特征生成</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">公式</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">数据读取</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">超参</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="id1">
+<h1>传统动量策略<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[r^{TSMOM,i}_{t,t+1}=sgn(r^{i}_{t-252,t})\frac{\sigma_{tgt}}{\sigma^{i}_{t}}r^{i}_{t,t+1} \tag{1}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}sgn(x):=\begin{cases}1\ if\ x&gt;0,\\
+                       0\ if\ x=0, \\
+                      -1\ if\ x&lt;0
+            \end{cases} \tag{2}\end{split}\]</div>
+<p>其中:
+<span class="math notranslate nohighlight">\(r^{i}_{t-252,t}\)</span>为资产i,t时刻过去一年的收益率;<span class="math notranslate nohighlight">\(r^{i}_{t,t+1}\)</span>为资产i,t时刻的收益率;<span class="math notranslate nohighlight">\(\sigma_{tgt}\)</span>目标年化波动率;<span class="math notranslate nohighlight">\(\sigma^{i}_{t}\)</span>资产i的历史波动率,计算窗口期为60日,使用指数衰减权重计算。</p>
+<p>最终资产组合可以表达为:
+$<span class="math notranslate nohighlight">\(r^{TSMOM}_{t,t+1}=\frac{1}{S_t}\sum^{S_t}_{i=1}r^{TSMOM,i}_{t,t+1} \tag{3}\)</span>$</p>
+<p>其中:<span class="math notranslate nohighlight">\(S_t\)</span>为组合在t时刻的标的数量</p>
+</section>
+<section id="id2">
+<h1>模型架构<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://github.com/hugo2046/QuantsPlaybook/blob/78ecc7a236e164ee297317ce85a773a0cfcaf190/D-%E7%BB%84%E5%90%88%E4%BC%98%E5%8C%96/MLT_TSMOM/img/mtl%20model.png"><img alt="avatar" src="https://github.com/hugo2046/QuantsPlaybook/blob/04bb714d9f4af2d6489407b8564926685f69a24b/D-%E7%BB%84%E5%90%88%E4%BC%98%E5%8C%96/MLT_TSMOM/img/mtl%20model.png" /></a></p>
+</section>
+<section id="id3">
+<h1>时序动量组合<a class="headerlink" href="#id3" title="Link to this heading">#</a></h1>
+<p>从上文的基于<em>目标波动率</em>的传统时序动量策略可以看出,确定每只股票权重有两个因素:动量的方向和股票的波动率。在主要任务钟,我们直接预测股票权重,那么组合的收益率就由上面的上式变为以下等式:
+$<span class="math notranslate nohighlight">\(r^{\rho}_{t,t+1}=\frac{\sigma_{tgt}}{S_t}\sum^{S_t}_{i=1}\omega^{i}_{t-1,t}r^{i}_{t,t+1} \tag{4}\)</span>$</p>
+<p>为了控制交易换手,加入惩罚项:</p>
+<div class="math notranslate nohighlight">
+\[r^{\rho}_{t,t+1}=\frac{\sigma_{tgt}}{S_t}\sum^{S_t}_{i=1}\omega^{i}_{t-1,t}r^{i}_{t,t+1}-\tau|\omega^{i}_{t-1,t}-\omega^{i}_{t-2,t-1}| \tag{5}\]</div>
+<p>其中:<span class="math notranslate nohighlight">\(\tau\)</span>为交易手续费,默认设置为3bps,<span class="math notranslate nohighlight">\(|\omega^{i}_{t-1,t}-\omega^{i}_{t-2,t-1}|\)</span>为资产组合S在t时刻到t+1时刻的权重变化</p>
+<p>目标函数(损失函数):
+$<span class="math notranslate nohighlight">\(L_{SharpeRatio}=-\frac{\mathbb{E}[r^{\rho}]}{\sigma_{r^{\rho}}} \tag{6}\)</span>$</p>
+</section>
+<section id="id4">
+<h1>特征生成<a class="headerlink" href="#id4" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>Close-to-close volatility estimator,<span class="math notranslate nohighlight">\(\sigma_{ctc}\)</span></p></li>
+<li><p>Parkinson volatility estimator, <span class="math notranslate nohighlight">\(\sigma_{\rho}\)</span> (Parkinson, 1980)</p></li>
+<li><p>Garman-Klass volatility estimator, <span class="math notranslate nohighlight">\(\sigma_{gk}\)</span> (Garman &amp; Klass, 1980)</p></li>
+<li><p>Rogers-Satchell volatility estimator, <span class="math notranslate nohighlight">\(\sigma_{rs}\)</span> (Rogers &amp; Satchell, 1991)</p></li>
+<li><p>Yang-Zhang volatility estimator, <span class="math notranslate nohighlight">\(\sigma_{yz}\)</span> (Yang &amp; Zhang, 2000)</p></li>
+</ol>
+<section id="id5">
+<h2>公式<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>公式参考:</p>
+<blockquote>
+<div><p>Exploring the predictability of range-based volatility estimators using RNNs</p>
+</div></blockquote>
+<p><a class="reference external" href="https://github.com/jasonstrimpel/volatility-trading/tree/master/volatility/models">volatility-trading</a></p>
+<p>Close-to-close volatility:<span class="math notranslate nohighlight">\(\sqrt{\frac{1}{N-1}\sum^{T}_{i=1}(ln(\frac{c_i}{c_{i-1}}-\overline{\frac{c_t}{c_{t-1}}})^2)}\)</span></p>
+<p>Parkinson volatility:<span class="math notranslate nohighlight">\(\sqrt{\frac{1}{4Tln2}\sum^{T}_{i=1}(ln\frac{h_{i}}{l_{i}})^2}\)</span></p>
+<p>Garman-Klass Volatility:<span class="math notranslate nohighlight">\(\sqrt{\frac{1}{T}\sum^{T}_{i=1}(0.5*ln(\frac{h_{i}}{l_{i}})^2-(2ln(2)-1)ln(\frac{c_i}{o_{i}})^2)}\)</span></p>
+<p>Rogers-Satchell Volatility:<span class="math notranslate nohighlight">\(\sqrt{\frac{1}{T}\sum^{T}_{i=1}(ln(\frac{h_i}{o_i})(ln(\frac{h_i}{o_i})-ln(\frac{c_i}{o_i}))+ln(\frac{l_i}{o_i})(ln(\frac{l_i}{o_i})-ln(\frac{c_i}{o_i}))}\)</span></p>
+<p>Yang-Zhang volatility:</p>
+<p><span class="math notranslate nohighlight">\(\sqrt{\frac{1}{N-1}\sum^{T}_{i=1}(ln(\frac{o_i}{c_{i-1}})-\overline{ln(\frac{o_i}{c_{i-1}})})^2+\frac{k}{N-1}\sum^{T}_{i=1}(ln(\frac{c_i}{o_{i-1}})-\overline{ln(\frac{c_i}{o_{i-1}})})^2+(1-k)V_{RS}}\)</span></p>
+<p>其中:
+<span class="math notranslate nohighlight">\(k=\frac{0.34}{1.34+\frac{N+1}{N-1}}\)</span></p>
+<p><span class="math notranslate nohighlight">\(V_{RS}=\frac{1}{N}\sum^{N}_{i=1}(ln(\frac{h_i}{o_i})(ln(\frac{h_i}{o_i})-ln(\frac{c_i}{o_i}))+ln(\frac{l_i}{o_i})(ln(\frac{l_i}{o_i})-ln(\frac{c_i}{o_i})))\)</span></p>
+<p><span class="math notranslate nohighlight">\(o_{i},c_{i},h_{i},l_{i}\)</span>分别为i时刻的OHLC数据</p>
+<p>特征部分的损失函数就是最小化已实现波动率与预测波动率之间的负相关系数:
+$<span class="math notranslate nohighlight">\(L_{corr(y,\hat{y})}=-\frac{S_{y,\hat{y}}}{S_{y}*S_{\hat{y}}} \tag{7}\)</span>$</p>
+<p>整体任务的损失函数</p>
+<div class="math notranslate nohighlight">
+\[L_{total}=-\mu\frac{\mathbb{E}[r^{\rho}]}{\sigma_{r^{\rho}}}+\lambda\sum_{h \in H}-\frac{S_{y_{h},\hat{y_{h}}}}{S_{y_{h}}\cdot S_{\hat{y_h}}}\]</div>
+<p>其中<span class="math notranslate nohighlight">\(\mu\)</span>和<span class="math notranslate nohighlight">\(\lambda\)</span>为权重,取值在[0,1]之间,<span class="math notranslate nohighlight">\(\mu+\lambda=1\)</span>,这里进行简单处理<span class="math notranslate nohighlight">\(\mu=0.5,\lambda=0.5\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">empyrical</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">MTL_TSMOM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.general</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_backtest_metrics</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.data_processor</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataProcessor</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.sans-serif&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;simhei&quot;</span><span class="p">]</span>  <span class="c1"># 解决中文乱码</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;axes.unicode_minus&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id6">
+<h1>数据读取<a class="headerlink" href="#id6" title="Link to this heading">#</a></h1>
+<p>这里我们使用的标的为:黄金ETF(<a class="reference external" href="http://518880.SH">518880.SH</a>)、纳指ETF(<a class="reference external" href="http://513100.SH">513100.SH</a>)、创业板ETF(<a class="reference external" href="http://159915.SZ">159915.SZ</a>)、沪深300ETF(<a class="reference external" href="http://510300.SH">510300.SH</a>),时间范围2014-01-01至2023-08-02,价格数据后复权;
+测试时未来收益率我们使用的Open-to-Open(OTO)因为是T日预测的权重用于T+1,OTO计算是<span class="math notranslate nohighlight">\(ln(Open_{t+2}/Open_{t+1})\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># 测试集</span>
+<span class="n">basic_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.6</span>  <span class="c1"># 训练集占比</span>
+<span class="n">standardize_window</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">21</span>  <span class="c1"># 标准化窗口</span>
+<span class="n">vol_forward_window</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">21</span>  <span class="c1"># 预测未来波动率的窗口</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">DataProcessor</span><span class="p">()</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+    <span class="n">standardize_window</span><span class="o">=</span><span class="n">standardize_window</span><span class="p">,</span>
+    <span class="n">vol_forward_window</span><span class="o">=</span><span class="n">vol_forward_window</span><span class="p">,</span>
+    <span class="n">vol_method</span><span class="o">=</span><span class="s2">&quot;CTC&quot;</span><span class="p">,</span>  <span class="c1"># vr波动使用CTC计算</span>
+    <span class="n">return_method</span><span class="o">=</span><span class="s2">&quot;OTO&quot;</span><span class="p">,</span>  <span class="c1"># return使用OTO计算</span>
+<span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">build_dataset</span><span class="p">(</span><span class="n">test_size</span><span class="o">=</span><span class="n">test_size</span><span class="p">,</span> <span class="n">valid_ratio</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">base_ratio</span><span class="o">=</span><span class="n">basic_rate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TimeSeriesSplit(gap=0, max_train_size=None, n_splits=924, test_size=1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_szie</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">levels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;时间序列长度</span><span class="si">{</span><span class="n">total_szie</span><span class="si">}</span><span class="s2">,起始长度</span><span class="si">{</span><span class="n">basic_rate</span><span class="o">*</span><span class="mi">100</span><span class="si">}</span><span class="s2">%,基础长度为</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">total_szie</span><span class="o">*</span><span class="n">basic_rate</span><span class="p">)</span><span class="si">}</span><span class="s2">,n_splits为</span><span class="si">{</span><span class="p">(</span><span class="n">total_szie</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">basic_rate</span><span class="p">))</span><span class="o">//</span><span class="n">test_size</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>时间序列长度2311,起始长度60.0%,基础长度为1386,n_splits为924.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">frame</span><span class="p">[</span><span class="s1">&#39;features_fields&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/3438da9d91871ff52cf2a446ba0aa2d5435c71c88608b8b526f1408403626e5d.png" src="../../../../_images/3438da9d91871ff52cf2a446ba0aa2d5435c71c88608b8b526f1408403626e5d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">frame</span><span class="p">[</span><span class="s1">&#39;auxiliary_fields&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/df261493089f5d8fc880ff568850cd8399e135b678525a1423fb5aa0f69536b8.png" src="../../../../_images/df261493089f5d8fc880ff568850cd8399e135b678525a1423fb5aa0f69536b8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+    <span class="n">input_size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>  <span class="c1"># 特征维度</span>
+    <span class="n">lstm_hidden_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
+    <span class="n">mlp_hidden_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+    <span class="n">lstm_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">mlp_layers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">lstm_dropout</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">mlp_dropout</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">max_grad_norm</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">num_epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">transcation_cost</span><span class="o">=</span><span class="mf">0.0003</span><span class="p">,</span>  <span class="c1"># 交易成本</span>
+    <span class="n">target_vol</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># 目标波动率</span>
+    <span class="n">early_stopping</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">optimizer_name</span><span class="o">=</span><span class="s2">&quot;Adam&quot;</span><span class="p">,</span>  <span class="c1"># 优化器</span>
+    <span class="n">opt_kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">),</span>  <span class="c1"># 优化器参数</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># 预测的权重及未来的OTO收益</span>
+<span class="n">mtl_tsmom</span> <span class="o">=</span> <span class="n">MTL_TSMOM</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">mtl_tsmom</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>train: 100%|██████████| 924/924 [17:01&lt;00:00,  1.11s/it]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 检查是否有数据缺失</span>
+<span class="n">loss_score_frame</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">mtl_tsmom</span><span class="o">.</span><span class="n">plot_pred_nan_num</span><span class="p">()</span>
+<span class="n">loss_score_frame</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;loss_score&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+<img alt="../../../../_images/d0e17ceb37ba2c957ee23e1b8ba9afe4241d95c1455a1b4b9a45d9ae06447736.png" src="../../../../_images/d0e17ceb37ba2c957ee23e1b8ba9afe4241d95c1455a1b4b9a45d9ae06447736.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mtl_tsmom</span><span class="o">.</span><span class="n">get_loss_score</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Loss Score&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Loss Score&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../../../../_images/810ff34563e14ad4af7624f56ebc3a027f10f2905ce3962b97f889566bc7c6f8.png" src="../../../../_images/810ff34563e14ad4af7624f56ebc3a027f10f2905ce3962b97f889566bc7c6f8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strategy_frame</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">mtl_tsmom</span><span class="o">.</span><span class="n">get_backtest_returns</span><span class="p">()</span>
+<span class="n">strategy_cum</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">cum_returns</span><span class="p">(</span><span class="n">strategy_frame</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">strategy_cum</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;MTL_TSMOM&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">strategy_cum</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Benchmark&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Benchmark&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkgray&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x213b74bb7c0&gt;
+</pre></div>
+</div>
+<img alt="../../../../_images/a5b64f00e3f66c975bec195781159881c0810fe792345897b2575c9111a21dff.png" src="../../../../_images/a5b64f00e3f66c975bec195781159881c0810fe792345897b2575c9111a21dff.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strategy_frame</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">get_backtest_metrics</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="s2">&quot;metrics&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MTL_TSMOM</th>
+      <th>Benchmark</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Annualized Return</th>
+      <td>0.060920</td>
+      <td>0.095707</td>
+    </tr>
+    <tr>
+      <th>Cumulative Return</th>
+      <td>0.242135</td>
+      <td>0.398124</td>
+    </tr>
+    <tr>
+      <th>Annualized Sharpe Ratio</th>
+      <td>1.036115</td>
+      <td>0.617428</td>
+    </tr>
+    <tr>
+      <th>Annualized Sortino Ratio</th>
+      <td>1.554689</td>
+      <td>0.869483</td>
+    </tr>
+    <tr>
+      <th>Max Drawdown</th>
+      <td>-0.060737</td>
+      <td>-0.221324</td>
+    </tr>
+    <tr>
+      <th>Annualized volatility</th>
+      <td>0.058745</td>
+      <td>0.172100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id7">
+<h1>超参<a class="headerlink" href="#id7" title="Link to this heading">#</a></h1>
+<p>寻参空间</p>
+<p><a class="reference external" href="https://github.com/hugo2046/QuantsPlaybook/blob/04bb714d9f4af2d6489407b8564926685f69a24b/D-%E7%BB%84%E5%90%88%E4%BC%98%E5%8C%96/MLT_TSMOM/img/table_1.png"><img alt="avatar" src="../../../../_images/MLT_TSMOM_pkg%E6%97%B6%E5%BA%8F%E5%8A%A8%E9%87%8F%E7%AD%96%E7%95%A5" /></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.optimize_multi_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize_multi_hyperparameters</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">study</span> <span class="o">=</span> <span class="n">optimize_multi_hyperparameters</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span><span class="n">early_stopping</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">target_vol</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[I 2023-08-08 21:45:33,747] A new study created in memory with name: no-name-acfc88e5-cc6c-4a98-9631-e3b0cbcfbf3d
+[I 2023-08-08 22:13:39,039] Trial 0 finished with value: 0.17481300234794617 and parameters: {&#39;lstm_layers&#39;: 4, &#39;mpl_layers&#39;: 2, &#39;hidden_size&#39;: 128, &#39;ff_hidden_size&#39;: 128, &#39;lstm_dropout&#39;: 0.05, &#39;mpl_dropout&#39;: 0.2, &#39;max_grad_norm&#39;: 0.0, &#39;lr&#39;: 0.1, &#39;optimizer&#39;: &#39;Adam&#39;}. Best is trial 0 with value: 0.17481300234794617.
+d:\anaconda3\envs\qlib_env\lib\site-packages\torch\nn\modules\rnn.py:71: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.05 and num_layers=1
+  warnings.warn(&quot;dropout option adds dropout after all but last &quot;
+[I 2023-08-08 22:36:55,598] Trial 1 finished with value: -0.1423977017402649 and parameters: {&#39;lstm_layers&#39;: 1, &#39;mpl_layers&#39;: 4, &#39;hidden_size&#39;: 64, &#39;ff_hidden_size&#39;: 64, &#39;lstm_dropout&#39;: 0.05, &#39;mpl_dropout&#39;: 0.05, &#39;max_grad_norm&#39;: 0.0, &#39;lr&#39;: 0.0001, &#39;optimizer&#39;: &#39;SGD&#39;}. Best is trial 1 with value: -0.1423977017402649.
+[I 2023-08-08 23:09:43,374] Trial 2 finished with value: 0.06650356948375702 and parameters: {&#39;lstm_layers&#39;: 4, &#39;mpl_layers&#39;: 4, &#39;hidden_size&#39;: 128, &#39;ff_hidden_size&#39;: 256, &#39;lstm_dropout&#39;: 0.15, &#39;mpl_dropout&#39;: 0.1, &#39;max_grad_norm&#39;: 0.01, &#39;lr&#39;: 0.01, &#39;optimizer&#39;: &#39;SGD&#39;}. Best is trial 1 with value: -0.1423977017402649.
+[I 2023-08-08 23:35:49,296] Trial 3 finished with value: -0.4661749601364136 and parameters: {&#39;lstm_layers&#39;: 3, &#39;mpl_layers&#39;: 4, &#39;hidden_size&#39;: 64, &#39;ff_hidden_size&#39;: 64, &#39;lstm_dropout&#39;: 0.2, &#39;mpl_dropout&#39;: 0.1, &#39;max_grad_norm&#39;: 0.01, &#39;lr&#39;: 0.01, &#39;optimizer&#39;: &#39;SGD&#39;}. Best is trial 3 with value: -0.4661749601364136.
+[I 2023-08-09 00:07:00,946] Trial 4 finished with value: -0.6393474340438843 and parameters: {&#39;lstm_layers&#39;: 2, &#39;mpl_layers&#39;: 2, &#39;hidden_size&#39;: 256, &#39;ff_hidden_size&#39;: 256, &#39;lstm_dropout&#39;: 0.1, &#39;mpl_dropout&#39;: 0.1, &#39;max_grad_norm&#39;: 0.1, &#39;lr&#39;: 0.1, &#39;optimizer&#39;: &#39;SGD&#39;}. Best is trial 4 with value: -0.6393474340438843.
+[I 2023-08-09 00:07:02,040] Trial 5 pruned. 
+[I 2023-08-09 00:07:03,314] Trial 6 pruned. 
+[I 2023-08-09 00:07:04,900] Trial 7 pruned. 
+[I 2023-08-09 00:07:08,072] Trial 8 pruned. 
+[I 2023-08-09 00:44:34,910] Trial 9 finished with value: -0.7249398231506348 and parameters: {&#39;lstm_layers&#39;: 4, &#39;mpl_layers&#39;: 4, &#39;hidden_size&#39;: 128, &#39;ff_hidden_size&#39;: 128, &#39;lstm_dropout&#39;: 0.2, &#39;mpl_dropout&#39;: 0.1, &#39;max_grad_norm&#39;: 0.1, &#39;lr&#39;: 0.001, &#39;optimizer&#39;: &#39;Adam&#39;}. Best is trial 9 with value: -0.7249398231506348.
+[I 2023-08-09 01:10:02,889] Trial 10 finished with value: -0.7745277881622314 and parameters: {&#39;lstm_layers&#39;: 4, &#39;mpl_layers&#39;: 1, &#39;hidden_size&#39;: 32, &#39;ff_hidden_size&#39;: 32, &#39;lstm_dropout&#39;: 0.2, &#39;mpl_dropout&#39;: 0.05, &#39;max_grad_norm&#39;: 0.1, &#39;lr&#39;: 0.001, &#39;optimizer&#39;: &#39;Adam&#39;}. Best is trial 10 with value: -0.7745277881622314.
+[I 2023-08-09 01:37:18,392] Trial 11 finished with value: -0.7144525051116943 and parameters: {&#39;lstm_layers&#39;: 4, &#39;mpl_layers&#39;: 1, &#39;hidden_size&#39;: 32, &#39;ff_hidden_size&#39;: 32, &#39;lstm_dropout&#39;: 0.2, &#39;mpl_dropout&#39;: 0.05, &#39;max_grad_norm&#39;: 0.1, &#39;lr&#39;: 0.001, &#39;optimizer&#39;: &#39;Adam&#39;}. Best is trial 10 with value: -0.7745277881622314.
+[I 2023-08-09 02:04:17,435] Trial 12 finished with value: -0.3324850797653198 and parameters: {&#39;lstm_layers&#39;: 4, &#39;mpl_layers&#39;: 1, &#39;hidden_size&#39;: 32, &#39;ff_hidden_size&#39;: 32, &#39;lstm_dropout&#39;: 0.2, &#39;mpl_dropout&#39;: 0.05, &#39;max_grad_norm&#39;: 0.1, &#39;lr&#39;: 0.001, &#39;optimizer&#39;: &#39;Adam&#39;}. Best is trial 10 with value: -0.7745277881622314.
+[I 2023-08-09 02:06:53,710] Trial 13 pruned. 
+[I 2023-08-09 02:40:13,545] Trial 14 finished with value: -0.1618010401725769 and parameters: {&#39;lstm_layers&#39;: 4, &#39;mpl_layers&#39;: 3, &#39;hidden_size&#39;: 32, &#39;ff_hidden_size&#39;: 32, &#39;lstm_dropout&#39;: 0.15, &#39;mpl_dropout&#39;: 0.1, &#39;max_grad_norm&#39;: 0.1, &#39;lr&#39;: 0.001, &#39;optimizer&#39;: &#39;Adam&#39;}. Best is trial 10 with value: -0.7745277881622314.
+[I 2023-08-09 02:41:40,448] Trial 15 pruned. 
+[I 2023-08-09 03:10:43,914] Trial 16 finished with value: -0.39310985803604126 and parameters: {&#39;lstm_layers&#39;: 2, &#39;mpl_layers&#39;: 3, &#39;hidden_size&#39;: 32, &#39;ff_hidden_size&#39;: 32, &#39;lstm_dropout&#39;: 0.2, &#39;mpl_dropout&#39;: 0.2, &#39;max_grad_norm&#39;: 0.1, &#39;lr&#39;: 0.001, &#39;optimizer&#39;: &#39;Adam&#39;}. Best is trial 10 with value: -0.7745277881622314.
+[I 2023-08-09 03:10:46,211] Trial 17 pruned. 
+[I 2023-08-09 03:47:42,677] Trial 18 finished with value: -0.6571537256240845 and parameters: {&#39;lstm_layers&#39;: 4, &#39;mpl_layers&#39;: 1, &#39;hidden_size&#39;: 256, &#39;ff_hidden_size&#39;: 32, &#39;lstm_dropout&#39;: 0.15, &#39;mpl_dropout&#39;: 0.05, &#39;max_grad_norm&#39;: 0.1, &#39;lr&#39;: 0.0001, &#39;optimizer&#39;: &#39;Adam&#39;}. Best is trial 10 with value: -0.7745277881622314.
+[I 2023-08-09 03:47:45,484] Trial 19 pruned. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>best_params:
+{&#39;lstm_layers&#39;: 4, &#39;mpl_layers&#39;: 1, &#39;hidden_size&#39;: 32, &#39;ff_hidden_size&#39;: 32, &#39;lstm_dropout&#39;: 0.2, &#39;mpl_dropout&#39;: 0.05, &#39;max_grad_norm&#39;: 0.1, &#39;lr&#39;: 0.001, &#39;optimizer&#39;: &#39;Adam&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">study</span><span class="o">.</span><span class="n">best_trial</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;lstm_layers&#39;: 4,
+ &#39;mpl_layers&#39;: 1,
+ &#39;hidden_size&#39;: 32,
+ &#39;ff_hidden_size&#39;: 32,
+ &#39;lstm_dropout&#39;: 0.2,
+ &#39;mpl_dropout&#39;: 0.05,
+ &#39;max_grad_norm&#39;: 0.1,
+ &#39;lr&#39;: 0.001,
+ &#39;optimizer&#39;: &#39;Adam&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Astock_market/QuantsPlaybook研报复现/D-组合优化/MLT_TSMOM_pkg时序动量策略"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">传统动量策略</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">模型架构</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">时序动量组合</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">特征生成</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">公式</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">数据读取</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">超参</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

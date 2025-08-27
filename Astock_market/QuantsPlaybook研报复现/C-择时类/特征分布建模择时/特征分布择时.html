@@ -1,0 +1,1081 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>数据准备 &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Astock_market/QuantsPlaybook研报复现/C-择时类/特征分布建模择时/特征分布择时';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2024.html">1. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nb2022.html">2. Notebook &lt;=2022</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/Astock_market/QuantsPlaybook研报复现/C-择时类/特征分布建模择时/特征分布择时.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>数据准备</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">数据准备</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">信号构造</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">席位分析期望收益分布</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">回测</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">信号生成逻辑</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">交易信号构造</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 引入库</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">empyrical</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">data_service</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_index_daily</span><span class="p">,</span> <span class="n">get_sales_depart_billboard</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scr</span><span class="w"> </span><span class="kn">import</span> <span class="n">HMA</span><span class="p">,</span> <span class="n">calc_netbuy</span><span class="p">,</span> <span class="n">get_exchange_set</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scr.bt_func</span><span class="w"> </span><span class="kn">import</span> <span class="n">analysis_rets</span><span class="p">,</span> <span class="n">analysis_trade</span><span class="p">,</span> <span class="n">get_backtesting</span><span class="p">,</span> <span class="n">netbuy_cross</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scr.plotting</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_distribution</span><span class="p">,</span> <span class="n">plot_indicator</span><span class="p">,</span> <span class="n">plot_qunatile_signal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scr.tushare_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">TuShare</span>
+
+<span class="n">my_ts</span> <span class="o">=</span> <span class="n">TuShare</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>数据准备<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 数据获取</span>
+<span class="n">billboard_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">get_sales_depart_billboard</span><span class="p">(</span>
+    <span class="s1">&#39;2013-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-07-11&#39;</span><span class="p">)</span>
+
+<span class="c1"># 数据储存</span>
+<span class="n">billboard_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../data/billboard.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 读取本地文件</span>
+<span class="n">billboard_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/billboard.csv&#39;</span><span class="p">,</span>
+                                         <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span>
+                                         <span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                         <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;trade_date&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取沪深300数据</span>
+<span class="n">hs300</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">get_index_daily</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s1">&#39;000300.SH&#39;</span><span class="p">,</span>
+                                      <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;20130101&#39;</span><span class="p">,</span>
+                                      <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;20220711&#39;</span><span class="p">)</span>
+<span class="n">hs300</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;trade_date&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 查看数据结构</span>
+<span class="n">hs300</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>code</th>
+      <th>close</th>
+      <th>open</th>
+      <th>high</th>
+      <th>low</th>
+      <th>pre_close</th>
+      <th>change</th>
+      <th>pct_chg</th>
+      <th>vol</th>
+      <th>amount</th>
+    </tr>
+    <tr>
+      <th>trade_date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-04</th>
+      <td>000300.SH</td>
+      <td>2524.409</td>
+      <td>2551.814</td>
+      <td>2558.529</td>
+      <td>2498.892</td>
+      <td>2522.952</td>
+      <td>1.457</td>
+      <td>0.0577</td>
+      <td>97988182.0</td>
+      <td>9.557925e+07</td>
+    </tr>
+    <tr>
+      <th>2013-01-07</th>
+      <td>000300.SH</td>
+      <td>2535.985</td>
+      <td>2518.047</td>
+      <td>2545.969</td>
+      <td>2511.603</td>
+      <td>2524.409</td>
+      <td>11.576</td>
+      <td>0.4586</td>
+      <td>75167993.0</td>
+      <td>7.316751e+07</td>
+    </tr>
+    <tr>
+      <th>2013-01-08</th>
+      <td>000300.SH</td>
+      <td>2525.330</td>
+      <td>2534.647</td>
+      <td>2540.513</td>
+      <td>2502.490</td>
+      <td>2535.985</td>
+      <td>-10.655</td>
+      <td>-0.4202</td>
+      <td>71837100.0</td>
+      <td>7.649806e+07</td>
+    </tr>
+    <tr>
+      <th>2013-01-09</th>
+      <td>000300.SH</td>
+      <td>2526.126</td>
+      <td>2518.104</td>
+      <td>2534.239</td>
+      <td>2504.299</td>
+      <td>2525.330</td>
+      <td>0.796</td>
+      <td>0.0315</td>
+      <td>70231170.0</td>
+      <td>7.423360e+07</td>
+    </tr>
+    <tr>
+      <th>2013-01-10</th>
+      <td>000300.SH</td>
+      <td>2530.569</td>
+      <td>2525.590</td>
+      <td>2553.352</td>
+      <td>2513.729</td>
+      <td>2526.126</td>
+      <td>4.443</td>
+      <td>0.1759</td>
+      <td>71085862.0</td>
+      <td>7.115905e+07</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 查看数据结构</span>
+<span class="n">billboard_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>trade_date</th>
+      <th>code</th>
+      <th>exalter</th>
+      <th>buy</th>
+      <th>buy_rate</th>
+      <th>sell</th>
+      <th>sell_rate</th>
+      <th>net_buy</th>
+      <th>side</th>
+      <th>reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013-01-04</td>
+      <td>000043.SZ</td>
+      <td>中国国际金融有限公司上海淮海中路证券营业部</td>
+      <td>16970815.06</td>
+      <td>1.19</td>
+      <td>16377628.0</td>
+      <td>1.24</td>
+      <td>-593187.06</td>
+      <td>0</td>
+      <td>连续三个交易日内，涨幅偏离值累计达20%的证券</td>
+    </tr>
+    <tr>
+      <th>264</th>
+      <td>2013-01-04</td>
+      <td>300262.SZ</td>
+      <td>光大证券股份有限公司深圳金田路证券营业部</td>
+      <td>17202495.10</td>
+      <td>2.03</td>
+      <td>5832845.6</td>
+      <td>5.98</td>
+      <td>-11369649.50</td>
+      <td>1</td>
+      <td>换手率达20%的证券</td>
+    </tr>
+    <tr>
+      <th>263</th>
+      <td>2013-01-04</td>
+      <td>300262.SZ</td>
+      <td>光大证券股份有限公司深圳金田路证券营业部</td>
+      <td>17202495.10</td>
+      <td>2.03</td>
+      <td>5832845.6</td>
+      <td>5.98</td>
+      <td>-11369649.50</td>
+      <td>0</td>
+      <td>换手率达20%的证券</td>
+    </tr>
+    <tr>
+      <th>262</th>
+      <td>2013-01-04</td>
+      <td>300262.SZ</td>
+      <td>中国银河证券股份有限公司厦门美湖路证券营业部</td>
+      <td>7913689.96</td>
+      <td>0.01</td>
+      <td>26770.0</td>
+      <td>2.75</td>
+      <td>-7886919.96</td>
+      <td>1</td>
+      <td>换手率达20%的证券</td>
+    </tr>
+    <tr>
+      <th>261</th>
+      <td>2013-01-04</td>
+      <td>300262.SZ</td>
+      <td>中信证券股份有限公司上海淮海中路证券营业部</td>
+      <td>4772872.77</td>
+      <td>1.53</td>
+      <td>4398000.0</td>
+      <td>1.66</td>
+      <td>-374872.77</td>
+      <td>0</td>
+      <td>换手率达20%的证券</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>信号构造<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>取得2013年1月4日至2022年2月22日之间沪深两市龙虎榜的数据,选取其中上榜席位为机构席位的信息,并计算当日所有单个席位净流入金额(单个席位买入金额-单个席位卖出金额)的总和,记为全市场机构席位绝对净流入额<strong>IS_NetBuy</strong>;</p></li>
+<li><p>为了使不同交易日之间的IS_NetBuy可比,在本文对IS_NetBuy做了两市成交额中性化处理即<strong>IS_NetBuy/沪深300指数当日成交金额</strong>，得到全市场机构席位净流入强度<strong>IS_NetBuy_S</strong>,即相对净流入;</p></li>
+<li><p>IS_NetBuy_S就是我们需要分析的择时因子,我们希望能得到可能存在的非线性关系,我们进而绘制出IS_NetBuy_S的期望收益分布图，即计算每日IS_NetBuy_S数据对应的后10日沪深300指数涨跌幅情况,对所得结果按照 <strong>IS_NetBuy_S</strong>从小到大进行排序</p></li>
+</ol>
+<section id="id3">
+<h2>席位分析期望收益分布<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 席位划分</span>
+<span class="n">exchange_set</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">get_exchange_set</span><span class="p">(</span><span class="n">billboard_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>可以看到<strong>机构席位</strong>(图二):当相对净流入指标处于极值两端的时候,市场的未来期望收益率更高,即龙虎榜机构席位出现较大净流出或净流入后,后10日的沪深300指数对应为表现较好，而龙虎榜机构席位的净流入或净流出绝对值较低时，后10日的沪深300指数对应为表现较差。统计结果印证了机构龙虎榜影响下的有限注意力规律，即当机构席 位出现极端行为时很多的决策注意力被吸引而来，出现了较为明显的非线性交易规律， 整体的收益分布呈现出明显的V字型，即正收益来自于两端，负收益来自于中间。如果 择时因子与宽基未来收益显著正相关，且相关系数是 1，那么期望收益分布图则是一个 单调递增的形状。因此，期望收益分布图简单明了的表示择时因子与未来收益的非线性关系，而 IS_NetBuy_S 指标的期望收益分布图就是呈现出V型的非线性关系。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 画分布</span>
+<span class="n">size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">exchange_set</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">exchange_set</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+    <span class="n">is_netbuy_s</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">=</span> <span class="n">calc_netbuy</span><span class="p">(</span><span class="n">billboard_df</span><span class="p">[</span><span class="n">cond</span><span class="p">],</span> <span class="n">hs300</span><span class="p">[</span><span class="s1">&#39;amount&#39;</span><span class="p">])</span>
+    <span class="n">plot_distribution</span><span class="p">(</span><span class="n">is_netbuy_s</span><span class="p">,</span> <span class="n">hs300</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">信号分布情况&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/2120d48afc0f0b25f4a2f71e53deda7029f3842a53e48bce47ea3b53d9233afb.png" src="../../../../_images/2120d48afc0f0b25f4a2f71e53deda7029f3842a53e48bce47ea3b53d9233afb.png" />
+<img alt="../../../../_images/7061ad07ad51ff8f4fe59a99b5d95337eed5b42f7cfb7bdb17ed8e6f6097167b.png" src="../../../../_images/7061ad07ad51ff8f4fe59a99b5d95337eed5b42f7cfb7bdb17ed8e6f6097167b.png" />
+<img alt="../../../../_images/bbba365930cbcc0d163b74f934bb5e8c79233f0bfd81adb01c761098ea5956f3.png" src="../../../../_images/bbba365930cbcc0d163b74f934bb5e8c79233f0bfd81adb01c761098ea5956f3.png" />
+<img alt="../../../../_images/6f4bfaa8d35a74aee3dfe9eeaf62fd23f9ed1b685d8a7070211b649ee08edb45.png" src="../../../../_images/6f4bfaa8d35a74aee3dfe9eeaf62fd23f9ed1b685d8a7070211b649ee08edb45.png" />
+<img alt="../../../../_images/91df611b763f6f235560be3d8b37a3a0ccee85cffe3ac252e2218aed169651e6.png" src="../../../../_images/91df611b763f6f235560be3d8b37a3a0ccee85cffe3ac252e2218aed169651e6.png" />
+<img alt="../../../../_images/da027fc61a4f46ef9052c536ca22547406f1bf15879c6d66b463f1f491896f37.png" src="../../../../_images/da027fc61a4f46ef9052c536ca22547406f1bf15879c6d66b463f1f491896f37.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id4">
+<h1>回测<a class="headerlink" href="#id4" title="Link to this heading">#</a></h1>
+<section id="id5">
+<h2>信号生成逻辑<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>由图二:当龙虎榜机构席位出现大幅相对净流入的时候,市场后续可能还会再继续向上脉冲;正所谓物极必反,当龙虎榜机构席位出现大幅相对净流出的时候,往往出现超跌状态,市场未来或更偏向反弹;而当龙虎榜机构席位相对 净流入较少或者相对净流出较少的时候,市场未来往往会更偏向震荡或者下跌。因此后文将依赖该特征,去构建龙虎榜的机构择时模型。</p>
+</section>
+<section id="id6">
+<h2>交易信号构造<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p><em>无论是成交量模型,亦或是涨跌停模型,都使用了一类平滑性好滞后性低的均线HMA,因此本文使用的均线亦是基于HMA。而根据上文的统计结果,由于未来收益特征分布呈现出明显的V字型,因此择时模型的构造逻辑为做多两边做空中间</em></p>
+<p>以全市场机构席位相对净流入强度指标IS_NetBuy_S为基础:</p>
+<ul class="simple">
+<li><p>fast_line:使用HMA均线对IS_NetBuy_S进行平滑处理(以30为短期均线参数),结果记为IS_NetBuy_S_S;</p></li>
+<li><p>slow_line:使用HMA均线对IS_NetBuy_S进行平滑处理(以100为短期均线参数),结果记为 IS_NetBuy_S_L;</p></li>
+</ul>
+<p><strong>多头开/平仓规则</strong>:</p>
+<ol class="arabic simple">
+<li><p>大幅相对净流入:IS_NetBuy_S_S&gt;IS_NetBuy_S_L(短期均线大于长期均线)且短期均线IS_NetBuy_S_S &gt; 0且长期均线IS_NetBuy_S_L&gt;0做多</p></li>
+<li><p>大幅相对净流出:IS_NetBuy_S_S&lt;IS_NetBuy_S_L(短期均线小于长期均线) 且短期均线IS_NetBuy_S_S &lt; 0且长期均线IS_NetBuy_S_L&lt;0做多</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 数据准备</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">prepare_bt_data</span><span class="p">(</span><span class="n">ohlc</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                    <span class="n">billboard</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                    <span class="n">exchange_set</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                    <span class="n">fast_period</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+                    <span class="n">slow_period</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;准备回测用数据</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ohlc (pd.DataFrame): index-date OHLC及amount</span>
+<span class="sd">        billboard (pd.DataFrfame): 龙虎榜数据</span>
+<span class="sd">        exchange_set (Dict, optional): 席位划分字典,None时全量. Defaults to None.</span>
+<span class="sd">        fast_period (int, optional): 短周期均线. Defaults to 30.</span>
+<span class="sd">        slow_period (int, optional): 长周期均线. Defaults to 100.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">exchange_set</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="n">is_netbuy_s</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">=</span> <span class="n">calc_netbuy</span><span class="p">(</span><span class="n">billboard</span><span class="p">,</span> <span class="n">ohlc</span><span class="p">[</span><span class="s1">&#39;amount&#39;</span><span class="p">])</span>
+
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="n">is_netbuy_s</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">=</span> <span class="n">calc_netbuy</span><span class="p">(</span><span class="n">billboard</span><span class="p">[</span><span class="n">exchange_set</span><span class="p">],</span>
+                                             <span class="n">ohlc</span><span class="p">[</span><span class="s1">&#39;amount&#39;</span><span class="p">])</span>
+
+    <span class="c1"># 计算HMA信号</span>
+    <span class="n">is_netbuy_s_s</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">=</span> <span class="n">HMA</span><span class="p">(</span><span class="n">is_netbuy_s</span><span class="p">,</span> <span class="n">fast_period</span><span class="p">)</span>
+    <span class="n">is_netbuy_s_l</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">=</span> <span class="n">HMA</span><span class="p">(</span><span class="n">is_netbuy_s</span><span class="p">,</span> <span class="n">slow_period</span><span class="p">)</span>
+
+    <span class="n">is_netbuy_s_s</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;fast&#39;</span>
+    <span class="n">is_netbuy_s_l</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;slow&#39;</span>
+
+    <span class="n">bt_data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">ohlc</span><span class="p">,</span> <span class="n">is_netbuy_s_s</span><span class="p">,</span> <span class="n">is_netbuy_s_l</span><span class="p">),</span>
+                                      <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bt_data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取数据</span>
+<span class="n">bt_data</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">prepare_bt_data</span><span class="p">(</span><span class="n">hs300</span><span class="p">,</span><span class="n">billboard_df</span><span class="p">,</span><span class="n">exchange_set</span><span class="p">[</span><span class="s1">&#39;机构席位&#39;</span><span class="p">],</span><span class="mi">30</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># 回测</span>
+<span class="n">bt_result</span> <span class="o">=</span> <span class="n">get_backtesting</span><span class="p">(</span><span class="n">bt_data</span><span class="p">,</span> <span class="s1">&#39;hs300&#39;</span><span class="p">,</span> <span class="n">netbuy_cross</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2013-07-10,BUY EXECUTED,ref:1,Price:2163.3143,Size:41.00,Cost:88695.8867,Comm 0.0000,Stock:hs300
+2013-07-18,SELL EXECUTED,ref:2,Price:2272.7197,Size:-41.00,Cost:88695.8867,Comm 0.0000,Stock:hs300
+2013-07-24,BUY EXECUTED,ref:3,Price:2253.6013,Size:41.00,Cost:92397.6548,Comm 0.0000,Stock:hs300
+2013-08-08,SELL EXECUTED,ref:4,Price:2277.0253,Size:-41.00,Cost:92397.6548,Comm 0.0000,Stock:hs300
+2013-09-02,BUY EXECUTED,ref:5,Price:2320.1890,Size:41.00,Cost:95127.7488,Comm 0.0000,Stock:hs300
+2013-09-11,SELL EXECUTED,ref:6,Price:2483.5426,Size:-41.00,Cost:95127.7488,Comm 0.0000,Stock:hs300
+2013-10-14,BUY EXECUTED,ref:7,Price:2472.5142,Size:40.00,Cost:98900.5691,Comm 0.0000,Stock:hs300
+2013-10-24,SELL EXECUTED,ref:8,Price:2411.9938,Size:-40.00,Cost:98900.5691,Comm 0.0000,Stock:hs300
+2013-11-04,BUY EXECUTED,ref:9,Price:2397.4497,Size:41.00,Cost:98295.4386,Comm 0.0000,Stock:hs300
+2013-11-21,SELL EXECUTED,ref:10,Price:2412.2098,Size:-41.00,Cost:98295.4386,Comm 0.0000,Stock:hs300
+2013-12-19,BUY EXECUTED,ref:11,Price:2366.4416,Size:42.00,Cost:99390.5481,Comm 0.0000,Stock:hs300
+2014-01-07,SELL EXECUTED,ref:12,Price:2222.0838,Size:-42.00,Cost:99390.5481,Comm 0.0000,Stock:hs300
+2014-01-23,BUY EXECUTED,ref:13,Price:2242.4692,Size:41.00,Cost:91941.2382,Comm 0.0000,Stock:hs300
+2014-02-20,SELL EXECUTED,ref:14,Price:2313.8566,Size:-41.00,Cost:91941.2382,Comm 0.0000,Stock:hs300
+2014-03-21,BUY EXECUTED,ref:15,Price:2080.0790,Size:46.00,Cost:95683.6334,Comm 0.0000,Stock:hs300
+2014-04-09,SELL EXECUTED,ref:16,Price:2239.5670,Size:-46.00,Cost:95683.6334,Comm 0.0000,Stock:hs300
+2014-04-18,BUY EXECUTED,ref:17,Price:2216.1006,Size:46.00,Cost:101940.6270,Comm 0.0000,Stock:hs300
+2014-04-21,SELL EXECUTED,ref:18,Price:2209.7210,Size:-46.00,Cost:101940.6270,Comm 0.0000,Stock:hs300
+2014-04-22,BUY EXECUTED,ref:19,Price:2184.2354,Size:47.00,Cost:102659.0639,Comm 0.0000,Stock:hs300
+2014-04-23,SELL EXECUTED,ref:20,Price:2191.0119,Size:-47.00,Cost:102659.0639,Comm 0.0000,Stock:hs300
+2014-04-25,BUY EXECUTED,ref:21,Price:2196.0346,Size:47.00,Cost:103213.6253,Comm 0.0000,Stock:hs300
+2014-04-28,SELL EXECUTED,ref:22,Price:2165.5564,Size:-47.00,Cost:103213.6253,Comm 0.0000,Stock:hs300
+2014-04-29,BUY EXECUTED,ref:23,Price:2134.6264,Size:47.00,Cost:100327.4427,Comm 0.0000,Stock:hs300
+2014-06-11,SELL EXECUTED,ref:24,Price:2155.9354,Size:-47.00,Cost:100327.4427,Comm 0.0000,Stock:hs300
+2014-07-23,BUY EXECUTED,ref:25,Price:2191.6131,Size:46.00,Cost:100814.2044,Comm 0.0000,Stock:hs300
+2014-07-24,SELL EXECUTED,ref:26,Price:2199.8330,Size:-46.00,Cost:100814.2044,Comm 0.0000,Stock:hs300
+2014-08-07,BUY EXECUTED,ref:27,Price:2363.8444,Size:43.00,Cost:101645.3075,Comm 0.0000,Stock:hs300
+2014-09-05,SELL EXECUTED,ref:28,Price:2432.9307,Size:-43.00,Cost:101645.3075,Comm 0.0000,Stock:hs300
+2014-09-24,BUY EXECUTED,ref:29,Price:2391.6581,Size:44.00,Cost:105232.9582,Comm 0.0000,Stock:hs300
+2014-10-10,SELL EXECUTED,ref:30,Price:2471.8488,Size:-44.00,Cost:105232.9582,Comm 0.0000,Stock:hs300
+2014-11-26,BUY EXECUTED,ref:31,Price:2695.5325,Size:40.00,Cost:107821.3011,Comm 0.0000,Stock:hs300
+2014-11-27,SELL EXECUTED,ref:32,Price:2736.7563,Size:-40.00,Cost:107821.3011,Comm 0.0000,Stock:hs300
+2014-12-01,BUY EXECUTED,ref:33,Price:2825.8936,Size:39.00,Cost:110209.8489,Comm 0.0000,Stock:hs300
+2014-12-05,SELL EXECUTED,ref:34,Price:3143.6536,Size:-39.00,Cost:110209.8489,Comm 0.0000,Stock:hs300
+2014-12-10,BUY EXECUTED,ref:35,Price:3120.5240,Size:39.00,Cost:121700.4368,Comm 0.0000,Stock:hs300
+2014-12-17,SELL EXECUTED,ref:36,Price:3325.4874,Size:-39.00,Cost:121700.4368,Comm 0.0000,Stock:hs300
+2014-12-22,BUY EXECUTED,ref:37,Price:3396.5906,Size:38.00,Cost:129070.4438,Comm 0.0000,Stock:hs300
+2014-12-25,SELL EXECUTED,ref:38,Price:3254.1546,Size:-38.00,Cost:129070.4438,Comm 0.0000,Stock:hs300
+2014-12-29,BUY EXECUTED,ref:39,Price:3502.5332,Size:35.00,Cost:122588.6626,Comm 0.0000,Stock:hs300
+2015-01-14,SELL EXECUTED,ref:40,Price:3522.5547,Size:-35.00,Cost:122588.6626,Comm 0.0000,Stock:hs300
+2015-01-15,BUY EXECUTED,ref:41,Price:3502.0692,Size:35.00,Cost:122572.4210,Comm 0.0000,Stock:hs300
+2015-01-29,SELL EXECUTED,ref:42,Price:3474.5675,Size:-35.00,Cost:122572.4210,Comm 0.0000,Stock:hs300
+2015-02-12,BUY EXECUTED,ref:43,Price:3435.7045,Size:35.00,Cost:120249.6588,Comm 0.0000,Stock:hs300
+2015-03-03,SELL EXECUTED,ref:44,Price:3578.9571,Size:-35.00,Cost:120249.6588,Comm 0.0000,Stock:hs300
+2015-03-09,BUY EXECUTED,ref:45,Price:3450.0410,Size:36.00,Cost:124201.4749,Comm 0.0000,Stock:hs300
+2015-03-18,SELL EXECUTED,ref:46,Price:3768.7091,Size:-36.00,Cost:124201.4749,Comm 0.0000,Stock:hs300
+2015-04-21,BUY EXECUTED,ref:47,Price:4520.9130,Size:30.00,Cost:135627.3914,Comm 0.0000,Stock:hs300
+2015-04-29,SELL EXECUTED,ref:48,Price:4722.4307,Size:-30.00,Cost:135627.3914,Comm 0.0000,Stock:hs300
+2015-05-13,BUY EXECUTED,ref:49,Price:4747.1877,Size:30.00,Cost:142415.6301,Comm 0.0000,Stock:hs300
+2015-05-19,SELL EXECUTED,ref:50,Price:4577.6370,Size:-30.00,Cost:142415.6301,Comm 0.0000,Stock:hs300
+2015-06-04,BUY EXECUTED,ref:51,Price:5156.5276,Size:27.00,Cost:139226.2452,Comm 0.0000,Stock:hs300
+2015-06-05,SELL EXECUTED,ref:52,Price:5254.3795,Size:-27.00,Cost:139226.2452,Comm 0.0000,Stock:hs300
+2015-06-09,BUY EXECUTED,ref:53,Price:5380.0079,Size:26.00,Cost:139880.2066,Comm 0.0000,Stock:hs300
+2015-07-02,SELL EXECUTED,ref:54,Price:4287.3056,Size:-26.00,Cost:139880.2066,Comm 0.0000,Stock:hs300
+2015-08-03,BUY EXECUTED,ref:55,Price:3766.4485,Size:30.00,Cost:112993.4552,Comm 0.0000,Stock:hs300
+2015-08-20,SELL EXECUTED,ref:56,Price:3848.0186,Size:-30.00,Cost:112993.4552,Comm 0.0000,Stock:hs300
+2015-09-21,BUY EXECUTED,ref:57,Price:3222.9252,Size:36.00,Cost:116025.3058,Comm 0.0000,Stock:hs300
+2015-10-22,SELL EXECUTED,ref:58,Price:3452.8560,Size:-36.00,Cost:116025.3058,Comm 0.0000,Stock:hs300
+2015-10-27,BUY EXECUTED,ref:59,Price:3569.8055,Size:35.00,Cost:124943.1941,Comm 0.0000,Stock:hs300
+2015-11-09,SELL EXECUTED,ref:60,Price:3796.3792,Size:-35.00,Cost:124943.1941,Comm 0.0000,Stock:hs300
+2015-12-10,BUY EXECUTED,ref:61,Price:3634.7294,Size:36.00,Cost:130850.2597,Comm 0.0000,Stock:hs300
+2015-12-25,SELL EXECUTED,ref:62,Price:3831.7017,Size:-36.00,Cost:130850.2597,Comm 0.0000,Stock:hs300
+2016-02-18,BUY EXECUTED,ref:63,Price:3079.8352,Size:45.00,Cost:138592.5819,Comm 0.0000,Stock:hs300
+2016-03-03,SELL EXECUTED,ref:64,Price:3050.0836,Size:-45.00,Cost:138592.5819,Comm 0.0000,Stock:hs300
+2016-03-04,BUY EXECUTED,ref:65,Price:3047.8419,Size:45.00,Cost:137152.8834,Comm 0.0000,Stock:hs300
+2016-03-08,SELL EXECUTED,ref:66,Price:3099.8392,Size:-45.00,Cost:137152.8834,Comm 0.0000,Stock:hs300
+2016-03-16,BUY EXECUTED,ref:67,Price:3069.1733,Size:45.00,Cost:138112.7979,Comm 0.0000,Stock:hs300
+2016-03-23,SELL EXECUTED,ref:68,Price:3217.4070,Size:-45.00,Cost:138112.7979,Comm 0.0000,Stock:hs300
+2016-05-20,BUY EXECUTED,ref:69,Price:3048.0826,Size:47.00,Cost:143259.8812,Comm 0.0000,Stock:hs300
+2016-06-01,SELL EXECUTED,ref:70,Price:3172.6446,Size:-47.00,Cost:143259.8812,Comm 0.0000,Stock:hs300
+2016-06-20,BUY EXECUTED,ref:71,Price:3115.2179,Size:48.00,Cost:149530.4588,Comm 0.0000,Stock:hs300
+2016-07-01,SELL EXECUTED,ref:72,Price:3156.6163,Size:-48.00,Cost:149530.4588,Comm 0.0000,Stock:hs300
+2016-08-10,BUY EXECUTED,ref:73,Price:3255.5077,Size:47.00,Cost:153008.8628,Comm 0.0000,Stock:hs300
+2016-08-30,SELL EXECUTED,ref:74,Price:3309.9878,Size:-47.00,Cost:153008.8628,Comm 0.0000,Stock:hs300
+2016-09-27,BUY EXECUTED,ref:75,Price:3215.1919,Size:48.00,Cost:154329.2106,Comm 0.0000,Stock:hs300
+2016-10-31,SELL EXECUTED,ref:76,Price:3332.0728,Size:-48.00,Cost:154329.2106,Comm 0.0000,Stock:hs300
+2016-11-11,BUY EXECUTED,ref:77,Price:3388.2869,Size:47.00,Cost:159249.4841,Comm 0.0000,Stock:hs300
+2016-12-01,SELL EXECUTED,ref:78,Price:3543.6011,Size:-47.00,Cost:159249.4841,Comm 0.0000,Stock:hs300
+2016-12-30,BUY EXECUTED,ref:79,Price:3302.9296,Size:50.00,Cost:165146.4780,Comm 0.0000,Stock:hs300
+2017-01-12,SELL EXECUTED,ref:80,Price:3332.3524,Size:-50.00,Cost:165146.4780,Comm 0.0000,Stock:hs300
+2017-01-24,BUY EXECUTED,ref:81,Price:3363.4737,Size:50.00,Cost:168173.6857,Comm 0.0000,Stock:hs300
+2017-02-16,SELL EXECUTED,ref:82,Price:3421.4877,Size:-50.00,Cost:168173.6857,Comm 0.0000,Stock:hs300
+2017-03-29,BUY EXECUTED,ref:83,Price:3473.3138,Size:49.00,Cost:170192.3760,Comm 0.0000,Stock:hs300
+2017-04-28,SELL EXECUTED,ref:84,Price:3439.2295,Size:-49.00,Cost:170192.3760,Comm 0.0000,Stock:hs300
+2017-06-28,BUY EXECUTED,ref:85,Price:3664.5293,Size:46.00,Cost:168568.3485,Comm 0.0000,Stock:hs300
+2017-09-05,SELL EXECUTED,ref:86,Price:3845.1605,Size:-46.00,Cost:168568.3485,Comm 0.0000,Stock:hs300
+2017-09-19,BUY EXECUTED,ref:87,Price:3850.2644,Size:46.00,Cost:177112.1618,Comm 0.0000,Stock:hs300
+2017-10-18,SELL EXECUTED,ref:88,Price:3914.8152,Size:-46.00,Cost:177112.1618,Comm 0.0000,Stock:hs300
+2017-11-14,BUY EXECUTED,ref:89,Price:4129.6865,Size:43.00,Cost:177576.5207,Comm 0.0000,Stock:hs300
+2017-12-15,SELL EXECUTED,ref:90,Price:4018.3294,Size:-43.00,Cost:177576.5207,Comm 0.0000,Stock:hs300
+2018-01-15,BUY EXECUTED,ref:91,Price:4230.2587,Size:41.00,Cost:173440.6060,Comm 0.0000,Stock:hs300
+2018-02-02,SELL EXECUTED,ref:92,Price:4213.5172,Size:-41.00,Cost:173440.6060,Comm 0.0000,Stock:hs300
+2018-03-02,BUY EXECUTED,ref:93,Price:4015.3525,Size:43.00,Cost:172660.1573,Comm 0.0000,Stock:hs300
+2018-03-20,SELL EXECUTED,ref:94,Price:4045.3382,Size:-43.00,Cost:172660.1573,Comm 0.0000,Stock:hs300
+2018-04-10,BUY EXECUTED,ref:95,Price:3861.1086,Size:45.00,Cost:173749.8858,Comm 0.0000,Stock:hs300
+2018-05-08,SELL EXECUTED,ref:96,Price:3834.2306,Size:-45.00,Cost:173749.8858,Comm 0.0000,Stock:hs300
+2018-05-29,BUY EXECUTED,ref:97,Price:3824.5733,Size:45.00,Cost:172105.7994,Comm 0.0000,Stock:hs300
+2018-06-11,SELL EXECUTED,ref:98,Price:3769.8310,Size:-45.00,Cost:172105.7994,Comm 0.0000,Stock:hs300
+2018-06-14,BUY EXECUTED,ref:99,Price:3775.0171,Size:45.00,Cost:169875.7679,Comm 0.0000,Stock:hs300
+2018-06-25,SELL EXECUTED,ref:100,Price:3625.4358,Size:-45.00,Cost:169875.7679,Comm 0.0000,Stock:hs300
+2018-06-28,BUY EXECUTED,ref:101,Price:3435.2876,Size:48.00,Cost:164893.8045,Comm 0.0000,Stock:hs300
+2018-07-18,SELL EXECUTED,ref:102,Price:3456.2608,Size:-48.00,Cost:164893.8045,Comm 0.0000,Stock:hs300
+2018-07-24,BUY EXECUTED,ref:103,Price:3531.0172,Size:47.00,Cost:165957.8068,Comm 0.0000,Stock:hs300
+2018-08-08,SELL EXECUTED,ref:104,Price:3361.8123,Size:-47.00,Cost:165957.8068,Comm 0.0000,Stock:hs300
+2018-09-03,BUY EXECUTED,ref:105,Price:3321.0219,Size:48.00,Cost:159409.0497,Comm 0.0000,Stock:hs300
+2018-09-27,SELL EXECUTED,ref:106,Price:3415.6116,Size:-48.00,Cost:159409.0497,Comm 0.0000,Stock:hs300
+2018-10-25,BUY EXECUTED,ref:107,Price:3108.1510,Size:51.00,Cost:158515.7002,Comm 0.0000,Stock:hs300
+2018-11-06,SELL EXECUTED,ref:108,Price:3254.6523,Size:-51.00,Cost:158515.7002,Comm 0.0000,Stock:hs300
+2018-12-03,BUY EXECUTED,ref:109,Price:3261.0123,Size:53.00,Cost:172833.6502,Comm 0.0000,Stock:hs300
+2018-12-25,SELL EXECUTED,ref:110,Price:3006.5780,Size:-53.00,Cost:172833.6502,Comm 0.0000,Stock:hs300
+2019-01-09,BUY EXECUTED,ref:111,Price:3065.5372,Size:52.00,Cost:159407.9356,Comm 0.0000,Stock:hs300
+2019-01-17,SELL EXECUTED,ref:112,Price:3132.3152,Size:-52.00,Cost:159407.9356,Comm 0.0000,Stock:hs300
+2019-02-18,BUY EXECUTED,ref:113,Price:3366.7596,Size:48.00,Cost:161604.4628,Comm 0.0000,Stock:hs300
+2019-04-04,SELL EXECUTED,ref:114,Price:4039.3375,Size:-48.00,Cost:161604.4628,Comm 0.0000,Stock:hs300
+2019-04-11,BUY EXECUTED,ref:115,Price:4083.8701,Size:46.00,Cost:187858.0267,Comm 0.0000,Stock:hs300
+2019-04-24,SELL EXECUTED,ref:116,Price:4033.2258,Size:-46.00,Cost:187858.0267,Comm 0.0000,Stock:hs300
+2019-05-15,BUY EXECUTED,ref:117,Price:3675.3606,Size:51.00,Cost:187443.3906,Comm 0.0000,Stock:hs300
+2019-05-27,SELL EXECUTED,ref:118,Price:3592.2434,Size:-51.00,Cost:187443.3906,Comm 0.0000,Stock:hs300
+2019-06-19,BUY EXECUTED,ref:119,Price:3761.7142,Size:50.00,Cost:188085.7117,Comm 0.0000,Stock:hs300
+2019-07-09,SELL EXECUTED,ref:120,Price:3797.7156,Size:-50.00,Cost:188085.7117,Comm 0.0000,Stock:hs300
+2019-07-23,BUY EXECUTED,ref:121,Price:3783.9195,Size:49.00,Cost:185412.0533,Comm 0.0000,Stock:hs300
+2019-08-07,SELL EXECUTED,ref:122,Price:3654.2668,Size:-49.00,Cost:185412.0533,Comm 0.0000,Stock:hs300
+2019-09-20,BUY EXECUTED,ref:123,Price:3933.8527,Size:46.00,Cost:180957.2263,Comm 0.0000,Stock:hs300
+2019-10-10,SELL EXECUTED,ref:124,Price:3838.1027,Size:-46.00,Cost:180957.2263,Comm 0.0000,Stock:hs300
+2019-10-11,BUY EXECUTED,ref:125,Price:3885.9084,Size:45.00,Cost:174865.8758,Comm 0.0000,Stock:hs300
+2019-10-29,SELL EXECUTED,ref:126,Price:3929.3147,Size:-45.00,Cost:174865.8758,Comm 0.0000,Stock:hs300
+2019-10-30,BUY EXECUTED,ref:127,Price:3905.1077,Size:45.00,Cost:175729.8452,Comm 0.0000,Stock:hs300
+2019-11-07,SELL EXECUTED,ref:128,Price:3984.1544,Size:-45.00,Cost:175729.8452,Comm 0.0000,Stock:hs300
+2019-11-19,BUY EXECUTED,ref:129,Price:3904.4900,Size:46.00,Cost:179606.5405,Comm 0.0000,Stock:hs300
+2019-11-28,SELL EXECUTED,ref:130,Price:3877.5134,Size:-46.00,Cost:179606.5405,Comm 0.0000,Stock:hs300
+2019-12-03,BUY EXECUTED,ref:131,Price:3829.5949,Size:47.00,Cost:179990.9613,Comm 0.0000,Stock:hs300
+2019-12-12,SELL EXECUTED,ref:132,Price:3908.0629,Size:-47.00,Cost:179990.9613,Comm 0.0000,Stock:hs300
+2019-12-27,BUY EXECUTED,ref:133,Price:4029.6483,Size:45.00,Cost:181334.1746,Comm 0.0000,Stock:hs300
+2020-01-21,SELL EXECUTED,ref:134,Price:4164.6038,Size:-45.00,Cost:181334.1746,Comm 0.0000,Stock:hs300
+2020-02-20,BUY EXECUTED,ref:135,Price:4063.3031,Size:46.00,Cost:186911.9421,Comm 0.0000,Stock:hs300
+2020-03-06,SELL EXECUTED,ref:136,Price:4157.7863,Size:-46.00,Cost:186911.9421,Comm 0.0000,Stock:hs300
+2020-03-30,BUY EXECUTED,ref:137,Price:3657.8281,Size:52.00,Cost:190207.0636,Comm 0.0000,Stock:hs300
+2020-03-31,SELL EXECUTED,ref:138,Price:3707.7696,Size:-52.00,Cost:190207.0636,Comm 0.0000,Stock:hs300
+2020-04-07,BUY EXECUTED,ref:139,Price:3780.2856,Size:52.00,Cost:196574.8507,Comm 0.0000,Stock:hs300
+2020-04-10,SELL EXECUTED,ref:140,Price:3794.4634,Size:-52.00,Cost:196574.8507,Comm 0.0000,Stock:hs300
+2020-04-16,BUY EXECUTED,ref:141,Price:3778.1764,Size:51.00,Cost:192686.9954,Comm 0.0000,Stock:hs300
+2020-04-27,SELL EXECUTED,ref:142,Price:3807.6363,Size:-51.00,Cost:192686.9954,Comm 0.0000,Stock:hs300
+2020-05-25,BUY EXECUTED,ref:143,Price:3828.7034,Size:51.00,Cost:195263.8750,Comm 0.0000,Stock:hs300
+2020-05-27,SELL EXECUTED,ref:144,Price:3873.3110,Size:-51.00,Cost:195263.8750,Comm 0.0000,Stock:hs300
+2020-06-01,BUY EXECUTED,ref:145,Price:3902.1165,Size:51.00,Cost:199007.9401,Comm 0.0000,Stock:hs300
+2020-07-09,SELL EXECUTED,ref:146,Price:4769.5999,Size:-51.00,Cost:199007.9401,Comm 0.0000,Stock:hs300
+2020-08-07,BUY EXECUTED,ref:147,Price:4742.7681,Size:50.00,Cost:237138.4065,Comm 0.0000,Stock:hs300
+2020-08-20,SELL EXECUTED,ref:148,Price:4707.6545,Size:-50.00,Cost:237138.4065,Comm 0.0000,Stock:hs300
+2020-09-24,BUY EXECUTED,ref:149,Price:4624.4159,Size:51.00,Cost:235845.2107,Comm 0.0000,Stock:hs300
+2020-10-22,SELL EXECUTED,ref:150,Price:4780.1173,Size:-51.00,Cost:235845.2107,Comm 0.0000,Stock:hs300
+2020-10-29,BUY EXECUTED,ref:151,Price:4684.0754,Size:51.00,Cost:238887.8434,Comm 0.0000,Stock:hs300
+2020-11-16,SELL EXECUTED,ref:152,Price:4880.4699,Size:-51.00,Cost:238887.8434,Comm 0.0000,Stock:hs300
+2020-11-24,BUY EXECUTED,ref:153,Price:4997.5482,Size:50.00,Cost:249877.4102,Comm 0.0000,Stock:hs300
+2020-12-07,SELL EXECUTED,ref:154,Price:5065.2219,Size:-50.00,Cost:249877.4102,Comm 0.0000,Stock:hs300
+2020-12-21,BUY EXECUTED,ref:155,Price:4996.2618,Size:51.00,Cost:254809.3506,Comm 0.0000,Stock:hs300
+2021-01-06,SELL EXECUTED,ref:156,Price:5385.9757,Size:-51.00,Cost:254809.3506,Comm 0.0000,Stock:hs300
+2021-02-05,BUY EXECUTED,ref:157,Price:5495.2506,Size:50.00,Cost:274762.5285,Comm 0.0000,Stock:hs300
+2021-03-04,SELL EXECUTED,ref:158,Price:5387.9397,Size:-50.00,Cost:274762.5285,Comm 0.0000,Stock:hs300
+2021-03-05,BUY EXECUTED,ref:159,Price:5192.4891,Size:51.00,Cost:264816.9439,Comm 0.0000,Stock:hs300
+2021-03-23,SELL EXECUTED,ref:160,Price:5056.5575,Size:-51.00,Cost:264816.9439,Comm 0.0000,Stock:hs300
+2021-05-12,BUY EXECUTED,ref:161,Price:5004.3175,Size:52.00,Cost:260224.5090,Comm 0.0000,Stock:hs300
+2021-05-26,SELL EXECUTED,ref:162,Price:5325.5843,Size:-52.00,Cost:260224.5090,Comm 0.0000,Stock:hs300
+2021-06-29,BUY EXECUTED,ref:163,Price:5248.5249,Size:53.00,Cost:278171.8197,Comm 0.0000,Stock:hs300
+2021-08-05,SELL EXECUTED,ref:164,Price:4945.6722,Size:-53.00,Cost:278171.8197,Comm 0.0000,Stock:hs300
+2021-09-02,BUY EXECUTED,ref:165,Price:4866.3084,Size:54.00,Cost:262780.6526,Comm 0.0000,Stock:hs300
+2021-10-12,SELL EXECUTED,ref:166,Price:4920.1675,Size:-54.00,Cost:262780.6526,Comm 0.0000,Stock:hs300
+2021-10-20,BUY EXECUTED,ref:167,Price:4927.2654,Size:54.00,Cost:266072.3304,Comm 0.0000,Stock:hs300
+2021-10-29,SELL EXECUTED,ref:168,Price:4860.7806,Size:-54.00,Cost:266072.3304,Comm 0.0000,Stock:hs300
+2021-11-02,BUY EXECUTED,ref:169,Price:4886.6735,Size:54.00,Cost:263880.3700,Comm 0.0000,Stock:hs300
+2021-12-08,SELL EXECUTED,ref:170,Price:4933.9122,Size:-54.00,Cost:263880.3700,Comm 0.0000,Stock:hs300
+2022-01-07,BUY EXECUTED,ref:171,Price:4824.8005,Size:55.00,Cost:265364.0292,Comm 0.0000,Stock:hs300
+2022-01-17,SELL EXECUTED,ref:172,Price:4728.2866,Size:-55.00,Cost:265364.0292,Comm 0.0000,Stock:hs300
+2022-01-27,BUY EXECUTED,ref:173,Price:4708.4364,Size:55.00,Cost:258964.0020,Comm 0.0000,Stock:hs300
+2022-02-24,SELL EXECUTED,ref:174,Price:4591.6098,Size:-55.00,Cost:258964.0020,Comm 0.0000,Stock:hs300
+2022-05-18,BUY EXECUTED,ref:175,Price:4015.4149,Size:63.00,Cost:252971.1388,Comm 0.0000,Stock:hs300
+2022-06-10,SELL EXECUTED,ref:176,Price:4145.2359,Size:-63.00,Cost:252971.1388,Comm 0.0000,Stock:hs300
+2022-06-16,BUY EXECUTED,ref:177,Price:4282.5109,Size:61.00,Cost:261233.1654,Comm 0.0000,Stock:hs300
+2022-07-06,SELL EXECUTED,ref:178,Price:4475.0340,Size:-61.00,Cost:261233.1654,Comm 0.0000,Stock:hs300
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">analysis_rets</span><span class="p">(</span><span class="n">bt_data</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">],</span> <span class="n">bt_result</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "65679c7030f6407ab4f4cc904a45742c", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">analysis_trade</span><span class="p">(</span><span class="n">bt_data</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">],</span><span class="n">bt_result</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "aa6732156b4f4d95bc34899ca28af6ce", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Astock_market/QuantsPlaybook研报复现/C-择时类/特征分布建模择时"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">数据准备</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">信号构造</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">席位分析期望收益分布</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">回测</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">信号生成逻辑</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">交易信号构造</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
