@@ -355,12 +355,210 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <p>做T（或称“做T+0”）是指投资者在持有某只股票的仓位基础上，利用该股票在一天内的价格波动，进行同等数量的买卖操作来赚取差价。</p>
+<ul class="simple">
+<li><p>其核心是“日内高抛低吸”，通过低买高卖或高卖低买来赚取差价，最终在保持股票总数不变或增加的情况下，达到降低成本或获利的目的。</p></li>
+<li><p>tushare API测试需要200元充值2k积分，故我没跑成功</p></li>
+<li><p>本ipynb仅提供回测，并对比做T和不做的回报</p></li>
+</ul>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">t</span><span class="o">-</span><span class="n">strategy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Created on Mon Apr  6 17:14:00 2020 @author: hcb</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tushare</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ts</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mootdx.quotes</span><span class="w"> </span><span class="kn">import</span> <span class="n">Quotes</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+<span class="n">mytoken</span> <span class="o">=</span> <span class="s1">&#39;b9c68c65aae9257892ce8e4ec818ef6c784cfbbcd57e9f2e7100c49d&#39;</span> <span class="c1"># tushare api,大家可以自己到tushare上注册获取（免费的）</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">set_token</span><span class="p">(</span><span class="n">mytoken</span><span class="p">)</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">set_token</span><span class="p">(</span><span class="n">mytoken</span><span class="p">)</span>
+<span class="n">save_path</span> <span class="o">=</span> <span class="s1">&#39;stock&#39;</span>
+<span class="n">pro</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">pro_api</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_score</span><span class="p">(</span><span class="n">index_df</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">tmp_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;ma3&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;ma3&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">tmp_rate</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+    <span class="n">tmp_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;ma10&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;ma10&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">tmp_rate</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">2</span>
+
+    <span class="n">tmp_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;ma20&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;ma20&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">tmp_rate</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">2</span>
+
+    <span class="n">tmp_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;ma30&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;ma30&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">tmp_rate</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="k">if</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;ma3_trend&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="k">if</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;ma10_trend&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">2</span>
+    <span class="k">elif</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;ma10_trend&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;ma20_trend&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">2</span>
+    <span class="k">elif</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;ma20_trend&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;Collapse_sum&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">score</span> <span class="o">-</span> <span class="mi">2</span>
+    
+    <span class="k">if</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;rate&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.01</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">score</span> <span class="o">+</span> <span class="mi">2</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.015</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">((</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span><span class="o">&lt;</span><span class="mf">0.03</span><span class="p">:</span>
+            <span class="n">score</span> <span class="o">=</span> <span class="n">score</span> <span class="o">+</span> <span class="mi">3</span>
+
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">score</span><span class="o">=</span><span class="mi">10</span>  
+    <span class="k">return</span> <span class="n">score</span>
+    
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_score2</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">tmp_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ma3&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ma3&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">tmp_rate</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+    <span class="n">tmp_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ma10&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ma10&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">tmp_rate</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">2</span>
+
+    <span class="n">tmp_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ma20&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ma20&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">tmp_rate</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">2</span>
+
+    <span class="n">tmp_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ma30&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ma30&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">tmp_rate</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ma3_trend&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ma10_trend&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">2</span>
+    <span class="k">elif</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ma10_trend&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ma20_trend&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">2</span>
+    <span class="k">elif</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ma20_trend&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ma30_trend&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">score</span><span class="o">=</span><span class="mi">10</span>  
+    <span class="k">return</span> <span class="n">score</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">comput_space</span><span class="p">(</span><span class="n">startdate</span><span class="o">=</span><span class="mi">20040101</span><span class="p">,</span> <span class="n">enddate</span><span class="o">=</span><span class="mi">20200407</span><span class="p">):</span>
+    <span class="n">index_df</span> <span class="o">=</span> <span class="n">pro</span><span class="o">.</span><span class="n">index_daily</span><span class="p">(</span><span class="n">ts_code</span><span class="o">=</span><span class="s1">&#39;000001.SH&#39;</span><span class="p">,</span>
+                         <span class="n">start_date</span><span class="o">=</span><span class="n">startdate</span><span class="p">,</span>
+                         <span class="n">end_date</span><span class="o">=</span><span class="n">enddate</span><span class="p">,</span>
+                         <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;ts_code, trade_date, open, high, low, close, pre_close, change, pct_chg, &#39;</span>
+                                <span class="s1">&#39;vol, amount&#39;</span><span class="p">)</span>
+    <span class="n">index_df</span> <span class="o">=</span> <span class="n">index_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;trade_date&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;pre_close&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;pre_close&#39;</span><span class="p">]</span>
+    <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;Collapse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;rate&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">0.02</span>
+    <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;Collapse_sum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;Collapse&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    
+    <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">index_df</span> <span class="o">=</span> <span class="n">index_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;trade_date&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># 计算均线</span>
+    <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]:</span>
+        <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;ma&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">day</span><span class="p">)]</span> <span class="o">=</span> <span class="n">index_df</span><span class="o">.</span><span class="n">close</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">day</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ma3&#39;</span><span class="p">,</span> <span class="s1">&#39;ma10&#39;</span><span class="p">,</span> <span class="s1">&#39;ma20&#39;</span><span class="p">,</span> <span class="s1">&#39;ma30&#39;</span><span class="p">]</span>
+    <span class="n">tmp_df2</span> <span class="o">=</span> <span class="n">index_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">tmp_df3</span> <span class="o">=</span> <span class="n">index_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">tmp_col</span> <span class="ow">in</span> <span class="n">col</span><span class="p">:</span>
+        <span class="n">index_df</span><span class="p">[</span><span class="n">tmp_col</span> <span class="o">+</span> <span class="s1">&#39;_trend&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># tmp_df[tmp_col + &#39;_shift_1&#39;] = tmp_df2[tmp_col]</span>
+        <span class="c1"># tmp_df[tmp_col _ &#39;shift_2&#39;] = tmp_df3[tmp_col]</span>
+        <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;rate1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">tmp_df2</span><span class="p">[</span><span class="n">tmp_col</span><span class="p">]</span> <span class="o">-</span> <span class="n">tmp_df3</span><span class="p">[</span><span class="n">tmp_col</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">tmp_df3</span><span class="p">[</span><span class="n">tmp_col</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.00001</span><span class="p">)</span>
+        <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;rate2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">index_df</span><span class="p">[</span><span class="n">tmp_col</span><span class="p">]</span> <span class="o">-</span> <span class="n">tmp_df2</span><span class="p">[</span><span class="n">tmp_col</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">tmp_df2</span><span class="p">[</span><span class="n">tmp_col</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.00001</span><span class="p">)</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;rate1&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.002</span><span class="p">)</span> <span class="c1">#&amp; (index_df[&#39;rate2&#39;] &gt; 0.006)</span>
+        <span class="n">index_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">tmp_col</span> <span class="o">+</span> <span class="s1">&#39;_trend&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># 趋势向上</span>
+    
+        <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;rate1&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">0.004</span><span class="p">)</span> <span class="c1">#&amp; (index_df[&#39;rate2&#39;] &lt; -0.003)</span>
+        <span class="n">index_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">tmp_col</span> <span class="o">+</span> <span class="s1">&#39;_trend&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># 趋势向下</span>
+        
+    <span class="n">index_df</span> <span class="o">=</span> <span class="n">index_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">31</span><span class="p">:]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">score_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">index_df</span><span class="p">)):</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">compute_score</span><span class="p">(</span><span class="n">index_df</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span>
+        <span class="n">score_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">score_list</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;trade_date&#39;</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="n">symbol</span><span class="o">=</span><span class="s1">&#39;510300&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> 
+             <span class="n">end_date</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    
+    <span class="c1"># now = start_date</span>
+    <span class="n">df_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">Quotes</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span><span class="n">market</span><span class="o">=</span><span class="s1">&#39;std&#39;</span><span class="p">)</span>
+    <span class="n">s_idx</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># t = str(now.year)+str(now.month).zfill(2)+str(now.day).zfill(2)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">bars</span><span class="p">(</span><span class="n">symbol</span><span class="o">=</span><span class="n">symbol</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">s_idx</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">df_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+        <span class="n">s_idx</span> <span class="o">+=</span> <span class="mi">800</span>
+        <span class="c1"># now = now + datetime.timedelta(1)</span>
+    <span class="n">df_list</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">df_list</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+        <span class="n">df_list</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">symbol</span><span class="o">+</span><span class="s1">&#39;.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df_list</span>
+       
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">score_list</span><span class="p">,</span> <span class="n">date_list</span> <span class="o">=</span> <span class="n">comput_space</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">Exception</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">167</span>
+<span class="g g-Whitespace">    </span><span class="mi">164</span>     <span class="k">return</span> <span class="n">df_list</span>
+<span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">167</span>     <span class="n">score_list</span><span class="p">,</span> <span class="n">date_list</span> <span class="o">=</span> <span class="n">comput_space</span><span class="p">()</span>
+
+<span class="nn">Cell In[10], line 106,</span> in <span class="ni">comput_space</span><span class="nt">(startdate, enddate)</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span> <span class="k">def</span><span class="w"> </span><span class="nf">comput_space</span><span class="p">(</span><span class="n">startdate</span><span class="o">=</span><span class="mi">20040101</span><span class="p">,</span> <span class="n">enddate</span><span class="o">=</span><span class="mi">20200407</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">106</span>     <span class="n">index_df</span> <span class="o">=</span> <span class="n">pro</span><span class="o">.</span><span class="n">index_daily</span><span class="p">(</span><span class="n">ts_code</span><span class="o">=</span><span class="s1">&#39;000001.SH&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span>                          <span class="n">start_date</span><span class="o">=</span><span class="n">startdate</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span>                          <span class="n">end_date</span><span class="o">=</span><span class="n">enddate</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">109</span>                          <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;ts_code, trade_date, open, high, low, close, pre_close, change, pct_chg, &#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span>                                 <span class="s1">&#39;vol, amount&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>     <span class="n">index_df</span> <span class="o">=</span> <span class="n">index_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;trade_date&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">113</span>     <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;pre_close&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="n">index_df</span><span class="p">[</span><span class="s1">&#39;pre_close&#39;</span><span class="p">]</span>
+
+<span class="nn">File ~/miniconda3/lib/python3.13/site-packages/tushare/pro/client.py:45,</span> in <span class="ni">DataApi.query</span><span class="nt">(self, api_name, fields, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">45</span>     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;msg&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="n">data</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;fields&#39;</span><span class="p">]</span>
+
+<span class="ne">Exception</span>: 抱歉，您没有接口访问权限，权限的具体详情访问：https://tushare.pro/document/1?doc_id=108。
 </pre></div>
 </div>
 </div>

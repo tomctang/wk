@@ -567,130 +567,148 @@ document.write(`
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-Wolfram Language notranslate"><div class="highlight"><pre><span></span># backtesting_compare: Vector.VS. Event
-import numpy as np
-import pandas as pd
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># backtesting_compare: Vector.VS. Event</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-&quot;&quot;&quot;
-Minimal demo to compare a vectorized backtester and an event‑driven backtester
-running the SAME simple‑moving‑average (SMA) crossover strategy.
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Minimal demo to compare a vectorized backtester and an event‑driven backtester</span>
+<span class="sd">running the SAME simple‑moving‑average (SMA) crossover strategy.</span>
 
-Run this file (`python backtesting_compare.py`) to print performance metrics
-for both engines. The data is synthetic so the script is self‑contained.
-&quot;&quot;&quot;
+<span class="sd">Run this file (`python backtesting_compare.py`) to print performance metrics</span>
+<span class="sd">for both engines. The data is synthetic so the script is self‑contained.</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
-###############################################################################
-# Utility helpers
-###############################################################################
+<span class="c1">###############################################################################</span>
+<span class="c1"># Utility helpers</span>
+<span class="c1">###############################################################################</span>
 
-def generate_data(seed: int = 42, periods: int = 250) -&gt; pd.DataFrame:
-    &quot;&quot;&quot;Create a fake price series so the demo is entirely offline‑capable.&quot;&quot;&quot;
-    rng = np.random.default_rng(seed)
-    dates = pd.date_range(&quot;2024-01-01&quot;, periods=periods, freq=&quot;D&quot;)
-    prices = 100 + rng.standard_normal(periods).cumsum()
-    return pd.DataFrame({&quot;Close&quot;: prices}, index=dates)
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_data</span><span class="p">(</span><span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span> <span class="n">periods</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">250</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a fake price series so the demo is entirely offline‑capable.&quot;&quot;&quot;</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2024-01-01&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="n">periods</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
+    <span class="n">prices</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="n">periods</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Close&quot;</span><span class="p">:</span> <span class="n">prices</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="p">)</span>
 
-def perf_metrics(equity_curve: pd.Series) -&gt; dict:
-    &quot;&quot;&quot;Return Total Return, Sharpe and Max Drawdown for an equity curve.&quot;&quot;&quot;
-    rets = equity_curve.pct_change().dropna()
-    total_return = equity_curve.iloc[-1] / equity_curve.iloc[0] - 1
-    sharpe = rets.mean() / rets.std() * np.sqrt(252) if rets.std() != 0 else np.nan
-    running_max = equity_curve.cummax()
-    drawdown = (equity_curve - running_max) / running_max
-    max_dd = drawdown.min()
-    return {
-        &quot;total_return&quot;: round(total_return, 4),
-        &quot;sharpe&quot;: round(sharpe, 2),
-        &quot;max_drawdown&quot;: round(max_dd, 4),
-    }
+<span class="k">def</span><span class="w"> </span><span class="nf">perf_metrics</span><span class="p">(</span><span class="n">equity_curve</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return Total Return, Sharpe and Max Drawdown for an equity curve.&quot;&quot;&quot;</span>
+    <span class="n">rets</span> <span class="o">=</span> <span class="n">equity_curve</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="n">total_return</span> <span class="o">=</span> <span class="n">equity_curve</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">equity_curve</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">sharpe</span> <span class="o">=</span> <span class="n">rets</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="n">rets</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span> <span class="k">if</span> <span class="n">rets</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">running_max</span> <span class="o">=</span> <span class="n">equity_curve</span><span class="o">.</span><span class="n">cummax</span><span class="p">()</span>
+    <span class="n">drawdown</span> <span class="o">=</span> <span class="p">(</span><span class="n">equity_curve</span> <span class="o">-</span> <span class="n">running_max</span><span class="p">)</span> <span class="o">/</span> <span class="n">running_max</span>
+    <span class="n">max_dd</span> <span class="o">=</span> <span class="n">drawdown</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;total_return&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">total_return</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+        <span class="s2">&quot;sharpe&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">sharpe</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s2">&quot;max_drawdown&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">max_dd</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="p">}</span>
 
-###############################################################################
-# 1) Vectorized backtester (pandas‑style)
-###############################################################################
+<span class="c1">###############################################################################</span>
+<span class="c1"># 1) Vectorized backtester (pandas‑style)</span>
+<span class="c1">###############################################################################</span>
 
-def vectorized_backtest(
-    df: pd.DataFrame, fast: int = 10, slow: int = 30, initial_capital: float = 1_000_000
-):
-    data = df.copy()
-    data[&quot;fast&quot;] = data[&quot;Close&quot;].rolling(fast).mean()
-    data[&quot;slow&quot;] = data[&quot;Close&quot;].rolling(slow).mean()
+<span class="k">def</span><span class="w"> </span><span class="nf">vectorized_backtest</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">fast</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">slow</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">initial_capital</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1_000_000</span>
+<span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;fast&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">fast</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;slow&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">slow</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-    # Trading signal: long when fast MA &gt; slow MA; flat otherwise
-    data[&quot;position&quot;] = (data[&quot;fast&quot;] &gt; data[&quot;slow&quot;]).astype(int).shift().fillna(0)
+    <span class="c1"># Trading signal: long when fast MA &gt; slow MA; flat otherwise</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;position&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;fast&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;slow&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-    # Strategy returns (no transaction cost, perfect fills)
-    data[&quot;strategy_ret&quot;] = data[&quot;position&quot;] * data[&quot;Close&quot;].pct_change().fillna(0)
-    data[&quot;equity&quot;] = (1 + data[&quot;strategy_ret&quot;]).cumprod() * initial_capital
+    <span class="c1"># Strategy returns (no transaction cost, perfect fills)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;strategy_ret&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;position&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;equity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;strategy_ret&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span> <span class="o">*</span> <span class="n">initial_capital</span>
 
-    return perf_metrics(data[&quot;equity&quot;]), data
+    <span class="k">return</span> <span class="n">perf_metrics</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;equity&quot;</span><span class="p">]),</span> <span class="n">data</span>
 
-###############################################################################
-# 2) Event‑driven backtester (single‑asset, bar‑by‑bar loop)
-###############################################################################
+<span class="c1">###############################################################################</span>
+<span class="c1"># 2) Event‑driven backtester (single‑asset, bar‑by‑bar loop)</span>
+<span class="c1">###############################################################################</span>
 
-def event_backtest(
-    df: pd.DataFrame, fast: int = 10, slow: int = 30, initial_capital: float = 1_000_000
-):
-    price = df[&quot;Close&quot;].values
-    fast_ma = pd.Series(price).rolling(fast).mean().values
-    slow_ma = pd.Series(price).rolling(slow).mean().values
+<span class="k">def</span><span class="w"> </span><span class="nf">event_backtest</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">fast</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">slow</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">initial_capital</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1_000_000</span>
+<span class="p">):</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">fast_ma</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">fast</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">slow_ma</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">slow</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
 
-    equity_curve = []
-    cash, position = initial_capital, 0.0  # dollars, shares
+    <span class="n">equity_curve</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">cash</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">initial_capital</span><span class="p">,</span> <span class="mf">0.0</span>  <span class="c1"># dollars, shares</span>
 
-    for t in range(len(price)):
-        # generate signal when both MAs are ready
-        if t &gt;= slow:
-            # Cross‑up
-            if (
-                position == 0
-                and fast_ma[t - 1] &lt;= slow_ma[t - 1]
-                and fast_ma[t] &gt; slow_ma[t]
-            ):
-                # BUY at open price of bar t (here use close for simplicity)
-                position = cash / price[t]
-                cash = 0
-            # Cross‑down
-            elif (
-                position &gt; 0
-                and fast_ma[t - 1] &gt;= slow_ma[t - 1]
-                and fast_ma[t] &lt; slow_ma[t]
-            ):
-                # SELL everything
-                cash = position * price[t]
-                position = 0
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">price</span><span class="p">)):</span>
+        <span class="c1"># generate signal when both MAs are ready</span>
+        <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="n">slow</span><span class="p">:</span>
+            <span class="c1"># Cross‑up</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">position</span> <span class="o">==</span> <span class="mi">0</span>
+                <span class="ow">and</span> <span class="n">fast_ma</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">slow_ma</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="ow">and</span> <span class="n">fast_ma</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">slow_ma</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+            <span class="p">):</span>
+                <span class="c1"># BUY at open price of bar t (here use close for simplicity)</span>
+                <span class="n">position</span> <span class="o">=</span> <span class="n">cash</span> <span class="o">/</span> <span class="n">price</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+                <span class="n">cash</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># Cross‑down</span>
+            <span class="k">elif</span> <span class="p">(</span>
+                <span class="n">position</span> <span class="o">&gt;</span> <span class="mi">0</span>
+                <span class="ow">and</span> <span class="n">fast_ma</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">slow_ma</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="ow">and</span> <span class="n">fast_ma</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">slow_ma</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+            <span class="p">):</span>
+                <span class="c1"># SELL everything</span>
+                <span class="n">cash</span> <span class="o">=</span> <span class="n">position</span> <span class="o">*</span> <span class="n">price</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+                <span class="n">position</span> <span class="o">=</span> <span class="mi">0</span>
 
-        # Equity value mark‑to‑market at bar close
-        equity = cash + position * price[t]
-        equity_curve.append(equity)
+        <span class="c1"># Equity value mark‑to‑market at bar close</span>
+        <span class="n">equity</span> <span class="o">=</span> <span class="n">cash</span> <span class="o">+</span> <span class="n">position</span> <span class="o">*</span> <span class="n">price</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+        <span class="n">equity_curve</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">equity</span><span class="p">)</span>
 
-    equity_ser = pd.Series(equity_curve, index=df.index)
-    return perf_metrics(equity_ser), equity_ser
+    <span class="n">equity_ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">equity_curve</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">perf_metrics</span><span class="p">(</span><span class="n">equity_ser</span><span class="p">),</span> <span class="n">equity_ser</span>
 
-###############################################################################
-# Demo runner: compare both engines on the same data &amp; strategy
-###############################################################################
+<span class="c1">###############################################################################</span>
+<span class="c1"># Demo runner: compare both engines on the same data &amp; strategy</span>
+<span class="c1">###############################################################################</span>
 
-def main():
-    df = generate_data()
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">()</span>
 
-    vec_metrics, vec_df = vectorized_backtest(df)
-    evt_metrics, evt_curve = event_backtest(df)
+    <span class="n">vec_metrics</span><span class="p">,</span> <span class="n">vec_df</span> <span class="o">=</span> <span class="n">vectorized_backtest</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">evt_metrics</span><span class="p">,</span> <span class="n">evt_curve</span> <span class="o">=</span> <span class="n">event_backtest</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
-    print(&quot;=== Vectorized Backtest ===&quot;)
-    for k, v in vec_metrics.items():
-        print(f&quot;{k}: {v}&quot;)
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Vectorized Backtest ===&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vec_metrics</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    print(&quot;\n=== Event‑Driven Backtest ===&quot;)
-    for k, v in evt_metrics.items():
-        print(f&quot;{k}: {v}&quot;)
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Event‑Driven Backtest ===&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">evt_metrics</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    print(&quot;\nDelta (Vectorized – Event):&quot;)
-    for k in vec_metrics:
-        print(f&quot;{k}: {vec_metrics[k] - evt_metrics[k]:.4f}&quot;)
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Delta (Vectorized – Event):&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">vec_metrics</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">vec_metrics</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">evt_metrics</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-if __name__ == &quot;__main__&quot;:
-    main()
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Vectorized Backtest ===
+total_return: -0.1001
+sharpe: -1.17
+max_drawdown: -0.1425
+
+=== Event‑Driven Backtest ===
+total_return: -0.1189
+sharpe: -1.69
+max_drawdown: -0.1189
+
+Delta (Vectorized – Event):
+total_return: 0.0188
+sharpe: 0.5200
+max_drawdown: -0.0236
 </pre></div>
 </div>
 </div>
@@ -740,30 +758,30 @@ if __name__ == &quot;__main__&quot;:
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-Wolfram Language notranslate"><div class="highlight"><pre><span></span># 计算均线交叉信号
-import pandas as pd
-data[&quot;SMA10&quot;] = data[&quot;Close&quot;].rolling(window=10).mean()
-data[&quot;SMA50&quot;] = data[&quot;Close&quot;].rolling(window=50).mean()
-data[&quot;Signal&quot;] = (data[&quot;SMA10&quot;] &gt; data[&quot;SMA50&quot;]).astype(int)
-print(data.tail())
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 计算均线交叉信号</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;SMA10&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;SMA50&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;Signal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;SMA10&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;SMA50&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
 
-# 通过 IB API 发送订单
-from ib_insync import *
-ib = IB()
-ib.connect(&#39;127.0.0.1&#39;, 7497, clientId=1)
-contract = Stock(&#39;AAPL&#39;, &#39;SMART&#39;, &#39;USD&#39;)
-order = MarketOrder(&#39;BUY&#39;, 10)
-ib.placeOrder(contract, order)
+<span class="c1"># 通过 IB API 发送订单</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ib_insync</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="n">ib</span> <span class="o">=</span> <span class="n">IB</span><span class="p">()</span>
+<span class="n">ib</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">7497</span><span class="p">,</span> <span class="n">clientId</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">contract</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span> <span class="s1">&#39;SMART&#39;</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">)</span>
+<span class="n">order</span> <span class="o">=</span> <span class="n">MarketOrder</span><span class="p">(</span><span class="s1">&#39;BUY&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">ib</span><span class="o">.</span><span class="n">placeOrder</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
 
-# 设置止损
-if data[&quot;Close&quot;][-1] &lt; stop_loss_price:
-    order = MarketOrder(&#39;SELL&#39;, 10)
-    ib.placeOrder(contract, order)
+<span class="c1"># 设置止损</span>
+<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Close&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">stop_loss_price</span><span class="p">:</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">MarketOrder</span><span class="p">(</span><span class="s1">&#39;SELL&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">ib</span><span class="o">.</span><span class="n">placeOrder</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
 
-# 记录交易日志
-import logging
-logging.basicConfig(filename=&#39;trading_log.txt&#39;, level=logging.INFO)
-logging.info(f&quot;买入 AAPL，价格：{buy_price}，时间：{time_now}&quot;)
+<span class="c1"># 记录交易日志</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;trading_log.txt&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;买入 AAPL，价格：</span><span class="si">{</span><span class="n">buy_price</span><span class="si">}</span><span class="s2">，时间：</span><span class="si">{</span><span class="n">time_now</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -796,16 +814,16 @@ logging.info(f&quot;买入 AAPL，价格：{buy_price}，时间：{time_now}&quo
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "wolframlanguage14.2"
+            mode: "python"
         },
         kernelOptions: {
-            name: "wolframlanguage14.2",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'wolframlanguage14.2'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
