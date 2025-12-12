@@ -11,6 +11,11 @@ parts:
   - file: qc_platforms
   - file: qc_terms
 
+- caption: How OEIS Build Math
+  numbered: true
+  chapters:
+  - file: How_IntegerSeq_build_math
+
 - caption: Notebook
   numbered: true
   chapters:
