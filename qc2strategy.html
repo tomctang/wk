@@ -176,10 +176,14 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">How OEIS Build Math</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="nb2024.html">1. Notebook 2023-25</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nb2022.html">2. Notebook &lt;=2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How_IntegerSeq_build_math.html">1. How Integer Seq build Math</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="nb2024.html">2. Notebook 2023-25</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nb2022.html">3. Notebook &lt;=2022</a></li>
 </ul>
 
     </div>
@@ -344,7 +348,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#momentum">Momentum</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pair-trading">配对交易Pair trading</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-analysis">技术分析交易Technical Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-sector-analysis-using-corporate-indicators">企业指标for行业分析 Sector Analysis using corporate indicators</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-price-to-earning-ratio">PER(Price-to-Earning Ratio)市盈率</a></li>
@@ -352,6 +355,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">风险</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pair-trading">配对交易Pair trading</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">打板策略</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">小市值策略</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">消息面-AI文本分析</a></li>
@@ -371,6 +375,12 @@ document.write(`
 <section id="momentum">
 <h2>Momentum<a class="headerlink" href="#momentum" title="Link to this heading">#</a></h2>
 <img src="https://raw.githubusercontent.com/tomctang/NB_img/main/momentum.png" alt="C" width="700">
+<p>双均线策略</p>
+<ul class="simple">
+<li><p>20日均线高于120日均线时, 次日买入</p></li>
+<li><p>20日均线低于120日均线时, 次日卖出</p></li>
+</ul>
+<p>热门板块分析（轮动）</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -455,7 +465,7 @@ document.write(`
         <span class="n">end_date</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">end_date</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="c1"># Create rolling series for signals</span>
-    <span class="n">rolling_long_signals</span> <span class="o">=</span> <span class="n">long_signals</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">rolling_long_signals</span> <span class="o">=</span> <span class="n">long_signals</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="c1"># 设置 3</span>
     <span class="n">rolling_short_signals</span> <span class="o">=</span> <span class="n">short_signals</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
     <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
@@ -492,9 +502,9 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">START_DATE</span> <span class="o">=</span> <span class="s1">&#39;2024-01-01&#39;</span>
-<span class="n">END_DATE</span> <span class="o">=</span> <span class="s1">&#39;2025-08-25&#39;</span>
-<span class="n">COMPANY</span> <span class="o">=</span> <span class="s1">&#39;600869.SS&#39;</span> <span class="c1"># &#39;MC.PA&#39; # </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">START_DATE</span> <span class="o">=</span> <span class="s1">&#39;2024-10-01&#39;</span>
+<span class="n">END_DATE</span> <span class="o">=</span> <span class="s1">&#39;2025-10-24&#39;</span>
+<span class="n">COMPANY</span> <span class="o">=</span>  <span class="s1">&#39;002241.SZ&#39;</span> <span class="c1"># &#39;MC.PA&#39;   600096.SS  600869.SS  000878.SZ</span>
 
 <span class="c1"># test 1: momentum</span>
 <span class="c1"># Set up the analysis period of a company, call momentum strategy &amp; rank_asset</span>
@@ -509,382 +519,64 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5341/3720828892.py:17: FutureWarning: YF.download() has changed argument auto_adjust default to True
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_34279/3786418282.py:17: FutureWarning: YF.download() has changed argument auto_adjust default to True
   data = yf.download(ticker, start=start_date, end=end_date)[[&#39;Close&#39;]]
 [*********************100%***********************]  1 of 1 completed
-/tmp/ipykernel_5341/3720828892.py:45: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_34279/3786418282.py:45: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   plt.plot(data[long_signals[ticker]], &#39;^&#39;, color=&#39;g&#39;, markersize=10, label=&#39;Long Signal&#39;)
-/tmp/ipykernel_5341/3720828892.py:46: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_34279/3786418282.py:46: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   plt.plot(data[short_signals[ticker]], &#39;v&#39;, color=&#39;r&#39;, markersize=10, label=&#39;Short Signal&#39;)
 </pre></div>
 </div>
-<img alt="_images/d02dea744825dc712b18cd92898c5d5b76f530b7477f71d41ee4bb6caa8d8a88.png" src="_images/d02dea744825dc712b18cd92898c5d5b76f530b7477f71d41ee4bb6caa8d8a88.png" />
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5341/3720828892.py:17: FutureWarning: YF.download() has changed argument auto_adjust default to True
+<img alt="_images/935aedbb6db9b846064570d74d598ed153e2b50e252fb4a190a7a07dcd332fce.png" src="_images/935aedbb6db9b846064570d74d598ed153e2b50e252fb4a190a7a07dcd332fce.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_34279/3786418282.py:17: FutureWarning: YF.download() has changed argument auto_adjust default to True
   data = yf.download(ticker, start=start_date, end=end_date)[[&#39;Close&#39;]]
 [*********************100%***********************]  1 of 1 completed
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The long-to-short signal ratio for yours from 2024-01-01 to 2025-08-25 is: 1.33
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The long-to-short signal ratio for yours from 2024-10-01 to 2025-10-24 is: 1.72
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5341/3720828892.py:45: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_34279/3786418282.py:45: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   plt.plot(data[long_signals[ticker]], &#39;^&#39;, color=&#39;g&#39;, markersize=10, label=&#39;Long Signal&#39;)
-/tmp/ipykernel_5341/3720828892.py:46: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_34279/3786418282.py:46: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   plt.plot(data[short_signals[ticker]], &#39;v&#39;, color=&#39;r&#39;, markersize=10, label=&#39;Short Signal&#39;)
 </pre></div>
 </div>
-<img alt="_images/d02dea744825dc712b18cd92898c5d5b76f530b7477f71d41ee4bb6caa8d8a88.png" src="_images/d02dea744825dc712b18cd92898c5d5b76f530b7477f71d41ee4bb6caa8d8a88.png" />
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5341/3720828892.py:88: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+<img alt="_images/935aedbb6db9b846064570d74d598ed153e2b50e252fb4a190a7a07dcd332fce.png" src="_images/935aedbb6db9b846064570d74d598ed153e2b50e252fb4a190a7a07dcd332fce.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_34279/3786418282.py:88: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
   entry_price = float(data.loc[date, ticker])
-/tmp/ipykernel_5341/3720828892.py:94: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+/tmp/ipykernel_34279/3786418282.py:94: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
   exit_price = float(data.loc[date, ticker])
-/tmp/ipykernel_5341/3720828892.py:17: FutureWarning: YF.download() has changed argument auto_adjust default to True
+/tmp/ipykernel_34279/3786418282.py:17: FutureWarning: YF.download() has changed argument auto_adjust default to True
   data = yf.download(ticker, start=start_date, end=end_date)[[&#39;Close&#39;]]
 [*********************100%***********************]  1 of 1 completed
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total Return Rate: 20.44 %
-Entry Dates are: [Timestamp(&#39;2024-05-06 00:00:00&#39;), Timestamp(&#39;2024-07-29 00:00:00&#39;), Timestamp(&#39;2024-09-05 00:00:00&#39;), Timestamp(&#39;2024-09-23 00:00:00&#39;), Timestamp(&#39;2025-03-03 00:00:00&#39;), Timestamp(&#39;2025-03-14 00:00:00&#39;), Timestamp(&#39;2025-04-23 00:00:00&#39;), Timestamp(&#39;2025-05-08 00:00:00&#39;), Timestamp(&#39;2025-07-04 00:00:00&#39;)]
-Exit Dates are: [Timestamp(&#39;2024-06-06 00:00:00&#39;), Timestamp(&#39;2024-08-01 00:00:00&#39;), Timestamp(&#39;2024-09-18 00:00:00&#39;), Timestamp(&#39;2025-01-13 00:00:00&#39;), Timestamp(&#39;2025-03-10 00:00:00&#39;), Timestamp(&#39;2025-04-07 00:00:00&#39;), Timestamp(&#39;2025-04-30 00:00:00&#39;), Timestamp(&#39;2025-06-16 00:00:00&#39;), Timestamp(&#39;2025-08-22 00:00:00&#39;)]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5341/3720828892.py:45: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_34279/3786418282.py:45: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   plt.plot(data[long_signals[ticker]], &#39;^&#39;, color=&#39;g&#39;, markersize=10, label=&#39;Long Signal&#39;)
-/tmp/ipykernel_5341/3720828892.py:46: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_34279/3786418282.py:46: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   plt.plot(data[short_signals[ticker]], &#39;v&#39;, color=&#39;r&#39;, markersize=10, label=&#39;Short Signal&#39;)
 </pre></div>
 </div>
-<img alt="_images/d02dea744825dc712b18cd92898c5d5b76f530b7477f71d41ee4bb6caa8d8a88.png" src="_images/d02dea744825dc712b18cd92898c5d5b76f530b7477f71d41ee4bb6caa8d8a88.png" />
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5341/3720828892.py:88: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total Return Rate: 42.40 %
+Entry Dates are: [Timestamp(&#39;2025-01-08 00:00:00&#39;), Timestamp(&#39;2025-07-11 00:00:00&#39;)]
+Exit Dates are: [Timestamp(&#39;2025-03-31 00:00:00&#39;), Timestamp(&#39;2025-10-23 00:00:00&#39;)]
+</pre></div>
+</div>
+<img alt="_images/935aedbb6db9b846064570d74d598ed153e2b50e252fb4a190a7a07dcd332fce.png" src="_images/935aedbb6db9b846064570d74d598ed153e2b50e252fb4a190a7a07dcd332fce.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_34279/3786418282.py:88: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
   entry_price = float(data.loc[date, ticker])
-/tmp/ipykernel_5341/3720828892.py:94: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+/tmp/ipykernel_34279/3786418282.py:94: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
   exit_price = float(data.loc[date, ticker])
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(20.44353368451432,
- [Timestamp(&#39;2024-05-06 00:00:00&#39;),
-  Timestamp(&#39;2024-07-29 00:00:00&#39;),
-  Timestamp(&#39;2024-09-05 00:00:00&#39;),
-  Timestamp(&#39;2024-09-23 00:00:00&#39;),
-  Timestamp(&#39;2025-03-03 00:00:00&#39;),
-  Timestamp(&#39;2025-03-14 00:00:00&#39;),
-  Timestamp(&#39;2025-04-23 00:00:00&#39;),
-  Timestamp(&#39;2025-05-08 00:00:00&#39;),
-  Timestamp(&#39;2025-07-04 00:00:00&#39;)],
- [Timestamp(&#39;2024-06-06 00:00:00&#39;),
-  Timestamp(&#39;2024-08-01 00:00:00&#39;),
-  Timestamp(&#39;2024-09-18 00:00:00&#39;),
-  Timestamp(&#39;2025-01-13 00:00:00&#39;),
-  Timestamp(&#39;2025-03-10 00:00:00&#39;),
-  Timestamp(&#39;2025-04-07 00:00:00&#39;),
-  Timestamp(&#39;2025-04-30 00:00:00&#39;),
-  Timestamp(&#39;2025-06-16 00:00:00&#39;),
-  Timestamp(&#39;2025-08-22 00:00:00&#39;)],
- 0     3.989292
- 1     3.714844
- 2     3.810000
- 3     3.580000
- 4     3.760000
- 5     3.530000
- 6     3.460000
- 7     4.210000
- 8     4.740000
- 9     4.890000
- 10    5.180000
- 11    4.320000
- 12    4.590000
- 13    4.790000
- 14    4.920000
- 15    4.880000
- 16    5.130000
- 17    6.480000
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(42.40087244811343,
+ [Timestamp(&#39;2025-01-08 00:00:00&#39;), Timestamp(&#39;2025-07-11 00:00:00&#39;)],
+ [Timestamp(&#39;2025-03-31 00:00:00&#39;), Timestamp(&#39;2025-10-23 00:00:00&#39;)],
+ 0    24.863249
+ 1    25.955482
+ 2    22.680000
+ 3    32.130001
  dtype: float64)
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="pair-trading">
-<h2>配对交易Pair trading<a class="headerlink" href="#pair-trading" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">yfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">yf</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">Correlation_analysis</span><span class="p">(</span><span class="n">tickers</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;2010-01-01&#39;</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;2023-01-01&#39;</span><span class="p">):</span>
-    <span class="c1"># Fetch the stock data</span>
-    <span class="n">stock_data</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end_date</span><span class="p">)[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span>
-
-    <span class="c1"># Function to compute returns</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">compute_return</span><span class="p">(</span><span class="n">prices</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">prices</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
-
-    <span class="c1"># Compute returns for the stocks</span>
-    <span class="n">stock_returns</span> <span class="o">=</span> <span class="n">stock_data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">compute_return</span><span class="p">)</span>
-
-    <span class="c1"># Drop NA values</span>
-    <span class="n">stock_returns</span> <span class="o">=</span> <span class="n">stock_returns</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-
-    <span class="c1"># Function to compute the covariance matrix</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">compute_covariance_matrix</span><span class="p">(</span><span class="n">returns</span><span class="p">,</span> <span class="n">multiplicator</span><span class="o">=</span><span class="mi">252</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">returns</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span> <span class="o">*</span> <span class="n">multiplicator</span>
-
-    <span class="c1"># Function to compute the correlation matrix</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">compute_correlation_matrix</span><span class="p">(</span><span class="n">returns</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">returns</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
-
-    <span class="c1"># Compute and print Covariance Matrix</span>
-    <span class="n">cov_matrix</span> <span class="o">=</span> <span class="n">compute_covariance_matrix</span><span class="p">(</span><span class="n">stock_returns</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Covariance Matrix:&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">cov_matrix</span><span class="p">)</span>
-
-    <span class="c1"># Compute and print Correlation Matrix</span>
-    <span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">compute_correlation_matrix</span><span class="p">(</span><span class="n">stock_returns</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Correlation Matrix:&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">)</span>
-
-    <span class="c1"># Visualization using Seaborn for the entire period</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlation Matrix - Analyzed Stocks&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-    <span class="c1"># Visualization for different time periods</span>
-    <span class="n">periods</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;2010-2015&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;2010-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2014-12-31&quot;</span><span class="p">),</span>
-        <span class="s2">&quot;2015-2020&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;2015-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-12-31&quot;</span><span class="p">),</span>
-        <span class="s2">&quot;2020-2023&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;2021-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2023-12-31&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="k">for</span> <span class="n">period</span><span class="p">,</span> <span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span> <span class="ow">in</span> <span class="n">periods</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">temp_returns</span> <span class="o">=</span> <span class="n">stock_data</span><span class="p">[</span><span class="n">start_date</span><span class="p">:</span><span class="n">end_date</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">compute_return</span><span class="p">)</span>
-        <span class="n">temp_corr_matrix</span> <span class="o">=</span> <span class="n">compute_correlation_matrix</span><span class="p">(</span><span class="n">temp_returns</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
-        <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">temp_corr_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Correlation Matrix </span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="s1"> - Analyzed Stocks&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># Example usage</span>
-<span class="n">luxury_tickers</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;MC.PA&#39;</span><span class="p">,</span> <span class="s1">&#39;KER.PA&#39;</span><span class="p">,</span> <span class="s1">&#39;CFR.SW&#39;</span><span class="p">,</span> <span class="s1">&#39;RMS.PA&#39;</span><span class="p">,</span> <span class="s1">&#39;BRBY.L&#39;</span><span class="p">,</span> <span class="s1">&#39;1913.HK&#39;</span><span class="p">,</span> <span class="s1">&#39;EL&#39;</span><span class="p">,</span> <span class="s1">&#39;UHR.SW&#39;</span><span class="p">,</span> <span class="s1">&#39;RL&#39;</span><span class="p">,</span> <span class="s1">&#39;CDI.PA&#39;</span>
-<span class="p">]</span>
-
-<span class="n">Correlation_analysis</span><span class="p">(</span><span class="n">luxury_tickers</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">find_best_correlated_pair</span><span class="p">(</span><span class="n">assets</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;2010-01-01&#39;</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;2023-01-01&#39;</span><span class="p">):</span>
-    <span class="c1"># Downloading data</span>
-    <span class="n">stock_data</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">assets</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end_date</span><span class="p">)[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span>
-
-    <span class="c1"># Calculating returns</span>
-    <span class="n">returns</span> <span class="o">=</span> <span class="n">stock_data</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-
-    <span class="c1"># Calculating correlation matrix</span>
-    <span class="n">correlation_matrix</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
-
-    <span class="c1"># Finding the pair with the highest correlation</span>
-    <span class="n">correlation_matrix</span> <span class="o">=</span> <span class="n">correlation_matrix</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
-    <span class="n">sorted_pairs</span> <span class="o">=</span> <span class="n">correlation_matrix</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;quicksort&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-    <span class="c1"># Filter out self correlations</span>
-    <span class="n">sorted_pairs</span> <span class="o">=</span> <span class="n">sorted_pairs</span><span class="p">[</span><span class="n">sorted_pairs</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="n">sorted_pairs</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
-
-    <span class="n">best_pair</span> <span class="o">=</span> <span class="n">sorted_pairs</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
-
-    <span class="k">return</span> <span class="n">best_pair</span>
-
-<span class="c1"># Example usage</span>
-<span class="n">luxury_tickers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">,</span> <span class="s1">&#39;KER.PA&#39;</span><span class="p">,</span> <span class="s1">&#39;CFR.SW&#39;</span><span class="p">,</span> <span class="s1">&#39;RMS.PA&#39;</span><span class="p">,</span> <span class="s1">&#39;BRBY.L&#39;</span><span class="p">,</span> <span class="s1">&#39;1913.HK&#39;</span><span class="p">,</span> <span class="s1">&#39;EL&#39;</span><span class="p">,</span> <span class="s1">&#39;UHR.SW&#39;</span><span class="p">,</span> <span class="s1">&#39;RL&#39;</span><span class="p">,</span> <span class="s1">&#39;CDI.PA&#39;</span><span class="p">]</span>
-<span class="n">best_correlated_pair</span> <span class="o">=</span> <span class="n">find_best_correlated_pair</span><span class="p">(</span><span class="n">luxury_tickers</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The best correlated pair for trading is: </span><span class="si">{</span><span class="n">best_correlated_pair</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6210/879198764.py:9: FutureWarning: YF.download() has changed argument auto_adjust default to True
-  stock_data = yf.download(tickers, start=start_date, end=end_date)[&#39;Close&#39;]
-[*********************100%***********************]  10 of 10 completed
-/tmp/ipykernel_6210/879198764.py:13: FutureWarning: The default fill_method=&#39;pad&#39; in Series.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify &#39;fill_method=None&#39; to not fill NA values.
-  return prices.pct_change()
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Covariance Matrix:
-Ticker       1913.HK    BRBY.L    CDI.PA    CFR.SW        EL    KER.PA  \
-Ticker                                                                   
-1913.HK  4037.290063  0.087756  0.260410  0.215995  0.048218  0.083262   
-BRBY.L      0.087756  0.109398  0.054839  0.057249  0.030438  0.054555   
-CDI.PA      0.260410  0.054839  0.071739  0.056259  0.029419  0.055250   
-CFR.SW      0.215995  0.057249  0.056259  0.090602  0.030796  0.055955   
-EL          0.048218  0.030438  0.029419  0.030796  0.077852  0.028980   
-KER.PA      0.083262  0.054555  0.055250  0.055955  0.028980  0.082738   
-MC.PA       0.245646  0.055796  0.063863  0.058633  0.030803  0.058120   
-RL         -0.313904  0.036387  0.033986  0.039765  0.044081  0.034149   
-RMS.PA      0.006548  0.038933  0.040931  0.039832  0.019559  0.039882   
-UHR.SW      0.319713  0.051295  0.049814  0.069288  0.027933  0.050541   
-
-Ticker      MC.PA        RL    RMS.PA    UHR.SW  
-Ticker                                           
-1913.HK  0.245646 -0.313904  0.006548  0.319713  
-BRBY.L   0.055796  0.036387  0.038933  0.051295  
-CDI.PA   0.063863  0.033986  0.040931  0.049814  
-CFR.SW   0.058633  0.039765  0.039832  0.069288  
-EL       0.030803  0.044081  0.019559  0.027933  
-KER.PA   0.058120  0.034149  0.039882  0.050541  
-MC.PA    0.073290  0.033421  0.041882  0.050962  
-RL       0.033421  0.127717  0.021909  0.036537  
-RMS.PA   0.041882  0.021909  0.062723  0.034302  
-UHR.SW   0.050962  0.036537  0.034302  0.079684  
-
-Correlation Matrix:
-Ticker    1913.HK    BRBY.L    CDI.PA    CFR.SW        EL    KER.PA     MC.PA  \
-Ticker                                                                          
-1913.HK  1.000000  0.004176  0.015301  0.011294  0.002720  0.004556  0.014280   
-BRBY.L   0.004176  1.000000  0.619025  0.575035  0.329819  0.573424  0.623121   
-CDI.PA   0.015301  0.619025  1.000000  0.697827  0.393655  0.717136  0.880743   
-CFR.SW   0.011294  0.575035  0.697827  1.000000  0.366680  0.646271  0.719534   
-EL       0.002720  0.329819  0.393655  0.366680  1.000000  0.361088  0.407785   
-KER.PA   0.004556  0.573424  0.717136  0.646271  0.361088  1.000000  0.746365   
-MC.PA    0.014280  0.623121  0.880743  0.719534  0.407785  0.746365  1.000000   
-RL      -0.013824  0.307837  0.355059  0.369667  0.442068  0.332205  0.345437   
-RMS.PA   0.000412  0.469998  0.610188  0.528383  0.279905  0.553619  0.617725   
-UHR.SW   0.017825  0.549393  0.658853  0.815461  0.354648  0.622453  0.666867   
-
-Ticker         RL    RMS.PA    UHR.SW  
-Ticker                                 
-1913.HK -0.013824  0.000412  0.017825  
-BRBY.L   0.307837  0.469998  0.549393  
-CDI.PA   0.355059  0.610188  0.658853  
-CFR.SW   0.369667  0.528383  0.815461  
-EL       0.442068  0.279905  0.354648  
-KER.PA   0.332205  0.553619  0.622453  
-MC.PA    0.345437  0.617725  0.666867  
-RL       1.000000  0.244782  0.362178  
-RMS.PA   0.244782  1.000000  0.485199  
-UHR.SW   0.362178  0.485199  1.000000  
-</pre></div>
-</div>
-<img alt="_images/33ef784c5e6e708094eda42684126e01a11e0127db8984ab418c2c20e762e9e7.png" src="_images/33ef784c5e6e708094eda42684126e01a11e0127db8984ab418c2c20e762e9e7.png" />
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6210/879198764.py:13: FutureWarning: The default fill_method=&#39;pad&#39; in Series.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify &#39;fill_method=None&#39; to not fill NA values.
-  return prices.pct_change()
-</pre></div>
-</div>
-<img alt="_images/4a91725276b182839d80da835d0e8654325f074f7c192bbb0086466f1ee2843f.png" src="_images/4a91725276b182839d80da835d0e8654325f074f7c192bbb0086466f1ee2843f.png" />
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6210/879198764.py:13: FutureWarning: The default fill_method=&#39;pad&#39; in Series.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify &#39;fill_method=None&#39; to not fill NA values.
-  return prices.pct_change()
-</pre></div>
-</div>
-<img alt="_images/6e6713cd20d3ab5b010710a5ceef4a6f437b8b6ef48a9ab269cf6a3caf3fb7dc.png" src="_images/6e6713cd20d3ab5b010710a5ceef4a6f437b8b6ef48a9ab269cf6a3caf3fb7dc.png" />
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6210/879198764.py:13: FutureWarning: The default fill_method=&#39;pad&#39; in Series.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify &#39;fill_method=None&#39; to not fill NA values.
-  return prices.pct_change()
-</pre></div>
-</div>
-<img alt="_images/4be5b801b55cd1adf5921b2be367285deb1f3508e007c14e9c9158f99e9a8d54.png" src="_images/4be5b801b55cd1adf5921b2be367285deb1f3508e007c14e9c9158f99e9a8d54.png" />
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6210/879198764.py:67: FutureWarning: YF.download() has changed argument auto_adjust default to True
-  stock_data = yf.download(assets, start=start_date, end=end_date)[&#39;Close&#39;]
-[*********************100%***********************]  10 of 10 completed
-/tmp/ipykernel_6210/879198764.py:70: FutureWarning: The default fill_method=&#39;pad&#39; in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify &#39;fill_method=None&#39; to not fill NA values.
-  returns = stock_data.pct_change().dropna()
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best correlated pair for trading is: (&#39;MC.PA&#39;, &#39;CDI.PA&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">yfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">yf</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="c1"># Download stock data for LVMH and Christian Dior</span>
-<span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;2021-01-01&#39;</span>
-<span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2023-01-01&#39;</span>
-<span class="n">stock_symbols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">,</span> <span class="s1">&#39;CDI.PA&#39;</span><span class="p">]</span>  <span class="c1"># MC.PA for LVMH and CDI.PA for Christian Dior</span>
-<span class="n">stock_data</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">stock_symbols</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end_date</span><span class="p">)[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span>
-
-<span class="c1"># Calculate the spread</span>
-<span class="n">spread</span> <span class="o">=</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;CDI.PA&#39;</span><span class="p">]</span>
-
-<span class="c1"># Calculate the rolling mean and standard deviation of the spread</span>
-<span class="n">window</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="n">rolling_mean</span> <span class="o">=</span> <span class="n">spread</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">rolling_std</span> <span class="o">=</span> <span class="n">spread</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-
-<span class="c1"># Calculate the Z-Score</span>
-<span class="n">z_score</span> <span class="o">=</span> <span class="p">(</span><span class="n">spread</span> <span class="o">-</span> <span class="n">rolling_mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">rolling_std</span>
-
-<span class="c1"># Define thresholds for trading signals</span>
-<span class="n">upper_threshold</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">lower_threshold</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
-
-<span class="c1"># Generate trading signals</span>
-<span class="n">buy_signal</span> <span class="o">=</span> <span class="p">(</span><span class="n">z_score</span> <span class="o">&lt;</span> <span class="n">lower_threshold</span><span class="p">)</span>
-<span class="n">sell_signal</span> <span class="o">=</span> <span class="p">(</span><span class="n">z_score</span> <span class="o">&gt;</span> <span class="n">upper_threshold</span><span class="p">)</span>
-
-<span class="c1"># Calculate returns - assuming we buy one stock of MC.PA and sell one stock of CDI.PA when a buy signal is generated, and vice versa for sell signals</span>
-<span class="n">capital</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># Starting capital</span>
-<span class="n">mc_stocks</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">cdi_stocks</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">z_score</span><span class="p">)):</span>
-    <span class="k">if</span> <span class="n">buy_signal</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">capital</span> <span class="o">&gt;=</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-        <span class="c1"># Buy MC.PA and sell CDI.PA</span>
-        <span class="n">mc_stocks</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">cdi_stocks</span> <span class="o">-=</span> <span class="mi">1</span>
-        <span class="n">capital</span> <span class="o">-=</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">capital</span> <span class="o">+=</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;CDI.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="k">elif</span> <span class="n">sell_signal</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">mc_stocks</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="c1"># Sell MC.PA and buy CDI.PA</span>
-        <span class="n">mc_stocks</span> <span class="o">-=</span> <span class="mi">1</span>
-        <span class="n">cdi_stocks</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">capital</span> <span class="o">+=</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">capital</span> <span class="o">-=</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;CDI.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-
-<span class="c1"># Final capital after selling any remaining stocks</span>
-<span class="n">capital</span> <span class="o">+=</span> <span class="n">mc_stocks</span> <span class="o">*</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">capital</span> <span class="o">+=</span> <span class="o">-</span><span class="n">cdi_stocks</span> <span class="o">*</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;CDI.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">final_return</span> <span class="o">=</span> <span class="n">capital</span> <span class="o">-</span> <span class="mi">10000</span>
-
-<span class="c1"># Plotting</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-
-<span class="c1"># Plot Z-Score</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z_score</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Z-Score of Spread&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">upper_threshold</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Upper Threshold&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">lower_threshold</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Lower Threshold&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Z-Score of Spread&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-
-<span class="c1"># Plot Buy/Sell Signals</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LVMH (MC.PA)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;CDI.PA&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Christian Dior (CDI.PA)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">buy_signal</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">buy_signal</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Buy Signal&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sell_signal</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sell_signal</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sell Signal&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trading Signals&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final return from the strategy: &quot;</span><span class="p">,</span> <span class="n">final_return</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6210/3476043409.py:9: FutureWarning: YF.download() has changed argument auto_adjust default to True
-  stock_data = yf.download(stock_symbols, start=start_date, end=end_date)[&#39;Close&#39;]
-[*********************100%***********************]  2 of 2 completed
-/tmp/ipykernel_6210/3476043409.py:36: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
-  if buy_signal[i] and capital &gt;= stock_data[&#39;MC.PA&#39;].iloc[i]:
-/tmp/ipykernel_6210/3476043409.py:42: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
-  elif sell_signal[i] and mc_stocks &gt; 0:
-</pre></div>
-</div>
-<img alt="_images/9618f669cdd471c392d1636dcb6285045e05f0fe1fc834deabd21b2539c88622.png" src="_images/9618f669cdd471c392d1636dcb6285045e05f0fe1fc834deabd21b2539c88622.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Final return from the strategy:  22932.308166503906
 </pre></div>
 </div>
 </div>
@@ -897,10 +589,25 @@ UHR.SW   0.362178  0.485199  1.000000
 <li><p>算法结合不同的指标，提供买入或卖出信号。当算法检测到买入信号(绿色)，而先前的信号是卖出信号(红色)时，算法会自动执行买入订单。卖出信号也是如此。这样做比连续等待买入信号的风险更小，但我们无法找到最佳入场点或最佳止盈点。</p></li>
 <li><p>算法不寻求图形模式，因为即使技术指标本身就很大程度上依赖于心理因素，这些图形模式也可能过于心理化。</p></li>
 </ul>
+<p>动量指标（如RSI或MACD）
+布林线和动量的关系</p>
+<ul class="simple">
+<li><p>布林线可以展示动量（即趋势的强度），当价格触及布林线上轨时可能表明动量强劲，反之触及下轨可能表明动量疲弱；</p></li>
+<li><p>布林线也可以帮助识别动量信号，例如价格在布林线上轨和下轨之间来回穿梭可能预示着动量减弱，甚至趋势反转的出现</p></li>
+</ul>
+<p>布林线<strong>均值回归</strong>策略：</p>
+<ul class="simple">
+<li><p>标的价格在上轨线和下轨线围成的范围内浮动，即使短期内突破上下轨，但长期内仍然会回归到布林带之中</p></li>
+<li><p>当股价向上突破上界时，为卖出信号，当股价向下突破下界时，为买入信号。</p></li>
+</ul>
+<p>布林线<strong>突破</strong>策略：</p>
+<ul class="simple">
+<li><p>创业板50ETF，收盘价超过上轨, 次日买入并持有；收盘价低于上下轨, 次日清仓</p></li>
+<li><p>适合波动性大,成长性</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importation of libraries</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">yfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">yf</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">yfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">yf</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">mplfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpf</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ta.momentum</span><span class="w"> </span><span class="kn">import</span> <span class="n">RSIIndicator</span>
@@ -909,12 +616,9 @@ UHR.SW   0.362178  0.485199  1.000000
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ta.trend</span><span class="w"> </span><span class="kn">import</span> <span class="n">MACD</span>
 
-<span class="c1"># set asset example</span>
-<span class="n">ticker_symbol</span> <span class="o">=</span> <span class="s1">&#39;AAPL&#39;</span>  <span class="c1">#Apple</span>
-
-<span class="c1"># Acces to the asset prices</span>
-<span class="n">ticker_data</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="n">ticker_symbol</span><span class="p">)</span>
-<span class="n">ticker_df</span> <span class="o">=</span> <span class="n">ticker_data</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;12mo&#39;</span><span class="p">,</span><span class="n">interval</span><span class="o">=</span><span class="s1">&#39;1d&#39;</span><span class="p">)</span>
+<span class="n">ticker_symbol</span> <span class="o">=</span> <span class="s1">&#39;002241.SZ&#39;</span>  <span class="c1"># set asset   000878.SZ   600096.SS</span>
+<span class="n">ticker_data</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="n">ticker_symbol</span><span class="p">)</span>  
+<span class="n">ticker_df</span> <span class="o">=</span> <span class="n">ticker_data</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;10mo&#39;</span><span class="p">,</span><span class="n">interval</span><span class="o">=</span><span class="s1">&#39;1d&#39;</span><span class="p">)</span> <span class="c1"># Access to yf asset prices &amp; period</span>
 
 <span class="c1"># Preparation for the jap candles</span>
 <span class="n">ohlc</span> <span class="o">=</span> <span class="n">ticker_df</span><span class="p">[[</span><span class="s1">&#39;Open&#39;</span><span class="p">,</span><span class="s1">&#39;High&#39;</span><span class="p">,</span><span class="s1">&#39;Low&#39;</span><span class="p">,</span><span class="s1">&#39;Close&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -1031,15 +735,15 @@ UHR.SW   0.362178  0.485199  1.000000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/27159a00878c69f325eb870826dfc6b2f3c55ca646ee53751943bbb599dd615d.png" src="_images/27159a00878c69f325eb870826dfc6b2f3c55ca646ee53751943bbb599dd615d.png" />
-<img alt="_images/6bbdebc8d832596a15ad425dd48d1155838b0c224043ef348f77ff8da27f58fc.png" src="_images/6bbdebc8d832596a15ad425dd48d1155838b0c224043ef348f77ff8da27f58fc.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maximum Drawdown: -33.360516168821135 %
-Start Date: 2025-04-08 00:00:00-04:00
-End Date: 2024-12-26 00:00:00-05:00
-Total Investi est: 2248.634796142578
-Total profit from trading: 12.135055541992188
-The profit rate is : 5.4%
-[np.float64(224.8634796142578), np.float64(226.92454528808594), np.float64(202.1505889892578)] [np.float64(232.04624938964844), np.float64(204.93740844726562), np.float64(229.0900115966797)]
+<img alt="_images/13e24b6fe25f1554b1dd3662958461ee2a54ea78a730e16713d60de3689521bf.png" src="_images/13e24b6fe25f1554b1dd3662958461ee2a54ea78a730e16713d60de3689521bf.png" />
+<img alt="_images/02808fe982748416253e2518c094d127849c24ba74e21d4f83086e42f82922d7.png" src="_images/02808fe982748416253e2518c094d127849c24ba74e21d4f83086e42f82922d7.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maximum Drawdown: -37.689768914129075 %
+Start Date: 2025-04-09 00:00:00+08:00
+End Date: 2025-02-27 00:00:00+08:00
+Total Investi est: 232.2489356994629
+Total profit from trading: 0.30931663513183594
+The profit rate is : 1.33%
+[np.float64(23.22489356994629), np.float64(22.190000534057617)] [np.float64(21.91421127319336), np.float64(23.809999465942383)]
 </pre></div>
 </div>
 </div>
@@ -1060,12 +764,9 @@ The profit rate is : 5.4%
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span>
-
-<span class="c1"># Pour récupérer les données boursières</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">yfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">yf</span>
 
-<span class="c1"># Télécharger les données historiques de l&#39;action Apple</span>
-<span class="n">aapl</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2023-01-01&#39;</span><span class="p">)</span>
+<span class="n">aapl</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;000878.SZ&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;2024-01-01&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2025-09-15&#39;</span><span class="p">)</span> <span class="c1"># asset and period</span>
 
 <span class="c1"># Calculer les rendements quotidiens</span>
 <span class="n">aapl</span><span class="p">[</span><span class="s1">&#39;Return&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">aapl</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
@@ -1113,17 +814,17 @@ The profit rate is : 5.4%
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6210/3900654538.py:13: FutureWarning: YF.download() has changed argument auto_adjust default to True
-  aapl = yf.download(&#39;AAPL&#39;, start=&#39;2020-01-01&#39;, end=&#39;2023-01-01&#39;)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_8320/3115361036.py:11: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  aapl = yf.download(&#39;000878.SZ&#39;, start=&#39;2024-01-01&#39;, end=&#39;2025-09-15&#39;) # asset and period
 [*********************100%***********************]  1 of 1 completed
 /home/tom/miniconda3/lib/python3.13/site-packages/sklearn/base.py:1365: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples,), for example using ravel().
   return fit_method(estimator, *args, **kwargs)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Squared Error: 1.6536736274342232
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Squared Error: 0.02434702400633237
 </pre></div>
 </div>
-<img alt="_images/0e8ed95bb9a1e14d52351f6dfafea685dde60991ab1dfe3d3701151fc79963f5.png" src="_images/0e8ed95bb9a1e14d52351f6dfafea685dde60991ab1dfe3d3701151fc79963f5.png" />
+<img alt="_images/7768d259a2a2877564a50dac1635a805fed143c165bbbc653ff4273cde70e1d8.png" src="_images/7768d259a2a2877564a50dac1635a805fed143c165bbbc653ff4273cde70e1d8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1366,7 +1067,6 @@ The profit rate is : 5.4%
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DBSCAN（基于密度的噪声应用空间聚类）：不是预测，是用来检测异常值</span>
-
 <span class="kn">import</span><span class="w"> </span><span class="nn">yfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">yf</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">DBSCAN</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
@@ -1824,6 +1524,305 @@ The maximal loss will be 499.71355437605735%
 </div>
 </div>
 </section>
+<section id="pair-trading">
+<h2>配对交易Pair trading<a class="headerlink" href="#pair-trading" title="Link to this heading">#</a></h2>
+<p>是一种基于数学分析交易策略，其盈利模式是通过两只股票的差价（spread）来获取</p>
+<ul class="simple">
+<li><p>与很多策略不同，它是一种中性策略，理论上可以做到和大盘走势完全无关，即策略的beta值可以很低。</p></li>
+<li><p>基本原理是协整cointegration，两个相似公司的股票，其股价走势虽然在中途会有所偏离，但是最终都会趋于一致。</p></li>
+<li><p>协整性与相关性 cointegration vs correlation (比较像，但实际是两个东西)</p></li>
+</ul>
+<p>Strategy</p>
+<ol class="arabic simple">
+<li><p>find the best pair of assets to trade, ideally in the same sector</p></li>
+<li><p>Calculate their spread and also the Z-spread by center and standardize the spread</p></li>
+<li><p>define our own spread threshold and test on different threshold to compare the performance of the pair trading strategy</p></li>
+<li><p>execution of the code and calculate the return rate</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">yfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">yf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">Correlation_analysis</span><span class="p">(</span><span class="n">tickers</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;2010-01-01&#39;</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;2023-01-01&#39;</span><span class="p">):</span>
+    <span class="c1"># Fetch the stock data</span>
+    <span class="n">stock_data</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end_date</span><span class="p">)[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Function to compute returns</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_return</span><span class="p">(</span><span class="n">prices</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">prices</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+
+    <span class="c1"># Compute returns for the stocks</span>
+    <span class="n">stock_returns</span> <span class="o">=</span> <span class="n">stock_data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">compute_return</span><span class="p">)</span>
+
+    <span class="c1"># Drop NA values</span>
+    <span class="n">stock_returns</span> <span class="o">=</span> <span class="n">stock_returns</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+    <span class="c1"># Function to compute the covariance matrix</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_covariance_matrix</span><span class="p">(</span><span class="n">returns</span><span class="p">,</span> <span class="n">multiplicator</span><span class="o">=</span><span class="mi">252</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">returns</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span> <span class="o">*</span> <span class="n">multiplicator</span>
+
+    <span class="c1"># Function to compute the correlation matrix</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_correlation_matrix</span><span class="p">(</span><span class="n">returns</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">returns</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+    <span class="c1"># Compute and print Covariance Matrix</span>
+    <span class="n">cov_matrix</span> <span class="o">=</span> <span class="n">compute_covariance_matrix</span><span class="p">(</span><span class="n">stock_returns</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Covariance Matrix:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cov_matrix</span><span class="p">)</span>
+
+    <span class="c1"># Compute and print Correlation Matrix</span>
+    <span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">compute_correlation_matrix</span><span class="p">(</span><span class="n">stock_returns</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Correlation Matrix:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">)</span>
+
+    <span class="c1"># Visualization using Seaborn for the entire period</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlation Matrix - Analyzed Stocks&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="c1"># Visualization for different time periods</span>
+    <span class="n">periods</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;2010-2015&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;2010-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2014-12-31&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;2015-2020&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;2015-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-12-31&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;2020-2023&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;2021-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2023-12-31&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">period</span><span class="p">,</span> <span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span> <span class="ow">in</span> <span class="n">periods</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">temp_returns</span> <span class="o">=</span> <span class="n">stock_data</span><span class="p">[</span><span class="n">start_date</span><span class="p">:</span><span class="n">end_date</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">compute_return</span><span class="p">)</span>
+        <span class="n">temp_corr_matrix</span> <span class="o">=</span> <span class="n">compute_correlation_matrix</span><span class="p">(</span><span class="n">temp_returns</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">temp_corr_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Correlation Matrix </span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="s1"> - Analyzed Stocks&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Example usage</span>
+<span class="n">luxury_tickers</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;MC.PA&#39;</span><span class="p">,</span> <span class="s1">&#39;KER.PA&#39;</span><span class="p">,</span> <span class="s1">&#39;CFR.SW&#39;</span><span class="p">,</span> <span class="s1">&#39;RMS.PA&#39;</span><span class="p">,</span> <span class="s1">&#39;BRBY.L&#39;</span><span class="p">,</span> <span class="s1">&#39;1913.HK&#39;</span><span class="p">,</span> <span class="s1">&#39;EL&#39;</span><span class="p">,</span> <span class="s1">&#39;UHR.SW&#39;</span><span class="p">,</span> <span class="s1">&#39;RL&#39;</span><span class="p">,</span> <span class="s1">&#39;CDI.PA&#39;</span>
+<span class="p">]</span>
+
+<span class="n">Correlation_analysis</span><span class="p">(</span><span class="n">luxury_tickers</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_best_correlated_pair</span><span class="p">(</span><span class="n">assets</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;2010-01-01&#39;</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s1">&#39;2023-01-01&#39;</span><span class="p">):</span>
+    <span class="c1"># Downloading data</span>
+    <span class="n">stock_data</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">assets</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end_date</span><span class="p">)[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Calculating returns</span>
+    <span class="n">returns</span> <span class="o">=</span> <span class="n">stock_data</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+    <span class="c1"># Calculating correlation matrix</span>
+    <span class="n">correlation_matrix</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+    <span class="c1"># Finding the pair with the highest correlation</span>
+    <span class="n">correlation_matrix</span> <span class="o">=</span> <span class="n">correlation_matrix</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+    <span class="n">sorted_pairs</span> <span class="o">=</span> <span class="n">correlation_matrix</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;quicksort&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Filter out self correlations</span>
+    <span class="n">sorted_pairs</span> <span class="o">=</span> <span class="n">sorted_pairs</span><span class="p">[</span><span class="n">sorted_pairs</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="n">sorted_pairs</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+
+    <span class="n">best_pair</span> <span class="o">=</span> <span class="n">sorted_pairs</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">best_pair</span>
+
+<span class="c1"># Example usage</span>
+<span class="n">luxury_tickers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">,</span> <span class="s1">&#39;KER.PA&#39;</span><span class="p">,</span> <span class="s1">&#39;CFR.SW&#39;</span><span class="p">,</span> <span class="s1">&#39;RMS.PA&#39;</span><span class="p">,</span> <span class="s1">&#39;BRBY.L&#39;</span><span class="p">,</span> <span class="s1">&#39;1913.HK&#39;</span><span class="p">,</span> <span class="s1">&#39;EL&#39;</span><span class="p">,</span> <span class="s1">&#39;UHR.SW&#39;</span><span class="p">,</span> <span class="s1">&#39;RL&#39;</span><span class="p">,</span> <span class="s1">&#39;CDI.PA&#39;</span><span class="p">]</span>
+<span class="n">best_correlated_pair</span> <span class="o">=</span> <span class="n">find_best_correlated_pair</span><span class="p">(</span><span class="n">luxury_tickers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The best correlated pair for trading is: </span><span class="si">{</span><span class="n">best_correlated_pair</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6210/879198764.py:9: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  stock_data = yf.download(tickers, start=start_date, end=end_date)[&#39;Close&#39;]
+[*********************100%***********************]  10 of 10 completed
+/tmp/ipykernel_6210/879198764.py:13: FutureWarning: The default fill_method=&#39;pad&#39; in Series.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify &#39;fill_method=None&#39; to not fill NA values.
+  return prices.pct_change()
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Covariance Matrix:
+Ticker       1913.HK    BRBY.L    CDI.PA    CFR.SW        EL    KER.PA  \
+Ticker                                                                   
+1913.HK  4037.290063  0.087756  0.260410  0.215995  0.048218  0.083262   
+BRBY.L      0.087756  0.109398  0.054839  0.057249  0.030438  0.054555   
+CDI.PA      0.260410  0.054839  0.071739  0.056259  0.029419  0.055250   
+CFR.SW      0.215995  0.057249  0.056259  0.090602  0.030796  0.055955   
+EL          0.048218  0.030438  0.029419  0.030796  0.077852  0.028980   
+KER.PA      0.083262  0.054555  0.055250  0.055955  0.028980  0.082738   
+MC.PA       0.245646  0.055796  0.063863  0.058633  0.030803  0.058120   
+RL         -0.313904  0.036387  0.033986  0.039765  0.044081  0.034149   
+RMS.PA      0.006548  0.038933  0.040931  0.039832  0.019559  0.039882   
+UHR.SW      0.319713  0.051295  0.049814  0.069288  0.027933  0.050541   
+
+Ticker      MC.PA        RL    RMS.PA    UHR.SW  
+Ticker                                           
+1913.HK  0.245646 -0.313904  0.006548  0.319713  
+BRBY.L   0.055796  0.036387  0.038933  0.051295  
+CDI.PA   0.063863  0.033986  0.040931  0.049814  
+CFR.SW   0.058633  0.039765  0.039832  0.069288  
+EL       0.030803  0.044081  0.019559  0.027933  
+KER.PA   0.058120  0.034149  0.039882  0.050541  
+MC.PA    0.073290  0.033421  0.041882  0.050962  
+RL       0.033421  0.127717  0.021909  0.036537  
+RMS.PA   0.041882  0.021909  0.062723  0.034302  
+UHR.SW   0.050962  0.036537  0.034302  0.079684  
+
+Correlation Matrix:
+Ticker    1913.HK    BRBY.L    CDI.PA    CFR.SW        EL    KER.PA     MC.PA  \
+Ticker                                                                          
+1913.HK  1.000000  0.004176  0.015301  0.011294  0.002720  0.004556  0.014280   
+BRBY.L   0.004176  1.000000  0.619025  0.575035  0.329819  0.573424  0.623121   
+CDI.PA   0.015301  0.619025  1.000000  0.697827  0.393655  0.717136  0.880743   
+CFR.SW   0.011294  0.575035  0.697827  1.000000  0.366680  0.646271  0.719534   
+EL       0.002720  0.329819  0.393655  0.366680  1.000000  0.361088  0.407785   
+KER.PA   0.004556  0.573424  0.717136  0.646271  0.361088  1.000000  0.746365   
+MC.PA    0.014280  0.623121  0.880743  0.719534  0.407785  0.746365  1.000000   
+RL      -0.013824  0.307837  0.355059  0.369667  0.442068  0.332205  0.345437   
+RMS.PA   0.000412  0.469998  0.610188  0.528383  0.279905  0.553619  0.617725   
+UHR.SW   0.017825  0.549393  0.658853  0.815461  0.354648  0.622453  0.666867   
+
+Ticker         RL    RMS.PA    UHR.SW  
+Ticker                                 
+1913.HK -0.013824  0.000412  0.017825  
+BRBY.L   0.307837  0.469998  0.549393  
+CDI.PA   0.355059  0.610188  0.658853  
+CFR.SW   0.369667  0.528383  0.815461  
+EL       0.442068  0.279905  0.354648  
+KER.PA   0.332205  0.553619  0.622453  
+MC.PA    0.345437  0.617725  0.666867  
+RL       1.000000  0.244782  0.362178  
+RMS.PA   0.244782  1.000000  0.485199  
+UHR.SW   0.362178  0.485199  1.000000  
+</pre></div>
+</div>
+<img alt="_images/33ef784c5e6e708094eda42684126e01a11e0127db8984ab418c2c20e762e9e7.png" src="_images/33ef784c5e6e708094eda42684126e01a11e0127db8984ab418c2c20e762e9e7.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6210/879198764.py:13: FutureWarning: The default fill_method=&#39;pad&#39; in Series.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify &#39;fill_method=None&#39; to not fill NA values.
+  return prices.pct_change()
+</pre></div>
+</div>
+<img alt="_images/4a91725276b182839d80da835d0e8654325f074f7c192bbb0086466f1ee2843f.png" src="_images/4a91725276b182839d80da835d0e8654325f074f7c192bbb0086466f1ee2843f.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6210/879198764.py:13: FutureWarning: The default fill_method=&#39;pad&#39; in Series.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify &#39;fill_method=None&#39; to not fill NA values.
+  return prices.pct_change()
+</pre></div>
+</div>
+<img alt="_images/6e6713cd20d3ab5b010710a5ceef4a6f437b8b6ef48a9ab269cf6a3caf3fb7dc.png" src="_images/6e6713cd20d3ab5b010710a5ceef4a6f437b8b6ef48a9ab269cf6a3caf3fb7dc.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6210/879198764.py:13: FutureWarning: The default fill_method=&#39;pad&#39; in Series.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify &#39;fill_method=None&#39; to not fill NA values.
+  return prices.pct_change()
+</pre></div>
+</div>
+<img alt="_images/4be5b801b55cd1adf5921b2be367285deb1f3508e007c14e9c9158f99e9a8d54.png" src="_images/4be5b801b55cd1adf5921b2be367285deb1f3508e007c14e9c9158f99e9a8d54.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6210/879198764.py:67: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  stock_data = yf.download(assets, start=start_date, end=end_date)[&#39;Close&#39;]
+[*********************100%***********************]  10 of 10 completed
+/tmp/ipykernel_6210/879198764.py:70: FutureWarning: The default fill_method=&#39;pad&#39; in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify &#39;fill_method=None&#39; to not fill NA values.
+  returns = stock_data.pct_change().dropna()
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best correlated pair for trading is: (&#39;MC.PA&#39;, &#39;CDI.PA&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">yfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">yf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Download stock data for LVMH and Christian Dior</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;2021-01-01&#39;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2023-01-01&#39;</span>
+<span class="n">stock_symbols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">,</span> <span class="s1">&#39;CDI.PA&#39;</span><span class="p">]</span>  <span class="c1"># MC.PA for LVMH and CDI.PA for Christian Dior</span>
+<span class="n">stock_data</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">stock_symbols</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end_date</span><span class="p">)[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span>
+
+<span class="c1"># Calculate the spread</span>
+<span class="n">spread</span> <span class="o">=</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;CDI.PA&#39;</span><span class="p">]</span>
+
+<span class="c1"># Calculate the rolling mean and standard deviation of the spread</span>
+<span class="n">window</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">rolling_mean</span> <span class="o">=</span> <span class="n">spread</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">rolling_std</span> <span class="o">=</span> <span class="n">spread</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="c1"># Calculate the Z-Score</span>
+<span class="n">z_score</span> <span class="o">=</span> <span class="p">(</span><span class="n">spread</span> <span class="o">-</span> <span class="n">rolling_mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">rolling_std</span>
+
+<span class="c1"># Define thresholds for trading signals</span>
+<span class="n">upper_threshold</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">lower_threshold</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+
+<span class="c1"># Generate trading signals</span>
+<span class="n">buy_signal</span> <span class="o">=</span> <span class="p">(</span><span class="n">z_score</span> <span class="o">&lt;</span> <span class="n">lower_threshold</span><span class="p">)</span>
+<span class="n">sell_signal</span> <span class="o">=</span> <span class="p">(</span><span class="n">z_score</span> <span class="o">&gt;</span> <span class="n">upper_threshold</span><span class="p">)</span>
+
+<span class="c1"># Calculate returns - assuming we buy one stock of MC.PA and sell one stock of CDI.PA when a buy signal is generated, and vice versa for sell signals</span>
+<span class="n">capital</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># Starting capital</span>
+<span class="n">mc_stocks</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">cdi_stocks</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">z_score</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">buy_signal</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">capital</span> <span class="o">&gt;=</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+        <span class="c1"># Buy MC.PA and sell CDI.PA</span>
+        <span class="n">mc_stocks</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">cdi_stocks</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">capital</span> <span class="o">-=</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">capital</span> <span class="o">+=</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;CDI.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">sell_signal</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">mc_stocks</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Sell MC.PA and buy CDI.PA</span>
+        <span class="n">mc_stocks</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">cdi_stocks</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">capital</span> <span class="o">+=</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">capital</span> <span class="o">-=</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;CDI.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="c1"># Final capital after selling any remaining stocks</span>
+<span class="n">capital</span> <span class="o">+=</span> <span class="n">mc_stocks</span> <span class="o">*</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">capital</span> <span class="o">+=</span> <span class="o">-</span><span class="n">cdi_stocks</span> <span class="o">*</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;CDI.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">final_return</span> <span class="o">=</span> <span class="n">capital</span> <span class="o">-</span> <span class="mi">10000</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># Plot Z-Score</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z_score</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Z-Score of Spread&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">upper_threshold</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Upper Threshold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">lower_threshold</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Lower Threshold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Z-Score of Spread&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Plot Buy/Sell Signals</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LVMH (MC.PA)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;CDI.PA&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Christian Dior (CDI.PA)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">buy_signal</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">buy_signal</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Buy Signal&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sell_signal</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;MC.PA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sell_signal</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sell Signal&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trading Signals&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final return from the strategy: &quot;</span><span class="p">,</span> <span class="n">final_return</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6210/3476043409.py:9: FutureWarning: YF.download() has changed argument auto_adjust default to True
+  stock_data = yf.download(stock_symbols, start=start_date, end=end_date)[&#39;Close&#39;]
+[*********************100%***********************]  2 of 2 completed
+/tmp/ipykernel_6210/3476043409.py:36: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  if buy_signal[i] and capital &gt;= stock_data[&#39;MC.PA&#39;].iloc[i]:
+/tmp/ipykernel_6210/3476043409.py:42: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  elif sell_signal[i] and mc_stocks &gt; 0:
+</pre></div>
+</div>
+<img alt="_images/9618f669cdd471c392d1636dcb6285045e05f0fe1fc834deabd21b2539c88622.png" src="_images/9618f669cdd471c392d1636dcb6285045e05f0fe1fc834deabd21b2539c88622.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Final return from the strategy:  22932.308166503906
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="id2">
 <h2>打板策略<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://github.com/123quant/QMT-QuantLimit">打板策略</a>|项目实现了一种量化打板策略，用于A股股票交易，涨停板制度只存在于A股(因为涨停板)</p>
@@ -2217,6 +2216,10 @@ The maximal loss will be 499.71355437605735%
 </div>
 </div>
 </div>
+<p>Refer:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://chenjietrading13.wordpress.com/">Chenjie Trading</a></p></li>
+</ul>
 </section>
 </section>
 
@@ -2267,7 +2270,6 @@ The maximal loss will be 499.71355437605735%
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#momentum">Momentum</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pair-trading">配对交易Pair trading</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-analysis">技术分析交易Technical Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-sector-analysis-using-corporate-indicators">企业指标for行业分析 Sector Analysis using corporate indicators</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-price-to-earning-ratio">PER(Price-to-Earning Ratio)市盈率</a></li>
@@ -2275,6 +2277,7 @@ The maximal loss will be 499.71355437605735%
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">风险</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pair-trading">配对交易Pair trading</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">打板策略</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">小市值策略</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">消息面-AI文本分析</a></li>
