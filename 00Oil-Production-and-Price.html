@@ -1,0 +1,2779 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DAY 1 &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '00Oil-Production-and-Price';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Quant Research</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="qc1.html">Quant</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="qc2strategy.html">常见策略Alpha/Strategy/Schemes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qc_bt_Trading.html">1 Trading Basics</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="qc_oil_4%E4%B8%AA%E6%A8%A1%E5%9E%8B1%E5%9F%BA%E6%9C%AC%E9%9D%A2.html">Oil Price WTI Predict by LSTM &amp; TCN model</a></li>
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/00Oil-Production-and-Price.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DAY 1</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DAY 1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oil-gas-data-research-web-scaping-and-analysis">Oil &amp; Gas Data Research, Web Scaping and Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#business-problem">Business Problem</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets-i-need">Datasets I Need</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">DATA CLEANING</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-for-wtl-data">Data Cleaning for WTL data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-for-brent-data">Data Cleaning for Brent Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-for-total-crude-oil-production">Data Cleaning For Total Crude oil Production</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-for-opec-production-data">Data Cleaning For OPEC Production data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-check-for-missing-values">Let’s Check for missing Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-dataset-for-analysis">Merge dataset for analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#day-2">DAY 2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#to-answer-business-question">To Answer Business Question</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="day-1">
+<h1>DAY 1<a class="headerlink" href="#day-1" title="Link to this heading">#</a></h1>
+<section id="oil-gas-data-research-web-scaping-and-analysis">
+<h2>Oil &amp; Gas Data Research, Web Scaping and Analysis<a class="headerlink" href="#oil-gas-data-research-web-scaping-and-analysis" title="Link to this heading">#</a></h2>
+<section id="business-problem">
+<h3>Business Problem<a class="headerlink" href="#business-problem" title="Link to this heading">#</a></h3>
+<p>Global oil production &amp; price trends - How have crude oil prices correlated with global production volumes over the past decade?</p>
+</section>
+</section>
+<section id="datasets-i-need">
+<h2>Datasets I Need<a class="headerlink" href="#datasets-i-need" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Crude Oil Prices</p></li>
+<li><p>Global Production ( OPEC- Organization Of The Petroleum Exporting Countries AND NON-OPEC - Oil Producing Countries that are not part of the OPEC)</p></li>
+</ol>
+<p>Now Let’s Import necessary libraries</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WTI_Price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\User\Downloads\WTI_Price.csv&quot;</span><span class="p">)</span>
+<span class="n">Brent_Price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\User\Downloads\Brent_Price.csv&quot;</span><span class="p">)</span>
+<span class="n">Global_Production</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\User\Downloads\Global_Production.csv&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="n">OPEC_Production</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\User\Downloads\OPEC_Production.csv&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WTI_Price</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>observation_date</th>
+      <th>DCOILWTICO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015-01-02</td>
+      <td>52.72</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2015-01-05</td>
+      <td>50.05</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2015-01-06</td>
+      <td>47.98</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2015-01-07</td>
+      <td>48.69</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2015-01-08</td>
+      <td>48.80</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Brent_Price</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>observation_date</th>
+      <th>DCOILBRENTEU</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015-01-02</td>
+      <td>55.38</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2015-01-05</td>
+      <td>51.08</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2015-01-06</td>
+      <td>50.12</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2015-01-07</td>
+      <td>49.06</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2015-01-08</td>
+      <td>49.43</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Global_Production</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>remove</th>
+      <th>Unnamed: 1</th>
+      <th>map</th>
+      <th>linechart</th>
+      <th>units</th>
+      <th>source key</th>
+      <th>2015</th>
+      <th>2016</th>
+      <th>2017</th>
+      <th>2018</th>
+      <th>2019</th>
+      <th>2020</th>
+      <th>2021</th>
+      <th>2022</th>
+      <th>2023</th>
+      <th>2024</th>
+      <th>2025</th>
+      <th>2026</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3d. Total Crude Oil Production</td>
+      <td>3d. Total Crude Oil Production</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Crude Oil Production</td>
+      <td>Crude Oil Production</td>
+      <td>0</td>
+      <td>0</td>
+      <td>million barrels per day</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>World Total</td>
+      <td>Total World Crude Oil Production</td>
+      <td>1</td>
+      <td>1</td>
+      <td>million barrels per day</td>
+      <td>COPR_WORLD</td>
+      <td>77.15</td>
+      <td>77.19</td>
+      <td>76.57</td>
+      <td>78.29</td>
+      <td>77.46</td>
+      <td>71.30</td>
+      <td>72.25</td>
+      <td>75.97</td>
+      <td>76.78</td>
+      <td>76.57</td>
+      <td>78.89</td>
+      <td>79.59</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>OPEC+ total</td>
+      <td>OPEC+ Crude Oil Production</td>
+      <td>1</td>
+      <td>1</td>
+      <td>million barrels per day</td>
+      <td>COPR_OPECPLUS</td>
+      <td>40.09</td>
+      <td>40.71</td>
+      <td>39.69</td>
+      <td>40.41</td>
+      <td>39.89</td>
+      <td>36.38</td>
+      <td>36.05</td>
+      <td>38.63</td>
+      <td>37.34</td>
+      <td>36.03</td>
+      <td>36.61</td>
+      <td>37.63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>United States</td>
+      <td>United States Crude Oil Production</td>
+      <td>1</td>
+      <td>1</td>
+      <td>million barrels per day</td>
+      <td>COPRPUS</td>
+      <td>9.43</td>
+      <td>8.85</td>
+      <td>9.36</td>
+      <td>10.95</td>
+      <td>12.31</td>
+      <td>11.34</td>
+      <td>11.31</td>
+      <td>12.00</td>
+      <td>12.94</td>
+      <td>13.23</td>
+      <td>13.61</td>
+      <td>13.59</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">OPEC_Production</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>API</th>
+      <th>Unnamed: 1</th>
+      <th>1973</th>
+      <th>1974</th>
+      <th>1975</th>
+      <th>1976</th>
+      <th>1977</th>
+      <th>1978</th>
+      <th>1979</th>
+      <th>1980</th>
+      <th>...</th>
+      <th>2015</th>
+      <th>2016</th>
+      <th>2017</th>
+      <th>2018</th>
+      <th>2019</th>
+      <th>2020</th>
+      <th>2021</th>
+      <th>2022</th>
+      <th>2023</th>
+      <th>2024</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>crude oil including lease condensate productio...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>INTL.57-1-OPEC-TBPD.A</td>
+      <td>OPEC</td>
+      <td>29067.00000</td>
+      <td>28889.700000</td>
+      <td>25451.40000</td>
+      <td>28695.600000</td>
+      <td>29211.400000</td>
+      <td>27715.300000</td>
+      <td>28889.000000</td>
+      <td>24947.142077</td>
+      <td>...</td>
+      <td>30947.126299</td>
+      <td>31995.876107</td>
+      <td>31975.699733</td>
+      <td>31901.201353</td>
+      <td>29880.333821</td>
+      <td>26126.172747</td>
+      <td>27030.114092</td>
+      <td>29660.571514</td>
+      <td>29165.056991</td>
+      <td>29140.220297</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>INTL.57-1-DZA-TBPD.A</td>
+      <td>Algeria</td>
+      <td>1096.90137</td>
+      <td>1008.860274</td>
+      <td>982.99726</td>
+      <td>1075.259563</td>
+      <td>1151.849315</td>
+      <td>1231.052055</td>
+      <td>1224.167123</td>
+      <td>1105.907104</td>
+      <td>...</td>
+      <td>1429.000000</td>
+      <td>1348.360656</td>
+      <td>1301.753425</td>
+      <td>1258.657534</td>
+      <td>1258.958904</td>
+      <td>1122.431694</td>
+      <td>1133.945205</td>
+      <td>1211.863014</td>
+      <td>1183.095890</td>
+      <td>1119.617486</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>INTL.57-1-COG-TBPD.A</td>
+      <td>Congo-Brazzaville</td>
+      <td>35.00000</td>
+      <td>61.000000</td>
+      <td>37.00000</td>
+      <td>39.000000</td>
+      <td>33.000000</td>
+      <td>33.000000</td>
+      <td>57.000000</td>
+      <td>65.000000</td>
+      <td>...</td>
+      <td>238.478400</td>
+      <td>197.996325</td>
+      <td>244.846390</td>
+      <td>340.489412</td>
+      <td>329.705817</td>
+      <td>283.163453</td>
+      <td>265.965474</td>
+      <td>274.561644</td>
+      <td>261.986301</td>
+      <td>247.122951</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>INTL.57-1-GNQ-TBPD.A</td>
+      <td>Equatorial Guinea</td>
+      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>250.000000</td>
+      <td>227.000000</td>
+      <td>184.328767</td>
+      <td>172.232877</td>
+      <td>155.767123</td>
+      <td>147.562842</td>
+      <td>132.561644</td>
+      <td>118.383562</td>
+      <td>88.126429</td>
+      <td>86.726770</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 54 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="data-cleaning">
+<h2>DATA CLEANING<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Rename column name for clear identification</p></li>
+<li><p>Convert Date Column to Datetime</p></li>
+<li><p>Extract Year ( Because the production data is <strong>yearly</strong>, and the <strong>WTI/Brent data</strong> is daily.)</p></li>
+<li><p>Convert Price to Numeric</p></li>
+<li><p>Aggregate to Yearly Average Price (Converting prices to Year | Avg Price puts both datasets on the same time scale, so I can merge them correctly and compute a meaningful correlation (instead of comparing one yearly value to hundreds of daily values).</p></li>
+</ol>
+</section>
+<section id="data-cleaning-for-wtl-data">
+<h2>Data Cleaning for WTL data<a class="headerlink" href="#data-cleaning-for-wtl-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WTI_Price</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DCOILWTICO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>2760.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>62.380043</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>17.617044</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-36.980000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>49.407500</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>61.415000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>73.230000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>123.640000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WTI_Price</span> <span class="o">=</span> <span class="n">WTI_Price</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;observation_date&quot;</span><span class="p">:</span> <span class="s2">&quot;Date&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;DCOILWTICO&quot;</span><span class="p">:</span> <span class="s2">&quot;WTI_Price&quot;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WTI_Price</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">WTI_Price</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WTI_Price</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">WTI_Price</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WTI_Price</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>WTI_Price</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015-01-02</td>
+      <td>52.72</td>
+      <td>2015</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2015-01-05</td>
+      <td>50.05</td>
+      <td>2015</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2015-01-06</td>
+      <td>47.98</td>
+      <td>2015</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2015-01-07</td>
+      <td>48.69</td>
+      <td>2015</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2015-01-08</td>
+      <td>48.80</td>
+      <td>2015</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WTI_Price</span><span class="p">[</span><span class="s2">&quot;WTI_Price&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+    <span class="n">WTI_Price</span><span class="p">[</span><span class="s2">&quot;WTI_Price&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WTI_Yearly</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">WTI_Price</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s2">&quot;WTI_Price&quot;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;WTI_Price&quot;</span><span class="p">:</span> <span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">})</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WTI_Yearly</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Avg_WTI_Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015</td>
+      <td>48.656706</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2016</td>
+      <td>43.293651</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017</td>
+      <td>50.800320</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018</td>
+      <td>65.227470</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019</td>
+      <td>56.988320</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2020</td>
+      <td>39.160437</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2021</td>
+      <td>68.135100</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2022</td>
+      <td>94.902869</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2023</td>
+      <td>77.576532</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2024</td>
+      <td>76.632240</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2025</td>
+      <td>65.388105</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2026</td>
+      <td>57.768571</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="data-cleaning-for-brent-data">
+<h2>Data Cleaning for Brent Data<a class="headerlink" href="#data-cleaning-for-brent-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Brent_Price</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DCOILBRENTEU</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>2800.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>66.421371</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>18.692239</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>9.120000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>52.597500</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>66.130000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>77.800000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>133.180000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Brent_Price</span> <span class="o">=</span> <span class="n">Brent_Price</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;observation_date&quot;</span><span class="p">:</span> <span class="s2">&quot;Date&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;DCOILBRENTEU&quot;</span><span class="p">:</span> <span class="s2">&quot;Brent_Price&quot;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Brent_Price</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">Brent_Price</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>
+
+<span class="n">Brent_Price</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Brent_Price</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+
+<span class="n">Brent_Price</span><span class="p">[</span><span class="s2">&quot;Brent_Price&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+    <span class="n">Brent_Price</span><span class="p">[</span><span class="s2">&quot;Brent_Price&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span>
+<span class="p">)</span>
+
+<span class="n">Brent_Yearly</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">Brent_Price</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s2">&quot;Brent_Price&quot;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Brent_Price&quot;</span><span class="p">:</span> <span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">})</span>
+<span class="p">)</span>
+
+<span class="n">Brent_Yearly</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Avg_Brent_Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015</td>
+      <td>52.316549</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2016</td>
+      <td>43.638000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017</td>
+      <td>54.124805</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018</td>
+      <td>71.335000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019</td>
+      <td>64.300623</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2020</td>
+      <td>41.957255</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2021</td>
+      <td>70.855336</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2022</td>
+      <td>100.931310</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2023</td>
+      <td>82.493865</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2024</td>
+      <td>80.521850</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2025</td>
+      <td>69.142648</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2026</td>
+      <td>63.144286</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="data-cleaning-for-total-crude-oil-production">
+<h2>Data Cleaning For Total Crude oil Production<a class="headerlink" href="#data-cleaning-for-total-crude-oil-production" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Drop unwanted columns like “remove”, “map”, “linechart”, “source key”</p></li>
+<li><p>Drop rows 0,1,3,4</p></li>
+<li><p>Then Create a Year and Total World Crude Oil Production column</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gp</span> <span class="o">=</span> <span class="n">Global_Production</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">gp</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="n">cols_to_drop</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;remove&quot;</span><span class="p">,</span> <span class="s2">&quot;map&quot;</span><span class="p">,</span> <span class="s2">&quot;linechart&quot;</span><span class="p">,</span> <span class="s2">&quot;source key&quot;</span><span class="p">]</span>
+<span class="n">gp</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">cols_to_drop</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Drop rows 0,1,3,4</span>
+<span class="n">gp</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Keep ONLY the row for Total World Crude Oil Production</span>
+<span class="n">gp_world</span> <span class="o">=</span> <span class="n">gp</span><span class="p">[</span><span class="n">gp</span><span class="p">[</span><span class="s2">&quot;Unnamed: 1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;Total World Crude Oil Production&quot;</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+
+<span class="c1"># Identify year columns (2015–2026)</span>
+<span class="n">year_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">gp_world</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()]</span>
+
+<span class="n">Global_Production_clean</span> <span class="o">=</span> <span class="n">gp_world</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+    <span class="n">value_vars</span><span class="o">=</span><span class="n">year_cols</span><span class="p">,</span>
+    <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span>
+    <span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;Total_World_Crude_Oil_Production_mbpd&quot;</span>
+<span class="p">)</span>
+
+<span class="n">Global_Production_clean</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Global_Production_clean</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">Global_Production_clean</span><span class="p">[</span><span class="s2">&quot;Total_World_Crude_Oil_Production_mbpd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+    <span class="n">Global_Production_clean</span><span class="p">[</span><span class="s2">&quot;Total_World_Crude_Oil_Production_mbpd&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span>
+<span class="p">)</span>
+
+<span class="n">Global_Production_clean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Total_World_Crude_Oil_Production_mbpd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015</td>
+      <td>77.15</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2016</td>
+      <td>77.19</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017</td>
+      <td>76.57</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018</td>
+      <td>78.29</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019</td>
+      <td>77.46</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2020</td>
+      <td>71.30</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2021</td>
+      <td>72.25</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2022</td>
+      <td>75.97</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2023</td>
+      <td>76.78</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2024</td>
+      <td>76.57</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2025</td>
+      <td>78.89</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2026</td>
+      <td>79.59</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="data-cleaning-for-opec-production-data">
+<h2>Data Cleaning For OPEC Production data<a class="headerlink" href="#data-cleaning-for-opec-production-data" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Drop API</p></li>
+<li><p>Drop year columns 1973–2014</p></li>
+<li><p>Drop row 0</p></li>
+<li><p>Exclude the OPEC total row (keep only member countries)</p></li>
+<li><p>End with a tidy table: Year | OPEC | oil_Production</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">op</span> <span class="o">=</span> <span class="n">OPEC_Production</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">op</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="c1"># Drop API column</span>
+<span class="n">op</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;API&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Drop year columns 1973–2014 </span>
+<span class="n">years_to_drop</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1973</span><span class="p">,</span> <span class="mi">2015</span><span class="p">)]</span>
+<span class="n">op</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">years_to_drop</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">columns</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Remove row 0 (metadata row)</span>
+<span class="n">op</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Rename country column for clarity (it appears as &quot;Unnamed: 1&quot;)</span>
+<span class="n">op</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Unnamed: 1&quot;</span><span class="p">:</span> <span class="s2">&quot;OPEC&quot;</span><span class="p">})</span>
+
+<span class="c1"># Remove the total OPEC row (keep only member countries)</span>
+<span class="n">op</span> <span class="o">=</span> <span class="n">op</span><span class="p">[</span><span class="n">op</span><span class="p">[</span><span class="s2">&quot;OPEC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;OPEC&quot;</span><span class="p">]</span>
+
+<span class="c1"># Identify remaining year columns (2015–2026)</span>
+<span class="n">year_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()]</span>
+
+<span class="n">OPEC_Production_clean</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+    <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;OPEC&quot;</span><span class="p">],</span>
+    <span class="n">value_vars</span><span class="o">=</span><span class="n">year_cols</span><span class="p">,</span>
+    <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span>
+    <span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;Oil_Production_mbpd_OPEC&quot;</span>
+<span class="p">)</span>
+
+
+<span class="n">OPEC_Production_clean</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OPEC_Production_clean</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">OPEC_Production_clean</span><span class="p">[</span><span class="s2">&quot;Oil_Production_mbpd_OPEC&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">OPEC_Production_clean</span><span class="p">[</span><span class="s2">&quot;Oil_Production_mbpd_OPEC&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+
+<span class="n">OPEC_Production_clean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>OPEC</th>
+      <th>Year</th>
+      <th>Oil_Production_mbpd_OPEC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Algeria</td>
+      <td>2015</td>
+      <td>1429.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Congo-Brazzaville</td>
+      <td>2015</td>
+      <td>238.478400</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Equatorial Guinea</td>
+      <td>2015</td>
+      <td>250.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Gabon</td>
+      <td>2015</td>
+      <td>213.328767</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Iran</td>
+      <td>2015</td>
+      <td>3293.189041</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>Libya</td>
+      <td>2024</td>
+      <td>1163.273224</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>Nigeria</td>
+      <td>2024</td>
+      <td>1488.869572</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>Saudi Arabia</td>
+      <td>2024</td>
+      <td>9232.154456</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>United Arab Emirates</td>
+      <td>2024</td>
+      <td>3744.945355</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>Venezuela</td>
+      <td>2024</td>
+      <td>863.469945</td>
+    </tr>
+  </tbody>
+</table>
+<p>120 rows × 3 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="let-s-check-for-missing-values">
+<h2>Let’s Check for missing Values<a class="headerlink" href="#let-s-check-for-missing-values" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WTI_Yearly</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year             0
+Avg_WTI_Price    0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Brent_Yearly</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year               0
+Avg_Brent_Price    0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Global_Production_clean</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year                                     0
+Total_World_Crude_Oil_Production_mbpd    0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">OPEC_Production_clean</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPEC                        0
+Year                        0
+Oil_Production_mbpd_OPEC    0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, We are donewith the data cleaning.</p>
+<p>But I noticed that the OPEC Production has data of 2015 - 2024</p>
+<p>And others have up to 2026</p>
+<p>My Initial Analysis was for a decade that is 2015 - 2025</p>
+<p>So, Now I have to filter all datasets to 2015–2024</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">START_YEAR</span><span class="p">,</span> <span class="n">END_YEAR</span> <span class="o">=</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2024</span>
+
+<span class="n">WTI_Yearly</span> <span class="o">=</span> <span class="n">WTI_Yearly</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;Year &gt;= @START_YEAR and Year &lt;= @END_YEAR&quot;</span><span class="p">)</span>
+<span class="n">Brent_Yearly</span> <span class="o">=</span> <span class="n">Brent_Yearly</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;Year &gt;= @START_YEAR and Year &lt;= @END_YEAR&quot;</span><span class="p">)</span>
+<span class="n">Global_Production_clean</span> <span class="o">=</span> <span class="n">Global_Production_clean</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;Year &gt;= @START_YEAR and Year &lt;= @END_YEAR&quot;</span><span class="p">)</span>
+<span class="n">OPEC_Production_clean</span> <span class="o">=</span> <span class="n">OPEC_Production_clean</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;Year &gt;= @START_YEAR and Year &lt;= @END_YEAR&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="merge-dataset-for-analysis">
+<h2>Merge dataset for analysis<a class="headerlink" href="#merge-dataset-for-analysis" title="Link to this heading">#</a></h2>
+<p>But let’s make the OPEC production data a Yearly data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">OPEC_total_yearly</span> <span class="o">=</span> <span class="p">(</span><span class="n">OPEC_Production_clean</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s2">&quot;Oil_Production_mbpd_OPEC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+                     <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Oil_Production_mbpd_OPEC&quot;</span><span class="p">:</span><span class="s2">&quot;OPEC_Production_mbpd&quot;</span><span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">OPEC_total_yearly</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>OPEC_Production_mbpd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015</td>
+      <td>30947.126299</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2016</td>
+      <td>31995.876107</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017</td>
+      <td>31975.699733</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018</td>
+      <td>31901.201353</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019</td>
+      <td>29880.333821</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2020</td>
+      <td>26126.172747</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2021</td>
+      <td>27030.114092</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2022</td>
+      <td>29660.571514</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2023</td>
+      <td>29165.056991</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2024</td>
+      <td>29140.220297</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Crude_Ol_Production_and_Prices</span> <span class="o">=</span> <span class="p">(</span><span class="n">Global_Production_clean</span>
+          <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">OPEC_total_yearly</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+          <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">WTI_Yearly</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+          <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">Brent_Yearly</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+         <span class="p">)</span>
+
+<span class="n">Crude_Ol_Production_and_Prices</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Total_World_Crude_Oil_Production_mbpd</th>
+      <th>OPEC_Production_mbpd</th>
+      <th>Avg_WTI_Price</th>
+      <th>Avg_Brent_Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015</td>
+      <td>77.15</td>
+      <td>30947.126299</td>
+      <td>48.656706</td>
+      <td>52.316549</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2016</td>
+      <td>77.19</td>
+      <td>31995.876107</td>
+      <td>43.293651</td>
+      <td>43.638000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017</td>
+      <td>76.57</td>
+      <td>31975.699733</td>
+      <td>50.800320</td>
+      <td>54.124805</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018</td>
+      <td>78.29</td>
+      <td>31901.201353</td>
+      <td>65.227470</td>
+      <td>71.335000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019</td>
+      <td>77.46</td>
+      <td>29880.333821</td>
+      <td>56.988320</td>
+      <td>64.300623</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Good, but notice as OPEC production is higher than Total world production and that is not realistic</p>
+<p>I got to find out that it was in Thousand barrel per day not Million Barrel per day</p>
+<p>So let’s Convert it to mb/p</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;OPEC_Production_mbpd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;OPEC_Production_mbpd&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span>
+
+<span class="n">Crude_Ol_Production_and_Prices</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Total_World_Crude_Oil_Production_mbpd</th>
+      <th>OPEC_Production_mbpd</th>
+      <th>Avg_WTI_Price</th>
+      <th>Avg_Brent_Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015</td>
+      <td>77.15</td>
+      <td>30.947126</td>
+      <td>48.656706</td>
+      <td>52.316549</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2016</td>
+      <td>77.19</td>
+      <td>31.995876</td>
+      <td>43.293651</td>
+      <td>43.638000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017</td>
+      <td>76.57</td>
+      <td>31.975700</td>
+      <td>50.800320</td>
+      <td>54.124805</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018</td>
+      <td>78.29</td>
+      <td>31.901201</td>
+      <td>65.227470</td>
+      <td>71.335000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019</td>
+      <td>77.46</td>
+      <td>29.880334</td>
+      <td>56.988320</td>
+      <td>64.300623</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2020</td>
+      <td>71.30</td>
+      <td>26.126173</td>
+      <td>39.160437</td>
+      <td>41.957255</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2021</td>
+      <td>72.25</td>
+      <td>27.030114</td>
+      <td>68.135100</td>
+      <td>70.855336</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2022</td>
+      <td>75.97</td>
+      <td>29.660572</td>
+      <td>94.902869</td>
+      <td>100.931310</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2023</td>
+      <td>76.78</td>
+      <td>29.165057</td>
+      <td>77.576532</td>
+      <td>82.493865</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2024</td>
+      <td>76.57</td>
+      <td>29.140220</td>
+      <td>76.632240</td>
+      <td>80.521850</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Non_OPEC_Production_mbpd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Total_World_Crude_Oil_Production_mbpd&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;OPEC_Production_mbpd&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">Crude_Ol_Production_and_Prices</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Total_World_Crude_Oil_Production_mbpd</th>
+      <th>OPEC_Production_mbpd</th>
+      <th>Avg_WTI_Price</th>
+      <th>Avg_Brent_Price</th>
+      <th>Non_OPEC_Production_mbpd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015</td>
+      <td>77.15</td>
+      <td>30.947126</td>
+      <td>48.656706</td>
+      <td>52.316549</td>
+      <td>46.202874</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2016</td>
+      <td>77.19</td>
+      <td>31.995876</td>
+      <td>43.293651</td>
+      <td>43.638000</td>
+      <td>45.194124</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017</td>
+      <td>76.57</td>
+      <td>31.975700</td>
+      <td>50.800320</td>
+      <td>54.124805</td>
+      <td>44.594300</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018</td>
+      <td>78.29</td>
+      <td>31.901201</td>
+      <td>65.227470</td>
+      <td>71.335000</td>
+      <td>46.388799</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019</td>
+      <td>77.46</td>
+      <td>29.880334</td>
+      <td>56.988320</td>
+      <td>64.300623</td>
+      <td>47.579666</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2020</td>
+      <td>71.30</td>
+      <td>26.126173</td>
+      <td>39.160437</td>
+      <td>41.957255</td>
+      <td>45.173827</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2021</td>
+      <td>72.25</td>
+      <td>27.030114</td>
+      <td>68.135100</td>
+      <td>70.855336</td>
+      <td>45.219886</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2022</td>
+      <td>75.97</td>
+      <td>29.660572</td>
+      <td>94.902869</td>
+      <td>100.931310</td>
+      <td>46.309428</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2023</td>
+      <td>76.78</td>
+      <td>29.165057</td>
+      <td>77.576532</td>
+      <td>82.493865</td>
+      <td>47.614943</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2024</td>
+      <td>76.57</td>
+      <td>29.140220</td>
+      <td>76.632240</td>
+      <td>80.521850</td>
+      <td>47.429780</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Crude_Ol_Production_and_Prices</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;Crude_Ol_Production_and_Prices.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="day-2">
+<h2>DAY 2<a class="headerlink" href="#day-2" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<section id="to-answer-business-question">
+<h1>To Answer Business Question<a class="headerlink" href="#to-answer-business-question" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>How have crude oil prices correlated with global production volumes over the past decade?</p></li>
+</ul>
+<p>We’ll break this into sub-questions:</p>
+<ul class="simple">
+<li><p>Is higher global production associated with lower prices?</p></li>
+<li><p>Does OPEC vs Non-OPEC production behave differently?</p></li>
+<li><p>Do price–production relationships change during shocks (COVID, Russia-Ukraine, OPEC cuts)?</p></li>
+</ul>
+<p>Answer Q1: “Is higher global production associated with lower prices?”</p>
+<p>Correlation (global vs prices)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_global_wti</span>  <span class="o">=</span> <span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Total_World_Crude_Oil_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">])</span>
+<span class="n">corr_global_brent</span> <span class="o">=</span> <span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Total_World_Crude_Oil_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">])</span>
+<span class="n">corr_global_wti</span><span class="p">,</span> <span class="n">corr_global_brent</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.1648652697170697, 0.1950721498760255)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span> <span class="n">Crude_Ol_Production_and_Prices</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Total_World_Crude_Oil_Production_mbpd&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Brent Price vs Global Production (2015–2024)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span> <span class="n">Crude_Ol_Production_and_Prices</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Total_World_Crude_Oil_Production_mbpd&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;WTI Price vs Global Production (2015–2024)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cf621e923133a2f7bf90adab4e20188a6a741198eccc6da920810f62311c8ab4.png" src="_images/cf621e923133a2f7bf90adab4e20188a6a741198eccc6da920810f62311c8ab4.png" />
+<img alt="_images/60cc77c1c90f1cbdd399b04c6223621963dc0eb56cf5aa5f51ed63c3cd9d3f05.png" src="_images/60cc77c1c90f1cbdd399b04c6223621963dc0eb56cf5aa5f51ed63c3cd9d3f05.png" />
+</div>
+</div>
+<p>Over <strong>2015–2024</strong>, global crude oil production shows a <strong>very weak positive correlation</strong> with prices <strong>(WTI: r≈0.16, Brent: r≈0.20)</strong>.</p>
+<p>This suggests that production volumes alone do not explain price movements; demand shifts and supply disruptions likely played a larger role.</p>
+<p><strong>Why it might be weak/positive (what’s driving this)</strong></p>
+<ul class="simple">
+<li><p>COVID (2020): both production and prices fell together (demand shock) → pushes correlation positive.</p></li>
+<li><p>2022: prices rose due to geopolitics even while production recovered → weakens any simple supply-driven negative link.</p></li>
+<li><p>OPEC policy cuts can also break a simple “more supply → lower price” pattern.</p></li>
+</ul>
+<p>Answer Q2: “Does OPEC vs Non-OPEC behave differently?”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_opec_brent</span> <span class="o">=</span> <span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;OPEC_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">])</span>
+<span class="n">corr_non_opec_brent</span> <span class="o">=</span> <span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Non_OPEC_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">])</span>
+
+<span class="n">corr_opec_wti</span> <span class="o">=</span> <span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;OPEC_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">])</span>
+<span class="n">corr_non_opec_wti</span> <span class="o">=</span> <span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Non_OPEC_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">])</span>
+
+<span class="n">corr_opec_brent</span><span class="p">,</span> <span class="n">corr_non_opec_brent</span><span class="p">,</span> <span class="n">corr_opec_wti</span><span class="p">,</span> <span class="n">corr_non_opec_wti</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.08604228190677808,
+ 0.5623095371652642,
+ -0.0978677872854994,
+ 0.5214299681006702)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">Crude_Ol_Production_and_Prices</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;OPEC_Production_mbpd&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Brent Price vs OPEC Production (2015–2024)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">Crude_Ol_Production_and_Prices</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Non_OPEC_Production_mbpd&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Brent Price vs Non-OPEC Production (2015–2024)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">Crude_Ol_Production_and_Prices</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;OPEC_Production_mbpd&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;WTI Price vs OPEC Production (2015–2024)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">Crude_Ol_Production_and_Prices</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Non_OPEC_Production_mbpd&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;WTI Price vs Non-OPEC Production (2015–2024)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d97a92766f3e1f2f24fbb7948fe83b4f6cfd87773a8779070cf92d75d53e5b24.png" src="_images/d97a92766f3e1f2f24fbb7948fe83b4f6cfd87773a8779070cf92d75d53e5b24.png" />
+<img alt="_images/006717d86cca36e9dfa508de42827878ee44a7b8ee5ef6c962919ef131497ed6.png" src="_images/006717d86cca36e9dfa508de42827878ee44a7b8ee5ef6c962919ef131497ed6.png" />
+<img alt="_images/5b6772ffbde3e3f85105dd66f061422ef29f8196b240e98a7d24f5e08faadf10.png" src="_images/5b6772ffbde3e3f85105dd66f061422ef29f8196b240e98a7d24f5e08faadf10.png" />
+<img alt="_images/85366ee1ffba12625b223d8ab4efc3d32e231041efa56e082198c653f213c55e.png" src="_images/85366ee1ffba12625b223d8ab4efc3d32e231041efa56e082198c653f213c55e.png" />
+</div>
+</div>
+<p>Over <strong>2015–2024, OPEC production</strong> has a <strong>near-zero correlation with crude prices (Brent r≈-0.09; WTI r≈-0.10)</strong>, while <strong>Non-OPEC production</strong> shows a <strong>moderate positive correlation (Brent r≈0.56; WTI r≈0.52)</strong>.</p>
+<p>This suggests <strong>Non-OPEC output</strong> is more price-responsive, whereas OPEC output reflects strategic supply management rather than tracking prices directly.”</p>
+<p>Correlation ≠ causation. The positive Non-OPEC correlation could also reflect demand cycles (both production and prices rise in expansions).</p>
+<p>Answer Q3: “Do relationships change during shocks?”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create period labels (pre-COVID, COVID, post-COVID/geopolitical) and compute correlation per period.</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">label_period</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">2019</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Pre-COVID (2015–2019)&quot;</span>
+    <span class="k">elif</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">2021</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;COVID shock (2020–2021)&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Post-COVID/Geo (2022–2024)&quot;</span>
+
+<span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Period&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">label_period</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">by_period</span> <span class="o">=</span> <span class="p">(</span><span class="n">Crude_Ol_Production_and_Prices</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Period&quot;</span><span class="p">)</span>
+             <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span>
+                 <span class="s2">&quot;Corr_Global_Brent&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;Total_World_Crude_Oil_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">]),</span>
+                 <span class="s2">&quot;Corr_OPEC_Brent&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;OPEC_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">]),</span>
+                 <span class="s2">&quot;Corr_NonOPEC_Brent&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;Non_OPEC_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">]),</span>
+             <span class="p">}))</span>
+             <span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
+
+<span class="n">by_period</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\User\AppData\Local\Temp\ipykernel_20792\2370351447.py:2: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  .apply(lambda g: pd.Series({
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Period</th>
+      <th>Corr_Global_Brent</th>
+      <th>Corr_OPEC_Brent</th>
+      <th>Corr_NonOPEC_Brent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>COVID shock (2020–2021)</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Post-COVID/Geo (2022–2024)</td>
+      <td>-0.942701</td>
+      <td>0.998971</td>
+      <td>-0.976084</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Pre-COVID (2015–2019)</td>
+      <td>0.724255</td>
+      <td>-0.283615</td>
+      <td>0.621498</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">by_period</span> <span class="o">=</span> <span class="p">(</span><span class="n">Crude_Ol_Production_and_Prices</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Period&quot;</span><span class="p">)</span>
+             <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span>
+                 <span class="s2">&quot;Corr_Global_WTI&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;Total_World_Crude_Oil_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">]),</span>
+                 <span class="s2">&quot;Corr_OPEC_WTI&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;OPEC_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">]),</span>
+                 <span class="s2">&quot;Corr_NonOPEC_WTI&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;Non_OPEC_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">]),</span>
+             <span class="p">}))</span>
+             <span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
+
+<span class="n">by_period</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\User\AppData\Local\Temp\ipykernel_20792\2959376930.py:2: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  .apply(lambda g: pd.Series({
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Period</th>
+      <th>Corr_Global_WTI</th>
+      <th>Corr_OPEC_WTI</th>
+      <th>Corr_NonOPEC_WTI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>COVID shock (2020–2021)</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Post-COVID/Geo (2022–2024)</td>
+      <td>-0.955815</td>
+      <td>0.999994</td>
+      <td>-0.984313</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Pre-COVID (2015–2019)</td>
+      <td>0.762369</td>
+      <td>-0.160857</td>
+      <td>0.543508</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">],</span> <span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Avg Brent Price&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">],</span> <span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Total_World_Crude_Oil_Production_mbpd&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Global Production (mbpd)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Oil Price vs Global Production (2015–2024)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">],</span> <span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Avg WTI Price&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">],</span> <span class="n">Crude_Ol_Production_and_Prices</span><span class="p">[</span><span class="s2">&quot;Total_World_Crude_Oil_Production_mbpd&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Global Production (mbpd)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Oil Price vs Global Production (2015–2024)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8774c23d117e3f5a8c75f9c6a0baf12cf880dddd193a68012d6a55c47c834a6c.png" src="_images/8774c23d117e3f5a8c75f9c6a0baf12cf880dddd193a68012d6a55c47c834a6c.png" />
+<img alt="_images/d014d0d894ac9572f993c39486c7c9ae48ee8fccd6bf70290f54cd0fcd57d35c.png" src="_images/d014d0d894ac9572f993c39486c7c9ae48ee8fccd6bf70290f54cd0fcd57d35c.png" />
+</div>
+</div>
+<p><strong>Before COVID</strong>, production and prices tended to rise together (likely demand-driven), while OPEC production moved weakly opposite to prices, consistent with supply management.</p>
+<p><strong>Shock periods:</strong> the relationship appears to flip and become more volatile</p>
+<p><strong>Post-2022:</strong> Global and Non-OPEC become strongly negative, while OPEC becomes strongly positive (in your outputs).</p>
+<p>During the post-2022 period, correlations become extreme and change sign, suggesting the price–production relationship is dominated by shocks and policy responses rather than a stable supply–price mechanism. However, this period contains only three annual observations, so results should be treated as directional rather than conclusive.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Crude_Ol_Production_and_Prices</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Year&#39;, &#39;Total_World_Crude_Oil_Production_mbpd&#39;, &#39;OPEC_Production_mbpd&#39;,
+       &#39;Avg_WTI_Price&#39;, &#39;Avg_Brent_Price&#39;, &#39;Non_OPEC_Production_mbpd&#39;,
+       &#39;Period&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Crude_Ol_Production_and_Prices</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Total_World_Crude_Oil_Production_mbpd</th>
+      <th>OPEC_Production_mbpd</th>
+      <th>Avg_WTI_Price</th>
+      <th>Avg_Brent_Price</th>
+      <th>Non_OPEC_Production_mbpd</th>
+      <th>Period</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015</td>
+      <td>77.15</td>
+      <td>30.947126</td>
+      <td>48.656706</td>
+      <td>52.316549</td>
+      <td>46.202874</td>
+      <td>Pre-COVID (2015–2019)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2016</td>
+      <td>77.19</td>
+      <td>31.995876</td>
+      <td>43.293651</td>
+      <td>43.638000</td>
+      <td>45.194124</td>
+      <td>Pre-COVID (2015–2019)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Crude_Ol_Production_and_Prices</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;Crude_Ol_Production_and_Prices.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">corr_by_period_brent</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">Crude_Ol_Production_and_Prices</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Period&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span>
+        <span class="s2">&quot;Corr_Global_Brent&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;Total_World_Crude_Oil_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">]),</span>
+        <span class="s2">&quot;Corr_OPEC_Brent&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;OPEC_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">]),</span>
+        <span class="s2">&quot;Corr_NonOPEC_Brent&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;Non_OPEC_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">]),</span>
+    <span class="p">}))</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">corr_by_period_brent</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;corr_by_period_brent.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\User\AppData\Local\Temp\ipykernel_20792\2486298918.py:5: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  .apply(lambda g: pd.Series({
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_by_period_wti</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">Crude_Ol_Production_and_Prices</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Period&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span>
+        <span class="s2">&quot;Corr_Global_WTI&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;Total_World_Crude_Oil_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">]),</span>
+        <span class="s2">&quot;Corr_OPEC_WTI&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;OPEC_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">]),</span>
+        <span class="s2">&quot;Corr_NonOPEC_WTI&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;Non_OPEC_Production_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">]),</span>
+    <span class="p">}))</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">corr_by_period_wti</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;corr_by_period_wti.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\User\AppData\Local\Temp\ipykernel_20792\2626148364.py:3: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  .apply(lambda g: pd.Series({
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heatmap</span> <span class="o">=</span> <span class="n">corr_by_period_brent</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+    <span class="n">id_vars</span><span class="o">=</span><span class="s2">&quot;Period&quot;</span><span class="p">,</span>
+    <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Corr_Global_Brent&quot;</span><span class="p">,</span> <span class="s2">&quot;Corr_OPEC_Brent&quot;</span><span class="p">,</span> <span class="s2">&quot;Corr_NonOPEC_Brent&quot;</span><span class="p">],</span>
+    <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;Producer_Type&quot;</span><span class="p">,</span>
+    <span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;Correlation&quot;</span>
+<span class="p">)</span>
+
+<span class="n">heatmap</span><span class="p">[</span><span class="s2">&quot;Producer_Type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">[</span><span class="s2">&quot;Producer_Type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span>
+    <span class="s2">&quot;Corr_Global_Brent&quot;</span><span class="p">:</span> <span class="s2">&quot;Global&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Corr_OPEC_Brent&quot;</span><span class="p">:</span> <span class="s2">&quot;OPEC&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Corr_NonOPEC_Brent&quot;</span><span class="p">:</span> <span class="s2">&quot;Non-OPEC&quot;</span>
+<span class="p">})</span>
+
+<span class="n">heatmap</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;correlation_heatmap_brent.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heatmap</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Period</th>
+      <th>Producer_Type</th>
+      <th>Correlation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>COVID shock (2020–2021)</td>
+      <td>Global</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Post-COVID/Geo (2022–2024)</td>
+      <td>Global</td>
+      <td>-0.942701</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Pre-COVID (2015–2019)</td>
+      <td>Global</td>
+      <td>0.724255</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>COVID shock (2020–2021)</td>
+      <td>OPEC</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Post-COVID/Geo (2022–2024)</td>
+      <td>OPEC</td>
+      <td>0.998971</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Pre-COVID (2015–2019)</td>
+      <td>OPEC</td>
+      <td>-0.283615</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>COVID shock (2020–2021)</td>
+      <td>Non-OPEC</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Post-COVID/Geo (2022–2024)</td>
+      <td>Non-OPEC</td>
+      <td>-0.976084</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Pre-COVID (2015–2019)</td>
+      <td>Non-OPEC</td>
+      <td>0.621498</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DAY 1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oil-gas-data-research-web-scaping-and-analysis">Oil &amp; Gas Data Research, Web Scaping and Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#business-problem">Business Problem</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets-i-need">Datasets I Need</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">DATA CLEANING</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-for-wtl-data">Data Cleaning for WTL data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-for-brent-data">Data Cleaning for Brent Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-for-total-crude-oil-production">Data Cleaning For Total Crude oil Production</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-for-opec-production-data">Data Cleaning For OPEC Production data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-check-for-missing-values">Let’s Check for missing Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-dataset-for-analysis">Merge dataset for analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#day-2">DAY 2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#to-answer-business-question">To Answer Business Question</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
