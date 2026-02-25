@@ -1,0 +1,1939 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>WTI Technical Analysis &amp; Backtesting &#8212; Tom Workbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=8dedbda2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'qc_oil_bt_Trading';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tom Workbook</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Quant Research</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="qc1.html">Quant</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="qc2strategy.html">常见策略Alpha/Strategy/Schemes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qc_oil_4%E4%B8%AA%E6%A8%A1%E5%9E%8B1%E5%9F%BA%E6%9C%AC%E9%9D%A2.html">Oil Price WTI Predict by LSTM &amp; TCN model</a></li>
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/tomctang/wk" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/qc_oil_bt_Trading.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>WTI Technical Analysis & Backtesting</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">WTI Technical Analysis &amp; Backtesting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trading-basics">1 Trading Basics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-wti-daily-ohlc-data">Load WTI daily OHLC data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-daily-high-low-prices">Plot daily High / Low prices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-a-candlestick-chart">Plot a candlestick chart</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-familiar-with-the-data">Getting Familiar with the Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resample-to-weekly">Resample to weekly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-a-daily-return-histogram">Plot a daily return histogram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-and-plot-smas">Calculate and plot SMAs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financial-trading-with-bt">Financial Trading with bt</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bt-process">The bt process</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-indicators">2 Technical Indicators</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-indicators-mas">Trend Indicators: MAs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-and-plot-two-emas">Calculate and plot two EMAs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sma-vs-ema">SMA vs. EMA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strength-indicators-adx">Strength Indicators: ADX</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-adx">Calculate the ADX</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-adx">Visualize the ADX</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#momentum-indicators-rsi">Momentum Indicators: RSI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-rsi">Calculate the RSI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-rsi">Visualize the RSI</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volatility-indicators-bollinger-bands">Volatility Indicators: Bollinger Bands</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implement-bollinger-bands">Implement Bollinger Bands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trading-strategies">3. Trading Strategies</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trading-signals">Trading Signals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-sma-based-signal-strategy">Build an SMA-based signal strategy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-ema-based-signal-strategy">Build an EMA-based signal strategy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-following-strategies">Trend-following Strategies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-an-ema-crossover-signal">Construct an EMA crossover signal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-and-backtest-the-ema-crossover-trend-following-strategy">Build and backtest the EMA crossover trend-following strategy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-reversion-strategy">Mean Reversion Strategy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-an-rsi-based-signal">Construct an RSI-based signal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-and-backtest-the-rsi-mean-reversion-strategy">Build and backtest the RSI mean reversion strategy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strategy-optimization-and-benchmarking">Strategy Optimization and Benchmarking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conduct-a-strategy-optimization">Conduct a strategy optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-strategy-benchmarking">Perform strategy benchmarking</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-evaluation">4. Performance Evaluation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strategy-return-analysis">Strategy Return Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-return-results-of-a-backtest">Review return results of a backtest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-return-histograms-of-the-backtest">Plot return histograms of the backtest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-return-results-of-multiple-strategies">Compare return results of multiple strategies</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drawdown">Drawdown</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-performance-with-drawdowns">Review performance with drawdowns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-and-review-the-calmar-ratio">Calculate and review the Calmar Ratio</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharpe-ratio-and-sortino-ratio">Sharpe Ratio and Sortino Ratio</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-strategy-performance-by-sharpe-ratio">Evaluate strategy performance by Sharpe Ratio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-strategy-performance-by-sortino-ratio">Evaluate strategy performance by Sortino Ratio</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="wti-technical-analysis-backtesting">
+<h1>WTI Technical Analysis &amp; Backtesting<a class="headerlink" href="#wti-technical-analysis-backtesting" title="Link to this heading">#</a></h1>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">bt</span></code> and <code class="docutils literal notranslate"><span class="pre">talib</span></code> packages on <strong>WTI daily OHLC data</strong> (1-year window) fetched via <code class="docutils literal notranslate"><span class="pre">yfinance</span></code>.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="trading-basics">
+<h1>1 Trading Basics<a class="headerlink" href="#trading-basics" title="Link to this heading">#</a></h1>
+<section id="load-wti-daily-ohlc-data">
+<h2>Load WTI daily OHLC data<a class="headerlink" href="#load-wti-daily-ohlc-data" title="Link to this heading">#</a></h2>
+<p>WTI crude oil futures (<code class="docutils literal notranslate"><span class="pre">CL=F</span></code>) are fetched via <code class="docutils literal notranslate"><span class="pre">yfinance</span></code> for the past 12 months. The dataset contains Open, High, Low, Close prices — the same structure used throughout this notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">yf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="n">END_DATE</span>   <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="n">START_DATE</span> <span class="o">=</span> <span class="n">END_DATE</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">730</span><span class="p">)</span>
+<span class="n">START_STR</span>  <span class="o">=</span> <span class="n">START_DATE</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">END_STR</span>    <span class="o">=</span> <span class="n">END_DATE</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fetch WTI daily OHLC</span>
+<span class="n">wti_raw</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="s1">&#39;CL=F&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">START_STR</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">END_STR</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="s1">&#39;1d&#39;</span><span class="p">)</span>
+<span class="n">wti_data</span> <span class="o">=</span> <span class="n">wti_raw</span><span class="p">[[</span><span class="s1">&#39;Open&#39;</span><span class="p">,</span> <span class="s1">&#39;High&#39;</span><span class="p">,</span> <span class="s1">&#39;Low&#39;</span><span class="p">,</span> <span class="s1">&#39;Close&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">wti_data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">wti_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>   <span class="c1"># strip timezone for bt compatibility</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">wti_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Shape: </span><span class="si">{</span><span class="n">wti_data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">  |  </span><span class="si">{</span><span class="n">START_STR</span><span class="si">}</span><span class="s1"> → </span><span class="si">{</span><span class="n">END_STR</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                 Open       High        Low      Close
+Date                                                  
+2024-02-26  76.400002  78.029999  75.839996  77.580002
+2024-02-27  77.620003  79.000000  77.169998  78.870003
+2024-02-28  78.480003  79.620003  77.779999  78.540001
+2024-02-29  78.199997  79.279999  77.940002  78.260002
+2024-03-01  78.279999  80.849998  78.050003  79.970001
+
+Shape: (503, 4)  |  2024-02-26 → 2026-02-25
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-daily-high-low-prices">
+<h2>Plot daily High / Low prices<a class="headerlink" href="#plot-daily-high-low-prices" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Plot daily High and Low</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wti_data</span><span class="p">[</span><span class="s1">&#39;High&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Daily High&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wti_data</span><span class="p">[</span><span class="s1">&#39;Low&#39;</span><span class="p">],</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>   <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Daily Low&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;WTI Crude Oil — Daily High &amp; Low Prices&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Price ($/bbl)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9d45a65f4555d543979f333ed5792d8b6d22767666f4d2d6bd4e86d340a5a402.png" src="_images/9d45a65f4555d543979f333ed5792d8b6d22767666f4d2d6bd4e86d340a5a402.png" />
+</div>
+</div>
+</section>
+<section id="plot-a-candlestick-chart">
+<h2>Plot a candlestick chart<a class="headerlink" href="#plot-a-candlestick-chart" title="Link to this heading">#</a></h2>
+<p>A candlestick chart packs Open, High, Low, and Close into a single visual, giving a richer sense of WTI price action than a simple line chart.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+
+<span class="c1"># Define candlestick data</span>
+<span class="n">candlestick</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Candlestick</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">wti_data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+    <span class="nb">open</span><span class="o">=</span><span class="n">wti_data</span><span class="p">[</span><span class="s1">&#39;Open&#39;</span><span class="p">],</span>
+    <span class="n">high</span><span class="o">=</span><span class="n">wti_data</span><span class="p">[</span><span class="s1">&#39;High&#39;</span><span class="p">],</span>
+    <span class="n">low</span><span class="o">=</span><span class="n">wti_data</span><span class="p">[</span><span class="s1">&#39;Low&#39;</span><span class="p">],</span>
+    <span class="n">close</span><span class="o">=</span><span class="n">wti_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">])</span>
+
+<span class="c1"># Create and show figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">candlestick</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;WTI Crude Oil — Daily Candlestick Chart&#39;</span><span class="p">,</span>
+    <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;Price ($/bbl)&#39;</span><span class="p">,</span>
+    <span class="n">xaxis_rangeslider_visible</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</section>
+<section id="getting-familiar-with-the-data">
+<h2>Getting Familiar with the Data<a class="headerlink" href="#getting-familiar-with-the-data" title="Link to this heading">#</a></h2>
+<section id="resample-to-weekly">
+<h3>Resample to weekly<a class="headerlink" href="#resample-to-weekly" title="Link to this heading">#</a></h3>
+<p>Switch from daily to weekly granularity by resampling with OHLC aggregation — useful for swing-trading analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Resample to weekly OHLC</span>
+<span class="n">wti_weekly</span> <span class="o">=</span> <span class="n">wti_data</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+    <span class="s1">&#39;Open&#39;</span><span class="p">:</span>  <span class="s1">&#39;first&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;High&#39;</span><span class="p">:</span>  <span class="s1">&#39;max&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Low&#39;</span><span class="p">:</span>   <span class="s1">&#39;min&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Close&#39;</span><span class="p">:</span> <span class="s1">&#39;last&#39;</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">wti_weekly</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                 Open       High        Low      Close
+Date                                                  
+2024-03-03  76.400002  80.849998  75.839996  79.970001
+2024-03-10  80.139999  80.669998  77.519997  78.010002
+2024-03-17  77.800003  81.620003  76.790001  81.040001
+2024-03-24  81.029999  83.849998  80.300003  80.629997
+2024-03-31  80.849998  83.209999  80.550003  83.169998
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-a-daily-return-histogram">
+<h3>Plot a daily return histogram<a class="headerlink" href="#plot-a-daily-return-histogram" title="Link to this heading">#</a></h3>
+<p>WTI crude oil is known for sharp moves driven by geopolitics and inventory surprises. The return distribution reveals how fat-tailed the price changes are.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate daily returns</span>
+<span class="n">wti_data</span><span class="p">[</span><span class="s1">&#39;daily_return&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wti_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1"># Plot histogram</span>
+<span class="n">wti_data</span><span class="p">[</span><span class="s1">&#39;daily_return&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Daily Return (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;WTI Crude Oil — Daily Return Distribution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2436a29d652fc5b97d8a4cb4277c1f831872ddb083c464b5dfb636b908b8f0be.png" src="_images/2436a29d652fc5b97d8a4cb4277c1f831872ddb083c464b5dfb636b908b8f0be.png" />
+</div>
+</div>
+</section>
+<section id="calculate-and-plot-smas">
+<h3>Calculate and plot SMAs<a class="headerlink" href="#calculate-and-plot-smas" title="Link to this heading">#</a></h3>
+<p>A 20-day and 50-day SMA are applied to the WTI close price to smooth out day-to-day noise and highlight the medium-term trend.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate SMAs</span>
+<span class="n">wti_data</span><span class="p">[</span><span class="s1">&#39;SMA_20&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wti_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">wti_data</span><span class="p">[</span><span class="s1">&#39;SMA_50&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wti_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wti_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Close&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wti_data</span><span class="p">[</span><span class="s1">&#39;SMA_20&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>       <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;SMA_20&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wti_data</span><span class="p">[</span><span class="s1">&#39;SMA_50&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span>      <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;SMA_50&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;WTI Crude Oil — Simple Moving Averages&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Price ($/bbl)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/01a8bd4abfe61f5663ca67a6aa76a4795ca58fbcb965da64dce121bc77d0e8ae.png" src="_images/01a8bd4abfe61f5663ca67a6aa76a4795ca58fbcb965da64dce121bc77d0e8ae.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="financial-trading-with-bt">
+<h2>Financial Trading with bt<a class="headerlink" href="#financial-trading-with-bt" title="Link to this heading">#</a></h2>
+<section id="the-bt-process">
+<h3>The bt process<a class="headerlink" href="#the-bt-process" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">bt</span></code> package provides a flexible framework for defining and backtesting trading strategies.</p>
+<ul class="simple">
+<li><p>Get historical price data via <code class="docutils literal notranslate"><span class="pre">yfinance</span></code>, then wrap in a <code class="docutils literal notranslate"><span class="pre">bt</span></code>-compatible DataFrame.</p></li>
+<li><p>Define the strategy with <code class="docutils literal notranslate"><span class="pre">bt.Strategy()</span></code> and the required <code class="docutils literal notranslate"><span class="pre">algos</span></code>.</p></li>
+<li><p>Create a backtest with <code class="docutils literal notranslate"><span class="pre">bt.Backtest()</span></code>, run it, then plot and evaluate the result.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bt expects a DataFrame of Close prices with lowercase column names</span>
+<span class="n">bt_data</span> <span class="o">=</span> <span class="n">wti_data</span><span class="p">[[</span><span class="s1">&#39;Close&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Close&#39;</span><span class="p">:</span> <span class="s1">&#39;wti&#39;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bt_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  wti
+Date                 
+2024-02-26  77.580002
+2024-02-27  78.870003
+2024-02-28  78.540001
+2024-02-29  78.260002
+2024-03-01  79.970001
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bt</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bt</span>
+
+<span class="c1"># Define a weekly-rebalanced equal-weight strategy (single asset = fully invested)</span>
+<span class="n">bt_strategy</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;WTI_Weekly&#39;</span><span class="p">,</span>
+                          <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunWeekly</span><span class="p">(),</span>
+                           <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectAll</span><span class="p">(),</span>
+                           <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+                           <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+
+<span class="c1"># Create and run the backtest</span>
+<span class="n">bt_test</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">bt_strategy</span><span class="p">,</span> <span class="n">bt_data</span><span class="p">)</span>
+<span class="n">bt_res</span>   <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bt_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:02&lt;00:00,  2.27s/it]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the backtest result</span>
+<span class="n">bt_res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;WTI — Weekly Rebalanced Backtest&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d1afb273c7405da3ddc2fcf6d5b4348cb822534e45fa86fc9fa5eacf3021cc37.png" src="_images/d1afb273c7405da3ddc2fcf6d5b4348cb822534e45fa86fc9fa5eacf3021cc37.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get trade details</span>
+<span class="n">bt_res</span><span class="o">.</span><span class="n">get_transactions</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>price</th>
+      <th>quantity</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Security</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2024-02-26</th>
+      <th>wti</th>
+      <td>77.580002</td>
+      <td>12889.0</td>
+    </tr>
+    <tr>
+      <th>2024-09-03</th>
+      <th>wti</th>
+      <td>70.339996</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="technical-indicators">
+<h1>2 Technical Indicators<a class="headerlink" href="#technical-indicators" title="Link to this heading">#</a></h1>
+<section id="trend-indicators-mas">
+<h2>Trend Indicators: MAs<a class="headerlink" href="#trend-indicators-mas" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">talib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Use the WTI data already loaded (last 365 days)</span>
+<span class="n">stock_data</span> <span class="o">=</span> <span class="n">wti_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="calculate-and-plot-two-emas">
+<h3>Calculate and plot two EMAs<a class="headerlink" href="#calculate-and-plot-two-emas" title="Link to this heading">#</a></h3>
+<p>A 12-period and 26-period EMA are the core components of MACD. Applied here to WTI Close prices — the shorter EMA reacts faster to recent crude oil price swings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate EMAs</span>
+<span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;EMA_12&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">EMA</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;EMA_26&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">EMA</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">26</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;EMA_12&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;EMA_12&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;EMA_26&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;EMA_26&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Close&#39;</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;WTI Crude Oil — EMA 12 vs EMA 26&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Price ($/bbl)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d3ff004219eea3284568ba299a70e1131dfa33a56dcd2c8cc2dddb4b38b9bbb6.png" src="_images/d3ff004219eea3284568ba299a70e1131dfa33a56dcd2c8cc2dddb4b38b9bbb6.png" />
+</div>
+</div>
+</section>
+<section id="sma-vs-ema">
+<h3>SMA vs. EMA<a class="headerlink" href="#sma-vs-ema" title="Link to this heading">#</a></h3>
+<p>SMA weights all periods equally; EMA applies more weight to recent data. For volatile commodities like WTI, the EMA typically tracks price turns faster.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate 50-period SMA and EMA</span>
+<span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;SMA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">SMA</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;EMA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">EMA</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;SMA&#39;</span><span class="p">],</span>   <span class="n">label</span><span class="o">=</span><span class="s1">&#39;SMA_50&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;EMA&#39;</span><span class="p">],</span>   <span class="n">label</span><span class="o">=</span><span class="s1">&#39;EMA_50&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Close&#39;</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;WTI Crude Oil — SMA vs EMA (50-period)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Price ($/bbl)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9cb53d54bdb32e6bd82cd3d269bed7a0e542b04fd8497c6ec375b993b226f19e.png" src="_images/9cb53d54bdb32e6bd82cd3d269bed7a0e542b04fd8497c6ec375b993b226f19e.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="strength-indicators-adx">
+<h2>Strength Indicators: ADX<a class="headerlink" href="#strength-indicators-adx" title="Link to this heading">#</a></h2>
+<section id="calculate-the-adx">
+<h3>Calculate the ADX<a class="headerlink" href="#calculate-the-adx" title="Link to this heading">#</a></h3>
+<p>The Average Directional Index (ADX) measures trend strength — not direction. An ADX above 25 signals a strong trend, which is particularly useful for WTI given its tendency to trend on supply/demand shocks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate ADX with default (14) and longer (21) periods</span>
+<span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;ADX_14&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">ADX</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;High&#39;</span><span class="p">],</span>
+                                  <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Low&#39;</span><span class="p">],</span>
+                                  <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">])</span>
+
+<span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;ADX_21&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">ADX</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;High&#39;</span><span class="p">],</span>
+                                  <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Low&#39;</span><span class="p">],</span>
+                                  <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[[</span><span class="s1">&#39;High&#39;</span><span class="p">,</span> <span class="s1">&#39;Low&#39;</span><span class="p">,</span> <span class="s1">&#39;Close&#39;</span><span class="p">,</span> <span class="s1">&#39;ADX_14&#39;</span><span class="p">,</span> <span class="s1">&#39;ADX_21&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                 High        Low      Close     ADX_14     ADX_21
+Date                                                             
+2026-02-18  65.559998  62.119999  65.190002  29.420071  22.702501
+2026-02-19  66.900002  64.879997  66.430000  30.067359  23.200924
+2026-02-20  67.050003  65.940002  66.389999  30.728359  23.706009
+2026-02-23  67.279999  65.379997  66.309998  30.824699  23.957080
+2026-02-24  66.300003  65.940002  66.239998  30.914157  24.196195
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-the-adx">
+<h3>Visualize the ADX<a class="headerlink" href="#visualize-the-adx" title="Link to this heading">#</a></h3>
+<p>Plot WTI Close price alongside ADX to identify periods where a directional crude oil trend was strong enough to trade.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;ADX&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">ADX</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;High&#39;</span><span class="p">],</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Low&#39;</span><span class="p">],</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Price ($/bbl)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Close&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;WTI Crude Oil — Price and ADX&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;ADX&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;ADX&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ADX_14&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Trend threshold (25)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9560be24d16fe6c3a30a050b039369c79b0e7278a173e73e679733863f7f42ac.png" src="_images/9560be24d16fe6c3a30a050b039369c79b0e7278a173e73e679733863f7f42ac.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="momentum-indicators-rsi">
+<h2>Momentum Indicators: RSI<a class="headerlink" href="#momentum-indicators-rsi" title="Link to this heading">#</a></h2>
+<section id="calculate-the-rsi">
+<h3>Calculate the RSI<a class="headerlink" href="#calculate-the-rsi" title="Link to this heading">#</a></h3>
+<p>RSI oscillates between 0–100. Above 70 = overbought; below 30 = oversold. For WTI, RSI extremes often coincide with inventory surprise reactions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate RSI with default (14) and longer (21) periods</span>
+<span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;RSI_14&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">RSI</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">])</span>
+<span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;RSI_21&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">RSI</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[[</span><span class="s1">&#39;Close&#39;</span><span class="p">,</span> <span class="s1">&#39;RSI_14&#39;</span><span class="p">,</span> <span class="s1">&#39;RSI_21&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                Close     RSI_14     RSI_21
+Date                                       
+2026-02-18  65.190002  59.559487  58.246446
+2026-02-19  66.430000  62.663851  60.500146
+2026-02-20  66.389999  62.497184  60.389737
+2026-02-23  66.309998  62.141203  60.159185
+2026-02-24  66.239998  61.809459  59.948917
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-the-rsi">
+<h3>Visualize the RSI<a class="headerlink" href="#visualize-the-rsi" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;RSI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">RSI</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Price ($/bbl)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;WTI Crude Oil — Price and RSI&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;RSI&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;RSI&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orangered&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>  <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Overbought (70)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Oversold (30)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/95c5618cb53e122b47546dfc431e0b1738923fb73b7d089025df7607b2c6aae0.png" src="_images/95c5618cb53e122b47546dfc431e0b1738923fb73b7d089025df7607b2c6aae0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="volatility-indicators-bollinger-bands">
+<h2>Volatility Indicators: Bollinger Bands<a class="headerlink" href="#volatility-indicators-bollinger-bands" title="Link to this heading">#</a></h2>
+<section id="implement-bollinger-bands">
+<h3>Implement Bollinger Bands<a class="headerlink" href="#implement-bollinger-bands" title="Link to this heading">#</a></h3>
+<p>Bollinger Bands envelope the price within ±2 standard deviations of a 20-period SMA. WTI frequently touches the bands during geopolitical shocks or EIA inventory surprises.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate Bollinger Bands</span>
+<span class="n">upper</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">lower</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">BBANDS</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span>
+                                  <span class="n">nbdevup</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                  <span class="n">nbdevdn</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                  <span class="n">timeperiod</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;WTI Close&#39;</span><span class="p">,</span>    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">upper</span><span class="p">,</span>               <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Upper Band&#39;</span><span class="p">,</span>   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>        <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mid</span><span class="p">,</span>                 <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Middle Band&#39;</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span>      <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span>               <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Lower Band&#39;</span><span class="p">,</span>   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>        <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">stock_data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.07</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;WTI Crude Oil — Bollinger Bands (20, ±2σ)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Price ($/bbl)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e9fcfd320ed57d6e3d480b36008ba739acf614c5db8684a79a4e75be83e0e3b2.png" src="_images/e9fcfd320ed57d6e3d480b36008ba739acf614c5db8684a79a4e75be83e0e3b2.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="trading-strategies">
+<h1>3. Trading Strategies<a class="headerlink" href="#trading-strategies" title="Link to this heading">#</a></h1>
+<section id="trading-signals">
+<h2>Trading Signals<a class="headerlink" href="#trading-signals" title="Link to this heading">#</a></h2>
+<section id="build-an-sma-based-signal-strategy">
+<h3>Build an SMA-based signal strategy<a class="headerlink" href="#build-an-sma-based-signal-strategy" title="Link to this heading">#</a></h3>
+<p>Buy WTI when the close price is above its 20-day SMA; exit otherwise. This captures upward momentum while avoiding prolonged downtrends.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">talib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Prepare bt-compatible price data (single column, lowercase name)</span>
+<span class="n">price_data</span> <span class="o">=</span> <span class="n">wti_data</span><span class="p">[[</span><span class="s1">&#39;Close&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Close&#39;</span><span class="p">:</span> <span class="s1">&#39;wti&#39;</span><span class="p">})</span>
+
+<span class="c1"># Calculate the 20-day SMA</span>
+<span class="n">sma</span> <span class="o">=</span> <span class="n">price_data</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the SMA signal strategy</span>
+<span class="n">bt_strategy</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;WTI_AboveSMA&#39;</span><span class="p">,</span>
+                           <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectWhere</span><span class="p">(</span><span class="n">price_data</span> <span class="o">&gt;</span> <span class="n">sma</span><span class="p">),</span>
+                            <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+                            <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create and run backtest</span>
+<span class="n">bt_backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">bt_strategy</span><span class="p">,</span> <span class="n">price_data</span><span class="p">)</span>
+<span class="n">bt_result</span>   <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bt_backtest</span><span class="p">)</span>
+
+<span class="c1"># Plot the result</span>
+<span class="n">bt_result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;WTI — Above SMA Backtest Result&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:02&lt;00:00,  2.12s/it]
+</pre></div>
+</div>
+<img alt="_images/44a0b9a051c3b4ee99a99e8ef65ddb9a07d553734a5f5c208f9f9e433501e71f.png" src="_images/44a0b9a051c3b4ee99a99e8ef65ddb9a07d553734a5f5c208f9f9e433501e71f.png" />
+</div>
+</div>
+</section>
+<section id="build-an-ema-based-signal-strategy">
+<h3>Build an EMA-based signal strategy<a class="headerlink" href="#build-an-ema-based-signal-strategy" title="Link to this heading">#</a></h3>
+<p>Replace the SMA with a 20-day EMA. Because EMA responds faster to recent WTI price moves, entry/exit signals are generated slightly earlier.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the 20-day EMA and align to bt DataFrame format</span>
+<span class="n">ema</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">EMA</span><span class="p">(</span><span class="n">price_data</span><span class="p">[</span><span class="s1">&#39;wti&#39;</span><span class="p">],</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ema</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ema</span><span class="p">)</span>
+<span class="n">ema</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;wti&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the EMA signal strategy</span>
+<span class="n">bt_strategy</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;WTI_AboveEMA&#39;</span><span class="p">,</span>
+                           <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectWhere</span><span class="p">(</span><span class="n">price_data</span> <span class="o">&gt;</span> <span class="n">ema</span><span class="p">),</span>
+                            <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+                            <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create and run backtest</span>
+<span class="n">bt_backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">bt_strategy</span><span class="p">,</span> <span class="n">price_data</span><span class="p">)</span>
+<span class="n">bt_result</span>   <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bt_backtest</span><span class="p">)</span>
+
+<span class="c1"># Plot the result</span>
+<span class="n">bt_result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;WTI — Above EMA Backtest Result&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:02&lt;00:00,  2.51s/it]
+</pre></div>
+</div>
+<img alt="_images/25f435a212ad726ab8069aeb6308a507a14b23f445486fe4f3ab04ccec85ad7b.png" src="_images/25f435a212ad726ab8069aeb6308a507a14b23f445486fe4f3ab04ccec85ad7b.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="trend-following-strategies">
+<h2>Trend-following Strategies<a class="headerlink" href="#trend-following-strategies" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the WTI price data already loaded</span>
+<span class="n">sma</span> <span class="o">=</span> <span class="n">price_data</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Calculate short (10-day) and long (40-day) EMAs</span>
+<span class="n">EMA_short</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">EMA</span><span class="p">(</span><span class="n">price_data</span><span class="p">[</span><span class="s1">&#39;wti&#39;</span><span class="p">],</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">EMA_long</span>  <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">EMA</span><span class="p">(</span><span class="n">price_data</span><span class="p">[</span><span class="s1">&#39;wti&#39;</span><span class="p">],</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialise signal DataFrame (0 where EMA_long is NaN)</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="n">EMA_long</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">signal</span><span class="p">[</span><span class="n">EMA_long</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="construct-an-ema-crossover-signal">
+<h3>Construct an EMA crossover signal<a class="headerlink" href="#construct-an-ema-crossover-signal" title="Link to this heading">#</a></h3>
+<p>When EMA_10 crosses above EMA_40, enter long WTI. When it crosses below, enter short. The crossover captures sustained directional momentum in crude oil.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construct the EMA crossover signal</span>
+<span class="n">signal</span><span class="p">[</span><span class="n">EMA_short</span> <span class="o">&gt;</span> <span class="n">EMA_long</span><span class="p">]</span> <span class="o">=</span>  <span class="mi">1</span>
+<span class="n">signal</span><span class="p">[</span><span class="n">EMA_short</span> <span class="o">&lt;</span> <span class="n">EMA_long</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualise signal alongside price and EMAs</span>
+<span class="n">combined_df</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">price_data</span><span class="p">,</span> <span class="n">EMA_short</span><span class="p">,</span> <span class="n">EMA_long</span><span class="p">)</span>
+<span class="n">combined_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">,</span> <span class="s1">&#39;WTI_Price&#39;</span><span class="p">,</span> <span class="s1">&#39;EMA_short&#39;</span><span class="p">,</span> <span class="s1">&#39;EMA_long&#39;</span><span class="p">]</span>
+
+<span class="n">combined_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">secondary_y</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;WTI — EMA Crossover Signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b51ed8799294f8a5d98d2248022dfbd90b6d44a5ede909e88f98ecf6f152e622.png" src="_images/b51ed8799294f8a5d98d2248022dfbd90b6d44a5ede909e88f98ecf6f152e622.png" />
+</div>
+</div>
+</section>
+<section id="build-and-backtest-the-ema-crossover-trend-following-strategy">
+<h3>Build and backtest the EMA crossover trend-following strategy<a class="headerlink" href="#build-and-backtest-the-ema-crossover-trend-following-strategy" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signal</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;wti&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define and run the trend-following strategy</span>
+<span class="n">bt_strategy</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;WTI_EMA_Crossover&#39;</span><span class="p">,</span>
+                           <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighTarget</span><span class="p">(</span><span class="n">signal</span><span class="p">),</span>
+                            <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+
+<span class="n">bt_backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">bt_strategy</span><span class="p">,</span> <span class="n">price_data</span><span class="p">)</span>
+<span class="n">bt_result</span>   <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bt_backtest</span><span class="p">)</span>
+
+<span class="c1"># Plot the result</span>
+<span class="n">bt_result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;WTI — EMA Crossover Backtest Result&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:01&lt;00:00,  1.99s/it]
+</pre></div>
+</div>
+<img alt="_images/5b47ece2c3e8a3eb40d9ff406e4acb913171b2783d900442505f4b6804588ee6.png" src="_images/5b47ece2c3e8a3eb40d9ff406e4acb913171b2783d900442505f4b6804588ee6.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="mean-reversion-strategy">
+<h2>Mean Reversion Strategy<a class="headerlink" href="#mean-reversion-strategy" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate RSI on WTI</span>
+<span class="n">stock_rsi</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">RSI</span><span class="p">(</span><span class="n">price_data</span><span class="p">[</span><span class="s1">&#39;wti&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+
+<span class="c1"># Initialise signal DataFrame</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="n">stock_rsi</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">signal</span><span class="p">[</span><span class="n">stock_rsi</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="construct-an-rsi-based-signal">
+<h3>Construct an RSI-based signal<a class="headerlink" href="#construct-an-rsi-based-signal" title="Link to this heading">#</a></h3>
+<p>WTI often mean-reverts after sharp sentiment-driven moves. When RSI &lt; 30 (oversold), go long; when RSI &gt; 70 (overbought), go short; otherwise flat.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construct mean-reversion signal</span>
+<span class="n">signal</span><span class="p">[</span><span class="n">stock_rsi</span> <span class="o">&gt;</span> <span class="mi">70</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">signal</span><span class="p">[</span><span class="n">stock_rsi</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">]</span> <span class="o">=</span>  <span class="mi">1</span>
+<span class="n">signal</span><span class="p">[(</span><span class="n">stock_rsi</span> <span class="o">&gt;=</span> <span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">stock_rsi</span> <span class="o">&lt;=</span> <span class="mi">70</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Plot the RSI</span>
+<span class="n">stock_rsi</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;WTI — RSI (14-day)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orangered&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>   <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Overbought&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Oversold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ccb14160beb52d5156fbe15e590974aa565d35b70c247f62a80c55dddfe61052.png" src="_images/ccb14160beb52d5156fbe15e590974aa565d35b70c247f62a80c55dddfe61052.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Merge signal with price for visualisation</span>
+<span class="n">combined_df</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">price_data</span><span class="p">)</span>
+<span class="n">combined_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">,</span> <span class="s1">&#39;WTI_Price&#39;</span><span class="p">]</span>
+<span class="n">combined_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">secondary_y</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;WTI — RSI Signal vs Price&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a851076fb2d9ddc70fff6c5918788dd128c878ad491d7da89b111c7d6e1a5b90.png" src="_images/a851076fb2d9ddc70fff6c5918788dd128c878ad491d7da89b111c7d6e1a5b90.png" />
+</div>
+</div>
+</section>
+<section id="build-and-backtest-the-rsi-mean-reversion-strategy">
+<h3>Build and backtest the RSI mean reversion strategy<a class="headerlink" href="#build-and-backtest-the-rsi-mean-reversion-strategy" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signal</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;wti&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define and run the mean reversion strategy</span>
+<span class="n">bt_strategy</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="s1">&#39;WTI_RSI_MeanReversion&#39;</span><span class="p">,</span>
+                           <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighTarget</span><span class="p">(</span><span class="n">signal</span><span class="p">),</span>
+                            <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+
+<span class="n">bt_backtest</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">bt_strategy</span><span class="p">,</span> <span class="n">price_data</span><span class="p">)</span>
+<span class="n">bt_result</span>   <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bt_backtest</span><span class="p">)</span>
+
+<span class="c1"># Plot the result</span>
+<span class="n">bt_result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;WTI — RSI Mean Reversion Backtest Result&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:01&lt;00:00,  1.22s/it]
+</pre></div>
+</div>
+<img alt="_images/5d5c4b0cebea4d4c2549fd0fa7ca9a3953fc2c366ad161472a98b6f14a5a299f.png" src="_images/5d5c4b0cebea4d4c2549fd0fa7ca9a3953fc2c366ad161472a98b6f14a5a299f.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="strategy-optimization-and-benchmarking">
+<h2>Strategy Optimization and Benchmarking<a class="headerlink" href="#strategy-optimization-and-benchmarking" title="Link to this heading">#</a></h2>
+<section id="conduct-a-strategy-optimization">
+<h3>Conduct a strategy optimization<a class="headerlink" href="#conduct-a-strategy-optimization" title="Link to this heading">#</a></h3>
+<p>Run the SMA signal strategy across three lookback periods (10, 30, 50 days) to find which window best captures WTI’s directional moves.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">wti_signal_strategy</span><span class="p">(</span><span class="n">price_df</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;SMA signal strategy for WTI. price_df must have a &#39;wti&#39; column.&quot;&quot;&quot;</span>
+    <span class="n">sma</span> <span class="o">=</span> <span class="n">price_df</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">period</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">bt_strategy</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="n">name</span><span class="p">,</span>
+                               <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectWhere</span><span class="p">(</span><span class="n">price_df</span> <span class="o">&gt;</span> <span class="n">sma</span><span class="p">),</span>
+                                <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+                                <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+    <span class="k">return</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">bt_strategy</span><span class="p">,</span> <span class="n">price_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create three SMA strategy backtests</span>
+<span class="n">sma10</span> <span class="o">=</span> <span class="n">wti_signal_strategy</span><span class="p">(</span><span class="n">price_data</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;SMA10&#39;</span><span class="p">)</span>
+<span class="n">sma30</span> <span class="o">=</span> <span class="n">wti_signal_strategy</span><span class="p">(</span><span class="n">price_data</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;SMA30&#39;</span><span class="p">)</span>
+<span class="n">sma50</span> <span class="o">=</span> <span class="n">wti_signal_strategy</span><span class="p">(</span><span class="n">price_data</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;SMA50&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run all backtests and compare</span>
+<span class="n">bt_results</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sma10</span><span class="p">,</span> <span class="n">sma30</span><span class="p">,</span> <span class="n">sma50</span><span class="p">)</span>
+<span class="n">bt_results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;WTI — SMA Strategy Optimization (10 / 30 / 50)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 3/3 [00:05&lt;00:00,  1.85s/it]
+</pre></div>
+</div>
+<img alt="_images/d13db875ec7e9d8bef90a76877e838e1e0804e7b13dfb81f9cae56620f176b52.png" src="_images/d13db875ec7e9d8bef90a76877e838e1e0804e7b13dfb81f9cae56620f176b52.png" />
+</div>
+</div>
+</section>
+<section id="perform-strategy-benchmarking">
+<h3>Perform strategy benchmarking<a class="headerlink" href="#perform-strategy-benchmarking" title="Link to this heading">#</a></h3>
+<p>Compare the active SMA strategies against a passive buy-and-hold of WTI over the same period.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">wti_buy_and_hold</span><span class="p">(</span><span class="n">price_df</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Passive buy-and-hold benchmark for WTI.&quot;&quot;&quot;</span>
+    <span class="n">bt_strategy</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">Strategy</span><span class="p">(</span><span class="n">name</span><span class="p">,</span>
+                               <span class="p">[</span><span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">RunOnce</span><span class="p">(),</span>
+                                <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">SelectAll</span><span class="p">(),</span>
+                                <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">WeighEqually</span><span class="p">(),</span>
+                                <span class="n">bt</span><span class="o">.</span><span class="n">algos</span><span class="o">.</span><span class="n">Rebalance</span><span class="p">()])</span>
+    <span class="k">return</span> <span class="n">bt</span><span class="o">.</span><span class="n">Backtest</span><span class="p">(</span><span class="n">bt_strategy</span><span class="p">,</span> <span class="n">price_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create benchmark and run all together</span>
+<span class="n">benchmark</span>  <span class="o">=</span> <span class="n">wti_buy_and_hold</span><span class="p">(</span><span class="n">price_data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;BuyAndHold&#39;</span><span class="p">)</span>
+<span class="n">bt_results</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sma10</span><span class="p">,</span> <span class="n">sma30</span><span class="p">,</span> <span class="n">sma50</span><span class="p">,</span> <span class="n">benchmark</span><span class="p">)</span>
+<span class="n">bt_results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;WTI — SMA Strategies vs Buy-and-Hold Benchmark&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 4/4 [00:01&lt;00:00,  3.44it/s]
+</pre></div>
+</div>
+<img alt="_images/7751bd9ad52f1058ce5e763844d6310275bc27c5e48314c4424514a172839127.png" src="_images/7751bd9ad52f1058ce5e763844d6310275bc27c5e48314c4424514a172839127.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="performance-evaluation">
+<h1>4. Performance Evaluation<a class="headerlink" href="#performance-evaluation" title="Link to this heading">#</a></h1>
+<section id="strategy-return-analysis">
+<h2>Strategy Return Analysis<a class="headerlink" href="#strategy-return-analysis" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">talib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Re-run benchmark and SMA strategies for evaluation</span>
+<span class="n">benchmark</span>  <span class="o">=</span> <span class="n">wti_buy_and_hold</span><span class="p">(</span><span class="n">price_data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;BuyAndHold&#39;</span><span class="p">)</span>
+<span class="n">bt_result</span>  <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">benchmark</span><span class="p">)</span>
+
+<span class="n">sma30_bt</span>   <span class="o">=</span> <span class="n">wti_signal_strategy</span><span class="p">(</span><span class="n">price_data</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;SMA30&#39;</span><span class="p">)</span>
+<span class="n">sma50_bt</span>   <span class="o">=</span> <span class="n">wti_signal_strategy</span><span class="p">(</span><span class="n">price_data</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;SMA50&#39;</span><span class="p">)</span>
+<span class="n">bt_results</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sma30_bt</span><span class="p">,</span> <span class="n">sma50_bt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:01&lt;00:00,  1.93s/it]
+100%|██████████| 2/2 [00:03&lt;00:00,  1.87s/it]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="review-return-results-of-a-backtest">
+<h3>Review return results of a backtest<a class="headerlink" href="#review-return-results-of-a-backtest" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtain all backtest stats</span>
+<span class="n">resInfo</span> <span class="o">=</span> <span class="n">bt_result</span><span class="o">.</span><span class="n">stats</span>
+
+<span class="c1"># Daily, monthly, yearly mean returns</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Daily return:   </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;daily_mean&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Monthly return: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;monthly_mean&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Yearly return:  </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;yearly_mean&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Daily return:   -0.0323
+Monthly return: -0.0573
+Yearly return:  -0.0229
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_22513/185879230.py:5: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+
+/tmp/ipykernel_22513/185879230.py:6: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+
+/tmp/ipykernel_22513/185879230.py:7: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compound Annual Growth Rate</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;CAGR: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;cagr&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CAGR: -0.0760
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_22513/3145055317.py:2: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-return-histograms-of-the-backtest">
+<h3>Plot return histograms of the backtest<a class="headerlink" href="#plot-return-histograms-of-the-backtest" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Daily return histogram</span>
+<span class="n">bt_result</span><span class="o">.</span><span class="n">plot_histograms</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;WTI — Daily Return Distribution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="_images/6611c4625d1ff2ee2e0911e9352e8fc0cf31bd75537448c5461b3a6b13537e58.png" src="_images/6611c4625d1ff2ee2e0911e9352e8fc0cf31bd75537448c5461b3a6b13537e58.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Weekly return histogram</span>
+<span class="n">bt_result</span><span class="o">.</span><span class="n">plot_histograms</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;WTI — Weekly Return Distribution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/tom/miniconda3/lib/python3.13/site-packages/ffn/core.py:1073: FutureWarning:
+
+&#39;w&#39; is deprecated and will be removed in a future version, please use &#39;W&#39; instead.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="_images/3dc7e06342b9836d8f61d6e2a4e27ce9f7f42a7f09cb420c8b0ade110a1b5c99.png" src="_images/3dc7e06342b9836d8f61d6e2a4e27ce9f7f42a7f09cb420c8b0ade110a1b5c99.png" />
+</div>
+</div>
+</section>
+<section id="compare-return-results-of-multiple-strategies">
+<h3>Compare return results of multiple strategies<a class="headerlink" href="#compare-return-results-of-multiple-strategies" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lookback returns table — SMA30 vs SMA50</span>
+<span class="n">lookback_returns</span> <span class="o">=</span> <span class="n">bt_results</span><span class="o">.</span><span class="n">display_lookback_returns</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lookback_returns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         SMA30    SMA50
+mtd      1.58%    1.58%
+3m       7.56%    9.81%
+6m      -4.75%    7.20%
+ytd      9.76%   12.04%
+1y     -17.79%    1.32%
+3y     -20.55%  -11.50%
+5y        nan%     nan%
+10y       nan%     nan%
+incep  -20.55%  -11.50%
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="drawdown">
+<h2>Drawdown<a class="headerlink" href="#drawdown" title="Link to this heading">#</a></h2>
+<section id="review-performance-with-drawdowns">
+<h3>Review performance with drawdowns<a class="headerlink" href="#review-performance-with-drawdowns" title="Link to this heading">#</a></h3>
+<p>Drawdown measures peak-to-trough loss. WTI can experience sharp, prolonged drawdowns during supply gluts or demand shocks — understanding this is critical for position sizing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Stats from the buy-and-hold backtest</span>
+<span class="n">resInfo</span> <span class="o">=</span> <span class="n">bt_result</span><span class="o">.</span><span class="n">stats</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Average drawdown</span>
+<span class="n">avg_drawdown</span> <span class="o">=</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;avg_drawdown&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average drawdown: </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">avg_drawdown</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average drawdown: -0.09
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_22513/2577660819.py:3: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Average drawdown duration</span>
+<span class="n">avg_drawdown_days</span> <span class="o">=</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;avg_drawdown_days&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average drawdown days: </span><span class="si">%.0f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">avg_drawdown_days</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average drawdown days: 143
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_22513/4042479730.py:3: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-and-review-the-calmar-ratio">
+<h3>Calculate and review the Calmar Ratio<a class="headerlink" href="#calculate-and-review-the-calmar-ratio" title="Link to this heading">#</a></h3>
+<p>Calmar = CAGR / |Max Drawdown|. A higher Calmar means more return per unit of worst-case loss — essential for commodity strategies where drawdowns can be severe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CAGR</span>
+<span class="n">cagr</span> <span class="o">=</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;cagr&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;CAGR: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">cagr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CAGR: -0.0760
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_22513/3538577384.py:3: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Max drawdown</span>
+<span class="n">max_drawdown</span> <span class="o">=</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;max_drawdown&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Maximum drawdown: </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">max_drawdown</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maximum drawdown: -0.36
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_22513/2566387801.py:3: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calmar ratio (manual)</span>
+<span class="n">calmar_calc</span> <span class="o">=</span> <span class="n">cagr</span> <span class="o">/</span> <span class="n">max_drawdown</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Calmar Ratio (calculated): </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">calmar_calc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calmar Ratio (calculated): -0.21
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_22513/423130958.py:3: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calmar ratio from bt stats</span>
+<span class="n">calmar</span> <span class="o">=</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;calmar&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Calmar Ratio (bt): </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">calmar</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calmar Ratio (bt): -0.21
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_22513/2159633317.py:3: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sharpe-ratio-and-sortino-ratio">
+<h2>Sharpe Ratio and Sortino Ratio<a class="headerlink" href="#sharpe-ratio-and-sortino-ratio" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the SMA50 strategy for Sharpe/Sortino evaluation</span>
+<span class="n">bt_result</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">wti_signal_strategy</span><span class="p">(</span><span class="n">price_data</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;WTI_SMA50&#39;</span><span class="p">))</span>
+<span class="n">resInfo</span>   <span class="o">=</span> <span class="n">bt_result</span><span class="o">.</span><span class="n">stats</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:02&lt;00:00,  2.15s/it]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="evaluate-strategy-performance-by-sharpe-ratio">
+<h3>Evaluate strategy performance by Sharpe Ratio<a class="headerlink" href="#evaluate-strategy-performance-by-sharpe-ratio" title="Link to this heading">#</a></h3>
+<p>The Sharpe ratio measures return per unit of total volatility. Crude oil strategies typically show lower Sharpes than equities due to commodity-specific volatility spikes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Annual return and volatility</span>
+<span class="n">yearly_return</span> <span class="o">=</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;yearly_mean&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Annual return:     </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">yearly_return</span><span class="p">)</span>
+<span class="n">yearly_vol</span> <span class="o">=</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;yearly_vol&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Annual volatility: </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">yearly_vol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Annual return:     0.00
+Annual volatility: 0.17
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_22513/1271021677.py:3: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+
+/tmp/ipykernel_22513/1271021677.py:5: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sharpe ratio (manual)</span>
+<span class="n">sharpe_ratio</span> <span class="o">=</span> <span class="n">yearly_return</span> <span class="o">/</span> <span class="n">yearly_vol</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sharpe ratio (calculated): </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">sharpe_ratio</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sharpe ratio (calculated): 0.01
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_22513/2846002076.py:3: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sharpe ratios from bt stats</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sharpe ratio daily:    </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;daily_sharpe&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sharpe ratio monthly:  </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;monthly_sharpe&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sharpe ratio annually: </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;yearly_sharpe&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sharpe ratio daily:    -0.52
+Sharpe ratio monthly:  -0.79
+Sharpe ratio annually: 0.01
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_22513/3200072449.py:2: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+
+/tmp/ipykernel_22513/3200072449.py:3: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+
+/tmp/ipykernel_22513/3200072449.py:4: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluate-strategy-performance-by-sortino-ratio">
+<h3>Evaluate strategy performance by Sortino Ratio<a class="headerlink" href="#evaluate-strategy-performance-by-sortino-ratio" title="Link to this heading">#</a></h3>
+<p>The Sortino ratio penalises only downside volatility, making it a better fit for WTI strategies where large upward moves are desirable and asymmetric.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sortino ratios from bt stats</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sortino ratio daily:    </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;daily_sortino&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sortino ratio monthly:  </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;monthly_sortino&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sortino ratio annually: </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">resInfo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;yearly_sortino&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sortino ratio daily:    -0.71
+Sortino ratio monthly:  -1.09
+Sortino ratio annually: 0.03
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_22513/1992296948.py:2: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+
+/tmp/ipykernel_22513/1992296948.py:3: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+
+/tmp/ipykernel_22513/1992296948.py:4: FutureWarning:
+
+Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">WTI Technical Analysis &amp; Backtesting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trading-basics">1 Trading Basics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-wti-daily-ohlc-data">Load WTI daily OHLC data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-daily-high-low-prices">Plot daily High / Low prices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-a-candlestick-chart">Plot a candlestick chart</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-familiar-with-the-data">Getting Familiar with the Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resample-to-weekly">Resample to weekly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-a-daily-return-histogram">Plot a daily return histogram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-and-plot-smas">Calculate and plot SMAs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financial-trading-with-bt">Financial Trading with bt</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bt-process">The bt process</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-indicators">2 Technical Indicators</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-indicators-mas">Trend Indicators: MAs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-and-plot-two-emas">Calculate and plot two EMAs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sma-vs-ema">SMA vs. EMA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strength-indicators-adx">Strength Indicators: ADX</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-adx">Calculate the ADX</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-adx">Visualize the ADX</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#momentum-indicators-rsi">Momentum Indicators: RSI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-rsi">Calculate the RSI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-rsi">Visualize the RSI</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volatility-indicators-bollinger-bands">Volatility Indicators: Bollinger Bands</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implement-bollinger-bands">Implement Bollinger Bands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#trading-strategies">3. Trading Strategies</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trading-signals">Trading Signals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-sma-based-signal-strategy">Build an SMA-based signal strategy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-ema-based-signal-strategy">Build an EMA-based signal strategy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-following-strategies">Trend-following Strategies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-an-ema-crossover-signal">Construct an EMA crossover signal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-and-backtest-the-ema-crossover-trend-following-strategy">Build and backtest the EMA crossover trend-following strategy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-reversion-strategy">Mean Reversion Strategy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-an-rsi-based-signal">Construct an RSI-based signal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-and-backtest-the-rsi-mean-reversion-strategy">Build and backtest the RSI mean reversion strategy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strategy-optimization-and-benchmarking">Strategy Optimization and Benchmarking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conduct-a-strategy-optimization">Conduct a strategy optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-strategy-benchmarking">Perform strategy benchmarking</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-evaluation">4. Performance Evaluation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strategy-return-analysis">Strategy Return Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-return-results-of-a-backtest">Review return results of a backtest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-return-histograms-of-the-backtest">Plot return histograms of the backtest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-return-results-of-multiple-strategies">Compare return results of multiple strategies</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drawdown">Drawdown</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-performance-with-drawdowns">Review performance with drawdowns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-and-review-the-calmar-ratio">Calculate and review the Calmar Ratio</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharpe-ratio-and-sortino-ratio">Sharpe Ratio and Sortino Ratio</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-strategy-performance-by-sharpe-ratio">Evaluate strategy performance by Sharpe Ratio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-strategy-performance-by-sortino-ratio">Evaluate strategy performance by Sortino Ratio</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tom Tang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
