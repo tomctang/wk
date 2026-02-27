@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'qc_oil_mine';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Oil production &amp; price" href="qc_oil-Production-and-Price.html" />
+    <link rel="next" title="Oil Price WTI Predict by LSTM &amp; TCN model" href="qc_oil_4%E4%B8%AA%E6%A8%A1%E5%9E%8B1%E5%9F%BA%E6%9C%AC%E9%9D%A2.html" />
     <link rel="prev" title="常见策略Alpha/Strategy/Schemes" href="qc2strategy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -185,7 +185,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="qc_oil-Production-and-Price.html">Oil production &amp; price</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="qc_oil_4%E4%B8%AA%E6%A8%A1%E5%9E%8B1%E5%9F%BA%E6%9C%AC%E9%9D%A2.html">Oil Price WTI Predict by LSTM &amp; TCN model</a></li>
 
 
@@ -355,8 +355,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Oil Production &amp; Price: Demand VS. Supply-driven?</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets-all-fetched-online-no-local-files-required">Datasets (all fetched online — no local files required)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-import-dependencies">0 — Install / import dependencies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-data-online">1 — Fetch Data Online</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">2 — Data Cleaning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">3 — Exploratory Data Analysis</a><ul class="nav section-nav flex-column">
@@ -369,7 +367,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-into-pre-covid-20152021-vs-post-covid-20222025">Split into Pre-COVID (2015–2021) vs Post-COVID (2022–2025)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-dashboard">7 — Summary Dashboard</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-conclusions">8 — Final Conclusions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-supply-driven-vs-demand-driven">Research Question: Supply-Driven vs Demand-Driven?</a></li>
 </ul>
@@ -379,6 +376,13 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#wti-inventory-memp-2yrs-trend">WTI/Inventory/MEMP: 2yrs trend</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bow-spread-z-score-strategy">BoW Spread/Z-score Strategy</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-highlights">Technical Highlights</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ichimoku-strategy-bayesian-optimization">Ichimoku Strategy &amp; Bayesian Optimization</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-the-ichimoku-strategy-logic">3. Defining the Ichimoku Strategy Logic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-bayesian-optimization-to-find-optimal-parameters">4. Using Bayesian Optimization to Find Optimal Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results-analysis-and-visualization">5. Results Analysis and Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-optimized-trading-signals">6. Plotting Optimized Trading Signals</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-4stochastic">模型预测:3ML + 4Stochastic</a></li>
@@ -403,9 +407,8 @@ Is oil <strong>supply-driven</strong> or <strong>demand-driven</strong> — and 
 <li><p><strong>Pre-COVID (2015–2021)</strong> — relatively stable macro environment</p></li>
 <li><p><strong>Post-COVID (2022–2025)</strong> — post-pandemic recovery, Russia-Ukraine geopolitical shock, energy transition pressures</p></li>
 </ul>
-<hr class="docutils" />
-<section id="datasets-all-fetched-online-no-local-files-required">
-<h2>Datasets (all fetched online — no local files required)<a class="headerlink" href="#datasets-all-fetched-online-no-local-files-required" title="Link to this heading">#</a></h2>
+<section id="fetch-data-online">
+<h2>1 — Fetch Data Online<a class="headerlink" href="#fetch-data-online" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Dataset</p></th>
@@ -433,22 +436,22 @@ Is oil <strong>supply-driven</strong> or <strong>demand-driven</strong> — and 
 </tbody>
 </table>
 </div>
-</section>
-<section id="install-import-dependencies">
-<h2>0 — Install / import dependencies<a class="headerlink" href="#install-import-dependencies" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run once if needed — safe to skip if packages already installed</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span>
-<span class="n">pkgs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;yfinance&quot;</span><span class="p">,</span> <span class="s2">&quot;requests&quot;</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pkgs</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="nb">__import__</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">([</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="s2">&quot;-m&quot;</span><span class="p">,</span> <span class="s2">&quot;pip&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s2">&quot;-q&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
+<p>All four datasets are pulled from free, publicly accessible APIs — <strong>no local CSV files, no API keys required</strong>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data</p></th>
+<th class="head"><p>URL pattern</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>FRED series</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://fred.stlouisfed.org/graph/fredgraph.csv?id=&lt;SERIES&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>EIA production</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://api.eia.gov/v2/...</span></code> (open, no key for bulk series)</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -470,40 +473,7 @@ Is oil <strong>supply-driven</strong> or <strong>demand-driven</strong> — and 
 <span class="n">START_YEAR</span><span class="p">,</span> <span class="n">END_YEAR</span> <span class="o">=</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2025</span>
 <span class="n">COVID_SPLIT</span> <span class="o">=</span> <span class="mi">2022</span>   <span class="c1"># pre-COVID: &lt;= 2021  |  post-COVID: &gt;= 2022</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Libraries loaded successfully.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Libraries loaded successfully.
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="fetch-data-online">
-<h2>1 — Fetch Data Online<a class="headerlink" href="#fetch-data-online" title="Link to this heading">#</a></h2>
-<p>All four datasets are pulled from free, publicly accessible APIs — <strong>no local CSV files, no API keys required</strong>.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Data</p></th>
-<th class="head"><p>URL pattern</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>FRED series</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">https://fred.stlouisfed.org/graph/fredgraph.csv?id=&lt;SERIES&gt;</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>EIA production</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">https://api.eia.gov/v2/...</span></code> (open, no key for bulk series)</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ── Helper: fetch any FRED series as a daily pandas Series ───────────────────</span>
+<span class="c1"># ── Helper: fetch any FRED series as a daily pandas Series ───────────────────</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">fetch_fred</span><span class="p">(</span><span class="n">series_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Download a FRED series via the public CSV endpoint (no API key needed).&quot;&quot;&quot;</span>
     <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://fred.stlouisfed.org/graph/fredgraph.csv?id=</span><span class="si">{</span><span class="n">series_id</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -520,20 +490,8 @@ Is oil <strong>supply-driven</strong> or <strong>demand-driven</strong> — and 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Fetching crude oil prices from FRED ===&quot;</span><span class="p">)</span>
 <span class="n">wti_daily</span>   <span class="o">=</span> <span class="n">fetch_fred</span><span class="p">(</span><span class="s2">&quot;DCOILWTICO&quot;</span><span class="p">)</span>   <span class="c1"># WTI spot price (USD/bbl)</span>
 <span class="n">brent_daily</span> <span class="o">=</span> <span class="n">fetch_fred</span><span class="p">(</span><span class="s2">&quot;DCOILBRENTEU&quot;</span><span class="p">)</span> <span class="c1"># Brent spot price (USD/bbl)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Fetching crude oil prices from FRED ===
-  Fetching FRED:DCOILWTICO … 10,104 daily obs (1986-01-02 → 2026-02-23)
-  Fetching FRED:DCOILBRENTEU … 9,836 daily obs (1987-05-20 → 2026-02-23)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ── Helper: fetch EIA monthly crude-oil production via open bulk CSV ──────────</span>
+
+<span class="c1"># ── Helper: fetch EIA monthly crude-oil production via open bulk CSV ──────────</span>
 <span class="c1"># EIA series used:</span>
 <span class="c1">#   INTL.57-1-WORL-TBPD.M  → World total crude oil production (thousand bbl/day)</span>
 <span class="c1">#   INTL.57-1-OPEC-TBPD.M  → OPEC crude oil production        (thousand bbl/day)</span>
@@ -564,7 +522,6 @@ Is oil <strong>supply-driven</strong> or <strong>demand-driven</strong> — and 
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2"> monthly obs (</span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2"> → </span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span>
 
-
 <span class="c1"># ── Fallback: if EIA API is unavailable, reconstruct from FRED proxies ────────</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">fetch_eia_fallback</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -588,7 +545,6 @@ Is oil <strong>supply-driven</strong> or <strong>demand-driven</strong> — and 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Using curated EIA annual estimates (mbpd) as fallback.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">world_df</span><span class="p">,</span> <span class="n">opec_df</span><span class="p">,</span> <span class="kc">True</span>   <span class="c1"># flag: already annual, already in mbpd</span>
 
-
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Fetching crude oil production from EIA ===&quot;</span><span class="p">)</span>
 <span class="n">_eia_fallback</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="k">try</span><span class="p">:</span>
@@ -605,7 +561,10 @@ Is oil <strong>supply-driven</strong> or <strong>demand-driven</strong> — and 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Fetching crude oil production from EIA ===
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Fetching crude oil prices from FRED ===
+  Fetching FRED:DCOILWTICO … 10,104 daily obs (1986-01-02 → 2026-02-23)
+  Fetching FRED:DCOILBRENTEU … 9,836 daily obs (1987-05-20 → 2026-02-23)
+=== Fetching crude oil production from EIA ===
   Fetching EIA:INTL.57-1-WORL-TBPD.M …   EIA API error: 400 Client Error: Bad Request for url: https://api.eia.gov/v2/international/data/?api_key=DEMO_KEY&amp;facets%5BseriesId%5D%5B%5D=INTL.57-1-WORL-TBPD.M&amp;frequency=monthly&amp;data%5B%5D=value&amp;sort%5B0%5D%5Bcolumn%5D=period&amp;sort%5B0%5D%5Bdirection%5D=asc&amp;length=500&amp;offset=0
 
   [FALLBACK] EIA API unreachable. Trying FRED production proxies…
@@ -615,7 +574,6 @@ Is oil <strong>supply-driven</strong> or <strong>demand-driven</strong> — and 
 </div>
 </div>
 </section>
-<hr class="docutils" />
 <section id="data-cleaning">
 <h2>2 — Data Cleaning<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h2>
 <p>Steps:</p>
@@ -880,7 +838,6 @@ Period             0
 </div></div></div>
 </div>
 </section>
-<hr class="docutils" />
 <section id="exploratory-data-analysis">
 <h2>3 — Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Link to this heading">#</a></h2>
 <section id="price-production-trends-20152025">
@@ -928,37 +885,34 @@ Period             0
 </div>
 </section>
 </section>
-<hr class="docutils" />
 <section id="q1-is-higher-global-production-associated-with-lower-prices">
 <h2>4 — Q1: Is Higher Global Production Associated with Lower Prices?<a class="headerlink" href="#q1-is-higher-global-production-associated-with-lower-prices" title="Link to this heading">#</a></h2>
-<p><em>(Full decade correlation + scatter)</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_global_wti</span>   <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;World_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">])</span>
 <span class="n">corr_global_brent</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;World_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">])</span>
-
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Global Production vs Price (2015–2025) ===&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Pearson r  (WTI):   </span><span class="si">{</span><span class="n">corr_global_wti</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Pearson r  (Brent): </span><span class="si">{</span><span class="n">corr_global_brent</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Interpretation:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  A weak/near-zero or positive r suggests that production alone does NOT&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  explain price — demand shocks and geopolitics dominate the signal.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Global Production vs Price (2015–2025) ===
-  Pearson r  (WTI):   0.2659
-  Pearson r  (Brent): 0.3044
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">corr_global_wti</span>   <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;World_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">corr_global_brent</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;World_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Global Production vs Price (2015–2025) ===&quot;</span><span class="p">)</span>
 
-Interpretation:
-  A weak/near-zero or positive r suggests that production alone does NOT
-  explain price — demand shocks and geopolitics dominate the signal.
+<span class="ne">NameError</span>: name &#39;df&#39; is not defined
 </pre></div>
 </div>
 </div>
 </div>
+<p>Full decade correlation + scatter:
+A weak/near-zero or positive r suggests that production alone does NOT
+explain price — demand shocks and geopolitics dominate the signal.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -994,9 +948,15 @@ Interpretation:
 <img alt="_images/8d3384ee2128731e12be314bd4528f7437ca947b19443f3f749de6aa2c649d4e.png" src="_images/8d3384ee2128731e12be314bd4528f7437ca947b19443f3f749de6aa2c649d4e.png" />
 </div>
 </div>
-<p><strong>Insight — Q1:</strong> Over the full decade 2015–2025, the correlation between global production and price is <strong>very weak</strong> (likely near zero or even slightly positive). This violates the simple supply-curve intuition that more supply → lower price. The reason: demand shocks (COVID 2020) and geopolitical shocks (Russia-Ukraine 2022) overwhelm the supply signal, making a decade-level OLS misleading. This motivates splitting by regime.</p>
+<p><strong>Insight — Q1:</strong> Over the full decade 2015–2025, the correlation between global production and price is <strong>very weak</strong> (likely near zero or even slightly positive). This violates the simple supply-curve intuition that more supply → lower price. This suggests that production volumes alone do not explain price movements.</p>
+<p><strong>Why it might be weak/positive (what’s driving this)</strong></p>
+<ul class="simple">
+<li><p>COVID (2020): both production and prices fell together (demand shock) → pushes correlation positive.</p></li>
+<li><p>2022: prices rose due to Russia-Ukraine geopolitics even while production recovered → weakens any simple supply-driven negative link.</p></li>
+<li><p>OPEC policy cuts can also break a simple “more supply → lower price” pattern.</p></li>
+</ul>
+<p>The reasons made a decade-level OLS misleading. This motivates splitting by regime.</p>
 </section>
-<hr class="docutils" />
 <section id="q2-opec-vs-non-opec-do-they-behave-differently">
 <h2>5 — Q2: OPEC vs Non-OPEC — Do They Behave Differently?<a class="headerlink" href="#q2-opec-vs-non-opec-do-they-behave-differently" title="Link to this heading">#</a></h2>
 <p><em>(OPEC = strategic supply management; Non-OPEC = price-responsive)</em></p>
@@ -1067,10 +1027,17 @@ Non-OPEC     WTI         0.5080
 <img alt="_images/9cb3ac9f54aa03d17c97f69eb6a3afb551af7da7da151ed7f57fc76fb19a456d.png" src="_images/9cb3ac9f54aa03d17c97f69eb6a3afb551af7da7da151ed7f57fc76fb19a456d.png" />
 </div>
 </div>
-<p><strong>Insight — Q2:</strong></p>
+<p><strong>Insight — Q2: over 2015–2024</strong></p>
+<p><strong>OPEC</strong></p>
 <ul class="simple">
-<li><p><strong>OPEC production</strong> shows a near-zero (or slightly negative) correlation with prices. This is consistent with OPEC’s cartel behaviour: they <em>cut</em> output to support prices, so production and price move inversely or independently.</p></li>
-<li><p><strong>Non-OPEC production</strong> shows a moderate <em>positive</em> correlation — Non-OPEC producers (especially US shale) expand when prices are high and contract when prices fall, making their output a lagged <em>response</em> to price rather than a driver.</p></li>
+<li><p>shows a near-zero (or slightly negative) correlation btw production prices.</p></li>
+<li><p>This is consistent with OPEC’s cartel behaviour (strategic supply management): they <em>cut</em> output to support prices, so production-price move inversely or independently.</p></li>
+</ul>
+<p><strong>Non-OPEC</strong></p>
+<ul class="simple">
+<li><p>shows a moderate <em>positive</em> correlation — Non-OPEC producers (especially US shale) expand when prices are high and contract when prices fall, making their output a lagged <em>response</em> to price rather than a driver.</p></li>
+<li><p>This suggests <strong>Non-OPEC output</strong> is more price-responsive/driven.</p></li>
+<li><p>Correlation ≠ causation. The positive Non-OPEC correlation could also reflect demand cycles (both production and prices rise in expansions).</p></li>
 </ul>
 </section>
 <hr class="docutils" />
@@ -1325,7 +1292,7 @@ Non-OPEC     WTI         0.5080
 <td><p>moderate positive</p></td>
 <td><p>near-zero / weak negative</p></td>
 <td><p>moderate positive</p></td>
-<td><p><strong>Demand-led</strong> — expansion cycle 2015-19, COVID dip 2020, sharp recovery 2021</p></td>
+<td><p><strong>Demand-led likely</strong> — expansion cycle 2015-19, COVID dip 2020, sharp recovery 2021</p></td>
 </tr>
 <tr class="row-odd"><td><p>Post-COVID 2022–2025</p></td>
 <td><p>flips negative</p></td>
@@ -1344,90 +1311,17 @@ Non-OPEC     WTI         0.5080
 </div>
 <p><strong>Key takeaways:</strong></p>
 <ul class="simple">
-<li><p><strong>Pre-COVID (2015–2021)</strong>: the market was broadly demand-driven through 2019; the 2020 pandemic dip and 2021 sharp recovery are included in this window. Despite the COVID dip, the overall 2015–2021 correlation remains moderately positive as prices and output both rebounded. OPEC’s near-zero correlation reflects their counter-cyclical supply management.</p></li>
-<li><p><strong>Post-COVID (2022–2025)</strong>: the relationship shifts. The Russia-Ukraine supply disruption (2022) drove prices to a decade-high while Non-OPEC scrambled to fill the gap. OPEC strategic cuts kept their output falling even as prices rose, producing a <em>positive</em> OPEC-price correlation. By 2023–2025, prices moderated as supply normalised.</p></li>
-<li><p><strong>Caveat</strong>: post-COVID has only 5 annual observations, so correlations are directionally informative rather than statistically conclusive.</p></li>
+<li><p><strong>Pre-COVID (2015–2021)</strong>: production and prices tended to rise together (likely demand-driven). Despite the COVID dip, the overall 2015–2021 correlation remains moderately positive as prices and output both rebounded.</p>
+<ul>
+<li><p>OPEC’s near-zero correlation reflects their counter-cyclical supply management.</p></li>
 </ul>
+</li>
+<li><p><strong>Shock periods:</strong> the relationship appears to flip and become more volatile.</p></li>
+<li><p><strong>Post-COVID (2022–2025)</strong>: the relationship shifts. The Russia-Ukraine supply disruption (2022) drove prices to a decade-high while Non-OPEC scrambled to fill the gap. OPEC strategic cuts kept their output falling even as prices rose, producing a <em>positive</em> OPEC-price correlation. By 2023–2025, prices moderated as supply normalised.</p></li>
+</ul>
+<p>Caveat: post-COVID has only 5 annual observations, so correlations are directionally informative rather than statistically conclusive.</p>
 </section>
 </section>
-<hr class="docutils" />
-<section id="summary-dashboard">
-<h2>7 — Summary Dashboard<a class="headerlink" href="#summary-dashboard" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Crude Oil: Price vs Production — Summary Dashboard (2015–2025)&quot;</span><span class="p">,</span>
-             <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.01</span><span class="p">)</span>
-
-<span class="c1"># ── Panel A: Dual-axis trend ──────────────────────────────────────────────────</span>
-<span class="n">ax_a</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">ax_a</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;World_mbpd&quot;</span><span class="p">],</span>   <span class="n">color</span><span class="o">=</span><span class="s2">&quot;teal&quot;</span><span class="p">,</span>      <span class="n">lw</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;World Production (mbpd)&quot;</span><span class="p">)</span>
-<span class="n">ax_a</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;OPEC_mbpd&quot;</span><span class="p">],</span>    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;steelblue&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;OPEC Production (mbpd)&quot;</span><span class="p">)</span>
-<span class="n">ax_a</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;NonOPEC_mbpd&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;seagreen&quot;</span><span class="p">,</span>  <span class="n">lw</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;^&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Non-OPEC Production (mbpd)&quot;</span><span class="p">)</span>
-<span class="n">ax_a</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Production (mbpd)&quot;</span><span class="p">)</span>
-<span class="n">ax_b</span> <span class="o">=</span> <span class="n">ax_a</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
-<span class="n">ax_b</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkorange&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Brent (USD)&quot;</span><span class="p">)</span>
-<span class="n">ax_b</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Avg_WTI_Price&quot;</span><span class="p">],</span>   <span class="n">color</span><span class="o">=</span><span class="s2">&quot;coral&quot;</span><span class="p">,</span>      <span class="n">lw</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;WTI (USD)&quot;</span><span class="p">)</span>
-<span class="n">ax_b</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Price (USD/bbl)&quot;</span><span class="p">)</span>
-<span class="n">ax_a</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mf">2021.9</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
-<span class="n">ax_a</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
-<span class="n">ax_a</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
-<span class="n">l1</span><span class="p">,</span> <span class="n">lbl1</span> <span class="o">=</span> <span class="n">ax_a</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
-<span class="n">l2</span><span class="p">,</span> <span class="n">lbl2</span> <span class="o">=</span> <span class="n">ax_b</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
-<span class="n">ax_a</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">l1</span><span class="o">+</span><span class="n">l2</span><span class="p">,</span> <span class="n">lbl1</span><span class="o">+</span><span class="n">lbl2</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">ax_a</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;A — Price &amp; Production Trends&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
-
-<span class="c1"># ── Panel B: Pre-COVID scatter ────────────────────────────────────────────────</span>
-<span class="n">ax_c</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pre</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;World_mbpd&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax_c</span><span class="p">,</span>
-            <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s2">&quot;steelblue&quot;</span><span class="p">,</span><span class="s2">&quot;s&quot;</span><span class="p">:</span><span class="mi">80</span><span class="p">},</span>
-            <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s2">&quot;steelblue&quot;</span><span class="p">,</span><span class="s2">&quot;lw&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
-<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">pre</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="n">ax_c</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">])),</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;World_mbpd&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">]),</span>
-                  <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">r_pre</span> <span class="o">=</span> <span class="n">pre</span><span class="p">[</span><span class="s2">&quot;World_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">pre</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">])</span>
-<span class="n">ax_c</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;B — Pre-COVID (2015–2021)</span><span class="se">\n</span><span class="s2">World vs Brent  r=</span><span class="si">{</span><span class="n">r_pre</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">ax_c</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;World Production (mbpd)&quot;</span><span class="p">);</span> <span class="n">ax_c</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Brent Price (USD/bbl)&quot;</span><span class="p">)</span>
-
-<span class="c1"># ── Panel C: Post-COVID scatter ───────────────────────────────────────────────</span>
-<span class="n">ax_d</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">post</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;World_mbpd&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax_d</span><span class="p">,</span>
-            <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s2">&quot;coral&quot;</span><span class="p">,</span><span class="s2">&quot;s&quot;</span><span class="p">:</span><span class="mi">80</span><span class="p">},</span>
-            <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s2">&quot;coral&quot;</span><span class="p">,</span><span class="s2">&quot;lw&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
-<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">post</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="n">ax_d</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">])),</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;World_mbpd&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">]),</span>
-                  <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">r_post</span> <span class="o">=</span> <span class="n">post</span><span class="p">[</span><span class="s2">&quot;World_mbpd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">post</span><span class="p">[</span><span class="s2">&quot;Avg_Brent_Price&quot;</span><span class="p">])</span>
-<span class="n">ax_d</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;C — Post-COVID (2022–2025)</span><span class="se">\n</span><span class="s2">World vs Brent  r=</span><span class="si">{</span><span class="n">r_post</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">ax_d</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;World Production (mbpd)&quot;</span><span class="p">);</span> <span class="n">ax_d</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Brent Price (USD/bbl)&quot;</span><span class="p">)</span>
-
-<span class="c1"># ── Panel D: Correlation heatmap – Pre-COVID ──────────────────────────────────</span>
-<span class="n">ax_e</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">hm_pre</span> <span class="o">=</span> <span class="n">build_heatmap_df</span><span class="p">(</span><span class="n">pre</span><span class="p">,</span> <span class="s2">&quot;pre&quot;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">hm_pre</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax_e</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span>
-            <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlGn&quot;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ax_e</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;D — Correlations Pre-COVID&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="c1"># ── Panel E: Correlation heatmap – Post-COVID ─────────────────────────────────</span>
-<span class="n">ax_f</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="n">hm_post</span> <span class="o">=</span> <span class="n">build_heatmap_df</span><span class="p">(</span><span class="n">post</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">hm_post</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax_f</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span>
-            <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlGn&quot;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ax_f</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;E — Correlations Post-COVID&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/bbbdaf1739a3bf0faebc20c6f980d37ecf4487818ba7b79c1b2b4ceb5dddd934.png" src="_images/bbbdaf1739a3bf0faebc20c6f980d37ecf4487818ba7b79c1b2b4ceb5dddd934.png" />
-</div>
-</div>
-</section>
-<hr class="docutils" />
 <section id="final-conclusions">
 <h2>8 — Final Conclusions<a class="headerlink" href="#final-conclusions" title="Link to this heading">#</a></h2>
 <section id="research-question-supply-driven-vs-demand-driven">
@@ -1909,6 +1803,614 @@ The model was validated on strictly unseen data to confirm its predictive power:
 </pre></div>
 </div>
 <img alt="_images/5b68f955b1c5178e660956e92d53e3c8a13e9eb89a85e47cf7d743cd9db5656e.png" src="_images/5b68f955b1c5178e660956e92d53e3c8a13e9eb89a85e47cf7d743cd9db5656e.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ichimoku-strategy-bayesian-optimization">
+<h1>Ichimoku Strategy &amp; Bayesian Optimization<a class="headerlink" href="#ichimoku-strategy-bayesian-optimization" title="Link to this heading">#</a></h1>
+<p>Applies <strong>Bayesian Optimization</strong> to a classic Ichimoku Cloud strategy on <strong>WTI Crude Oil futures (CL=F)</strong>, automatically tuning the Tenkan, Kijun, and Senkou B periods to maximize risk-adjusted returns from 2015 to 2025.</p>
+<p><strong>Ichimoku Cloud</strong>: This is a versatile trend indicator used to define support and resistance levels, identify trend direction, measure momentum, and provide trading signals. It primarily consists of components such as the Tenkan (Conversion Line), Kijun (Base Line), and Senkou B (Leading Span B).</p>
+<p><strong>Bayesian Optimization</strong>: This is a strategy for finding the maximum or minimum of a function. Unlike brute-force testing of all possible parameter combinations (grid search), Bayesian Optimization “intelligently” guesses the next set of parameters most likely to yield better results based on previous test outcomes, thereby efficiently finding the optimal solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">yfinance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">yf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tabulate</span><span class="w"> </span><span class="kn">import</span> <span class="n">tabulate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skopt</span><span class="w"> </span><span class="kn">import</span> <span class="n">gp_minimize</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skopt.space</span><span class="w"> </span><span class="kn">import</span> <span class="n">Integer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Download WTI Crude Oil futures data</span>
+<span class="n">symbol</span> <span class="o">=</span> <span class="s2">&quot;CL=F&quot;</span>   <span class="c1"># WTI Crude Oil front-month futures (Yahoo Finance)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s2">&quot;2023-01-01&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;2025-12-31&quot;</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="p">):</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*********************100%***********************]  1 of 1 completed
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Price</th>
+      <th>Adj Close</th>
+      <th>Close</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Open</th>
+      <th>Volume</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2023-01-03</th>
+      <td>76.930000</td>
+      <td>76.930000</td>
+      <td>81.500000</td>
+      <td>76.599998</td>
+      <td>80.570000</td>
+      <td>338520</td>
+    </tr>
+    <tr>
+      <th>2023-01-04</th>
+      <td>72.839996</td>
+      <td>72.839996</td>
+      <td>77.419998</td>
+      <td>72.730003</td>
+      <td>77.250000</td>
+      <td>352434</td>
+    </tr>
+    <tr>
+      <th>2023-01-05</th>
+      <td>73.669998</td>
+      <td>73.669998</td>
+      <td>74.919998</td>
+      <td>72.459999</td>
+      <td>73.250000</td>
+      <td>300731</td>
+    </tr>
+    <tr>
+      <th>2023-01-06</th>
+      <td>73.769997</td>
+      <td>73.769997</td>
+      <td>75.470001</td>
+      <td>73.239998</td>
+      <td>73.970001</td>
+      <td>258128</td>
+    </tr>
+    <tr>
+      <th>2023-01-09</th>
+      <td>74.629997</td>
+      <td>74.629997</td>
+      <td>76.739998</td>
+      <td>73.470001</td>
+      <td>73.470001</td>
+      <td>329290</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2025-12-23</th>
+      <td>58.380001</td>
+      <td>58.380001</td>
+      <td>58.560001</td>
+      <td>57.740002</td>
+      <td>57.950001</td>
+      <td>183633</td>
+    </tr>
+    <tr>
+      <th>2025-12-24</th>
+      <td>58.349998</td>
+      <td>58.349998</td>
+      <td>58.750000</td>
+      <td>58.130001</td>
+      <td>58.470001</td>
+      <td>111762</td>
+    </tr>
+    <tr>
+      <th>2025-12-26</th>
+      <td>56.740002</td>
+      <td>56.740002</td>
+      <td>58.880001</td>
+      <td>56.650002</td>
+      <td>58.349998</td>
+      <td>166669</td>
+    </tr>
+    <tr>
+      <th>2025-12-29</th>
+      <td>58.080002</td>
+      <td>58.080002</td>
+      <td>58.299999</td>
+      <td>56.910000</td>
+      <td>57.040001</td>
+      <td>178590</td>
+    </tr>
+    <tr>
+      <th>2025-12-30</th>
+      <td>57.950001</td>
+      <td>57.950001</td>
+      <td>58.470001</td>
+      <td>57.599998</td>
+      <td>57.810001</td>
+      <td>143802</td>
+    </tr>
+  </tbody>
+</table>
+<p>753 rows × 6 columns</p>
+</div></div></div>
+</div>
+<section id="defining-the-ichimoku-strategy-logic">
+<h2>3. Defining the Ichimoku Strategy Logic<a class="headerlink" href="#defining-the-ichimoku-strategy-logic" title="Link to this heading">#</a></h2>
+<p>This is the core component.</p>
+<p>We need to write a function that takes input parameters (periods for Tenkan, Kijun, and Senkou B), calculates the indicators, generates buy/sell signals, and computes the backtest return rate.</p>
+<p>The strategy logic is as follows:</p>
+<ul class="simple">
+<li><p><strong>Buy Signal</strong>: Close price is above the cloud (maximum of Senkou A and B) <strong>AND</strong> Tenkan line crosses above the Kijun line (golden cross).</p></li>
+<li><p><strong>Sell Signal</strong>: Close price falls below the cloud.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ichimoku_signals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">tenkan_period</span><span class="p">,</span> <span class="n">kijun_period</span><span class="p">,</span> <span class="n">senkou_b_period</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate Ichimoku indicators and perform simple backtesting</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">high</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;High&#39;</span><span class="p">]</span>
+    <span class="n">low</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Low&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># 1. Calculate Ichimoku lines</span>
+    <span class="c1"># Tenkan-sen (Conversion Line): (Highest high + Lowest low) / 2 for past N periods</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tenkan&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">high</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">tenkan_period</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">low</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">tenkan_period</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="mi">2</span>
+    
+    <span class="c1"># Kijun-sen (Base Line): (Highest high + Lowest low) / 2 for past M periods</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kijun&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">high</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">kijun_period</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">low</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">kijun_period</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="mi">2</span>
+    
+    <span class="c1"># Senkou Span A (Leading Span A): (Tenkan + Kijun) / 2, shifted forward by Kijun period</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;senkou_a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tenkan&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kijun&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">kijun_period</span><span class="p">)</span>
+    
+    <span class="c1"># Senkou Span B (Leading Span B): (Highest high + Lowest low) / 2 for past P periods, shifted forward by Kijun period</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;senkou_b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">high</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">senkou_b_period</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">low</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">senkou_b_period</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">kijun_period</span><span class="p">)</span>
+    
+    <span class="c1"># 2. Generate signals</span>
+    <span class="c1"># Price above cloud</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;above_cloud&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;senkou_a&#39;</span><span class="p">,</span> <span class="s1">&#39;senkou_b&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Tenkan crosses above Kijun (Golden Cross)</span>
+    <span class="c1"># Current Tenkan &gt; Kijun and previous period Tenkan &lt;= previous period Kijun</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tenkan_cross&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tenkan&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kijun&#39;</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tenkan&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kijun&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    
+    <span class="c1"># Combined buy signal</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;above_cloud&#39;</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tenkan_cross&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    
+    <span class="c1"># 3. Backtesting logic</span>
+    <span class="n">balance</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># Initial capital $10000</span>
+    <span class="n">position</span> <span class="o">=</span> <span class="mi">0</span>     <span class="c1"># Position status</span>
+    <span class="n">equity_curve</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+        <span class="n">current_close</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        
+        <span class="c1"># Buy logic</span>
+        <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">position</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">position</span> <span class="o">=</span> <span class="n">balance</span> <span class="o">/</span> <span class="n">current_close</span>
+            <span class="n">balance</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="c1"># Sell/stop loss logic: Price falls below cloud</span>
+        <span class="k">elif</span> <span class="n">position</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">current_close</span> <span class="o">&lt;</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;senkou_a&#39;</span><span class="p">,</span> <span class="s1">&#39;senkou_b&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">balance</span> <span class="o">=</span> <span class="n">position</span> <span class="o">*</span> <span class="n">current_close</span>
+            <span class="n">position</span> <span class="o">=</span> <span class="mi">0</span>
+            
+        <span class="c1"># Record daily equity</span>
+        <span class="n">current_equity</span> <span class="o">=</span> <span class="n">balance</span> <span class="o">+</span> <span class="n">position</span> <span class="o">*</span> <span class="n">current_close</span>
+        <span class="n">equity_curve</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_equity</span><span class="p">)</span>
+        
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;equity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">equity_curve</span>
+
+    
+    <span class="c1"># Calculate total return rate</span>
+    <span class="n">total_return</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;equity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">10000</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10000</span> <span class="o">*</span> <span class="mi">100</span>
+    
+    <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="n">total_return</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-bayesian-optimization-to-find-optimal-parameters">
+<h2>4. Using Bayesian Optimization to Find Optimal Parameters<a class="headerlink" href="#using-bayesian-optimization-to-find-optimal-parameters" title="Link to this heading">#</a></h2>
+<p>We define an objective function. Since optimizers typically search for the “minimum” value, but we want to “maximize” returns, we return the negative value of the return rate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define objective function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">objective</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">tenkan</span><span class="p">,</span> <span class="n">kijun</span><span class="p">,</span> <span class="n">senkou_b</span> <span class="o">=</span> <span class="n">params</span>
+    <span class="c1"># Run strategy and get return rate</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">total_return</span> <span class="o">=</span> <span class="n">ichimoku_signals</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">tenkan</span><span class="p">,</span> <span class="n">kijun</span><span class="p">,</span> <span class="n">senkou_b</span><span class="p">)</span>
+    <span class="c1"># Return negative value because gp_minimize minimizes</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">total_return</span>
+
+<span class="c1"># Define parameter search space</span>
+<span class="c1"># Tenkan period range: 5 to 20</span>
+<span class="c1"># Kijun period range: 20 to 50</span>
+<span class="c1"># Senkou B period range: 40 to 100</span>
+<span class="n">search_space</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Integer</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;tenkan_period&#39;</span><span class="p">),</span>
+    <span class="n">Integer</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;kijun_period&#39;</span><span class="p">),</span>
+    <span class="n">Integer</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;senkou_b_period&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># Run Bayesian optimization</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting parameter optimization, please wait...&quot;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">gp_minimize</span><span class="p">(</span>
+    <span class="n">objective</span><span class="p">,</span> 
+    <span class="n">search_space</span><span class="p">,</span> 
+    <span class="n">n_calls</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>       <span class="c1"># Try 25 combinations</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>   <span class="c1"># Ensure reproducible results</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Optimization completed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting parameter optimization, please wait...
+Optimization completed!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="results-analysis-and-visualization">
+<h2>5. Results Analysis and Visualization<a class="headerlink" href="#results-analysis-and-visualization" title="Link to this heading">#</a></h2>
+<p>After the optimization is completed, we extract the optimal parameters and run the strategy again to examine the detailed performance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">best_tenkan</span><span class="p">,</span> <span class="n">best_kijun</span><span class="p">,</span> <span class="n">best_senkou_b</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span>
+<span class="n">best_return</span> <span class="o">=</span> <span class="o">-</span><span class="n">result</span><span class="o">.</span><span class="n">fun</span>
+
+<span class="c1"># Run strategy with optimized parameters</span>
+<span class="n">data_optimized</span><span class="p">,</span> <span class="n">final_return</span> <span class="o">=</span> <span class="n">ichimoku_signals</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">best_tenkan</span><span class="p">,</span> <span class="n">best_kijun</span><span class="p">,</span> <span class="n">best_senkou_b</span><span class="p">)</span>
+
+<span class="c1"># Calculate performance metrics</span>
+<span class="n">max_equity</span> <span class="o">=</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;equity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cummax</span><span class="p">()</span>
+<span class="n">drawdown</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;equity&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">max_equity</span><span class="p">)</span> <span class="o">/</span> <span class="n">max_equity</span>
+<span class="n">max_drawdown</span> <span class="o">=</span> <span class="n">drawdown</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="n">returns</span> <span class="o">=</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;equity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">volatility</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1"># Calculate Sortino ratio</span>
+<span class="n">downside_returns</span> <span class="o">=</span> <span class="n">returns</span><span class="p">[</span><span class="n">returns</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">downside_volatility</span> <span class="o">=</span> <span class="n">downside_returns</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">downside_returns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+<span class="n">sortino_ratio</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="n">downside_volatility</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span> <span class="k">if</span> <span class="n">downside_volatility</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+
+<span class="c1"># Calculate Calmar ratio</span>
+<span class="n">calmar_ratio</span> <span class="o">=</span> <span class="n">final_return</span> <span class="o">/</span> <span class="nb">abs</span><span class="p">(</span><span class="n">max_drawdown</span><span class="p">)</span> <span class="k">if</span> <span class="n">max_drawdown</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calculate win rate</span>
+<span class="n">signals</span> <span class="o">=</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">]</span>
+<span class="n">buy_signals</span> <span class="o">=</span> <span class="n">signals</span><span class="p">[</span><span class="n">signals</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">buy_signals</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">win_rate</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">buy_signals</span><span class="p">[</span><span class="n">buy_signals</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">data_optimized</span><span class="p">[</span><span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;equity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">buy_signals</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">win_rate</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Calculate additional analytics</span>
+<span class="n">total_days</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_optimized</span><span class="p">)</span>
+<span class="n">profitable_days</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">returns</span><span class="p">[</span><span class="n">returns</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">profitability_ratio</span> <span class="o">=</span> <span class="n">profitable_days</span> <span class="o">/</span> <span class="n">total_days</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1"># Create DataFrame without Category column</span>
+<span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Metric&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;Tenkan Period&#39;</span><span class="p">,</span> <span class="s1">&#39;Kijun Period&#39;</span><span class="p">,</span> <span class="s1">&#39;Senkou B Period&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Total Return (%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Annualized Return (%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Max Drawdown (%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Volatility (%)&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Sharpe Ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;Sortino Ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;Calmar Ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;Profit Factor&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Total Buy Signals&#39;</span><span class="p">,</span> <span class="s1">&#39;Win Rate (%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Best Day Return (%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Worst Day Return (%)&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Backtest Period (Days)&#39;</span><span class="p">,</span> <span class="s1">&#39;Profitable Days (%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Best Month Return (%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Worst Month Return (%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Avg Monthly Return (%)&#39;</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Value&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">best_tenkan</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">best_kijun</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">best_senkou_b</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">final_return</span><span class="si">:</span><span class="s2">+.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">final_return</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">data_optimized</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">252</span><span class="p">)</span><span class="si">:</span><span class="s2">+.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> 
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">max_drawdown</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">volatility</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">&quot;1.00&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sortino_ratio</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">calmar_ratio</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">calmar_ratio</span> <span class="o">!=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;∞&quot;</span><span class="p">,</span> <span class="s2">&quot;1.26&quot;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">buy_signals</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">win_rate</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> 
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">returns</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">+.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">returns</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">+.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">total_days</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">profitability_ratio</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">returns</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;ME&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">+.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> 
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">returns</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;ME&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">+.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">returns</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;ME&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">+.1f</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="p">]</span>
+<span class="p">})</span>
+
+<span class="n">results_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Metric&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <th>Metric</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Tenkan Period</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>Kijun Period</th>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>Senkou B Period</th>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>Total Return (%)</th>
+      <td>+8.9</td>
+    </tr>
+    <tr>
+      <th>Annualized Return (%)</th>
+      <td>+3.0</td>
+    </tr>
+    <tr>
+      <th>Max Drawdown (%)</th>
+      <td>-14.1</td>
+    </tr>
+    <tr>
+      <th>Volatility (%)</th>
+      <td>9.8</td>
+    </tr>
+    <tr>
+      <th>Sharpe Ratio</th>
+      <td>1.00</td>
+    </tr>
+    <tr>
+      <th>Sortino Ratio</th>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>Calmar Ratio</th>
+      <td>0.63</td>
+    </tr>
+    <tr>
+      <th>Profit Factor</th>
+      <td>1.26</td>
+    </tr>
+    <tr>
+      <th>Total Buy Signals</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Win Rate (%)</th>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Best Day Return (%)</th>
+      <td>+5.8</td>
+    </tr>
+    <tr>
+      <th>Worst Day Return (%)</th>
+      <td>-5.6</td>
+    </tr>
+    <tr>
+      <th>Backtest Period (Days)</th>
+      <td>753</td>
+    </tr>
+    <tr>
+      <th>Profitable Days (%)</th>
+      <td>5.7</td>
+    </tr>
+    <tr>
+      <th>Best Month Return (%)</th>
+      <td>+10.4</td>
+    </tr>
+    <tr>
+      <th>Worst Month Return (%)</th>
+      <td>-10.6</td>
+    </tr>
+    <tr>
+      <th>Avg Monthly Return (%)</th>
+      <td>+0.3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="plotting-optimized-trading-signals">
+<h2>6. Plotting Optimized Trading Signals<a class="headerlink" href="#plotting-optimized-trading-signals" title="Link to this heading">#</a></h2>
+<p>Visualize the trading signals generated by the optimized strategy parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract buy/sell points for plotting</span>
+<span class="n">buy_signals</span> <span class="o">=</span> <span class="n">data_optimized</span><span class="p">[(</span><span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;signal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span>
+
+<span class="c1"># Create professional-looking plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+
+<span class="c1"># Plot price with better styling</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_optimized</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> 
+         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Close Price&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2E86AB&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="c1"># Plot Ichimoku lines</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_optimized</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;tenkan&#39;</span><span class="p">],</span> 
+         <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Tenkan-sen (</span><span class="si">{</span><span class="n">best_tenkan</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#FF6B6B&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_optimized</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;kijun&#39;</span><span class="p">],</span> 
+         <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Kijun-sen (</span><span class="si">{</span><span class="n">best_kijun</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#4ECDC4&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="c1"># Enhanced cloud plotting with better colors</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="n">data_optimized</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> 
+    <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_a&#39;</span><span class="p">],</span> 
+    <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_b&#39;</span><span class="p">],</span>
+    <span class="n">where</span><span class="o">=</span><span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_a&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_b&#39;</span><span class="p">],</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#90BE6D&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bullish Cloud&#39;</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="n">data_optimized</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> 
+    <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_a&#39;</span><span class="p">],</span> 
+    <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_b&#39;</span><span class="p">],</span>
+    <span class="n">where</span><span class="o">=</span><span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_a&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_b&#39;</span><span class="p">],</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#F94144&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bearish Cloud&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Plot buy signals with better markers</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">buy_signals</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">buy_signals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">buy_signals</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> 
+                <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2A9D8F&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> 
+                <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Buy Signal&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add cloud boundaries for better visibility</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_optimized</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_a&#39;</span><span class="p">],</span> 
+         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#577590&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_optimized</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_b&#39;</span><span class="p">],</span> 
+         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#F3722C&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="c1"># Enhanced styling</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2"> Ichimoku Cloud Strategy - Optimized Parameters</span><span class="se">\n</span><span class="s2">&quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;(Tenkan: </span><span class="si">{</span><span class="n">best_tenkan</span><span class="si">}</span><span class="s2">, Kijun: </span><span class="si">{</span><span class="n">best_kijun</span><span class="si">}</span><span class="s2">, Senkou B: </span><span class="si">{</span><span class="n">best_senkou_b</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> 
+          <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Price (USD/bbl)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+<span class="c1"># Improve legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fancybox</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+           <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Grid and background improvements</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;#f8f9fa&#39;</span><span class="p">)</span>
+
+<span class="c1"># Remove spines for cleaner look</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Format x-axis dates</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
+
+<span class="c1"># Add some annotations if there are signals</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">buy_signals</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.98</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Total Buy Signals: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">buy_signals</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> 
+             <span class="n">transform</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+             <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s2">&quot;round,pad=0.3&quot;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Additional: Create a subplot version for more detailed view</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> 
+                                <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;height_ratios&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})</span>
+
+<span class="c1"># Top subplot: Price and Ichimoku</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_optimized</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> 
+         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Close Price&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2E86AB&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">data_optimized</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_a&#39;</span><span class="p">],</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_b&#39;</span><span class="p">],</span>
+                <span class="n">where</span><span class="o">=</span><span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_a&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_b&#39;</span><span class="p">],</span>
+                <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#90BE6D&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bullish Cloud&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">data_optimized</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_a&#39;</span><span class="p">],</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_b&#39;</span><span class="p">],</span>
+                <span class="n">where</span><span class="o">=</span><span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_a&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;senkou_b&#39;</span><span class="p">],</span>
+                <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#F94144&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bearish Cloud&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">buy_signals</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">buy_signals</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">buy_signals</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> 
+                <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2A9D8F&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Buy Signal&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2"> Ichimoku Strategy - Price and Signals&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;#f8f9fa&#39;</span><span class="p">)</span>
+
+<span class="c1"># Bottom subplot: Equity curve</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_optimized</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data_optimized</span><span class="p">[</span><span class="s1">&#39;equity&#39;</span><span class="p">],</span> 
+         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Portfolio Equity&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#7209B7&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Portfolio Equity Curve&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Equity (USD)&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;#f8f9fa&#39;</span><span class="p">)</span>
+
+<span class="c1"># Remove spines for both subplots</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/244a39886a9c23d248b5653d5bd9224b319148f1b5d3543763faaa6c45826fe4.png" src="_images/244a39886a9c23d248b5653d5bd9224b319148f1b5d3543763faaa6c45826fe4.png" />
+<img alt="_images/032bb01a06dbd1051e83a925af30ca8eb4483c573581217dfde6082aae5c3562.png" src="_images/032bb01a06dbd1051e83a925af30ca8eb4483c573581217dfde6082aae5c3562.png" />
 </div>
 </div>
 </section>
@@ -2509,11 +3011,11 @@ Best Stochastic model by R²: GBM – Geometric Brownian Motion (R²=0.8822)
       </div>
     </a>
     <a class="right-next"
-       href="qc_oil-Production-and-Price.html"
+       href="qc_oil_4%E4%B8%AA%E6%A8%A1%E5%9E%8B1%E5%9F%BA%E6%9C%AC%E9%9D%A2.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Oil production &amp; price</p>
+        <p class="prev-next-title">Oil Price WTI Predict by LSTM &amp; TCN model</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2534,8 +3036,6 @@ Best Stochastic model by R²: GBM – Geometric Brownian Motion (R²=0.8822)
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Oil Production &amp; Price: Demand VS. Supply-driven?</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets-all-fetched-online-no-local-files-required">Datasets (all fetched online — no local files required)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-import-dependencies">0 — Install / import dependencies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-data-online">1 — Fetch Data Online</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">2 — Data Cleaning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">3 — Exploratory Data Analysis</a><ul class="nav section-nav flex-column">
@@ -2548,7 +3048,6 @@ Best Stochastic model by R²: GBM – Geometric Brownian Motion (R²=0.8822)
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-into-pre-covid-20152021-vs-post-covid-20222025">Split into Pre-COVID (2015–2021) vs Post-COVID (2022–2025)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-dashboard">7 — Summary Dashboard</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-conclusions">8 — Final Conclusions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-question-supply-driven-vs-demand-driven">Research Question: Supply-Driven vs Demand-Driven?</a></li>
 </ul>
@@ -2558,6 +3057,13 @@ Best Stochastic model by R²: GBM – Geometric Brownian Motion (R²=0.8822)
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#wti-inventory-memp-2yrs-trend">WTI/Inventory/MEMP: 2yrs trend</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bow-spread-z-score-strategy">BoW Spread/Z-score Strategy</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-highlights">Technical Highlights</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ichimoku-strategy-bayesian-optimization">Ichimoku Strategy &amp; Bayesian Optimization</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-the-ichimoku-strategy-logic">3. Defining the Ichimoku Strategy Logic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-bayesian-optimization-to-find-optimal-parameters">4. Using Bayesian Optimization to Find Optimal Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results-analysis-and-visualization">5. Results Analysis and Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-optimized-trading-signals">6. Plotting Optimized Trading Signals</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-4stochastic">模型预测:3ML + 4Stochastic</a></li>
