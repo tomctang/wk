@@ -9,7 +9,6 @@ parts:
   - file: qc1
   - file: qc2strategy
   - file: qc_oil_mine
-  - file: qc_oil-Production-and-Price
   - file: qc_oil_4个模型1基本面
 
 - caption: Notebook
